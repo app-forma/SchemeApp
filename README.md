@@ -39,3 +39,4 @@ Spara med ctrl+O.
 
 erik was here
 mackan was here
+Rikard hoppas att han var här
