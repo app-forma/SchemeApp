@@ -38,3 +38,4 @@ Spara med ctrl+O.
    Avsluta sedan med att skriva: <b>git push rickardz master</b>
 
 erik was here
+mackan was here
