@@ -16,6 +16,10 @@ process.env.NODE_ENV = 'development';
 // ****************************************************************************
 configuration.http = {};
 configuration.http.port = 10010;
+//production server:
+//configuration.http.port = 13564;
+
+
 configuration.http.host = '127.0.0.1';
 // ****************************************************************************
 // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* EXPRESS -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
