@@ -2,7 +2,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-  User = mongoose.model('User');
+    Helpers = require('../../helpers.js'),
+    User = mongoose.model('User');
 
 
 /**
@@ -32,6 +33,7 @@ exports.user = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
   var user = new User(req.body);
+  user.password = Helpers.generateCryptoPassword(user.password);
   user.saveToDisk(user, function(err, user) {
     if (err) {
       res.json(500, err.errors);
