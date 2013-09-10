@@ -23,6 +23,7 @@
 		0493B54517DDF80C003B3D23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52D17DDF80C003B3D23 /* UIKit.framework */; };
 		0493B54D17DDF80C003B3D23 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0493B54B17DDF80C003B3D23 /* InfoPlist.strings */; };
 		0493B54F17DDF80C003B3D23 /* SchemeAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */; };
+		2748CDC917DF360F00A06467 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748CDC817DF360F00A06467 /* Helpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		0493B54A17DDF80C003B3D23 /* SchemeAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SchemeAppTests-Info.plist"; sourceTree = "<group>"; };
 		0493B54C17DDF80C003B3D23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeAppTests.m; sourceTree = "<group>"; };
+		2748CDC717DF360F00A06467 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
+		2748CDC817DF360F00A06467 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		AF301B7717DF0FE900DC2DEC /* AdminStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdminStore.h; sourceTree = "<group>"; };
 		AF301B7817DF0FE900DC2DEC /* AdminStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdminStore.m; sourceTree = "<group>"; };
 		AF301B7917DF0FE900DC2DEC /* Store.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
@@ -140,6 +143,7 @@
 		0493B52F17DDF80C003B3D23 /* SchemeApp */ = {
 			isa = PBXGroup;
 			children = (
+				2748CDC617DF35EA00A06467 /* Helpers */,
 				0423298E17DF2C6E005B47F9 /* Models */,
 				AF301B7617DF0FDC00DC2DEC /* Store */,
 				0493B53817DDF80C003B3D23 /* AppDelegate.h */,
@@ -177,6 +181,15 @@
 				0493B54B17DDF80C003B3D23 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2748CDC617DF35EA00A06467 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2748CDC717DF360F00A06467 /* Helpers.h */,
+				2748CDC817DF360F00A06467 /* Helpers.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		AF301B7617DF0FDC00DC2DEC /* Store */ = {
@@ -291,6 +304,7 @@
 				0493B53617DDF80C003B3D23 /* main.m in Sources */,
 				0423298117DF230B005B47F9 /* User.m in Sources */,
 				0423298717DF25A0005B47F9 /* EventWrapper.m in Sources */,
+				2748CDC917DF360F00A06467 /* Helpers.m in Sources */,
 				0423298A17DF2ABA005B47F9 /* Event.m in Sources */,
 				0423298D17DF2B7B005B47F9 /* Message.m in Sources */,
 			);
