@@ -1,8 +1,7 @@
 // ****************************************************************************
 // *-*-*-*-*-*-*-*-*-*-*-*-*-* GLOBAL HELPER FN'S -*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 // ****************************************************************************
-var passwordHash = require('password-hash'),
-	uuid = require('node-uuid');
+var passwordHash = require('password-hash');
 
 exports.isEmpty = function(obj) {
 	if(typeof obj !== 'object')
@@ -55,8 +54,4 @@ exports.generateCryptoPassword = function(password) {
 
 exports.validateCryptoPassword = function(password, hashedPassword) {
 	return passwordHash.verify(password, hashedPassword);
-};
-
-exports.generateGuid = function(callback) {
-	callback(uuid.v1());
 };
