@@ -43,4 +43,5 @@ mackan was here
 tobbe was here
 =======
 Rikard hoppas att han var här
+Henrik är inte här
 >>>>>>> 6c5f870cb3cd8dd2b8ed4926a67b682fabff5b29
