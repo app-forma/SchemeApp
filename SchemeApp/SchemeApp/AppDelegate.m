@@ -7,11 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "User.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    User *user = [[User alloc]initWithRole:@"Admin" firstname:@"Lasse" lastname:@"Bengston" email:@"john@dwij" password:@"hej"];
+    NSLog(@"%@", user);
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
