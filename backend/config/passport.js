@@ -1,47 +1,45 @@
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy
-  , db = require('./dbschema');
+var passport = require('passport'),
+    User = require('../app/models/user.js').User,
+    UserCtrl = require('../app/controllers/users.js'),
+    Helpers = require('../helpers.js'),
+    LocalStrategy = require('passport-local').Strategy;
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-  db.userModel.findById(id, function (err, user) {
+  UserCtrl.byId(id, function (err, user) {
     done(err, user);
   });
 });
 
-passport.use(new LocalStrategy(function(username, password, done) {
-  db.userModel.findOne({ username: username }, function(err, user) {
+passport.use(new LocalStrategy(function(email, password, done) {
+  User.findOne({ email: email }, function(err, user) {
     if (err) { return done(err); }
-    if (!user) { return done(null, false, { message: 'Unknown user ' + username }); }
-    user.comparePassword(password, function(err, isMatch) {
-      if (err) return done(err);
-      if(isMatch) {
+    if (!user) { return done(null, false, { message: 'Unknown email ' + email }); }
+      if (!Helpers.validateCryptoPassword(password, user.password)) return done(err);
+      if(Helpers.validateCryptoPassword(password, user.password)) {
         return done(null, user);
       } else {
         return done(null, false, { message: 'Invalid password' });
       }
-    });
   });
 }));
 
 // Simple route middleware to ensure user is authenticated.  Otherwise send to login page.
 exports.ensureAuthenticated = function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
-}
+  res.send(401); // Unauthorized header
+};
 
 
-// Check for admin middleware, this is unrelated to passport.js
-// You can delete this if you use different method to check for admins or don't need admins
+// Check for admin middleware
 exports.ensureAdmin = function ensureAdmin(req, res, next) {
     return function(req, res, next) {
-	console.log(req.user);
-        if(req.user && req.user.admin === true)
+        if(req.user && req.user.role === 'admin' || req.user.role === 'superadmin')
             next();
         else
-            res.send(403);
-    }
-}
+            res.send(403); // Forbidden
+    };
+};

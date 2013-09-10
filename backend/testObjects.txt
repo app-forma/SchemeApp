@@ -26,3 +26,13 @@
     "endDate": "2012-05-22 10:45",
     "_eventWrapperId": "522efcf86c9ae03f89000002"
  }
+
+ //login
+ Url: http://localhost:10010/login [POST]
+ {
+	"email": "erik82osterberg2gmail.com",
+	"password": "password"
+}
+
+ //login
+ Url: http://localhost:10010/logout [GET]

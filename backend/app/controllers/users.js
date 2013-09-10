@@ -3,7 +3,8 @@
  */
 var mongoose = require('mongoose'),
     Helpers = require('../../helpers.js'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    passport = require('passport');    
 
 
 /**
@@ -110,4 +111,28 @@ exports.byIdRaw = function(req, res) {
 */
 exports.comparePasswords = function (password, passwordHash) {
   return Helpers.validateCryptoPassword(password, passwordHash);
+};
+
+/**
+*   Authentication
+*/
+exports.login = function(req, res, next) {
+  user = req.body;
+  user.username = req.body.email;
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err) }
+    if (!user) {
+      req.session.messages =  [info.message];
+      return res.send(401);
+    }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      return res.send(200);
+    });
+  })(req, res, next);
+};
+
+exports.logout = function(req, res) {
+  req.logout();
+  res.send(200);
 };
