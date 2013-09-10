@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0423298117DF230B005B47F9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423298017DF230B005B47F9 /* User.m */; };
+		0423298717DF25A0005B47F9 /* EventWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423298617DF25A0005B47F9 /* EventWrapper.m */; };
+		0423298A17DF2ABA005B47F9 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423298917DF2ABA005B47F9 /* Event.m */; };
+		0423298D17DF2B7B005B47F9 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423298C17DF2B7B005B47F9 /* Message.m */; };
 		0493B52A17DDF80C003B3D23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52917DDF80C003B3D23 /* Foundation.framework */; };
 		0493B52C17DDF80C003B3D23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */; };
 		0493B52E17DDF80C003B3D23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52D17DDF80C003B3D23 /* UIKit.framework */; };
@@ -32,6 +36,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0423297F17DF230B005B47F9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		0423298017DF230B005B47F9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		0423298517DF25A0005B47F9 /* EventWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventWrapper.h; path = ../EventWrapper.h; sourceTree = "<group>"; };
+		0423298617DF25A0005B47F9 /* EventWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventWrapper.m; path = ../EventWrapper.m; sourceTree = "<group>"; };
+		0423298817DF2ABA005B47F9 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = ../Event.h; sourceTree = "<group>"; };
+		0423298917DF2ABA005B47F9 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Event.m; path = ../Event.m; sourceTree = "<group>"; };
+		0423298B17DF2B7B005B47F9 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = ../Message.h; sourceTree = "<group>"; };
+		0423298C17DF2B7B005B47F9 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Message.m; path = ../Message.m; sourceTree = "<group>"; };
 		0493B52617DDF80C003B3D23 /* SchemeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchemeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0493B52917DDF80C003B3D23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -80,6 +92,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0423298E17DF2C6E005B47F9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0423298517DF25A0005B47F9 /* EventWrapper.h */,
+				0423298617DF25A0005B47F9 /* EventWrapper.m */,
+				0423298817DF2ABA005B47F9 /* Event.h */,
+				0423298917DF2ABA005B47F9 /* Event.m */,
+				0423298B17DF2B7B005B47F9 /* Message.h */,
+				0423298C17DF2B7B005B47F9 /* Message.m */,
+				0423297F17DF230B005B47F9 /* User.h */,
+				0423298017DF230B005B47F9 /* User.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		0493B51D17DDF80C003B3D23 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +140,7 @@
 		0493B52F17DDF80C003B3D23 /* SchemeApp */ = {
 			isa = PBXGroup;
 			children = (
+				0423298E17DF2C6E005B47F9 /* Models */,
 				AF301B7617DF0FDC00DC2DEC /* Store */,
 				0493B53817DDF80C003B3D23 /* AppDelegate.h */,
 				0493B53917DDF80C003B3D23 /* AppDelegate.m */,
@@ -261,6 +289,10 @@
 			files = (
 				0493B53A17DDF80C003B3D23 /* AppDelegate.m in Sources */,
 				0493B53617DDF80C003B3D23 /* main.m in Sources */,
+				0423298117DF230B005B47F9 /* User.m in Sources */,
+				0423298717DF25A0005B47F9 /* EventWrapper.m in Sources */,
+				0423298A17DF2ABA005B47F9 /* Event.m in Sources */,
+				0423298D17DF2B7B005B47F9 /* Message.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +411,7 @@
 				GCC_PREFIX_HEADER = "SchemeApp/SchemeApp-Prefix.pch";
 				INFOPLIST_FILE = "SchemeApp/SchemeApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -392,6 +425,7 @@
 				GCC_PREFIX_HEADER = "SchemeApp/SchemeApp-Prefix.pch";
 				INFOPLIST_FILE = "SchemeApp/SchemeApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
