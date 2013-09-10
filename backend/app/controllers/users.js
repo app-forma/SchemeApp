@@ -104,3 +104,10 @@ exports.byIdRaw = function(req, res) {
       }
     });
 };
+
+/**
+*   Compare test to hashed password
+*/
+exports.comparePasswords = function (password, passwordHash) {
+  return Helpers.validateCryptoPassword(password, passwordHash);
+};
