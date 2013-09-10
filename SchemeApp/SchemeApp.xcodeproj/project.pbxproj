@@ -48,6 +48,12 @@
 		0493B54A17DDF80C003B3D23 /* SchemeAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SchemeAppTests-Info.plist"; sourceTree = "<group>"; };
 		0493B54C17DDF80C003B3D23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeAppTests.m; sourceTree = "<group>"; };
+		AF301B7717DF0FE900DC2DEC /* AdminStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdminStore.h; sourceTree = "<group>"; };
+		AF301B7817DF0FE900DC2DEC /* AdminStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdminStore.m; sourceTree = "<group>"; };
+		AF301B7917DF0FE900DC2DEC /* Store.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
+		AF301B7A17DF0FE900DC2DEC /* Store.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
+		AF301B7B17DF0FE900DC2DEC /* StudentStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentStore.h; sourceTree = "<group>"; };
+		AF301B7C17DF0FF400DC2DEC /* StudentStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 		0493B52F17DDF80C003B3D23 /* SchemeApp */ = {
 			isa = PBXGroup;
 			children = (
+				AF301B7617DF0FDC00DC2DEC /* Store */,
 				0493B53817DDF80C003B3D23 /* AppDelegate.h */,
 				0493B53917DDF80C003B3D23 /* AppDelegate.m */,
 				0493B53B17DDF80C003B3D23 /* Images.xcassets */,
@@ -142,6 +149,19 @@
 				0493B54B17DDF80C003B3D23 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AF301B7617DF0FDC00DC2DEC /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				AF301B7917DF0FE900DC2DEC /* Store.h */,
+				AF301B7A17DF0FE900DC2DEC /* Store.m */,
+				AF301B7717DF0FE900DC2DEC /* AdminStore.h */,
+				AF301B7817DF0FE900DC2DEC /* AdminStore.m */,
+				AF301B7B17DF0FE900DC2DEC /* StudentStore.h */,
+				AF301B7C17DF0FF400DC2DEC /* StudentStore.m */,
+			);
+			name = Store;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,6 +455,7 @@
 				0493B55417DDF80C003B3D23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0493B55517DDF80C003B3D23 /* Build configuration list for PBXNativeTarget "SchemeAppTests" */ = {
 			isa = XCConfigurationList;
@@ -443,6 +464,7 @@
 				0493B55717DDF80C003B3D23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
