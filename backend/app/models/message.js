@@ -4,51 +4,36 @@
 
 var mongoose = require('mongoose'),
     config = require('../../config/config.js'),
-    EventWrapper = require('./eventWrapper.js'),
+    EventWrapper = require('./user.js'),
     Schema = mongoose.Schema;
-/**
- *	Recipe Schema
- */
-var UserSchema = new Schema({
-    firstname: {
+
+
+var MessageSchema = new Schema({
+    text: {
         type: String,
         required: true,
         trim: true
     },
-    lastname: {
+    date: {
         type: String,
         required: true,
         trim: true
     },
-    email: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    role: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    eventWrappers: [{ // e.g. this user is registered on following courses
+    from: [{ // e.g. this user is registered on following courses
         type: Schema.Types.ObjectId,
-        ref: 'EventWrapper'
+        ref: 'User'
     }]
 });
 
 /**
  * Methods
  */
-UserSchema.methods.saveToDisk = function(user, callback) {
-    user.save(function(err, user) {
+MessageSchema.methods.saveToDisk = function(message, callback) {
+    message.save(function(err, message) {
         if (err) {
             callback(err, null);
         } else {
-            callback(null, user);
+            callback(null, message);
         }
     });
 };
@@ -57,7 +42,7 @@ UserSchema.methods.saveToDisk = function(user, callback) {
  * Statics
  */
 
-UserSchema.statics = {
+MessageSchema.statics = {
 
     load: function(id, callback) {
         this.findOne({
@@ -71,16 +56,16 @@ UserSchema.statics = {
      * List
      */
     list: function(callback) {
-        this.find(function(err, Users) {
+        this.find(function(err, Messages) {
             if (err) {
                 callback(err, undefined);
             }
-            callback(undefined, Users);
+            callback(undefined, Messages);
         });
     }
 };
 
-var User = mongoose.model('User', UserSchema);
+var Message = mongoose.model('Message', MessageSchema);
 module.exports = {
-    User: User
+    Message: Message
 };

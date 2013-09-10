@@ -24,6 +24,14 @@ var EventWrapperSchema = new Schema({
     litterature: {
         type: String
     },
+    startDate: {
+        type: String,
+        required: true
+    },
+    endDate: {
+        type: String,
+        required: true
+    },
     events: [{
         type: Schema.Types.ObjectId,
         ref: 'Event'
@@ -34,7 +42,7 @@ var EventWrapperSchema = new Schema({
  *   Middleware
  *   Delete all events assosiated with the eventWrapper
  */
-EventWrapperSchema.pre('remove', function(next) {
+EventWrapperSchema.pre('remove', function (next) {
     for (i = 0; i < this.events.length; i = i + 1) {
         Event.find({
             _id: this.events[i]
@@ -46,8 +54,8 @@ EventWrapperSchema.pre('remove', function(next) {
 /**
  * Methods
  */
-EventWrapperSchema.methods.saveToDisk = function(eventWrapper, callback) {
-    eventWrapper.save(function(err, eventWrapper) {
+EventWrapperSchema.methods.saveToDisk = function (eventWrapper, callback) {
+    eventWrapper.save(function (err, eventWrapper) {
         if (err) {
             callback(err, null);
         } else {
@@ -60,7 +68,7 @@ EventWrapperSchema.methods.saveToDisk = function(eventWrapper, callback) {
  * Statics
  */
 EventWrapperSchema.statics = {
-    load: function(id, callback) {
+    load: function (id, callback) {
         this.findOne({
             _id: id
         })
@@ -71,8 +79,8 @@ EventWrapperSchema.statics = {
     /**
      * List
      */
-    list: function(callback) {
-        this.find(function(err, eventWrappers) {
+    list: function (callback) {
+        this.find(function (err, eventWrappers) {
             if (err) {
                 callback(err, undefined);
             }
