@@ -14,10 +14,10 @@
     //Exempel på hur man skapar en user
     User *user = [[User alloc]initWithRole:SuperAdminRole firstname:@"Johan" lastname:@"Thorell" email:@"jdhie" password:@"niewi"];
     NSLog(@"%@", user.role);
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+//    self.window.backgroundColor = [UIColor whiteColor];
+//    [self.window makeKeyAndVisible];
     return YES;
 }
 
