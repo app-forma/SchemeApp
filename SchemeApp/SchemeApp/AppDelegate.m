@@ -8,13 +8,12 @@
 
 #import "AppDelegate.h"
 #import "User.h"
-
 @implementation AppDelegate
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    User *user = [[User alloc]initWithRole:@"Admin" firstname:@"Lasse" lastname:@"Bengston" email:@"john@dwij" password:@"hej"];
-    NSLog(@"%@", user);
+    //Exempel på hur man skapar en user med ett role objekt, denna property är readonly så den går inte att ändra. Role har en property som heter type, denna sätts med ett enum för att undvika felskrivningar.
+    User *user = [[User alloc]initWithRole:SuperAdminRole firstname:@"Johan" lastname:@"Thorell" email:@"jdhie" password:@"niewi"];
+    NSLog(@"%@", user.role);
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

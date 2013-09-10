@@ -11,6 +11,7 @@
 		0423298717DF25A0005B47F9 /* EventWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423298617DF25A0005B47F9 /* EventWrapper.m */; };
 		0423298A17DF2ABA005B47F9 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423298917DF2ABA005B47F9 /* Event.m */; };
 		0423298D17DF2B7B005B47F9 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423298C17DF2B7B005B47F9 /* Message.m */; };
+		0423299C17DF351D005B47F9 /* RoleType in Resources */ = {isa = PBXBuildFile; fileRef = 0423299B17DF351D005B47F9 /* RoleType */; };
 		0493B52A17DDF80C003B3D23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52917DDF80C003B3D23 /* Foundation.framework */; };
 		0493B52C17DDF80C003B3D23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */; };
 		0493B52E17DDF80C003B3D23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52D17DDF80C003B3D23 /* UIKit.framework */; };
@@ -44,6 +45,7 @@
 		0423298917DF2ABA005B47F9 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Event.m; path = ../Event.m; sourceTree = "<group>"; };
 		0423298B17DF2B7B005B47F9 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = ../Message.h; sourceTree = "<group>"; };
 		0423298C17DF2B7B005B47F9 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Message.m; path = ../Message.m; sourceTree = "<group>"; };
+		0423299B17DF351D005B47F9 /* RoleType */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoleType; sourceTree = "<group>"; };
 		0493B52617DDF80C003B3D23 /* SchemeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchemeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0493B52917DDF80C003B3D23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -153,6 +155,7 @@
 		0493B53017DDF80C003B3D23 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0423299B17DF351D005B47F9 /* RoleType */,
 				0493B53117DDF80C003B3D23 /* SchemeApp-Info.plist */,
 				0493B53217DDF80C003B3D23 /* InfoPlist.strings */,
 				0493B53517DDF80C003B3D23 /* main.m */,
@@ -269,6 +272,7 @@
 			files = (
 				0493B53417DDF80C003B3D23 /* InfoPlist.strings in Resources */,
 				0493B53C17DDF80C003B3D23 /* Images.xcassets in Resources */,
+				0423299C17DF351D005B47F9 /* RoleType in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

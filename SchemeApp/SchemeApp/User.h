@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class Role;
 @interface User : NSObject
 
-@property (nonatomic, copy, readonly) NSString *role;
+@property (nonatomic, readonly) NSString *role;
 @property (nonatomic, copy) NSString *firstname;
 @property (nonatomic, copy) NSString *lastname;
 @property (nonatomic, copy) NSString *email;
@@ -18,5 +18,5 @@
 @property (nonatomic, copy) NSMutableArray *messages;
 @property (nonatomic, copy) NSMutableArray *eventWrappers;
 
--initWithRole:(NSString *)role firstname:(NSString *)firstname lastname:(NSString *)lastname email:(NSString *)email password:(NSString *)password;
+-initWithRole:(RoleType)role firstname:(NSString *)firstname lastname:(NSString *)lastname email:(NSString *)email password:(NSString *)password;
 @end

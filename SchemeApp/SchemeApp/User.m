@@ -9,11 +9,11 @@
 #import "User.h"
 
 @implementation User
--(id)initWithRole:(NSString *)role firstname:(NSString *)firstname lastname:(NSString *)lastname email:(NSString *)email password:(NSString *)password
+-(id)initWithRole:(RoleType)role firstname:(NSString *)firstname lastname:(NSString *)lastname email:(NSString *)email password:(NSString *)password
 {
     self = [super init];
     if (self) {
-        _role = role;
+        _role = [self stringFromRoleType:role];
         self.firstname = firstname;
         self.lastname = lastname;
         self.email = email;
@@ -22,5 +22,20 @@
         self.eventWrappers = [NSMutableArray new];
     }
     return  self;
+}
+-(NSString *)stringFromRoleType:(RoleType)role
+{
+    switch (role) {
+        case StudentRole:
+            return @"Student";
+            break;
+        case AdminRole:
+            return @"Admin";
+        case SuperAdminRole:
+            return @"SuperAdmin"
+            ;
+        default:
+            break;
+    }
 }
 @end
