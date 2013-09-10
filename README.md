@@ -39,3 +39,8 @@ Spara med ctrl+O.
 
 erik was here
 mackan was here
+<<<<<<< HEAD
+tobbe was here
+=======
+Rikard hoppas att han var här
+>>>>>>> 6c5f870cb3cd8dd2b8ed4926a67b682fabff5b29
