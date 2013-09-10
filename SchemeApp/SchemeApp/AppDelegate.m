@@ -11,7 +11,7 @@
 @implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //Exempel på hur man skapar en user med ett role objekt, denna property är readonly så den går inte att ändra. Role har en property som heter type, denna sätts med ett enum för att undvika felskrivningar.
+    //Exempel på hur man skapar en user
     User *user = [[User alloc]initWithRole:SuperAdminRole firstname:@"Johan" lastname:@"Thorell" email:@"jdhie" password:@"niewi"];
     NSLog(@"%@", user.role);
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
