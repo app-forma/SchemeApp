@@ -1,0 +1,28 @@
+//user:
+{
+	"name": "superuser",
+	"firstname": "Erik",
+	"lastname": "Österberg",
+	"email": "erik82osterberg2gmail.com",
+	"password": "password"
+}
+
+//eventwrapper:
+
+{
+	"name": "Datakunskap A",
+	"owner": ["522efaf06c9ae03f89000001"],
+	"litterature": "Datakunsakap A - grunderna",
+	"startDate": "2012-04-25",
+    "endDate": "2012-08-23",
+    "events": []
+}
+
+//event:
+{
+ 	"room": "666",
+    "info": "Train hard",
+    "startDate": "2012-05-22 10:00",
+    "endDate": "2012-05-22 10:45",
+    "_eventWrapperId": "522efcf86c9ae03f89000002"
+ }
