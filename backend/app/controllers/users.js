@@ -81,6 +81,19 @@ exports.destroy = function(req, res) {
 exports.byId = function(req, res) {
   User.findOne({
     _id: req.params.id
+  }).populate('eventWrappers')
+  .exec(function(err, doc) {
+      if (err) {
+        res.json(500, err.errors);
+      } else {
+        res.json(200, doc);
+      }
+    });
+};
+
+exports.byIdRaw = function(req, res) {
+  User.findOne({
+    _id: req.params.id
   }).exec(function(err, doc) {
       if (err) {
         res.json(500, err.errors);
