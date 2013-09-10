@@ -28,7 +28,7 @@ fs.readdirSync(models_path).forEach(function (file) {
 require('./app/controllers/routes.js')(app);
 
 if(process.env.NODE_ENV === 'development') {
-  console.log(config.project.name + ' ' + config.project.verß + ' initialization complete\t\t\t\t\t\t[OK]');
+  console.log(config.project.name + ' ' + config.project.ver + ' initialization complete\t\t\t\t\t\t[OK]');
   console.log('Http server running @ ' + config.http.host + ':' + config.http.port + ' in ' + process.env.NODE_ENV + ' mode\t\t[OK]');
 }
 app.listen(config.http.port);
