@@ -19,9 +19,9 @@
 @property (nonatomic, strong) User *currentUser;
 
 + (Store *)mainStore;
++ (StudentStore *)studentStore;
 + (AdminStore *)adminStore;
 + (SuperAdminStore *)superAdminStore;
-+ (StudentStore *)studentStore;
 
 - (User *)userWithEmail:(NSString *)email andPassword:(NSString *)password;
 
