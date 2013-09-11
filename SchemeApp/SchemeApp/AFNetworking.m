@@ -1,7 +1,6 @@
 #import "AFNetworking.h"
 #import <AFJSONRequestOperation.h>
 #import <AFHTTPClient.h>
-#import <AFHTTPRequestOperation.h>
 @implementation AFNetworking
 {
     NSString *baseURL;
