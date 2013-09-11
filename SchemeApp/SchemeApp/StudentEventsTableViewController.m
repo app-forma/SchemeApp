@@ -39,12 +39,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0; // returnera antalet eventWrappers för en student.
+    return 1; // returnera antalet eventWrappers för en student.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0; // returnera antalet events för en student.
+    return 1; // returnera antalet events för en student.
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

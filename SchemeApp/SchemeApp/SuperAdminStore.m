@@ -14,7 +14,7 @@
 
 - (void)createUser:(User *)user
 {
-    [Store.mainStore.users addObject:User];
+    [Store.mainStore.users addObject:user];
 }
 - (void)updateUser:(User *)user
 {
@@ -35,6 +35,23 @@
     if (filteredSet)
     {
         return [filteredSet objectAtIndex:0];
+    }
+    else
+    {
+        return nil;
+    }
+}
+- (NSArray *)filteredSet:(NSSet *)set withPredicate:(NSPredicate *)predicate
+{
+    NSArray *filteredSet = [[set filteredSetUsingPredicate:predicate] allObjects];
+    
+    if (filteredSet.count == 0)
+    {
+        return nil;
+    }
+    else
+    {
+        return filteredSet;
     }
 }
 

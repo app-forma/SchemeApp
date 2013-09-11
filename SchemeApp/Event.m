@@ -19,6 +19,7 @@
         // Ska bara hämtas sen från servern
         _docID = [[NSUUID UUID] UUIDString];
     }
+    return self;
 }
 
 @end

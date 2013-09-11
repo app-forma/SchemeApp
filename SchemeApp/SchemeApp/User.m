@@ -16,7 +16,7 @@
 #warning Temp
         // Ska bara hämtas sen från servern, docID
         _docID = [[NSUUID UUID] UUIDString];
-        _role = [self stringFromRoleType:role];
+        _role = role;
         self.firstname = firstname;
         self.lastname = lastname;
         self.email = email;
