@@ -8,16 +8,20 @@
 
 #import "AppDelegate.h"
 #import "User.h"
+#import "Store.h"
+
 @implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#warning Comment
     //Exempel på hur man skapar en user
-    User *user = [[User alloc]initWithRole:SuperAdminRole firstname:@"Johan" lastname:@"Thorell" email:@"jdhie" password:@"niewi"];
-    NSLog(@"%@", user.role);
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-//    self.window.backgroundColor = [UIColor whiteColor];
-//    [self.window makeKeyAndVisible];
+    Store.mainStore.currentUser = [[User alloc] initWithRole:SuperAdminRole
+                                                   firstname:@"Johan"
+                                                    lastname:@"Thorell"
+                                                       email:@"jdhie"
+                                                    password:@"niewi"];
+    NSLog(@"%@", Store.mainStore.currentUser.role);
+    
     return YES;
 }
 
