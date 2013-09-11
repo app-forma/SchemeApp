@@ -12,8 +12,8 @@
 
 @interface SuperAdminStore : AdminStore
 
-- (BOOL)createUser:(User *)user;
-- (BOOL)updateUser:(User *)user;
-- (BOOL)removeUser:(User *)user;
+- (void)createUser:(User *)user;
+- (void)updateUser:(User *)user;
+- (void)deleteUser:(User *)user;
 
 @end

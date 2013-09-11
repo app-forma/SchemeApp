@@ -7,9 +7,18 @@
 //
 
 #import "AdminStore.h"
+#import "Event.h"
+#import "EventWrapper.h"
 #import "User.h"
 
 @class EventWrapper;
+
+
+@interface AdminStore ()
+
+- (NSArray *)filteredSet:(NSSet *)set withPredicate:(NSPredicate *)predicate;
+
+@end
 
 
 @implementation AdminStore
@@ -25,7 +34,7 @@
 }
 - (void)deleteEvent:(Event *)event
 {
-    [Store.mainStore.events removeObject:eventWrapper];
+    [Store.mainStore.events removeObject:event];
 }
 - (void)createEventWrapper:(EventWrapper *)eventWrapper
 {
@@ -48,11 +57,15 @@
 - (User *)userWithDocID:(NSString *)docID
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", docID];
-    NSArray *filteredSet = [self filterdSet:Store.mainStore.users withPredicate:predicate];
+    NSArray *filteredSet = [self filteredSet:Store.mainStore.users withPredicate:predicate];
     
     if (filteredSet)
     {
         return [filteredSet objectAtIndex:0];
+    }
+    else
+    {
+        return nil;
     }
 }
 
@@ -60,7 +73,7 @@
 {
     for (User *user in Store.mainStore.users)
     {
-        if ([user.role isEqualToString:StudentRole])
+        if (user.role == StudentRole)
         {
             [user.messages addObject:message];
         }
@@ -72,24 +85,32 @@
 }
 
 #pragma mark - Extracted methods
-- (EventWrapper *)oldVersionOfEvent:(EventWrapper *)event
+- (EventWrapper *)oldVersionOfEvent:(Event *)event
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", event.docID];
-    NSArray *filteredSet = [self filterdSet:Store.mainStore.events withPredicate:predicate];
+    NSArray *filteredSet = [self filteredSet:Store.mainStore.events withPredicate:predicate];
     
     if (filteredSet)
     {
         return [filteredSet objectAtIndex:0];
     }
+    else
+    {
+        return nil;
+    }
 }
 - (EventWrapper *)oldVersionOfEventWrapper:(EventWrapper *)eventWrapper
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", eventWrapper.docID];
-    NSArray *filteredSet = [self filterdSet:Store.mainStore.eventWrappers withPredicate:predicate];
+    NSArray *filteredSet = [self filteredSet:Store.mainStore.eventWrappers withPredicate:predicate];
     
     if (filteredSet)
     {
         return [filteredSet objectAtIndex:0];
+    }
+    else
+    {
+        return nil;
     }
 }
 - (NSArray *)filteredSet:(NSSet *)set withPredicate:(NSPredicate *)predicate
