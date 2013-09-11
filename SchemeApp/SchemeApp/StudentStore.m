@@ -13,6 +13,8 @@
 
 @implementation StudentStore
 {
+#warning Comment
+    // Kommentar som man kan ta bort så fort man ser det
     EventWrapper *eventWrapper;
 }
 
