@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 @class EventWrapper;
 @interface Event : NSObject
+@property (nonatomic, readonly) NSString *docID;
 @property (nonatomic, strong) EventWrapper *_eventWrapperId;
 @property (nonatomic, copy) NSString *info;
 @property (nonatomic, copy) NSDate *startDate;

@@ -10,6 +10,7 @@
 @class Role;
 @interface User : NSObject
 
+@property (nonatomic, readonly) NSString *docID;
 @property (nonatomic, readonly) NSString *role;
 @property (nonatomic, copy) NSString *firstname;
 @property (nonatomic, copy) NSString *lastname;

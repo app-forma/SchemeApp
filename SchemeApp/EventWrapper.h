@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 @class User;
 @interface EventWrapper : NSObject
+@property (nonatomic, copy) NSString *docID;
 @property (nonatomic, copy) NSMutableArray *events;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, copy) NSString *litterature;

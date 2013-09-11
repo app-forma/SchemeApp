@@ -73,6 +73,8 @@
                              lastname:@"Thorell"
                                 email:@"jdhie"
                              password:@"niewi"];
+    
+    // Returnerar nil om felaktigt lösenord och skickar en AlertView...
 }
 
 @end

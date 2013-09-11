@@ -8,16 +8,22 @@
 
 #import "StudentStore.h"
 
-@class EventWrapper, Message, User;
+@class Event, EventWrapper, Message, User;
 
 
 @interface AdminStore : StudentStore
 
-- (BOOL)createEventWrapper:(EventWrapper *)eventWrapper;
-- (BOOL)updateEventWrapper:(EventWrapper *)eventWrapper;
-- (BOOL)deleteEventWrapper:(EventWrapper *)eventWrapper;
+- (void)createEvent:(Event *)event;
+- (void)updateEvent:(Event *)event;
+- (void)deleteEvent:(Event *)event;
+- (void)createEventWrapper:(EventWrapper *)eventWrapper;
+- (void)updateEventWrapper:(EventWrapper *)eventWrapper;
+- (void)deleteEventWrapper:(EventWrapper *)eventWrapper;
 
-- (BOOL)sendMessage:(Message *)message;
-- (BOOL)sendMessage:(Message *)message toUser:(User *)user;
+- (NSArray *)users;
+- (User *)userWithDocID:(NSString *)docID;
+
+- (void)sendMessage:(Message *)message;
+- (void)sendMessage:(Message *)message toUser:(User *)user;
 
 @end

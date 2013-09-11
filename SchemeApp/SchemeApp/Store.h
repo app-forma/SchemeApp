@@ -17,6 +17,10 @@
 @interface Store : NSObject
 
 @property (nonatomic, strong) User *currentUser;
+@property (nonatomic, strong) NSMutableSet *users;
+
+@property (nonatomic, strong) NSMutableSet *events;
+@property (nonatomic, strong) NSMutableSet *eventWrappers;
 
 + (Store *)mainStore;
 + (StudentStore *)studentStore;

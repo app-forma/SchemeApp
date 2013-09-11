@@ -10,4 +10,15 @@
 
 @implementation Event
 
+#warning Temp
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        // Ska bara hämtas sen från servern
+        _docID = [[NSUUID UUID] UUIDString];
+    }
+}
+
 @end

@@ -7,7 +7,103 @@
 //
 
 #import "AdminStore.h"
+#import "User.h"
+
+@class EventWrapper;
 
 
 @implementation AdminStore
+
+- (void)createEvent:(Event *)event
+{
+    [Store.mainStore.events addObject:event];
+}
+- (void)updateEvent:(Event *)event
+{
+    [Store.mainStore.events removeObject:[self oldVersionOfEvent:event]];
+    [Store.mainStore.events addObject:event];
+}
+- (void)deleteEvent:(Event *)event
+{
+    [Store.mainStore.events removeObject:eventWrapper];
+}
+- (void)createEventWrapper:(EventWrapper *)eventWrapper
+{
+    [Store.mainStore.eventWrappers addObject:eventWrapper];
+}
+- (void)updateEventWrapper:(EventWrapper *)eventWrapper
+{
+    [Store.mainStore.eventWrappers removeObject:[self oldVersionOfEventWrapper:eventWrapper]];
+    [Store.mainStore.eventWrappers addObject:eventWrapper];
+}
+- (void)deleteEventWrapper:(EventWrapper *)eventWrapper
+{
+    [Store.mainStore.eventWrappers removeObject:eventWrapper];
+}
+
+- (NSArray *)users
+{
+    return [Store.mainStore.users allObjects];
+}
+- (User *)userWithDocID:(NSString *)docID
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", docID];
+    NSArray *filteredSet = [self filterdSet:Store.mainStore.users withPredicate:predicate];
+    
+    if (filteredSet)
+    {
+        return [filteredSet objectAtIndex:0];
+    }
+}
+
+- (void)sendMessage:(Message *)message
+{
+    for (User *user in Store.mainStore.users)
+    {
+        if ([user.role isEqualToString:StudentRole])
+        {
+            [user.messages addObject:message];
+        }
+    }
+}
+- (void)sendMessage:(Message *)message toUser:(User *)user
+{
+    [user.messages addObject:message];
+}
+
+#pragma mark - Extracted methods
+- (EventWrapper *)oldVersionOfEvent:(EventWrapper *)event
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", event.docID];
+    NSArray *filteredSet = [self filterdSet:Store.mainStore.events withPredicate:predicate];
+    
+    if (filteredSet)
+    {
+        return [filteredSet objectAtIndex:0];
+    }
+}
+- (EventWrapper *)oldVersionOfEventWrapper:(EventWrapper *)eventWrapper
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", eventWrapper.docID];
+    NSArray *filteredSet = [self filterdSet:Store.mainStore.eventWrappers withPredicate:predicate];
+    
+    if (filteredSet)
+    {
+        return [filteredSet objectAtIndex:0];
+    }
+}
+- (NSArray *)filteredSet:(NSSet *)set withPredicate:(NSPredicate *)predicate
+{
+    NSArray *filteredSet = [[set filteredSetUsingPredicate:predicate] allObjects];
+    
+    if (filteredSet.count == 0)
+    {
+        return nil;
+    }
+    else
+    {
+        return filteredSet;
+    }
+}
+
 @end
