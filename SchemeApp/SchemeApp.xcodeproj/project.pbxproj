@@ -153,7 +153,6 @@
 		0493B52F17DDF80C003B3D23 /* SchemeApp */ = {
 			isa = PBXGroup;
 			children = (
-				2748CDC617DF35EA00A06467 /* Helpers */,
 				0423298E17DF2C6E005B47F9 /* Models */,
 				AF301B7617DF0FDC00DC2DEC /* Store */,
 				8F686FA017DFCBE7001C5C56 /* Controllers */,
@@ -169,6 +168,7 @@
 		0493B53017DDF80C003B3D23 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2748CDC617DF35EA00A06467 /* Classes */,
 				0423299B17DF351D005B47F9 /* RoleType */,
 				0493B53117DDF80C003B3D23 /* SchemeApp-Info.plist */,
 				0493B53217DDF80C003B3D23 /* InfoPlist.strings */,
@@ -196,13 +196,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2748CDC617DF35EA00A06467 /* Helpers */ = {
+		2748CDC617DF35EA00A06467 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				2748CDC717DF360F00A06467 /* Helpers.h */,
 				2748CDC817DF360F00A06467 /* Helpers.m */,
 			);
-			name = Helpers;
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		8F686FA017DFCBE7001C5C56 /* Controllers */ = {
