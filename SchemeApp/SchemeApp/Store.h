@@ -25,6 +25,4 @@
 
 - (User *)userWithEmail:(NSString *)email andPassword:(NSString *)password;
 
-- (EventWrapper *)eventWrapperWithStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate;
-
 @end

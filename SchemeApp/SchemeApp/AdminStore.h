@@ -6,12 +6,12 @@
 //
 //
 
-#import "Store.h"
+#import "StudentStore.h"
 
 @class EventWrapper, Message, User;
 
 
-@interface AdminStore : NSObject
+@interface AdminStore : StudentStore
 
 - (BOOL)createEventWrapper:(EventWrapper *)eventWrapper;
 - (BOOL)updateEventWrapper:(EventWrapper *)eventWrapper;

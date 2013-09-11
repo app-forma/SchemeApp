@@ -8,5 +8,9 @@
 
 #import "Store.h"
 
+
 @interface StudentStore : NSObject
+
+- (EventWrapper *)eventWrapperWithStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate;
+
 @end

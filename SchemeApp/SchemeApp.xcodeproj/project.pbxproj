@@ -231,12 +231,12 @@
 			children = (
 				AF301B7917DF0FE900DC2DEC /* Store.h */,
 				AF301B7A17DF0FE900DC2DEC /* Store.m */,
+				AF301B7B17DF0FE900DC2DEC /* StudentStore.h */,
+				AF301B7C17DF0FF400DC2DEC /* StudentStore.m */,
 				AF301B7717DF0FE900DC2DEC /* AdminStore.h */,
 				AF301B7817DF0FE900DC2DEC /* AdminStore.m */,
 				AF2551F617E04883006EDD02 /* SuperAdminStore.h */,
 				AF2551F717E04883006EDD02 /* SuperAdminStore.m */,
-				AF301B7B17DF0FE900DC2DEC /* StudentStore.h */,
-				AF301B7C17DF0FF400DC2DEC /* StudentStore.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
