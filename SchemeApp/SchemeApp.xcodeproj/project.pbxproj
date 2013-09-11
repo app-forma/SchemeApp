@@ -25,6 +25,7 @@
 		0493B54D17DDF80C003B3D23 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0493B54B17DDF80C003B3D23 /* InfoPlist.strings */; };
 		0493B54F17DDF80C003B3D23 /* SchemeAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */; };
 		2748CDC917DF360F00A06467 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748CDC817DF360F00A06467 /* Helpers.m */; };
+		27D8B45717E0B958007EC0E5 /* AdminStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D8B45617E0B958007EC0E5 /* AdminStoryboard.storyboard */; };
 		2BA0F02C13F44B069424EEB9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC99216210684512B293A9D8 /* libPods.a */; };
 		AF2551F017E04628006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F117E04629006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
@@ -84,6 +85,7 @@
 		0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeAppTests.m; sourceTree = "<group>"; };
 		2748CDC717DF360F00A06467 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		2748CDC817DF360F00A06467 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
+		27D8B45617E0B958007EC0E5 /* AdminStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdminStoryboard.storyboard; sourceTree = "<group>"; };
 		AC99216210684512B293A9D8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF2551F617E04883006EDD02 /* SuperAdminStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperAdminStore.h; sourceTree = "<group>"; };
 		AF2551F717E04883006EDD02 /* SuperAdminStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperAdminStore.m; sourceTree = "<group>"; };
@@ -180,12 +182,12 @@
 		0493B52F17DDF80C003B3D23 /* SchemeApp */ = {
 			isa = PBXGroup;
 			children = (
+				27D8B45517E0B92A007EC0E5 /* Views */,
 				0423298E17DF2C6E005B47F9 /* Models */,
 				8F686FA017DFCBE7001C5C56 /* Controllers */,
 				AF301B7617DF0FDC00DC2DEC /* Store */,
 				0493B53817DDF80C003B3D23 /* AppDelegate.h */,
 				0493B53917DDF80C003B3D23 /* AppDelegate.m */,
-				AFE538EF17E0972C00C0B776 /* StudentStoryboard.storyboard */,
 				0493B53B17DDF80C003B3D23 /* Images.xcassets */,
 				0493B53017DDF80C003B3D23 /* Supporting Files */,
 			);
@@ -230,6 +232,15 @@
 				2748CDC817DF360F00A06467 /* Helpers.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		27D8B45517E0B92A007EC0E5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AFE538EF17E0972C00C0B776 /* StudentStoryboard.storyboard */,
+				27D8B45617E0B958007EC0E5 /* AdminStoryboard.storyboard */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		8F686FA017DFCBE7001C5C56 /* Controllers */ = {
@@ -342,6 +353,7 @@
 				0493B53417DDF80C003B3D23 /* InfoPlist.strings in Resources */,
 				0493B53C17DDF80C003B3D23 /* Images.xcassets in Resources */,
 				0423299C17DF351D005B47F9 /* RoleType in Resources */,
+				27D8B45717E0B958007EC0E5 /* AdminStoryboard.storyboard in Resources */,
 				AFE538F817E0972C00C0B776 /* StudentStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
