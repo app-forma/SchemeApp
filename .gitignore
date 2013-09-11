@@ -10,10 +10,7 @@ build/
 *.perspectivev3
 !default.perspectivev3
 *.xcworkspace
-<<<<<<< HEAD
 !default.xcworkspace
-=======
->>>>>>> a198b009a5c8b56718f97f6754586aa211bd56d7
 !SchemeApp.xcworkspace
 xcuserdata
 profile
