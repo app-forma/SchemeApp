@@ -1,5 +1,5 @@
 //
-//  UserMainViewController.h
+//  StudentEventsTableViewController.h
 //  SchemeApp
 //
 //  Created by Rikard Karlsson on 9/11/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserMainViewController : UIViewController
+@interface StudentEventsTableViewController : UITableViewController
 
 @end

@@ -2,37 +2,39 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>827F604A-6CAC-435D-A0C6-6C03762F9481</string>
+	<string>FE43A44B-73A4-49E9-A3B9-FF61943BE2FF</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SchemeApp</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>42BE27A6-12F6-4A84-BAFA-C0C9DE60B23D</key>
-		<string>https://github.com/rickardz/SchemeApp.git</string>
+		<key>ACD8A90F-9525-4913-B1A1-EF94B570300E</key>
+		<string>https://github.com/rickardz/SchemeApp/</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SchemeApp/SchemeApp.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>42BE27A6-12F6-4A84-BAFA-C0C9DE60B23D</key>
+		<key>ACD8A90F-9525-4913-B1A1-EF94B570300E</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/rickardz/SchemeApp.git</string>
+	<string>https://github.com/rickardz/SchemeApp/</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>42BE27A6-12F6-4A84-BAFA-C0C9DE60B23D</string>
+	<string>ACD8A90F-9525-4913-B1A1-EF94B570300E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>42BE27A6-12F6-4A84-BAFA-C0C9DE60B23D</string>
+			<string>ACD8A90F-9525-4913-B1A1-EF94B570300E</string>
 			<key>IDESourceControlWCCName</key>
-			<string>SchemeAppGit</string>
+			<string>SchemeApp</string>
 		</dict>
 	</array>
 </dict>
