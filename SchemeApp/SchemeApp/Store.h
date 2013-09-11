@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AdminStore.h"
+#import "SuperAdminStore.h"
 #import "StudentStore.h"
 
 @class User;
@@ -19,6 +20,11 @@
 
 + (Store *)mainStore;
 + (AdminStore *)adminStore;
++ (SuperAdminStore *)superAdminStore;
 + (StudentStore *)studentStore;
+
+- (User *)userWithEmail:(NSString *)email andPassword:(NSString *)password;
+
+- (EventWrapper *)eventWrapperWithStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate;
 
 @end

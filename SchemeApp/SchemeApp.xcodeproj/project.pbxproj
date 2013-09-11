@@ -28,6 +28,14 @@
 		8F686F9F17DFC9E8001C5C56 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F686F9E17DFC9E8001C5C56 /* Storyboard.storyboard */; };
 		8F686FA317DFCC23001C5C56 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F686FA217DFCC23001C5C56 /* LoginViewController.m */; };
 		8F686FA917DFD56F001C5C56 /* UserMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F686FA817DFD56F001C5C56 /* UserMainViewController.m */; };
+		AF2551F017E04628006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
+		AF2551F117E04629006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
+		AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7817DF0FE900DC2DEC /* AdminStore.m */; };
+		AF2551F317E0462D006EDD02 /* AdminStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7817DF0FE900DC2DEC /* AdminStore.m */; };
+		AF2551F417E04630006EDD02 /* StudentStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7C17DF0FF400DC2DEC /* StudentStore.m */; };
+		AF2551F517E04631006EDD02 /* StudentStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7C17DF0FF400DC2DEC /* StudentStore.m */; };
+		AF2551F817E04883006EDD02 /* SuperAdminStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2551F717E04883006EDD02 /* SuperAdminStore.m */; };
+		AF2551F917E04883006EDD02 /* SuperAdminStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2551F717E04883006EDD02 /* SuperAdminStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +81,8 @@
 		8F686FA217DFCC23001C5C56 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8F686FA717DFD56F001C5C56 /* UserMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMainViewController.h; sourceTree = "<group>"; };
 		8F686FA817DFD56F001C5C56 /* UserMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMainViewController.m; sourceTree = "<group>"; };
+		AF2551F617E04883006EDD02 /* SuperAdminStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperAdminStore.h; sourceTree = "<group>"; };
+		AF2551F717E04883006EDD02 /* SuperAdminStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperAdminStore.m; sourceTree = "<group>"; };
 		AF301B7717DF0FE900DC2DEC /* AdminStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdminStore.h; sourceTree = "<group>"; };
 		AF301B7817DF0FE900DC2DEC /* AdminStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdminStore.m; sourceTree = "<group>"; };
 		AF301B7917DF0FE900DC2DEC /* Store.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
@@ -223,6 +233,8 @@
 				AF301B7A17DF0FE900DC2DEC /* Store.m */,
 				AF301B7717DF0FE900DC2DEC /* AdminStore.h */,
 				AF301B7817DF0FE900DC2DEC /* AdminStore.m */,
+				AF2551F617E04883006EDD02 /* SuperAdminStore.h */,
+				AF2551F717E04883006EDD02 /* SuperAdminStore.m */,
 				AF301B7B17DF0FE900DC2DEC /* StudentStore.h */,
 				AF301B7C17DF0FF400DC2DEC /* StudentStore.m */,
 			);
@@ -328,11 +340,15 @@
 			files = (
 				8F686FA917DFD56F001C5C56 /* UserMainViewController.m in Sources */,
 				8F686FA317DFCC23001C5C56 /* LoginViewController.m in Sources */,
+				AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */,
 				0493B53A17DDF80C003B3D23 /* AppDelegate.m in Sources */,
+				AF2551F017E04628006EDD02 /* Store.m in Sources */,
 				0493B53617DDF80C003B3D23 /* main.m in Sources */,
 				0423298117DF230B005B47F9 /* User.m in Sources */,
+				AF2551F817E04883006EDD02 /* SuperAdminStore.m in Sources */,
 				0423298717DF25A0005B47F9 /* EventWrapper.m in Sources */,
 				2748CDC917DF360F00A06467 /* Helpers.m in Sources */,
+				AF2551F417E04630006EDD02 /* StudentStore.m in Sources */,
 				0423298A17DF2ABA005B47F9 /* Event.m in Sources */,
 				0423298D17DF2B7B005B47F9 /* Message.m in Sources */,
 			);
@@ -343,6 +359,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0493B54F17DDF80C003B3D23 /* SchemeAppTests.m in Sources */,
+				AF2551F517E04631006EDD02 /* StudentStore.m in Sources */,
+				AF2551F917E04883006EDD02 /* SuperAdminStore.m in Sources */,
+				AF2551F317E0462D006EDD02 /* AdminStore.m in Sources */,
+				AF2551F117E04629006EDD02 /* Store.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,27 +8,16 @@
 
 #import "Store.h"
 
-@class Admin, Student, Course, Lesson;
+@class EventWrapper, Message, User;
 
 
 @interface AdminStore : NSObject
 
-- (Admin *)adminWithID:(NSString *)adminID andPassword:(NSString *)password;
-- (BOOL)uploadAdmin:(Admin *)admin;
+- (BOOL)createEventWrapper:(EventWrapper *)eventWrapper;
+- (BOOL)updateEventWrapper:(EventWrapper *)eventWrapper;
+- (BOOL)deleteEventWrapper:(EventWrapper *)eventWrapper;
 
-#pragma mark - Student
-- (NSArray *)students;
-- (Student *)studentWithID:(NSString *)studentID;
-- (BOOL)uploadStudent:(Student *)student;
-
-#pragma mark - Course
-- (NSArray *)courses;
-- (Course *)courseWithID:(NSString *)courseID;
-- (BOOL)uploadCourse:(Course *)course;
-
-#pragma mark Lesson
-- (Lesson *)lessonWithID:(NSString *)lessonID;
-- (NSArray *)lessonsBetweenStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate;
-- (BOOL)uploadLession:(Lesson *)lesson;
+- (BOOL)sendMessage:(Message *)message;
+- (BOOL)sendMessage:(Message *)message toUser:(User *)user;
 
 @end

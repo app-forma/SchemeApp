@@ -7,6 +7,7 @@
 //
 
 #import "Store.h"
+#import "User.h"
 
 
 @implementation Store
@@ -17,7 +18,7 @@
 }
 + (Store *)mainStore
 {
-    static Store *mainstore = nil;
+    static Store *mainStore = nil;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
@@ -39,6 +40,18 @@
     
     return adminStore;
 }
++ (SuperAdminStore *)superAdminStore
+{
+    static SuperAdminStore *superAdminStore = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+                  {
+                      superAdminStore = [[SuperAdminStore alloc] init];
+                  });
+    
+    return superAdminStore;
+}
 + (StudentStore *)studentStore
 {
     static StudentStore *studentStore = nil;
@@ -50,6 +63,16 @@
                   });
     
     return studentStore;
+}
+
+- (User *)userWithEmail:(NSString *)email andPassword:(NSString *)password
+{
+#warning Implement
+    return [[User alloc] initWithRole:SuperAdminRole
+                            firstname:@"Johan"
+                             lastname:@"Thorell"
+                                email:@"jdhie"
+                             password:@"niewi"];
 }
 
 @end

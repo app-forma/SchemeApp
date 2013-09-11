@@ -7,20 +7,14 @@
 //
 
 #import "AppDelegate.h"
-#import "User.h"
-#import "Store.h"
 
 @implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 #warning Comment
     //Exempel på hur man skapar en user
-    Store.mainStore.currentUser = [[User alloc] initWithRole:SuperAdminRole
-                                                   firstname:@"Johan"
-                                                    lastname:@"Thorell"
-                                                       email:@"jdhie"
-                                                    password:@"niewi"];
-    NSLog(@"%@", Store.mainStore.currentUser.role);
+    Store.mainStore.currentUser = [Store.mainStore userWithEmail:nil
+                                                     andPassword:nil];
     
     return YES;
 }
