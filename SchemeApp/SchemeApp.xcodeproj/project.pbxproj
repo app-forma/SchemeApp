@@ -164,8 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				0423298E17DF2C6E005B47F9 /* Models */,
-				AF301B7617DF0FDC00DC2DEC /* Store */,
 				8F686FA017DFCBE7001C5C56 /* Controllers */,
+				AF301B7617DF0FDC00DC2DEC /* Store */,
 				0493B53817DDF80C003B3D23 /* AppDelegate.h */,
 				0493B53917DDF80C003B3D23 /* AppDelegate.m */,
 				8F686F9E17DFC9E8001C5C56 /* Storyboard.storyboard */,
