@@ -8,6 +8,8 @@
 
 #import "Store.h"
 
+@class EventWrapper;
+
 
 @interface StudentStore : NSObject
 
