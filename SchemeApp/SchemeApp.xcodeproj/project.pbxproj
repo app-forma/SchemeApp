@@ -190,8 +190,8 @@
 		0493B52F17DDF80C003B3D23 /* SchemeApp */ = {
 			isa = PBXGroup;
 			children = (
-				27D8B45517E0B92A007EC0E5 /* Views */,
 				0423298E17DF2C6E005B47F9 /* Models */,
+				27D8B45517E0B92A007EC0E5 /* Views */,
 				8F686FA017DFCBE7001C5C56 /* Controllers */,
 				AF301B7617DF0FDC00DC2DEC /* Store */,
 				0493B53817DDF80C003B3D23 /* AppDelegate.h */,
