@@ -8,31 +8,31 @@
 
 #import "StudentMainViewController.h"
 #import "DatePickerViewController.h"
+#import "MessageCell.h"
+#import "Message.h"
+#import "User.h"
+#import "Helpers.h"
 
 @interface StudentMainViewController () <UITableViewDelegate, UITableViewDataSource>
 {
     DatePickerViewController *datePicker;
     UIView *datePickerView;
+    
+    
+    
+    
+    //for testing:
+    NSArray *messages;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *startDateForScheme;
 @property (weak, nonatomic) IBOutlet UILabel *endDateForScheme;
-@property (weak, nonatomic) IBOutlet UITableView *messagesTableView;
+
 
 @end
 
 
 @implementation StudentMainViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 
 - (void)viewDidLoad
 {
@@ -40,8 +40,6 @@
     
     self.navigationItem.title = @"Home";
     
-    self.messagesTableView.delegate = self;
-    self.messagesTableView.dataSource = self;
     
     datePicker = [[DatePickerViewController alloc] init];
     
@@ -55,6 +53,24 @@
     [datePickerView addSubview:datePicker.view];
     [self.view addSubview:datePickerView];
     datePickerView.hidden = YES;
+    
+    //dummy data
+    User *lasse = [[User alloc]initWithRole:SuperAdminRole firstname:@"lasse" lastname:@"erikssom" email:@"laase@fjghafd.se" password:@"123456"];
+    
+    Message *mess1 = [[Message alloc]init];
+    mess1.from = lasse;
+    mess1.date = [NSDate date];
+    mess1.text = @"asdkjfghasdkgajhgdka";
+    
+    
+    User *master = [[User alloc]initWithRole:SuperAdminRole firstname:@"Anders" lastname:@"Carlsson" email:@"anders@coredev.se" password:@"Master"];
+    
+    Message *mess2 = [[Message alloc]init];
+    mess2.from = master;
+    mess2.date = [NSDate date];
+    mess2.text = @"Hej grabbar! Jag har kollat i ert repository och det ser lite stökigt ut. Hur är det med Git-kunskaperna?";
+    
+    messages = @[mess1, mess2];
     
 }
 
@@ -82,13 +98,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5; // returnera antalet meddelanden som finns tillgängliga för eleven. MessageStore?
+    return messages.count; // returnera antalet meddelanden som finns tillgängliga för eleven. MessageStore?
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Skapa en custom cell. Lärarens namn, datum och början av meddelandet.
-    return nil;
+    
+    static NSString *cellId = @"MessageCell";
+    MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+
+    Message *message = messages[indexPath.row];
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", message.from.firstname, message.from.lastname];
+    cell.dateLabel.text = [Helpers stringFromNSDate:message.date];
+    cell.messageTextView.text = message.text;
+    
+    
+    return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -96,6 +122,14 @@
     // Här ska vi skapa en StudentMessageDetailsViewController och sen ska vi pusha den med detaljer för den valda radens meddelande.
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Messages";
+}
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 81;
+}
 
 @end

@@ -45,6 +45,7 @@
 		27BCC21717E201EE009977BB /* courses_unselected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC21617E201EE009977BB /* courses_unselected@1x.png */; };
 		27D8B45717E0B958007EC0E5 /* AdminStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D8B45617E0B958007EC0E5 /* AdminStoryboard.storyboard */; };
 		2BA0F02C13F44B069424EEB9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC99216210684512B293A9D8 /* libPods.a */; };
+		4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC5DD817E1EFAD0032C92F /* MessageCell.m */; };
 		8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */; };
 		8F2407DB17E1C43600BB9B8B /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F2407D917E1C43600BB9B8B /* DatePickerViewController.xib */; };
 		AF2551F017E04628006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
@@ -129,6 +130,8 @@
 		27BCC20D17E201B8009977BB /* messages_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "messages_unselected@2x.png"; path = "images/messages_unselected@2x.png"; sourceTree = "<group>"; };
 		27BCC21617E201EE009977BB /* courses_unselected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "courses_unselected@1x.png"; path = "images/courses_unselected@1x.png"; sourceTree = "<group>"; };
 		27D8B45617E0B958007EC0E5 /* AdminStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdminStoryboard.storyboard; sourceTree = "<group>"; };
+		4DAC5DD717E1EFAD0032C92F /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		4DAC5DD817E1EFAD0032C92F /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		8F2407D717E1C43600BB9B8B /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		8F2407D917E1C43600BB9B8B /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
@@ -330,6 +333,8 @@
 				AFE538EF17E0972C00C0B776 /* StudentStoryboard.storyboard */,
 				27D8B45617E0B958007EC0E5 /* AdminStoryboard.storyboard */,
 				8F2407D917E1C43600BB9B8B /* DatePickerViewController.xib */,
+				4DAC5DD717E1EFAD0032C92F /* MessageCell.h */,
+				4DAC5DD817E1EFAD0032C92F /* MessageCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 				2748CDC917DF360F00A06467 /* Helpers.m in Sources */,
 				27BCC1EE17E1F347009977BB /* AdminMessagesViewController.m in Sources */,
 				AFE538F017E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */,
+				4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */,
 				AF2551F417E04630006EDD02 /* StudentStore.m in Sources */,
 				27BCC1F717E1F5D9009977BB /* AdminStudentsViewController.m in Sources */,
 				27BCC1F417E1F581009977BB /* AdminCoursesViewController.m in Sources */,
