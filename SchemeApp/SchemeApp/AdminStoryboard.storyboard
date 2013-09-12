@@ -4,17 +4,17 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--Admin Courses View Controller - Courses-->
+        <!--Admin Event Wrappers View Controller-->
         <scene sceneID="YX3-f5-thc">
             <objects>
-                <tableViewController id="1UH-bx-hX1" customClass="AdminCoursesViewController" sceneMemberID="viewController">
+                <tableViewController id="1UH-bx-hX1" customClass="AdminEventWrappersViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" id="I8c-0Y-PF6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventWrapperCellIdentifier" rowHeight="66" id="nBi-Ov-mol" customClass="EventWrapperCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="66"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nBi-Ov-mol" id="Spf-c9-D3y">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="65"/>
@@ -63,6 +63,7 @@
                                     <outlet property="eventWrapperName" destination="t5c-T1-gYJ" id="Ylf-QD-XkE"/>
                                     <outlet property="eventWrapperOwnerName" destination="xbO-BZ-bpG" id="6Wm-NG-X6i"/>
                                     <outlet property="eventWrapperStartDate" destination="0d6-Lh-qhE" id="AUT-vK-Hge"/>
+                                    <segue destination="INL-5X-h4p" kind="push" identifier="AdminEventWrapperDetailsSegue" id="z8a-Sb-PhS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -71,12 +72,105 @@
                             <outlet property="delegate" destination="1UH-bx-hX1" id="KaE-CB-KJl"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Courses" image="courses_unselected.png" id="ke2-dV-NPu"/>
                     <navigationItem key="navigationItem" id="VLo-zA-mEZ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOW-Ft-WhP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="173" y="-508"/>
+            <point key="canvasLocation" x="699" y="-508"/>
+        </scene>
+        <!--Admin Event Wrapper Details View Controller-->
+        <scene sceneID="NP0-5A-kQS">
+            <objects>
+                <viewController id="INL-5X-h4p" customClass="AdminEventWrapperDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d4j-K6-uGv"/>
+                        <viewControllerLayoutGuide type="bottom" id="HJi-2V-uCm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7wu-ZT-t7R">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iO9-bd-1Nl">
+                                <rect key="frame" x="20" y="105" width="76" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwy-wc-Ptq">
+                                <rect key="frame" x="20" y="134" width="69" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teacher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdd-vF-F20">
+                                <rect key="frame" x="20" y="163" width="60" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSl-at-2NK">
+                                <rect key="frame" x="20" y="76" width="242" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2re-mk-cDW">
+                                <rect key="frame" x="120" y="105" width="169" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noD-HO-w4e">
+                                <rect key="frame" x="120" y="134" width="169" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HET-Ba-g2m">
+                                <rect key="frame" x="120" y="163" width="169" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bqc-4H-wiA">
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Edit schema" id="RV5-N9-Dyx"/>
+                                    <barButtonItem title="Delete" id="65c-7M-r7A"/>
+                                    <barButtonItem title="Done" id="F2I-vV-IgI"/>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Toolbar items hide/show depending if editing mode or not" borderStyle="roundedRect" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="7U9-Fz-vwV">
+                                <rect key="frame" x="9" y="383" width="319" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5G-nL-ei3">
+                                <rect key="frame" x="12" y="192" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Courses">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="TZp-KQ-BrB"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="courseEndDate" destination="noD-HO-w4e" id="u5X-NC-e6D"/>
+                        <outlet property="courseNameLabel" destination="bSl-at-2NK" id="vp2-aA-c1M"/>
+                        <outlet property="courseStartDate" destination="2re-mk-cDW" id="qho-zD-FUP"/>
+                        <outlet property="courseTeacher" destination="HET-Ba-g2m" id="eYB-Jb-IvX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jtq-mx-G3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1079" y="-508"/>
         </scene>
         <!--Admin Messages View Controller - Messages-->
         <scene sceneID="gP8-h6-RE7">
@@ -108,7 +202,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="1UH-bx-hX1" kind="relationship" relationship="viewControllers" id="jq5-j6-ZOM"/>
+                        <segue destination="YaZ-1S-men" kind="relationship" relationship="viewControllers" id="jq5-j6-ZOM"/>
                         <segue destination="Pav-rH-9HR" kind="relationship" relationship="viewControllers" id="8uz-f6-63R"/>
                         <segue destination="gXJ-C6-fMQ" kind="relationship" relationship="viewControllers" id="9LB-QH-5yI"/>
                     </connections>
@@ -135,6 +229,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggd-DS-PB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="173" y="821"/>
+        </scene>
+        <!--Navigation Controller - Courses-->
+        <scene sceneID="eZL-yG-K9B">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YaZ-1S-men" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Courses" image="courses_unselected.png" id="ke2-dV-NPu"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FOO-LF-ueL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1UH-bx-hX1" kind="relationship" relationship="rootViewController" id="8wE-Ct-ltZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4B6-ck-RmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="173" y="-508"/>
         </scene>
     </scenes>
     <resources>

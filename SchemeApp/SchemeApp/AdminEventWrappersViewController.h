@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AdminCoursesViewController : UITableViewController
+@interface AdminEventWrappersViewController : UITableViewController
 
 @end

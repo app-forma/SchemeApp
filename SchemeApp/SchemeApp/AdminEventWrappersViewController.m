@@ -6,14 +6,15 @@
 //  Copyright (c) 2013 Team leet. All rights reserved.
 //
 
-#import "AdminCoursesViewController.h"
+#import "AdminEventWrappersViewController.h"
 #import "EventWrapperCell.h"
+#import "AdminEventWrapperDetailsViewController.h"
 
-@interface AdminCoursesViewController ()
+@interface AdminEventWrappersViewController ()
 
 @end
 
-@implementation AdminCoursesViewController
+@implementation AdminEventWrappersViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +30,25 @@
     [super loadView];
     if ([self.tabBarItem respondsToSelector:@selector(setFinishedSelectedImage:withFinishedUnselectedImage:)]) {
         [self.tabBarItem setSelectedImage:[UIImage imageNamed:@"courses_selected"]];
+    }
+}
+
+#pragma mark - Perpare for Segue / Set detailsView's details
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([@"AdminEventWrapperDetailsSegue" isEqualToString:segue.identifier])
+    {
+        AdminEventWrapperDetailsViewController *eventWrapperDetailsVC = segue.destinationViewController;
+        eventWrapperDetailsVC.detailsCourseName = @"Some eventWrapper name";
+        eventWrapperDetailsVC.detailsCourseStartDate = @"Some eventwrapper startDate";
+        eventWrapperDetailsVC.detailsCourseEndDate = @"Some eventwrapper endDate";
+        eventWrapperDetailsVC.detailsCourseTeacher = @"Some eventwrapper teacher";
+        
+        
+        // WHEN USING STORE USE SOMETHING LIKE THIS!
+        /*NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        DetailObject *detail = [self detailForIndexPath:path];
+        [segue.destinationViewController setDetail:detail];*/
     }
 }
 
