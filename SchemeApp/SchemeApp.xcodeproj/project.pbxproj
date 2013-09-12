@@ -25,6 +25,7 @@
 		0493B54517DDF80C003B3D23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52D17DDF80C003B3D23 /* UIKit.framework */; };
 		0493B54D17DDF80C003B3D23 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0493B54B17DDF80C003B3D23 /* InfoPlist.strings */; };
 		0493B54F17DDF80C003B3D23 /* SchemeAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */; };
+		04A7597317E1C75F0049F925 /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A7597217E1C75F0049F925 /* Validation.m */; };
 		2748CDC917DF360F00A06467 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748CDC817DF360F00A06467 /* Helpers.m */; };
 		27C9210E17E1B2340015085D /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C9210D17E1B2340015085D /* LoginStoryboard.storyboard */; };
 		27C9211117E1B4050015085D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9211017E1B4050015085D /* LoginViewController.m */; };
@@ -88,6 +89,8 @@
 		0493B54A17DDF80C003B3D23 /* SchemeAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SchemeAppTests-Info.plist"; sourceTree = "<group>"; };
 		0493B54C17DDF80C003B3D23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeAppTests.m; sourceTree = "<group>"; };
+		04A7597117E1C75F0049F925 /* Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validation.h; sourceTree = "<group>"; };
+		04A7597217E1C75F0049F925 /* Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Validation.m; sourceTree = "<group>"; };
 		2748CDC717DF360F00A06467 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		2748CDC817DF360F00A06467 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		27C9210D17E1B2340015085D /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
@@ -240,6 +243,8 @@
 				04199A8217E0B88D00E922D5 /* AFNetworking.m */,
 				2748CDC717DF360F00A06467 /* Helpers.h */,
 				2748CDC817DF360F00A06467 /* Helpers.m */,
+				04A7597117E1C75F0049F925 /* Validation.h */,
+				04A7597217E1C75F0049F925 /* Validation.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A7597317E1C75F0049F925 /* Validation.m in Sources */,
 				AFE538F417E0972C00C0B776 /* StudentMainViewController.m in Sources */,
 				AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */,
 				0493B53A17DDF80C003B3D23 /* AppDelegate.m in Sources */,
