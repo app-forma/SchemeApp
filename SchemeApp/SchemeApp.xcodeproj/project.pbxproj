@@ -26,6 +26,8 @@
 		0493B54D17DDF80C003B3D23 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0493B54B17DDF80C003B3D23 /* InfoPlist.strings */; };
 		0493B54F17DDF80C003B3D23 /* SchemeAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */; };
 		2748CDC917DF360F00A06467 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748CDC817DF360F00A06467 /* Helpers.m */; };
+		27C9210E17E1B2340015085D /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C9210D17E1B2340015085D /* LoginStoryboard.storyboard */; };
+		27C9211117E1B4050015085D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9211017E1B4050015085D /* LoginViewController.m */; };
 		27D8B45717E0B958007EC0E5 /* AdminStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D8B45617E0B958007EC0E5 /* AdminStoryboard.storyboard */; };
 		2BA0F02C13F44B069424EEB9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC99216210684512B293A9D8 /* libPods.a */; };
 		AF2551F017E04628006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
@@ -88,6 +90,9 @@
 		0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeAppTests.m; sourceTree = "<group>"; };
 		2748CDC717DF360F00A06467 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		2748CDC817DF360F00A06467 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
+		27C9210D17E1B2340015085D /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
+		27C9210F17E1B4050015085D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		27C9211017E1B4050015085D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		27D8B45617E0B958007EC0E5 /* AdminStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdminStoryboard.storyboard; sourceTree = "<group>"; };
 		AC99216210684512B293A9D8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF2551F617E04883006EDD02 /* SuperAdminStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperAdminStore.h; sourceTree = "<group>"; };
@@ -244,6 +249,7 @@
 			children = (
 				AFE538EF17E0972C00C0B776 /* StudentStoryboard.storyboard */,
 				27D8B45617E0B958007EC0E5 /* AdminStoryboard.storyboard */,
+				27C9210D17E1B2340015085D /* LoginStoryboard.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -259,6 +265,8 @@
 				AFE538EC17E0972C00C0B776 /* StudentMainViewController.m */,
 				AFE538ED17E0972C00C0B776 /* StudentMessageDetailsViewController.h */,
 				AFE538EE17E0972C00C0B776 /* StudentMessageDetailsViewController.m */,
+				27C9210F17E1B4050015085D /* LoginViewController.h */,
+				27C9211017E1B4050015085D /* LoginViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -358,6 +366,7 @@
 				0493B53417DDF80C003B3D23 /* InfoPlist.strings in Resources */,
 				0493B53C17DDF80C003B3D23 /* Images.xcassets in Resources */,
 				0423299C17DF351D005B47F9 /* RoleType in Resources */,
+				27C9210E17E1B2340015085D /* LoginStoryboard.storyboard in Resources */,
 				27D8B45717E0B958007EC0E5 /* AdminStoryboard.storyboard in Resources */,
 				AFE538F817E0972C00C0B776 /* StudentStoryboard.storyboard in Resources */,
 			);
@@ -417,6 +426,7 @@
 				AFE538F617E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */,
 				0493B53617DDF80C003B3D23 /* main.m in Sources */,
 				0423298117DF230B005B47F9 /* User.m in Sources */,
+				27C9211117E1B4050015085D /* LoginViewController.m in Sources */,
 				AF2551F817E04883006EDD02 /* SuperAdminStore.m in Sources */,
 				04199A8317E0B88D00E922D5 /* AFNetworking.m in Sources */,
 				0423298717DF25A0005B47F9 /* EventWrapper.m in Sources */,
