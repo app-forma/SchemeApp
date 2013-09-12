@@ -4,33 +4,35 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--Admin Courses View Controller - Courses-->
-        <scene sceneID="hNc-Qg-IkX">
+        <!--Table View Controller - Courses-->
+        <scene sceneID="YX3-f5-thc">
             <objects>
-                <viewController id="GtL-N9-CiR" customClass="AdminCoursesViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GVY-5s-s16"/>
-                        <viewControllerLayoutGuide type="bottom" id="Pil-go-gVh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="m2Q-IT-rwl">
+                <tableViewController id="1UH-bx-hX1" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="I8c-0Y-PF6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="courses" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8it-ik-gLr">
-                                <rect key="frame" x="131" y="281" width="61" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" tag="3" title="Courses" image="courses_unselected.png" id="O2u-nb-erI"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XkV-IH-AYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nBi-Ov-mol">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nBi-Ov-mol" id="Spf-c9-D3y">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1UH-bx-hX1" id="XXC-3l-2Gj"/>
+                            <outlet property="delegate" destination="1UH-bx-hX1" id="KaE-CB-KJl"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Courses" image="courses_unselected.png" id="ke2-dV-NPu"/>
+                    <navigationItem key="navigationItem" id="VLo-zA-mEZ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yOW-Ft-WhP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="172" y="-522"/>
+            <point key="canvasLocation" x="115" y="-437"/>
         </scene>
         <!--Admin Messages View Controller - Messages-->
         <scene sceneID="gP8-h6-RE7">
@@ -43,14 +45,6 @@
                     <view key="view" contentMode="scaleToFill" id="lmy-bB-APi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-VX-lqd">
-                                <rect key="frame" x="131" y="263" width="70" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="Messages" image="messages_unselected.png" id="ZF6-eJ-jww"/>
@@ -72,7 +66,7 @@
                     <connections>
                         <segue destination="gXJ-C6-fMQ" kind="relationship" relationship="viewControllers" id="9LB-QH-5yI"/>
                         <segue destination="Pav-rH-9HR" kind="relationship" relationship="viewControllers" id="8uz-f6-63R"/>
-                        <segue destination="GtL-N9-CiR" kind="relationship" relationship="viewControllers" id="lgt-vR-HsQ"/>
+                        <segue destination="1UH-bx-hX1" kind="relationship" relationship="viewControllers" id="36S-8L-sx2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGR-PL-f0k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -90,14 +84,6 @@
                     <view key="view" contentMode="scaleToFill" id="QUf-mN-SSh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Students" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EP5-JG-eRm">
-                                <rect key="frame" x="128" y="224" width="69" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" title="Students" image="users_unselected.png" id="pId-6y-Pwp"/>
