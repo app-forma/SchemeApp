@@ -7,7 +7,7 @@
         <!--Navigation Controller-->
         <scene sceneID="viV-MK-Usk">
             <objects>
-                <navigationController definesPresentationContext="YES" id="coM-Ae-pR9" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="StudentStoryboard" definesPresentationContext="YES" id="coM-Ae-pR9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dae-SU-ejP">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
