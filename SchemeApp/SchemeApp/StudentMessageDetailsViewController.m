@@ -27,11 +27,10 @@
 
 // En vy med detaljer för det valda meddelandet av studenten.
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Message";
 }
 
 @end
