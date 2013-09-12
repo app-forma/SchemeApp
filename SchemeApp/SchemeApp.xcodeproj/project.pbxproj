@@ -28,6 +28,21 @@
 		2748CDC917DF360F00A06467 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748CDC817DF360F00A06467 /* Helpers.m */; };
 		27BCC1E717E1E7E7009977BB /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC1E617E1E7E7009977BB /* LoginStoryboard.storyboard */; };
 		27BCC1EA17E1E8B5009977BB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC1E917E1E8B5009977BB /* LoginViewController.m */; };
+		27BCC1EE17E1F347009977BB /* AdminMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC1ED17E1F347009977BB /* AdminMessagesViewController.m */; };
+		27BCC1F417E1F581009977BB /* AdminCoursesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC1F317E1F581009977BB /* AdminCoursesViewController.m */; };
+		27BCC1F717E1F5D9009977BB /* AdminStudentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC1F617E1F5D9009977BB /* AdminStudentsViewController.m */; };
+		27BCC20017E1FAF5009977BB /* users_unselected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC1FC17E1FAF5009977BB /* users_unselected@1x.png */; };
+		27BCC20117E1FAF5009977BB /* users_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC1FD17E1FAF5009977BB /* users_unselected@2x.png */; };
+		27BCC20417E1FB8D009977BB /* users_selected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC20217E1FB8D009977BB /* users_selected@1x.png */; };
+		27BCC20517E1FB8D009977BB /* users_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC20317E1FB8D009977BB /* users_selected@2x.png */; };
+		27BCC20E17E201B8009977BB /* courses_selected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC20617E201B8009977BB /* courses_selected@1x.png */; };
+		27BCC20F17E201B8009977BB /* courses_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC20717E201B8009977BB /* courses_selected@2x.png */; };
+		27BCC21117E201B8009977BB /* courses_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC20917E201B8009977BB /* courses_unselected@2x.png */; };
+		27BCC21217E201B8009977BB /* messages_selected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC20A17E201B8009977BB /* messages_selected@1x.png */; };
+		27BCC21317E201B8009977BB /* messages_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC20B17E201B8009977BB /* messages_selected@2x.png */; };
+		27BCC21417E201B8009977BB /* messages_unselected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC20C17E201B8009977BB /* messages_unselected@1x.png */; };
+		27BCC21517E201B8009977BB /* messages_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC20D17E201B8009977BB /* messages_unselected@2x.png */; };
+		27BCC21717E201EE009977BB /* courses_unselected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC21617E201EE009977BB /* courses_unselected@1x.png */; };
 		27D8B45717E0B958007EC0E5 /* AdminStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D8B45617E0B958007EC0E5 /* AdminStoryboard.storyboard */; };
 		2BA0F02C13F44B069424EEB9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC99216210684512B293A9D8 /* libPods.a */; };
 		8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */; };
@@ -95,6 +110,24 @@
 		27BCC1E617E1E7E7009977BB /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		27BCC1E817E1E8B5009977BB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		27BCC1E917E1E8B5009977BB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		27BCC1EC17E1F347009977BB /* AdminMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminMessagesViewController.h; sourceTree = "<group>"; };
+		27BCC1ED17E1F347009977BB /* AdminMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminMessagesViewController.m; sourceTree = "<group>"; };
+		27BCC1F217E1F581009977BB /* AdminCoursesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminCoursesViewController.h; sourceTree = "<group>"; };
+		27BCC1F317E1F581009977BB /* AdminCoursesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminCoursesViewController.m; sourceTree = "<group>"; };
+		27BCC1F517E1F5D9009977BB /* AdminStudentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminStudentsViewController.h; sourceTree = "<group>"; };
+		27BCC1F617E1F5D9009977BB /* AdminStudentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminStudentsViewController.m; sourceTree = "<group>"; };
+		27BCC1FC17E1FAF5009977BB /* users_unselected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "users_unselected@1x.png"; path = "images/users_unselected@1x.png"; sourceTree = "<group>"; };
+		27BCC1FD17E1FAF5009977BB /* users_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "users_unselected@2x.png"; path = "images/users_unselected@2x.png"; sourceTree = "<group>"; };
+		27BCC20217E1FB8D009977BB /* users_selected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "users_selected@1x.png"; path = "images/users_selected@1x.png"; sourceTree = "<group>"; };
+		27BCC20317E1FB8D009977BB /* users_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "users_selected@2x.png"; path = "images/users_selected@2x.png"; sourceTree = "<group>"; };
+		27BCC20617E201B8009977BB /* courses_selected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "courses_selected@1x.png"; path = "images/courses_selected@1x.png"; sourceTree = "<group>"; };
+		27BCC20717E201B8009977BB /* courses_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "courses_selected@2x.png"; path = "images/courses_selected@2x.png"; sourceTree = "<group>"; };
+		27BCC20917E201B8009977BB /* courses_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "courses_unselected@2x.png"; path = "images/courses_unselected@2x.png"; sourceTree = "<group>"; };
+		27BCC20A17E201B8009977BB /* messages_selected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "messages_selected@1x.png"; path = "images/messages_selected@1x.png"; sourceTree = "<group>"; };
+		27BCC20B17E201B8009977BB /* messages_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "messages_selected@2x.png"; path = "images/messages_selected@2x.png"; sourceTree = "<group>"; };
+		27BCC20C17E201B8009977BB /* messages_unselected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "messages_unselected@1x.png"; path = "images/messages_unselected@1x.png"; sourceTree = "<group>"; };
+		27BCC20D17E201B8009977BB /* messages_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "messages_unselected@2x.png"; path = "images/messages_unselected@2x.png"; sourceTree = "<group>"; };
+		27BCC21617E201EE009977BB /* courses_unselected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "courses_unselected@1x.png"; path = "images/courses_unselected@1x.png"; sourceTree = "<group>"; };
 		27D8B45617E0B958007EC0E5 /* AdminStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdminStoryboard.storyboard; sourceTree = "<group>"; };
 		8F2407D717E1C43600BB9B8B /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
@@ -195,6 +228,7 @@
 		0493B52F17DDF80C003B3D23 /* SchemeApp */ = {
 			isa = PBXGroup;
 			children = (
+				27BCC1F817E1FAC7009977BB /* Images */,
 				27D8B45517E0B92A007EC0E5 /* Views */,
 				0423298E17DF2C6E005B47F9 /* Models */,
 				8F686FA017DFCBE7001C5C56 /* Controllers */,
@@ -249,6 +283,46 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		27BCC1EB17E1F335009977BB /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				27BCC1EC17E1F347009977BB /* AdminMessagesViewController.h */,
+				27BCC1ED17E1F347009977BB /* AdminMessagesViewController.m */,
+				27BCC1F217E1F581009977BB /* AdminCoursesViewController.h */,
+				27BCC1F317E1F581009977BB /* AdminCoursesViewController.m */,
+				27BCC1F517E1F5D9009977BB /* AdminStudentsViewController.h */,
+				27BCC1F617E1F5D9009977BB /* AdminStudentsViewController.m */,
+			);
+			name = Admin;
+			sourceTree = "<group>";
+		};
+		27BCC1F817E1FAC7009977BB /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				27BCC1F917E1FACE009977BB /* AdminTabBar */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		27BCC1F917E1FACE009977BB /* AdminTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				27BCC21617E201EE009977BB /* courses_unselected@1x.png */,
+				27BCC20617E201B8009977BB /* courses_selected@1x.png */,
+				27BCC20717E201B8009977BB /* courses_selected@2x.png */,
+				27BCC20917E201B8009977BB /* courses_unselected@2x.png */,
+				27BCC20A17E201B8009977BB /* messages_selected@1x.png */,
+				27BCC20B17E201B8009977BB /* messages_selected@2x.png */,
+				27BCC20C17E201B8009977BB /* messages_unselected@1x.png */,
+				27BCC20D17E201B8009977BB /* messages_unselected@2x.png */,
+				27BCC20217E1FB8D009977BB /* users_selected@1x.png */,
+				27BCC20317E1FB8D009977BB /* users_selected@2x.png */,
+				27BCC1FC17E1FAF5009977BB /* users_unselected@1x.png */,
+				27BCC1FD17E1FAF5009977BB /* users_unselected@2x.png */,
+			);
+			name = AdminTabBar;
+			sourceTree = "<group>";
+		};
 		27D8B45517E0B92A007EC0E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +337,7 @@
 		8F686FA017DFCBE7001C5C56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				27BCC1EB17E1F335009977BB /* Admin */,
 				27BCC1E817E1E8B5009977BB /* LoginViewController.h */,
 				27BCC1E917E1E8B5009977BB /* LoginViewController.m */,
 				AFE538EB17E0972C00C0B776 /* StudentMainViewController.h */,
@@ -371,13 +446,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27BCC21317E201B8009977BB /* messages_selected@2x.png in Resources */,
+				27BCC20017E1FAF5009977BB /* users_unselected@1x.png in Resources */,
 				8F2407DB17E1C43600BB9B8B /* DatePickerViewController.xib in Resources */,
 				0493B53417DDF80C003B3D23 /* InfoPlist.strings in Resources */,
 				0493B53C17DDF80C003B3D23 /* Images.xcassets in Resources */,
+				27BCC21217E201B8009977BB /* messages_selected@1x.png in Resources */,
+				27BCC20F17E201B8009977BB /* courses_selected@2x.png in Resources */,
+				27BCC21117E201B8009977BB /* courses_unselected@2x.png in Resources */,
+				27BCC20117E1FAF5009977BB /* users_unselected@2x.png in Resources */,
+				27BCC21717E201EE009977BB /* courses_unselected@1x.png in Resources */,
 				0423299C17DF351D005B47F9 /* RoleType in Resources */,
+				27BCC21517E201B8009977BB /* messages_unselected@2x.png in Resources */,
 				27BCC1E717E1E7E7009977BB /* LoginStoryboard.storyboard in Resources */,
+				27BCC20E17E201B8009977BB /* courses_selected@1x.png in Resources */,
+				27BCC21417E201B8009977BB /* messages_unselected@1x.png in Resources */,
+				27BCC20517E1FB8D009977BB /* users_selected@2x.png in Resources */,
 				27D8B45717E0B958007EC0E5 /* AdminStoryboard.storyboard in Resources */,
 				AFE538F817E0972C00C0B776 /* StudentStoryboard.storyboard in Resources */,
+				27BCC20417E1FB8D009977BB /* users_selected@1x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,8 +527,11 @@
 				04199A8317E0B88D00E922D5 /* AFNetworking.m in Sources */,
 				0423298717DF25A0005B47F9 /* EventWrapper.m in Sources */,
 				2748CDC917DF360F00A06467 /* Helpers.m in Sources */,
+				27BCC1EE17E1F347009977BB /* AdminMessagesViewController.m in Sources */,
 				AFE538F017E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */,
 				AF2551F417E04630006EDD02 /* StudentStore.m in Sources */,
+				27BCC1F717E1F5D9009977BB /* AdminStudentsViewController.m in Sources */,
+				27BCC1F417E1F581009977BB /* AdminCoursesViewController.m in Sources */,
 				27BCC1EA17E1E8B5009977BB /* LoginViewController.m in Sources */,
 				0423298A17DF2ABA005B47F9 /* Event.m in Sources */,
 				AFE538F217E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */,

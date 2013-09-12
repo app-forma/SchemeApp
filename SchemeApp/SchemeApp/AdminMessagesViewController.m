@@ -22,4 +22,10 @@
     }
     return self;
 }
+-(void)loadView
+{
+    if ([self.tabBarItem respondsToSelector:@selector(setFinishedSelectedImage:withFinishedUnselectedImage:)]) {
+        [self.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected"]];
+    }
+}
 @end

@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--Admin Courses View Controller-->
+        <!--Admin Courses View Controller - Courses-->
         <scene sceneID="hNc-Qg-IkX">
             <objects>
                 <viewController id="GtL-N9-CiR" customClass="AdminCoursesViewController" sceneMemberID="viewController">
@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="3" systemItem="mostViewed" id="O2u-nb-erI"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="Courses" image="courses_unselected.png" id="O2u-nb-erI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XkV-IH-AYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="172" y="-522"/>
         </scene>
-        <!--Admin Messages View Controller-->
+        <!--Admin Messages View Controller - Messages-->
         <scene sceneID="gP8-h6-RE7">
             <objects>
                 <viewController id="gXJ-C6-fMQ" customClass="AdminMessagesViewController" sceneMemberID="viewController">
@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="2" systemItem="bookmarks" id="ZF6-eJ-jww"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Messages" image="messages_unselected.png" id="ZF6-eJ-jww"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMe-Nt-3ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,6 +83,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="courses_unselected.png" width="30" height="30"/>
+        <image name="messages_unselected.png" width="30" height="30"/>
         <image name="users_unselected.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
