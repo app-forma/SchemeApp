@@ -10,7 +10,6 @@
 
 @class Event, EventWrapper, Message, User;
 
-
 @interface AdminStore : StudentStore
 
 - (void)createEvent:(Event *)event;

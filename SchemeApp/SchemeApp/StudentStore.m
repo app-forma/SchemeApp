@@ -7,18 +7,27 @@
 //
 
 #import "StudentStore.h"
-#import "EventWrapper.h"
+#import "AFNetworking.h"
 #import "Event.h"
+#import "EventWrapper.h"
 
 
 @implementation StudentStore
-{
-    EventWrapper *eventWrapper;
-}
 
 - (EventWrapper *)eventWrapperWithStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate
 {
 #warning Implement
+    AFNetworking *networker = [[AFNetworking alloc] init];
+    
+    [networker readType:@"eventWrappers"
+                 withId:nil
+               callback:^(NSDictionary *result)
+    {
+#warning Comment
+        // Filtrera alla eventrappers
+        NSSet *filteredResult = result keys
+    }
+    
     return nil;
 }
 

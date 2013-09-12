@@ -10,8 +10,15 @@
 #import "User.h"
 
 
-@implementation SuperAdminStore
+@interface SuperAdminStore (PrivateMethods)
 
+- (NSArray *)filteredSet:(NSSet *)set withPredicate:(NSPredicate *)predicate;
+
+@end
+
+
+@implementation SuperAdminStore
+    
 - (void)createUser:(User *)user
 {
     [Store.mainStore.users addObject:user];
@@ -39,19 +46,6 @@
     else
     {
         return nil;
-    }
-}
-- (NSArray *)filteredSet:(NSSet *)set withPredicate:(NSPredicate *)predicate
-{
-    NSArray *filteredSet = [[set filteredSetUsingPredicate:predicate] allObjects];
-    
-    if (filteredSet.count == 0)
-    {
-        return nil;
-    }
-    else
-    {
-        return filteredSet;
     }
 }
 

@@ -14,13 +14,6 @@
 @class EventWrapper;
 
 
-@interface AdminStore ()
-
-- (NSArray *)filteredSet:(NSSet *)set withPredicate:(NSPredicate *)predicate;
-
-@end
-
-
 @implementation AdminStore
 
 - (void)createEvent:(Event *)event
