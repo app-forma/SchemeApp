@@ -16,5 +16,6 @@
 @property (nonatomic, copy) NSDate *startDate;
 @property (nonatomic, copy) NSDate *endDate;
 @property (nonatomic, copy) NSString *name;
+- (id)initWithEventWrapperDictionary:(NSDictionary *)eventWrapperDictionary;
 - (NSDictionary *)asDictionary;
 @end

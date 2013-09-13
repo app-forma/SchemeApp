@@ -7,9 +7,26 @@
 //
 
 #import "EventWrapper.h"
+#import "Helpers.h"
 
 
 @implementation EventWrapper
+
+- (id)initWithEventWrapperDictionary:(NSDictionary *)eventWrapperDictionary
+{
+    self = [super init];
+    if (self)
+    {
+        self.name = [eventWrapperDictionary objectForKey:@"name"];
+        self.user = Store.mainStore.currentUser;
+        self.litterature = [eventWrapperDictionary objectForKey:@"litterature"];
+        self.startDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"startDate"]];
+        self.endDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"endDate"]];
+        self.docID = [eventWrapperDictionary objectForKey:@"_id"];
+        self.events = [eventWrapperDictionary objectForKey:@"events"];
+    }
+    return self;
+}
 
 - (NSDictionary *)asDictionary
 {
