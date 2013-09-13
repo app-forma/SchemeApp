@@ -15,7 +15,7 @@
 
 @implementation StudentStore
 {
-    NSMutableArray *eventWrappers;
+    NSMutableArray *listOfEventWrappers;
 }
 
 - (void)eventWrappersWithStartDate:(NSDate *)startDate
@@ -28,14 +28,13 @@
                  withId:nil
                callback:^(id result)
     {
-        completion([self filterEventWrappersResult:result
-                                     withStartDate:startDate
-                                        andEndDate:endDate]);
+        [self fillListOfEventWrappersByFilteringResult:result withStartDate:startDate andEndDate:endDate];
+        completion(listOfEventWrappers);
     }];
 }
 
 #pragma mark - Extracted methods
-- (NSArray *)filterEventWrappersResult:(id)result
+- (NSArray *)fillListOfEventWrappersByFilteringResult:(id)result
                          withStartDate:(NSDate *)startDate
                             andEndDate:(NSDate *)endDate
 {
@@ -51,21 +50,21 @@
         
         if (eventWrapperIsOwnedByCurrentUser && dateIsEqual)
         {
-            [eventWrappers addObject:[self createEventWrapperOfDictionary:eventWrapperDictionary]];
+            [listOfEventWrappers addObject:[self createEventWrapperOfDictionary:eventWrapperDictionary]];
         }
     }
     
-    return eventWrappers;
+    return listOfEventWrappers;
 }
 - (void)resetEventWrapperList
 {
-    if (eventWrappers == nil)
+    if (listOfEventWrappers == nil)
     {
-        eventWrappers = [[NSMutableArray alloc] init];
+        listOfEventWrappers = [[NSMutableArray alloc] init];
     }
     else
     {
-        [eventWrappers removeAllObjects];
+        [listOfEventWrappers removeAllObjects];
     }
 }
 - (EventWrapper *)createEventWrapperOfDictionary:(NSDictionary *)eventWrapperDictionary
