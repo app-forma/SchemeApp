@@ -7,26 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFNetworking.h"
 #import "AdminStore.h"
 #import "SuperAdminStore.h"
 #import "StudentStore.h"
 
-@class User;
+@class AFNetworking, User;
 
 
 @interface Store : NSObject
-
-@property (nonatomic, weak) User *currentUser;
-@property (nonatomic, weak) NSMutableSet *users;
-
-@property (nonatomic, weak) NSMutableSet *events;
-@property (nonatomic, weak) NSMutableSet *eventWrappers;
 
 + (Store *)mainStore;
 + (StudentStore *)studentStore;
 + (AdminStore *)adminStore;
 + (SuperAdminStore *)superAdminStore;
 
-- (User *)userWithEmail:(NSString *)email andPassword:(NSString *)password;
+@property (nonatomic, strong) User *currentUser;
+- (AFNetworking *)dbConnection;
+
+#warning Dummy
+@property (nonatomic, strong) NSMutableSet *users;
+@property (nonatomic, strong) NSMutableSet *events;
+@property (nonatomic, strong) NSMutableSet *eventWrappers;
+
+- (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion;
 
 @end

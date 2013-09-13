@@ -11,6 +11,9 @@
 
 
 @implementation Store
+{
+    AFNetworking *dbConnection;
+}
 
 + (id)allocWithZone:(NSZone *)zone
 {
@@ -65,16 +68,56 @@
     return studentStore;
 }
 
-- (User *)userWithEmail:(NSString *)email andPassword:(NSString *)password
+- (AFNetworking *)dbConnection
 {
-#warning Implement
-    return [[User alloc] initWithRole:SuperAdminRole
-                            firstname:@"Johan"
-                             lastname:@"Thorell"
-                                email:@"jdhie"
-                             password:@"niewi"];
-    
-    // Returnerar nil om felaktigt lösenord och skickar en AlertView...
+    if (dbConnection == nil)
+    {
+        dbConnection = [[AFNetworking alloc] init];
+    }
+    return dbConnection;
+}
+
+- (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion
+{
+    #warning Implement password
+    [Store.mainStore.dbConnection readType:@"users"
+                                    withId:nil
+                                  callback:^(id result)
+     {
+         for (NSDictionary *userDictionary in result)
+         {
+             if ([[userDictionary objectForKey:@"email"] isEqualToString:email])
+             {
+#warning Comment
+                 // We should use enum on backend as well for Role
+                 Store.mainStore.currentUser = [[User alloc] initWithRole:[self makeEnumOfRoleString:[userDictionary objectForKey:@"role"]]
+                                                                firstname:[userDictionary objectForKey:@"firstname"]
+                                                                 lastname:[userDictionary objectForKey:@"lastname"]
+                                                                    email:email
+                                                                 password:password];
+                 completion(YES);
+                 return;
+             }
+         }
+         completion(NO);
+     }];
+}
+
+#pragma mark - Extracted methods
+- (int)makeEnumOfRoleString:(NSString *)roleString
+{
+    if ([roleString isEqualToString:@"superadmin"])
+    {
+        return SuperAdminRole;
+    }
+    else if ([roleString isEqualToString:@"admin"])
+    {
+        return AdminRole;
+    }
+    else
+    {
+        return StudentRole;
+    }
 }
 
 @end

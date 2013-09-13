@@ -11,11 +11,6 @@
 @implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-#warning Comment
-    //Exempel på hur man skapar en user
-    Store.mainStore.currentUser = [Store.mainStore userWithEmail:nil
-                                                     andPassword:nil];
-    
     return YES;
 }
 

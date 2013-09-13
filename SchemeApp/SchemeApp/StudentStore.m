@@ -7,7 +7,6 @@
 //
 
 #import "StudentStore.h"
-#import "AFNetworking.h"
 #import "EventWrapper.h"
 #import "Helpers.h"
 #import "User.h"
@@ -22,11 +21,9 @@
                         andEndDate:(NSDate *)endDate
                         completion:(void (^)(NSArray *eventWrappers))completion
 {
-    AFNetworking *dbConnection = [[AFNetworking alloc] init];
-    
-    [dbConnection readType:@"eventWrappers"
-                 withId:nil
-               callback:^(id result)
+    [Store.mainStore.dbConnection readType:@"eventWrappers"
+                                    withId:nil
+                                  callback:^(id result)
     {
         [self fillListOfEventWrappersByFilteringResult:result withStartDate:startDate andEndDate:endDate];
         completion(listOfEventWrappers);
