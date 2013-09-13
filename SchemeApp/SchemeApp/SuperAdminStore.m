@@ -30,8 +30,10 @@
 }
 - (void)updateUser:(User *)user
 {
-    [Store.mainStore.users removeObject:[self oldVersionOfUser:user]];
-    [Store.mainStore.users addObject:user];
+#warning Implement
+    [Store.dbConnection updateType:@"users"
+                       withContent:user.asDictionary
+                          callback:NULL];
 }
 - (void)deleteUser:(User *)user
 {
