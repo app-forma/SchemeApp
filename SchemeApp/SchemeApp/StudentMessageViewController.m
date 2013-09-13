@@ -55,7 +55,7 @@
     mess3.date = [NSDate date];
     mess3.text = @"Tror dom flesta av oss vet hur man utför alla kommandon men där slutar kunskaperna =) Men nu tror jag att vi fått häng på vad git faktiskt gör vid pull och push";
     
-    messages = @[mess1, mess2];
+    messages = @[mess1, mess2, mess3];
     
 	// Do any additional setup after loading the view.
 }
