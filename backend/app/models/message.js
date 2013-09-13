@@ -4,7 +4,7 @@
 
 var mongoose = require('mongoose'),
     config = require('../../config/config.js'),
-    EventWrapper = require('./user.js'),
+    User = require('./user.js'),
     Schema = mongoose.Schema;
 
 
