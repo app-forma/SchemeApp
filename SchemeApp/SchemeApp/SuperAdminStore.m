@@ -41,20 +41,4 @@
                           callback:NULL];
 }
 
-#pragma mark - Extracted methods
-- (User *)oldVersionOfUser:(User *)user
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", user.docID];
-    NSArray *filteredSet = [self filteredSet:Store.mainStore.eventWrappers withPredicate:predicate];
-    
-    if (filteredSet)
-    {
-        return [filteredSet objectAtIndex:0];
-    }
-    else
-    {
-        return nil;
-    }
-}
-
 @end
