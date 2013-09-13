@@ -81,8 +81,8 @@
 {
     #warning Implement password
     [Store.dbConnection readType:@"users"
-                                    withId:nil
-                                  callback:^(id result)
+                          withId:nil
+                        callback:^(id result)
      {
          for (NSDictionary *userDictionary in result)
          {

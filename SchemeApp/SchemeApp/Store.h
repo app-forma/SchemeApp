@@ -24,7 +24,6 @@
 + (SuperAdminStore *)superAdminStore;
 
 @property (nonatomic, strong) User *currentUser;
-- (AFNetworking *)dbConnection;
 
 #warning Dummy
 @property (nonatomic, strong) NSMutableSet *users;
