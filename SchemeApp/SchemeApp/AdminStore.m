@@ -20,11 +20,13 @@
 
 - (void)createEvent:(Event *)event
 {
-#warning Implement
-    
+    [Store.dbConnection createType:@"events"
+                       withContent:event.asDictionary
+                          callback:NULL];
 }
 - (void)updateEvent:(Event *)event
 {
+    
     [Store.mainStore.events removeObject:[self oldVersionOfEvent:event]];
     [Store.mainStore.events addObject:event];
 }

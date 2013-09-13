@@ -10,16 +10,11 @@
 
 @implementation Event
 
-#warning Temp
-- (id)init
+- (NSDictionary *)asDictionary
 {
-    self = [super init];
-    if (self)
-    {
-        // Ska bara hämtas sen från servern
-        _docID = [[NSUUID UUID] UUIDString];
-    }
-    return self;
+#warning Implement
+    // Gör om sig själv till en NSDictionary att använda då den ska skapas på databasen (Henrik)
+    return nil;
 }
 
 @end
