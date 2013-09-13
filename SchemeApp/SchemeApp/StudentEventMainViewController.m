@@ -10,7 +10,7 @@
 #import "DatePickerViewController.h"
 
 
-@interface StudentEventMainViewController ()
+@interface StudentEventMainViewController ()<DatePickerDelegate>
 {
     DatePickerViewController *datePicker;
     UIView *datePickerView;
@@ -45,16 +45,24 @@
     UITapGestureRecognizer *tapForEndDate = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickEndDateForScheme)];
     [self.endDateForScheme addGestureRecognizer:tapForEndDate];
     
-    datePickerView = [[UIView alloc] initWithFrame:CGRectMake(0, 380, 320, 206)];
+    datePickerView = [[UIView alloc] initWithFrame:CGRectMake(0, 260, 320, 206)];
     [datePickerView addSubview:datePicker.view];
     [self.view addSubview:datePickerView];
     datePickerView.hidden = YES;
-    
-    //dummy data
-    
-    
-}
+    datePicker.delegate = self;
 
+}
+-(void)DatePickerDonePickingDate:(NSDate *)datePicked
+{
+    
+    datePickerView.hidden = YES;
+    NSString *dateText = [Helpers stringFromNSDate:datePicked];
+    if (datePicker.currentDatePicker == StartDatePicker) {
+        self.startDateForScheme.text = dateText;
+    }else if (datePicker.currentDatePicker == EndDatePicker){
+        self.endDateForScheme.text = dateText;
+    }
+}
 
 - (IBAction)getScheme:(id)sender
 {
@@ -63,15 +71,13 @@
 
 -(void)pickStartDateForScheme
 {
-    NSLog(@"Pick start date from det date picker that just popped up!");
-    NSLog(@"Update the labels text with the date that was picked!");
+    datePicker.currentDatePicker = StartDatePicker;
     datePickerView.hidden = NO;
 }
 
 -(void)pickEndDateForScheme
 {
-    NSLog(@"Pick end date from det date picker that just popped up!");
-    NSLog(@"Update the labels text with the date that was picked!");
+    datePicker.currentDatePicker = EndDatePicker;
     datePickerView.hidden = NO;
 }
 

@@ -22,8 +22,7 @@
 
 - (IBAction)donePickingDate:(id)sender
 {
-    NSLog(@"Date picked!");
-    self.view.hidden = YES;
+    [self.delegate DatePickerDonePickingDate:[self.datePicker date]];
 }
 
 @end

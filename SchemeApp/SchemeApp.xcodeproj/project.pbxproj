@@ -15,6 +15,7 @@
 		0423299C17DF351D005B47F9 /* RoleType in Resources */ = {isa = PBXBuildFile; fileRef = 0423299B17DF351D005B47F9 /* RoleType */; };
 		0437DDAA17E2240400DB9F5A /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437DDA917E2240400DB9F5A /* Validation.m */; };
 		0437DE2517E307F000DB9F5A /* StudentMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437DE2417E307F000DB9F5A /* StudentMessageViewController.m */; };
+		0437DE2717E32FD200DB9F5A /* DatePicker in Resources */ = {isa = PBXBuildFile; fileRef = 0437DE2617E32FD200DB9F5A /* DatePicker */; };
 		0493B52A17DDF80C003B3D23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52917DDF80C003B3D23 /* Foundation.framework */; };
 		0493B52C17DDF80C003B3D23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */; };
 		0493B52E17DDF80C003B3D23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52D17DDF80C003B3D23 /* UIKit.framework */; };
@@ -98,6 +99,7 @@
 		0437DDA917E2240400DB9F5A /* Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Validation.m; sourceTree = "<group>"; };
 		0437DE2317E307F000DB9F5A /* StudentMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentMessageViewController.h; sourceTree = "<group>"; };
 		0437DE2417E307F000DB9F5A /* StudentMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentMessageViewController.m; sourceTree = "<group>"; };
+		0437DE2617E32FD200DB9F5A /* DatePicker */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DatePicker; sourceTree = "<group>"; };
 		0493B52617DDF80C003B3D23 /* SchemeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchemeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0493B52917DDF80C003B3D23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -265,6 +267,7 @@
 				0493B53217DDF80C003B3D23 /* InfoPlist.strings */,
 				0493B53517DDF80C003B3D23 /* main.m */,
 				0493B53717DDF80C003B3D23 /* SchemeApp-Prefix.pch */,
+				0437DE2617E32FD200DB9F5A /* DatePicker */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				0493B53417DDF80C003B3D23 /* InfoPlist.strings in Resources */,
 				0493B53C17DDF80C003B3D23 /* Images.xcassets in Resources */,
 				27BCC21217E201B8009977BB /* messages_selected@1x.png in Resources */,
+				0437DE2717E32FD200DB9F5A /* DatePicker in Resources */,
 				27BCC20F17E201B8009977BB /* courses_selected@2x.png in Resources */,
 				27BCC21117E201B8009977BB /* courses_unselected@2x.png in Resources */,
 				27BCC20117E1FAF5009977BB /* users_unselected@2x.png in Resources */,

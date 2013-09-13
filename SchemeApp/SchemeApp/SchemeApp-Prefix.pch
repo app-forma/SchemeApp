@@ -15,5 +15,6 @@
     #import <Foundation/Foundation.h>
     #import "Store.h"
     #import "RoleType"
+    #import "DatePicker"
     #import "Helpers.h"
 #endif
