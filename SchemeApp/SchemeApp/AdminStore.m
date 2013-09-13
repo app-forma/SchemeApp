@@ -77,13 +77,8 @@
 
 - (void)sendMessage:(Message *)message
 {
-    for (User *user in Store.mainStore.users)
-    {
-        if (user.role == StudentRole)
-        {
-            [user.messages addObject:message];
-        }
-    }
+#warning Implement
+    
 }
 - (void)sendMessage:(Message *)message toUser:(User *)user
 {

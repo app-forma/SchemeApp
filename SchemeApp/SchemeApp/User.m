@@ -9,6 +9,7 @@
 #import "User.h"
 
 @implementation User
+
 -(id)initWithRole:(RoleType)role firstname:(NSString *)firstname lastname:(NSString *)lastname email:(NSString *)email password:(NSString *)password
 {
     self = [super init];
@@ -23,7 +24,7 @@
     }
     return  self;
 }
-- initWithUserDictionary:(NSDictionary *)userDictionary
+- (id)initWithUserDictionary:(NSDictionary *)userDictionary
 {
     return  [self initWithRole:[self roleTypeFromString:[userDictionary objectForKey:@"role"]]
                      firstname:[userDictionary objectForKey:@"firstname"]
@@ -33,7 +34,7 @@
 }
 
 #warning Comment
-// We should use enum on backend as well for Role
+// We should use enum on backend as well for Role (Henrik)
 - (RoleType)roleTypeFromString:(NSString *)roleString
 {
     if ([roleString isEqualToString:@"superadmin"])
@@ -64,6 +65,5 @@
             break;
     }
 }
-
 
 @end
