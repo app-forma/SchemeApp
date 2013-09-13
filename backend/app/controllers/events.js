@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
  * List of events
  */
 exports.index = function (req, res) {
-  User.list(function (err, events) {
+  Event.list(function (err, events) {
     if (err) return res.json(500, err.errors);
     res.json(200, events);
   });
