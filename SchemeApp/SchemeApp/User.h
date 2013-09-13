@@ -27,4 +27,6 @@ firstname:(NSString *)firstname
 
 - (id)initWithUserDictionary:(NSDictionary *)userDictionary;
 
+- (NSDictionary *)asDictionary;
+
 @end
