@@ -30,11 +30,23 @@
 
 - (NSDictionary *)asDictionary
 {
-#warning Implement
+    NSMutableDictionary *eventWrapperDictionary = [[NSMutableDictionary alloc] init];
+    NSMutableArray *events = [[NSMutableArray alloc] init];
     
+    [eventWrapperDictionary setObject:self.name forKey:@"name"];
+    [eventWrapperDictionary setObject:self.user.docID forKey:@"owner"];
+    [eventWrapperDictionary setObject:self.litterature forKey:@"litterature"];
+    [eventWrapperDictionary setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
+    [eventWrapperDictionary setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
+    [eventWrapperDictionary setObject:self.docID forKey:@"_id"];
     
-    // Ska göras om till dictionary när wrappers ska skapas eller uppdateras i databasen
-    return nil;
+    for (Event *event in self.events) {
+        [events addObject:event.docID];
+    }
+    
+    [eventWrapperDictionary setObject:events forKey:@"events"];
+    
+    return eventWrapperDictionary;
 }
 
 @end
