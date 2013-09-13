@@ -29,13 +29,12 @@ exports.event = function (req, res, next, id) {
   });
 };
 
-/**
- * Create a event
- */
+// create events, should always get an array as input
 exports.create = function (req, res) {
   var body = req.body;
-  if (Array.isArray(body)) {
-    var count = 0, resultList = [];
+  if (body instanceof Array) {
+    var count = 0,
+      resultList = [];
     body.forEach(function (_event, i) {
       var event = new Event(_event);
       event.saveToDisk(event, function (err, event) {
@@ -46,13 +45,8 @@ exports.create = function (req, res) {
       });
     });
   } else {
-    var event = new Event(body);
-    event.saveToDisk(event, function (err, event) {
-      if (err) {
-        res.json(500, err.errors);
-      } else {
-        res.json(200, event);
-      }
+    res.json(500, {
+      error: 'Invalid format'
     });
   }
 };
