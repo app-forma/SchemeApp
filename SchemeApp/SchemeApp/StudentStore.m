@@ -18,9 +18,9 @@
     NSMutableArray *eventWrappers;
 }
 
-- (void)eventWrapperWithStartDate:(NSDate *)startDate
-                       andEndDate:(NSDate *)endDate
-                       completion:(void (^)(NSArray *eventWrappers))completion
+- (void)eventWrappersWithStartDate:(NSDate *)startDate
+                        andEndDate:(NSDate *)endDate
+                        completion:(void (^)(NSArray *eventWrappers))completion
 {
     AFNetworking *networker = [[AFNetworking alloc] init];
     
