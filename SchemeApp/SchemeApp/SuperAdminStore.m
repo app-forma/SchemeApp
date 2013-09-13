@@ -7,6 +7,7 @@
 //
 
 #warning Implement with dbConnection as instance of AFNetworking
+#warning Handle error in methods where now callback:NULL
 
 #import "SuperAdminStore.h"
 #import "User.h"
@@ -23,12 +24,16 @@
     
 - (void)createUser:(User *)user
 {
-    [Store.mainStore.users addObject:user];
+    [Store.dbConnection createType:@"users"
+                       withContent:user.asDictionary
+                          callback:NULL];
 }
 - (void)updateUser:(User *)user
 {
-    [Store.mainStore.users removeObject:[self oldVersionOfUser:user]];
-    [Store.mainStore.users addObject:user];
+#warning Implement
+    [Store.dbConnection updateType:@"users"
+                       withContent:user.asDictionary
+                          callback:NULL];
 }
 - (void)deleteUser:(User *)user
 {

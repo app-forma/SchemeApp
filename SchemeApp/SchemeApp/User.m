@@ -33,6 +33,13 @@
                       password:[userDictionary objectForKey:@"password"]];
 }
 
+- (NSDictionary *)asDictionary
+{
+#warning Implement
+    // Gör om sig själv till en NSDictionary att använda då den ska skapas eller updaters i databasen (Henrik)
+    return nil;
+}
+
 #warning Comment
 // We should use enum on backend as well for Role (Henrik)
 - (RoleType)roleTypeFromString:(NSString *)roleString

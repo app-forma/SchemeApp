@@ -12,4 +12,5 @@
 @property (nonatomic, strong) User *from;
 @property (nonatomic, copy) NSDate *date;
 @property (nonatomic, copy) NSString *text;
+- (NSDictionary *)asDictionary;
 @end
