@@ -44,7 +44,7 @@
 }
 - (void)updateEventWrapper:(EventWrapper *)eventWrapper
 {
-    [Store.dbConnection updateType: DB_TYPE_EVENTWRAPPER
+    [Store.dbConnection updateType:DB_TYPE_EVENTWRAPPER
                        withContent:eventWrapper.asDictionary
                           callback:NULL];
 }
