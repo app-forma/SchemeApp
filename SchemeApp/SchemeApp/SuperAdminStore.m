@@ -37,7 +37,8 @@
 - (void)deleteUser:(User *)user
 {
     [Store.dbConnection deleteType:DB_TYPE_USER
-                            withId:<#(NSString *)#> callback:<#^(id result)callback#>
+                            withId:user.docID
+                          callback:NULL];
 }
 
 #pragma mark - Extracted methods
