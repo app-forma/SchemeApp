@@ -56,9 +56,14 @@
                           callback:NULL];
 }
 
-- (NSArray *)users
+- (void)usersCompletion:(void (^)(NSArray *users))completion;
 {
-    return [Store.mainStore.users allObjects];
+    [Store.dbConnection readType:@"users"
+                          withId:nil
+                        callback:^(id result)
+     {
+         completion((NSArray *)result);
+     }];
 }
 - (User *)userWithDocID:(NSString *)docID
 {
