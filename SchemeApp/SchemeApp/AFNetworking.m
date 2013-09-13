@@ -9,7 +9,7 @@
 {
     self = [super init];
     if (self) {
-        baseURL = @"http://schemeapp.erikosterberg.com";
+        baseURL = @"http://schemeapp.erikosterberg.com/";
     }
     return self;
 }
