@@ -90,47 +90,4 @@
     [user.messages addObject:message];
 }
 
-#pragma mark - Extracted methods
-- (EventWrapper *)oldVersionOfEvent:(Event *)event
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", event.docID];
-    NSArray *filteredSet = [self filteredSet:Store.mainStore.events withPredicate:predicate];
-    
-    if (filteredSet)
-    {
-        return [filteredSet objectAtIndex:0];
-    }
-    else
-    {
-        return nil;
-    }
-}
-- (EventWrapper *)oldVersionOfEventWrapper:(EventWrapper *)eventWrapper
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", eventWrapper.docID];
-    NSArray *filteredSet = [self filteredSet:Store.mainStore.eventWrappers withPredicate:predicate];
-    
-    if (filteredSet)
-    {
-        return [filteredSet objectAtIndex:0];
-    }
-    else
-    {
-        return nil;
-    }
-}
-- (NSArray *)filteredSet:(NSSet *)set withPredicate:(NSPredicate *)predicate
-{
-    NSArray *filteredSet = [[set filteredSetUsingPredicate:predicate] allObjects];
-    
-    if (filteredSet.count == 0)
-    {
-        return nil;
-    }
-    else
-    {
-        return filteredSet;
-    }
-}
-
 @end
