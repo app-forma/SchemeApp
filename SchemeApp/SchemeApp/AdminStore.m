@@ -6,7 +6,6 @@
 //
 //
 
-#warning Implement with dbConnection as instance of AFNetworking
 #warning Handle error in methods where now callback:NULL
 
 #import "AdminStore.h"
