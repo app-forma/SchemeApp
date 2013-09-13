@@ -12,7 +12,7 @@
 #import "SuperAdminStore.h"
 #import "StudentStore.h"
 
-@class AFNetworking, User;
+@class User;
 
 
 @interface Store : NSObject
