@@ -7,15 +7,19 @@
 //
 
 #import "Message.h"
-
+#import "User.h"
+#import "Helpers.h"
 
 @implementation Message
 
 - (NSDictionary *)asDictionary
 {
-#warning Implement
-    // Gör om sig själv till en NSDictionary att använda då den ska skapas eller updaters i databasen (Henrik)
-    return nil;
+    NSMutableDictionary *jsonMessage = [[NSMutableDictionary alloc]init];
+    [jsonMessage setObject:self.text forKey:@"text"];
+    [jsonMessage setObject:[Helpers stringFromNSDate:self.date] forKey:@"date"];
+    [jsonMessage setObject:self.from.docID forKey:@"from"];
+    
+    return jsonMessage;
 }
 
 @end

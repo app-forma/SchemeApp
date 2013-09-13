@@ -8,7 +8,7 @@
 
 #import "EventWrapper.h"
 #import "Helpers.h"
-
+#import "Event.h"
 
 @implementation EventWrapper
 
@@ -22,7 +22,7 @@
         self.litterature = [eventWrapperDictionary objectForKey:@"litterature"];
         self.startDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"startDate"]];
         self.endDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"endDate"]];
-        self.docID = [eventWrapperDictionary objectForKey:@"_id"];
+        _docID = [eventWrapperDictionary objectForKey:@"_id"];
         self.events = [eventWrapperDictionary objectForKey:@"events"];
     }
     return self;
@@ -31,6 +31,8 @@
 - (NSDictionary *)asDictionary
 {
 #warning Implement
+    
+    
     // Ska göras om till dictionary när wrappers ska skapas eller uppdateras i databasen
     return nil;
 }

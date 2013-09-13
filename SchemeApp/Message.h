@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 @class User;
 @interface Message : NSObject
+
+@property (nonatomic, readonly) NSString *docID;
 @property (nonatomic, strong) User *from;
 @property (nonatomic, copy) NSDate *date;
 @property (nonatomic, copy) NSString *text;
+
 - (NSDictionary *)asDictionary;
 @end

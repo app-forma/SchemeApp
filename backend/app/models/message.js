@@ -19,10 +19,10 @@ var MessageSchema = new Schema({
         required: true,
         trim: true
     },
-    from: [{ // e.g. this user is registered on following courses
+    from: { // e.g. this user is registered on following courses
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }]
+    }
 });
 
 /**

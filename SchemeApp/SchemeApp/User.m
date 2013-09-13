@@ -7,6 +7,8 @@
 //
 
 #import "User.h"
+#import "Message.h"
+#import "EventWrapper.h"
 
 @implementation User
 
@@ -35,9 +37,24 @@
 
 - (NSDictionary *)asDictionary
 {
-#warning Implement
-    // Gör om sig själv till en NSDictionary att använda då den ska skapas eller updaters i databasen (Henrik)
-    return nil;
+    NSMutableDictionary *jsonUser = [[NSMutableDictionary alloc]init];
+    
+    NSMutableArray *userMessages = [[NSMutableArray alloc]init];
+    NSMutableArray *userEventWrappers = [[NSMutableArray alloc]init];
+    
+    [jsonUser setObject:[self stringFromRoleType:self.role] forKey:@"role"];
+    [jsonUser setObject:self.firstname forKey:@"firstname"];
+    [jsonUser setObject:self.lastname forKey:@"lastname"];
+    [jsonUser setObject:self.email forKey:@"email"];
+
+    for (Message *message in self.messages) {
+        [userMessages addObject:message.docID];
+    }
+    for (EventWrapper *eventWrapper in userEventWrappers) {
+        [userEventWrappers addObject:eventWrapper.docID];
+    }
+    
+    return jsonUser;
 }
 
 #warning Comment
