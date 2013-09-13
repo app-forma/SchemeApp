@@ -14,6 +14,7 @@ exports.eventWrapper = function (req, res, next, id) {
 };
 
 
+
 // create eventWrapperS = always an array as incoming data
 exports.create = function (req, res) {
   var body = req.body;
@@ -108,3 +109,17 @@ exports.byIdRaw = function (req, res) {
     }
   });
 };
+exports.findByDate = function (req, res) {
+  
+
+    EventWrapper.where('startDate').gte(req.body.startDate).lte(req.body.endDate).populate('events')
+    .populate('owner').exec(function (err, doc) {
+      if (err) {
+        res.json(404);
+        return;
+      } else {
+
+        res.json(200, doc);
+      }
+    });
+  }

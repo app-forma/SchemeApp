@@ -11,8 +11,8 @@
 
 {
 	"name": "Datakunskap A",
-	"owner": ["522efaf06c9ae03f89000001"],
-	"litterature": "Datakunsakap A - grunderna",
+	"owner": "522efaf06c9ae03f89000001",
+	"litterature": "Datakunskap A - grunderna",
 	"startDate": "2012-04-25",
     "endDate": "2012-08-23",
     "events": []

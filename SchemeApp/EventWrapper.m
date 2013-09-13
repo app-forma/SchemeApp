@@ -30,23 +30,21 @@
 
 - (NSDictionary *)asDictionary
 {
-    NSMutableDictionary *eventWrapperDictionary = [[NSMutableDictionary alloc] init];
-    NSMutableArray *events = [[NSMutableArray alloc] init];
-    
-    [eventWrapperDictionary setObject:self.name forKey:@"name"];
-    [eventWrapperDictionary setObject:self.user.docID forKey:@"owner"];
-    [eventWrapperDictionary setObject:self.litterature forKey:@"litterature"];
-    [eventWrapperDictionary setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
-    [eventWrapperDictionary setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
-    [eventWrapperDictionary setObject:self.docID forKey:@"_id"];
-    
+    NSMutableDictionary *jsonEventWrapper = [[NSMutableDictionary alloc]init];
+
+    NSMutableArray *jsonEvents = [[NSMutableArray alloc]init];
     for (Event *event in self.events) {
-        [events addObject:event.docID];
+        [jsonEvents addObject:event.docID];
     }
+
+    [jsonEventWrapper setObject:jsonEvents forKey:@"events"];
+    [jsonEventWrapper setObject:self.user.docID forKey:@"owner"];
+    [jsonEventWrapper setObject:self.litterature forKey:@"litterature"];
+    [jsonEventWrapper setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
+    [jsonEventWrapper setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
+    [jsonEventWrapper setObject:self.name forKey:@"name"];
     
-    [eventWrapperDictionary setObject:events forKey:@"events"];
-    
-    return eventWrapperDictionary;
+    return jsonEventWrapper;
 }
 
 @end

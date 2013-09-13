@@ -47,19 +47,19 @@
     NSMutableDictionary *jsonUser = [[NSMutableDictionary alloc]init];
     
     NSMutableArray *userMessages = [[NSMutableArray alloc]init];
+    for (Message *message in self.messages) {
+        [userMessages addObject:message.docID];
+    }
     NSMutableArray *userEventWrappers = [[NSMutableArray alloc]init];
-    
+    for (EventWrapper *eventWrapper in userEventWrappers) {
+        [userEventWrappers addObject:eventWrapper.docID];
+    }
+    [jsonUser setObject:userMessages forKey:@"messages"];
+    [jsonUser setObject:userEventWrappers forKey:@"eventWrappers"];
     [jsonUser setObject:[self stringFromRoleType:self.role] forKey:@"role"];
     [jsonUser setObject:self.firstname forKey:@"firstname"];
     [jsonUser setObject:self.lastname forKey:@"lastname"];
     [jsonUser setObject:self.email forKey:@"email"];
-
-    for (Message *message in self.messages) {
-        [userMessages addObject:message.docID];
-    }
-    for (EventWrapper *eventWrapper in userEventWrappers) {
-        [userEventWrappers addObject:eventWrapper.docID];
-    }
     
     return jsonUser;
 }

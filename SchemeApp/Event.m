@@ -7,20 +7,20 @@
 //
 
 #import "Event.h"
+#import "Helpers.h"
 
 @implementation Event
 
 - (NSDictionary *)asDictionary
 {
-    NSMutableDictionary *eventDictionary = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *jsonEvent = [[NSMutableDictionary alloc]init];
+    [jsonEvent setObject:self._eventWrapperId forKey:@"_eventWrapperId"];
+    [jsonEvent setObject:self.info forKey:@"info"],
+    [jsonEvent setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
+    [jsonEvent setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
+    [jsonEvent setObject:self.room forKey:@"room"];
     
-    [eventDictionary setObject:self.info forKey:@"info"];
-    [eventDictionary setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
-    [eventDictionary setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
-    [eventDictionary setObject:self.room forKey:@"room"];
-    [eventDictionary setObject:self.docID forKey:@"_id"];
-    
-    return eventDictionary;
+    return jsonEvent;
 }
 
 @end
