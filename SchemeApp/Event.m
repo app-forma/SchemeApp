@@ -13,7 +13,7 @@
 - (NSDictionary *)asDictionary
 {
 #warning Implement
-    // Gör om sig själv till en NSDictionary att använda då den ska skapas på databasen (Henrik)
+    // Gör om sig själv till en NSDictionary att använda då den ska skapas eller updaters i databasen (Henrik)
     return nil;
 }
 

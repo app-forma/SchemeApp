@@ -7,6 +7,7 @@
 //
 
 #warning Implement with dbConnection as instance of AFNetworking
+#warning Handle error in methods where now callback:NULL
 
 #import "AdminStore.h"
 #import "Event.h"
@@ -38,7 +39,9 @@
 }
 - (void)createEventWrapper:(EventWrapper *)eventWrapper
 {
-    [Store.mainStore.eventWrappers addObject:eventWrapper];
+    [Store.dbConnection createType:@"eventWrappers"
+                       withContent:eventWrapper.asDictionary
+                          callback:NULL];
 }
 - (void)updateEventWrapper:(EventWrapper *)eventWrapper
 {
