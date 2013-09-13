@@ -29,7 +29,4 @@
 
 - (User *)userWithEmail:(NSString *)email andPassword:(NSString *)password;
 
-#warning Comment
-// Testkommentar
-
 @end
