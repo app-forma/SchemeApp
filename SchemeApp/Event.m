@@ -12,9 +12,15 @@
 
 - (NSDictionary *)asDictionary
 {
-#warning Implement
-    // Gör om sig själv till en NSDictionary att använda då den ska skapas eller updaters i databasen (Henrik)
-    return nil;
+    NSMutableDictionary *eventDictionary = [[NSMutableDictionary alloc] init];
+    
+    [eventDictionary setObject:self.info forKey:@"info"];
+    [eventDictionary setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
+    [eventDictionary setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
+    [eventDictionary setObject:self.room forKey:@"room"];
+    [eventDictionary setObject:self.docID forKey:@"_id"];
+    
+    return eventDictionary;
 }
 
 @end
