@@ -1,60 +1,39 @@
 //
-//  StudentMainViewController.m
+//  StudentMessageViewController.m
 //  SchemeApp
 //
-//  Created by Rikard Karlsson on 9/11/13.
+//  Created by Johan Thorell on 2013-09-13.
 //  Copyright (c) 2013 Team leet. All rights reserved.
 //
 
-#import "StudentMainViewController.h"
-#import "DatePickerViewController.h"
+#import "StudentMessageViewController.h"
 #import "MessageCell.h"
 #import "Message.h"
 #import "User.h"
 #import "Helpers.h"
+#import "StudentMessageDetailsViewController.h"
 
-@interface StudentMainViewController () <UITableViewDelegate, UITableViewDataSource>
-{
-    DatePickerViewController *datePicker;
-    UIView *datePickerView;
-    
-    
-    
-    
-    //for testing:
-    NSArray *messages;
-}
-
-@property (weak, nonatomic) IBOutlet UILabel *startDateForScheme;
-@property (weak, nonatomic) IBOutlet UILabel *endDateForScheme;
-
+@interface StudentMessageViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
 
-
-@implementation StudentMainViewController
+@implementation StudentMessageViewController
+{
+    //for testing:
+    NSArray *messages;
+}
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"Home";
-    
-    
-    datePicker = [[DatePickerViewController alloc] init];
-    
-    UITapGestureRecognizer *tapForStartDate = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickStartDateForScheme)];
-    [self.startDateForScheme addGestureRecognizer:tapForStartDate];
-    
-    UITapGestureRecognizer *tapForEndDate = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickEndDateForScheme)];
-    [self.endDateForScheme addGestureRecognizer:tapForEndDate];
-    
-    datePickerView = [[UIView alloc] initWithFrame:CGRectMake(0, 380, 320, 206)];
-    [datePickerView addSubview:datePicker.view];
-    [self.view addSubview:datePickerView];
-    datePickerView.hidden = YES;
-    
-    //dummy data
     User *lasse = [[User alloc]initWithRole:SuperAdminRole firstname:@"lasse" lastname:@"erikssom" email:@"laase@fjghafd.se" password:@"123456"];
     User *henrik = [[User alloc]initWithRole:SuperAdminRole firstname:@"henrik" lastname:@"holmgren" email:@"laase@fjghafd.ru" password:@"password"];
     
@@ -78,33 +57,13 @@
     
     messages = @[mess1, mess2];
     
+	// Do any additional setup after loading the view.
 }
-
-
-- (IBAction)getScheme:(id)sender
-{
-    NSLog(@"Get scheme with start date and end date for student with id");
-}
-
--(void)pickStartDateForScheme
-{
-    NSLog(@"Pick start date from det date picker that just popped up!");
-    NSLog(@"Update the labels text with the date that was picked!");
-    datePickerView.hidden = NO;
-}
-
--(void)pickEndDateForScheme
-{
-    NSLog(@"Pick end date from det date picker that just popped up!");
-    NSLog(@"Update the labels text with the date that was picked!");
-    datePickerView.hidden = NO;
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return messages.count; // returnera antalet meddelanden som finns tillgängliga för eleven. MessageStore?
+    return [messages count]; // returnera antalet meddelanden som finns tillgängliga för eleven. MessageStore?
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -113,29 +72,31 @@
     
     static NSString *cellId = @"MessageCell";
     MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-
+    
     Message *message = messages[indexPath.row];
     cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", message.from.firstname, message.from.lastname];
     cell.dateLabel.text = [Helpers stringFromNSDate:message.date];
     cell.messageTextView.text = message.text;
-    
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Här ska vi skapa en StudentMessageDetailsViewController och sen ska vi pusha den med detaljer för den valda radens meddelande.
+    StudentMessageDetailsViewController *studentMessageDetailsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentMessageDetailsViewController"];
+    
+    [self.navigationController pushViewController:studentMessageDetailsViewController animated:YES];
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return @"Messages";
-}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 81;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 1.0f;
+}
+
 
 @end

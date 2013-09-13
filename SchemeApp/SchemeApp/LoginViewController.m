@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "StudentMainViewController.h"
+#import "StudentEventMainViewController.h"
 
 @interface LoginViewController ()
 
