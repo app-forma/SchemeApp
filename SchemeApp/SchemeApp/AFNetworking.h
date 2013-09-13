@@ -13,4 +13,5 @@ typedef void (^callback)(id result);
 -(void)readType:(NSString *)type withId:(NSString *)typeId callback:(callback)callback;
 -(void)updateType:(NSString *)type withContent:(NSDictionary *)content callback:(callback)callback;
 -(void)deleteType:(NSString *)type withId:(NSString *)typeId callback:(callback)callback;
+-(void)readByStartDate:(NSString *)startDate toEndDate:(NSString *)endDate callback:(callback)callback;
 @end

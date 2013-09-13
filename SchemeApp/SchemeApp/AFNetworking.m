@@ -62,4 +62,16 @@
         //Handle failure
     }];
 }
+
+-(void)readByStartDate:(NSString *)startDate toEndDate:(NSString *)endDate callback:(callback)callback
+{
+    NSURL *url = [NSURL URLWithString:baseURL];
+    NSDictionary *param = @{@"startDate": startDate, @"endDate": endDate};
+    AFHTTPClient *client = [[AFHTTPClient alloc]initWithBaseURL:url];
+    [client POST:@"eventwrappers/findbydate" parameters:param success:^(NSHTTPURLResponse *response, id responseObject) {
+        NSLog(@"%@", responseObject);
+    } failure:^(NSError *error) {
+        //Handle failure
+    }];
+}
 @end
