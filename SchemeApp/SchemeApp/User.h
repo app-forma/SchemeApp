@@ -19,5 +19,12 @@
 @property (nonatomic, copy) NSMutableArray *messages;
 @property (nonatomic, copy) NSMutableArray *eventWrappers;
 
--initWithRole:(RoleType)role firstname:(NSString *)firstname lastname:(NSString *)lastname email:(NSString *)email password:(NSString *)password;
+-initWithRole:(RoleType)role
+    firstname:(NSString *)firstname
+     lastname:(NSString *)lastname
+        email:(NSString *)email
+     password:(NSString *)password;
+
+- initWithUserDictionary:(NSDictionary *)userDictionary;
+
 @end

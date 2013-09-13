@@ -65,19 +65,14 @@
          completion((NSArray *)result);
      }];
 }
-- (User *)userWithDocID:(NSString *)docID
+- (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))completion
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", docID];
-    NSArray *filteredSet = [self filteredSet:Store.mainStore.users withPredicate:predicate];
-    
-    if (filteredSet)
-    {
-        return [filteredSet objectAtIndex:0];
-    }
-    else
-    {
-        return nil;
-    }
+    [Store.dbConnection readType:@"users"
+                          withId:docID
+                        callback:^(id result)
+     {
+         completion([[User alloc] initWithUserDictionary:(NSDictionary *)result]);
+     }];
 }
 
 - (void)sendMessage:(Message *)message
@@ -137,8 +132,5 @@
         return filteredSet;
     }
 }
-
-#warning Comment
-// Testkommentar
 
 @end

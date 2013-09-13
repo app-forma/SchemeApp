@@ -20,7 +20,7 @@
 - (void)deleteEventWrapper:(EventWrapper *)eventWrapper;
 
 - (void)usersCompletion:(void (^)(NSArray *users))completion;
-- (User *)userWithDocID:(NSString *)docID;
+- (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))completion;
 
 - (void)sendMessage:(Message *)message;
 - (void)sendMessage:(Message *)message toUser:(User *)user;
