@@ -38,7 +38,7 @@
                          withStartDate:(NSDate *)startDate
                             andEndDate:(NSDate *)endDate
 {
-    [self resetEventWrapperList];
+    [self resetListOfEventWrappers];
     
     for (NSDictionary *eventWrapperDictionary in result)
     {
@@ -56,7 +56,7 @@
     
     return listOfEventWrappers;
 }
-- (void)resetEventWrapperList
+- (void)resetListOfEventWrappers
 {
     if (listOfEventWrappers == nil)
     {
