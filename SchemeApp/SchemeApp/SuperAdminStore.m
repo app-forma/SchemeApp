@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Team leet. All rights reserved.
 //
 
+#warning Implement with dbConnection as instance of AFNetworking
+
 #import "SuperAdminStore.h"
 #import "User.h"
 

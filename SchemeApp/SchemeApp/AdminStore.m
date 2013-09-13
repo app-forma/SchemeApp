@@ -6,6 +6,8 @@
 //
 //
 
+#warning Implement with dbConnection as instance of AFNetworking
+
 #import "AdminStore.h"
 #import "Event.h"
 #import "EventWrapper.h"
