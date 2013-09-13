@@ -22,9 +22,9 @@
                         andEndDate:(NSDate *)endDate
                         completion:(void (^)(NSArray *eventWrappers))completion
 {
-    AFNetworking *networker = [[AFNetworking alloc] init];
+    AFNetworking *dbConnection = [[AFNetworking alloc] init];
     
-    [networker readType:@"eventWrappers"
+    [dbConnection readType:@"eventWrappers"
                  withId:nil
                callback:^(id result)
     {
