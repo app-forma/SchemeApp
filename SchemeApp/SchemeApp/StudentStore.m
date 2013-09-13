@@ -25,8 +25,8 @@
     {
 #warning Comment
         // Filtrera alla eventrappers
-        NSSet *filteredResult = result keys
-    }
+
+    }];
     
     return nil;
 }
