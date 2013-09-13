@@ -82,7 +82,8 @@
 }
 - (void)sendMessage:(Message *)message toUser:(User *)user
 {
-    [user.messages addObject:message];
+#warning Implement
+    
 }
 
 @end
