@@ -56,7 +56,7 @@
     mess3.text = @"Tror dom flesta av oss vet hur man utför alla kommandon men där slutar kunskaperna =) Men nu tror jag att vi fått häng på vad git faktiskt gör vid pull och push";
     
     messages = @[mess1, mess2, mess3];
-    
+    self.navigationItem.title = @"Messages:)";
 	// Do any additional setup after loading the view.
 }
 #pragma mark - Table view data source
@@ -84,6 +84,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     StudentMessageDetailsViewController *studentMessageDetailsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentMessageDetailsViewController"];
+    
+    MessageCell *cell = (MessageCell *)[tableView cellForRowAtIndexPath:indexPath];
+    studentMessageDetailsViewController.message = cell.messageTextView.text;
+    studentMessageDetailsViewController.from = cell.nameLabel.text;
+    studentMessageDetailsViewController.date = [Helpers dateFromString:cell.dateLabel.text];
+    
     
     [self.navigationController pushViewController:studentMessageDetailsViewController animated:YES];
 }
