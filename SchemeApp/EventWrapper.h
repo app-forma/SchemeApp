@@ -15,4 +15,5 @@
 @property (nonatomic, copy) NSString *litterature;
 @property (nonatomic, copy) NSDate *startDate;
 @property (nonatomic, copy) NSDate *endDate;
+@property (nonatomic, copy) NSString *name;
 @end

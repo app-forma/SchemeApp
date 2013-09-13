@@ -13,6 +13,6 @@
 
 @interface StudentStore : NSObject
 
-- (EventWrapper *)eventWrapperWithStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate;
+- (void)eventWrapperWithStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate completion:(void (^)(NSArray *))completion;
 
 @end

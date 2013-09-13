@@ -8,19 +8,5 @@
 
 #import "EventWrapper.h"
 
-
 @implementation EventWrapper
-
-#warning Temporary
-- (id)init
-{
-    self = [super init];
-    if (self)
-    {
-        // Ska bara hämtas sen från servern
-        _docID = [[NSUUID UUID] UUIDString];
-    }
-    return self;
-}
-
 @end
