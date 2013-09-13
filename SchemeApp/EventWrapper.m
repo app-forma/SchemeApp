@@ -30,11 +30,21 @@
 
 - (NSDictionary *)asDictionary
 {
-#warning Implement
+    NSMutableDictionary *jsonEventWrapper = [[NSMutableDictionary alloc]init];
+
+    NSMutableArray *jsonEvents = [[NSMutableArray alloc]init];
+    for (Event *event in self.events) {
+        [jsonEvents addObject:event.docID];
+    }
+
+    [jsonEventWrapper setObject:jsonEvents forKey:@"events"];
+    [jsonEventWrapper setObject:self.user.docID forKey:@"owner"];
+    [jsonEventWrapper setObject:self.litterature forKey:@"litterature"];
+    [jsonEventWrapper setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
+    [jsonEventWrapper setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
+    [jsonEventWrapper setObject:self.name forKey:@"name"];
     
-    
-    // Ska göras om till dictionary när wrappers ska skapas eller uppdateras i databasen
-    return nil;
+    return jsonEventWrapper;
 }
 
 @end

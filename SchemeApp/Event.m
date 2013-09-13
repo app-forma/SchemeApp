@@ -7,14 +7,20 @@
 //
 
 #import "Event.h"
+#import "Helpers.h"
 
 @implementation Event
 
 - (NSDictionary *)asDictionary
 {
-#warning Implement
-    // Gör om sig själv till en NSDictionary att använda då den ska skapas eller updaters i databasen (Henrik)
-    return nil;
+    NSMutableDictionary *jsonEvent = [[NSMutableDictionary alloc]init];
+    [jsonEvent setObject:self._eventWrapperId forKey:@"_eventWrapperId"];
+    [jsonEvent setObject:self.info forKey:@"info"],
+    [jsonEvent setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
+    [jsonEvent setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
+    [jsonEvent setObject:self.room forKey:@"room"];
+    
+    return jsonEvent;
 }
 
 @end
