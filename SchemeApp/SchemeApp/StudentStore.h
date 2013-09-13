@@ -15,6 +15,6 @@
 
 - (void)eventWrappersWithStartDate:(NSDate *)startDate
                         andEndDate:(NSDate *)endDate
-                        completion:(void (^)(NSArray *))completion;
+                        completion:(void (^)(NSArray *eventWrappers))completion;
 
 @end
