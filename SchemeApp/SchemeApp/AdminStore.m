@@ -45,8 +45,9 @@
 }
 - (void)updateEventWrapper:(EventWrapper *)eventWrapper
 {
-    [Store.mainStore.eventWrappers removeObject:[self oldVersionOfEventWrapper:eventWrapper]];
-    [Store.mainStore.eventWrappers addObject:eventWrapper];
+    [Store.dbConnection updateType:@"eventWrappers"
+                       withContent:eventWrapper.asDictionary
+                          callback:NULL];
 }
 - (void)deleteEventWrapper:(EventWrapper *)eventWrapper
 {
