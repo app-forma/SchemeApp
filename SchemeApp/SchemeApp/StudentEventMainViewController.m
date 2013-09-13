@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"Home";
+    self.navigationItem.title = @"";
     
     
     datePicker = [[DatePickerViewController alloc] init];
