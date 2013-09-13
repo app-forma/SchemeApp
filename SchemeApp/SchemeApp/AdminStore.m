@@ -20,44 +20,44 @@
 
 - (void)createEvent:(Event *)event
 {
-    [Store.dbConnection createType:@"events"
+    [Store.dbConnection createType:DB_TYPE_EVENT
                        withContent:event.asDictionary
                           callback:NULL];
 }
 - (void)updateEvent:(Event *)event
 {
-    [Store.dbConnection updateType:@"events"
+    [Store.dbConnection updateType:DB_TYPE_EVENT
                        withContent:event.asDictionary
                           callback:NULL];
 }
 - (void)deleteEvent:(Event *)event
 {
-    [Store.dbConnection deleteType:@"event"
+    [Store.dbConnection deleteType:DB_TYPE_EVENT
                             withId:event.docID
                           callback:NULL];
 }
 - (void)createEventWrapper:(EventWrapper *)eventWrapper
 {
-    [Store.dbConnection createType:@"eventWrappers"
+    [Store.dbConnection createType: DB_TYPE_EVENTWRAPPER
                        withContent:eventWrapper.asDictionary
                           callback:NULL];
 }
 - (void)updateEventWrapper:(EventWrapper *)eventWrapper
 {
-    [Store.dbConnection updateType:@"eventWrappers"
+    [Store.dbConnection updateType: DB_TYPE_EVENTWRAPPER
                        withContent:eventWrapper.asDictionary
                           callback:NULL];
 }
 - (void)deleteEventWrapper:(EventWrapper *)eventWrapper
 {
-    [Store.dbConnection deleteType:@"eventWrappers"
+    [Store.dbConnection deleteType: DB_TYPE_EVENTWRAPPER
                             withId:eventWrapper.docID
                           callback:NULL];
 }
 
 - (void)usersCompletion:(void (^)(NSArray *users))completion;
 {
-    [Store.dbConnection readType:@"users"
+    [Store.dbConnection readType:DB_TYPE_USER
                           withId:nil
                         callback:^(id result)
      {
@@ -66,7 +66,7 @@
 }
 - (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))completion
 {
-    [Store.dbConnection readType:@"users"
+    [Store.dbConnection readType:DB_TYPE_USER
                           withId:docID
                         callback:^(id result)
      {

@@ -24,20 +24,20 @@
     
 - (void)createUser:(User *)user
 {
-    [Store.dbConnection createType:@"users"
+    [Store.dbConnection createType:DB_TYPE_USER
                        withContent:user.asDictionary
                           callback:NULL];
 }
 - (void)updateUser:(User *)user
 {
-#warning Implement
-    [Store.dbConnection updateType:@"users"
+    [Store.dbConnection updateType:DB_TYPE_USER
                        withContent:user.asDictionary
                           callback:NULL];
 }
 - (void)deleteUser:(User *)user
 {
-    [Store.mainStore.users removeObject:user];
+    [Store.dbConnection deleteType:DB_TYPE_USER
+                            withId:<#(NSString *)#> callback:<#^(id result)callback#>
 }
 
 #pragma mark - Extracted methods

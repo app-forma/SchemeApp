@@ -6,6 +6,8 @@
 //
 //
 
+#define DB_TYPE_EVENTWRAPPER @"eventWrappers"
+
 #import "Store.h"
 
 @class EventWrapper;

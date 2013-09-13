@@ -6,9 +6,13 @@
 //
 //
 
+#define DB_TYPE_EVENT @"events"
+#define DB_TYPE_USER @"users"
+
 #import "StudentStore.h"
 
 @class Event, EventWrapper, Message, User;
+
 
 @interface AdminStore : StudentStore
 
