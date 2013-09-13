@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 #import "StudentEventMainViewController.h"
-#import "AFNetworking.h"
+#import "Store.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
@@ -31,7 +31,6 @@
     return [textField resignFirstResponder];
 }
 
-
 - (IBAction)loadAdminSB:(id)sender {
     UIStoryboard *adminSB = [UIStoryboard storyboardWithName:@"AdminStoryboard" bundle:nil];
     UIViewController *initialVC = [adminSB instantiateInitialViewController];
@@ -49,6 +48,7 @@
 
 - (IBAction)didPressSignIn:(id)sender {
     NSLog(@"log in functionality not yet implemented.");
+    NSDictionary *credentials = [[NSDictionary alloc]initWithObjects:@[self.emailField.text, self.passwordField.text] forKeys:@[@"email", @"password"]];
 }
 
 - (IBAction)didPressForgotPassword:(id)sender {
