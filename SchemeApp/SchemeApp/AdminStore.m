@@ -32,7 +32,9 @@
 }
 - (void)deleteEvent:(Event *)event
 {
-    [Store.mainStore.events removeObject:event];
+    [Store.dbConnection deleteType:@"event"
+                            withId:event.docID
+                          callback:NULL];
 }
 - (void)createEventWrapper:(EventWrapper *)eventWrapper
 {
