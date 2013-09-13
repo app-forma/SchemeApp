@@ -51,7 +51,9 @@
 }
 - (void)deleteEventWrapper:(EventWrapper *)eventWrapper
 {
-    [Store.mainStore.eventWrappers removeObject:eventWrapper];
+    [Store.dbConnection deleteType:@"eventWrappers"
+                            withId:eventWrapper.docID
+                          callback:NULL];
 }
 
 - (NSArray *)users
