@@ -19,8 +19,8 @@
 - (void)updateEventWrapper:(EventWrapper *)eventWrapper;
 - (void)deleteEventWrapper:(EventWrapper *)eventWrapper;
 
-- (NSArray *)users;
-- (User *)userWithDocID:(NSString *)docID;
+- (void)usersCompletion:(void (^)(NSArray *users))completion;
+- (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))completion;
 
 - (void)sendMessage:(Message *)message;
 - (void)sendMessage:(Message *)message toUser:(User *)user;

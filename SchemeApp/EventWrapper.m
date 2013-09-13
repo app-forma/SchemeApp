@@ -8,5 +8,14 @@
 
 #import "EventWrapper.h"
 
+
 @implementation EventWrapper
+
+- (NSDictionary *)asDictionary
+{
+#warning Implement
+    // Ska göras om till dictionary när wrappers ska skapas eller uppdateras i databasen
+    return nil;
+}
+
 @end

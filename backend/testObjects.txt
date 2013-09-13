@@ -1,6 +1,6 @@
 //user:
 {
-	"name": "superuser",
+	"role": "superuser",
 	"firstname": "Erik",
 	"lastname": "Österberg",
 	"email": "erik82osterberg2gmail.com",

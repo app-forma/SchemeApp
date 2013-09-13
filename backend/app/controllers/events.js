@@ -1,3 +1,5 @@
+/*jslint node: true, plusplus: true, vars: true, maxerr: 200, regexp: true, white: true */
+
 /**
  * Module dependencies.
  */
@@ -27,19 +29,28 @@ exports.event = function (req, res, next, id) {
   });
 };
 
-/**
- * Create a event
- */
+// create events, should always get an array as input
 exports.create = function (req, res) {
-  var event = new Event(req.body);
-  event.saveToDisk(event, function (err, event) {
-    if (err) {
-      res.json(500, err.errors);
-    } else {
-      res.json(200, event);
-    }
-  });
+  var body = req.body;
+  if (body instanceof Array) {
+    var count = 0,
+      resultList = [];
+    body.forEach(function (_event, i) {
+      var event = new Event(_event);
+      event.saveToDisk(event, function (err, event) {
+        resultList[i] = err ? false : true;
+        if (++count === body.length) {
+          res.json(200, resultList);
+        }
+      });
+    });
+  } else {
+    res.json(500, {
+      error: 'Invalid format'
+    });
+  }
 };
+
 
 /**
  * Update a event

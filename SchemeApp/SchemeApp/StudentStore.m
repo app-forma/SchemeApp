@@ -22,8 +22,8 @@
                         completion:(void (^)(NSArray *eventWrappers))completion
 {
     [Store.dbConnection readType:@"eventWrappers"
-                                    withId:nil
-                                  callback:^(id result)
+                          withId:nil
+                        callback:^(id result)
     {
         [self fillListOfEventWrappersByFilteringResult:result withStartDate:startDate andEndDate:endDate];
         completion(listOfEventWrappers);

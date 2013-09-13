@@ -16,4 +16,5 @@
 @property (nonatomic, copy) NSDate *startDate;
 @property (nonatomic, copy) NSDate *endDate;
 @property (nonatomic, copy) NSString *name;
+- (NSDictionary *)asDictionary;
 @end
