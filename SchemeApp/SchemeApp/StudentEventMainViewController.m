@@ -79,6 +79,7 @@
     [[Store dbConnection] readByStartDate:startDateStr toEndDate:endDateStr callback:^(id result) {
         NSLog(@"%@", result);
     }];
+    
 }
 
 -(void)pickStartDateForScheme

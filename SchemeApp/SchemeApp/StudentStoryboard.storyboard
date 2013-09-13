@@ -53,7 +53,7 @@
                                 </state>
                                 <connections>
                                     <action selector="getScheme:" destination="of9-R4-ejT" eventType="touchUpInside" id="HUN-ye-KmH"/>
-                                    <segue destination="zBf-93-9dq" kind="push" id="BsJ-HA-zQU"/>
+                                    <segue destination="zBf-93-9dq" kind="push" identifier="StudentEventSeque" id="BsJ-HA-zQU"/>
                                 </connections>
                             </button>
                         </subviews>
