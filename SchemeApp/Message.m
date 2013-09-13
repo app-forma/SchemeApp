@@ -18,6 +18,7 @@
     [jsonMessage setObject:self.text forKey:@"text"];
     [jsonMessage setObject:[Helpers stringFromNSDate:self.date] forKey:@"date"];
     [jsonMessage setObject:self.from.docID forKey:@"from"];
+    [jsonMessage setObject:self.docID forKey:@"_id"];
     
     return jsonMessage;
 }

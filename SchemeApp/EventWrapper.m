@@ -43,6 +43,7 @@
     [jsonEventWrapper setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
     [jsonEventWrapper setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
     [jsonEventWrapper setObject:self.name forKey:@"name"];
+    [jsonEventWrapper setObject:self.docID forKey:@"_id"];
     
     return jsonEventWrapper;
 }

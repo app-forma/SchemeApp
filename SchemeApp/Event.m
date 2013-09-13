@@ -14,7 +14,7 @@
 - (NSDictionary *)asDictionary
 {
     NSMutableDictionary *jsonEvent = [[NSMutableDictionary alloc]init];
-    [jsonEvent setObject:self._eventWrapperId forKey:@"_eventWrapperId"];
+    [jsonEvent setObject:self._eventWrapperId forKey:@"_id"];
     [jsonEvent setObject:self.info forKey:@"info"],
     [jsonEvent setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
     [jsonEvent setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
