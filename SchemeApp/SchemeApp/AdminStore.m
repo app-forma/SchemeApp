@@ -26,9 +26,9 @@
 }
 - (void)updateEvent:(Event *)event
 {
-    
-    [Store.mainStore.events removeObject:[self oldVersionOfEvent:event]];
-    [Store.mainStore.events addObject:event];
+    [Store.dbConnection updateType:@"events"
+                       withContent:event.asDictionary
+                          callback:NULL];
 }
 - (void)deleteEvent:(Event *)event
 {
