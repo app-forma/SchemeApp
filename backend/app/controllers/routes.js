@@ -23,6 +23,7 @@ module.exports = function(app) {
   app.get('/eventWrappers/:id', eventWrappers.byId);
   app.get('/eventWrappers-raw/:id', eventWrappers.byIdRaw);
   app.post('/eventWrappers', eventWrappers.create);
+  app.post('/eventWrappers/findbydate', eventWrappers.findByDate);
   app.put('/eventWrappers/:id', eventWrappers.update);
   app.del('/eventWrappers/:id', eventWrappers.destroy);
 
