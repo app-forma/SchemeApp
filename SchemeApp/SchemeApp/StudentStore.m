@@ -21,7 +21,7 @@
                         andEndDate:(NSDate *)endDate
                         completion:(void (^)(NSArray *eventWrappers))completion
 {
-    [Store.mainStore.dbConnection readType:@"eventWrappers"
+    [Store.dbConnection readType:@"eventWrappers"
                                     withId:nil
                                   callback:^(id result)
     {

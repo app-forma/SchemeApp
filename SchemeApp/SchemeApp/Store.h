@@ -17,6 +17,7 @@
 
 @interface Store : NSObject
 
++ (AFNetworking *)dbConnection;
 + (Store *)mainStore;
 + (StudentStore *)studentStore;
 + (AdminStore *)adminStore;

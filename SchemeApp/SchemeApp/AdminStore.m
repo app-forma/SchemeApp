@@ -20,7 +20,8 @@
 
 - (void)createEvent:(Event *)event
 {
-    [Store.mainStore.events addObject:event];
+#warning Implement
+    
 }
 - (void)updateEvent:(Event *)event
 {

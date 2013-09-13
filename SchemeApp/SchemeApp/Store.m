@@ -11,13 +11,22 @@
 
 
 @implementation Store
-{
-    AFNetworking *dbConnection;
-}
 
 + (id)allocWithZone:(NSZone *)zone
 {
     return self.mainStore;
+}
++ (AFNetworking *)dbConnection
+{
+    static AFNetworking *dbConnection = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+                  {
+                      dbConnection = [[AFNetworking alloc] init];
+                  });
+    
+    return dbConnection;
 }
 + (Store *)mainStore
 {
@@ -68,19 +77,10 @@
     return studentStore;
 }
 
-- (AFNetworking *)dbConnection
-{
-    if (dbConnection == nil)
-    {
-        dbConnection = [[AFNetworking alloc] init];
-    }
-    return dbConnection;
-}
-
 - (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion
 {
     #warning Implement password
-    [Store.mainStore.dbConnection readType:@"users"
+    [Store.dbConnection readType:@"users"
                                     withId:nil
                                   callback:^(id result)
      {
