@@ -52,6 +52,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="getScheme:" destination="of9-R4-ejT" eventType="touchUpInside" id="HUN-ye-KmH"/>
                                     <segue destination="zBf-93-9dq" kind="push" id="BsJ-HA-zQU"/>
                                 </connections>
                             </button>

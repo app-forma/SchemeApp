@@ -66,7 +66,19 @@
 
 - (IBAction)getScheme:(id)sender
 {
-    NSLog(@"Get scheme with start date and end date for student with id");
+    NSDate *startDate = [Helpers dateFromString:self.startDateForScheme.text];
+    NSDate *endDate = [Helpers dateFromString:self.endDateForScheme.text];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *startDateStr = [NSString stringWithFormat:@"%@", [dateFormat stringFromDate:startDate]];
+    NSString *endDateStr = [NSString stringWithFormat:@"%@", [dateFormat stringFromDate:endDate]];
+    
+    [[Store dbConnection] readByStartDate:startDateStr toEndDate:endDateStr callback:^(id result) {
+        NSLog(@"%@", result);
+    }];
 }
 
 -(void)pickStartDateForScheme
