@@ -34,8 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    User *lasse = [[User alloc]initWithRole:SuperAdminRole firstname:@"lasse" lastname:@"erikssom" email:@"laase@fjghafd.se" password:@"123456"];
-    User *henrik = [[User alloc]initWithRole:SuperAdminRole firstname:@"henrik" lastname:@"holmgren" email:@"laase@fjghafd.ru" password:@"password"];
+    User *lasse = [[User alloc]initWithDocID:nil Role:SuperAdminRole firstname:@"lasse" lastname:@"erikssom" email:@"laase@fjghafd.se" password:@"123456"];
+    User *henrik = [[User alloc]initWithDocID:nil Role:SuperAdminRole firstname:@"henrik" lastname:@"holmgren" email:@"laase@fjghafd.ru" password:@"password"];
     
     Message *mess1 = [[Message alloc]init];
     mess1.from = lasse;
@@ -43,7 +43,7 @@
     mess1.text = @"asdkjfghasdkgajhgdka";
     
     
-    User *master = [[User alloc]initWithRole:SuperAdminRole firstname:@"Anders" lastname:@"Carlsson" email:@"anders@coredev.se" password:@"Master"];
+    User *master = [[User alloc]initWithDocID:nil Role:SuperAdminRole firstname:@"Anders" lastname:@"Carlsson" email:@"anders@coredev.se" password:@"Master"];
     
     Message *mess2 = [[Message alloc]init];
     mess2.from = master;

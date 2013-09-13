@@ -12,10 +12,16 @@
 
 @implementation User
 
--(id)initWithRole:(RoleType)role firstname:(NSString *)firstname lastname:(NSString *)lastname email:(NSString *)email password:(NSString *)password
+- (id)initWithDocID:(NSString *)docID
+            Role:(RoleType)role
+       firstname:(NSString *)firstname
+        lastname:(NSString *)lastname
+           email:(NSString *)email
+        password:(NSString *)password
 {
     self = [super init];
     if (self) {
+        _docID = docID;
         _role = role;
         self.firstname = firstname;
         self.lastname = lastname;
@@ -28,7 +34,8 @@
 }
 - (id)initWithUserDictionary:(NSDictionary *)userDictionary
 {
-    return  [self initWithRole:[self roleTypeFromString:[userDictionary objectForKey:@"role"]]
+    return  [self initWithDocID:[userDictionary objectForKey:@"_id"]
+                        Role:[self roleTypeFromString:[userDictionary objectForKey:@"role"]]
                      firstname:[userDictionary objectForKey:@"firstname"]
                       lastname:[userDictionary objectForKey:@"lastname"]
                          email:[userDictionary objectForKey:@"email"]
