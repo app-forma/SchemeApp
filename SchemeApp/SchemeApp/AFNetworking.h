@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-typedef void (^callback)(NSDictionary *result);
+typedef void (^callback)(id result);
 @interface AFNetworking : NSObject
 -(void)createType:(NSString *)type withContent:(NSDictionary *)content callback:(callback)callback;
 -(void)readType:(NSString *)type withId:(NSString *)typeId callback:(callback)callback;
