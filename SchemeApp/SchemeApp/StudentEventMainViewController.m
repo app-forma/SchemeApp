@@ -11,7 +11,7 @@
 #import "Event.h"
 #import "EventWrapper.h"
 #import "StudentEventsTableViewController.h"
-
+#import "User.h"
 @interface StudentEventMainViewController ()<DatePickerDelegate>
 {
     DatePickerViewController *datePicker;
@@ -77,9 +77,22 @@
     
     
     [[Store studentStore] eventWrappersWithStartDate:startDate andEndDate:endDate completion:^(NSArray *eventWrappers) {
+
         for (NSDictionary *jsonEventWrapper in eventWrappers)
         {
-            EventWrapper *eventWrapper = [[EventWrapper alloc]initWithEventWrapperDictionary:jsonEventWrapper];
+            NSMutableDictionary *eventWrapperDic = [NSMutableDictionary dictionaryWithDictionary:jsonEventWrapper];
+//            NSDictionary *userDic = jsonEventWrapper[@"owner"];
+//            if (userDic) {
+//                User *user = [[User alloc] initWithUserDictionary:userDic];
+//                [eventWrapperDic setObject:user forKey:@"owner"];
+//            }
+ 
+
+            
+
+            
+            EventWrapper *eventWrapper = [[EventWrapper alloc]initWithEventWrapperDictionary:eventWrapperDic];
+
             NSArray *jsonEvents = jsonEventWrapper[@"events"];
             for (NSDictionary *jsonEvent in jsonEvents){
                 Event *event = [[Event alloc]initWithEventDictionary:jsonEvent];
