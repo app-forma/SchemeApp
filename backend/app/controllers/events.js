@@ -38,7 +38,7 @@ exports.create = function (req, res) {
     body.forEach(function (_event, i) {
       var event = new Event(_event);
       event.saveToDisk(event, function (err, event) {
-        resultList[i] = err ? false : true;
+        resultList[i] = err ? false : event._id;
         if (++count === body.length) {
           res.json(200, resultList);
         }

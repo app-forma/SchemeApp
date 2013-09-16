@@ -24,7 +24,7 @@ exports.create = function (req, res) {
     body.forEach(function (_eventWrapper, i) {
       var eventWrapper = new EventWrapper(_eventWrapper);
       eventWrapper.saveToDisk(eventWrapper, function (err, eventWrapper) {
-        resultList[i] = err ? false : true;
+        resultList[i] = err ? false : eventWrapper._id;
         if (++count === body.length) {
           res.json(200, resultList);
         }
@@ -110,7 +110,7 @@ exports.byIdRaw = function (req, res) {
   });
 };
 exports.findByDate = function (req, res) {
-  
+
 
     EventWrapper.where('startDate').gte(req.body.startDate).lte(req.body.endDate).populate('events')
     .populate('owner').exec(function (err, doc) {

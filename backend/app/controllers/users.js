@@ -37,9 +37,11 @@ exports.create = function (req, res) {
       resultList = [];
     body.forEach(function (_user, i) {
       var user = new User(_user);
-      user.password = Helpers.generateCryptoPassword(user.password);
+      if (typeof user.password === 'string') {
+        user.password = Helpers.generateCryptoPassword(user.password);
+      }
       user.saveToDisk(user, function (err, user) {
-        resultList[i] = err ? false : true;
+        resultList[i] = err ? false : user._id;
         if (++count === body.length) {
           res.json(200, resultList);
         }

@@ -21,7 +21,7 @@ exports.create = function (req, res) {
     body.forEach(function (_message, i) {
       var message = new Message(_message);
       message.saveToDisk(message, function (err, message) {
-        resultList[i] = err ? false : true;
+        resultList[i] = err ? false : message._id;
         if (++count === body.length) {
           res.json(200, resultList);
         }
