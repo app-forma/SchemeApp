@@ -96,9 +96,8 @@ exports.byIdRaw = function (req, res) {
     }
   });
 };
+
 exports.findByDate = function (req, res) {
-
-
     EventWrapper.where('startDate').gte(req.body.startDate).lte(req.body.endDate).populate('events')
     .populate('owner').exec(function (err, doc) {
       if (err) {
