@@ -7,6 +7,23 @@
 	"password": "password"
 }
 
+[{
+	"role": "student",
+	"firstname": "Johan",
+	"lastname": "Thorell",
+	"email": "joe@gmail.com",
+	"password": "password"
+},
+{
+	"role": "student",
+	"firstname": "Marcus",
+	"lastname": "Norling",
+	"email": "marc@gmail.com",
+	"password": "password"
+}
+]
+
+
 //eventwrapper:
 
 {

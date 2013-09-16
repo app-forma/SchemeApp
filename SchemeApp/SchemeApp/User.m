@@ -33,12 +33,12 @@
 {
     switch (role) {
         case StudentRole:
-            return @"Student";
+            return @"student";
             break;
         case AdminRole:
-            return @"Admin";
+            return @"admin";
         case SuperAdminRole:
-            return @"SuperAdmin"
+            return @"superadmin"
             ;
         default:
             break;
@@ -87,17 +87,20 @@
     for (EventWrapper *eventWrapper in userEventWrappers) {
         [userEventWrappers addObject:eventWrapper.docID];
     }
-    [jsonUser setObject:userMessages forKey:@"messages"];
-    [jsonUser setObject:userEventWrappers forKey:@"eventWrappers"];
-    [jsonUser setObject:[User stringFromRoleType:self.role] forKey:@"role"];
-    [jsonUser setObject:self.firstname forKey:@"firstname"];
-    [jsonUser setObject:self.lastname forKey:@"lastname"];
-    [jsonUser setObject:self.email forKey:@"email"];
+    [jsonUser setValue:userMessages forKey:@"messages"];
+    [jsonUser setValue:userEventWrappers forKey:@"eventWrappers"];
+    [jsonUser setValue:[User stringFromRoleType:self.role] forKey:@"role"];
+    [jsonUser setValue:self.firstname forKey:@"firstname"];
+    [jsonUser setValue:self.lastname forKey:@"lastname"];
+    [jsonUser setValue:self.email forKey:@"email"];
     
     if ([self.docID isEqualToString:@""] == NO)
     {
-        [jsonUser setObject:self.docID forKey:@"_id"];
+        [jsonUser setValue:self.docID forKey:@"_id"];
     }
+    
+#warning Testing
+    NSLog(@"JSON: %d", [NSJSONSerialization isValidJSONObject:jsonUser]);
     
     return jsonUser;
 }

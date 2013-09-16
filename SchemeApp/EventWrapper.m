@@ -9,16 +9,18 @@
 #import "EventWrapper.h"
 #import "Helpers.h"
 #import "Event.h"
-
+#import "User.h"
 @implementation EventWrapper
 
 - (id)initWithEventWrapperDictionary:(NSDictionary *)eventWrapperDictionary
 {
+    NSLog(@"%@", eventWrapperDictionary);
     self = [super init];
     if (self)
     {
         self.name = [eventWrapperDictionary objectForKey:@"name"];
-        self.user = Store.mainStore.currentUser;
+//        self.user = [eventWrapperDictionary objectForKey:@"owner"];
+        //FIX USER
         self.litterature = [eventWrapperDictionary objectForKey:@"litterature"];
         self.startDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"startDate"]];
         self.endDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"endDate"]];

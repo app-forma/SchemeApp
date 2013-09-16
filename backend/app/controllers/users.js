@@ -29,30 +29,22 @@ exports.user = function (req, res, next, id) {
   });
 };
 
-// Create userS = always expects an array as input
-exports.create = function (req, res) {
-  var body = req.body;
-  if (body instanceof Array) {
-    var count = 0,
-      resultList = [];
-    body.forEach(function (_user, i) {
-      var user = new User(_user);
-      if (typeof user.password === 'string') {
-        user.password = Helpers.generateCryptoPassword(user.password);
+exports.create = function(req, res) {
+  var user = new User(req.body);
+  if (typeof req.body.password === 'string') {
+    user.password = Helpers.generateCryptoPassword(user.password);
+    user.saveToDisk(user, function(err, user) {
+      if (err) {
+        res.json(500, err.errors);
+      } else {
+        res.json(200, user);
       }
-      user.saveToDisk(user, function (err, user) {
-        resultList[i] = err ? false : user._id;
-        if (++count === body.length) {
-          res.json(200, resultList);
-        }
-      });
     });
   } else {
-    res.json(500, {
-      error: 'Invalid format'
-    });
+    res.json(500);
   }
 };
+
 
 /**
  * Update a user
