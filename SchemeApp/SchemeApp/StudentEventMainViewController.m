@@ -8,13 +8,15 @@
 
 #import "StudentEventMainViewController.h"
 #import "DatePickerViewController.h"
-
+#import "Event.h"
+#import "EventWrapper.h"
+#import "StudentEventsTableViewController.h"
 
 @interface StudentEventMainViewController ()<DatePickerDelegate>
 {
     DatePickerViewController *datePicker;
     UIView *datePickerView;
-    
+    NSMutableArray *events;
     
     
     
@@ -33,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    events = [NSMutableArray new];
     self.navigationItem.title = @"";
     
     
@@ -73,14 +75,27 @@
     [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     
-    NSString *startDateStr = [NSString stringWithFormat:@"%@", [dateFormat stringFromDate:startDate]];
-    NSString *endDateStr = [NSString stringWithFormat:@"%@", [dateFormat stringFromDate:endDate]];
     
-    [[Store dbConnection] readByStartDate:startDateStr toEndDate:endDateStr callback:^(id result) {
-        NSLog(@"%@", result);
+    [[Store studentStore] eventWrappersWithStartDate:startDate andEndDate:endDate completion:^(NSArray *eventWrappers) {
+        for (NSDictionary *jsonEventWrapper in eventWrappers)
+        {
+            EventWrapper *eventWrapper = [[EventWrapper alloc]initWithEventWrapperDictionary:jsonEventWrapper];
+            NSArray *jsonEvents = jsonEventWrapper[@"events"];
+            for (NSDictionary *jsonEvent in jsonEvents){
+                Event *event = [[Event alloc]initWithEventDictionary:jsonEvent];
+                NSDictionary *eventDic = @{@"event": event, @"eventWrapper": eventWrapper};
+                [events addObject:eventDic];
+            }
+            }
+        StudentEventsTableViewController *setvc = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentEventsTableViewController"];
+        setvc.eventsWithEventWrapper = events;
+        [self.navigationController pushViewController:setvc animated:YES];
     }];
+
+   
     
 }
+
 
 -(void)pickStartDateForScheme
 {

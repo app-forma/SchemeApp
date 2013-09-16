@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class User;
+@class User, EventWrapper;
 @interface EventWrapper : NSObject
 @property (nonatomic, readonly) NSString *docID;
 @property (nonatomic, copy) NSMutableArray *events;
