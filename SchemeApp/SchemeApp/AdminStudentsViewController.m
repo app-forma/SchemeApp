@@ -39,6 +39,8 @@
          [self.tableview reloadData];
          [self.activityIndicator stopAnimating];
      }];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 #pragma mark - Table view data source
