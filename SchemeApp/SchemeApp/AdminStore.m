@@ -73,6 +73,26 @@
          completion([[User alloc] initWithUserDictionary:(NSDictionary *)result]);
      }];
 }
+- (void)userWithType:(RoleType)type completion:(void (^)(NSArray *students))completion
+{
+    [Store.dbConnection readType:DB_TYPE_USER
+                          withId:nil
+                        callback:^(id result)
+     {
+         NSMutableArray *studentModels = [[NSMutableArray alloc] init];
+         for (NSDictionary *userDictionary in result)
+         {
+#warning Comment
+//TODO: Replace @"student" with role type
+             if ([[userDictionary objectForKey:@"role"] isEqualToString:@"student"])
+             {
+                 [studentModels addObject:[[User alloc] initWithUserDictionary:userDictionary]];
+             }
+         }
+         
+         completion(studentModels);
+     }];
+}
 
 - (void)sendMessage:(Message *)message
 {

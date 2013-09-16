@@ -11,6 +11,10 @@
 
 #import "StudentStore.h"
 
+#warning Temporary
+// Should not be needed to import RoleType
+#import "RoleType"
+
 @class Event, EventWrapper, Message, User;
 
 
@@ -25,6 +29,7 @@
 
 - (void)usersCompletion:(void (^)(NSArray *users))completion;
 - (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))completion;
+- (void)userWithType:(RoleType)type completion:(void (^)(NSArray *students))completion;
 
 - (void)sendMessage:(Message *)message;
 - (void)sendMessage:(Message *)message toUser:(User *)user;
