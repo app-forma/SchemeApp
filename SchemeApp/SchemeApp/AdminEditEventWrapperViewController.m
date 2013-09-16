@@ -7,6 +7,9 @@
 //
 
 #import "AdminEditEventWrapperViewController.h"
+@interface AdminEditEventWrapperViewController()<UIScrollViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+
+@end
 
 @implementation AdminEditEventWrapperViewController
 
@@ -19,13 +22,41 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+#pragma mark - UIPickerViewDataSource
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    // Drawing code
+    return 1;
 }
-*/
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return 3;
+}
+
+#pragma mark - UIPickerViewDelegate
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+#warning implement from db
+{
+    switch (row)
+    {
+        case 0:
+            return @"Tom Blackmore";
+            break;
+        case 1:
+            return @"Anders Carlsson";
+            break;
+        case 2:
+            return @"Bill Gates";
+            break;
+        default:
+            return @"";
+            break;
+    }
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+#warning implement value when selected
+{
+    
+}
+
 
 @end

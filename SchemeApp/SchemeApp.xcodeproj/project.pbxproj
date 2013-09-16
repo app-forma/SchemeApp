@@ -32,6 +32,7 @@
 		270750A217E2573800ACFAAD /* AdminEventWrapperDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270750A117E2573800ACFAAD /* AdminEventWrapperDetailsViewController.m */; };
 		271DE31817E784AC006CAAD8 /* AdminEditEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271DE31717E784AC006CAAD8 /* AdminEditEventWrapperViewController.m */; };
 		2748CDC917DF360F00A06467 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748CDC817DF360F00A06467 /* Helpers.m */; };
+		279C786C17E78B77000992F3 /* AdminEditEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271DE31717E784AC006CAAD8 /* AdminEditEventWrapperViewController.m */; };
 		27BCC1E717E1E7E7009977BB /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC1E617E1E7E7009977BB /* LoginStoryboard.storyboard */; };
 		27BCC1EA17E1E8B5009977BB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC1E917E1E8B5009977BB /* LoginViewController.m */; };
 		27BCC1EE17E1F347009977BB /* AdminMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC1ED17E1F347009977BB /* AdminMessagesViewController.m */; };
@@ -605,6 +606,7 @@
 				AF2551F517E04631006EDD02 /* StudentStore.m in Sources */,
 				AF2551F917E04883006EDD02 /* SuperAdminStore.m in Sources */,
 				AF2551F317E0462D006EDD02 /* AdminStore.m in Sources */,
+				279C786C17E78B77000992F3 /* AdminEditEventWrapperViewController.m in Sources */,
 				AF2551F117E04629006EDD02 /* Store.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
