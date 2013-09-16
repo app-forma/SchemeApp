@@ -19,6 +19,9 @@
 @property (nonatomic, copy) NSMutableArray *messages;
 @property (nonatomic, copy) NSMutableArray *eventWrappers;
 
++ (RoleType)roleTypeFromString:(NSString *)roleString;
++ (NSString *)stringFromRoleType:(RoleType)role;
+
 - (id)initWithDocID:(NSString *)docID
             Role:(RoleType)role
 firstname:(NSString *)firstname

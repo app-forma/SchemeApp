@@ -12,6 +12,39 @@
 
 @implementation User
 
+#warning Comment
+// We should use enum on backend as well for Role (Henrik)
++ (RoleType)roleTypeFromString:(NSString *)roleString
+{
+    if ([roleString isEqualToString:@"superadmin"])
+    {
+        return SuperAdminRole;
+    }
+    else if ([roleString isEqualToString:@"admin"])
+    {
+        return AdminRole;
+    }
+    else
+    {
+        return StudentRole;
+    }
+}
++ (NSString *)stringFromRoleType:(RoleType)role
+{
+    switch (role) {
+        case StudentRole:
+            return @"Student";
+            break;
+        case AdminRole:
+            return @"Admin";
+        case SuperAdminRole:
+            return @"SuperAdmin"
+            ;
+        default:
+            break;
+    }
+}
+
 - (id)initWithDocID:(NSString *)docID
             Role:(RoleType)role
        firstname:(NSString *)firstname
@@ -63,39 +96,6 @@
     [jsonUser setObject:self.docID forKey:@"_id"];
     
     return jsonUser;
-}
-
-#warning Comment
-// We should use enum on backend as well for Role (Henrik)
-- (RoleType)roleTypeFromString:(NSString *)roleString
-{
-    if ([roleString isEqualToString:@"superadmin"])
-    {
-        return SuperAdminRole;
-    }
-    else if ([roleString isEqualToString:@"admin"])
-    {
-        return AdminRole;
-    }
-    else
-    {
-        return StudentRole;
-    }
-}
--(NSString *)stringFromRoleType:(RoleType)role
-{
-    switch (role) {
-        case StudentRole:
-            return @"Student";
-            break;
-        case AdminRole:
-            return @"Admin";
-        case SuperAdminRole:
-            return @"SuperAdmin"
-            ;
-        default:
-            break;
-    }
 }
 
 @end
