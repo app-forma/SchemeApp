@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Team leet. All rights reserved.
 //
 
+#warning Handle error in methods where now callback:NULL
+
 #import "SuperAdminStore.h"
 #import "User.h"
 
@@ -21,32 +23,21 @@
     
 - (void)createUser:(User *)user
 {
-    [Store.mainStore.users addObject:user];
+    [Store.dbConnection createType:DB_TYPE_USER
+                       withContent:user.asDictionary
+                          callback:NULL];
 }
 - (void)updateUser:(User *)user
 {
-    [Store.mainStore.users removeObject:[self oldVersionOfUser:user]];
-    [Store.mainStore.users addObject:user];
+    [Store.dbConnection updateType:DB_TYPE_USER
+                       withContent:user.asDictionary
+                          callback:NULL];
 }
 - (void)deleteUser:(User *)user
 {
-    [Store.mainStore.users removeObject:user];
-}
-
-#pragma mark - Extracted methods
-- (User *)oldVersionOfUser:(User *)user
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", user.docID];
-    NSArray *filteredSet = [self filteredSet:Store.mainStore.eventWrappers withPredicate:predicate];
-    
-    if (filteredSet)
-    {
-        return [filteredSet objectAtIndex:0];
-    }
-    else
-    {
-        return nil;
-    }
+    [Store.dbConnection deleteType:DB_TYPE_USER
+                            withId:user.docID
+                          callback:NULL];
 }
 
 @end

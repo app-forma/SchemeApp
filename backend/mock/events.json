@@ -1,0 +1,72 @@
+[
+    {
+        "eventWrapperID": "5231972dc9182d7f33000003",
+        "info": "Ta inte med bananer till läraren",
+        "startDate": "2013-09-13 08:00",
+        "endDate": "2013-09-13 09:00",
+        "room": 101
+    },
+    {
+        "eventWrapperID": "5231972dc9182d7f33000003",
+        "info": "Ta inte med äpplen till läraren",
+        "startDate": "2013-09-13 09:00",
+        "endDate": "2013-09-13 10:00",
+        "room": 101
+    },
+    {
+        "eventWrapperID": "5231972dc9182d7f33000003",
+        "info": "Ta inte med citroner till läraren",
+        "startDate": "2013-09-13 10:00",
+        "endDate": "2013-09-13 11:00",
+        "room": 101
+    },
+    {
+        "eventWrapperID": "5231972dc9182d7f33000003",
+        "info": "Ta inte med loranga till läraren",
+        "startDate": "2013-09-13 13:00",
+        "endDate": "2013-09-13 14:00",
+        "room": 101
+    },
+    {
+        "eventWrapperID": "5231972dc9182d7f33000003",
+        "info": "Ta inte med nötter till läraren",
+        "startDate": "2013-09-13 15:00",
+        "endDate": "2013-09-13 16:00",
+        "room": 101
+    },
+    {
+        "eventWrapperID": "5231972dc9182d7f33000003",
+        "info": "Ta inte med Tobias till läraren",
+        "startDate": "2013-09-14 08:00",
+        "endDate": "2013-09-14 09:00",
+        "room": 201
+    },
+    {
+        "eventWrapperID": "5231972dc9182d7f33000003",
+        "info": "Ta inte med Rikard till läraren",
+        "startDate": "2013-09-14 09:00",
+        "endDate": "2013-09-14 10:00",
+        "room": 202
+    },
+    {
+        "eventWrapperID": "5231972dc9182d7f33000003",
+        "info": "Är det du eller jag som pratar?",
+        "startDate": "2013-09-15 10:00",
+        "endDate": "2013-09-15 11:00",
+        "room": 201
+    },
+    {
+        "eventWrapperID": "5231972dc9182d7f33000003",
+        "info": "Äh jag tar nog en kyss själv - bsssssst",
+        "startDate": "2013-09-15 13:00",
+        "endDate": "2013-09-15 14:00",
+        "room": 101
+    },
+    {
+        "eventWrapperID": "5231972dc9182d7f33000003",
+        "info": "Jahaja så det är på det viset",
+        "startDate": "2013-09-15 15:00",
+        "endDate": "2013-09-15 16:00",
+        "room": 102
+    }
+]

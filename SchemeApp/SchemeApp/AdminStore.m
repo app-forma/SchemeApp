@@ -6,6 +6,8 @@
 //
 //
 
+#warning Handle error in methods where now callback:NULL
+
 #import "AdminStore.h"
 #import "Event.h"
 #import "EventWrapper.h"
@@ -18,109 +20,89 @@
 
 - (void)createEvent:(Event *)event
 {
-    [Store.mainStore.events addObject:event];
+    [Store.dbConnection createType:DB_TYPE_EVENT
+                       withContent:event.asDictionary
+                          callback:NULL];
 }
 - (void)updateEvent:(Event *)event
 {
-    [Store.mainStore.events removeObject:[self oldVersionOfEvent:event]];
-    [Store.mainStore.events addObject:event];
+    [Store.dbConnection updateType:DB_TYPE_EVENT
+                       withContent:event.asDictionary
+                          callback:NULL];
 }
 - (void)deleteEvent:(Event *)event
 {
-    [Store.mainStore.events removeObject:event];
+    [Store.dbConnection deleteType:DB_TYPE_EVENT
+                            withId:event.docID
+                          callback:NULL];
 }
 - (void)createEventWrapper:(EventWrapper *)eventWrapper
 {
-    [Store.mainStore.eventWrappers addObject:eventWrapper];
+    [Store.dbConnection createType: DB_TYPE_EVENTWRAPPER
+                       withContent:eventWrapper.asDictionary
+                          callback:NULL];
 }
 - (void)updateEventWrapper:(EventWrapper *)eventWrapper
 {
-    [Store.mainStore.eventWrappers removeObject:[self oldVersionOfEventWrapper:eventWrapper]];
-    [Store.mainStore.eventWrappers addObject:eventWrapper];
+    [Store.dbConnection updateType:DB_TYPE_EVENTWRAPPER
+                       withContent:eventWrapper.asDictionary
+                          callback:NULL];
 }
 - (void)deleteEventWrapper:(EventWrapper *)eventWrapper
 {
-    [Store.mainStore.eventWrappers removeObject:eventWrapper];
+    [Store.dbConnection deleteType: DB_TYPE_EVENTWRAPPER
+                            withId:eventWrapper.docID
+                          callback:NULL];
 }
 
-- (NSArray *)users
+- (void)usersCompletion:(void (^)(NSArray *users))completion;
 {
-    return [Store.mainStore.users allObjects];
+    [Store.dbConnection readType:DB_TYPE_USER
+                          withId:nil
+                        callback:^(id result)
+     {
+         completion((NSArray *)result);
+     }];
 }
-- (User *)userWithDocID:(NSString *)docID
+- (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))completion
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", docID];
-    NSArray *filteredSet = [self filteredSet:Store.mainStore.users withPredicate:predicate];
-    
-    if (filteredSet)
-    {
-        return [filteredSet objectAtIndex:0];
-    }
-    else
-    {
-        return nil;
-    }
+    [Store.dbConnection readType:DB_TYPE_USER
+                          withId:docID
+                        callback:^(id result)
+     {
+         completion([[User alloc] initWithUserDictionary:(NSDictionary *)result]);
+     }];
+}
+- (void)userWithType:(RoleType)type completion:(void (^)(NSArray *students))completion
+{
+    [Store.dbConnection readType:DB_TYPE_USER
+                          withId:nil
+                        callback:^(id result)
+     {
+         NSMutableArray *studentModels = [[NSMutableArray alloc] init];
+         for (NSDictionary *userDictionary in result)
+         {
+#warning Comment
+//TODO: Replace @"student" with role type
+             if ([[userDictionary objectForKey:@"role"] isEqualToString:@"student"])
+             {
+                 [studentModels addObject:[[User alloc] initWithUserDictionary:userDictionary]];
+             }
+         }
+         
+         completion(studentModels);
+     }];
 }
 
 - (void)sendMessage:(Message *)message
 {
-    for (User *user in Store.mainStore.users)
-    {
-        if (user.role == StudentRole)
-        {
-            [user.messages addObject:message];
-        }
-    }
+#warning Implement
+    
 }
 - (void)sendMessage:(Message *)message toUser:(User *)user
 {
-    [user.messages addObject:message];
-}
-
-#pragma mark - Extracted methods
-- (EventWrapper *)oldVersionOfEvent:(Event *)event
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", event.docID];
-    NSArray *filteredSet = [self filteredSet:Store.mainStore.events withPredicate:predicate];
+#warning Implement
     
-    if (filteredSet)
-    {
-        return [filteredSet objectAtIndex:0];
-    }
-    else
-    {
-        return nil;
-    }
 }
-- (EventWrapper *)oldVersionOfEventWrapper:(EventWrapper *)eventWrapper
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", eventWrapper.docID];
-    NSArray *filteredSet = [self filteredSet:Store.mainStore.eventWrappers withPredicate:predicate];
-    
-    if (filteredSet)
-    {
-        return [filteredSet objectAtIndex:0];
-    }
-    else
-    {
-        return nil;
-    }
-}
-- (NSArray *)filteredSet:(NSSet *)set withPredicate:(NSPredicate *)predicate
-{
-    NSArray *filteredSet = [[set filteredSetUsingPredicate:predicate] allObjects];
-    
-    if (filteredSet.count == 0)
-    {
-        return nil;
-    }
-    else
-    {
-        return filteredSet;
-    }
-}
-
-#warning Comment
-// Testkommentar
 
 @end

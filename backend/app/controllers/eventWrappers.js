@@ -13,9 +13,6 @@ exports.eventWrapper = function (req, res, next, id) {
   });
 };
 
-/**
- * Create a eventWrapper
- */
 exports.create = function (req, res) {
   var eventWrapper = new EventWrapper(req.body);
   eventWrapper.saveToDisk(eventWrapper, function (err, eventWrapper) {
@@ -99,3 +96,17 @@ exports.byIdRaw = function (req, res) {
     }
   });
 };
+exports.findByDate = function (req, res) {
+
+
+    EventWrapper.where('startDate').gte(req.body.startDate).lte(req.body.endDate).populate('events')
+    .populate('owner').exec(function (err, doc) {
+      if (err) {
+        res.json(404);
+        return;
+      } else {
+
+        res.json(200, doc);
+      }
+    });
+  }

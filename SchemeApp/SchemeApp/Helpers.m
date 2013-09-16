@@ -47,7 +47,6 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm"];
-    
     return [NSString stringWithFormat:@"%@", [dateFormat stringFromDate:date]];
 }
 
@@ -55,7 +54,17 @@
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm"];
+    
+    if (string.length == 10)
+    {
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    }
+    else
+    {
+        [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm"];
+    }
+    
+    [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
     return [dateFormat dateFromString:string];
 }
 

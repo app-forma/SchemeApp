@@ -1,0 +1,4 @@
+typedef enum CurrentDatePicker{
+StartDatePicker,
+EndDatePicker
+}CurrentDatePicker;

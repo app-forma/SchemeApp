@@ -7,7 +7,6 @@
 //
 
 #import "StudentStore.h"
-#import "AFNetworking.h"
 #import "EventWrapper.h"
 #import "Helpers.h"
 #import "User.h"
@@ -22,14 +21,8 @@
                         andEndDate:(NSDate *)endDate
                         completion:(void (^)(NSArray *eventWrappers))completion
 {
-    AFNetworking *dbConnection = [[AFNetworking alloc] init];
-    
-    [dbConnection readType:@"eventWrappers"
-                 withId:nil
-               callback:^(id result)
-    {
-        [self fillListOfEventWrappersByFilteringResult:result withStartDate:startDate andEndDate:endDate];
-        completion(listOfEventWrappers);
+    [[Store dbConnection] readByStartDate:[Helpers stringFromNSDate:startDate] toEndDate:[Helpers stringFromNSDate:endDate] callback:^(id result) {
+        completion(result);
     }];
 }
 
@@ -50,7 +43,7 @@
         
         if (eventWrapperIsOwnedByCurrentUser && dateIsEqual)
         {
-            [listOfEventWrappers addObject:[self createEventWrapperOfDictionary:eventWrapperDictionary]];
+            [listOfEventWrappers addObject:[[EventWrapper alloc] initWithEventWrapperDictionary:eventWrapperDictionary]];
         }
     }
     
@@ -66,20 +59,6 @@
     {
         [listOfEventWrappers removeAllObjects];
     }
-}
-- (EventWrapper *)createEventWrapperOfDictionary:(NSDictionary *)eventWrapperDictionary
-{
-    EventWrapper *eventWrapper = [[EventWrapper alloc] init];
-    
-    eventWrapper.name = [eventWrapperDictionary objectForKey:@"name"];
-    eventWrapper.user = Store.mainStore.currentUser;
-    eventWrapper.litterature = [eventWrapperDictionary objectForKey:@"litterature"];
-    eventWrapper.startDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"startDate"]];
-    eventWrapper.endDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"endDate"]];
-    eventWrapper.docID = [eventWrapperDictionary objectForKey:@"_id"];
-    eventWrapper.events = [eventWrapperDictionary objectForKey:@"events"];
-    
-    return eventWrapper;
 }
 
 @end

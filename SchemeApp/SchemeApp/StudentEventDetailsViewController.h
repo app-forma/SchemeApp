@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Event.h"
+#import "EventWrapper.h"
 
 @interface StudentEventDetailsViewController : UIViewController
+
+@property (nonatomic, strong) EventWrapper *eventWrapper;
+@property (nonatomic, strong) Event *event;
 
 @end

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface StudentMessageDetailsViewController : UIViewController
-
+@property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) NSString *from;
+@property (nonatomic, copy) NSDate *date;
 @end

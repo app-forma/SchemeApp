@@ -1,3 +1,5 @@
+/*jslint node: true, plusplus: true, vars: true, maxerr: 200, regexp: true, white: true */
+
 /**
  * Module dependencies.
  */
@@ -9,7 +11,7 @@ var mongoose = require('mongoose'),
  * List of events
  */
 exports.index = function (req, res) {
-  User.list(function (err, events) {
+  Event.list(function (err, events) {
     if (err) return res.json(500, err.errors);
     res.json(200, events);
   });
@@ -27,19 +29,34 @@ exports.event = function (req, res, next, id) {
   });
 };
 
-/**
- * Create a event
- */
+// create events, should always get an array as input
 exports.create = function (req, res) {
-  var event = new Event(req.body);
-  event.saveToDisk(event, function (err, event) {
-    if (err) {
-      res.json(500, err.errors);
-    } else {
-      res.json(200, event);
-    }
-  });
+  var body = req.body;
+  if (body.array && body.array instanceof Array) {
+    body = body.array;
+    var count = 0,
+      resultList = [];
+    body.forEach(function (_event, i) {
+      var event = new Event(_event);
+      event.saveToDisk(event, function (err, event) {
+        resultList[i] = err ? false : event._id;
+        if (++count === body.length) {
+          res.json(200, {result: resultList});
+        }
+      });
+    });
+  } else {
+    var event = new Event(req.body);
+    event.saveToDisk(event, function (err, event) {
+      if (err) {
+        res.json(500, err.errors);
+      } else {
+        res.json(200, event);
+      }
+    });
+  }
 };
+
 
 /**
  * Update a event

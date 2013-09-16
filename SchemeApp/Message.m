@@ -7,7 +7,20 @@
 //
 
 #import "Message.h"
+#import "User.h"
+#import "Helpers.h"
 
 @implementation Message
+
+- (NSDictionary *)asDictionary
+{
+    NSMutableDictionary *jsonMessage = [[NSMutableDictionary alloc]init];
+    [jsonMessage setObject:self.text forKey:@"text"];
+    [jsonMessage setObject:[Helpers stringFromNSDate:self.date] forKey:@"date"];
+    [jsonMessage setObject:self.from.docID forKey:@"from"];
+    [jsonMessage setObject:self.docID forKey:@"_id"];
+    
+    return jsonMessage;
+}
 
 @end

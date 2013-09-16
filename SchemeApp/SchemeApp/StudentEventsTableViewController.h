@@ -10,4 +10,13 @@
 
 @interface StudentEventsTableViewController : UITableViewController
 
+@property (nonatomic, copy) NSMutableArray *eventsWithEventWrapper;
+@property (nonatomic, copy) NSString *course;
+@property (nonatomic, copy) NSString *litterature;
+@property (nonatomic, copy) NSString *dateForClass;
+@property (nonatomic, copy) NSString *teacher;
+@property (nonatomic, copy) NSString *startDateCourse;
+@property (nonatomic, copy) NSString *endDateCourse;
+
+
 @end

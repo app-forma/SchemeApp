@@ -14,6 +14,8 @@
 		0423298D17DF2B7B005B47F9 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423298C17DF2B7B005B47F9 /* Message.m */; };
 		0423299C17DF351D005B47F9 /* RoleType in Resources */ = {isa = PBXBuildFile; fileRef = 0423299B17DF351D005B47F9 /* RoleType */; };
 		0437DDAA17E2240400DB9F5A /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437DDA917E2240400DB9F5A /* Validation.m */; };
+		0437DE2517E307F000DB9F5A /* StudentMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437DE2417E307F000DB9F5A /* StudentMessageViewController.m */; };
+		0437DE2717E32FD200DB9F5A /* DatePicker in Resources */ = {isa = PBXBuildFile; fileRef = 0437DE2617E32FD200DB9F5A /* DatePicker */; };
 		0493B52A17DDF80C003B3D23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52917DDF80C003B3D23 /* Foundation.framework */; };
 		0493B52C17DDF80C003B3D23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */; };
 		0493B52E17DDF80C003B3D23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52D17DDF80C003B3D23 /* UIKit.framework */; };
@@ -26,6 +28,7 @@
 		0493B54517DDF80C003B3D23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52D17DDF80C003B3D23 /* UIKit.framework */; };
 		0493B54D17DDF80C003B3D23 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0493B54B17DDF80C003B3D23 /* InfoPlist.strings */; };
 		0493B54F17DDF80C003B3D23 /* SchemeAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */; };
+		04E09F5B17E7249D00B946CB /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E09F5A17E7249D00B946CB /* EventCell.m */; };
 		270750A217E2573800ACFAAD /* AdminEventWrapperDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270750A117E2573800ACFAAD /* AdminEventWrapperDetailsViewController.m */; };
 		2748CDC917DF360F00A06467 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748CDC817DF360F00A06467 /* Helpers.m */; };
 		27BCC1E717E1E7E7009977BB /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC1E617E1E7E7009977BB /* LoginStoryboard.storyboard */; };
@@ -51,6 +54,8 @@
 		4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC5DD817E1EFAD0032C92F /* MessageCell.m */; };
 		8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */; };
 		8F2407DB17E1C43600BB9B8B /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F2407D917E1C43600BB9B8B /* DatePickerViewController.xib */; };
+		AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
+		AF05FD3D17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
 		AF2551F017E04628006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F117E04629006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7817DF0FE900DC2DEC /* AdminStore.m */; };
@@ -63,8 +68,8 @@
 		AFE538F117E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538E817E0972C00C0B776 /* StudentEventDetailsViewController.m */; };
 		AFE538F217E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538EA17E0972C00C0B776 /* StudentEventsTableViewController.m */; };
 		AFE538F317E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538EA17E0972C00C0B776 /* StudentEventsTableViewController.m */; };
-		AFE538F417E0972C00C0B776 /* StudentMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538EC17E0972C00C0B776 /* StudentMainViewController.m */; };
-		AFE538F517E0972C00C0B776 /* StudentMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538EC17E0972C00C0B776 /* StudentMainViewController.m */; };
+		AFE538F417E0972C00C0B776 /* StudentEventMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538EC17E0972C00C0B776 /* StudentEventMainViewController.m */; };
+		AFE538F517E0972C00C0B776 /* StudentEventMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538EC17E0972C00C0B776 /* StudentEventMainViewController.m */; };
 		AFE538F617E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538EE17E0972C00C0B776 /* StudentMessageDetailsViewController.m */; };
 		AFE538F717E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538EE17E0972C00C0B776 /* StudentMessageDetailsViewController.m */; };
 		AFE538F817E0972C00C0B776 /* StudentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFE538EF17E0972C00C0B776 /* StudentStoryboard.storyboard */; };
@@ -95,6 +100,9 @@
 		0423299B17DF351D005B47F9 /* RoleType */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoleType; sourceTree = "<group>"; };
 		0437DDA817E2240400DB9F5A /* Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validation.h; sourceTree = "<group>"; };
 		0437DDA917E2240400DB9F5A /* Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Validation.m; sourceTree = "<group>"; };
+		0437DE2317E307F000DB9F5A /* StudentMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentMessageViewController.h; sourceTree = "<group>"; };
+		0437DE2417E307F000DB9F5A /* StudentMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentMessageViewController.m; sourceTree = "<group>"; };
+		0437DE2617E32FD200DB9F5A /* DatePicker */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DatePicker; sourceTree = "<group>"; };
 		0493B52617DDF80C003B3D23 /* SchemeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchemeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0493B52917DDF80C003B3D23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -111,6 +119,8 @@
 		0493B54A17DDF80C003B3D23 /* SchemeAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SchemeAppTests-Info.plist"; sourceTree = "<group>"; };
 		0493B54C17DDF80C003B3D23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeAppTests.m; sourceTree = "<group>"; };
+		04E09F5917E7249D00B946CB /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
+		04E09F5A17E7249D00B946CB /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
 		270750A017E2573800ACFAAD /* AdminEventWrapperDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEventWrapperDetailsViewController.h; sourceTree = "<group>"; };
 		270750A117E2573800ACFAAD /* AdminEventWrapperDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEventWrapperDetailsViewController.m; sourceTree = "<group>"; };
 		2748CDC717DF360F00A06467 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
@@ -145,6 +155,8 @@
 		8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		8F2407D917E1C43600BB9B8B /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
 		AC99216210684512B293A9D8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF05FD3A17E71638004A5B01 /* AdminEditStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEditStudentViewController.h; sourceTree = "<group>"; };
+		AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEditStudentViewController.m; sourceTree = "<group>"; };
 		AF2551F617E04883006EDD02 /* SuperAdminStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperAdminStore.h; sourceTree = "<group>"; };
 		AF2551F717E04883006EDD02 /* SuperAdminStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperAdminStore.m; sourceTree = "<group>"; };
 		AF301B7717DF0FE900DC2DEC /* AdminStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdminStore.h; sourceTree = "<group>"; };
@@ -157,8 +169,8 @@
 		AFE538E817E0972C00C0B776 /* StudentEventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentEventDetailsViewController.m; sourceTree = "<group>"; };
 		AFE538E917E0972C00C0B776 /* StudentEventsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentEventsTableViewController.h; sourceTree = "<group>"; };
 		AFE538EA17E0972C00C0B776 /* StudentEventsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentEventsTableViewController.m; sourceTree = "<group>"; };
-		AFE538EB17E0972C00C0B776 /* StudentMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentMainViewController.h; sourceTree = "<group>"; };
-		AFE538EC17E0972C00C0B776 /* StudentMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentMainViewController.m; sourceTree = "<group>"; };
+		AFE538EB17E0972C00C0B776 /* StudentEventMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentEventMainViewController.h; sourceTree = "<group>"; };
+		AFE538EC17E0972C00C0B776 /* StudentEventMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentEventMainViewController.m; sourceTree = "<group>"; };
 		AFE538ED17E0972C00C0B776 /* StudentMessageDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentMessageDetailsViewController.h; sourceTree = "<group>"; };
 		AFE538EE17E0972C00C0B776 /* StudentMessageDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentMessageDetailsViewController.m; sourceTree = "<group>"; };
 		AFE538EF17E0972C00C0B776 /* StudentStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StudentStoryboard.storyboard; sourceTree = "<group>"; };
@@ -262,6 +274,7 @@
 				0493B53217DDF80C003B3D23 /* InfoPlist.strings */,
 				0493B53517DDF80C003B3D23 /* main.m */,
 				0493B53717DDF80C003B3D23 /* SchemeApp-Prefix.pch */,
+				0437DE2617E32FD200DB9F5A /* DatePicker */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -308,6 +321,8 @@
 				27BCC1F617E1F5D9009977BB /* AdminStudentsViewController.m */,
 				270750A017E2573800ACFAAD /* AdminEventWrapperDetailsViewController.h */,
 				270750A117E2573800ACFAAD /* AdminEventWrapperDetailsViewController.m */,
+				AF05FD3A17E71638004A5B01 /* AdminEditStudentViewController.h */,
+				AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */,
 			);
 			name = Admin;
 			sourceTree = "<group>";
@@ -342,6 +357,8 @@
 		27D8B45517E0B92A007EC0E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04E09F5917E7249D00B946CB /* EventCell.h */,
+				04E09F5A17E7249D00B946CB /* EventCell.m */,
 				27BCC1E617E1E7E7009977BB /* LoginStoryboard.storyboard */,
 				AFE538EF17E0972C00C0B776 /* StudentStoryboard.storyboard */,
 				27D8B45617E0B958007EC0E5 /* AdminStoryboard.storyboard */,
@@ -360,8 +377,8 @@
 				27BCC1EB17E1F335009977BB /* Admin */,
 				27BCC1E817E1E8B5009977BB /* LoginViewController.h */,
 				27BCC1E917E1E8B5009977BB /* LoginViewController.m */,
-				AFE538EB17E0972C00C0B776 /* StudentMainViewController.h */,
-				AFE538EC17E0972C00C0B776 /* StudentMainViewController.m */,
+				AFE538EB17E0972C00C0B776 /* StudentEventMainViewController.h */,
+				AFE538EC17E0972C00C0B776 /* StudentEventMainViewController.m */,
 				AFE538E717E0972C00C0B776 /* StudentEventDetailsViewController.h */,
 				AFE538E817E0972C00C0B776 /* StudentEventDetailsViewController.m */,
 				AFE538E917E0972C00C0B776 /* StudentEventsTableViewController.h */,
@@ -370,6 +387,8 @@
 				AFE538EE17E0972C00C0B776 /* StudentMessageDetailsViewController.m */,
 				8F2407D717E1C43600BB9B8B /* DatePickerViewController.h */,
 				8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */,
+				0437DE2317E307F000DB9F5A /* StudentMessageViewController.h */,
+				0437DE2417E307F000DB9F5A /* StudentMessageViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -472,6 +491,7 @@
 				0493B53417DDF80C003B3D23 /* InfoPlist.strings in Resources */,
 				0493B53C17DDF80C003B3D23 /* Images.xcassets in Resources */,
 				27BCC21217E201B8009977BB /* messages_selected@1x.png in Resources */,
+				0437DE2717E32FD200DB9F5A /* DatePicker in Resources */,
 				27BCC20F17E201B8009977BB /* courses_selected@2x.png in Resources */,
 				27BCC21117E201B8009977BB /* courses_unselected@2x.png in Resources */,
 				27BCC20117E1FAF5009977BB /* users_unselected@2x.png in Resources */,
@@ -536,15 +556,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				27BCC21A17E24304009977BB /* EventWrapperCell.m in Sources */,
-				AFE538F417E0972C00C0B776 /* StudentMainViewController.m in Sources */,
+				AFE538F417E0972C00C0B776 /* StudentEventMainViewController.m in Sources */,
 				AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */,
 				0493B53A17DDF80C003B3D23 /* AppDelegate.m in Sources */,
 				270750A217E2573800ACFAAD /* AdminEventWrapperDetailsViewController.m in Sources */,
 				8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */,
 				AF2551F017E04628006EDD02 /* Store.m in Sources */,
 				AFE538F617E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */,
+				04E09F5B17E7249D00B946CB /* EventCell.m in Sources */,
 				0493B53617DDF80C003B3D23 /* main.m in Sources */,
 				0437DDAA17E2240400DB9F5A /* Validation.m in Sources */,
+				AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */,
 				0423298117DF230B005B47F9 /* User.m in Sources */,
 				AF2551F817E04883006EDD02 /* SuperAdminStore.m in Sources */,
 				04199A8317E0B88D00E922D5 /* AFNetworking.m in Sources */,
@@ -559,6 +581,7 @@
 				27BCC1EA17E1E8B5009977BB /* LoginViewController.m in Sources */,
 				0423298A17DF2ABA005B47F9 /* Event.m in Sources */,
 				AFE538F217E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */,
+				0437DE2517E307F000DB9F5A /* StudentMessageViewController.m in Sources */,
 				0423298D17DF2B7B005B47F9 /* Message.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,9 +590,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF05FD3D17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */,
 				AFE538F717E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */,
 				AFE538F117E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */,
-				AFE538F517E0972C00C0B776 /* StudentMainViewController.m in Sources */,
+				AFE538F517E0972C00C0B776 /* StudentEventMainViewController.m in Sources */,
 				AFE538F317E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */,
 				0493B54F17DDF80C003B3D23 /* SchemeAppTests.m in Sources */,
 				AF2551F517E04631006EDD02 /* StudentStore.m in Sources */,

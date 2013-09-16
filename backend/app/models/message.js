@@ -4,7 +4,7 @@
 
 var mongoose = require('mongoose'),
     config = require('../../config/config.js'),
-    EventWrapper = require('./user.js'),
+    User = require('./user.js'),
     Schema = mongoose.Schema;
 
 
@@ -19,10 +19,10 @@ var MessageSchema = new Schema({
         required: true,
         trim: true
     },
-    from: [{ // e.g. this user is registered on following courses
+    from: { // e.g. this user is registered on following courses
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }]
+    }
 });
 
 /**

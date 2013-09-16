@@ -9,7 +9,7 @@
 {
     self = [super init];
     if (self) {
-        baseURL = @"http://127.0.0.1:10010/";
+        baseURL = @"http://schemeapp.erikosterberg.com/";
     }
     return self;
 }
@@ -60,6 +60,18 @@
         //Handle success
     } failure:^(NSError *error) {
         //Handle failure
+    }];
+}
+
+-(void)readByStartDate:(NSString *)startDate toEndDate:(NSString *)endDate callback:(callback)callback
+{
+    NSURL *url = [NSURL URLWithString:baseURL];
+    NSDictionary *param = @{@"startDate": startDate, @"endDate": endDate};
+    AFHTTPClient *client = [[AFHTTPClient alloc]initWithBaseURL:url];
+    [client POST:@"eventwrappers/findbydate" parameters:param success:^(NSHTTPURLResponse *response, id responseObject) {
+        callback(responseObject);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", [error localizedDescription]);
     }];
 }
 @end

@@ -7,13 +7,29 @@
 //
 
 #import "LoginViewController.h"
-#import "StudentMainViewController.h"
+#import "StudentEventMainViewController.h"
+#import "Store.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+- (IBAction)didPressSignIn:(id)sender;
+- (IBAction)didPressForgotPassword:(id)sender;
 
 @end
 
 @implementation LoginViewController
+
+-(void)viewDidLoad
+{
+    self.navigationController.navigationBarHidden = YES;
+}
+
+#pragma mark text field delegate methods:
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return [textField resignFirstResponder];
+}
 
 - (IBAction)loadAdminSB:(id)sender {
     UIStoryboard *adminSB = [UIStoryboard storyboardWithName:@"AdminStoryboard" bundle:nil];
@@ -28,5 +44,14 @@
     UIViewController *initialVC = [studentSB instantiateInitialViewController];
     initialVC.modalTransitionStyle = UIModalPresentationFullScreen;
     [self presentViewController:initialVC animated:YES completion:nil];
+}
+
+- (IBAction)didPressSignIn:(id)sender {
+    NSLog(@"log in functionality not yet implemented.");
+    NSDictionary *credentials = [[NSDictionary alloc]initWithObjects:@[self.emailField.text, self.passwordField.text] forKeys:@[@"email", @"password"]];
+}
+
+- (IBAction)didPressForgotPassword:(id)sender {
+    NSLog(@"log in functionality not yet implemented.");
 }
 @end

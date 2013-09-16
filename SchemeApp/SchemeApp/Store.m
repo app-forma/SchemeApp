@@ -16,6 +16,18 @@
 {
     return self.mainStore;
 }
++ (AFNetworking *)dbConnection
+{
+    static AFNetworking *dbConnection = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+                  {
+                      dbConnection = [[AFNetworking alloc] init];
+                  });
+    
+    return dbConnection;
+}
 + (Store *)mainStore
 {
     static Store *mainStore = nil;
@@ -65,16 +77,24 @@
     return studentStore;
 }
 
-- (User *)userWithEmail:(NSString *)email andPassword:(NSString *)password
+- (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion
 {
-#warning Implement
-    return [[User alloc] initWithRole:SuperAdminRole
-                            firstname:@"Johan"
-                             lastname:@"Thorell"
-                                email:@"jdhie"
-                             password:@"niewi"];
-    
-    // Returnerar nil om felaktigt lösenord och skickar en AlertView...
+#warning Implement password
+    [Store.dbConnection readType:@"users"
+                          withId:nil
+                        callback:^(id result)
+     {
+         for (NSDictionary *userDictionary in result)
+         {
+             if ([[userDictionary objectForKey:@"email"] isEqualToString:email])
+             {
+                 Store.mainStore.currentUser = [[User alloc] initWithUserDictionary:userDictionary];
+                 completion(YES);
+                 return;
+             }
+         }
+         completion(NO);
+     }];
 }
 
 @end

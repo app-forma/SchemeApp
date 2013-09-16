@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StudentMainViewController : UIViewController
+@interface StudentEventMainViewController : UIViewController
 
 @end
