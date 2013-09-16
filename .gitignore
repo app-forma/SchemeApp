@@ -12,6 +12,7 @@ build/
 *.xcworkspace
 !default.xcworkspace
 !SchemeApp.xcworkspace
+project.pbxproj
 xcuserdata
 profile
 *.moved-aside
