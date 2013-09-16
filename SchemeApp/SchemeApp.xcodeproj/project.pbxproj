@@ -53,6 +53,8 @@
 		4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC5DD817E1EFAD0032C92F /* MessageCell.m */; };
 		8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */; };
 		8F2407DB17E1C43600BB9B8B /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F2407D917E1C43600BB9B8B /* DatePickerViewController.xib */; };
+		AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
+		AF05FD3D17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
 		AF2551F017E04628006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F117E04629006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7817DF0FE900DC2DEC /* AdminStore.m */; };
@@ -150,6 +152,8 @@
 		8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		8F2407D917E1C43600BB9B8B /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
 		AC99216210684512B293A9D8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF05FD3A17E71638004A5B01 /* AdminEditStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEditStudentViewController.h; sourceTree = "<group>"; };
+		AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEditStudentViewController.m; sourceTree = "<group>"; };
 		AF2551F617E04883006EDD02 /* SuperAdminStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperAdminStore.h; sourceTree = "<group>"; };
 		AF2551F717E04883006EDD02 /* SuperAdminStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperAdminStore.m; sourceTree = "<group>"; };
 		AF301B7717DF0FE900DC2DEC /* AdminStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdminStore.h; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 				27BCC1F617E1F5D9009977BB /* AdminStudentsViewController.m */,
 				270750A017E2573800ACFAAD /* AdminEventWrapperDetailsViewController.h */,
 				270750A117E2573800ACFAAD /* AdminEventWrapperDetailsViewController.m */,
+				AF05FD3A17E71638004A5B01 /* AdminEditStudentViewController.h */,
+				AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */,
 			);
 			name = Admin;
 			sourceTree = "<group>";
@@ -554,6 +560,7 @@
 				AFE538F617E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */,
 				0493B53617DDF80C003B3D23 /* main.m in Sources */,
 				0437DDAA17E2240400DB9F5A /* Validation.m in Sources */,
+				AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */,
 				0423298117DF230B005B47F9 /* User.m in Sources */,
 				AF2551F817E04883006EDD02 /* SuperAdminStore.m in Sources */,
 				04199A8317E0B88D00E922D5 /* AFNetworking.m in Sources */,
@@ -577,6 +584,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF05FD3D17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */,
 				AFE538F717E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */,
 				AFE538F117E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */,
 				AFE538F517E0972C00C0B776 /* StudentEventMainViewController.m in Sources */,
