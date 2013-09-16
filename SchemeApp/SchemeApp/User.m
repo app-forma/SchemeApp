@@ -68,7 +68,7 @@
 - (id)initWithUserDictionary:(NSDictionary *)userDictionary
 {
     return  [self initWithDocID:[userDictionary objectForKey:@"_id"]
-                        Role:[self roleTypeFromString:[userDictionary objectForKey:@"role"]]
+                        Role:[User roleTypeFromString:[userDictionary objectForKey:@"role"]]
                      firstname:[userDictionary objectForKey:@"firstname"]
                       lastname:[userDictionary objectForKey:@"lastname"]
                          email:[userDictionary objectForKey:@"email"]
@@ -89,7 +89,7 @@
     }
     [jsonUser setObject:userMessages forKey:@"messages"];
     [jsonUser setObject:userEventWrappers forKey:@"eventWrappers"];
-    [jsonUser setObject:[self stringFromRoleType:self.role] forKey:@"role"];
+    [jsonUser setObject:[User stringFromRoleType:self.role] forKey:@"role"];
     [jsonUser setObject:self.firstname forKey:@"firstname"];
     [jsonUser setObject:self.lastname forKey:@"lastname"];
     [jsonUser setObject:self.email forKey:@"email"];
