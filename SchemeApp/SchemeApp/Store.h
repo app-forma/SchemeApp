@@ -25,11 +25,6 @@
 
 @property (nonatomic, strong) User *currentUser;
 
-#warning Dummy
-@property (nonatomic, strong) NSMutableSet *users;
-@property (nonatomic, strong) NSMutableSet *events;
-@property (nonatomic, strong) NSMutableSet *eventWrappers;
-
 - (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion;
 
 @end
