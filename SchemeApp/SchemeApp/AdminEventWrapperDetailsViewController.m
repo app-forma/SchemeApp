@@ -10,9 +10,10 @@
 
 @interface AdminEventWrapperDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *courseNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *courseTeacher;
+@property (weak, nonatomic) IBOutlet UILabel *courseLitterature;
 @property (weak, nonatomic) IBOutlet UILabel *courseStartDate;
 @property (weak, nonatomic) IBOutlet UILabel *courseEndDate;
-@property (weak, nonatomic) IBOutlet UILabel *courseTeacher;
 
 @end
 
@@ -30,8 +31,9 @@
 {
     [super viewDidLoad];
     self.courseNameLabel.text = self.detailsCourseName;
+    self.courseTeacher.text = self.detailsCourseTeacher;
+    self.courseLitterature.text = self.detailsCourseLitterature;
     self.courseStartDate.text = self.detailsCourseStartDate;
     self.courseEndDate.text = self.detailsCourseEndDate;
-    self.courseTeacher.text = self.detailsCourseTeacher;
 }
 @end

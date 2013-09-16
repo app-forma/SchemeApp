@@ -39,10 +39,11 @@
     if([@"AdminEventWrapperDetailsSegue" isEqualToString:segue.identifier])
     {
         AdminEventWrapperDetailsViewController *eventWrapperDetailsVC = segue.destinationViewController;
+        eventWrapperDetailsVC.detailsCourseStartDate = @"1337-66-66 13:37";
+        eventWrapperDetailsVC.detailsCourseEndDate = @"1337-77-77 13:37";
         eventWrapperDetailsVC.detailsCourseName = @"Some eventWrapper name";
-        eventWrapperDetailsVC.detailsCourseStartDate = @"Some eventwrapper startDate";
-        eventWrapperDetailsVC.detailsCourseEndDate = @"Some eventwrapper endDate";
         eventWrapperDetailsVC.detailsCourseTeacher = @"Some eventwrapper teacher";
+        eventWrapperDetailsVC.detailsCourseLitterature = @"GIT For tards vol 3";
         
         
         // WHEN USING STORE USE SOMETHING LIKE THIS!
