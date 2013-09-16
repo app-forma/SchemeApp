@@ -93,7 +93,11 @@
     [jsonUser setObject:self.firstname forKey:@"firstname"];
     [jsonUser setObject:self.lastname forKey:@"lastname"];
     [jsonUser setObject:self.email forKey:@"email"];
-    [jsonUser setObject:self.docID forKey:@"_id"];
+    
+    if ([self.docID isEqualToString:@""] == NO)
+    {
+        [jsonUser setObject:self.docID forKey:@"_id"];
+    }
     
     return jsonUser;
 }
