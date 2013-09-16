@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AdminEditEventWrapperViewController : UITableView
+@interface AdminEditEventWrapperViewController : UIViewController
 
 @end

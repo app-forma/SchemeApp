@@ -13,15 +13,6 @@
 
 @implementation AdminEditEventWrapperViewController
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -60,3 +51,4 @@
 
 
 @end
+
