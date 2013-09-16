@@ -7,6 +7,9 @@
 //
 
 #import "StudentEventsTableViewController.h"
+#import "Event.h"
+#import "EventCell.h"
+#import "EventWrapper.h"
 
 @interface StudentEventsTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -26,9 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.navigationItem.title = @"Events";
-
+//    [self.tableView registerClass:[EventCell class] forCellReuseIdentifier:@"EventCell"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -46,17 +48,24 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1; // returnera antalet events för en student.
+    return [self.eventsWithEventWrapper count]; // returnera antalet events för en student.
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    static NSString *CellIdentifier = @"EventCell";
+    EventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    Event *event = self.eventsWithEventWrapper[indexPath.row][@"event"];
+    EventWrapper *eventWrapper = self.eventsWithEventWrapper[indexPath.row][@"eventWrapper"];
+    cell.info.text = event.info;
+    cell.courseName.text = eventWrapper.name;
+    cell.date.text = [Helpers stringFromNSDate:event.startDate];
     return cell;
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 135;
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // skapa en StudentEventDetailsViewController och pusha den med detaljer för valda eventet.

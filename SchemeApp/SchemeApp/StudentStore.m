@@ -21,12 +21,8 @@
                         andEndDate:(NSDate *)endDate
                         completion:(void (^)(NSArray *eventWrappers))completion
 {
-    [Store.dbConnection readType:DB_TYPE_EVENTWRAPPER
-                          withId:nil
-                        callback:^(id result)
-    {
-        [self fillListOfEventWrappersByFilteringResult:result withStartDate:startDate andEndDate:endDate];
-        completion(listOfEventWrappers);
+    [[Store dbConnection] readByStartDate:[Helpers stringFromNSDate:startDate] toEndDate:[Helpers stringFromNSDate:endDate] callback:^(id result) {
+        completion(result);
     }];
 }
 

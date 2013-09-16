@@ -16,6 +16,7 @@
 		0437DDAA17E2240400DB9F5A /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437DDA917E2240400DB9F5A /* Validation.m */; };
 		0437DE2517E307F000DB9F5A /* StudentMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437DE2417E307F000DB9F5A /* StudentMessageViewController.m */; };
 		0437DE2717E32FD200DB9F5A /* DatePicker in Resources */ = {isa = PBXBuildFile; fileRef = 0437DE2617E32FD200DB9F5A /* DatePicker */; };
+		0471C69317E7050400FB7541 /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0471C69217E7050400FB7541 /* EventCell.m */; };
 		0493B52A17DDF80C003B3D23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52917DDF80C003B3D23 /* Foundation.framework */; };
 		0493B52C17DDF80C003B3D23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */; };
 		0493B52E17DDF80C003B3D23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52D17DDF80C003B3D23 /* UIKit.framework */; };
@@ -100,6 +101,8 @@
 		0437DE2317E307F000DB9F5A /* StudentMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentMessageViewController.h; sourceTree = "<group>"; };
 		0437DE2417E307F000DB9F5A /* StudentMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentMessageViewController.m; sourceTree = "<group>"; };
 		0437DE2617E32FD200DB9F5A /* DatePicker */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DatePicker; sourceTree = "<group>"; };
+		0471C69117E7050400FB7541 /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
+		0471C69217E7050400FB7541 /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
 		0493B52617DDF80C003B3D23 /* SchemeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchemeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0493B52917DDF80C003B3D23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -356,6 +359,8 @@
 				4DAC5DD817E1EFAD0032C92F /* MessageCell.m */,
 				27BCC21817E24304009977BB /* EventWrapperCell.h */,
 				27BCC21917E24304009977BB /* EventWrapperCell.m */,
+				0471C69117E7050400FB7541 /* EventCell.h */,
+				0471C69217E7050400FB7541 /* EventCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -551,6 +556,7 @@
 				270750A217E2573800ACFAAD /* AdminEventWrapperDetailsViewController.m in Sources */,
 				8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */,
 				AF2551F017E04628006EDD02 /* Store.m in Sources */,
+				0471C69317E7050400FB7541 /* EventCell.m in Sources */,
 				AFE538F617E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */,
 				0493B53617DDF80C003B3D23 /* main.m in Sources */,
 				0437DDAA17E2240400DB9F5A /* Validation.m in Sources */,
