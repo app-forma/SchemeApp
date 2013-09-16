@@ -5,6 +5,7 @@
 var mongoose = require('mongoose'),
     config = require('../../config/config.js'),
     EventWrapper = require('./eventWrapper.js'),
+    Message = require('./message.js'),
     Schema = mongoose.Schema;
 /**
  *	Recipe Schema
@@ -37,6 +38,10 @@ var UserSchema = new Schema({
     eventWrappers: [{ // e.g. this user is registered on following courses
         type: Schema.Types.ObjectId,
         ref: 'EventWrapper'
+    }],
+    messages: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Message'
     }]
 });
 
