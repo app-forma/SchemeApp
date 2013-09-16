@@ -13,28 +13,15 @@ exports.eventWrapper = function (req, res, next, id) {
   });
 };
 
-
-
-// create eventWrapperS = always an array as incoming data
 exports.create = function (req, res) {
-  var body = req.body;
-  if (body instanceof Array) {
-    var count = 0,
-      resultList = [];
-    body.forEach(function (_eventWrapper, i) {
-      var eventWrapper = new EventWrapper(_eventWrapper);
-      eventWrapper.saveToDisk(eventWrapper, function (err, eventWrapper) {
-        resultList[i] = err ? false : eventWrapper._id;
-        if (++count === body.length) {
-          res.json(200, resultList);
-        }
-      });
-    });
-  } else {
-    res.json(500, {
-      error: 'Invalid format'
-    });
-  }
+  var eventWrapper = new EventWrapper(req.body);
+  eventWrapper.saveToDisk(eventWrapper, function (err, eventWrapper) {
+    if (err) {
+      res.json(500, err.errors);
+    } else {
+      res.json(200, eventWrapper);
+    }
+  });
 };
 
 /**

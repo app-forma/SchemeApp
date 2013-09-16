@@ -13,25 +13,15 @@ exports.message = function (req, res, next, id) {
   });
 };
 
-exports.create = function (req, res) {
-  var body = req.body;
-  if (body instanceof Array) {
-    var count = 0,
-      resultList = [];
-    body.forEach(function (_message, i) {
-      var message = new Message(_message);
-      message.saveToDisk(message, function (err, message) {
-        resultList[i] = err ? false : message._id;
-        if (++count === body.length) {
-          res.json(200, resultList);
-        }
-      });
-    });
-  } else {
-    res.json(500, {
-      error: 'Invalid format'
-    });
-  }
+exports.create = function(req, res) {
+  var message = new Message(req.body);
+  message.saveToDisk(message, function(err, message) {
+    if (err) {
+      res.json(500, err.errors);
+    } else {
+      res.json(200, message);
+    }
+  });
 };
 
 exports.update = function (req, res) {
