@@ -7,6 +7,7 @@
 //
 
 #import "StudentEventsTableViewController.h"
+#import "StudentEventDetailsViewController.h"
 #import "Event.h"
 #import "EventCell.h"
 #import "EventWrapper.h"
@@ -30,6 +31,9 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Events";
+    
+    
+    
 //    [self.tableView registerClass:[EventCell class] forCellReuseIdentifier:@"EventCell"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -68,7 +72,15 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    StudentEventDetailsViewController *detailView = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentEventDetailsViewController"];
+    
+    detailView.eventWrapper = self.eventsWithEventWrapper[indexPath.row][@"eventWrapper"];
+    detailView.event = self.eventsWithEventWrapper[indexPath.row][@"event"];
+    
+    [self.navigationController pushViewController:detailView animated:YES];
+    
     // skapa en StudentEventDetailsViewController och pusha den med detaljer för valda eventet.
+   
 }
 
 @end
