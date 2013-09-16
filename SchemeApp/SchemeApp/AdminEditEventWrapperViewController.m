@@ -8,10 +8,18 @@
 
 #import "AdminEditEventWrapperViewController.h"
 @interface AdminEditEventWrapperViewController()<UIScrollViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
 @implementation AdminEditEventWrapperViewController
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.scrollView.contentSize = CGSizeMake(320, 1000);
+    self.scrollView.frame = self.view.frame;
+}
 
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
