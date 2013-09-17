@@ -30,6 +30,7 @@ exports.user = function (req, res, next, id) {
 };
 
 exports.create = function(req, res) {
+  console.log(req.body);
   var user = new User(req.body);
   if (typeof req.body.password === 'string') {
     user.password = Helpers.generateCryptoPassword(user.password);
@@ -38,6 +39,8 @@ exports.create = function(req, res) {
         console.log(err);
         res.json(500, err.errors);
       } else {
+        console.log(err);
+        console.log(user);
         res.json(200, user);
       }
     });

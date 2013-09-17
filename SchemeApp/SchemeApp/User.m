@@ -100,7 +100,7 @@
     }
     
 #warning Testing
-    NSLog(@"%@",jsonUser);
+    NSLog(@"data contents: %@", [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:jsonUser options:nil error:nil] encoding:NSUTF8StringEncoding]);
     return jsonUser;
 }
 
