@@ -1,6 +1,7 @@
 /*jslint node: true, plusplus: true, vars: true, maxerr: 200, regexp: true, white: true */
 
 var mongoose = require('mongoose'),
+  User = mongoose.model('User'),
   Message = mongoose.model('Message');
 
 
@@ -84,4 +85,17 @@ exports.byIdRaw = function (req, res) {
       res.json(200, doc);
     }
   });
+};
+
+exports.broadcast = function (req, res) {
+  var message = new Message(req.body);
+  message.saveToDisk(message, function(err, message) {
+    User.find({'role': 'student' }, function (err, docs) {
+      docs.forEach(function (user, i) {
+        user.messages.push(message._id);
+        user.save();
+      });
+    });
+  });
+  res.json(200, message);
 };
