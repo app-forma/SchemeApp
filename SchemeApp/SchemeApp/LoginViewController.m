@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 #import "StudentEventMainViewController.h"
-#import "Store.h"
+#import "AdminTabBarViewController.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
@@ -32,11 +32,7 @@
 }
 
 - (IBAction)loadAdminSB:(id)sender {
-    UIStoryboard *adminSB = [UIStoryboard storyboardWithName:@"AdminStoryboard" bundle:nil];
-    UIViewController *initialVC = [adminSB instantiateInitialViewController];
-    initialVC.modalTransitionStyle = UIModalPresentationFullScreen;
-    presentViewController:animated:completion:
-    [self presentViewController:initialVC animated:YES completion:nil];
+    [self presentViewController:[[AdminTabBarViewController alloc] init] animated:YES completion:nil];
 }
 
 - (IBAction)loadStudentSB:(id)sender {

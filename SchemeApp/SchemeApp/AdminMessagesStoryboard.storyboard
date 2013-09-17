@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="XRA-Dz-myU">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <scenes>
+        <!--Admin Messages View Controller-->
+        <scene sceneID="4Jb-I2-ik4">
+            <objects>
+                <viewController id="i9y-Jd-Wgv" customClass="AdminMessagesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qk4-a0-bNK"/>
+                        <viewControllerLayoutGuide type="bottom" id="F23-ud-T5S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F3q-ui-fvw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WqQ-Uf-M7G"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BXh-zO-gnP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="699" y="163"/>
+        </scene>
+        <!--Navigation Controller - Messages-->
+        <scene sceneID="gJO-gx-PyS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XRA-Dz-myU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="2" title="Messages" image="messages_unselected.png" id="9Z3-T0-yej"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sFc-nQ-ftB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="i9y-Jd-Wgv" kind="relationship" relationship="rootViewController" id="Aqx-Ut-yIl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NR5-Hy-bKc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="173" y="163"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="messages_unselected.png" width="30" height="30"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
