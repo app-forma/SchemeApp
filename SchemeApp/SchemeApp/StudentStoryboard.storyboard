@@ -4,11 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Classes-->
         <scene sceneID="nha-td-gyg">
             <objects>
                 <navigationController definesPresentationContext="YES" id="l8O-mi-MtB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="CyC-gX-UDc"/>
+                    <tabBarItem key="tabBarItem" title="Classes" image="courses_unselected.png" id="CyC-gX-UDc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0df-Kd-Woo">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -147,11 +147,11 @@
             </objects>
             <point key="canvasLocation" x="-1795" y="601"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Messages-->
         <scene sceneID="EAx-Kc-HGE">
             <objects>
                 <navigationController definesPresentationContext="YES" id="vo5-Tc-2Gw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="u9p-BB-Gbt"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="messages_unselected.png" id="u9p-BB-Gbt"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="arp-jJ-ESP">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -163,7 +163,7 @@
             </objects>
             <point key="canvasLocation" x="-1374" y="1333"/>
         </scene>
-        <!--Student Message View Controller - Item 2-->
+        <!--Student Message View Controller - Messages-->
         <scene sceneID="84r-FA-z5M">
             <objects>
                 <viewController storyboardIdentifier="StudentMessageViewController" id="1Hw-Pc-2cU" customClass="StudentMessageViewController" sceneMemberID="viewController">
@@ -226,7 +226,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="qEF-VG-dhV"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="messages_unselected.png" id="qEF-VG-dhV"/>
                     <navigationItem key="navigationItem" id="4RE-HV-fWO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eil-bY-Wg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -389,6 +389,11 @@
             <point key="canvasLocation" x="783" y="28"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="courses_unselected.png" width="30" height="30"/>
+        <image name="messages_unselected.png" width="30" height="30"/>
+        <image name="messages_unselected.png" width="30" height="30"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

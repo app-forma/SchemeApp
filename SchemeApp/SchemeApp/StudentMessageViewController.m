@@ -35,7 +35,8 @@
 {
     [super viewDidLoad];
     messages = Store.mainStore.currentUser.messages;
-    self.navigationItem.title = @"Messages:)";
+    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected.png"]];
+    self.navigationItem.title = @"Messages";
 	// Do any additional setup after loading the view.
 }
 #pragma mark - Table view data source

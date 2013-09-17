@@ -36,7 +36,9 @@
 {
     [super viewDidLoad];
     events = [NSMutableArray new];
-    self.navigationItem.title = @"";
+    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"courses_selected.png"]];
+
+    self.navigationItem.title = @"Classes";
     
     
     datePicker = [[DatePickerViewController alloc] init];
