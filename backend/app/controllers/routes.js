@@ -6,6 +6,7 @@ module.exports = function(app) {
   var users = require('./users.js');
   app.get('/users', users.index);
   app.get('/users/:id', users.byId);
+  app.get('/users/:email', users.byEmail);
   app.get('/users-raw/:id', users.byIdRaw);
   app.post('/users', users.create);
   app.put('/users/:id', users.update);

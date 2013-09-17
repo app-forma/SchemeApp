@@ -108,6 +108,19 @@ exports.byIdRaw = function (req, res) {
   });
 };
 
+exports.byEmail = function (req, res) {
+  User.findOne({
+    email: req.params.email
+  }).populate('eventWrappers').populate('messages')
+  .exec(function (err, doc) {
+    if (err) {
+      res.json(500, err.errors);
+    } else {
+      res.json(200, doc);
+    }
+  });
+};
+
 /**
  *   Compare test to hashed password
  */
