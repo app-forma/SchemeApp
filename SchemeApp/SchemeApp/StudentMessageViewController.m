@@ -43,19 +43,19 @@
     mess1.text = @"asdkjfghasdkgajhgdka";
     
     
-    User *master = [[User alloc]initWithDocID:nil Role:SuperAdminRole firstname:@"Anders" lastname:@"Carlsson" email:@"anders@coredev.se" password:@"Master"];
+//    User *master = [[User alloc]initWithDocID:nil Role:SuperAdminRole firstname:@"Anders" lastname:@"Carlsson" email:@"anders@coredev.se" password:@"Master"];
+//    
+//    Message *mess2 = [[Message alloc]init];
+//    mess2.from = master;
+//    mess2.date = [NSDate date];
+//    mess2.text = @"Hej grabbar! Jag har kollat i ert repository och det ser lite stökigt ut. Hur är det med Git-kunskaperna?";
+//    
+//    Message *mess3 = [[Message alloc] init];
+//    mess3.from = henrik;
+//    mess3.date = [NSDate date];
+//    mess3.text = @"Tror dom flesta av oss vet hur man utför alla kommandon men där slutar kunskaperna =) Men nu tror jag att vi fått häng på vad git faktiskt gör vid pull och push";
     
-    Message *mess2 = [[Message alloc]init];
-    mess2.from = master;
-    mess2.date = [NSDate date];
-    mess2.text = @"Hej grabbar! Jag har kollat i ert repository och det ser lite stökigt ut. Hur är det med Git-kunskaperna?";
-    
-    Message *mess3 = [[Message alloc] init];
-    mess3.from = henrik;
-    mess3.date = [NSDate date];
-    mess3.text = @"Tror dom flesta av oss vet hur man utför alla kommandon men där slutar kunskaperna =) Men nu tror jag att vi fått häng på vad git faktiskt gör vid pull och push";
-    
-    messages = @[mess1, mess2, mess3];
+    messages = @[mess1];
     self.navigationItem.title = @"Messages:)";
 	// Do any additional setup after loading the view.
 }

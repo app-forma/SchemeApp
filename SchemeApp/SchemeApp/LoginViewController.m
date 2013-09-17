@@ -23,6 +23,13 @@
 -(void)viewDidLoad
 {
     self.navigationController.navigationBarHidden = YES;
+    //For demo, setting a student to current user
+    Store *store = [[Store alloc]init];
+    [store setCurrentUserToUserWithEmail:@"joe@gmail.com" andPassword:nil completion:^(BOOL success) {
+        if (success) {
+            NSLog(@"%@", Store.mainStore.currentUser.docID);
+        }
+    }];
 }
 
 #pragma mark text field delegate methods:

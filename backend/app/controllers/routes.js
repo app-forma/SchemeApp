@@ -42,12 +42,13 @@ module.exports = function(app) {
   app.put('/events/:id', events.update);
   app.del('/events/:id', events.destroy);
 
-
- var messages = require('./messages.js');
+  // Messages
+  var messages = require('./messages.js');
   app.get('/messages', messages.index);
   app.get('/messages/:id', messages.byId);
   app.get('/messages-raw/:id', messages.byIdRaw);
   app.post('/messages', messages.create);
+  app.post('/messages/broadcast', messages.broadcast);
   app.put('/messages/:id', messages.update);
   app.del('/messages/:id', messages.destroy);
 

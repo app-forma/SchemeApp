@@ -86,7 +86,7 @@ exports.destroy = function (req, res) {
 exports.byId = function (req, res) {
   User.findOne({
     _id: req.params.id
-  }).populate('eventWrappers')
+  }).populate('eventWrappers').populate('messages')
     .exec(function (err, doc) {
       if (err) {
         res.json(500, err.errors);
