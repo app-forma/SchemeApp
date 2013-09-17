@@ -21,6 +21,9 @@
         //Handle success
     } failure:^(NSError *error) {
         //Handle failure
+#warning Testing
+        NSLog(@"User: %@", content);
+        NSLog(@"error: %@", error.userInfo);
     }];
 }
 -(void)readType:(NSString *)type withId:(NSString *)typeId callback:(callback)callback
