@@ -4,6 +4,7 @@
 var mongoose = require('mongoose'),
   Helpers = require('../../helpers.js'),
   User = mongoose.model('User'),
+  EventWrapper = mongoose.model('EventWrapper'),
   passport = require('passport');
 
 
@@ -29,12 +30,12 @@ exports.user = function (req, res, next, id) {
   });
 };
 
-exports.create = function(req, res) {
+exports.create = function (req, res) {
   console.log(req.body);
   var user = new User(req.body);
   if (typeof req.body.password === 'string') {
     user.password = Helpers.generateCryptoPassword(user.password);
-    user.saveToDisk(user, function(err, user) {
+    user.saveToDisk(user, function (err, user) {
       if (err) {
         console.log(err);
         res.json(500, err.errors);
@@ -115,14 +116,29 @@ exports.byIdRaw = function (req, res) {
 exports.byEmail = function (req, res) {
   User.findOne({
     email: req.params.email
-  }).populate('messages').populate('eventWrappers').populate('eventWrappers.events')
-  .exec(function (err, doc) {
-    if (err) {
-      res.json(500, err.errors);
-    } else {
-      res.json(200, doc);
-    }
-  });
+  }).populate('messages').populate('eventWrappers')
+    .exec(function (err, doc) {
+      if (err) {
+        res.json(500, err.errors);
+      } else {
+        var eventWrappers = [];
+        doc.eventWrappers.forEach(function (value, entry) {
+          eventWrappers.push(value._id);
+        });
+        EventWrapper.find({
+          _id: {
+            $in: eventWrappers
+          }
+        }).populate('events').exec(function (e, d) {
+          if (e) {
+            res.json(500, e.errors);
+          } else {
+            doc.eventWrappers = d;
+            res.json(200, doc);
+          }
+        });
+      }
+    });
 };
 
 /**
