@@ -91,11 +91,11 @@
                     [user.messages addObject:msg];
                 }
                 Store.mainStore.currentUser = user;
-                completion(YES);
-                return;
+                
                 
             }
-            
+            completion(YES);
+            return;
         }
         completion(NO);
     }];

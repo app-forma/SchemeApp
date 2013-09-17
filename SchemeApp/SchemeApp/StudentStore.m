@@ -22,7 +22,9 @@
                         completion:(void (^)(NSArray *eventWrappers))completion
 {
     [[Store dbConnection] readByStartDate:[Helpers stringFromNSDate:startDate] toEndDate:[Helpers stringFromNSDate:endDate] callback:^(id result) {
+        
         completion(result);
+        
     }];
 }
 

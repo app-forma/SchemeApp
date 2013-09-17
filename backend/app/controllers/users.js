@@ -115,7 +115,7 @@ exports.byIdRaw = function (req, res) {
 exports.byEmail = function (req, res) {
   User.findOne({
     email: req.params.email
-  }).populate('eventWrappers').populate('messages')
+  }).populate('messages').populate('eventWrappers').populate('eventWrappers.events')
   .exec(function (err, doc) {
     if (err) {
       res.json(500, err.errors);
