@@ -35,6 +35,7 @@ exports.create = function(req, res) {
     user.password = Helpers.generateCryptoPassword(user.password);
     user.saveToDisk(user, function(err, user) {
       if (err) {
+        console.log(err);
         res.json(500, err.errors);
       } else {
         res.json(200, user);

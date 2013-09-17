@@ -100,8 +100,7 @@
     }
     
 #warning Testing
-    NSLog(@"JSON: %d", [NSJSONSerialization isValidJSONObject:jsonUser]);
-    
+    NSLog(@"%@",jsonUser);
     return jsonUser;
 }
 
