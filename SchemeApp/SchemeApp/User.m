@@ -93,14 +93,13 @@
     [jsonUser setValue:self.firstname forKey:@"firstname"];
     [jsonUser setValue:self.lastname forKey:@"lastname"];
     [jsonUser setValue:self.email forKey:@"email"];
+    [jsonUser setValue:self.password forKey:@"password"];
     
     if ([self.docID isEqualToString:@""] == NO)
     {
         [jsonUser setValue:self.docID forKey:@"_id"];
     }
     
-#warning Testing
-    NSLog(@"data contents: %@", [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:jsonUser options:nil error:nil] encoding:NSUTF8StringEncoding]);
     return jsonUser;
 }
 
