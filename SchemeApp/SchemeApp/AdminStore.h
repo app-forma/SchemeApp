@@ -8,6 +8,8 @@
 
 #define DB_TYPE_EVENT @"events"
 #define DB_TYPE_USER @"users"
+#define DB_TYPE_BROADCAST_MESSAGE @"messages/broadcast"
+#define DB_TYPE_MESSAGE @"messages"
 
 #import "StudentStore.h"
 
@@ -31,7 +33,8 @@
 - (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))completion;
 - (void)userWithType:(RoleType)type completion:(void (^)(NSArray *students))completion;
 
-- (void)sendMessage:(Message *)message;
-- (void)sendMessage:(Message *)message toUser:(User *)user;
+- (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))completion;
+- (void)sendMessage:(Message *)message toUsers:(NSArray *)users completion:(void (^)(Message *message))completion;
+
 
 @end

@@ -17,6 +17,9 @@
 #import "AdminMessagesCreateMessageViewController.h"
 #import "SearchCell.h"
 #import "ReceiverCell.h"
+#import "Message.h"
+#import "User.h"
+#import "Helpers.h"
 
 @interface AdminMessagesCreateMessageViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
@@ -60,10 +63,7 @@
     users = @[@"Johan", @"Erik", @"Henrik", @"Marcus", @"Tobias", @"Rickard", @"Master Anders", @"Dummy student"];
     recipients = [NSMutableArray new];
     
-    
     [self.tableView reloadData];
-    
-    
 }
 
 #pragma mark - textfield delegate
@@ -86,7 +86,6 @@
     }
 }
 
-
 #pragma mark - table view
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -96,7 +95,6 @@
 {
     return indexPath.section == SEARCH_SECTION ? 44 : 33;
 }
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == RECIPIENTS_SECTION) { return recipients.count; }
@@ -130,7 +128,8 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [recipients removeObjectAtIndex:indexPath.row];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
     }
 }
 
@@ -154,10 +153,7 @@
 -(void)messageTypeDidChange:(UISegmentedControl*)control
 {
     NSString *type = control.selectedSegmentIndex == MESSAGE_TYPE ? @"message" : @"mailing";
-    NSLog(@"value: %d, type: %@", control.selectedSegmentIndex, type);
-    
     [self.tableView reloadData];
-    
 }
 -(void)didPressCancel
 {
@@ -165,5 +161,19 @@
 }
 
 - (IBAction)didPressSend:(id)sender {
+    User *currentUsr = Store.mainStore.currentUser;
+    Message *message = [[Message alloc]init];
+    message.text = self.textView.text;
+    message.from = [NSString stringWithFormat:@"%@ %@", currentUsr.firstname, currentUsr.lastname];
+    message.date = [NSDate date];
+    
+    if (self.messageTypeControl == MESSAGE_TYPE) {
+        
+    } else {
+        [[Store adminStore]broadcastMessage:message completion:^(Message *message) {
+            NSLog(@"ok");
+        }];
+        
+    }
 }
 @end

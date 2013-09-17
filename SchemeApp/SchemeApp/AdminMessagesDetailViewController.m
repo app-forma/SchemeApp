@@ -29,15 +29,6 @@
     self.fromField.text = self.message.from;
     self.dateField.text = [Helpers stringFromNSDate:self.message.date];
     self.textView.text = self.message.text;
-    
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Reply" style:UIBarButtonItemStyleDone target:self action:@selector(didPressReply)];
-    
-}
-
--(void)didPressReply
-{
-    
 }
 
 @end
