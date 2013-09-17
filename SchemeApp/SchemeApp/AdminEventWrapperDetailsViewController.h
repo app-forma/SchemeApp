@@ -11,8 +11,9 @@
 @interface AdminEventWrapperDetailsViewController : UIViewController
 
 @property (nonatomic, copy) NSString *detailsCourseName;
+@property (nonatomic, copy) NSString *detailsCourseTeacher;
+@property (nonatomic, copy) NSString *detailsCourseLitterature;
 @property (nonatomic, copy) NSString *detailsCourseStartDate;
 @property (nonatomic, copy) NSString *detailsCourseEndDate;
-@property (nonatomic, copy) NSString *detailsCourseTeacher;
 
 @end
