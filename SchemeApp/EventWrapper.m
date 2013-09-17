@@ -19,8 +19,10 @@
     if (self)
     {
         self.name = [eventWrapperDictionary objectForKey:@"name"];
-//        self.user = [eventWrapperDictionary objectForKey:@"owner"];
-        //FIX USER
+
+            NSLog(@"Called :%@", self.name);
+            self.user = [[User alloc]initWithUserDictionary:[eventWrapperDictionary objectForKey:@"owner"]];
+        
         self.litterature = [eventWrapperDictionary objectForKey:@"litterature"];
         self.startDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"startDate"]];
         self.endDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"endDate"]];
