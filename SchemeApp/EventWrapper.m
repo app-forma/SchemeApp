@@ -20,7 +20,6 @@
     {
         self.name = [eventWrapperDictionary objectForKey:@"name"];
 
-            NSLog(@"Called :%@", self.name);
             self.user = [[User alloc]initWithUserDictionary:[eventWrapperDictionary objectForKey:@"owner"]];
         
         self.litterature = [eventWrapperDictionary objectForKey:@"litterature"];
