@@ -34,22 +34,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-#warning Testing
-    
-    [Store.adminStore usersCompletion:^(NSArray *allUsers)
-    {
-        users = allUsers;
-        [self.tableview reloadData];
-        [self.activityIndicator stopAnimating];
-    }];
-//    [Store.adminStore userWithType:StudentRole completion:^(NSArray *students)
-//     {
-//         users = students;
-//         [self.tableview reloadData];
-//         [self.activityIndicator stopAnimating];
-//     }];
-    
     self.edgesForExtendedLayout = UIRectEdgeNone;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [Store.adminStore usersCompletion:^(NSArray *allUsers)
+     {
+         users = allUsers;
+         [self.tableview reloadData];
+         [self.activityIndicator stopAnimating];
+     }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
