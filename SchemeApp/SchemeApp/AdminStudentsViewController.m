@@ -28,15 +28,14 @@
 -(void)loadView
 {
     [super loadView];
-    if ([self.tabBarItem respondsToSelector:@selector(setFinishedSelectedImage:withFinishedUnselectedImage:)]) {
-        [self.tabBarItem setSelectedImage:[UIImage imageNamed:@"users_selected"]];
-    }
+    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"users_selected"]];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 #warning Testing
+    
     [Store.adminStore usersCompletion:^(NSArray *allUsers)
     {
         users = allUsers;

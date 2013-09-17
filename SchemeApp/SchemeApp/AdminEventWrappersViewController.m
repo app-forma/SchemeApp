@@ -28,9 +28,7 @@
 -(void)loadView
 {
     [super loadView];
-    if ([self.tabBarItem respondsToSelector:@selector(setFinishedSelectedImage:withFinishedUnselectedImage:)]) {
-        [self.tabBarItem setSelectedImage:[UIImage imageNamed:@"courses_selected"]];
-    }
+    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"courses_selected"]];
 }
 
 #pragma mark - Perpare for Segue / Set detailsView's details

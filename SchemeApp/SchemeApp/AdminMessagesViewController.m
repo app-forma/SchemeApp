@@ -25,8 +25,6 @@
 -(void)loadView
 {
     [super loadView];
-    if ([self.tabBarItem respondsToSelector:@selector(setFinishedSelectedImage:withFinishedUnselectedImage:)]) {
-        [self.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected"]];
-    }
+    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected"]];
 }
 @end
