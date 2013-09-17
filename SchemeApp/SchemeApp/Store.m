@@ -86,12 +86,10 @@
         if ([currentUser[@"email"] isEqualToString:email]) {
             User *user = [[User alloc]initWithUserDictionary:currentUser];
             if ([currentUser[@"messages"] count] > 0) {
-                NSMutableArray *msgArray = [NSMutableArray new];
                 for (NSDictionary *message in currentUser[@"messages"]){
                     Message *msg = [[Message alloc]initWithMsgDictionary:message];
-                    [msgArray addObject:msg];
+                    [user.messages addObject:msg];
                 }
-                user.messages = msgArray;
                 Store.mainStore.currentUser = user;
                 completion(YES);
                 return;

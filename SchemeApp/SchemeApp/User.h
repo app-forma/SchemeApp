@@ -16,8 +16,8 @@
 @property (nonatomic, copy) NSString *lastname;
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSString *password;
-@property (nonatomic, copy) NSMutableArray *messages;
-@property (nonatomic, copy) NSMutableArray *eventWrappers;
+@property (nonatomic, strong) NSMutableArray *messages;
+@property (nonatomic, strong) NSMutableArray *eventWrappers;
 
 + (RoleType)roleTypeFromString:(NSString *)roleString;
 + (NSString *)stringFromRoleType:(RoleType)role;
