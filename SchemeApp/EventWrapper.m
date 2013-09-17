@@ -14,19 +14,16 @@
 
 - (id)initWithEventWrapperDictionary:(NSDictionary *)eventWrapperDictionary
 {
-    NSLog(@"%@", eventWrapperDictionary);
     self = [super init];
     if (self)
     {
         self.name = [eventWrapperDictionary objectForKey:@"name"];
-
-            self.user = [[User alloc]initWithUserDictionary:[eventWrapperDictionary objectForKey:@"owner"]];
-        
+        self.user = [[User alloc]initWithUserDictionary:[eventWrapperDictionary objectForKey:@"owner"]];
         self.litterature = [eventWrapperDictionary objectForKey:@"litterature"];
         self.startDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"startDate"]];
         self.endDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"endDate"]];
         _docID = [eventWrapperDictionary objectForKey:@"_id"];
-        self.events = [eventWrapperDictionary objectForKey:@"events"];
+        self.events = [NSMutableArray new];
     }
     return self;
 }
