@@ -81,6 +81,7 @@
  */
 +(NSDictionary *) startAndEndTimeForDate:(NSDate*)date
 {
+
     NSUInteger componentFlags =  NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit;
     NSDateComponents *components = [[NSCalendar currentCalendar] components:componentFlags fromDate:[Helpers currentDateTime]];
     [components setHour:0];

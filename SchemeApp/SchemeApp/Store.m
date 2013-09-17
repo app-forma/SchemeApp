@@ -8,6 +8,7 @@
 
 #import "Store.h"
 #import "User.h"
+#import "Message.h"
 
 
 @implementation Store
@@ -80,21 +81,26 @@
 - (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion
 {
 #warning Implement password
-    [Store.dbConnection readType:@"users"
-                          withId:nil
-                        callback:^(id result)
-     {
-         for (NSDictionary *userDictionary in result)
-         {
-             if ([[userDictionary objectForKey:@"email"] isEqualToString:email])
-             {
-                 Store.mainStore.currentUser = [[User alloc] initWithUserDictionary:userDictionary];
-                 completion(YES);
-                 return;
-             }
-         }
-         completion(NO);
-     }];
+    [Store.dbConnection readByEmail:email callback:^(id result) {
+        NSDictionary *currentUser = result;
+        if ([currentUser[@"email"] isEqualToString:email]) {
+            User *user = [[User alloc]initWithUserDictionary:currentUser];
+            if ([currentUser[@"messages"] count] > 0) {
+                NSMutableArray *msgArray = [NSMutableArray new];
+                for (NSDictionary *message in currentUser[@"messages"]){
+                    Message *msg = [[Message alloc]initWithMsgDictionary:message];
+                    [msgArray addObject:msg];
+                }
+                user.messages = msgArray;
+                Store.mainStore.currentUser = user;
+                completion(YES);
+                return;
+                
+            }
+            
+        }
+        completion(NO);
+    }];
 }
 
 @end

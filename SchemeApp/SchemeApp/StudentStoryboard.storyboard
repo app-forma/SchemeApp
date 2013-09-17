@@ -212,6 +212,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dateLabel" destination="jEf-db-3y4" id="Tbz-d7-NIK"/>
                                             <outlet property="messageTextView" destination="gPA-zn-hnH" id="4nP-2a-f27"/>
                                             <outlet property="nameLabel" destination="WuV-hY-dqu" id="UEm-lU-KiH"/>
                                         </connections>

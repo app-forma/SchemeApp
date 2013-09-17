@@ -11,9 +11,10 @@
 @interface Message : NSObject
 
 @property (nonatomic, readonly) NSString *docID;
-@property (nonatomic, strong) User *from;
+@property (nonatomic, strong) NSString *from;
 @property (nonatomic, copy) NSDate *date;
 @property (nonatomic, copy) NSString *text;
 
 - (NSDictionary *)asDictionary;
+- (id)initWithMsgDictionary:(NSDictionary *)msgDictionary;
 @end
