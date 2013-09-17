@@ -12,13 +12,6 @@
 #import "User.h"
 
 
-@interface SuperAdminStore (PrivateMethods)
-
-- (NSArray *)filteredSet:(NSSet *)set withPredicate:(NSPredicate *)predicate;
-
-@end
-
-
 @implementation SuperAdminStore
     
 - (void)createUser:(User *)user

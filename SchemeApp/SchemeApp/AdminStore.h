@@ -27,7 +27,7 @@
 - (void)updateEventWrapper:(EventWrapper *)eventWrapper;
 - (void)deleteEventWrapper:(EventWrapper *)eventWrapper;
 
-- (void)usersCompletion:(void (^)(NSArray *users))completion;
+- (void)usersCompletion:(void (^)(NSArray *allUsers))completion;
 - (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))completion;
 - (void)userWithType:(RoleType)type completion:(void (^)(NSArray *students))completion;
 

@@ -14,7 +14,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventWrapperCellIdentifier" rowHeight="66" id="nBi-Ov-mol" customClass="EventWrapperCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="66"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nBi-Ov-mol" id="Spf-c9-D3y">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="65"/>
@@ -372,13 +372,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="waO-hH-mJ6">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="waO-hH-mJ6">
                                         <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="waO-hH-mJ6" id="BTz-Co-DOA">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="yUE-PZ-YPC" kind="push" identifier="EditUser" id="zVB-TS-mdK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -472,10 +475,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="emailTextLabel" destination="tKz-vD-gb6" id="h2I-9V-ouW"/>
-                        <outlet property="firstnameTestLabel" destination="yBR-eI-8oR" id="BeX-2h-LMA"/>
-                        <outlet property="lastnameTextLabel" destination="i7m-WH-jRg" id="W2W-U0-uNf"/>
-                        <outlet property="passwordTextLabel" destination="tUR-CS-KqE" id="bZf-fv-AcB"/>
+                        <outlet property="emailTextField" destination="tKz-vD-gb6" id="eDt-lL-jjO"/>
+                        <outlet property="firstnameTextField" destination="yBR-eI-8oR" id="guh-cw-yPL"/>
+                        <outlet property="lastnameTextField" destination="i7m-WH-jRg" id="RbX-YR-vjT"/>
+                        <outlet property="passwordTextField" destination="tUR-CS-KqE" id="62b-5w-qba"/>
+                        <outlet property="pickerView" destination="wYJ-Ni-WJ6" id="Von-u9-NsI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H11-wt-DTU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -531,4 +535,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="zVB-TS-mdK"/>
+    </inferredMetricsTieBreakers>
 </document>

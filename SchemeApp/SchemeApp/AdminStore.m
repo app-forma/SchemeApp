@@ -55,13 +55,19 @@
                           callback:NULL];
 }
 
-- (void)usersCompletion:(void (^)(NSArray *users))completion;
+- (void)usersCompletion:(void (^)(NSArray *allUsers))completion
 {
     [Store.dbConnection readType:DB_TYPE_USER
                           withId:nil
                         callback:^(id result)
      {
-         completion((NSArray *)result);
+         NSMutableArray *userModels = [[NSMutableArray alloc] init];
+         for (NSDictionary *userDictionary in result)
+         {
+             [userModels addObject:[[User alloc] initWithUserDictionary:userDictionary]];
+         }
+         
+         completion(userModels);
      }];
 }
 - (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))completion

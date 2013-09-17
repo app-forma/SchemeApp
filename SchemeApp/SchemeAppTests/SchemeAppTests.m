@@ -7,10 +7,12 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "User.h"
+
 
 @interface SchemeAppTests : XCTestCase
-
 @end
+
 
 @implementation SchemeAppTests
 
@@ -26,9 +28,16 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testIfUserAsDictionaryReturnValidJSONFormat
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    User *user = [[User alloc] initWithDocID:[[NSUUID UUID] UUIDString]
+                                        Role:StudentRole
+                                   firstname:@"Firstname"
+                                    lastname:@"Lastname"
+                                       email:@"email@email.com"
+                                    password:@"password"];
+    
+    XCTAssertTrue([NSJSONSerialization isValidJSONObject:user.asDictionary], @"User instance method 'asDicitonary' must return a valid JSON object!");
 }
 
 @end

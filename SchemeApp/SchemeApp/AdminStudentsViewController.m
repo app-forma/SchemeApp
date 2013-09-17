@@ -7,6 +7,8 @@
 //
 
 #import "AdminStudentsViewController.h"
+#import "AdminEditStudentViewController.h"
+#import "User.h"
 
 
 @interface AdminStudentsViewController ()
@@ -20,6 +22,7 @@
 @implementation AdminStudentsViewController
 {
     NSArray *users;
+    User *selectedUser;
 }
 
 -(void)loadView
@@ -33,14 +36,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [Store.adminStore userWithType:StudentRole completion:^(NSArray *students)
-     {
-         users = students;
-         [self.tableview reloadData];
-         [self.activityIndicator stopAnimating];
-     }];
+#warning Testing
+    [Store.adminStore usersCompletion:^(NSArray *allUsers)
+    {
+        users = allUsers;
+        [self.tableview reloadData];
+        [self.activityIndicator stopAnimating];
+    }];
+//    [Store.adminStore userWithType:StudentRole completion:^(NSArray *students)
+//     {
+//         users = students;
+//         [self.tableview reloadData];
+//         [self.activityIndicator stopAnimating];
+//     }];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+#warning Testing
+    NSLog(@"Id: %@", segue.identifier);
+    NSLog(@"Role: %d", selectedUser.role);
+    if([segue.identifier isEqualToString:@"EditUser"])
+    {
+        NSLog(@"User: %@", selectedUser);
+        AdminEditStudentViewController *viewController = segue.destinationViewController;
+        viewController.selectedUser = selectedUser;
+    }
 }
 
 #pragma mark - Table view data source
@@ -103,17 +126,10 @@
 }
 */
 
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    selectedUser = users[indexPath.row];
 }
 
 
