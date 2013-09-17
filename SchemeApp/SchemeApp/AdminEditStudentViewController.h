@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class User;
+
 
 @interface AdminEditStudentViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
+
+@property (strong, nonatomic) User *selectedUser;
+
 @end
