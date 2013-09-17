@@ -129,7 +129,7 @@ exports.byEmail = function (req, res) {
           _id: {
             $in: eventWrappers
           }
-        }).populate('events').exec(function (e, d) {
+        }).populate('owner').populate('events').exec(function (e, d) {
           if (e) {
             res.json(500, e.errors);
           } else {
