@@ -50,6 +50,10 @@
 		27BCC21A17E24304009977BB /* EventWrapperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC21917E24304009977BB /* EventWrapperCell.m */; };
 		2BA0F02C13F44B069424EEB9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC99216210684512B293A9D8 /* libPods.a */; };
 		4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC5DD817E1EFAD0032C92F /* MessageCell.m */; };
+		4DED32BF17E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED32B817E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m */; };
+		4DED32C017E993F7008A5D3A /* AdminMessagesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED32BA17E993F7008A5D3A /* AdminMessagesDetailViewController.m */; };
+		4DED32C117E993F7008A5D3A /* ReceiverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED32BC17E993F7008A5D3A /* ReceiverCell.m */; };
+		4DED32C217E993F7008A5D3A /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED32BE17E993F7008A5D3A /* SearchCell.m */; };
 		8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */; };
 		8F2407DB17E1C43600BB9B8B /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F2407D917E1C43600BB9B8B /* DatePickerViewController.xib */; };
 		AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
@@ -158,6 +162,14 @@
 		27BCC21917E24304009977BB /* EventWrapperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventWrapperCell.m; sourceTree = "<group>"; };
 		4DAC5DD717E1EFAD0032C92F /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		4DAC5DD817E1EFAD0032C92F /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		4DED32B717E993F7008A5D3A /* AdminMessagesCreateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminMessagesCreateMessageViewController.h; sourceTree = "<group>"; };
+		4DED32B817E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminMessagesCreateMessageViewController.m; sourceTree = "<group>"; };
+		4DED32B917E993F7008A5D3A /* AdminMessagesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminMessagesDetailViewController.h; sourceTree = "<group>"; };
+		4DED32BA17E993F7008A5D3A /* AdminMessagesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminMessagesDetailViewController.m; sourceTree = "<group>"; };
+		4DED32BB17E993F7008A5D3A /* ReceiverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverCell.h; sourceTree = "<group>"; };
+		4DED32BC17E993F7008A5D3A /* ReceiverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverCell.m; sourceTree = "<group>"; };
+		4DED32BD17E993F7008A5D3A /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
+		4DED32BE17E993F7008A5D3A /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		8F2407D717E1C43600BB9B8B /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		8F2407D917E1C43600BB9B8B /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
@@ -329,6 +341,14 @@
 		27BCC1EB17E1F335009977BB /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				4DED32B717E993F7008A5D3A /* AdminMessagesCreateMessageViewController.h */,
+				4DED32B817E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m */,
+				4DED32B917E993F7008A5D3A /* AdminMessagesDetailViewController.h */,
+				4DED32BA17E993F7008A5D3A /* AdminMessagesDetailViewController.m */,
+				4DED32BB17E993F7008A5D3A /* ReceiverCell.h */,
+				4DED32BC17E993F7008A5D3A /* ReceiverCell.m */,
+				4DED32BD17E993F7008A5D3A /* SearchCell.h */,
+				4DED32BE17E993F7008A5D3A /* SearchCell.m */,
 				AF8CD8FE17E87AD4004551F8 /* AdminInterfaceViewController.h */,
 				AF8CD8FF17E87AD4004551F8 /* AdminInterfaceViewController.m */,
 				AF8CD8F817E850C8004551F8 /* AdminTabBarViewController.h */,
@@ -588,6 +608,7 @@
 				0493B53A17DDF80C003B3D23 /* AppDelegate.m in Sources */,
 				AF8CD90217E87AD4004551F8 /* AdminInterfaceViewController.m in Sources */,
 				8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */,
+				4DED32BF17E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m in Sources */,
 				AF2551F017E04628006EDD02 /* Store.m in Sources */,
 				AFE538F617E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */,
 				04E09F5B17E7249D00B946CB /* EventCell.m in Sources */,
@@ -602,10 +623,13 @@
 				2748CDC917DF360F00A06467 /* Helpers.m in Sources */,
 				27BCC1EE17E1F347009977BB /* AdminMessagesViewController.m in Sources */,
 				AFE538F017E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */,
+				4DED32C217E993F7008A5D3A /* SearchCell.m in Sources */,
 				AF8CD8FA17E850C8004551F8 /* AdminTabBarViewController.m in Sources */,
 				4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */,
 				AF2551F417E04630006EDD02 /* StudentStore.m in Sources */,
 				27BCC1F717E1F5D9009977BB /* AdminStudentsViewController.m in Sources */,
+				4DED32C017E993F7008A5D3A /* AdminMessagesDetailViewController.m in Sources */,
+				4DED32C117E993F7008A5D3A /* ReceiverCell.m in Sources */,
 				27BCC1F417E1F581009977BB /* AdminEventWrappersViewController.m in Sources */,
 				27BCC1EA17E1E8B5009977BB /* LoginViewController.m in Sources */,
 				0423298A17DF2ABA005B47F9 /* Event.m in Sources */,
