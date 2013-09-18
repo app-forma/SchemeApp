@@ -86,7 +86,6 @@
                 <tableViewController id="Oeo-9a-zW3" customClass="AdminEventWrapperTableViewViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1Hu-zu-f2H">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -151,8 +150,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eqi-Vu-rJN">
-                                                    <rect key="frame" x="20" y="11" width="280" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Begins" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eqi-Vu-rJN">
+                                                    <rect key="frame" x="20" y="11" width="100" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1o-hc-0KD">
+                                                    <rect key="frame" x="128" y="11" width="100" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dz4-t7-5rj">
+                                                    <rect key="frame" x="255" y="11" width="45" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -176,28 +189,29 @@
                                                     </date>
                                                     <timeZone key="timeZone" name="America/Los_Angeles">
                                                         <data key="data">
-
-                        d571c95d49c2ac251ac9d1c85b7537fcc58b1965
-VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
-y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
-5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
-8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
-AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
-DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
-HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
-KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
-OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
-Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
-VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
-Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
-cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
-f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+d571c95d49c2ac251ac9d1c85b7537fcc58b1965VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAA
+AAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQy4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENze
+s6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrS
+FRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkP
+ZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQAJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw
+7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGgDrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJ
+VCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQHNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq
+2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+gKupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFn
+kiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQOOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+b
+jRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89MgRy2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18
+laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQVPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFve
+tRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCgY2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmt
+SKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQcTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgY
+opB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOgf5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+d
+kAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </data>
-
                                                     </timeZone>
+                                                    <connections>
+                                                        <action selector="setDateLabelsToPickerDates:" destination="Oeo-9a-zW3" eventType="valueChanged" id="UmW-v0-Fy9"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -209,10 +223,25 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eP-8b-EHw">
-                                                    <rect key="frame" x="20" y="11" width="280" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60J-Pl-Cek">
+                                                    <rect key="frame" x="20" y="11" width="100" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMG-t6-Anq">
+                                                    <rect key="frame" x="128" y="11" width="100" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UO4-DY-i7J">
+                                                    <rect key="frame" x="255" y="11" width="45" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -233,28 +262,29 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     </date>
                                                     <timeZone key="timeZone" name="America/Los_Angeles">
                                                         <data key="data">
-
-                                         d571c95d49c2ac251ac9d1c85b7537fcc58b1965
-VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
-y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
-5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
-8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
-AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
-DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
-HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
-KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
-OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
-Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
-VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
-Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
-cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
-f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+d571c95d49c2ac251ac9d1c85b7537fcc58b1965VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAA
+AAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQy4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENze
+s6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrS
+FRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkP
+ZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQAJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw
+7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGgDrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJ
+VCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQHNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq
+2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+gKupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFn
+kiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQOOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+b
+jRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89MgRy2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18
+laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQVPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFve
+tRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCgY2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmt
+SKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQcTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgY
+opB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOgf5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+d
+kAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </data>
-
                                                     </timeZone>
+                                                    <connections>
+                                                        <action selector="setDateLabelsToPickerDates:" destination="Oeo-9a-zW3" eventType="valueChanged" id="unO-oM-EL7"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -268,16 +298,19 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="xKS-r4-gQM"/>
- d571c95d49c2ac251ac9d1c85b7537fcc58b1965
                     <connections>
                         <outlet property="courseTitleTextField" destination="VUE-4T-j4s" id="SxD-n6-bKy"/>
+                        <outlet property="endDateDateLabel" destination="IMG-t6-Anq" id="k1x-kQ-PTe"/>
                         <outlet property="endDateLabel" destination="ad9-nF-Tdh" id="ykY-HE-WSS"/>
                         <outlet property="endDatePicker" destination="14s-Qg-7DQ" id="sDO-w2-tNa"/>
                         <outlet property="endDatePickerCell" destination="UCb-A8-vVw" id="wgj-KY-Dkz"/>
+                        <outlet property="endDateTimeLabel" destination="UO4-DY-i7J" id="38Y-Es-tPP"/>
                         <outlet property="litteratureTextField" destination="cty-mB-e9b" id="ow8-wm-C07"/>
+                        <outlet property="startDateDateLabel" destination="J1o-hc-0KD" id="23v-4U-9W7"/>
                         <outlet property="startDateLabel" destination="14s-Qg-7DQ" id="vL3-Vr-B60"/>
                         <outlet property="startDatePicker" destination="ZgW-J2-YiX" id="CC6-yy-fk2"/>
                         <outlet property="startDatePickerCell" destination="bzh-Fc-Wy8" id="Lzw-3Y-Gct"/>
+                        <outlet property="startDateTimeLabel" destination="dz4-t7-5rj" id="Jff-GX-P2k"/>
                         <outlet property="teacherTextField" destination="Q2s-O9-daH" id="ObH-5b-JQD"/>
                     </connections>
                 </tableViewController>
