@@ -57,8 +57,11 @@
     AFHTTPClient *client = [[AFHTTPClient alloc]initWithBaseURL:url];
     [client DELETE:deletePath parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         //Handle success
+        callback(responseObject);
     } failure:^(NSError *error) {
         //Handle failure
+#warning Testing
+        NSLog(@"Error: %@", error.userInfo);
     }];
 }
 
