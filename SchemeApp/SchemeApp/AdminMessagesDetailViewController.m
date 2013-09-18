@@ -29,6 +29,14 @@
     self.fromField.text = self.message.from;
     self.dateField.text = [Helpers stringFromNSDate:self.message.date];
     self.textView.text = self.message.text;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(didPressTrash)];
+}
+
+-(void)didPressTrash
+{
+    [self.delegate willdeleteMessage:self.message];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
