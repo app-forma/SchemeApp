@@ -101,6 +101,8 @@
      }];
 }
 
+
+#pragma mark - messaging methods
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))completion
 {
     [Store.dbConnection createType:DB_TYPE_BROADCAST_MESSAGE withContent:[message asDictionary] callback:^(id result) {
@@ -119,5 +121,14 @@
     [[Store dbConnection]createType:DB_TYPE_MESSAGE withContent:jsonMessage callback:^(id result) {
         completion([[Message alloc]initWithMsgDictionary:result]);
     }];
+}
+
+- (void)updateMessages:(NSArray*)messages forUser:(User*)user
+{
+    NSMutableArray *messageIds = [NSMutableArray new];
+    for (Message *message in messages) {
+        [messageIds addObject:message.docID];
+    }
+    [[Store dbConnection]updateType:DB_TYPE_USER withContent:[NSDictionary dictionaryWithObjects:@[user.docID , messageIds] forKeys:@[@"_id", @"messages"]] callback:nil];
 }
 @end

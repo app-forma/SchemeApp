@@ -35,6 +35,6 @@
 
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))completion;
 - (void)sendMessage:(Message *)message toUsers:(NSArray *)users completion:(void (^)(Message *message))completion;
-
+- (void)updateMessages:(NSArray*)messages forUser:(User*)user;
 
 @end
