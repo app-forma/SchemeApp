@@ -33,4 +33,6 @@ firstname:(NSString *)firstname
 
 - (NSDictionary *)asDictionary;
 
+- (NSString *)name;
+
 @end

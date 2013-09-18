@@ -68,11 +68,11 @@
 - (id)initWithUserDictionary:(NSDictionary *)userDictionary
 {
     return  [self initWithDocID:[userDictionary objectForKey:@"_id"]
-                        Role:[User roleTypeFromString:[userDictionary objectForKey:@"role"]]
-                     firstname:[userDictionary objectForKey:@"firstname"]
-                      lastname:[userDictionary objectForKey:@"lastname"]
-                         email:[userDictionary objectForKey:@"email"]
-                      password:[userDictionary objectForKey:@"password"]];
+                           Role:[User roleTypeFromString:[userDictionary objectForKey:@"role"]]
+                      firstname:[userDictionary objectForKey:@"firstname"]
+                       lastname:[userDictionary objectForKey:@"lastname"]
+                          email:[userDictionary objectForKey:@"email"]
+                       password:[userDictionary objectForKey:@"password"]];
 }
 
 - (NSDictionary *)asDictionary
@@ -101,6 +101,11 @@
     }
     
     return jsonUser;
+}
+
+- (NSString *)name
+{
+    return [NSString stringWithFormat:@"%@ %@", self.firstname, self.lastname];
 }
 
 @end
