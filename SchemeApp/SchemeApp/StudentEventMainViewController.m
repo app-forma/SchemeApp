@@ -17,10 +17,6 @@
     DatePickerViewController *datePicker;
     UIView *datePickerView;
     NSMutableArray *events;
-    
-    
-    
-   
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *startDateForScheme;
@@ -58,9 +54,11 @@
 }
 -(void)DatePickerDonePickingDate:(NSDate *)datePicked
 {
-    
     datePickerView.hidden = YES;
-    NSString *dateText = [Helpers stringFromNSDate:datePicked];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateText = [dateFormat stringFromDate:datePicked];
     if (datePicker.currentDatePicker == StartDatePicker) {
         self.startDateForScheme.text = dateText;
     }else if (datePicker.currentDatePicker == EndDatePicker){
@@ -85,27 +83,13 @@
 {
     NSDate *startDate = [Helpers stripStartDateFromTime:[Helpers dateFromString:self.startDateForScheme.text]];
     NSDate *endDate = [Helpers stripEndDateFromTime:[Helpers dateFromString:self.endDateForScheme.text]];
-
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(startDate >= %@) AND (startDate <= %@)", startDate, endDate];
     
-    NSMutableArray *eArray = [NSMutableArray new];
-    for (EventWrapper *eventWrapper in Store.mainStore.currentUser.eventWrappers){
-        for (Event *event in eventWrapper.events){
-            NSDictionary *eDic = @{@"eventWrapper": eventWrapper, @"event": event};
-            [eArray addObject:eDic];
-        }
-    }
-    NSArray *evArray = [[eArray valueForKey:@"event"] filteredArrayUsingPredicate:predicate];
     NSMutableArray *filteredArray = [NSMutableArray new];
     for (EventWrapper *eventWrapper in Store.mainStore.currentUser.eventWrappers){
         for (Event *event in eventWrapper.events){
-            
-            for (int i = 0; i < evArray.count; i++) {
-                Event *e = evArray[i];
-                if ([e.docID isEqualToString:event.docID]) {
-            NSDictionary *eDic = @{@"eventWrapper": eventWrapper, @"event": event};
-                    [filteredArray addObject:eDic];
-                }
+            if ([[startDate laterDate:event.startDate] isEqual:event.startDate] && [[endDate earlierDate:event.startDate] isEqual:event.startDate]) {
+                NSDictionary *eDic = @{@"eventWrapper": eventWrapper, @"event": event};
+                [filteredArray addObject:eDic];
             }
         }
     }
