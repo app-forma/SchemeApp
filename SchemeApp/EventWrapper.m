@@ -10,6 +10,8 @@
 #import "Helpers.h"
 #import "Event.h"
 #import "User.h"
+
+
 @implementation EventWrapper
 
 - (id)initWithEventWrapperDictionary:(NSDictionary *)eventWrapperDictionary
@@ -18,7 +20,7 @@
     if (self)
     {
         self.name = [eventWrapperDictionary objectForKey:@"name"];
-        self.user = [[User alloc]initWithUserDictionary:[eventWrapperDictionary objectForKey:@"owner"]];
+        self.user = [[User alloc] initWithUserDictionary:eventWrapperDictionary[@"owner"]];
         self.litterature = [eventWrapperDictionary objectForKey:@"litterature"];
         self.startDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"startDate"]];
         self.endDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"endDate"]];
@@ -32,11 +34,13 @@
 {
     NSMutableDictionary *jsonEventWrapper = [[NSMutableDictionary alloc]init];
 
+#warning Testing
     NSMutableArray *jsonEvents = [[NSMutableArray alloc]init];
-    for (Event *event in self.events) {
-        [jsonEvents addObject:event.docID];
-    }
-
+    [jsonEvents addObject:@"52388867469ddbc32e000002"];
+//    for (Event *event in self.events) {
+//        [jsonEvents addObject:event.docID];
+//    }
+    
     [jsonEventWrapper setObject:jsonEvents forKey:@"events"];
     [jsonEventWrapper setObject:self.user.docID forKey:@"owner"];
     [jsonEventWrapper setObject:self.litterature forKey:@"litterature"];
@@ -45,8 +49,11 @@
     [jsonEventWrapper setObject:self.name forKey:@"name"];
     [jsonEventWrapper setObject:self.docID forKey:@"_id"];
     
+#warning Testing
+    NSData *JSONData = [NSJSONSerialization dataWithJSONObject:jsonEventWrapper options:nil error:nil];
+    NSLog(@"JSON: %@", [[NSString alloc] initWithData:JSONData encoding:NSUTF8StringEncoding]);
+    
     return jsonEventWrapper;
 }
-
 
 @end
