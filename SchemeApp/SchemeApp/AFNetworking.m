@@ -48,8 +48,9 @@
         //Handle success
     } failure:^(NSError *error) {
         //Handle failure
+#warning Testing
+        NSLog(@"Error: %@", error.userInfo);
     }];
-   
 }
 -(void)deleteType:(NSString *)type withId:(NSString *)typeId callback:(callback)callback
 {
