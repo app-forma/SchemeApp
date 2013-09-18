@@ -28,7 +28,7 @@
     self = [super init];
     if (self) {
         _docID = msgDictionary[@"_id"];
-        self.from = msgDictionary[@"from"];
+        self.from = [[User alloc]initWithUserDictionary:msgDictionary[@"from"]];
         self.date = [Helpers dateFromString:msgDictionary[@"date"]];
         self.text = msgDictionary[@"text"];
     }

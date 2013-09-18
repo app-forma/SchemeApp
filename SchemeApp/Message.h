@@ -11,7 +11,7 @@
 @interface Message : NSObject
 
 @property (nonatomic, readonly) NSString *docID;
-@property (nonatomic, strong) NSString *from;
+@property (nonatomic, strong) User *from;
 @property (nonatomic, copy) NSDate *date;
 @property (nonatomic, copy) NSString *text;
 

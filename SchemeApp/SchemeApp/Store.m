@@ -84,6 +84,7 @@
 {
 #warning Implement password
     [Store.dbConnection readByEmail:email callback:^(id result) {
+
         if (result[@"error"]) {
             NSLog(@"%@", result);
             completion(NO);
@@ -97,6 +98,7 @@
                     Message *msg = [[Message alloc]initWithMsgDictionary:message];
                     [user.messages addObject:msg];
                 }
+            }
                 if (currentUser[@"eventWrappers"] > 0) {
                     for (NSDictionary *eventWrapper in currentUser[@"eventWrappers"]){
                         EventWrapper *eW = [[EventWrapper alloc] initWithEventWrapperDictionary:eventWrapper];
@@ -111,7 +113,7 @@
                 
                 completion(YES);
                 return;
-            }
+
             
         }
         

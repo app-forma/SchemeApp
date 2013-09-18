@@ -59,8 +59,8 @@ self.navigationController.navigationBarHidden = YES;
 - (IBAction)loadStudentSB:(id)sender {
 //    UIStoryboard *studentSB = [UIStoryboard storyboardWithName:@"StudentStoryboard" bundle:nil];
 //    UIViewController *initialVC = [studentSB instantiateInitialViewController];
-
     [Store setCurrentUserToUserWithEmail:@"joe@gmail.com" andPassword:nil completion:^(BOOL success) {
+
         if (success) {
             NSLog(@"Logged in as User: %@ %@", Store.mainStore.currentUser.firstname,
                   Store.mainStore.currentUser.lastname);
