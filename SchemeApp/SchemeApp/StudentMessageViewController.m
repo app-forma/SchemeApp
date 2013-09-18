@@ -54,7 +54,7 @@
     MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     
     Message *message = messages[indexPath.row];
-    cell.nameLabel.text = message.from;
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@",  message.from.firstname, message.from.lastname];
     cell.dateLabel.text = [Helpers stringFromNSDate:message.date];
     cell.messageTextView.text = message.text;
     
