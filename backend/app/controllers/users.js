@@ -122,6 +122,7 @@ exports.byEmail = function (req, res) {
         res.json(500, err.errors);
       } else {
         var eventWrappers = [];
+        if (doc !== null) {
         doc.eventWrappers.forEach(function (value, entry) {
           eventWrappers.push(value._id);
         });
@@ -137,6 +138,9 @@ exports.byEmail = function (req, res) {
             res.json(200, doc);
           }
         });
+      }else {
+        res.json(404);
+      }
       }
     });
 };
