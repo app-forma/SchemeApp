@@ -41,7 +41,7 @@
 }
 -(void)updateType:(NSString *)type withContent:(NSDictionary *)content callback:(callback)callback
 {
-    NSURL *url = [NSURL URLWithString:baseURL];
+     NSURL *url = [NSURL URLWithString:baseURL];
     NSString *putPath = [NSString stringWithFormat:@"%@/%@", type, content[@"_id"]];
     AFHTTPClient *client = [[AFHTTPClient alloc]initWithBaseURL:url];
     [client PUT:putPath parameters:content success:^(NSHTTPURLResponse *response, id responseObject) {

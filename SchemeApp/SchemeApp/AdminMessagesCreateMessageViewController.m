@@ -168,11 +168,10 @@
 
 - (void)didPressSend {
     if (self.textView.text.length < 3) { return; }
-    
-    User *currentUsr = Store.mainStore.currentUser;
+
     Message *message = [[Message alloc]init];
     message.text = self.textView.text;
-    message.from = [NSString stringWithFormat:@"%@ %@", currentUsr.firstname, currentUsr.lastname];
+    message.from = Store.mainStore.currentUser;;
     message.date = [NSDate date];
     
     if (self.messageTypeControl.selectedSegmentIndex == MESSAGE_TYPE) {

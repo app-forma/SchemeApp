@@ -64,7 +64,7 @@
     Message *message = messages[indexPath.row];
     cell.dateLabel.text = [Helpers stringFromNSDate:message.date];
     cell.messageTextView.text = message.text;
-    cell.nameLabel.text = message.from;
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", message.from.firstname, message.from.lastname];
     return cell;
 }
 
@@ -100,6 +100,7 @@
 {
     [messages removeObject:message];
     [self.tableView reloadData];
+    [[Store adminStore]updateMessages:messages forUser:[Store mainStore].currentUser];
 }
 
 @end

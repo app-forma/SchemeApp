@@ -26,7 +26,7 @@
     
     self.textView.contentInset = UIEdgeInsetsMake(-7, -5, -5, 0);
     
-    self.fromField.text = self.message.from;
+    self.fromField.text = [NSString stringWithFormat:@"%@ %@", self.message.from.firstname, self.message.from.lastname];
     self.dateField.text = [Helpers stringFromNSDate:self.message.date];
     self.textView.text = self.message.text;
     

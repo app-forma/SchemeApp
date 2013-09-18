@@ -104,11 +104,11 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-RM-BkH">
-                                            <rect key="frame" x="7" y="7" width="306" height="30"/>
+                                            <rect key="frame" x="7" y="7" width="306" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Message"/>
-                                                <segment title="Mailing"/>
+                                                <segment title="Broadcast"/>
                                             </segments>
                                         </segmentedControl>
                                     </subviews>

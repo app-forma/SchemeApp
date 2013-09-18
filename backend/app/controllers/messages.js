@@ -16,6 +16,8 @@ exports.message = function (req, res, next, id) {
 
 exports.create = function (req, res) {
   if (req.body.receivers && req.body.receivers instanceof Array) {
+
+    console.log(req.body.receivers);
     var message = new Message(req.body);
     message.saveToDisk(message, function (err, message) {
       if (err) {

@@ -129,6 +129,6 @@
     for (Message *message in messages) {
         [messageIds addObject:message.docID];
     }
-    [[Store dbConnection]updateType:DB_TYPE_USER withContent:[NSDictionary dictionaryWithObjects:@[user.docID , messageIds] forKeys:@[@"_id", @"messages"]] callback:nil];
+    [[Store dbConnection]updateType:DB_TYPE_USER withContent:[NSDictionary dictionaryWithObjects:@[user.docID, messageIds] forKeys:@[@"_id", @"messages"]] callback:nil];
 }
 @end
