@@ -51,6 +51,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setDatePickerLocaleToSystemLocale];
     [self setDateLabelsToPickerDates:nil];
 }
 - (void)viewWillDisappear:(BOOL)animated
@@ -126,10 +128,13 @@
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
 }
+- (void)setDatePickerLocaleToSystemLocale
+{
+    self.startDatePicker.locale = [NSLocale systemLocale];
+    self.endDatePicker.locale = [NSLocale systemLocale];
+}
 - (IBAction)setDateLabelsToPickerDates:(id)sender
 {
-#warning Testing
-    NSLog(@"startDate: %@", self.startDatePicker.date);
     self.startDateDateLabel.text = [Helpers dateStringFromNSDate:self.startDatePicker.date];
     self.startDateTimeLabel.text = [Helpers timeStringFromNSDate:self.startDatePicker.date];
     self.endDateDateLabel.text = [Helpers dateStringFromNSDate:self.endDatePicker.date];
