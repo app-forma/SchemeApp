@@ -4,8 +4,8 @@ var mongoose = require('mongoose'),
 /**
  * Find eventWrapper by id
  */
-exports.eventWrapper = function (req, res, next, id) {
-  EventWrapper.load(id, function (err, eventWrapper) {
+exports.eventWrapper = function(req, res, next, id) {
+  EventWrapper.load(id, function(err, eventWrapper) {
     if (err) return next(err);
     if (!eventWrapper) return next(new Error('Failed to load eventWrapper ' + id));
     req.eventWrapper = eventWrapper;
@@ -13,9 +13,9 @@ exports.eventWrapper = function (req, res, next, id) {
   });
 };
 
-exports.create = function (req, res) {
+exports.create = function(req, res) {
   var eventWrapper = new EventWrapper(req.body);
-  eventWrapper.saveToDisk(eventWrapper, function (err, eventWrapper) {
+  eventWrapper.saveToDisk(eventWrapper, function(err, eventWrapper) {
     if (err) {
       res.json(500, err.errors);
     } else {
@@ -27,7 +27,7 @@ exports.create = function (req, res) {
 /**
  * Update eventWrapper
  */
-exports.update = function (req, res) {
+exports.update = function(req, res) {
   if (!req.body.events) {
     req.body.events = [];
   }
@@ -37,12 +37,22 @@ exports.update = function (req, res) {
     _id: req.params.id
   }, req.body, {
     upsert: true
-  }, function (err, doc) {
+  }, function(err, doc) {
     if (err) {
       res.json(500, err);
     } else {
-      res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.json(doc);
+      EventWrapper.findOne({
+        _id: req.params.id
+      }).populate('events')
+        .populate('owner')
+        .exec(function(err, doc) {
+          if (err) {
+            res.json(404);
+            return;
+          } else {
+            res.json(200, doc);
+          }
+        });
     }
   });
 };
@@ -50,10 +60,10 @@ exports.update = function (req, res) {
 /**
  * Delete eventWrapper
  */
-exports.destroy = function (req, res) {
+exports.destroy = function(req, res) {
   EventWrapper.findOne({
     _id: req.params.id
-  }, function (err, doc) {
+  }, function(err, doc) {
     if (err) {
       res.json(500, err.errors);
     } else {
@@ -66,19 +76,19 @@ exports.destroy = function (req, res) {
 /**
  * List of eventWrappers
  */
-exports.index = function (req, res) {
-  EventWrapper.find().populate('owner').exec(function (err, doc) {
+exports.index = function(req, res) {
+  EventWrapper.find().populate('owner').exec(function(err, doc) {
     if (err) return res.json(500, err.errors);
     res.json(200, doc);
   });
 };
 
-exports.byId = function (req, res) {
+exports.byId = function(req, res) {
   EventWrapper.findOne({
     _id: req.params.id
   }).populate('events')
     .populate('owner')
-    .exec(function (err, doc) {
+    .exec(function(err, doc) {
       if (err) {
         res.json(404);
         return;
@@ -88,10 +98,10 @@ exports.byId = function (req, res) {
     });
 };
 
-exports.byIdRaw = function (req, res) {
+exports.byIdRaw = function(req, res) {
   EventWrapper.findOne({
     _id: req.params.id
-  }).exec(function (err, doc) {
+  }).exec(function(err, doc) {
     if (err) {
       res.json(404);
       return;
@@ -101,9 +111,9 @@ exports.byIdRaw = function (req, res) {
   });
 };
 
-exports.findByDate = function (req, res) {
+exports.findByDate = function(req, res) {
   EventWrapper.where('startDate').gte(req.body.startDate).lte(req.body.endDate).populate('events')
-    .populate('owner').exec(function (err, doc) {
+    .populate('owner').exec(function(err, doc) {
       if (err) {
         res.json(404);
         return;
