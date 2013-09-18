@@ -44,8 +44,8 @@
     NSURL *url = [NSURL URLWithString:baseURL];
     NSString *putPath = [NSString stringWithFormat:@"%@/%@", type, content[@"_id"]];
     AFHTTPClient *client = [[AFHTTPClient alloc]initWithBaseURL:url];
-    [client PUT:putPath parameters:content success:^(NSHTTPURLResponse *response, id responseObject) {
-        //Handle success
+    [client PUT:putPath parameters:content success:^(NSHTTPURLResponse *response, id JSON) {
+        callback(JSON);
     } failure:^(NSError *error) {
         //Handle failure
     }];
