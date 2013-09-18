@@ -139,7 +139,7 @@ exports.byEmail = function (req, res) {
           }
         });
       }else {
-        res.json(404);
+        res.send(404);
       }
       }
     });
