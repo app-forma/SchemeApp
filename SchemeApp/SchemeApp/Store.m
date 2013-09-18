@@ -9,6 +9,8 @@
 #import "Store.h"
 #import "User.h"
 #import "Message.h"
+#import "EventWrapper.h"
+#import "Event.h"
 
 
 @implementation Store
@@ -90,12 +92,22 @@
                     Message *msg = [[Message alloc]initWithMsgDictionary:message];
                     [user.messages addObject:msg];
                 }
+                if (currentUser[@"eventWrappers"] > 0) {
+                    for (NSDictionary *eventWrapper in currentUser[@"eventWrappers"]){
+                        EventWrapper *eW = [[EventWrapper alloc] initWithEventWrapperDictionary:eventWrapper];
+                        for (NSDictionary *event in eventWrapper[@"events"]){
+                            Event *e = [[Event alloc]initWithEventDictionary:event];
+                            [eW.events addObject:e];
+                        }
+                        [user.eventWrappers addObject:eW];
+                    }
+                }
                 Store.mainStore.currentUser = user;
-                completion(YES);
-                return;
+                
                 
             }
-            
+            completion(YES);
+            return;
         }
         completion(NO);
     }];

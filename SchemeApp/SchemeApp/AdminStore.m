@@ -12,6 +12,7 @@
 #import "Event.h"
 #import "EventWrapper.h"
 #import "User.h"
+#import "Message.h"
 
 @class EventWrapper;
 
@@ -100,15 +101,14 @@
      }];
 }
 
-- (void)sendMessage:(Message *)message
+- (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))completion
 {
-#warning Implement
+    [Store.dbConnection createType:DB_TYPE_BROADCAST_MESSAGE withContent:[message asDictionary] callback:^(id result) {
+        completion([[Message alloc]initWithMsgDictionary:result]);
+    }];    
+}
+- (void)sendMessage:(Message *)message toUsers:(NSArray *)users completion:(void (^)(Message *message))completion
+{
     
 }
-- (void)sendMessage:(Message *)message toUser:(User *)user
-{
-#warning Implement
-    
-}
-
 @end

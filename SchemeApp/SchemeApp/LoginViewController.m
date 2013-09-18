@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "StudentEventMainViewController.h"
 #import "AdminTabBarViewController.h"
+#import "EventWrapper.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
@@ -26,7 +27,10 @@
     //For demo, setting a student to current user
     Store *store = [[Store alloc]init];
     [store setCurrentUserToUserWithEmail:@"joe@gmail.com" andPassword:nil completion:^(BOOL success) {
-        
+        if (success) {
+            //Här har vi hämtat en user med alla eventwrappers, events och messages
+            NSLog(@"%@",Store.mainStore.currentUser);
+        }
     }];
 }
 

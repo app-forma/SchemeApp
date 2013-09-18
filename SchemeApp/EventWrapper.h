@@ -10,7 +10,7 @@
 @class User, EventWrapper;
 @interface EventWrapper : NSObject
 @property (nonatomic, readonly) NSString *docID;
-@property (nonatomic, copy) NSMutableArray *events;
+@property (nonatomic, strong) NSMutableArray *events;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, copy) NSString *litterature;
 @property (nonatomic, copy) NSDate *startDate;
