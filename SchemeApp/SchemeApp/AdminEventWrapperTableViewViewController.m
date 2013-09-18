@@ -7,6 +7,7 @@
 //
 
 #import "AdminEventWrapperTableViewViewController.h"
+#import "EventWrapper.h"
 
 
 @interface AdminEventWrapperTableViewViewController ()
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *endDatePicker;
 
 - (IBAction)setDateLabelsToPickerDates:(id)sender;
+- (IBAction)save:(id)sender;
 
 @end
 
@@ -52,6 +54,11 @@
 {
     [super viewDidLoad];
     
+    if (self.selectedEventWrapper)
+    {
+        [self setInputsToSelectedEventWrapper];
+    }
+    
     [self setDatePickerLocaleToSystemLocale];
     [self setDateLabelsToPickerDates:nil];
 }
@@ -70,6 +77,46 @@
 {
     shouldShowEndDatePicker = !shouldShowEndDatePicker;
     [self updateTableView];
+}
+
+- (IBAction)setDateLabelsToPickerDates:(id)sender
+{
+    self.startDateDateLabel.text = [Helpers dateStringFromNSDate:self.startDatePicker.date];
+    self.startDateTimeLabel.text = [Helpers timeStringFromNSDate:self.startDatePicker.date];
+    self.endDateDateLabel.text = [Helpers dateStringFromNSDate:self.endDatePicker.date];
+    self.endDateTimeLabel.text = [Helpers timeStringFromNSDate:self.endDatePicker.date];
+}
+- (IBAction)save:(id)sender
+{
+    if (self.selectedEventWrapper)
+    {
+        [self setSelectedEventWrapperPropertiesToInputValues];
+        [Store.adminStore updateEventWrapper:self.selectedEventWrapper
+                                  completion:^(id result)
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }
+    else
+    {
+        self.selectedEventWrapper = [[EventWrapper alloc] init];
+        [self setSelectedEventWrapper:self.selectedEventWrapper];
+        [Store.adminStore createEventWrapper:self.selectedEventWrapper
+                                  completion:^(id result)
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }
+}
+
+#pragma UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    UITextField *nextField = (UITextField*)[self.view viewWithTag:textField.tag + 1];
+    [nextField becomeFirstResponder];
+    
+    return YES;
 }
 
 #pragma mark - UITableViewDatasource
@@ -133,12 +180,20 @@
     self.startDatePicker.locale = [NSLocale systemLocale];
     self.endDatePicker.locale = [NSLocale systemLocale];
 }
-- (IBAction)setDateLabelsToPickerDates:(id)sender
+- (void)setInputsToSelectedEventWrapper
 {
-    self.startDateDateLabel.text = [Helpers dateStringFromNSDate:self.startDatePicker.date];
-    self.startDateTimeLabel.text = [Helpers timeStringFromNSDate:self.startDatePicker.date];
-    self.endDateDateLabel.text = [Helpers dateStringFromNSDate:self.endDatePicker.date];
-    self.endDateTimeLabel.text = [Helpers timeStringFromNSDate:self.endDatePicker.date];
+    self.courseTitleTextField.text = self.selectedEventWrapper.name;
+    self.teacherTextField.text = self.selectedEventWrapper.user.name;
+    self.litteratureTextField.text = self.selectedEventWrapper.litterature;
+    self.startDatePicker.date = self.selectedEventWrapper.startDate;
+    self.endDatePicker.date = self.selectedEventWrapper.endDate;
+}
+- (void)setSelectedEventWrapperPropertiesToInputValues
+{
+    self.selectedEventWrapper.name = self.courseTitleTextField.text;
+    self.selectedEventWrapper.litterature = self.litteratureTextField.text;
+    self.selectedEventWrapper.startDate = self.startDatePicker.date;
+    self.selectedEventWrapper.endDate = self.endDatePicker.date;
 }
 
 @end

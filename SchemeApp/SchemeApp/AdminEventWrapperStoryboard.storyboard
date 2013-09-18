@@ -63,7 +63,7 @@
                                     <outlet property="eventWrapperName" destination="Isa-GL-5cY" id="8uC-Zl-U5P"/>
                                     <outlet property="eventWrapperOwnerName" destination="4RN-KT-wqL" id="Ojz-3f-m7R"/>
                                     <outlet property="eventWrapperStartDate" destination="aSd-3o-e29" id="jsv-rx-pxl"/>
-                                    <segue destination="Oeo-9a-zW3" kind="push" id="f8g-Df-uxB"/>
+                                    <segue destination="Oeo-9a-zW3" kind="push" identifier="EditEventWrapper" id="f8g-Df-uxB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -73,7 +73,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="aTJ-h3-67v">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="EoN-LS-V3I"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="EoN-LS-V3I">
+                            <connections>
+                                <segue destination="Oeo-9a-zW3" kind="push" identifier="AddEventWrapper" id="X8V-W7-Sfm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2YW-aa-wyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -102,7 +106,10 @@
                                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Oeo-9a-zW3" id="Ar5-h0-8V1"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -114,11 +121,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Teacher" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q2s-O9-daH">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Teacher" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q2s-O9-daH">
                                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                        <bool key="isElement" value="NO"/>
+                                                    </accessibility>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Oeo-9a-zW3" id="HXt-pf-JiC"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -130,11 +144,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Litterature" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cty-mB-e9b">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Litterature" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cty-mB-e9b">
                                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Oeo-9a-zW3" id="Awf-Dc-t31"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -303,7 +320,13 @@ kAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="Oeo-9a-zW3" id="gUI-hv-gNr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="xKS-r4-gQM"/>
+                    <navigationItem key="navigationItem" id="xKS-r4-gQM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="cUP-sB-n30">
+                            <connections>
+                                <action selector="save:" destination="Oeo-9a-zW3" id="ZLe-5b-8ac"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="courseTitleTextField" destination="VUE-4T-j4s" id="SxD-n6-bKy"/>
                         <outlet property="endDateDateLabel" destination="IMG-t6-Anq" id="k1x-kQ-PTe"/>
@@ -352,4 +375,7 @@ kAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="f8g-Df-uxB"/>
+    </inferredMetricsTieBreakers>
 </document>

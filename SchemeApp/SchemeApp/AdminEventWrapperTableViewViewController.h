@@ -8,5 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AdminEventWrapperTableViewViewController : UITableViewController
+@class EventWrapper;
+
+
+@interface AdminEventWrapperTableViewViewController : UITableViewController <UITextFieldDelegate>
+
+@property (nonatomic, strong) EventWrapper *selectedEventWrapper;
+
 @end
