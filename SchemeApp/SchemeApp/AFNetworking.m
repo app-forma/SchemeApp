@@ -41,15 +41,13 @@
 }
 -(void)updateType:(NSString *)type withContent:(NSDictionary *)content callback:(callback)callback
 {
-     NSURL *url = [NSURL URLWithString:baseURL];
+    NSURL *url = [NSURL URLWithString:baseURL];
     NSString *putPath = [NSString stringWithFormat:@"%@/%@", type, content[@"_id"]];
     AFHTTPClient *client = [[AFHTTPClient alloc]initWithBaseURL:url];
     [client PUT:putPath parameters:content success:^(NSHTTPURLResponse *response, id responseObject) {
         //Handle success
     } failure:^(NSError *error) {
         //Handle failure
-#warning Testing
-        NSLog(@"Error: %@", error.userInfo);
     }];
 }
 -(void)deleteType:(NSString *)type withId:(NSString *)typeId callback:(callback)callback
