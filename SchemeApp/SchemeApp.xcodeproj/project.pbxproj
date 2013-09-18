@@ -29,6 +29,9 @@
 		0493B54D17DDF80C003B3D23 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0493B54B17DDF80C003B3D23 /* InfoPlist.strings */; };
 		0493B54F17DDF80C003B3D23 /* SchemeAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */; };
 		04E09F5B17E7249D00B946CB /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E09F5A17E7249D00B946CB /* EventCell.m */; };
+		04F4AF7717E993E2000DD6F8 /* AdminMessagesCreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F4AF7617E993E2000DD6F8 /* AdminMessagesCreateMessageViewController.m */; };
+		04F4AF7A17E993FB000DD6F8 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F4AF7917E993FB000DD6F8 /* SearchCell.m */; };
+		04F4AF7D17E99403000DD6F8 /* ReceiverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F4AF7C17E99403000DD6F8 /* ReceiverCell.m */; };
 		2748CDC917DF360F00A06467 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748CDC817DF360F00A06467 /* Helpers.m */; };
 		27BCC1E717E1E7E7009977BB /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC1E617E1E7E7009977BB /* LoginStoryboard.storyboard */; };
 		27BCC1EA17E1E8B5009977BB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC1E917E1E8B5009977BB /* LoginViewController.m */; };
@@ -131,6 +134,12 @@
 		0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeAppTests.m; sourceTree = "<group>"; };
 		04E09F5917E7249D00B946CB /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
 		04E09F5A17E7249D00B946CB /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
+		04F4AF7517E993E2000DD6F8 /* AdminMessagesCreateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminMessagesCreateMessageViewController.h; sourceTree = "<group>"; };
+		04F4AF7617E993E2000DD6F8 /* AdminMessagesCreateMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminMessagesCreateMessageViewController.m; sourceTree = "<group>"; };
+		04F4AF7817E993FB000DD6F8 /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
+		04F4AF7917E993FB000DD6F8 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
+		04F4AF7B17E99403000DD6F8 /* ReceiverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverCell.h; sourceTree = "<group>"; };
+		04F4AF7C17E99403000DD6F8 /* ReceiverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverCell.m; sourceTree = "<group>"; };
 		2748CDC717DF360F00A06467 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		2748CDC817DF360F00A06467 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		27BCC1E617E1E7E7009977BB /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
@@ -329,6 +338,8 @@
 		27BCC1EB17E1F335009977BB /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				04F4AF7517E993E2000DD6F8 /* AdminMessagesCreateMessageViewController.h */,
+				04F4AF7617E993E2000DD6F8 /* AdminMessagesCreateMessageViewController.m */,
 				AF8CD8FE17E87AD4004551F8 /* AdminInterfaceViewController.h */,
 				AF8CD8FF17E87AD4004551F8 /* AdminInterfaceViewController.m */,
 				AF8CD8F817E850C8004551F8 /* AdminTabBarViewController.h */,
@@ -377,6 +388,10 @@
 		27D8B45517E0B92A007EC0E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04F4AF7B17E99403000DD6F8 /* ReceiverCell.h */,
+				04F4AF7C17E99403000DD6F8 /* ReceiverCell.m */,
+				04F4AF7817E993FB000DD6F8 /* SearchCell.h */,
+				04F4AF7917E993FB000DD6F8 /* SearchCell.m */,
 				04E09F5917E7249D00B946CB /* EventCell.h */,
 				04E09F5A17E7249D00B946CB /* EventCell.m */,
 				27BCC1E617E1E7E7009977BB /* LoginStoryboard.storyboard */,
@@ -588,6 +603,7 @@
 				0493B53A17DDF80C003B3D23 /* AppDelegate.m in Sources */,
 				AF8CD90217E87AD4004551F8 /* AdminInterfaceViewController.m in Sources */,
 				8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */,
+				04F4AF7717E993E2000DD6F8 /* AdminMessagesCreateMessageViewController.m in Sources */,
 				AF2551F017E04628006EDD02 /* Store.m in Sources */,
 				AFE538F617E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */,
 				04E09F5B17E7249D00B946CB /* EventCell.m in Sources */,
@@ -607,9 +623,11 @@
 				AF2551F417E04630006EDD02 /* StudentStore.m in Sources */,
 				27BCC1F717E1F5D9009977BB /* AdminStudentsViewController.m in Sources */,
 				27BCC1F417E1F581009977BB /* AdminEventWrappersViewController.m in Sources */,
+				04F4AF7D17E99403000DD6F8 /* ReceiverCell.m in Sources */,
 				27BCC1EA17E1E8B5009977BB /* LoginViewController.m in Sources */,
 				0423298A17DF2ABA005B47F9 /* Event.m in Sources */,
 				AFE538F217E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */,
+				04F4AF7A17E993FB000DD6F8 /* SearchCell.m in Sources */,
 				0437DE2517E307F000DB9F5A /* StudentMessageViewController.m in Sources */,
 				0423298D17DF2B7B005B47F9 /* Message.m in Sources */,
 			);
