@@ -22,12 +22,14 @@
 
 @interface AdminStore : StudentStore
 
-- (void)createEvent:(Event *)event;
-- (void)updateEvent:(Event *)event;
-- (void)deleteEvent:(Event *)event;
-- (void)createEventWrapper:(EventWrapper *)eventWrapper;
-- (void)updateEventWrapper:(EventWrapper *)eventWrapper;
-- (void)deleteEventWrapper:(EventWrapper *)eventWrapper;
+- (void)eventWrappersCompletion:(void (^)(NSArray *allEventWrappers))completion;
+
+- (void)createEvent:(Event *)event completion:(void (^)(id result))completion;
+- (void)updateEvent:(Event *)event completion:(void (^)(id result))completion;
+- (void)deleteEvent:(Event *)event completion:(void (^)(id result))completion;
+- (void)createEventWrapper:(EventWrapper *)eventWrapper completion:(void (^)(id result))completion;
+- (void)updateEventWrapper:(EventWrapper *)eventWrapper completion:(void (^)(id result))completion;
+- (void)deleteEventWrapper:(EventWrapper *)eventWrapper completion:(void (^)(id result))completion;
 
 - (void)usersCompletion:(void (^)(NSArray *allUsers))completion;
 - (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))completion;

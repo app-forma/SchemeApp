@@ -14,46 +14,78 @@
 #import "User.h"
 #import "Message.h"
 
-@class EventWrapper;
-
 
 @implementation AdminStore
 
-- (void)createEvent:(Event *)event
+- (void)eventWrappersCompletion:(void (^)(NSArray *allEventWrappers))completion
+{
+    [Store.dbConnection readType:DB_TYPE_EVENTWRAPPER
+                          withId:nil
+                        callback:^(id result)
+     {
+         NSMutableArray *allEventWrappers = [NSMutableArray array];
+         for (NSDictionary *eventWrapperDictionary in result)
+         {
+             EventWrapper *ew = [[EventWrapper alloc] initWithEventWrapperDictionary:eventWrapperDictionary];
+             [allEventWrappers addObject:ew];
+         }
+         completion(allEventWrappers);
+     }];
+}
+
+- (void)createEvent:(Event *)event completion:(void (^)(id result))completion
 {
     [Store.dbConnection createType:DB_TYPE_EVENT
                        withContent:event.asDictionary
-                          callback:NULL];
+                          callback:^(id result)
+     {
+         completion(result);
+     }];
 }
-- (void)updateEvent:(Event *)event
+- (void)updateEvent:(Event *)event completion:(void (^)(id result))completion
 {
     [Store.dbConnection updateType:DB_TYPE_EVENT
                        withContent:event.asDictionary
-                          callback:NULL];
+                          callback:^(id result)
+     {
+         completion(result);
+     }];
 }
-- (void)deleteEvent:(Event *)event
+- (void)deleteEvent:(Event *)event completion:(void (^)(id result))completion
 {
     [Store.dbConnection deleteType:DB_TYPE_EVENT
                             withId:event.docID
-                          callback:NULL];
+                          callback:^(id result)
+     {
+         completion(result);
+     }];
 }
-- (void)createEventWrapper:(EventWrapper *)eventWrapper
+- (void)createEventWrapper:(EventWrapper *)eventWrapper completion:(void (^)(id result))completion
 {
     [Store.dbConnection createType: DB_TYPE_EVENTWRAPPER
                        withContent:eventWrapper.asDictionary
-                          callback:NULL];
+                          callback:^(id result)
+     {
+         completion(result);
+     }];
 }
-- (void)updateEventWrapper:(EventWrapper *)eventWrapper
+- (void)updateEventWrapper:(EventWrapper *)eventWrapper completion:(void (^)(id result))completion
 {
     [Store.dbConnection updateType:DB_TYPE_EVENTWRAPPER
                        withContent:eventWrapper.asDictionary
-                          callback:NULL];
+                          callback:^(id result)
+     {
+         completion(result);
+     }];
 }
-- (void)deleteEventWrapper:(EventWrapper *)eventWrapper
+- (void)deleteEventWrapper:(EventWrapper *)eventWrapper completion:(void (^)(id result))completion
 {
     [Store.dbConnection deleteType: DB_TYPE_EVENTWRAPPER
                             withId:eventWrapper.docID
-                          callback:NULL];
+                          callback:^(id result)
+     {
+         completion(result);
+     }];
 }
 
 - (void)usersCompletion:(void (^)(NSArray *allUsers))completion
