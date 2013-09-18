@@ -55,11 +55,9 @@
  Url: http://localhost:10010/logout [GET]
 
 Message:
-{"message": {
-    "from" : "5232dc415fe1a6e4a1000003",
+{
+    "from" : "Erkan E",
     "date" : "2013-09-13",
-    "text" : "Ja nu är det Erik som messar igen. Vill bara säga ni är så grymma allihopa. Ta det piano!"
-  },
-  "receivers":[]
-
-  }
+    "text" : "Ja nu är det Erik som messar igen. Vill bara säga ni är så grymma allihopa. Ta det piano!",
+	"receivers":[]
+}

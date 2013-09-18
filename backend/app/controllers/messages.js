@@ -15,8 +15,6 @@ exports.message = function (req, res, next, id) {
 };
 
 exports.create = function (req, res) {
-
-
   var message = new Message(req.body);
   message.saveToDisk(message, function (err, message) {
     if (err) {

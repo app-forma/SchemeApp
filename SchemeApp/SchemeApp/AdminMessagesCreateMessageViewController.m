@@ -57,16 +57,13 @@
     
     [self.messageTypeControl addTarget:self action:@selector(messageTypeDidChange:) forControlEvents:UIControlEventValueChanged];
     
-    //DUMMY DATA:
-//    users = @[@"Johan", @"Erik", @"Henrik", @"Marcus", @"Tobias", @"Rickard", @"Master Anders", @"Dummy student"];
     receivers = [NSMutableArray new];
-
+    users = [NSArray new];
     
     [[Store adminStore]usersCompletion:^(NSArray *allUsers) {
         users = allUsers;
     }];
-    
-    
+        
     [self.tableView reloadData];
 }
 
