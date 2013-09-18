@@ -31,7 +31,7 @@
 @implementation AdminMessagesCreateMessageViewController
 {
     NSArray *users;
-    NSMutableArray *recipients;
+    NSMutableArray *receivers;
     NSMutableArray *suggestedUsers;
 
     UIColor *lightGrayColor;
@@ -59,7 +59,7 @@
     
     //DUMMY DATA:
 //    users = @[@"Johan", @"Erik", @"Henrik", @"Marcus", @"Tobias", @"Rickard", @"Master Anders", @"Dummy student"];
-    recipients = [NSMutableArray new];
+    receivers = [NSMutableArray new];
 
     
     [[Store adminStore]usersCompletion:^(NSArray *allUsers) {
@@ -82,7 +82,7 @@
         for (User *user in users) {
             NSRange firstNameRange = [user.firstname rangeOfString:textField.text options:NSCaseInsensitiveSearch];
             NSRange lastNameRange = [user.lastname rangeOfString:textField.text options:NSCaseInsensitiveSearch];
-            if ((firstNameRange.location != NSNotFound || lastNameRange.location != NSNotFound) && ![recipients containsObject:user]) {
+            if ((firstNameRange.location != NSNotFound || lastNameRange.location != NSNotFound) && ![receivers containsObject:user]) {
                 [filteredSuggestions addObject:user];
             }
         }
@@ -104,7 +104,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == RECIPIENTS_SECTION) { return recipients.count; }
+    if (section == RECIPIENTS_SECTION) { return receivers.count; }
     if (section == SUGGESTIONS_SECTION) { return suggestedUsers.count; }
     return 1;
 }
@@ -120,7 +120,7 @@
     }
     static NSString *cellIdentifier = @"ReceiverCell";
     ReceiverCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    User *user = section == SUGGESTIONS_SECTION ? suggestedUsers[indexPath.row] : recipients[indexPath.row];
+    User *user = section == SUGGESTIONS_SECTION ? suggestedUsers[indexPath.row] : receivers[indexPath.row];
     cell.accessoryType = section == RECIPIENTS_SECTION ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     cell.backgroundColor = section == SUGGESTIONS_SECTION ? lightGrayColor : whiteColor;
     cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
@@ -136,7 +136,7 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [recipients removeObjectAtIndex:indexPath.row];
+        [receivers removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
@@ -149,9 +149,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == SUGGESTIONS_SECTION) {
-        [recipients addObject:suggestedUsers[indexPath.row]];
+        [receivers addObject:suggestedUsers[indexPath.row]];
 
-        [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:recipients.count -
+        [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:receivers.count -
                                              1 inSection:RECIPIENTS_SECTION]] withRowAnimation:UITableViewRowAnimationAutomatic];
         [suggestedUsers removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];        
@@ -179,14 +179,14 @@
     message.date = [NSDate date];
     
     if (self.messageTypeControl.selectedSegmentIndex == MESSAGE_TYPE) {
-        
-        
-        
+        [[Store adminStore]sendMessage:message toUsers:receivers completion:^(Message *message) {
+            NSLog(@"message sent");
+        }];
     } else {
         [[Store adminStore]broadcastMessage:message completion:^(Message *message) {
             NSLog(@"ok");
         }];
-        [self dismissViewControllerAnimated:YES completion:nil];
     }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
