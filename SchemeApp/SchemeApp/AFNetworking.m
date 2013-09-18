@@ -82,7 +82,9 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         callback(JSON);
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        //Handle failure
+        NSNumber *statusCode = [NSNumber numberWithInt:[response statusCode]];
+        NSDictionary *err = @{@"error": statusCode};
+        callback(err);
     }];
     
     [operation start];

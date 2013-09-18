@@ -80,10 +80,15 @@
     return studentStore;
 }
 
-- (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion
++ (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion
 {
 #warning Implement password
     [Store.dbConnection readByEmail:email callback:^(id result) {
+        if (result[@"error"]) {
+            NSLog(@"%@", result);
+            completion(NO);
+            return;
+        }
         NSDictionary *currentUser = result;
         if ([currentUser[@"email"] isEqualToString:email]) {
             User *user = [[User alloc]initWithUserDictionary:currentUser];
@@ -104,12 +109,12 @@
                 }
                 Store.mainStore.currentUser = user;
                 
-                
+                completion(YES);
+                return;
             }
-            completion(YES);
-            return;
+            
         }
-        completion(NO);
+        
     }];
 }
 

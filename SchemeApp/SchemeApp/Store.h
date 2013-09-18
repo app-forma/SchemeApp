@@ -25,6 +25,6 @@
 
 @property (nonatomic, strong) User *currentUser;
 
-- (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion;
++ (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion;
 
 @end
