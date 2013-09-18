@@ -82,6 +82,7 @@
 
         for (NSDictionary *jsonEventWrapper in eventWrappers)
         {
+            NSLog(@"%@", jsonEventWrapper);
             NSMutableDictionary *eventWrapperDic = [NSMutableDictionary dictionaryWithDictionary:jsonEventWrapper];
 //            NSDictionary *userDic = jsonEventWrapper[@"owner"];
 //            if (userDic) {
