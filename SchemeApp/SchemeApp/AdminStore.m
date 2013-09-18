@@ -80,7 +80,7 @@
 }
 - (void)deleteEventWrapper:(EventWrapper *)eventWrapper completion:(void (^)(id result))completion
 {
-    [Store.dbConnection deleteType: DB_TYPE_EVENTWRAPPER
+    [Store.dbConnection deleteType:DB_TYPE_EVENTWRAPPER
                             withId:eventWrapper.docID
                           callback:^(id result)
      {
