@@ -41,7 +41,8 @@ exports.update = function (req, res) {
     if (err) {
       res.json(500, err);
     } else {
-      res.json(200, doc);
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.json(doc);
     }
   });
 };
