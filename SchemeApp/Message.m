@@ -17,7 +17,7 @@
     NSMutableDictionary *jsonMessage = [[NSMutableDictionary alloc]init];
     [jsonMessage setObject:self.text forKey:@"text"];
     [jsonMessage setObject:[Helpers stringFromNSDate:self.date] forKey:@"date"];
-    [jsonMessage setObject:self.from forKey:@"from"];
+    [jsonMessage setObject:self.from.docID forKey:@"from"];
     if (self.docID) {
         [jsonMessage setObject:self.docID forKey:@"_id"];
     }    
@@ -28,7 +28,7 @@
     self = [super init];
     if (self) {
         _docID = msgDictionary[@"_id"];
-        self.from = msgDictionary[@"from"];
+        self.from = [[User alloc]initWithUserDictionary:msgDictionary[@"from"]];
         self.date = [Helpers dateFromString:msgDictionary[@"date"]];
         self.text = msgDictionary[@"text"];
     }

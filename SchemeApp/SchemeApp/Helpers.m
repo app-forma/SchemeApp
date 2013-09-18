@@ -240,6 +240,28 @@
     [comps setMinute:1];
     return [gregorian dateFromComponents:comps];
 }
+
++(NSDate *)stripStartDateFromTime:(NSDate *)date
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+    NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: date];
+    components.hour = 0;
+    components.minute = 0;
+    components.second = 0;
+    [components setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    return [gregorian dateFromComponents:components];
+}
++(NSDate *)stripEndDateFromTime:(NSDate *)date
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+    NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: date];
+    components.hour = 23;
+    components.minute = 59;
+    components.second = 59;
+    [components setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    return [gregorian dateFromComponents:components];
+}
+
 +(NSTimeZone *)timeZone
 {
     return NSTimeZone.systemTimeZone;

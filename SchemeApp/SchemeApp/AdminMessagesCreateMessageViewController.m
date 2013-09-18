@@ -57,16 +57,13 @@
     
     [self.messageTypeControl addTarget:self action:@selector(messageTypeDidChange:) forControlEvents:UIControlEventValueChanged];
     
-    //DUMMY DATA:
-//    users = @[@"Johan", @"Erik", @"Henrik", @"Marcus", @"Tobias", @"Rickard", @"Master Anders", @"Dummy student"];
     receivers = [NSMutableArray new];
-
+    users = [NSArray new];
     
     [[Store adminStore]usersCompletion:^(NSArray *allUsers) {
         users = allUsers;
     }];
-    
-    
+        
     [self.tableView reloadData];
 }
 
@@ -171,11 +168,10 @@
 
 - (void)didPressSend {
     if (self.textView.text.length < 3) { return; }
-    
-    User *currentUsr = Store.mainStore.currentUser;
+
     Message *message = [[Message alloc]init];
     message.text = self.textView.text;
-    message.from = [NSString stringWithFormat:@"%@ %@", currentUsr.firstname, currentUsr.lastname];
+    message.from = Store.mainStore.currentUser;;
     message.date = [NSDate date];
     
     if (self.messageTypeControl.selectedSegmentIndex == MESSAGE_TYPE) {

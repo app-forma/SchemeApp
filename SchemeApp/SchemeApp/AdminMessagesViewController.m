@@ -11,7 +11,7 @@
 #import "AdminMessagesCreateMessageViewController.h"
 #import "MessageCell.h"
 #import "Message.h"
-@interface AdminMessagesViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface AdminMessagesViewController () <UITableViewDelegate, UITableViewDataSource, MessageDetailViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -64,14 +64,16 @@
     Message *message = messages[indexPath.row];
     cell.dateLabel.text = [Helpers stringFromNSDate:message.date];
     cell.messageTextView.text = message.text;
-    cell.nameLabel.text = message.from;
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", message.from.firstname, message.from.lastname];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSLog(@"delete");
+        [messages removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [[Store adminStore]updateMessages:messages forUser:[Store mainStore].currentUser];
     }
 }
 
@@ -84,12 +86,21 @@
 {
     AdminMessagesDetailViewController *detailView = (AdminMessagesDetailViewController*)segue.destinationViewController;
     detailView.message = selectedMessage;
+    detailView.delegate = self;
 }
 
 -(void)didPressAddMessage
 {
     AdminMessagesCreateMessageViewController *createView = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateMessageView"];
     [self presentViewController:createView animated:YES completion:nil];
+}
+
+#pragma mark - detail view delegate method
+-(void)willdeleteMessage:(Message *)message
+{
+    [messages removeObject:message];
+    [self.tableView reloadData];
+    [[Store adminStore]updateMessages:messages forUser:[Store mainStore].currentUser];
 }
 
 @end

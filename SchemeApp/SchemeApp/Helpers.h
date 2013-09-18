@@ -29,4 +29,7 @@
 +(BOOL) earlierDate:(NSDate*)date1 isEarlierThenDate:(NSDate*)date2;
 +(NSDictionary *) startAndEndDateOfWeekForDate:(NSDate*)date;
 +(NSDate *) beginningDateOfWeek:(int)week;
++(NSDate *) stripStartDateFromTime:(NSDate *)date;
++(NSDate *) stripEndDateFromTime:(NSDate *)date;
+
 @end

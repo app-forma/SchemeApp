@@ -15,26 +15,29 @@ exports.message = function (req, res, next, id) {
 };
 
 exports.create = function (req, res) {
+  if (req.body.receivers && req.body.receivers instanceof Array) {
+    var message = new Message(req.body);
+    message.saveToDisk(message, function (err, message) {
+      if (err) {
+        res.json(500, err.errors);
+      } else {
 
-
-  var message = new Message(req.body);
-  message.saveToDisk(message, function (err, message) {
-    if (err) {
-      res.json(500, err.errors);
-    } else {
-      User.find({
-        '_id': {
-          $in: req.body.receivers
-        }
-      }, function (err, users) {
-        users.forEach(function (user) {
-          user.messages.push(message._id);
-          user.save();
+        User.find({
+          '_id': {
+            $in: req.body.receivers
+          }
+        }, function (err, users) {
+          users.forEach(function (user) {
+            user.messages.push(message._id);
+            user.save();
+          });
         });
-      });
+      }
       res.json(200, message);
-    }
-  });
+    });
+  } else {
+    res.send(500);
+  }
 };
 
 exports.update = function (req, res) {

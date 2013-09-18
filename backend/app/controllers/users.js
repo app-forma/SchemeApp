@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
   Helpers = require('../../helpers.js'),
   User = mongoose.model('User'),
   EventWrapper = mongoose.model('EventWrapper'),
+  Message = mongoose.model('Message'),
   passport = require('passport');
 
 
@@ -56,6 +57,12 @@ exports.create = function (req, res) {
  */
 exports.update = function (req, res) {
   // Obj can't contain _id. Will generate error.
+  if (!req.body.messages) {
+    req.body.messages = [];
+  }
+  if (!req.body.eventWrappers) {
+    req.body.eventWrappers = [];
+  }
   delete req.body._id;
   User.update({
     _id: req.params.id
@@ -112,7 +119,34 @@ exports.byIdRaw = function (req, res) {
     }
   });
 };
+var populateMessagesToUser = function (messages, callback) {
+  Message.find({
+    _id: {
+      $in: messages
+    }
+  }).populate('from').exec(function (err, doc) {
+    if (err) {
+      callback(null, err);
+    } else {
+      callback(doc, null);
+    }
+  });
 
+};
+var populateEventWrappersToUser = function (eventWrappers, callback) {
+  EventWrapper.find({
+    _id: {
+      $in: eventWrappers
+    }
+  }).populate('owner').populate('events').exec(function (err, doc) {
+    if (err) {
+      callback(null, e);
+    } else {
+      callback(doc, null);
+
+    }
+  });
+};
 exports.byEmail = function (req, res) {
   User.findOne({
     email: req.params.email
@@ -121,22 +155,29 @@ exports.byEmail = function (req, res) {
       if (err) {
         res.json(500, err.errors);
       } else {
-        var eventWrappers = [];
-        doc.eventWrappers.forEach(function (value, entry) {
-          eventWrappers.push(value._id);
-        });
-        EventWrapper.find({
-          _id: {
-            $in: eventWrappers
-          }
-        }).populate('owner').populate('events').exec(function (e, d) {
-          if (e) {
-            res.json(500, e.errors);
-          } else {
-            doc.eventWrappers = d;
-            res.json(200, doc);
-          }
-        });
+        if (doc !== null) {
+          populateEventWrappersToUser(doc.eventWrappers, function (evntwrps, e) {
+            if (e) {
+              console.log(e);
+            } else {
+              doc.eventWrappers = evntwrps;
+            }
+            if (doc.messages.length > 0) {
+              populateMessagesToUser(doc.messages, function (msgs, err) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  doc.messages = msgs;
+                  res.json(200, doc);
+                }
+              });
+            } else {
+              res.json(200, doc);
+            }
+          });
+        } else {
+          res.send(404);
+        }
       }
     });
 };

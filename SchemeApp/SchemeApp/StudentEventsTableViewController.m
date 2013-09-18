@@ -17,12 +17,14 @@
 @end
 
 @implementation StudentEventsTableViewController
+{
 
+}
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -31,7 +33,9 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Events";
-    
+
+
+
     
     
 //    [self.tableView registerClass:[EventCell class] forCellReuseIdentifier:@"EventCell"];

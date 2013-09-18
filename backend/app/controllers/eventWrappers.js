@@ -28,6 +28,9 @@ exports.create = function (req, res) {
  * Update eventWrapper
  */
 exports.update = function (req, res) {
+  if (!req.body.events) {
+    req.body.events = [];
+  }
   // Obj can't contain _id. Will generate error.
   delete req.body._id;
   EventWrapper.update({
@@ -63,9 +66,9 @@ exports.destroy = function (req, res) {
  * List of eventWrappers
  */
 exports.index = function (req, res) {
-  EventWrapper.list(function (err, eventWrappers) {
+  EventWrapper.find().populate('owner').exec(function (err, doc) {
     if (err) return res.json(500, err.errors);
-    res.json(200, eventWrappers);
+    res.json(200, doc);
   });
 };
 
@@ -98,7 +101,7 @@ exports.byIdRaw = function (req, res) {
 };
 
 exports.findByDate = function (req, res) {
-    EventWrapper.where('startDate').gte(req.body.startDate).lte(req.body.endDate).populate('events')
+  EventWrapper.where('startDate').gte(req.body.startDate).lte(req.body.endDate).populate('events')
     .populate('owner').exec(function (err, doc) {
       if (err) {
         res.json(404);
@@ -108,4 +111,4 @@ exports.findByDate = function (req, res) {
         res.json(200, doc);
       }
     });
-  }
+}

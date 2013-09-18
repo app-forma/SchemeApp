@@ -41,7 +41,7 @@
 }
 -(void)updateType:(NSString *)type withContent:(NSDictionary *)content callback:(callback)callback
 {
-    NSURL *url = [NSURL URLWithString:baseURL];
+     NSURL *url = [NSURL URLWithString:baseURL];
     NSString *putPath = [NSString stringWithFormat:@"%@/%@", type, content[@"_id"]];
     AFHTTPClient *client = [[AFHTTPClient alloc]initWithBaseURL:url];
     [client PUT:putPath parameters:content success:^(NSHTTPURLResponse *response, id responseObject) {
@@ -83,7 +83,9 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         callback(JSON);
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        //Handle failure
+        NSNumber *statusCode = [NSNumber numberWithInt:[response statusCode]];
+        NSDictionary *err = @{@"error": statusCode};
+        callback(err);
     }];
     
     [operation start];

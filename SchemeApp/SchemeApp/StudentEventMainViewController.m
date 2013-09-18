@@ -70,48 +70,47 @@
 
 - (IBAction)getScheme:(id)sender
 {
-    NSDate *startDate = [Helpers dateFromString:self.startDateForScheme.text];
-    NSDate *endDate = [Helpers dateFromString:self.endDateForScheme.text];
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
     
     
-    [[Store studentStore] eventWrappersWithStartDate:startDate andEndDate:endDate completion:^(NSArray *eventWrappers) {
 
-        for (NSDictionary *jsonEventWrapper in eventWrappers)
-        {
-            NSLog(@"%@", jsonEventWrapper);
-            NSMutableDictionary *eventWrapperDic = [NSMutableDictionary dictionaryWithDictionary:jsonEventWrapper];
-//            NSDictionary *userDic = jsonEventWrapper[@"owner"];
-//            if (userDic) {
-//                User *user = [[User alloc] initWithUserDictionary:userDic];
-//                [eventWrapperDic setObject:user forKey:@"owner"];
-//            }
- 
-
-            
-
-            
-            EventWrapper *eventWrapper = [[EventWrapper alloc]initWithEventWrapperDictionary:eventWrapperDic];
-
-            NSArray *jsonEvents = jsonEventWrapper[@"events"];
-            for (NSDictionary *jsonEvent in jsonEvents){
-                Event *event = [[Event alloc]initWithEventDictionary:jsonEvent];
-                NSDictionary *eventDic = @{@"event": event, @"eventWrapper": eventWrapper};
-                [events addObject:eventDic];
-            }
-            }
-        StudentEventsTableViewController *setvc = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentEventsTableViewController"];
-        setvc.eventsWithEventWrapper = events;
-        [self.navigationController pushViewController:setvc animated:YES];
-    }];
+    StudentEventsTableViewController *setvc = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentEventsTableViewController"];
+    setvc.eventsWithEventWrapper = [self filteredDatesForScheme];
+    [self.navigationController pushViewController:setvc animated:YES];
+    
 
    
     
 }
+-(NSMutableArray *)filteredDatesForScheme
+{
+    NSDate *startDate = [Helpers stripStartDateFromTime:[Helpers dateFromString:self.startDateForScheme.text]];
+    NSDate *endDate = [Helpers stripEndDateFromTime:[Helpers dateFromString:self.endDateForScheme.text]];
 
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(startDate >= %@) AND (startDate <= %@)", startDate, endDate];
+    
+    NSMutableArray *eArray = [NSMutableArray new];
+    for (EventWrapper *eventWrapper in Store.mainStore.currentUser.eventWrappers){
+        for (Event *event in eventWrapper.events){
+            NSDictionary *eDic = @{@"eventWrapper": eventWrapper, @"event": event};
+            [eArray addObject:eDic];
+        }
+    }
+    NSArray *evArray = [[eArray valueForKey:@"event"] filteredArrayUsingPredicate:predicate];
+    NSMutableArray *filteredArray = [NSMutableArray new];
+    for (EventWrapper *eventWrapper in Store.mainStore.currentUser.eventWrappers){
+        for (Event *event in eventWrapper.events){
+            
+            for (int i = 0; i < evArray.count; i++) {
+                Event *e = evArray[i];
+                if ([e.docID isEqualToString:event.docID]) {
+            NSDictionary *eDic = @{@"eventWrapper": eventWrapper, @"event": event};
+                    [filteredArray addObject:eDic];
+                }
+            }
+        }
+    }
+    return filteredArray;
+}
 
 -(void)pickStartDateForScheme
 {

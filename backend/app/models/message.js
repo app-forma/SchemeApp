@@ -20,9 +20,9 @@ var MessageSchema = new Schema({
         trim: true
     },
     from: {
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
-        trim: true
+        ref: 'User'
     }
 });
 
