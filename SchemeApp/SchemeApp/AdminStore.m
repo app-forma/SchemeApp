@@ -110,5 +110,7 @@
 - (void)sendMessage:(Message *)message toUsers:(NSArray *)users completion:(void (^)(Message *message))completion
 {
     
+    
+    // [Store dbConnection]createType:DB_TYPE_MESSAGE withContent:<#(NSDictionary *)#> callback:<#^(id result)callback#>
 }
 @end
