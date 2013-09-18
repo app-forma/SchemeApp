@@ -57,6 +57,7 @@ exports.create = function (req, res) {
  */
 exports.update = function (req, res) {
   // Obj can't contain _id. Will generate error.
+  console.log('messages:', req.body.messages);
   delete req.body._id;
   User.update({
     _id: req.params.id
