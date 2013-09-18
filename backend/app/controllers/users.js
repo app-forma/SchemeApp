@@ -60,6 +60,9 @@ exports.update = function (req, res) {
   if (!req.body.messages) {
     req.body.messages = [];
   }
+  if (!req.body.eventWrappers) {
+    req.body.eventWrappers = [];
+  }
   delete req.body._id;
   User.update({
     _id: req.params.id
