@@ -14,12 +14,22 @@ exports.message = function (req, res, next, id) {
   });
 };
 
-exports.create = function(req, res) {
+exports.create = function (req, res) {
   var message = new Message(req.body);
-  message.saveToDisk(message, function(err, message) {
+  message.saveToDisk(message, function (err, message) {
     if (err) {
       res.json(500, err.errors);
     } else {
+      User.find({
+        '_id': {
+          $in: req.body.receivers
+        }
+      }, function (err, users) {
+        users.forEach(function (user) {
+          user.messages.push(message._id);
+          user.save();
+        });
+      });
       res.json(200, message);
     }
   });
@@ -65,14 +75,14 @@ exports.byId = function (req, res) {
   Message.findOne({
     _id: req.params.id
   }).populate('from')
-  .exec(function (err, doc) {
-    if (err) {
-      res.json(404);
-      return;
-    } else {
-      res.json(200, doc);
-    }
-  });
+    .exec(function (err, doc) {
+      if (err) {
+        res.json(404);
+        return;
+      } else {
+        res.json(200, doc);
+      }
+    });
 };
 
 exports.byIdRaw = function (req, res) {
@@ -89,8 +99,10 @@ exports.byIdRaw = function (req, res) {
 
 exports.broadcast = function (req, res) {
   var message = new Message(req.body);
-  message.saveToDisk(message, function(err, message) {
-    User.find({'role': 'student' }, function (err, docs) {
+  message.saveToDisk(message, function (err, message) {
+    User.find({
+      'role': 'student'
+    }, function (err, docs) {
       docs.forEach(function (user, i) {
         user.messages.push(message._id);
         user.save();

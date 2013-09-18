@@ -109,6 +109,15 @@
 }
 - (void)sendMessage:(Message *)message toUsers:(NSArray *)users completion:(void (^)(Message *message))completion
 {
+    NSMutableDictionary *jsonMessage = [NSMutableDictionary dictionaryWithDictionary:[message asDictionary]];
+    NSMutableArray *receivers = [NSMutableArray new];
+    for (User *user in users) {
+        [receivers addObject:user.docID];
+    }
+    [jsonMessage setObject:receivers forKey:@"receivers"];
     
+    [[Store dbConnection]createType:DB_TYPE_MESSAGE withContent:jsonMessage callback:^(id result) {
+        completion([[Message alloc]initWithMsgDictionary:result]);
+    }];
 }
 @end

@@ -20,6 +20,8 @@
 +(BOOL) stringIsValidEmail:(NSString *)checkString;
 
 +(NSString*) stringFromNSDate:(NSDate*)date;
++(NSString*)dateStringFromNSDate:(NSDate*)date;
++(NSString*)timeStringFromNSDate:(NSDate*)date;
 +(NSDate*) dateFromString:(NSString*)string;
 +(NSDate*) currentDateTime;
 +(NSDictionary *) startAndEndTimeForDate:(NSDate*)date;

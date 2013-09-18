@@ -49,6 +49,21 @@
     [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm"];
     return [NSString stringWithFormat:@"%@", [dateFormat stringFromDate:date]];
 }
++(NSString*)dateStringFromNSDate:(NSDate*)date
+{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setTimeZone:NSTimeZone.systemTimeZone];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    return [NSString stringWithFormat:@"%@", [dateFormat stringFromDate:date]];
+}
++(NSString*)timeStringFromNSDate:(NSDate*)date
+{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setTimeZone:NSTimeZone.systemTimeZone];
+    [dateFormat setDateFormat:@"HH:mm"];
+    return [NSString stringWithFormat:@"%@", [dateFormat stringFromDate:date]];
+    return nil;
+}
 
 +(NSDate*)dateFromString:(NSString*)string
 {

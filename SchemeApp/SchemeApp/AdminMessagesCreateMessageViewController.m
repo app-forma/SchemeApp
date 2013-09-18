@@ -13,7 +13,6 @@
 #define SEARCH_SECTION 1
 #define SUGGESTIONS_SECTION 2
 
-
 #import "AdminMessagesCreateMessageViewController.h"
 #import "SearchCell.h"
 #import "ReceiverCell.h"
@@ -26,15 +25,14 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *messageTypeControl;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-- (IBAction)didPressSend:(id)sender;
 
 @end
 
 @implementation AdminMessagesCreateMessageViewController
 {
     NSArray *users;
-    NSMutableArray *recipients;
-    NSMutableArray *suggestions;
+    NSMutableArray *receivers;
+    NSMutableArray *suggestedUsers;
 
     UIColor *lightGrayColor;
     UIColor *whiteColor;
@@ -45,24 +43,27 @@
 {
     [super viewDidLoad];
 
+    lightGrayColor = [UIColor colorWithRed:0.96 green:0.96 blue:0.96 alpha:1];
+    whiteColor = [UIColor whiteColor];
+    
     self.textView.layer.borderWidth = 1.0f;
     self.textView.layer.borderColor = [[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1]CGColor];
     self.textView.layer.cornerRadius = 7.0f;
     
     UINavigationItem *navItem = [[UINavigationItem alloc]initWithTitle:@"New message"];
     navItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didPressCancel)];
+    navItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Send" style:UIBarButtonItemStyleDone target:self action:@selector(didPressSend)];
     [self.navBar pushNavigationItem:navItem animated:NO];
     
     [self.messageTypeControl addTarget:self action:@selector(messageTypeDidChange:) forControlEvents:UIControlEventValueChanged];
     
+    receivers = [NSMutableArray new];
+    users = [NSArray new];
     
-    lightGrayColor = [UIColor colorWithRed:0.96 green:0.96 blue:0.96 alpha:1];
-    whiteColor = [UIColor whiteColor];
-    
-    //DUMMY DATA:
-    users = @[@"Johan", @"Erik", @"Henrik", @"Marcus", @"Tobias", @"Rickard", @"Master Anders", @"Dummy student"];
-    recipients = [NSMutableArray new];
-    
+    [[Store adminStore]usersCompletion:^(NSArray *allUsers) {
+        users = allUsers;
+    }];
+        
     [self.tableView reloadData];
 }
 
@@ -74,15 +75,18 @@
 
 -(void)textFieldDidChange :(UITextField *)textField{
     NSMutableArray *filteredSuggestions = [NSMutableArray new];
-    for (NSString *name in users) {
-        NSRange textRange = [name rangeOfString:textField.text options:NSCaseInsensitiveSearch];
-        if (textRange.location != NSNotFound && ![recipients containsObject:name]) {
-            [filteredSuggestions addObject:name];
+    if (textField.text.length > 0) {
+        for (User *user in users) {
+            NSRange firstNameRange = [user.firstname rangeOfString:textField.text options:NSCaseInsensitiveSearch];
+            NSRange lastNameRange = [user.lastname rangeOfString:textField.text options:NSCaseInsensitiveSearch];
+            if ((firstNameRange.location != NSNotFound || lastNameRange.location != NSNotFound) && ![receivers containsObject:user]) {
+                [filteredSuggestions addObject:user];
+            }
         }
     }
-    if (![filteredSuggestions isEqualToArray:suggestions]) {
-        suggestions = filteredSuggestions;
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+    if (![filteredSuggestions isEqualToArray:suggestedUsers]) {
+        suggestedUsers = filteredSuggestions;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SUGGESTIONS_SECTION] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 
@@ -97,8 +101,8 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == RECIPIENTS_SECTION) { return recipients.count; }
-    if (section == SUGGESTIONS_SECTION) { return suggestions.count; }
+    if (section == RECIPIENTS_SECTION) { return receivers.count; }
+    if (section == SUGGESTIONS_SECTION) { return suggestedUsers.count; }
     return 1;
 }
 
@@ -113,9 +117,11 @@
     }
     static NSString *cellIdentifier = @"ReceiverCell";
     ReceiverCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    User *user = section == SUGGESTIONS_SECTION ? suggestedUsers[indexPath.row] : receivers[indexPath.row];
     cell.accessoryType = section == RECIPIENTS_SECTION ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     cell.backgroundColor = section == SUGGESTIONS_SECTION ? lightGrayColor : whiteColor;
-    cell.nameLabel.text = section == SUGGESTIONS_SECTION ? suggestions[indexPath.row] : recipients[indexPath.row];
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
+    cell.roleLabel.text = [User stringFromRoleType:user.role];
     return cell;
 }
 
@@ -127,9 +133,8 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [recipients removeObjectAtIndex:indexPath.row];
+        [receivers removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
     }
 }
 
@@ -141,10 +146,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == SUGGESTIONS_SECTION) {
-        [recipients addObject:suggestions[indexPath.row]];
-        [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:recipients.count -
+        [receivers addObject:suggestedUsers[indexPath.row]];
+
+        [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:receivers.count -
                                              1 inSection:RECIPIENTS_SECTION]] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [suggestions removeObjectAtIndex:indexPath.row];
+        [suggestedUsers removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];        
     }
 }
@@ -152,28 +158,32 @@
 #pragma mark - events
 -(void)messageTypeDidChange:(UISegmentedControl*)control
 {
-    NSString *type = control.selectedSegmentIndex == MESSAGE_TYPE ? @"message" : @"mailing";
     [self.tableView reloadData];
 }
+
 -(void)didPressCancel
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)didPressSend:(id)sender {
+- (void)didPressSend {
+    if (self.textView.text.length < 3) { return; }
+    
     User *currentUsr = Store.mainStore.currentUser;
     Message *message = [[Message alloc]init];
     message.text = self.textView.text;
     message.from = [NSString stringWithFormat:@"%@ %@", currentUsr.firstname, currentUsr.lastname];
     message.date = [NSDate date];
     
-    if (self.messageTypeControl == MESSAGE_TYPE) {
-        
+    if (self.messageTypeControl.selectedSegmentIndex == MESSAGE_TYPE) {
+        [[Store adminStore]sendMessage:message toUsers:receivers completion:^(Message *message) {
+            NSLog(@"message sent");
+        }];
     } else {
         [[Store adminStore]broadcastMessage:message completion:^(Message *message) {
             NSLog(@"ok");
         }];
-        
     }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
