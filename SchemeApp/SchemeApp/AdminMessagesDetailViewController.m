@@ -9,7 +9,7 @@
 #import "AdminMessagesDetailViewController.h"
 #import "Message.h"
 
-@interface AdminMessagesDetailViewController ()
+@interface AdminMessagesDetailViewController () <UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *fromField;
 @property (weak, nonatomic) IBOutlet UILabel *dateField;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -17,7 +17,9 @@
 @end
 
 @implementation AdminMessagesDetailViewController
-
+{
+    UIActionSheet *deletePrompt;
+}
 -(BOOL)prefersStatusBarHidden { return YES; }
 
 - (void)viewDidLoad
@@ -31,12 +33,22 @@
     self.textView.text = self.message.text;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(didPressTrash)];
+    
+    deletePrompt = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil, nil];
 }
 
 -(void)didPressTrash
 {
-    [self.delegate willdeleteMessage:self.message];
-    [self.navigationController popViewControllerAnimated:YES];
+     [deletePrompt showFromTabBar:self.tabBarController.tabBar];
 }
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self.delegate willdeleteMessage:self.message];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 
 @end
