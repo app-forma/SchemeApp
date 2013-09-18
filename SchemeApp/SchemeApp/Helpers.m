@@ -45,21 +45,21 @@
 +(NSString*)stringFromNSDate:(NSDate*)date
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    dateFormat.timeZone = self.timeZone;
     [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm"];
     return [NSString stringWithFormat:@"%@", [dateFormat stringFromDate:date]];
 }
 +(NSString*)dateStringFromNSDate:(NSDate*)date
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setTimeZone:NSTimeZone.systemTimeZone];
+    dateFormat.timeZone = self.timeZone;
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     return [NSString stringWithFormat:@"%@", [dateFormat stringFromDate:date]];
 }
 +(NSString*)timeStringFromNSDate:(NSDate*)date
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setTimeZone:NSTimeZone.systemTimeZone];
+    dateFormat.timeZone = self.timeZone;
     [dateFormat setDateFormat:@"HH:mm"];
     return [NSString stringWithFormat:@"%@", [dateFormat stringFromDate:date]];
     return nil;
@@ -68,7 +68,7 @@
 +(NSDate*)dateFromString:(NSString*)string
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    dateFormat.timeZone = self.timeZone;
     
     if (string.length == 10)
     {
@@ -102,7 +102,7 @@
     [components setHour:0];
     [components setMinute:0];
     NSCalendar *gregorian = [NSCalendar currentCalendar];
-    [gregorian setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    [gregorian setTimeZone:self.timeZone];
     NSDate *start = [gregorian dateFromComponents:components];
     [components setHour:23];
     [components setMinute:59];
@@ -113,8 +113,7 @@
 +(NSDate*)currentDateTime
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];    
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:3600*-2]];
+    [dateFormat setTimeZone:self.timeZone];
     [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm"];
     return [dateFormat dateFromString:[Helpers stringFromNSDate:[NSDate date]]];
 }
@@ -169,7 +168,7 @@
 {
     NSCalendar *gregorian = [NSCalendar currentCalendar];
     [gregorian setFirstWeekday:2]; // Monday
-    [gregorian setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    [gregorian setTimeZone:self.timeZone];
     
     // Get the weekday component of the current date
     NSDateComponents *weekdayComponents = [gregorian components:NSWeekdayCalendarUnit fromDate:date];
@@ -228,7 +227,7 @@
 {
     NSDate *today = [NSDate date];
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    [gregorian setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    [gregorian setTimeZone:self.timeZone];
     
     NSDateComponents *comps = [gregorian components:NSYearCalendarUnit | NSWeekCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:today];
     
@@ -241,4 +240,9 @@
     [comps setMinute:1];
     return [gregorian dateFromComponents:comps];
 }
++(NSTimeZone *)timeZone
+{
+    return NSTimeZone.systemTimeZone;
+}
+
 @end
