@@ -5,7 +5,7 @@ configuration.project = {
 	ver: '0.0.1'
 };
 
-process.env.NODE_ENV = 'development'; // 'development' or 'production'
+process.env.NODE_ENV = 'production'; // 'development' or 'production'
 
 configuration.http = {
 	port: 13564,
