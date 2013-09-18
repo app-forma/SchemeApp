@@ -72,6 +72,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSLog(@"delete");
+        [messages removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [[Store adminStore]updateMessages:messages forUser:[Store mainStore].currentUser];
     }
 }
 

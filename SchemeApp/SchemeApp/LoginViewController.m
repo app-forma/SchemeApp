@@ -45,7 +45,7 @@ self.navigationController.navigationBarHidden = YES;
 
 - (IBAction)loadAdminSB:(id)sender {
 
-    [Store setCurrentUserToUserWithEmail:@"tobiee@tobbe.tobbe" andPassword:nil completion:^(BOOL success) {
+    [Store setCurrentUserToUserWithEmail:@"joe@gmail.com" andPassword:nil completion:^(BOOL success) {
         if (success) {
             NSLog(@"Logged in as User: %@ %@", Store.mainStore.currentUser.firstname,
                   Store.mainStore.currentUser.lastname);
