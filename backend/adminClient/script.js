@@ -7,8 +7,10 @@ document.getElementById("restart").onclick = function () {
 };
 
 document.getElementById("drop").onclick = function () {
-	addLogText('Flushing server, please wait...\n');
-	requestAt('drop');
+	if (confirm('Drop all collections? This cant be undone!')) {
+		addLogText('Flushing server, please wait...\n');
+		requestAt('drop');
+	}
 };
 
 /*document.getElementById("populate").onclick = function () {
