@@ -79,13 +79,19 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSLog(@"Deleting %@ WITH DOC_ID %@", [eventWrappers[indexPath.row] asDictionary], [eventWrappers[indexPath.row] docID]);
-        [Store.adminStore deleteEventWrapper:selectedEventWrapper
-                                  completion:^(id result)
-         {
-             [eventWrappers removeObject:selectedEventWrapper];
-             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-         }];
+        NSString *url = [NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENTWRAPPER, [eventWrappers[indexPath.row]docID]];
+        [[Store dbSessionConnection] deletePath:url withCompletion:^(id jsonObject, id response, NSError *error) {
+            [eventWrappers removeObject:eventWrappers[indexPath.row]];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }];
+        
+        //        NSLog(@"Deleting %@ WITH DOC_ID %@", [eventWrappers[indexPath.row] asDictionary], [eventWrappers[indexPath.row] docID]);
+//        [Store.adminStore deleteEventWrapper:selectedEventWrapper
+//                                  completion:^(id result)
+//         {
+//
+//             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//         }];
     }
 }
 
