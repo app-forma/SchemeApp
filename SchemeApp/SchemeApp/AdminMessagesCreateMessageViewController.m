@@ -182,7 +182,8 @@
     if (self.messageTypeControl.selectedSegmentIndex == MESSAGE_TYPE) {
         [[Store adminStore]sendMessage:message toUsers:receivers completion:^(Message *message) {
             [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                if ([receivers containsObject:[Store mainStore].currentUser]) {
+                NSPredicate *containsUser = [NSPredicate predicateWithFormat:@"self.email matches %@", [Store mainStore].currentUser.email];
+                if ([receivers filteredArrayUsingPredicate:containsUser].count > 0) {
                     [self performSelectorOnMainThread:@selector(returnToMessageViewAndSetMessage:) withObject:message waitUntilDone:YES];
                 } else {
                     [self dismissViewControllerAnimated:YES completion:nil];
@@ -201,8 +202,5 @@
     [self.delegate didCreateMessage:message];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
-
 
 @end
