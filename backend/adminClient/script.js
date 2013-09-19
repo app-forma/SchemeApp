@@ -6,10 +6,15 @@ document.getElementById("restart").onclick = function () {
 	requestAt('restart');
 };
 
-document.getElementById("populate").onclick = function () {
-	addLogText('Flushing and repopulating server, please wait...\n');
-	requestAt('populate');
+document.getElementById("drop").onclick = function () {
+	addLogText('Flushing server, please wait...\n');
+	requestAt('drop');
 };
+
+/*document.getElementById("populate").onclick = function () {
+	addLogText('Repopulating server, please wait...\n');
+	requestAt('populate');
+};*/
 
 function requestAt(url) {
 	server.get(url, function (success, response) {

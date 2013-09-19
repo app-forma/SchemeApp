@@ -18,45 +18,56 @@ app.use(express.static(__dirname + "/adminClient"));
 app.use(express.bodyParser());
 app.use(express.cookieParser());
 
+/* -------------- Restart server -------------- */
 app.get("/restart", function (req, res) {
 	var output = '',
-		updateScript = spawn('bash', ['updatetest.sh']);
-
+		updateScript = spawn('bash', ['update.sh']);
 	updateScript.stdout.on('data', function (data) {
 		output = output + data;
 	});
-
 	updateScript.stderr.on('data', function (data) {
 		output = output + data;
 	});
-
 	updateScript.on('exit', function (code) {
 		res.json({
 			exitCode: code,
-			output: output
+			output: 'Server restarted.\n' + output
 		});
 	});
 });
 
-
-app.get("/populate", function (req, res) {
-	var json = fs.readFileSync('populationdata.json', 'utf-8');
-	if (json) {
-		res.json({
-			populate: true,
-			output: json + '\n'
-		});
-	} else {
-		res.json({
-			populated: false,
-			output: 'could not read population file.\n'
-		});
-	}
-
+/* -------------- Drop database -------------- */
+app.get("/drop", function (req, res) {
+	mongoose.connection.db.dropDatabase(function (err) {
+		if (err) {
+			res.json({
+				output: 'Something went wrong!\n'
+			});
+		} else {
+			res.json({
+				output: 'Database dropped.\n'
+			});
+		}
+	});
 });
 
-
-
+/* -------------- Populate -------------- */
+/*app.get("/populate", function (req, res) {
+	var json = fs.readFile('populationdata.json', 'utf-8', function (json) {
+		if (json) {
+			res.json({
+				populate: true,
+				output: json + '\n'
+			});
+		} else {
+			res.json({
+				populated: false,
+				output: 'could not read population file.\n'
+			});
+		}
+	});
+});
+*/
 console.log("SchemeAppAdmin server running at port " + port + '...');
 
 app.listen(port);
