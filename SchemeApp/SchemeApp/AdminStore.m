@@ -168,7 +168,7 @@
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))handler
 {
     [Store.dbSessionConnection postContent:message.asDictionary
-                                    toPath:DB_TYPE_MESSAGE
+                                    toPath:[NSString stringWithFormat:@"%@/broadcast", DB_TYPE_MESSAGE]
                             withCompletion:^(id jsonObject, id response, NSError *error)
      {
          if (error)
@@ -178,6 +178,7 @@
          }
          else
          {
+             NSLog(@"Message broadcasted, message: %@", jsonObject);
              handler([[Message alloc] initWithMsgDictionary:jsonObject]);
          }
      }];
@@ -198,23 +199,31 @@
      {
          if (error)
          {
-             NSLog(@"sendMessage:toUsers:completion: got response: %@ and error: %@", response, error.userInfo);
-             handler(nil);
+             NSLog(@"sendMessage:toUsers:completion: got response: %@ and error: %@", jsonObject, error.userInfo);
          }
          else
          {
-             handler([[Message alloc] initWithMsgDictionary:jsonObject]);
+             NSLog(@"%@", jsonObject);
          }
      }];
 }
 - (void)updateMessages:(NSArray*)messages forUser:(User*)user
 {
-#warning dbConnection depricated and should be implemented by Erik
     NSMutableArray *messageIds = [NSMutableArray new];
     for (Message *message in messages) {
         [messageIds addObject:message.docID];
     }
-    [[Store dbConnection]updateType:DB_TYPE_USER withContent:[NSDictionary dictionaryWithObjects:@[user.docID, messageIds] forKeys:@[@"_id", @"messages"]] callback:nil];
+    NSDictionary *json = [NSDictionary dictionaryWithObject:messageIds forKey:@"messages"];
+    
+    [Store.dbSessionConnection putContent:json
+                                   toPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, user.docID]
+                           withCompletion:^(id jsonObject, id response, NSError *error)
+    {
+        if (error)
+        {
+            NSLog(@"sendMessage:toUsers:completion: got response: %@ and error: %@", jsonObject, error.userInfo);
+        }
+    }];
 }
 
 @end

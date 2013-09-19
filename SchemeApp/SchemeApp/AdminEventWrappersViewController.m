@@ -20,7 +20,7 @@
 
 - (void)loadView
 {
-    [super loadView];
+    [super loadView];  
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"courses_selected"]];
 }
 - (void)viewWillAppear:(BOOL)animated
