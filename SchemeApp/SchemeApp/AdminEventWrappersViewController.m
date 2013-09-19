@@ -23,6 +23,7 @@
     [super loadView];  
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"courses_selected"]];
 }
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [Store.adminStore eventWrappersCompletion:^(NSArray *allEventWrappers)
