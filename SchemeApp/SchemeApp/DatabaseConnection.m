@@ -11,5 +11,4 @@
 #import "DatabaseConnection.h"
 
 @implementation DatabaseConnection
-
 @end
