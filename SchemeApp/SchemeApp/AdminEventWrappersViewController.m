@@ -8,7 +8,7 @@
 
 #import "AdminEventWrappersViewController.h"
 #import "EventWrapperCell.h"
-#import "AdminEventWrapperTableViewViewController.h"
+#import "AdminEventWrapperTableViewController.h"
 #import "EventWrapper.h"
 
 
@@ -40,7 +40,7 @@
     }
     else if ([segue.identifier isEqualToString:@"EditEventWrapper"])
     {
-        AdminEventWrapperTableViewViewController *vc = segue.destinationViewController;
+        AdminEventWrapperTableViewController *vc = segue.destinationViewController;
         vc.selectedEventWrapper = selectedEventWrapper;
     }
 }
