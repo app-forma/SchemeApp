@@ -79,6 +79,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSLog(@"Deleting %@ WITH DOC_ID %@", [eventWrappers[indexPath.row] asDictionary], [eventWrappers[indexPath.row] docID]);
         [Store.adminStore deleteEventWrapper:selectedEventWrapper
                                   completion:^(id result)
          {
