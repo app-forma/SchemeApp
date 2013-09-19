@@ -56,14 +56,7 @@ exports.create = function(req, res) {
  * Update a user
  */
 exports.update = function(req, res) {
-  if (!req.body.messages) {
-    req.body.messages = [];
-  }
-  if (!req.body.eventWrappers) {
-    req.body.eventWrappers = [];
-  }
-
-  // Obj can't contain _id. Will generate error.  
+  // Obj can't contain _id. Will generate error.
   delete req.body._id;
   User.update({
     _id: req.params.id

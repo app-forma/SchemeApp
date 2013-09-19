@@ -28,9 +28,6 @@ exports.create = function(req, res) {
  * Update eventWrapper
  */
 exports.update = function(req, res) {
-  if (!req.body.events) {
-    req.body.events = [];
-  }
   // Obj can't contain _id. Will generate error.
   delete req.body._id;
   EventWrapper.update({
