@@ -139,8 +139,10 @@
 {
     
     [[Store dbSessionConnection]postContent:[message asDictionary] toPath:@"messages/broadcast" withCompletion:^(id jsonObject, id response, NSError *error) {
-//        if (error == nil) {
-//            NSLog(@"Message broadcasted, message: %@", jsonObject);
+                        NSLog(@"Message broadcasted, message: %@", jsonObject);
+                        
+        //        if (error == nil) {
+
 //            completion([[Message alloc]initWithMsgDictionary:jsonObject]);
 //        } else {
 //            NSLog(@"error occured: %@", error);

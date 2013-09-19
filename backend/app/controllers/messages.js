@@ -114,9 +114,15 @@ exports.broadcast = function (req, res) {
       });
     });
   });
-  message.populate('from').exec(function (err, doc) {
-    res.json(200, doc);
-
-  });
-
+  Message.findOne({
+    _id: message._id
+  }).populate('from')
+    .exec(function (err, doc) {
+      if (err) {
+        res.json(404);
+        return;
+      } else {
+        res.json(200, doc);
+      }
+    });
 };
