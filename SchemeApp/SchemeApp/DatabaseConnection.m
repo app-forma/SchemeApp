@@ -86,9 +86,9 @@
                                                            options:NSJSONWritingPrettyPrinted error:&error];
         if (error)
         {
-            NSLog(@"%@ got JSON parse error: %@", self.class, error);
+            NSLog(@"%@ tried to parse incomming jsonObject but got error: %@", self.class, error);
+            return nil;
         }
-        return nil;
     }
     
     return request;
@@ -99,25 +99,12 @@
                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
       {
           id jsonObject;
-          
-          if (error)
+          if (!error)
           {
-#warning Testing
-              NSLog(@"%@ got response: %@ with error: %@", self.class, response, error.userInfo);
-          }
-          else
-          {
-#warning Testing
               jsonObject = [NSJSONSerialization JSONObjectWithData:data
                                                            options:NSJSONReadingAllowFragments
                                                              error:&error];
-              if (error)
-              {
-                  NSLog(@"%@ got response: %@ with jsonError: %@", self.class, response, error.userInfo);
-              }
-              NSLog(@"%@ got response: %@ with JSONData: %@", self.class, response, jsonObject);
           }
-          
           handler(jsonObject, response, error);
           
       }] resume];
