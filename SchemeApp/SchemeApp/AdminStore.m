@@ -200,12 +200,11 @@
      {
          if (error)
          {
-             NSLog(@"broadcastMessage:completion: got response: %@ and error: %@", response, error.userInfo);
+             NSLog(@"broadCastMessage got response: %@ and error: %@", jsonObject, error.userInfo);
              handler(nil);
          }
          else
          {
-             NSLog(@"Message broadcasted, message: %@", jsonObject);
              handler([[Message alloc] initWithMsgDictionary:jsonObject]);
          }
      }];

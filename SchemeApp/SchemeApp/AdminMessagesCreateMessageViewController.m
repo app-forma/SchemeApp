@@ -171,7 +171,6 @@
 
 - (void)didPressSend {
     if (self.textView.text.length < 3) { return; }
-    
     sendButton.enabled = NO;
     
     Message *message = [[Message alloc]init];
@@ -183,11 +182,7 @@
         [[Store adminStore]sendMessage:message toUsers:receivers completion:^(Message *message) {
             [[NSOperationQueue mainQueue]addOperationWithBlock:^{
                 NSPredicate *containsUser = [NSPredicate predicateWithFormat:@"self.email matches %@", [Store mainStore].currentUser.email];
-                if ([receivers filteredArrayUsingPredicate:containsUser].count > 0) {
-                    [self performSelectorOnMainThread:@selector(returnToMessageViewAndSetMessage:) withObject:message waitUntilDone:YES];
-                } else {
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                }
+                [receivers filteredArrayUsingPredicate:containsUser].count > 0 ? [self returnToMessageViewAndSetMessage:message] : [self dismissViewControllerAnimated:YES completion:nil];
             }];
         }];
     } else {

@@ -5,6 +5,19 @@ var mongoose = require('mongoose'),
   Message = mongoose.model('Message');
 
 
+function respondPopulatedMessageWithId(_id, res) {
+  Message.findOne({
+    _id: _id
+  }).populate('from')
+    .exec(function (err, message) {
+      if (err) {
+        res.json(404);
+      } else {
+        res.json(200, message);
+      }
+    });
+}
+
 exports.message = function (req, res, next, id) {
   Message.load(id, function (err, message) {
     if (err) return next(err);
@@ -21,16 +34,7 @@ exports.create = function (req, res) {
       if (err) {
         res.json(500, err.errors);
       } else {
-        Message.findOne({
-          _id: message._id
-        }).populate('from')
-          .exec(function (err, doc) {
-            if (err) {
-              res.json(404);
-            } else {
-              res.json(200, doc);
-            }
-          });
+        respondPopulatedMessageWithId(message._id, res);
         User.find({
           '_id': {
             $in: req.body.receivers
@@ -85,17 +89,7 @@ exports.index = function (req, res) {
 };
 
 exports.byId = function (req, res) {
-  Message.findOne({
-    _id: req.params.id
-  }).populate('from')
-    .exec(function (err, doc) {
-      if (err) {
-        res.json(404);
-        return;
-      } else {
-        res.json(200, doc);
-      }
-    });
+  respondPopulatedMessageWithId(req.params.id, res);
 };
 
 exports.byIdRaw = function (req, res) {
@@ -113,16 +107,7 @@ exports.byIdRaw = function (req, res) {
 exports.broadcast = function (req, res) {
   var message = new Message(req.body);
   message.saveToDisk(message, function (err, message) {
-    Message.findOne({
-      _id: message._id
-    }).populate('from')
-      .exec(function (err, doc) {
-        if (err) {
-          res.json(404);
-        } else {
-          res.json(200, doc);
-        }
-      });
+    respondPopulatedMessageWithId(message._id, res);
     User.find({
       'role': 'student'
     }, function (err, docs) {
