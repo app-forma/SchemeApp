@@ -11,27 +11,7 @@
 
 @implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-#warning Testing
-//    [Store.dbSessionConnection readType:DB_TYPE_EVENTWRAPPER
-//                                 withId:nil
-//                             completion:^(id jsonObject, id response, NSError *error)
-//     {
-//         NSLog(@"dbSessionConnection completion\nJSONObject: %@\nResponse: %@\nError: %@", jsonObject, response, error);
-//     }];
-    
-//        [Store setCurrentUserToUserWithEmail:@"erik82osterberg88gmail.com" andPassword:nil completion:^(BOOL success) {
-//            Message *msg = [[Message alloc] init];
-//            msg.text = @"LOL";
-//            msg.from = [Store.mainStore currentUser];
-//            msg.date = [NSDate date];
-//            NSMutableDictionary *msgDict = [[NSMutableDictionary alloc] initWithDictionary:[msg asDictionary]];
-//            [msgDict setObject:@[] forKey:@"receivers"];
-//            
-//            [[Store dbSessionConnection] createType:DB_TYPE_MESSAGE withContent:msgDict completion:^(id jsonObject, id response, NSError *error) {
-//                NSLog(@"dbSessionConnection completion\nJSONObject: %@\nResponse: %@\nError: %@", jsonObject, response, error);
-//            }];
-//        }];
+{    
     return YES;
 }
 

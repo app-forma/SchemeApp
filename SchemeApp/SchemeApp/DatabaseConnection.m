@@ -15,6 +15,7 @@
     NSURLSession *urlSession;
     NSString *dbURL;
 }
+
 - (id)init
 {
     self = [super init];
@@ -35,60 +36,64 @@
     return self;
 }
 
-- (void)readType:(NSString *)type withId:(NSString *)typeId completion:(completion)handler
+#pragma mark - Basic CRUD operations
+- (void)postContent:(id)content toPath:(NSString *)path withCompletion:(completion)handler
 {
-    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/%@", dbURL, type];
-    if (typeId)
+    [self runSessionDataTaskWithRequest:[self requestWithPath:path bodyJSONObject:content andMethod:@"POST"]
+                          andCompletion:handler];
+}
+- (void)getPath:(NSString *)path withParams:(NSDictionary *)params andCompletion:(completion)handler;
+{
+    NSMutableURLRequest *request;
+    if (params)
     {
-        [urlString appendString:[NSString stringWithFormat:@"/%@", typeId]];
+        request = [self requestWithPath:path
+                         bodyJSONObject:params
+                              andMethod:@"POST"];
+    }
+    else
+    {
+        request = [self requestWithPath:path
+                         bodyJSONObject:nil
+                              andMethod:@"GET"];
     }
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    request.HTTPMethod = @"GET";
-    
-    [[urlSession dataTaskWithRequest:request
-                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-      {
-          id jsonObject;
-          
-          if (error)
-          {
-#warning Testing
-              NSLog(@"%@ got response: %@ with error: %@", self.class, response, error.userInfo);
-          }
-          else
-          {
-#warning Testing
-              jsonObject = [NSJSONSerialization JSONObjectWithData:data
-                                                              options:NSJSONReadingAllowFragments
-                                                                error:&error];
-              if (error)
-              {
-                  NSLog(@"%@ got response: %@ with jsonError: %@", self.class, response, error.userInfo);
-              }
-              NSLog(@"%@ got response: %@ with JSONData: %@", self.class, response, jsonObject);
-          }
-          
-          handler(jsonObject, response, error);
-          
-      }] resume];
+    [self runSessionDataTaskWithRequest:request
+                          andCompletion:handler];
+}
+- (void)putContent:(id)content toPath:(NSString *)path withCompletion:(completion)handler;
+{
+    [self runSessionDataTaskWithRequest:[self requestWithPath:path bodyJSONObject:content andMethod:@"PUT"]
+                          andCompletion:handler];
+}
+- (void)deletePath:(NSString *)path withCompletion:(completion)handler;
+{
+    [self runSessionDataTaskWithRequest:[self requestWithPath:path bodyJSONObject:nil andMethod:@"DELETE"]
+                          andCompletion:handler];
 }
 
-- (void)createType:(NSString *)type withContent:(id)content completion:(completion)handler
+#pragma mark - Extracted methods
+- (NSMutableURLRequest *)requestWithPath:(NSString *)path bodyJSONObject:(id)jsonObject andMethod:(NSString *)methodString
 {
-    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/%@", dbURL, type];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:path]];
+    request.HTTPMethod = methodString;
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    
-    NSError *error;
-    request.HTTPBody = [NSJSONSerialization dataWithJSONObject:content options:NSJSONWritingPrettyPrinted error:&error];
-    if (error) {
-        NSLog(@"[%@] JSON parse error: %@", self.class, error);
+    if (jsonObject)
+    {
+        NSError *error;
+        request.HTTPBody = [NSJSONSerialization dataWithJSONObject:jsonObject
+                                                           options:NSJSONWritingPrettyPrinted error:&error];
+        if (error)
+        {
+            NSLog(@"%@ got JSON parse error: %@", self.class, error);
+        }
+        return nil;
     }
-    NSLog(@"asdasd %@", request.HTTPBody);
     
-    request.HTTPMethod = @"POST";
-    
+    return request;
+}
+- (void)runSessionDataTaskWithRequest:(NSMutableURLRequest *)request andCompletion:(completion)handler
+{
     [[urlSession dataTaskWithRequest:request
                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
       {
