@@ -29,7 +29,10 @@
     [Store.adminStore eventWrappersCompletion:^(NSArray *allEventWrappers)
      {
          eventWrappers = [NSMutableArray arrayWithArray:allEventWrappers];
-         [self.tableView reloadData];
+         [NSOperationQueue.mainQueue addOperationWithBlock:^
+         {
+             [self.tableView reloadData];
+         }];
      }];
 }
 

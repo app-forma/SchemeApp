@@ -43,8 +43,11 @@
     [Store.adminStore usersCompletion:^(NSArray *allUsers)
      {
          users = [NSMutableArray arrayWithArray:allUsers];
-         [self.tableview reloadData];
-         [self.activityIndicator stopAnimating];
+         [NSOperationQueue.mainQueue addOperationWithBlock:^
+         {
+             [self.tableview reloadData];
+             [self.activityIndicator stopAnimating];
+         }];
      }];
 }
 
