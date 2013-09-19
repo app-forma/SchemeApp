@@ -4,11 +4,19 @@ var port = 30368,
 	express = require("express"),
 	app = express(),
 	util = require('util'),
-	spawn = require('child_process').spawn;
+	spawn = require('child_process').spawn,
+	fs = require('fs'),
+	config = require('./config/config.js'),
+	mongoose = require('./config/mongoose.js').dbInit(config);
+
+var models_path = __dirname + '/app/models';
+fs.readdirSync(models_path).forEach(function (file) {
+  require(models_path+'/'+file);
+});
+
 app.use(express.static(__dirname + "/adminClient"));
 app.use(express.bodyParser());
 app.use(express.cookieParser());
-
 
 app.get("/restart", function (req, res) {
 	var output = '',
