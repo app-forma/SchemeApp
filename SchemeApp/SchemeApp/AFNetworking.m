@@ -19,6 +19,7 @@
     AFHTTPClient *client = [[AFHTTPClient alloc]initWithBaseURL:url];
     [client POST:type parameters:content success:^(NSHTTPURLResponse *response, id responseObject) {
         //Handle success
+        callback(responseObject);
     } failure:^(NSError *error) {
         //Handle failure
     }];
@@ -48,6 +49,7 @@
         callback(JSON);
     } failure:^(NSError *error) {
         //Handle failure
+        NSLog(@"Error: %@", error);
     }];
 }
 -(void)deleteType:(NSString *)type withId:(NSString *)typeId callback:(callback)callback

@@ -6,12 +6,14 @@
 //  Copyright (c) 2013 Team leet. All rights reserved.
 //
 
-#import "AdminEventWrapperTableViewViewController.h"
+#import "AdminEventWrapperTableViewController.h"
 #import "EventWrapper.h"
 
 
-@interface AdminEventWrapperTableViewViewController ()
-
+@interface AdminEventWrapperTableViewController ()
+{
+    BOOL isNew;
+}
 @property (weak, nonatomic) IBOutlet UITextField *courseTitleTextField;
 @property (weak, nonatomic) IBOutlet UITextField *teacherTextField;
 @property (weak, nonatomic) IBOutlet UITextField *litteratureTextField;
@@ -34,7 +36,7 @@
 @end
 
 
-@implementation AdminEventWrapperTableViewViewController
+@implementation AdminEventWrapperTableViewController
 {
     BOOL shouldShowStartDatePicker, shouldShowEndDatePicker;
 }
@@ -56,8 +58,11 @@
     
     if (self.selectedEventWrapper)
     {
-        [self setInputsToSelectedEventWrapper];
+        isNew = NO;
+    } else {
+        isNew = YES;
     }
+    [self setInputsToSelectedEventWrapper];
     
     [self setDatePickerLocaleToSystemLocale];
     [self setDateLabelsToPickerDates:nil];
@@ -88,24 +93,17 @@
 }
 - (IBAction)save:(id)sender
 {
-    if (self.selectedEventWrapper)
-    {
-        [self setSelectedEventWrapperPropertiesToInputValues];
+    [self setSelectedEventWrapperPropertiesToInputValues];
+    if (isNew) {
+        [Store.adminStore createEventWrapper:self.selectedEventWrapper completion:^(id result) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    } else {
         [Store.adminStore updateEventWrapper:self.selectedEventWrapper
                                   completion:^(id result)
-        {
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
-    }
-    else
-    {
-        self.selectedEventWrapper = [[EventWrapper alloc] init];
-        [self setSelectedEventWrapper:self.selectedEventWrapper];
-        [Store.adminStore createEventWrapper:self.selectedEventWrapper
-                                  completion:^(id result)
-        {
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
+         {
+             [self.navigationController popViewControllerAnimated:YES];
+         }];
     }
 }
 
@@ -175,25 +173,36 @@
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
 }
+
 - (void)setDatePickerLocaleToSystemLocale
 {
     self.startDatePicker.locale = [NSLocale systemLocale];
     self.endDatePicker.locale = [NSLocale systemLocale];
 }
+
 - (void)setInputsToSelectedEventWrapper
 {
-    self.courseTitleTextField.text = self.selectedEventWrapper.name;
-    self.teacherTextField.text = self.selectedEventWrapper.user.name;
-    self.litteratureTextField.text = self.selectedEventWrapper.litterature;
-    self.startDatePicker.date = self.selectedEventWrapper.startDate;
-    self.endDatePicker.date = self.selectedEventWrapper.endDate;
+    if (isNew) {
+        self.teacherTextField.text = [NSString stringWithFormat:@"%@ %@", [Store mainStore].currentUser.firstname, [Store mainStore].currentUser.lastname];
+    } else {
+        self.courseTitleTextField.text = self.selectedEventWrapper.name;
+        self.litteratureTextField.text = self.selectedEventWrapper.litterature;
+        self.startDatePicker.date = self.selectedEventWrapper.startDate;
+        self.endDatePicker.date = self.selectedEventWrapper.endDate;
+        self.teacherTextField.text = [NSString stringWithFormat:@"%@ %@", self.selectedEventWrapper.user.firstname, self.selectedEventWrapper.user.lastname];
+    }
 }
+
 - (void)setSelectedEventWrapperPropertiesToInputValues
 {
+    if (!self.selectedEventWrapper) {
+        self.selectedEventWrapper = [[EventWrapper alloc] init];
+        [self setSelectedEventWrapper:self.selectedEventWrapper];
+        self.selectedEventWrapper.user = [Store mainStore].currentUser;
+    }
     self.selectedEventWrapper.name = self.courseTitleTextField.text;
     self.selectedEventWrapper.litterature = self.litteratureTextField.text;
     self.selectedEventWrapper.startDate = self.startDatePicker.date;
     self.selectedEventWrapper.endDate = self.endDatePicker.date;
 }
-
 @end

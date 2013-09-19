@@ -11,7 +11,7 @@
 @class EventWrapper;
 
 
-@interface AdminEventWrapperTableViewViewController : UITableViewController <UITextFieldDelegate>
+@interface AdminEventWrapperTableViewController : UITableViewController <UITextFieldDelegate>
 
 @property (nonatomic, strong) EventWrapper *selectedEventWrapper;
 
