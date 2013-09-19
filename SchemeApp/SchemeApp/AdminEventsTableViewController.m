@@ -8,9 +8,12 @@
 
 #import "AdminEventsTableViewController.h"
 #import "AdminEventCell.h"
+#import "Event.h"
 
 @interface AdminEventsTableViewController ()
-
+{
+    NSMutableArray *events;
+}
 @end
 
 @implementation AdminEventsTableViewController
@@ -24,15 +27,17 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [Store.adminStore eventsCompletion:^(NSArray *events_) {
+        events = [NSMutableArray arrayWithArray:events_];
+        [self.tableView reloadData];
+    }];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,22 +50,22 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 10;
+    return [events count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AdminEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdminEventCell"];
-    cell.courseName.text = @"TEST";
+    Event *event = events[indexPath.row];
+    cell.info.text = event.info;
+    cell.room.text = event.room;
+    cell.startDate.text = [Helpers stringFromNSDate:event.startDate];
+    cell.endDate.text = [Helpers stringFromNSDate:event.endDate];
     return cell;
 }
 
