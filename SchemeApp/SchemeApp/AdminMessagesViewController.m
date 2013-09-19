@@ -11,7 +11,7 @@
 #import "AdminMessagesCreateMessageViewController.h"
 #import "MessageCell.h"
 #import "Message.h"
-@interface AdminMessagesViewController () <UITableViewDelegate, UITableViewDataSource, MessageDetailViewDelegate>
+@interface AdminMessagesViewController () <UITableViewDelegate, UITableViewDataSource, MessageDetailViewDelegate, MessageCreateViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -92,6 +92,7 @@
 -(void)didPressAddMessage
 {
     AdminMessagesCreateMessageViewController *createView = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateMessageView"];
+    createView.delegate = self;
     [self presentViewController:createView animated:YES completion:nil];
 }
 
@@ -102,5 +103,12 @@
     [self.tableView reloadData];
     [[Store adminStore]updateMessages:messages forUser:[Store mainStore].currentUser];
 }
+
+-(void)didCreateMessage:(Message *)message
+{
+    [messages addObject:message];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:messages.count - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 
 @end

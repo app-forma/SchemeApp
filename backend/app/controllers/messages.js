@@ -21,7 +21,16 @@ exports.create = function (req, res) {
       if (err) {
         res.json(500, err.errors);
       } else {
-
+        Message.findOne({
+          _id: message._id
+        }).populate('from')
+          .exec(function (err, doc) {
+            if (err) {
+              res.json(404);
+            } else {
+              res.json(200, doc);
+            }
+          });
         User.find({
           '_id': {
             $in: req.body.receivers
@@ -33,7 +42,6 @@ exports.create = function (req, res) {
           });
         });
       }
-      res.json(200, message);
     });
   } else {
     res.send(500);
@@ -111,7 +119,6 @@ exports.broadcast = function (req, res) {
       .exec(function (err, doc) {
         if (err) {
           res.json(404);
-          return;
         } else {
           res.json(200, doc);
         }

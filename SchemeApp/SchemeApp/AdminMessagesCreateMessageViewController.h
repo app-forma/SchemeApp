@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol MessageCreateViewDelegate <NSObject>
+
+-(void)didCreateMessage:(Message*)message;
+
+@end
+
 @interface AdminMessagesCreateMessageViewController : UIViewController
+
+@property (nonatomic, assign) id<MessageCreateViewDelegate> delegate;
 
 @end
