@@ -64,22 +64,41 @@
         self.endDateForScheme.text = dateText;
     }
 }
+- (IBAction)getSchemeForToday:(id)sender
+{
+    NSDictionary *today = [Helpers startAndEndTimeForDate:[NSDate date]];
+    [self getEvents:@{@"startDate": [Helpers dateFromString:today[@"startTime"]], @"endDate": [Helpers dateFromString:today[@"endTime"]]}];
+}
+
+- (IBAction)getSchemeForTheWeek:(id)sender
+{
+    NSDictionary *week = [Helpers startAndEndDateOfWeekForDate:[NSDate date]];
+    [self getEvents:@{@"startDate": [Helpers dateFromString:week[@"startDate"]], @"endDate": [Helpers dateFromString:week[@"endDate"]]}];
+}
 
 - (IBAction)getScheme:(id)sender
 {
-    StudentEventsTableViewController *setvc = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentEventsTableViewController"];
-    setvc.eventsWithEventWrapper = [self filteredDatesForScheme];
-    [self.navigationController pushViewController:setvc animated:YES];
-}
--(NSMutableArray *)filteredDatesForScheme
-{
     NSDate *startDate = [Helpers stripStartDateFromTime:[Helpers dateFromString:self.startDateForScheme.text]];
     NSDate *endDate = [Helpers stripEndDateFromTime:[Helpers dateFromString:self.endDateForScheme.text]];
+    NSDictionary *dateDic = [[NSDictionary alloc] initWithObjectsAndKeys:startDate, @"startDate", endDate, @"endDate", nil];
+    [self getEvents:dateDic];
+}
+
+
+-(void)getEvents:(NSDictionary *)dateDic
+{
+    StudentEventsTableViewController *setvc = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentEventsTableViewController"];
+    setvc.eventsWithEventWrapper = [self filteredDatesForScheme:dateDic];
+    [self.navigationController pushViewController:setvc animated:YES];
     
+}
+
+-(NSMutableArray *)filteredDatesForScheme:(NSDictionary *)dateDic
+{
     NSMutableArray *filteredArray = [NSMutableArray new];
     for (EventWrapper *eventWrapper in Store.mainStore.currentUser.eventWrappers){
         for (Event *event in eventWrapper.events){
-            if ([[startDate laterDate:event.startDate] isEqual:event.startDate] && [[endDate earlierDate:event.startDate] isEqual:event.startDate]) {
+            if ([[dateDic[@"startDate"] laterDate:event.startDate] isEqual:event.startDate] && [[dateDic[@"endDate"] earlierDate:event.startDate] isEqual:event.startDate]) {
                 NSDictionary *eDic = @{@"eventWrapper": eventWrapper, @"event": event};
                 [filteredArray addObject:eDic];
             }
