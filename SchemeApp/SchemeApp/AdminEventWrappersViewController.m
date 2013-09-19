@@ -79,10 +79,12 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [eventWrappers removeObject:selectedEventWrapper];
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [Store.adminStore deleteEventWrapper:selectedEventWrapper
-                                  completion:NULL];
+                                  completion:^(id result)
+         {
+             [eventWrappers removeObject:selectedEventWrapper];
+             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+         }];
     }
 }
 
