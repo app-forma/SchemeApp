@@ -137,9 +137,16 @@
 #pragma mark - messaging methods
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))completion
 {
-    [Store.dbConnection createType:DB_TYPE_BROADCAST_MESSAGE withContent:[message asDictionary] callback:^(id result) {
-        completion([[Message alloc]initWithMsgDictionary:result]);
-    }];    
+    
+    [[Store dbSessionConnection]postContent:[message asDictionary] toPath:@"messages/broadcast" withCompletion:^(id jsonObject, id response, NSError *error) {
+//        if (error == nil) {
+//            NSLog(@"Message broadcasted, message: %@", jsonObject);
+//            completion([[Message alloc]initWithMsgDictionary:jsonObject]);
+//        } else {
+//            NSLog(@"error occured: %@", error);
+//            completion(nil);
+//        }
+    }];
 }
 - (void)sendMessage:(Message *)message toUsers:(NSArray *)users completion:(void (^)(Message *message))completion
 {
@@ -161,6 +168,9 @@
     for (Message *message in messages) {
         [messageIds addObject:message.docID];
     }
-    [[Store dbConnection]updateType:DB_TYPE_USER withContent:[NSDictionary dictionaryWithObjects:@[user.docID, messageIds] forKeys:@[@"_id", @"messages"]] callback:nil];
+    NSDictionary *json = [NSDictionary dictionaryWithObject:messageIds forKey:@"messages"];
+    [[Store dbSessionConnection]putContent:json toPath:[NSString stringWithFormat:@"users/%@", user.docID] withCompletion:^(id jsonObject, id response, NSError *error) {
+        NSLog(@"response: %@, error: %@", jsonObject, error);
+    }];
 }
 @end

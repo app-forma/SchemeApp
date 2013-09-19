@@ -114,5 +114,9 @@ exports.broadcast = function (req, res) {
       });
     });
   });
-  res.json(200, message);
+  message.populate('from').exec(function (err, doc) {
+    res.json(200, doc);
+
+  });
+
 };
