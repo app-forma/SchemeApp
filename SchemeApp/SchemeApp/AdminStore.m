@@ -68,7 +68,7 @@
      }];
 }
 
-- (void)eventsCompletion:(void (^)(NSArray *allEventWrappers))handler
+- (void)eventsCompletion:(void (^)(NSArray *allEvents))handler
 {
     [Store.dbSessionConnection getPath:DB_TYPE_EVENT
                             withParams:nil
