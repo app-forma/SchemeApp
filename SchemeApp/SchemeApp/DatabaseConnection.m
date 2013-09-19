@@ -75,7 +75,8 @@
 #pragma mark - Extracted methods
 - (NSMutableURLRequest *)requestWithPath:(NSString *)path bodyJSONObject:(id)jsonObject andMethod:(NSString *)methodString
 {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:path]];
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@", dbURL, path];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     request.HTTPMethod = methodString;
     
     if (jsonObject)
