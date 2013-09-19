@@ -33,13 +33,11 @@
 - (NSDictionary *)asDictionary
 {
     NSMutableDictionary *jsonEventWrapper = [[NSMutableDictionary alloc]init];
-
-#warning Testing
+    
     NSMutableArray *jsonEvents = [[NSMutableArray alloc]init];
-    [jsonEvents addObject:@"52388867469ddbc32e000002"];
-//    for (Event *event in self.events) {
-//        [jsonEvents addObject:event.docID];
-//    }
+    for (Event *event in self.events) {
+        [jsonEvents addObject:event.docID];
+    }
     
     [jsonEventWrapper setObject:jsonEvents forKey:@"events"];
     [jsonEventWrapper setObject:self.user.docID forKey:@"owner"];
@@ -47,7 +45,9 @@
     [jsonEventWrapper setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
     [jsonEventWrapper setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
     [jsonEventWrapper setObject:self.name forKey:@"name"];
-    [jsonEventWrapper setObject:self.docID forKey:@"_id"];
+    if (self.docID) {
+        [jsonEventWrapper setObject:self.docID forKey:@"_id"];
+    }
     
 #warning Testing
     NSData *JSONData = [NSJSONSerialization dataWithJSONObject:jsonEventWrapper options:nil error:nil];
