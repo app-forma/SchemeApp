@@ -22,21 +22,21 @@
 
 @interface AdminStore : StudentStore
 
-- (void)eventWrappersCompletion:(void (^)(NSArray *allEventWrappers))completion;
+- (void)eventWrappersCompletion:(void (^)(NSArray *allEventWrappers))handler;
 
-- (void)createEvent:(Event *)event completion:(void (^)(id result))completion;
-- (void)updateEvent:(Event *)event completion:(void (^)(id result))completion;
-- (void)deleteEvent:(Event *)event completion:(void (^)(id result))completion;
-- (void)createEventWrapper:(EventWrapper *)eventWrapper completion:(void (^)(id result))completion;
-- (void)updateEventWrapper:(EventWrapper *)eventWrapper completion:(void (^)(id result))completion;
-- (void)deleteEventWrapper:(EventWrapper *)eventWrapper completion:(void (^)(id result))completion;
+- (void)createEvent:(Event *)event completion:(completion)handler;
+- (void)updateEvent:(Event *)event completion:(completion)handler;
+- (void)deleteEvent:(Event *)event completion:(completion)handler;
+- (void)createEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler;
+- (void)updateEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler;
+- (void)deleteEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler;
 
-- (void)usersCompletion:(void (^)(NSArray *allUsers))completion;
-- (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))completion;
-- (void)userWithType:(RoleType)type completion:(void (^)(NSArray *students))completion;
+- (void)usersCompletion:(void (^)(NSArray *allUsers))handler;
+- (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))handler;
+- (void)userWithType:(RoleType)type completion:(void (^)(NSArray *users))handler;
 
-- (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))completion;
-- (void)sendMessage:(Message *)message toUsers:(NSArray *)users completion:(void (^)(Message *message))completion;
+- (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))handler;
+- (void)sendMessage:(Message *)message toUsers:(NSArray *)users completion:(void (^)(Message *message))handler;
 - (void)updateMessages:(NSArray*)messages forUser:(User*)user;
 
 @end

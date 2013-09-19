@@ -25,7 +25,7 @@
         
         if (error)
         {
-            NSLog(@"eventWrappersWithinStartDate:andEndDate:completion: got error: %@", error.userInfo);
+            NSLog(@"eventWrappersWithinStartDate:andEndDate:completion: got response: %@ and error: %@", response, error.userInfo);
         }
         else
         {

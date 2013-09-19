@@ -14,23 +14,31 @@
 
 @implementation SuperAdminStore
     
-- (void)createUser:(User *)user
+- (void)createUser:(User *)user completion:(completion)handler
 {
-    [Store.dbConnection createType:DB_TYPE_USER
-                       withContent:user.asDictionary
-                          callback:NULL];
+    [Store.dbSessionConnection postContent:user.asDictionary
+                                    toPath:DB_TYPE_USER
+                            withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
 }
-- (void)updateUser:(User *)user
+- (void)updateUser:(User *)user completion:(completion)handler
 {
-    [Store.dbConnection updateType:DB_TYPE_USER
-                       withContent:user.asDictionary
-                          callback:NULL];
+    [Store.dbSessionConnection putContent:user.asDictionary
+                                   toPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, user.docID]
+                           withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
 }
-- (void)deleteUser:(User *)user
+- (void)deleteUser:(User *)user completion:(completion)handler
 {
-    [Store.dbConnection deleteType:DB_TYPE_USER
-                            withId:user.docID
-                          callback:NULL];
+    [Store.dbSessionConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, user.docID]
+                           withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
 }
 
 @end
