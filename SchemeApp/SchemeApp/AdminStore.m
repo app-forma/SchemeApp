@@ -137,17 +137,14 @@
 #pragma mark - messaging methods
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))completion
 {
-    
     [[Store dbSessionConnection]postContent:[message asDictionary] toPath:@"messages/broadcast" withCompletion:^(id jsonObject, id response, NSError *error) {
-                        NSLog(@"Message broadcasted, message: %@", jsonObject);
-                        
-        //        if (error == nil) {
-
-//            completion([[Message alloc]initWithMsgDictionary:jsonObject]);
-//        } else {
-//            NSLog(@"error occured: %@", error);
-//            completion(nil);
-//        }
+        if (error == nil) {
+            NSLog(@"Message broadcasted, message: %@", jsonObject);
+            completion([[Message alloc]initWithMsgDictionary:jsonObject]);
+        } else {
+            NSLog(@"error occured: %@", error);
+            completion(nil);
+        }
     }];
 }
 - (void)sendMessage:(Message *)message toUsers:(NSArray *)users completion:(void (^)(Message *message))completion
@@ -159,9 +156,14 @@
     }
     [jsonMessage setObject:receivers forKey:@"receivers"];
     
-    [[Store dbConnection]createType:DB_TYPE_MESSAGE withContent:jsonMessage callback:^(id result) {
-        completion([[Message alloc]initWithMsgDictionary:result]);
+//    [[Store dbConnection]createType:DB_TYPE_MESSAGE withContent:jsonMessage callback:^(id result) {
+//        completion([[Message alloc]initWithMsgDictionary:result]);
+//    }];
+    
+    [[Store dbSessionConnection]postContent:jsonMessage toPath:@"messages" withCompletion:^(id jsonObject, id response, NSError *error) {
+        NSLog(@"%@", jsonObject);
     }];
+    
 }
 
 - (void)updateMessages:(NSArray*)messages forUser:(User*)user
