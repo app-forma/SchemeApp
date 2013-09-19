@@ -106,7 +106,7 @@
 - (void)updateEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler
 {
     [Store.dbSessionConnection putContent:eventWrapper.asDictionary
-                                   toPath:DB_TYPE_EVENTWRAPPER
+                                   toPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENTWRAPPER, eventWrapper.docID]
                            withCompletion:^(id jsonObject, id response, NSError *error)
      {
          handler(jsonObject, response, error);
