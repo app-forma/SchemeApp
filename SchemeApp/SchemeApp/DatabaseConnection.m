@@ -74,4 +74,47 @@
       }] resume];
 }
 
+- (void)createType:(NSString *)type withContent:(id)content completion:(completion)handler
+{
+    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/%@", dbURL, type];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
+    NSError *error;
+    request.HTTPBody = [NSJSONSerialization dataWithJSONObject:content options:NSJSONWritingPrettyPrinted error:&error];
+    if (error) {
+        NSLog(@"[%@] JSON parse error: %@", self.class, error);
+    }
+    NSLog(@"asdasd %@", request.HTTPBody);
+    
+    request.HTTPMethod = @"POST";
+    
+    [[urlSession dataTaskWithRequest:request
+                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+      {
+          id jsonObject;
+          
+          if (error)
+          {
+#warning Testing
+              NSLog(@"%@ got response: %@ with error: %@", self.class, response, error.userInfo);
+          }
+          else
+          {
+#warning Testing
+              jsonObject = [NSJSONSerialization JSONObjectWithData:data
+                                                           options:NSJSONReadingAllowFragments
+                                                             error:&error];
+              if (error)
+              {
+                  NSLog(@"%@ got response: %@ with jsonError: %@", self.class, response, error.userInfo);
+              }
+              NSLog(@"%@ got response: %@ with JSONData: %@", self.class, response, jsonObject);
+          }
+          
+          handler(jsonObject, response, error);
+          
+      }] resume];
+}
+
 @end

@@ -18,7 +18,7 @@ typedef void (^completion)(id jsonObject, id response, NSError *error);
 - (void)addCompletionHandler:(completion)handler forSession:(NSString *)identifier;
 - (void)callCompletionHandlerForSession:(NSString *)identifier;
 
-//-(void)createType:(NSString *)type withContent:(NSDictionary *)content completion:(completion)handler;
+-(void)createType:(NSString *)type withContent:(NSDictionary *)content completion:(completion)handler;
 -(void)readType:(NSString *)type withId:(NSString *)typeId completion:(completion)handler;
 //-(void)updateType:(NSString *)type withContent:(NSDictionary *)content completion:(completion)handler;
 //-(void)deleteType:(NSString *)type withId:(NSString *)typeId completion:(completion)handler;
