@@ -11,7 +11,7 @@ var port = 30368,
 
 var models_path = __dirname + '/app/models';
 fs.readdirSync(models_path).forEach(function (file) {
-  require(models_path+'/'+file);
+	require(models_path + '/' + file);
 });
 
 app.use(express.static(__dirname + "/adminClient"));
@@ -40,12 +40,18 @@ app.get("/restart", function (req, res) {
 
 
 app.get("/populate", function (req, res) {
-	res.json({
-		populate: true,
-		output: 'populated database.\n'
-	});
-
-
+	var json = fs.readFileSync('populationdata.json', 'utf-8');
+	if (json) {
+		res.json({
+			populate: true,
+			output: json + '\n'
+		});
+	} else {
+		res.json({
+			populated: false,
+			output: 'could not read population file.\n'
+		});
+	}
 
 });
 
