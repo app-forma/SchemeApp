@@ -64,6 +64,8 @@
     }
     [self setInputsToSelectedEventWrapper];
     
+    
+    
     [self setDatePickerLocaleToSystemLocale];
     [self setDateLabelsToPickerDates:nil];
 }
@@ -201,6 +203,7 @@
         self.selectedEventWrapper.user = [Store mainStore].currentUser;
     }
     self.selectedEventWrapper.name = self.courseTitleTextField.text;
+    self.selectedEventWrapper.user = [Store mainStore].currentUser;
     self.selectedEventWrapper.litterature = self.litteratureTextField.text;
     self.selectedEventWrapper.startDate = self.startDatePicker.date;
     self.selectedEventWrapper.endDate = self.endDatePicker.date;

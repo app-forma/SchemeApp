@@ -1,0 +1,15 @@
+body {
+	color: white;
+	background: black;
+	font-family: menlo;
+}
+
+h1 {
+	font-weight: normal;
+}
+
+
+button {
+	color: white;
+	background: black;
+}
