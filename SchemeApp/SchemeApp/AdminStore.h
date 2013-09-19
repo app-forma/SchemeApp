@@ -23,6 +23,7 @@
 @interface AdminStore : StudentStore
 
 - (void)eventWrappersCompletion:(void (^)(NSArray *allEventWrappers))handler;
+- (void)eventsCompletion:(void (^)(NSArray *allEventWrappers))handler;
 
 - (void)createEvent:(Event *)event completion:(completion)handler;
 - (void)updateEvent:(Event *)event completion:(completion)handler;

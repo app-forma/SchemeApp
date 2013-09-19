@@ -67,6 +67,33 @@
          handler(collectedEventWrappers);
      }];
 }
+
+- (void)eventsCompletion:(void (^)(NSArray *allEventWrappers))handler
+{
+    [Store.dbSessionConnection getPath:DB_TYPE_EVENT
+                            withParams:nil
+                         andCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         NSMutableArray *events = NSMutableArray.array;
+         
+         if (error)
+         {
+             NSLog(@"eventWrappersCompletion: got response: %@ and error: %@", response, error.userInfo);
+             events = nil;
+         }
+         else
+         {
+             for (NSDictionary *eventsDictionary in jsonObject)
+             {
+                 [events addObject:[[Event alloc] initWithEventDictionary:eventsDictionary]];
+             }
+             
+         }
+         
+         handler(events);
+     }];
+}
+
 - (void)createEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler
 {
     [Store.dbSessionConnection postContent:eventWrapper.asDictionary
