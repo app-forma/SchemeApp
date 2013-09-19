@@ -42,7 +42,7 @@
     [super viewWillAppear:animated];
     [Store.adminStore usersCompletion:^(NSArray *allUsers)
      {
-         users = allUsers;
+         users = [NSMutableArray arrayWithArray:allUsers];
          [self.tableview reloadData];
          [self.activityIndicator stopAnimating];
      }];
@@ -86,10 +86,32 @@
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    selectedUser = users[indexPath.row];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [users removeObject:selectedUser];
-        [Store.superAdminStore deleteUser:selectedUser];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [Store.superAdminStore deleteUser:selectedUser
+                               completion:^(id jsonObject, id response, NSError *error)
+        {
+            if (error)
+            {
+                [NSOperationQueue.mainQueue addOperationWithBlock:^
+                {
+                    [self.tableview reloadData];
+                    [[[UIAlertView alloc] initWithTitle:@"Deletion error"
+                                               message:error.localizedDescription
+                                              delegate:nil
+                                     cancelButtonTitle:@"OK"
+                                     otherButtonTitles:nil] show];
+                }];
+            }
+            else
+            {
+                [users removeObject:selectedUser];
+                [NSOperationQueue.mainQueue addOperationWithBlock:^
+                 {
+                     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                 }];
+            }
+        }];
     }
 }
 

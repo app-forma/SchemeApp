@@ -95,16 +95,26 @@
 }
 - (IBAction)save:(id)sender
 {
-    [self setSelectedEventWrapperPropertiesToInputValues];
-    if (isNew) {
-        [Store.adminStore createEventWrapper:self.selectedEventWrapper completion:^(id result) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
-    } else {
-        [Store.adminStore updateEventWrapper:self.selectedEventWrapper
-                                  completion:^(id result)
+    void(^saveHandler)(void) = ^(void)
+    {
+        [NSOperationQueue.mainQueue addOperationWithBlock:^
          {
              [self.navigationController popViewControllerAnimated:YES];
+         }];
+    };
+    
+    [self setSelectedEventWrapperPropertiesToInputValues];
+    if (isNew) {
+        [Store.adminStore createEventWrapper:self.selectedEventWrapper
+                                completion:^(id jsonObject, id response, NSError *error)
+         {
+             saveHandler();
+         }];
+    } else {
+        [Store.adminStore updateEventWrapper:self.selectedEventWrapper
+                                  completion:^(id jsonObject, id response, NSError *error)
+         {
+             saveHandler();
          }];
     }
 }

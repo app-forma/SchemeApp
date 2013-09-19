@@ -24,33 +24,41 @@
 
 
 @implementation AdminEditStudentViewController
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     if (self.selectedUser)
     {
-        self.firstnameTextField.text = self.selectedUser.firstname;
-        self.lastnameTextField.text = self.selectedUser.lastname;
-        self.emailTextField.text = self.selectedUser.email;
-        self.passwordTextField.text = self.selectedUser.password;
-        self.selectedRoleType = self.selectedUser.role;
-        
-        [self.pickerView selectRow:self.selectedRoleType inComponent:0 animated:NO];
+        [self setInputValuesToPropertiesOfSelectedUser];
     }
 }
 
 - (IBAction)save:(id)sender
 {
+    void(^saveHandler)(id response, NSError *error) = ^(id response, NSError *error)
+    {
+        if (error)
+        {
+            NSLog(@"save: got response: %@ and error: %@", response, error.userInfo);
+        }
+        else
+        {
+            [NSOperationQueue.mainQueue addOperationWithBlock:^
+             {
+                 [self.navigationController popViewControllerAnimated:YES];
+             }];
+        }
+    };
+    
     if (self.selectedUser)
     {
-        self.selectedUser.firstname = self.firstnameTextField.text;
-        self.selectedUser.lastname = self.lastnameTextField.text;
-        self.selectedUser.email = self.emailTextField.text;
-        self.selectedUser.password = self.passwordTextField.text;
-        self.selectedUser.role = self.selectedRoleType;
-        [Store.superAdminStore updateUser:self.selectedUser];
+        [self setSelectedUserPropertiesToInputValues];
+
+        [Store.superAdminStore updateUser:self.selectedUser completion:^(id jsonObject, id response, NSError *error)
+        {
+            saveHandler(response, error);
+        }];
     }
     else
     {
@@ -61,10 +69,11 @@
                                            email:self.emailTextField.text
                                         password:self.passwordTextField.text];
         
-        [Store.superAdminStore createUser:user];
+        [Store.superAdminStore createUser:user completion:^(id jsonObject, id response, NSError *error)
+        {
+            saveHandler(response, error);
+        }];
     }
-    
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -123,6 +132,26 @@
             self.selectedRoleType = StudentRole;
             break;
     }
+}
+
+#pragma mark - Extracted methods
+- (void)setInputValuesToPropertiesOfSelectedUser
+{
+    self.firstnameTextField.text = self.selectedUser.firstname;
+    self.lastnameTextField.text = self.selectedUser.lastname;
+    self.emailTextField.text = self.selectedUser.email;
+    self.passwordTextField.text = self.selectedUser.password;
+    self.selectedRoleType = self.selectedUser.role;
+    
+    [self.pickerView selectRow:self.selectedRoleType inComponent:0 animated:NO];
+}
+- (void)setSelectedUserPropertiesToInputValues
+{
+    self.selectedUser.firstname = self.firstnameTextField.text;
+    self.selectedUser.lastname = self.lastnameTextField.text;
+    self.selectedUser.email = self.emailTextField.text;
+    self.selectedUser.password = self.passwordTextField.text;
+    self.selectedUser.role = self.selectedRoleType;
 }
 
 @end
