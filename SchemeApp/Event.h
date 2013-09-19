@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-@class EventWrapper;
+@class EventWrapper, Event;
 @interface Event : NSObject
 @property (nonatomic, readonly) NSString *docID;
-@property (nonatomic, strong) EventWrapper *_eventWrapperId;
 @property (nonatomic, copy) NSString *info;
 @property (nonatomic, copy) NSDate *startDate;
 @property (nonatomic, copy) NSDate *endDate;
 @property (nonatomic, copy) NSString *room;
+-(id)initWithEventDictionary:(NSDictionary *)dic;
+- (NSDictionary *)asDictionary;
+
 @end

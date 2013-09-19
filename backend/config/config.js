@@ -1,60 +1,24 @@
 var configuration = {};
-// ****************************************************************************
-// *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* PROJECT -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-// ****************************************************************************
-configuration.project = {};
-configuration.project.name = 'SchemeApp';
-configuration.project.ver = '0.0.1';
-// ****************************************************************************
-// *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* NODE.JS ENV -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-// ****************************************************************************
-// App currently supports development and production
-//
-process.env.NODE_ENV = 'development';
-// ****************************************************************************
-// *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* HTTP SERVER -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-// ****************************************************************************
-configuration.http = {};
-configuration.http.port = 10010;
-//production server:
-//configuration.http.port = 13564;
 
+configuration.project = {
+	name: 'SchemeApp',
+	ver: '0.0.1'
+};
 
-configuration.http.host = '127.0.0.1';
-// ****************************************************************************
-// *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* EXPRESS -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-// ****************************************************************************
-// Config.express takes all parameters from this file.
-//
+process.env.NODE_ENV = 'development'; // 'development' or 'production'
+
+configuration.http = {
+	port: 13564,
+	host: '127.0.0.1'
+};
+
 configuration.express = {};
 
-// ****************************************************************************
-// *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* PASSPORT -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-// ****************************************************************************
-// No auth in beta
-
-// ****************************************************************************
-// *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* MONGODB -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-// ****************************************************************************
-configuration.db = {};
-configuration.db.port = 27017;
-configuration.db.username = null;
-configuration.db.password = null;
-configuration.db.host = '127.0.0.1';
-configuration.db.database = 'schemeApp';
-if (configuration.db.username && configuration.db.password) {
-  configuration.db.url = 'mongodb://' + configuration.db.username + ':' + configuration.db.password + '@' + configuration.db.host + ':' + configuration.db.port + '/' + configuration.db.database;
-} else {
-  configuration.db.url = 'mongodb://'+configuration.db.host+':'+configuration.db.port+'/'+configuration.db.database;
-}
-// ****************************************************************************
-// -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*- REDIS -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-// ****************************************************************************
-// ...
-
-// ****************************************************************************
-// *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*- LOGGING *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-// ****************************************************************************
-// ...
+configuration.db = {
+	port: 27017,
+	host: '127.0.0.1',
+	database: 'schemeApp'
+};
+configuration.db.url = 'mongodb://' + configuration.db.host + ':' + configuration.db.port + '/' + configuration.db.database;
 
 module.exports = configuration;

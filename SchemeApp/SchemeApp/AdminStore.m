@@ -10,124 +10,247 @@
 #import "Event.h"
 #import "EventWrapper.h"
 #import "User.h"
-
-@class EventWrapper;
-
-
-@interface AdminStore ()
-
-- (NSArray *)filteredSet:(NSSet *)set withPredicate:(NSPredicate *)predicate;
-
-@end
+#import "Message.h"
 
 
 @implementation AdminStore
 
-- (void)createEvent:(Event *)event
+#pragma mark - Event and EventWrappers
+- (void)createEvent:(Event *)event completion:(completion)handler
 {
-    [Store.mainStore.events addObject:event];
+    [Store.dbSessionConnection postContent:event.asDictionary
+                                    toPath:DB_TYPE_EVENT
+                            withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
 }
-- (void)updateEvent:(Event *)event
+- (void)updateEvent:(Event *)event completion:(completion)handler
 {
-    [Store.mainStore.events removeObject:[self oldVersionOfEvent:event]];
-    [Store.mainStore.events addObject:event];
+    [Store.dbSessionConnection putContent:event.asDictionary
+                                   toPath:DB_TYPE_EVENT
+                           withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
 }
-- (void)deleteEvent:(Event *)event
+- (void)deleteEvent:(Event *)event completion:(completion)handler
 {
-    [Store.mainStore.events removeObject:event];
+    [Store.dbSessionConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, event.docID]
+                           withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
 }
-- (void)createEventWrapper:(EventWrapper *)eventWrapper
+- (void)eventWrappersCompletion:(void (^)(NSArray *allEventWrappers))handler
 {
-    [Store.mainStore.eventWrappers addObject:eventWrapper];
-}
-- (void)updateEventWrapper:(EventWrapper *)eventWrapper
-{
-    [Store.mainStore.eventWrappers removeObject:[self oldVersionOfEventWrapper:eventWrapper]];
-    [Store.mainStore.eventWrappers addObject:eventWrapper];
-}
-- (void)deleteEventWrapper:(EventWrapper *)eventWrapper
-{
-    [Store.mainStore.eventWrappers removeObject:eventWrapper];
+    [Store.dbSessionConnection getPath:DB_TYPE_EVENTWRAPPER
+                            withParams:nil
+                         andCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         NSMutableArray *collectedEventWrappers = NSMutableArray.array;
+         
+         if (error)
+         {
+             NSLog(@"eventWrappersCompletion: got response: %@ and error: %@", response, error.userInfo);
+             collectedEventWrappers = nil;
+         }
+         else
+         {
+             for (NSDictionary *eventWrapperDictionary in jsonObject)
+             {
+                 [collectedEventWrappers addObject:[[EventWrapper alloc] initWithEventWrapperDictionary:eventWrapperDictionary]];
+             }
+             
+         }
+         
+         handler(collectedEventWrappers);
+     }];
 }
 
-- (NSArray *)users
+- (void)eventsCompletion:(void (^)(NSArray *allEvents))handler
 {
-    return [Store.mainStore.users allObjects];
-}
-- (User *)userWithDocID:(NSString *)docID
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", docID];
-    NSArray *filteredSet = [self filteredSet:Store.mainStore.users withPredicate:predicate];
-    
-    if (filteredSet)
-    {
-        return [filteredSet objectAtIndex:0];
-    }
-    else
-    {
-        return nil;
-    }
+    [Store.dbSessionConnection getPath:DB_TYPE_EVENT
+                            withParams:nil
+                         andCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         NSMutableArray *events = NSMutableArray.array;
+         
+         if (error)
+         {
+             NSLog(@"eventWrappersCompletion: got response: %@ and error: %@", response, error.userInfo);
+             events = nil;
+         }
+         else
+         {
+             for (NSDictionary *eventsDictionary in jsonObject)
+             {
+                 [events addObject:[[Event alloc] initWithEventDictionary:eventsDictionary]];
+             }
+             
+         }
+         
+         handler(events);
+     }];
 }
 
-- (void)sendMessage:(Message *)message
+- (void)createEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler
 {
-    for (User *user in Store.mainStore.users)
+    [Store.dbSessionConnection postContent:eventWrapper.asDictionary
+                                    toPath:DB_TYPE_EVENTWRAPPER
+                            withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
+}
+- (void)updateEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler
+{
+    [Store.dbSessionConnection putContent:eventWrapper.asDictionary
+                                   toPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENTWRAPPER, eventWrapper.docID]
+                           withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
+}
+- (void)deleteEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler
+{
+    [Store.dbSessionConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENTWRAPPER, eventWrapper.docID]
+                           withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
+}
+
+#pragma mark - Users
+- (void)usersCompletion:(void (^)(NSArray *allUsers))handler
+{
+    [Store.dbSessionConnection getPath:DB_TYPE_USER
+                            withParams:nil
+                         andCompletion:^(id jsonObject, id response, NSError *error)
     {
-        if (user.role == StudentRole)
+        NSMutableArray *collectedUsers = NSMutableArray.array;
+
+        if (error)
         {
-            [user.messages addObject:message];
+            NSLog(@"usersCompletion: got response: %@ and error: %@", response, error.userInfo);
         }
-    }
+        else
+        {
+            for (NSDictionary *userDictionary in jsonObject)
+            {
+                [collectedUsers addObject:[[User alloc] initWithUserDictionary:userDictionary]];
+            }
+        }
+        
+        handler(collectedUsers);
+    }];
 }
-- (void)sendMessage:(Message *)message toUser:(User *)user
+- (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))handler
 {
-    [user.messages addObject:message];
+    [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, docID]
+                            withParams:nil
+                         andCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"userWithDocID:completion: got response: %@ and error: %@", response, error.userInfo);
+             handler(nil);
+         }
+         else
+         {
+             handler([[User alloc] initWithUserDictionary:jsonObject]);
+         }
+     }];
+}
+- (void)userWithType:(RoleType)type completion:(void (^)(NSArray *users))handler
+{
+    [Store.dbSessionConnection getPath:DB_TYPE_USER
+                            withParams:nil
+                         andCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         NSMutableArray *collectedUsers = NSMutableArray.array;
+         
+         if (error)
+         {
+             NSLog(@"userWithType:completion: got response: %@ and error: %@", response, error.userInfo);
+         }
+         else
+         {
+             for (NSDictionary *userDictionary in jsonObject)
+             {
+#warning Should implement filtering function on backend instead
+                 if ([[userDictionary objectForKey:@"role"] isEqualToString:[User stringFromRoleType:type]])
+                 {
+                     [collectedUsers addObject:[[User alloc] initWithUserDictionary:userDictionary]];
+                 }
+             }
+         }
+         
+         handler(collectedUsers);
+     }];
 }
 
-#pragma mark - Extracted methods
-- (EventWrapper *)oldVersionOfEvent:(Event *)event
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", event.docID];
-    NSArray *filteredSet = [self filteredSet:Store.mainStore.events withPredicate:predicate];
-    
-    if (filteredSet)
-    {
-        return [filteredSet objectAtIndex:0];
-    }
-    else
-    {
-        return nil;
-    }
-}
-- (EventWrapper *)oldVersionOfEventWrapper:(EventWrapper *)eventWrapper
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"docID MATCHES %@", eventWrapper.docID];
-    NSArray *filteredSet = [self filteredSet:Store.mainStore.eventWrappers withPredicate:predicate];
-    
-    if (filteredSet)
-    {
-        return [filteredSet objectAtIndex:0];
-    }
-    else
-    {
-        return nil;
-    }
-}
-- (NSArray *)filteredSet:(NSSet *)set withPredicate:(NSPredicate *)predicate
-{
-    NSArray *filteredSet = [[set filteredSetUsingPredicate:predicate] allObjects];
-    
-    if (filteredSet.count == 0)
-    {
-        return nil;
-    }
-    else
-    {
-        return filteredSet;
-    }
-}
 
-#warning Comment
-// Testkommentar
+#pragma mark - Messages
+- (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))handler
+{
+    [Store.dbSessionConnection postContent:message.asDictionary
+                                    toPath:[NSString stringWithFormat:@"%@/broadcast", DB_TYPE_MESSAGE]
+                            withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"broadcastMessage:completion: got response: %@ and error: %@", response, error.userInfo);
+             handler(nil);
+         }
+         else
+         {
+             NSLog(@"Message broadcasted, message: %@", jsonObject);
+             handler([[Message alloc] initWithMsgDictionary:jsonObject]);
+         }
+     }];
+}
+- (void)sendMessage:(Message *)message toUsers:(NSArray *)users completion:(void (^)(Message *message))handler
+{
+    NSMutableDictionary *jsonMessage = [NSMutableDictionary dictionaryWithDictionary:message.asDictionary];
+    
+    NSMutableArray *receivers = [NSMutableArray new];
+    for (User *user in users) {
+        [receivers addObject:user.docID];
+    }
+    [jsonMessage setObject:receivers forKey:@"receivers"];
+    
+    [Store.dbSessionConnection postContent:jsonMessage
+                                    toPath:DB_TYPE_MESSAGE
+                            withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"sendMessage:toUsers:completion: got response: %@ and error: %@", jsonObject, error.userInfo);
+         }
+         else
+         {
+             NSLog(@"%@", jsonObject);
+         }
+     }];
+}
+- (void)updateMessages:(NSArray*)messages forUser:(User*)user
+{
+    NSMutableArray *messageIds = [NSMutableArray new];
+    for (Message *message in messages) {
+        [messageIds addObject:message.docID];
+    }
+    NSDictionary *json = [NSDictionary dictionaryWithObject:messageIds forKey:@"messages"];
+    
+    [Store.dbSessionConnection putContent:json
+                                   toPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, user.docID]
+                           withCompletion:^(id jsonObject, id response, NSError *error)
+    {
+        if (error)
+        {
+            NSLog(@"sendMessage:toUsers:completion: got response: %@ and error: %@", jsonObject, error.userInfo);
+        }
+    }];
+}
 
 @end

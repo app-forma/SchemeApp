@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-@class User;
+@class User, EventWrapper;
 @interface EventWrapper : NSObject
-@property (nonatomic, copy) NSString *docID;
-@property (nonatomic, copy) NSMutableArray *events;
+@property (nonatomic, readonly) NSString *docID;
+@property (nonatomic, strong) NSMutableArray *events;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, copy) NSString *litterature;
 @property (nonatomic, copy) NSDate *startDate;
 @property (nonatomic, copy) NSDate *endDate;
+@property (nonatomic, copy) NSString *name;
+- (id)initWithEventWrapperDictionary:(NSDictionary *)eventWrapperDictionary;
+- (NSDictionary *)asDictionary;
 @end

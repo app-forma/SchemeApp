@@ -20,6 +20,8 @@
 +(BOOL) stringIsValidEmail:(NSString *)checkString;
 
 +(NSString*) stringFromNSDate:(NSDate*)date;
++(NSString*)dateStringFromNSDate:(NSDate*)date;
++(NSString*)timeStringFromNSDate:(NSDate*)date;
 +(NSDate*) dateFromString:(NSString*)string;
 +(NSDate*) currentDateTime;
 +(NSDictionary *) startAndEndTimeForDate:(NSDate*)date;
@@ -27,4 +29,7 @@
 +(BOOL) earlierDate:(NSDate*)date1 isEarlierThenDate:(NSDate*)date2;
 +(NSDictionary *) startAndEndDateOfWeekForDate:(NSDate*)date;
 +(NSDate *) beginningDateOfWeek:(int)week;
++(NSDate *) stripStartDateFromTime:(NSDate *)date;
++(NSDate *) stripEndDateFromTime:(NSDate *)date;
+
 @end

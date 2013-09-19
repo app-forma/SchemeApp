@@ -7,20 +7,53 @@
 //
 
 #import "EventWrapper.h"
+#import "Helpers.h"
+#import "Event.h"
+#import "User.h"
 
 
 @implementation EventWrapper
 
-#warning Temporary
-- (id)init
+- (id)initWithEventWrapperDictionary:(NSDictionary *)eventWrapperDictionary
 {
     self = [super init];
     if (self)
     {
-        // Ska bara hämtas sen från servern
-        _docID = [[NSUUID UUID] UUIDString];
+        self.name = [eventWrapperDictionary objectForKey:@"name"];
+        self.user = [[User alloc] initWithUserDictionary:eventWrapperDictionary[@"owner"]];
+        self.litterature = [eventWrapperDictionary objectForKey:@"litterature"];
+        self.startDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"startDate"]];
+        self.endDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"endDate"]];
+        _docID = [eventWrapperDictionary objectForKey:@"_id"];
+        self.events = [NSMutableArray new];
     }
     return self;
+}
+
+- (NSDictionary *)asDictionary
+{
+    NSMutableDictionary *jsonEventWrapper = [[NSMutableDictionary alloc]init];
+    
+    NSMutableArray *jsonEvents = [[NSMutableArray alloc]init];
+    for (Event *event in self.events) {
+        [jsonEvents addObject:event.docID];
+    }
+    
+    [jsonEventWrapper setObject:jsonEvents forKey:@"events"];
+    [jsonEventWrapper setObject:self.user.docID forKey:@"owner"];
+    [jsonEventWrapper setObject:self.litterature forKey:@"litterature"];
+    [jsonEventWrapper setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
+    [jsonEventWrapper setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
+    [jsonEventWrapper setObject:self.name forKey:@"name"];
+    if (self.docID) {
+        [jsonEventWrapper setObject:self.docID forKey:@"_id"];
+    }
+    
+#warning Testing
+    NSData *JSONData = [NSJSONSerialization dataWithJSONObject:jsonEventWrapper options:nil error:nil];
+    NSLog(@"JSON: %@", [[NSString alloc] initWithData:JSONData encoding:NSUTF8StringEncoding]);
+    
+    return jsonEventWrapper;
 }
 
 @end

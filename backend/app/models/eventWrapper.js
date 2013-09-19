@@ -4,10 +4,9 @@
 
 var mongoose = require('mongoose'),
     config = require('../../config/config.js'),
-    User = require('./user.js'),
-    Event = require('./event.js'),
+    User = require('./user').User,
+    Event = require('./event').Event,
     Schema = mongoose.Schema;
-
 /**
  *	EventWrapper Schema
  */
@@ -19,6 +18,7 @@ var EventWrapperSchema = new Schema({
     },
     owner: {
         type: Schema.Types.ObjectId,
+        required: true,
         ref: 'User'
     },
     litterature: {
@@ -43,8 +43,9 @@ var EventWrapperSchema = new Schema({
  *   Delete all events assosiated with the eventWrapper
  */
 EventWrapperSchema.pre('remove', function (next) {
+    Event = require('./event').Event;
     for (i = 0; i < this.events.length; i = i + 1) {
-        Event.find({
+        Event.findOne({
             _id: this.events[i]
         }).remove();
     }

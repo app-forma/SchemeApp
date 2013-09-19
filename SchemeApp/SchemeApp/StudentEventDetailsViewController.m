@@ -7,8 +7,13 @@
 //
 
 #import "StudentEventDetailsViewController.h"
-
 @interface StudentEventDetailsViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *courseLabel;
+@property (weak, nonatomic) IBOutlet UILabel *teacherLabel;
+@property (weak, nonatomic) IBOutlet UILabel *courseDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *classDateLabel;
+@property (weak, nonatomic) IBOutlet UITextView *infoTextView;
+
 
 @end
 
@@ -32,6 +37,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.courseLabel.text = self.eventWrapper.name;
+    self.teacherLabel.text = [NSString stringWithFormat:@"%@ %@", self.eventWrapper.user.firstname, self.eventWrapper.user.lastname];
+    self.courseDateLabel.text = [NSString stringWithFormat:@"%@ - %@",[Helpers stringFromNSDate:self.eventWrapper.startDate], [Helpers stringFromNSDate:self.eventWrapper.endDate]];
+    self.classDateLabel.text = [NSString stringWithFormat:@"%@",[Helpers stringFromNSDate:self.event.startDate]];
+    self.infoTextView.text = self.event.info;
 }
 
 @end

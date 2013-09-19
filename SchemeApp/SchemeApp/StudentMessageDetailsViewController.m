@@ -9,6 +9,9 @@
 #import "StudentMessageDetailsViewController.h"
 
 @interface StudentMessageDetailsViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *fromLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 
 @end
 
@@ -27,11 +30,17 @@
 
 // En vy med detaljer för det valda meddelandet av studenten.
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Message";
+    self.fromLabel.text = self.from;
+    self.dateLabel.text = [Helpers stringFromNSDate:self.date];
+    self.messageTextView.text = self.message;
+    
+    
+
+    
 }
 
 @end

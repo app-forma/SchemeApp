@@ -8,18 +8,35 @@
 
 #import "StudentStore.h"
 #import "EventWrapper.h"
-#import "Event.h"
 
 
 @implementation StudentStore
-{
-    EventWrapper *eventWrapper;
-}
 
-- (EventWrapper *)eventWrapperWithStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate
+- (void)eventWrappersWithinStartDate:(NSDate *)startDate
+                          andEndDate:(NSDate *)endDate
+                          completion:(void (^)(NSArray *eventWrappers))handler
 {
-#warning Implement
-    return nil;
+    [Store.dbSessionConnection getPath:DB_TYPE_EVENTWRAPPER
+                            withParams:@{@"startDate": [Helpers stringFromNSDate:startDate],
+                                         @"endDate": [Helpers stringFromNSDate:endDate]}
+                         andCompletion:^(id jsonObject, id response, NSError *error)
+    {
+        NSMutableArray *eventWrappers = NSMutableArray.array;
+        
+        if (error)
+        {
+            NSLog(@"eventWrappersWithinStartDate:andEndDate:completion: got response: %@ and error: %@", response, error.userInfo);
+        }
+        else
+        {
+            for (NSDictionary *eventWrapperDictionary in jsonObject)
+            {
+                [eventWrappers addObject:[[EventWrapper alloc] initWithEventWrapperDictionary:eventWrapperDictionary]];
+            }
+        }
+        
+        handler(eventWrappers);
+    }];
 }
 
 @end

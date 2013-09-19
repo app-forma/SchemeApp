@@ -11,13 +11,28 @@
 @interface User : NSObject
 
 @property (nonatomic, readonly) NSString *docID;
-@property (nonatomic, readonly) int role;
+@property (nonatomic) int role;
 @property (nonatomic, copy) NSString *firstname;
 @property (nonatomic, copy) NSString *lastname;
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSString *password;
-@property (nonatomic, copy) NSMutableArray *messages;
-@property (nonatomic, copy) NSMutableArray *eventWrappers;
+@property (nonatomic, strong) NSMutableArray *messages;
+@property (nonatomic, strong) NSMutableArray *eventWrappers;
 
--initWithRole:(RoleType)role firstname:(NSString *)firstname lastname:(NSString *)lastname email:(NSString *)email password:(NSString *)password;
++ (RoleType)roleTypeFromString:(NSString *)roleString;
++ (NSString *)stringFromRoleType:(RoleType)role;
+
+- (id)initWithDocID:(NSString *)docID
+            Role:(RoleType)role
+firstname:(NSString *)firstname
+     lastname:(NSString *)lastname
+        email:(NSString *)email
+     password:(NSString *)password;
+
+- (id)initWithUserDictionary:(NSDictionary *)userDictionary;
+
+- (NSDictionary *)asDictionary;
+
+- (NSString *)name;
+
 @end

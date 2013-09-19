@@ -12,8 +12,8 @@
 
 @interface SuperAdminStore : AdminStore
 
-- (void)createUser:(User *)user;
-- (void)updateUser:(User *)user;
-- (void)deleteUser:(User *)user;
+- (void)createUser:(User *)user completion:(completion)handler;
+- (void)updateUser:(User *)user completion:(completion)handler;
+- (void)deleteUser:(User *)user completion:(completion)handler;
 
 @end

@@ -8,6 +8,9 @@
 
 #import "Store.h"
 #import "User.h"
+#import "Message.h"
+#import "EventWrapper.h"
+#import "Event.h"
 
 
 @implementation Store
@@ -15,6 +18,30 @@
 + (id)allocWithZone:(NSZone *)zone
 {
     return self.mainStore;
+}
++ (AFNetworking *)dbConnection
+{
+    static AFNetworking *dbConnection = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+                  {
+                      dbConnection = [[AFNetworking alloc] init];
+                  });
+    
+    return dbConnection;
+}
++ (DatabaseConnection *)dbSessionConnection
+{
+    static DatabaseConnection *dbConnection = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+                  {
+                      dbConnection = [[DatabaseConnection alloc] init];
+                  });
+    
+    return dbConnection;
 }
 + (Store *)mainStore
 {
@@ -65,16 +92,44 @@
     return studentStore;
 }
 
-- (User *)userWithEmail:(NSString *)email andPassword:(NSString *)password
++ (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion
 {
-#warning Implement
-    return [[User alloc] initWithRole:SuperAdminRole
-                            firstname:@"Johan"
-                             lastname:@"Thorell"
-                                email:@"jdhie"
-                             password:@"niewi"];
-    
-    // Returnerar nil om felaktigt lösenord och skickar en AlertView...
+#warning Implement password
+    [Store.dbConnection readByEmail:email callback:^(id result) {
+
+        if (result[@"error"]) {
+            NSLog(@"%@", result);
+            completion(NO);
+            return;
+        }
+        NSDictionary *currentUser = result;
+        if ([currentUser[@"email"] isEqualToString:email]) {
+            User *user = [[User alloc]initWithUserDictionary:currentUser];
+            if ([currentUser[@"messages"] count] > 0) {
+                for (NSDictionary *message in currentUser[@"messages"]){
+                    Message *msg = [[Message alloc]initWithMsgDictionary:message];
+                    [user.messages addObject:msg];
+                }
+            }
+                if (currentUser[@"eventWrappers"] > 0) {
+                    for (NSDictionary *eventWrapper in currentUser[@"eventWrappers"]){
+                        EventWrapper *eW = [[EventWrapper alloc] initWithEventWrapperDictionary:eventWrapper];
+                        for (NSDictionary *event in eventWrapper[@"events"]){
+                            Event *e = [[Event alloc]initWithEventDictionary:event];
+                            [eW.events addObject:e];
+                        }
+                        [user.eventWrappers addObject:eW];
+                    }
+                }
+                Store.mainStore.currentUser = user;
+                
+                completion(YES);
+                return;
+
+            
+        }
+        
+    }];
 }
 
 @end

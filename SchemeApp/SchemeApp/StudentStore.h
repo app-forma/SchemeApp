@@ -6,6 +6,8 @@
 //
 //
 
+#define DB_TYPE_EVENTWRAPPER @"eventWrappers"
+
 #import "Store.h"
 
 @class EventWrapper;
@@ -13,6 +15,8 @@
 
 @interface StudentStore : NSObject
 
-- (EventWrapper *)eventWrapperWithStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate;
+- (void)eventWrappersWithinStartDate:(NSDate *)startDate
+                          andEndDate:(NSDate *)endDate
+                          completion:(void (^)(NSArray *eventWrappers))handler;
 
 @end

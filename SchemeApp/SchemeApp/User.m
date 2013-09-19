@@ -7,15 +7,54 @@
 //
 
 #import "User.h"
+#import "Message.h"
+#import "EventWrapper.h"
 
 @implementation User
--(id)initWithRole:(RoleType)role firstname:(NSString *)firstname lastname:(NSString *)lastname email:(NSString *)email password:(NSString *)password
+
+#warning Comment
+// We should use enum on backend as well for Role (Henrik)
++ (RoleType)roleTypeFromString:(NSString *)roleString
+{
+    if ([roleString isEqualToString:@"superadmin"])
+    {
+        return SuperAdminRole;
+    }
+    else if ([roleString isEqualToString:@"admin"])
+    {
+        return AdminRole;
+    }
+    else
+    {
+        return StudentRole;
+    }
+}
++ (NSString *)stringFromRoleType:(RoleType)role
+{
+    switch (role) {
+        case StudentRole:
+            return @"student";
+            break;
+        case AdminRole:
+            return @"admin";
+        case SuperAdminRole:
+            return @"superadmin"
+            ;
+        default:
+            break;
+    }
+}
+
+- (id)initWithDocID:(NSString *)docID
+            Role:(RoleType)role
+       firstname:(NSString *)firstname
+        lastname:(NSString *)lastname
+           email:(NSString *)email
+        password:(NSString *)password
 {
     self = [super init];
     if (self) {
-#warning Temp
-        // Ska bara hämtas sen från servern, docID
-        _docID = [[NSUUID UUID] UUIDString];
+        _docID = docID;
         _role = role;
         self.firstname = firstname;
         self.lastname = lastname;
@@ -26,19 +65,47 @@
     }
     return  self;
 }
--(NSString *)stringFromRoleType:(RoleType)role
+- (id)initWithUserDictionary:(NSDictionary *)userDictionary
 {
-    switch (role) {
-        case StudentRole:
-            return @"Student";
-            break;
-        case AdminRole:
-            return @"Admin";
-        case SuperAdminRole:
-            return @"SuperAdmin"
-            ;
-        default:
-            break;
-    }
+    return  [self initWithDocID:[userDictionary objectForKey:@"_id"]
+                           Role:[User roleTypeFromString:[userDictionary objectForKey:@"role"]]
+                      firstname:[userDictionary objectForKey:@"firstname"]
+                       lastname:[userDictionary objectForKey:@"lastname"]
+                          email:[userDictionary objectForKey:@"email"]
+                       password:[userDictionary objectForKey:@"password"]];
 }
+
+- (NSDictionary *)asDictionary
+{
+    NSMutableDictionary *jsonUser = [[NSMutableDictionary alloc]init];
+    
+    NSMutableArray *userMessages = [[NSMutableArray alloc]init];
+    for (Message *message in self.messages) {
+        [userMessages addObject:message.docID];
+    }
+    NSMutableArray *userEventWrappers = [[NSMutableArray alloc]init];
+    for (EventWrapper *eventWrapper in userEventWrappers) {
+        [userEventWrappers addObject:eventWrapper.docID];
+    }
+    [jsonUser setValue:userMessages forKey:@"messages"];
+    [jsonUser setValue:userEventWrappers forKey:@"eventWrappers"];
+    [jsonUser setValue:[User stringFromRoleType:self.role] forKey:@"role"];
+    [jsonUser setValue:self.firstname forKey:@"firstname"];
+    [jsonUser setValue:self.lastname forKey:@"lastname"];
+    [jsonUser setValue:self.email forKey:@"email"];
+    [jsonUser setValue:self.password forKey:@"password"];
+    
+    if ([self.docID isEqualToString:@""] == NO)
+    {
+        [jsonUser setValue:self.docID forKey:@"_id"];
+    }
+    
+    return jsonUser;
+}
+
+- (NSString *)name
+{
+    return [NSString stringWithFormat:@"%@ %@", self.firstname, self.lastname];
+}
+
 @end

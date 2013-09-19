@@ -1,0 +1,173 @@
+// USERS
+{
+  "password" : "fiskar",
+  "messages" : [],
+  "lastname" : "Karlsson",
+  "firstname" : "Rikard",
+  "role" : "admin",
+  "email" : "rikard88karlsson@gmail.com",
+  "eventWrappers" : []
+}
+
+
+// EVENTWRAPPERS
+
+{
+    "owner" : "523813aa9c3ff32a52000003",
+    "startDate" : "2013-10-02 11:00",
+    "endDate" : "2013-08-01 08:00",
+    "litterature" : "Konst - Nu och då",
+    "events" : [],
+    "name" : "Konsthistoria ABCD"
+}
+
+{
+    "owner" : "523813aa9c3ff32a52000003",
+    "startDate" : "2013-10-02 11:00",
+    "endDate" : "2013-08-01 08:00",
+    "litterature" : "Matte 3000",
+    "events" : [],
+    "name" : "Matematik C"
+}
+
+{
+    "owner" : "523aeb39b9e0592c3d000001",
+    "startDate" : "2013-08-28 11:00",
+    "endDate" : "2013-12-17 08:00",
+    "litterature" : "Matte 4000",
+    "events" : [],
+    "name" : "Matematik D"
+}
+
+
+// EVENTS
+{
+    "room" : "567",
+    "_eventWrapperId" : "",
+    "endDate" : "2013-10-07 10:00",
+    "startDate" : "2013-10-07 08:00",
+    "info" : "Läs sidorna 10-100 i boken"
+}
+
+{
+    "room" : "567",
+    "_eventWrapperId" : "",
+    "endDate" : "2013-10-09 10:00",
+    "startDate" : "2013-10-09 08:00",
+    "info" : "Läs sidorna 100-150 i boken"
+}
+
+{
+    "room" : "567",
+    "_eventWrapperId" : "",
+    "endDate" : "2013-10-11 10:00",
+    "startDate" : "2013-10-11 08:00",
+    "info" : "Läs sidorna 150-170 i boken"
+}
+
+{
+    "room" : "M212",
+    "_eventWrapperId" : "523aec7dc0e9297754000001",
+    "endDate" : "2013-08-29 11:00",
+    "startDate" : "2013-08-29 08:00",
+    "info" : "Räkna klart alla uppgifter i kapitel 1"
+}
+
+
+// MESSAGES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//user:
+{
+	"role": "superuser",
+	"firstname": "Erik",
+	"lastname": "Österberg",
+	"email": "erik82osterberg2gmail.com",
+	"password": "password"
+}
+
+[{
+	"role": "student",
+	"firstname": "Johan",
+	"lastname": "Thorell",
+	"email": "joe@gmail.com",
+	"password": "password"
+},
+{
+	"role": "student",
+	"firstname": "Marcus",
+	"lastname": "Norling",
+	"email": "marc@gmail.com",
+	"password": "password"
+}
+]
+
+
+//eventwrapper:
+
+{
+	"name": "Datakunskap A",
+	"owner": "522efaf06c9ae03f89000001",
+	"litterature": "Datakunskap A - grunderna",
+	"startDate": "2012-04-25",
+    "endDate": "2012-08-23",
+    "events": []
+}
+
+//event:
+{
+ 	"room": "666",
+    "info": "Train hard",
+    "startDate": "2012-05-22 10:00",
+    "endDate": "2012-05-22 10:45",
+    "_eventWrapperId": "522efcf86c9ae03f89000002"
+ }
+
+ //login
+ Url: http://localhost:10010/login [POST]
+ {
+	"email": "erik82osterberg2gmail.com",
+	"password": "password"
+}
+
+ //login
+ Url: http://localhost:10010/logout [GET]
+
+Message:
+{
+    "from" : "Erkan E",
+    "date" : "2013-09-13",
+    "text" : "Ja nu är det Erik som messar igen. Vill bara säga ni är så grymma allihopa. Ta det piano!",
+	"receivers":[]
+}
