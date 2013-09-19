@@ -78,6 +78,8 @@
 		AF8CD90317E87AD4004551F8 /* AdminInterfaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8CD8FF17E87AD4004551F8 /* AdminInterfaceViewController.m */; };
 		AF8CD90617E88319004551F8 /* AdminEventWrapperTableViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8CD90517E88319004551F8 /* AdminEventWrapperTableViewViewController.m */; };
 		AF8CD90717E88319004551F8 /* AdminEventWrapperTableViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8CD90517E88319004551F8 /* AdminEventWrapperTableViewViewController.m */; };
+		AFDA09EC17EAEAC300333A48 /* DatabaseConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */; };
+		AFDA09ED17EAEAC300333A48 /* DatabaseConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */; };
 		AFE538F017E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538E817E0972C00C0B776 /* StudentEventDetailsViewController.m */; };
 		AFE538F117E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538E817E0972C00C0B776 /* StudentEventDetailsViewController.m */; };
 		AFE538F217E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538EA17E0972C00C0B776 /* StudentEventsTableViewController.m */; };
@@ -193,6 +195,8 @@
 		AF8CD8FF17E87AD4004551F8 /* AdminInterfaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminInterfaceViewController.m; sourceTree = "<group>"; };
 		AF8CD90417E88319004551F8 /* AdminEventWrapperTableViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEventWrapperTableViewViewController.h; sourceTree = "<group>"; };
 		AF8CD90517E88319004551F8 /* AdminEventWrapperTableViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEventWrapperTableViewViewController.m; sourceTree = "<group>"; };
+		AFDA09EA17EAEAC300333A48 /* DatabaseConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseConnection.h; sourceTree = "<group>"; };
+		AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseConnection.m; sourceTree = "<group>"; };
 		AFE538E717E0972C00C0B776 /* StudentEventDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentEventDetailsViewController.h; sourceTree = "<group>"; };
 		AFE538E817E0972C00C0B776 /* StudentEventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentEventDetailsViewController.m; sourceTree = "<group>"; };
 		AFE538E917E0972C00C0B776 /* StudentEventsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentEventsTableViewController.h; sourceTree = "<group>"; };
@@ -446,6 +450,8 @@
 				AF301B7817DF0FE900DC2DEC /* AdminStore.m */,
 				AF2551F617E04883006EDD02 /* SuperAdminStore.h */,
 				AF2551F717E04883006EDD02 /* SuperAdminStore.m */,
+				AFDA09EA17EAEAC300333A48 /* DatabaseConnection.h */,
+				AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -621,6 +627,7 @@
 				04199A8317E0B88D00E922D5 /* AFNetworking.m in Sources */,
 				0423298717DF25A0005B47F9 /* EventWrapper.m in Sources */,
 				2748CDC917DF360F00A06467 /* Helpers.m in Sources */,
+				AFDA09EC17EAEAC300333A48 /* DatabaseConnection.m in Sources */,
 				27BCC1EE17E1F347009977BB /* AdminMessagesViewController.m in Sources */,
 				AFE538F017E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */,
 				4DED32C217E993F7008A5D3A /* SearchCell.m in Sources */,
@@ -655,6 +662,7 @@
 				AF2551F917E04883006EDD02 /* SuperAdminStore.m in Sources */,
 				AF8CD90317E87AD4004551F8 /* AdminInterfaceViewController.m in Sources */,
 				AF2551F317E0462D006EDD02 /* AdminStore.m in Sources */,
+				AFDA09ED17EAEAC300333A48 /* DatabaseConnection.m in Sources */,
 				AF2551F117E04629006EDD02 /* Store.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
