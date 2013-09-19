@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
+#import "DatabaseConnection.h"
 #import "AdminStore.h"
 #import "SuperAdminStore.h"
 #import "StudentStore.h"
@@ -18,6 +19,7 @@
 @interface Store : NSObject
 
 + (AFNetworking *)dbConnection;
++ (DatabaseConnection *)dbSessionConnection;
 + (Store *)mainStore;
 + (StudentStore *)studentStore;
 + (AdminStore *)adminStore;

@@ -31,6 +31,18 @@
     
     return dbConnection;
 }
++ (DatabaseConnection *)dbSessionConnection
+{
+    static DatabaseConnection *dbConnection = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+                  {
+                      dbConnection = [[DatabaseConnection alloc] init];
+                  });
+    
+    return dbConnection;
+}
 + (Store *)mainStore
 {
     static Store *mainStore = nil;

@@ -11,7 +11,13 @@
 @implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+#warning Testing
+    [Store.dbSessionConnection readType:DB_TYPE_EVENTWRAPPER
+                                 withId:nil
+                             completion:^(id jsonObject, id response, NSError *error)
+     {
+         NSLog(@"dbSessionConnection completion\nJSONObject: %@\nResponse: %@\nError: %@", jsonObject, response, error);
+     }];
     return YES;
 }
 
