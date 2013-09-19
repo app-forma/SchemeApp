@@ -75,8 +75,6 @@
 		AF8CD8F717E8507F004551F8 /* AdminUserStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF8CD8F517E8507F004551F8 /* AdminUserStoryboard.storyboard */; };
 		AF8CD8FA17E850C8004551F8 /* AdminTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8CD8F917E850C8004551F8 /* AdminTabBarViewController.m */; };
 		AF8CD8FB17E850C8004551F8 /* AdminTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8CD8F917E850C8004551F8 /* AdminTabBarViewController.m */; };
-		AF8CD90217E87AD4004551F8 /* AdminInterfaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8CD8FF17E87AD4004551F8 /* AdminInterfaceViewController.m */; };
-		AF8CD90317E87AD4004551F8 /* AdminInterfaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8CD8FF17E87AD4004551F8 /* AdminInterfaceViewController.m */; };
 		AFDA09EC17EAEAC300333A48 /* DatabaseConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */; };
 		AFDA09ED17EAEAC300333A48 /* DatabaseConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */; };
 		AFE538F017E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538E817E0972C00C0B776 /* StudentEventDetailsViewController.m */; };
@@ -192,8 +190,6 @@
 		AF8CD8F517E8507F004551F8 /* AdminUserStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdminUserStoryboard.storyboard; sourceTree = "<group>"; };
 		AF8CD8F817E850C8004551F8 /* AdminTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminTabBarViewController.h; sourceTree = "<group>"; };
 		AF8CD8F917E850C8004551F8 /* AdminTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminTabBarViewController.m; sourceTree = "<group>"; };
-		AF8CD8FE17E87AD4004551F8 /* AdminInterfaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminInterfaceViewController.h; sourceTree = "<group>"; };
-		AF8CD8FF17E87AD4004551F8 /* AdminInterfaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminInterfaceViewController.m; sourceTree = "<group>"; };
 		AFDA09EA17EAEAC300333A48 /* DatabaseConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseConnection.h; sourceTree = "<group>"; };
 		AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseConnection.m; sourceTree = "<group>"; };
 		AFE538E717E0972C00C0B776 /* StudentEventDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentEventDetailsViewController.h; sourceTree = "<group>"; };
@@ -346,8 +342,6 @@
 			children = (
 				27CECEA817EB22A7004522C0 /* AdminEventWrapperTableViewController.h */,
 				27CECEA917EB22A7004522C0 /* AdminEventWrapperTableViewController.m */,
-				AF8CD8FE17E87AD4004551F8 /* AdminInterfaceViewController.h */,
-				AF8CD8FF17E87AD4004551F8 /* AdminInterfaceViewController.m */,
 				AF8CD8F817E850C8004551F8 /* AdminTabBarViewController.h */,
 				AF8CD8F917E850C8004551F8 /* AdminTabBarViewController.m */,
 				27BCC1EC17E1F347009977BB /* AdminMessagesViewController.h */,
@@ -611,7 +605,6 @@
 				AFE538F417E0972C00C0B776 /* StudentEventMainViewController.m in Sources */,
 				AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */,
 				0493B53A17DDF80C003B3D23 /* AppDelegate.m in Sources */,
-				AF8CD90217E87AD4004551F8 /* AdminInterfaceViewController.m in Sources */,
 				8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */,
 				4DED32BF17E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m in Sources */,
 				AF2551F017E04628006EDD02 /* Store.m in Sources */,
@@ -658,7 +651,6 @@
 				0493B54F17DDF80C003B3D23 /* SchemeAppTests.m in Sources */,
 				AF2551F517E04631006EDD02 /* StudentStore.m in Sources */,
 				AF2551F917E04883006EDD02 /* SuperAdminStore.m in Sources */,
-				AF8CD90317E87AD4004551F8 /* AdminInterfaceViewController.m in Sources */,
 				AF2551F317E0462D006EDD02 /* AdminStore.m in Sources */,
 				AFDA09ED17EAEAC300333A48 /* DatabaseConnection.m in Sources */,
 				AF2551F117E04629006EDD02 /* Store.m in Sources */,
