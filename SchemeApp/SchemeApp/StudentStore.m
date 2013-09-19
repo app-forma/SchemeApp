@@ -12,17 +12,30 @@
 
 @implementation StudentStore
 
-#warning Comment
-// we should fetch all eventwrappers for a certain student? /Henrik
-- (void)eventWrappersWithStartDate:(NSDate *)startDate
-                        andEndDate:(NSDate *)endDate
-                        completion:(void (^)(NSArray *eventWrappers))completion
+- (void)eventWrappersWithinStartDate:(NSDate *)startDate
+                          andEndDate:(NSDate *)endDate
+                          completion:(void (^)(NSArray *eventWrappers))handler
 {
-    [[Store dbConnection] readByStartDate:[Helpers stringFromNSDate:startDate] toEndDate:[Helpers stringFromNSDate:endDate] callback:^(id result) {
-#warning Implement
-        // Create an array with eventWrapper objects of results and send with completion
-        completion(result);
+    [Store.dbSessionConnection getPath:DB_TYPE_EVENTWRAPPER
+                            withParams:@{@"startDate": [Helpers stringFromNSDate:startDate],
+                                         @"endDate": [Helpers stringFromNSDate:endDate]}
+                         andCompletion:^(id jsonObject, id response, NSError *error)
+    {
+        NSMutableArray *eventWrappers = NSMutableArray.array;
         
+        if (error)
+        {
+            NSLog(@"eventWrappersWithinStartDate:andEndDate:completion: got error: %@", error.userInfo);
+        }
+        else
+        {
+            for (NSDictionary *eventWrapperDictionary in jsonObject)
+            {
+                [eventWrappers addObject:[[EventWrapper alloc] initWithEventWrapperDictionary:eventWrapperDictionary]];
+            }
+        }
+        
+        handler(eventWrappers);
     }];
 }
 
