@@ -22,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *startDateForScheme;
 @property (weak, nonatomic) IBOutlet UILabel *endDateForScheme;
 
-
 @end
 
 
@@ -68,16 +67,9 @@
 
 - (IBAction)getScheme:(id)sender
 {
-    
-    
-
     StudentEventsTableViewController *setvc = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentEventsTableViewController"];
     setvc.eventsWithEventWrapper = [self filteredDatesForScheme];
     [self.navigationController pushViewController:setvc animated:YES];
-    
-
-   
-    
 }
 -(NSMutableArray *)filteredDatesForScheme
 {
@@ -107,7 +99,5 @@
     datePicker.currentDatePicker = EndDatePicker;
     datePickerView.hidden = NO;
 }
-
-
 
 @end

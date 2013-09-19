@@ -18,5 +18,4 @@
 @property (nonatomic, copy) NSString *startDateCourse;
 @property (nonatomic, copy) NSString *endDateCourse;
 
-
 @end
