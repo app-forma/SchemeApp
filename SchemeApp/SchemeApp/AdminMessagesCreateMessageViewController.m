@@ -30,6 +30,8 @@
 
 @implementation AdminMessagesCreateMessageViewController
 {
+    UIBarButtonItem *sendButton;
+    
     NSArray *users;
     NSMutableArray *receivers;
     NSMutableArray *suggestedUsers;
@@ -52,7 +54,8 @@
     
     UINavigationItem *navItem = [[UINavigationItem alloc]initWithTitle:@"New message"];
     navItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didPressCancel)];
-    navItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Send" style:UIBarButtonItemStyleDone target:self action:@selector(didPressSend)];
+    sendButton = [[UIBarButtonItem alloc]initWithTitle:@"Send" style:UIBarButtonItemStyleDone target:self action:@selector(didPressSend)];
+    navItem.rightBarButtonItem = sendButton;
     [self.navBar pushNavigationItem:navItem animated:NO];
     
     [self.messageTypeControl addTarget:self action:@selector(messageTypeDidChange:) forControlEvents:UIControlEventValueChanged];
@@ -168,7 +171,8 @@
 
 - (void)didPressSend {
     if (self.textView.text.length < 3) { return; }
-
+    sendButton.enabled = NO;
+    
     Message *message = [[Message alloc]init];
     message.text = self.textView.text;
     message.from = Store.mainStore.currentUser;;
@@ -176,13 +180,22 @@
     
     if (self.messageTypeControl.selectedSegmentIndex == MESSAGE_TYPE) {
         [[Store adminStore]sendMessage:message toUsers:receivers completion:^(Message *message) {
-            NSLog(@"message sent");
+            [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+                NSPredicate *containsUser = [NSPredicate predicateWithFormat:@"self.email matches %@", [Store mainStore].currentUser.email];
+                [receivers filteredArrayUsingPredicate:containsUser].count > 0 ? [self returnToMessageViewAndSetMessage:message] : [self dismissViewControllerAnimated:YES completion:nil];
+            }];
         }];
     } else {
         [[Store adminStore]broadcastMessage:message completion:^(Message *message) {
-            NSLog(@"ok");
+            [self performSelectorOnMainThread:@selector(returnToMessageViewAndSetMessage:) withObject:message waitUntilDone:YES];
         }];
     }
+}
+
+-(void)returnToMessageViewAndSetMessage:(Message*)message
+{
+    [self.delegate didCreateMessage:message];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 @end

@@ -37,8 +37,20 @@
     messages = Store.mainStore.currentUser.messages;
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected.png"]];
     self.navigationItem.title = @"Messages";
-	// Do any additional setup after loading the view.
+    
+    // Sign out
+    UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
+    self.navigationItem.rightBarButtonItem = signOutButton;
 }
+
+-(void)signOut
+{
+    UIStoryboard *loginSb = [UIStoryboard storyboardWithName:@"LoginStoryboard" bundle:nil];
+    UIViewController *initialLoginVC = [loginSb instantiateInitialViewController];
+    initialLoginVC.modalTransitionStyle = UIModalPresentationFullScreen;
+    [self presentViewController:initialLoginVC animated:YES completion:nil];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
