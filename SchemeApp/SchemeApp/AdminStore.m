@@ -67,33 +67,6 @@
          handler(collectedEventWrappers);
      }];
 }
-
-- (void)eventsCompletion:(void (^)(NSArray *allEvents))handler
-{
-    [Store.dbSessionConnection getPath:DB_TYPE_EVENT
-                            withParams:nil
-                         andCompletion:^(id jsonObject, id response, NSError *error)
-     {
-         NSMutableArray *events = NSMutableArray.array;
-         
-         if (error)
-         {
-             NSLog(@"eventWrappersCompletion: got response: %@ and error: %@", response, error.userInfo);
-             events = nil;
-         }
-         else
-         {
-             for (NSDictionary *eventsDictionary in jsonObject)
-             {
-                 [events addObject:[[Event alloc] initWithEventDictionary:eventsDictionary]];
-             }
-             
-         }
-         
-         handler(events);
-     }];
-}
-
 - (void)createEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler
 {
     [Store.dbSessionConnection postContent:eventWrapper.asDictionary
@@ -192,6 +165,29 @@
 
 
 #pragma mark - Messages
+- (void)messagesCompletion:(void (^)(NSArray *allMessages))handler
+{
+    [Store.dbSessionConnection getPath:DB_TYPE_MESSAGE
+                            withParams:nil
+                         andCompletion:^(id jsonObject, id response, NSError *error)
+    {
+        NSMutableArray *collectedMessages = NSMutableArray.array;
+        
+        if (error)
+        {
+            NSLog(@"messagesCompletion: got response: %@ and error: %@", response, error.userInfo);
+        }
+        else
+        {
+            for (NSDictionary *messageDictionary in jsonObject)
+            {
+                [collectedMessages addObject:[[Message alloc] initWithMsgDictionary:messageDictionary]];
+            }
+        }
+        
+        handler(collectedMessages);
+    }];
+}
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))handler
 {
     [Store.dbSessionConnection postContent:message.asDictionary

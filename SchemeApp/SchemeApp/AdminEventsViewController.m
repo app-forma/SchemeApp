@@ -1,71 +1,74 @@
 //
-//  AdminEventsTableViewController.m
+//  AdminEventsViewController.m
 //  SchemeApp
 //
 //  Created by Marcus Norling on 9/19/13.
 //  Copyright (c) 2013 Team leet. All rights reserved.
 //
 
-#import "AdminEventsTableViewController.h"
+#import "AdminEventsViewController.h"
 #import "AdminEventCell.h"
+#import "AdminEventTableViewController.h"
 #import "Event.h"
+#import "EventWrapper.h"
 
-@interface AdminEventsTableViewController ()
+@implementation AdminEventsViewController
 {
-    NSMutableArray *events;
-}
-@end
-
-@implementation AdminEventsTableViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [Store.adminStore eventsCompletion:^(NSArray *events_) {
-        events = [NSMutableArray arrayWithArray:events_];
-        [self.tableView reloadData];
-    }];
+    BOOL editingEvent;
+    Event *selectedEvent;
 }
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    editingEvent = NO;
 }
-
-- (void)didReceiveMemoryWarning
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (editingEvent)
+    {
+        [self.tableView reloadData];
+        editingEvent = NO;
+    }
 }
 
-#pragma mark - Table view data source
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+#warning Refactor
+    AdminEventTableViewController *vc = segue.destinationViewController;
+    editingEvent = YES;
+    
+    if ([segue.identifier isEqualToString:@"AddEvent"])
+    {
+        vc.isNew = YES;
+    }
+    else if ([segue.identifier isEqualToString:@"EditEvent"])
+    {
+        vc.selectedEvent = selectedEvent;
+        vc.isNew = NO;
+    }
+    
+    vc.selectedEventWrapper = self.selectedEventWrapper;
+}
 
+#pragma mark - UITableViewDatasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [events count];
+    return self.selectedEventWrapper.events.count;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AdminEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdminEventCell"];
-    Event *event = events[indexPath.row];
+    Event *event = self.selectedEventWrapper.events[indexPath.row];
+    
     cell.info.text = event.info;
     cell.room.text = event.room;
     cell.startDate.text = [Helpers stringFromNSDate:event.startDate];
     cell.endDate.text = [Helpers stringFromNSDate:event.endDate];
+    
     return cell;
 }
 
@@ -119,5 +122,11 @@
 }
 
  */
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    selectedEvent = self.selectedEventWrapper.events[indexPath.row];
+}
 
 @end

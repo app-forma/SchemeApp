@@ -102,9 +102,12 @@
           if (!error)
           {
               jsonObject = [NSJSONSerialization JSONObjectWithData:data
-                                                           options:NSJSONReadingAllowFragments
+                                                           options:NSJSONReadingMutableContainers
                                                              error:&error];
           }
+#warning Testing
+          NSLog([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+          NSLog(@"Response: %@", response);
           handler(jsonObject, response, error);
           
       }] resume];

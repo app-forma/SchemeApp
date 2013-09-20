@@ -8,12 +8,11 @@
 
 #import "AdminEventWrapperTableViewController.h"
 #import "EventWrapper.h"
+#import "AdminEventsViewController.h"
 
 
 @interface AdminEventWrapperTableViewController ()
-{
-    BOOL isNew;
-}
+
 @property (weak, nonatomic) IBOutlet UITextField *courseTitleTextField;
 @property (weak, nonatomic) IBOutlet UITextField *teacherTextField;
 @property (weak, nonatomic) IBOutlet UITextField *litteratureTextField;
@@ -38,7 +37,7 @@
 
 @implementation AdminEventWrapperTableViewController
 {
-    BOOL shouldShowStartDatePicker, shouldShowEndDatePicker;
+    BOOL shouldShowStartDatePicker, shouldShowEndDatePicker, isNew;
 }
 
 - (void)loadView
@@ -62,10 +61,8 @@
     } else {
         isNew = YES;
     }
+    
     [self setInputsToSelectedEventWrapper];
-    
-    
-    
     [self setDatePickerLocaleToSystemLocale];
     [self setDateLabelsToPickerDates:nil];
 }
@@ -116,6 +113,15 @@
          {
              saveHandler();
          }];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Lessons"])
+    {
+        AdminEventsViewController *vc = segue.destinationViewController;
+        vc.selectedEventWrapper = self.selectedEventWrapper;
     }
 }
 
@@ -185,13 +191,11 @@
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
 }
-
 - (void)setDatePickerLocaleToSystemLocale
 {
     self.startDatePicker.locale = [NSLocale systemLocale];
     self.endDatePicker.locale = [NSLocale systemLocale];
 }
-
 - (void)setInputsToSelectedEventWrapper
 {
     if (isNew) {
@@ -204,7 +208,6 @@
         self.teacherTextField.text = [NSString stringWithFormat:@"%@ %@", self.selectedEventWrapper.user.firstname, self.selectedEventWrapper.user.lastname];
     }
 }
-
 - (void)setSelectedEventWrapperPropertiesToInputValues
 {
     if (!self.selectedEventWrapper) {
@@ -218,4 +221,5 @@
     self.selectedEventWrapper.startDate = self.startDatePicker.date;
     self.selectedEventWrapper.endDate = self.endDatePicker.date;
 }
+
 @end
