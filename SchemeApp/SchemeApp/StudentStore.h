@@ -10,7 +10,7 @@
 
 #import "Store.h"
 
-@class EventWrapper;
+@class EventWrapper, Message;
 
 
 @interface StudentStore : NSObject
@@ -18,5 +18,7 @@
 - (void)eventWrappersWithinStartDate:(NSDate *)startDate
                           andEndDate:(NSDate *)endDate
                           completion:(void (^)(NSArray *eventWrappers))handler;
+
+- (void)messageWithDocID:(NSString *)docID completion:(void (^)(Message *message))completion;
 
 @end
