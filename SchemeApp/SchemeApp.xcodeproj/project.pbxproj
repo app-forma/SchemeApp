@@ -29,7 +29,7 @@
 		0493B54D17DDF80C003B3D23 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0493B54B17DDF80C003B3D23 /* InfoPlist.strings */; };
 		0493B54F17DDF80C003B3D23 /* SchemeAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */; };
 		04E09F5B17E7249D00B946CB /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E09F5A17E7249D00B946CB /* EventCell.m */; };
-		270CF1A517EB539D003BEBD2 /* AdminEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270CF1A417EB539D003BEBD2 /* AdminEventsTableViewController.m */; };
+		270CF1A517EB539D003BEBD2 /* AdminEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270CF1A417EB539D003BEBD2 /* AdminEventsViewController.m */; };
 		270CF1A817EB5521003BEBD2 /* AdminEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 270CF1A717EB5521003BEBD2 /* AdminEventCell.m */; };
 		2748CDC917DF360F00A06467 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748CDC817DF360F00A06467 /* Helpers.m */; };
 		27BCC1E717E1E7E7009977BB /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC1E617E1E7E7009977BB /* LoginStoryboard.storyboard */; };
@@ -79,6 +79,8 @@
 		AF8CD8FB17E850C8004551F8 /* AdminTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8CD8F917E850C8004551F8 /* AdminTabBarViewController.m */; };
 		AFDA09EC17EAEAC300333A48 /* DatabaseConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */; };
 		AFDA09ED17EAEAC300333A48 /* DatabaseConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */; };
+		AFDA09F017EB82C300333A48 /* AdminEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA09EF17EB82C300333A48 /* AdminEventTableViewController.m */; };
+		AFDA09F117EB82C300333A48 /* AdminEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA09EF17EB82C300333A48 /* AdminEventTableViewController.m */; };
 		AFE538F017E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538E817E0972C00C0B776 /* StudentEventDetailsViewController.m */; };
 		AFE538F117E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538E817E0972C00C0B776 /* StudentEventDetailsViewController.m */; };
 		AFE538F217E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538EA17E0972C00C0B776 /* StudentEventsTableViewController.m */; };
@@ -136,8 +138,8 @@
 		0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeAppTests.m; sourceTree = "<group>"; };
 		04E09F5917E7249D00B946CB /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
 		04E09F5A17E7249D00B946CB /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
-		270CF1A317EB539D003BEBD2 /* AdminEventsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEventsTableViewController.h; sourceTree = "<group>"; };
-		270CF1A417EB539D003BEBD2 /* AdminEventsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEventsTableViewController.m; sourceTree = "<group>"; };
+		270CF1A317EB539D003BEBD2 /* AdminEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEventsViewController.h; sourceTree = "<group>"; };
+		270CF1A417EB539D003BEBD2 /* AdminEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEventsViewController.m; sourceTree = "<group>"; };
 		270CF1A617EB5521003BEBD2 /* AdminEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEventCell.h; sourceTree = "<group>"; };
 		270CF1A717EB5521003BEBD2 /* AdminEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEventCell.m; sourceTree = "<group>"; };
 		2748CDC717DF360F00A06467 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
@@ -198,6 +200,8 @@
 		AF8CD8F917E850C8004551F8 /* AdminTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminTabBarViewController.m; sourceTree = "<group>"; };
 		AFDA09EA17EAEAC300333A48 /* DatabaseConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseConnection.h; sourceTree = "<group>"; };
 		AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseConnection.m; sourceTree = "<group>"; };
+		AFDA09EE17EB82C300333A48 /* AdminEventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEventTableViewController.h; sourceTree = "<group>"; };
+		AFDA09EF17EB82C300333A48 /* AdminEventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEventTableViewController.m; sourceTree = "<group>"; };
 		AFE538E717E0972C00C0B776 /* StudentEventDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentEventDetailsViewController.h; sourceTree = "<group>"; };
 		AFE538E817E0972C00C0B776 /* StudentEventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentEventDetailsViewController.m; sourceTree = "<group>"; };
 		AFE538E917E0972C00C0B776 /* StudentEventsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentEventsTableViewController.h; sourceTree = "<group>"; };
@@ -344,8 +348,10 @@
 		270CF1A017EB526B003BEBD2 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				270CF1A317EB539D003BEBD2 /* AdminEventsTableViewController.h */,
-				270CF1A417EB539D003BEBD2 /* AdminEventsTableViewController.m */,
+				270CF1A317EB539D003BEBD2 /* AdminEventsViewController.h */,
+				270CF1A417EB539D003BEBD2 /* AdminEventsViewController.m */,
+				AFDA09EE17EB82C300333A48 /* AdminEventTableViewController.h */,
+				AFDA09EF17EB82C300333A48 /* AdminEventTableViewController.m */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -645,10 +651,11 @@
 			files = (
 				27BCC21A17E24304009977BB /* EventWrapperCell.m in Sources */,
 				AFE538F417E0972C00C0B776 /* StudentEventMainViewController.m in Sources */,
+				AFDA09F017EB82C300333A48 /* AdminEventTableViewController.m in Sources */,
 				AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */,
 				0493B53A17DDF80C003B3D23 /* AppDelegate.m in Sources */,
 				8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */,
-				270CF1A517EB539D003BEBD2 /* AdminEventsTableViewController.m in Sources */,
+				270CF1A517EB539D003BEBD2 /* AdminEventsViewController.m in Sources */,
 				4DED32BF17E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m in Sources */,
 				AF2551F017E04628006EDD02 /* Store.m in Sources */,
 				AFE538F617E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */,
@@ -696,6 +703,7 @@
 				AF2551F517E04631006EDD02 /* StudentStore.m in Sources */,
 				AF2551F917E04883006EDD02 /* SuperAdminStore.m in Sources */,
 				AF2551F317E0462D006EDD02 /* AdminStore.m in Sources */,
+				AFDA09F117EB82C300333A48 /* AdminEventTableViewController.m in Sources */,
 				AFDA09ED17EAEAC300333A48 /* DatabaseConnection.m in Sources */,
 				AF2551F117E04629006EDD02 /* Store.m in Sources */,
 			);
