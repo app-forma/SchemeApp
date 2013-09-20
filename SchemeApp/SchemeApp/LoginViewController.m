@@ -28,13 +28,9 @@
 }
 -(void)viewDidLoad
 {
-self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = YES;
     studentSb = [UIStoryboard storyboardWithName:@"StudentStoryboard" bundle:nil];
-    adminSb = [UIStoryboard storyboardWithName:@"AdminStoryboard" bundle:nil];
     initialStudentVC = [studentSb instantiateInitialViewController];
-    initialAdminVC = [adminSb instantiateInitialViewController];
-    
-    
 }
 
 #pragma mark text field delegate methods:
@@ -49,7 +45,6 @@ self.navigationController.navigationBarHidden = YES;
         if (success) {
             NSLog(@"Logged in as User: %@ %@", Store.mainStore.currentUser.firstname,
                   Store.mainStore.currentUser.lastname);
-            initialAdminVC.modalTransitionStyle = UIModalPresentationFullScreen;
             [self presentViewController:[[AdminTabBarViewController alloc] init] animated:YES completion:nil];
         }
     }];
