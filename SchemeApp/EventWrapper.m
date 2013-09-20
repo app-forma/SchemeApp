@@ -16,6 +16,7 @@
 
 - (id)initWithEventWrapperDictionary:(NSDictionary *)eventWrapperDictionary
 {
+#warning Testing
     self = [super init];
     if (self)
     {
@@ -25,7 +26,21 @@
         self.startDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"startDate"]];
         self.endDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"endDate"]];
         _docID = [eventWrapperDictionary objectForKey:@"_id"];
-        self.events = [NSMutableArray new];
+
+        NSMutableArray *newEvents = NSMutableArray.array;        
+        for (id event in [eventWrapperDictionary objectForKey:@"events"])
+        {
+            if ([event isKindOfClass:NSDictionary.class])
+            {
+                Event *newEvent = [[Event alloc] initWithEventDictionary:event];
+                [newEvents addObject:newEvent];
+            }
+            else if ([event isKindOfClass:NSString.class])
+            {
+                [newEvents addObject:event];
+            }
+        }
+        self.events = newEvents;
     }
     return self;
 }
