@@ -13,10 +13,6 @@
 
 #import "StudentStore.h"
 
-#warning Temporary
-// Should not be needed to import RoleType
-#import "RoleType"
-
 @class Event, EventWrapper, Message, User;
 
 

@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AFNetworking.h"
 #import "DatabaseConnection.h"
+#import "Message.h"
 #import "AdminStore.h"
 #import "SuperAdminStore.h"
 #import "StudentStore.h"
+#import "AFNetworking.h"
 
-@class User;
+@class User, AFNetworking, SuperAdminStore, StudentStore, AdminStore, Message;
 
 
 @interface Store : NSObject

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SchemeAppAdmin/SchemeAppAdmin.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SchemeApp.xcodeproj">
    </FileRef>
    <FileRef
