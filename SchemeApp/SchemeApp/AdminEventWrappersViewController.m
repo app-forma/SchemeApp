@@ -18,9 +18,9 @@
     EventWrapper *selectedEventWrapper;
 }
 
-- (void)loadView
+- (void)viewDidLoad
 {
-    [super loadView];  
+    [super viewDidLoad];
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"courses_selected"]];
 }
 
