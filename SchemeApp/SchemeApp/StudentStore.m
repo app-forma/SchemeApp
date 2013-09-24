@@ -8,6 +8,7 @@
 
 #import "StudentStore.h"
 #import "EventWrapper.h"
+#import "Message.h"
 
 
 @implementation StudentStore
@@ -37,6 +38,24 @@
         
         handler(eventWrappers);
     }];
+}
+
+- (void)messageWithDocID:(NSString *)docID completion:(void (^)(Message *message))handler
+{
+    [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_MESSAGE, docID]
+                            withParams:nil
+                         andCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"messageWithDocID:completion: got response: %@ and error: %@", response, error.userInfo);
+             handler(nil);
+         }
+         else
+         {
+             handler([[Message alloc] initWithMsgDictionary:jsonObject]);
+         }
+     }];
 }
 
 @end

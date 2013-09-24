@@ -37,7 +37,7 @@
 }
 - (void)setupAdminTabBarViewController
 {
-    NSMutableArray *array = [NSMutableArray array];
+    NSMutableArray *array = [NSMutableArray new];
     [array addObject:[[UIStoryboard storyboardWithName:@"AdminEventWrapperStoryboard" bundle:nil] instantiateInitialViewController]];
     [array addObject:[[UIStoryboard storyboardWithName:@"AdminMessagesStoryboard" bundle:nil] instantiateInitialViewController]];
     [array addObject:[[UIStoryboard storyboardWithName:@"AdminUserStoryboard" bundle:nil] instantiateInitialViewController]];

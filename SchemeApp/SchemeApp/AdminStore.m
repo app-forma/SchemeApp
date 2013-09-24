@@ -15,33 +15,6 @@
 
 @implementation AdminStore
 
-#pragma mark - Event and EventWrappers
-- (void)createEvent:(Event *)event completion:(completion)handler
-{
-    [Store.dbSessionConnection postContent:event.asDictionary
-                                    toPath:DB_TYPE_EVENT
-                            withCompletion:^(id jsonObject, id response, NSError *error)
-     {
-         handler(jsonObject, response, error);
-     }];
-}
-- (void)updateEvent:(Event *)event completion:(completion)handler
-{
-    [Store.dbSessionConnection putContent:event.asDictionary
-                                   toPath:DB_TYPE_EVENT
-                           withCompletion:^(id jsonObject, id response, NSError *error)
-     {
-         handler(jsonObject, response, error);
-     }];
-}
-- (void)deleteEvent:(Event *)event completion:(completion)handler
-{
-    [Store.dbSessionConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, event.docID]
-                           withCompletion:^(id jsonObject, id response, NSError *error)
-     {
-         handler(jsonObject, response, error);
-     }];
-}
 - (void)eventWrappersCompletion:(void (^)(NSArray *allEventWrappers))handler
 {
     [Store.dbSessionConnection getPath:DB_TYPE_EVENTWRAPPER
@@ -67,33 +40,56 @@
          handler(collectedEventWrappers);
      }];
 }
-
-- (void)eventsCompletion:(void (^)(NSArray *allEvents))handler
+- (void)eventsCompletion:(void (^)(NSArray *allEventWrappers))handler
 {
-    [Store.dbSessionConnection getPath:DB_TYPE_EVENT
+#warning Implement
+    
+}
+- (void)eventWithDocID:(NSString *)docID completion:(void (^)(Event *event))handler
+{
+    [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, docID]
                             withParams:nil
                          andCompletion:^(id jsonObject, id response, NSError *error)
      {
-         NSMutableArray *events = NSMutableArray.array;
-         
          if (error)
          {
-             NSLog(@"eventWrappersCompletion: got response: %@ and error: %@", response, error.userInfo);
-             events = nil;
+             NSLog(@"eventWithDocID:completion: got response: %@ and error: %@", response, error.userInfo);
+             handler(nil);
          }
          else
          {
-             for (NSDictionary *eventsDictionary in jsonObject)
-             {
-                 [events addObject:[[Event alloc] initWithEventDictionary:eventsDictionary]];
-             }
-             
+             handler([[Event alloc] initWithEventDictionary:jsonObject]);
          }
-         
-         handler(events);
      }];
 }
 
+#pragma mark - Event and EventWrappers CRUD
+- (void)createEvent:(Event *)event completion:(completion)handler
+{
+    [Store.dbSessionConnection postContent:event.asDictionary
+                                    toPath:DB_TYPE_EVENT
+                            withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
+}
+- (void)updateEvent:(Event *)event completion:(completion)handler
+{
+    [Store.dbSessionConnection putContent:event.asDictionary
+                                   toPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, event.docID]
+                           withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
+}
+- (void)deleteEvent:(Event *)event completion:(completion)handler
+{
+    [Store.dbSessionConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, event.docID]
+                           withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
+}
 - (void)createEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler
 {
     [Store.dbSessionConnection postContent:eventWrapper.asDictionary
@@ -192,6 +188,29 @@
 
 
 #pragma mark - Messages
+- (void)messagesCompletion:(void (^)(NSArray *allMessages))handler
+{
+    [Store.dbSessionConnection getPath:DB_TYPE_MESSAGE
+                            withParams:nil
+                         andCompletion:^(id jsonObject, id response, NSError *error)
+    {
+        NSMutableArray *collectedMessages = NSMutableArray.array;
+        
+        if (error)
+        {
+            NSLog(@"messagesCompletion: got response: %@ and error: %@", response, error.userInfo);
+        }
+        else
+        {
+            for (NSDictionary *messageDictionary in jsonObject)
+            {
+                [collectedMessages addObject:[[Message alloc] initWithMsgDictionary:messageDictionary]];
+            }
+        }
+        
+        handler(collectedMessages);
+    }];
+}
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))handler
 {
     [Store.dbSessionConnection postContent:message.asDictionary

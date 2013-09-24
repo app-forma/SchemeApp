@@ -99,14 +99,15 @@
                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
       {
           id jsonObject;
+          
           if (!error)
           {
               jsonObject = [NSJSONSerialization JSONObjectWithData:data
-                                                           options:NSJSONReadingAllowFragments
+                                                           options:NSJSONReadingMutableContainers
                                                              error:&error];
           }
-          handler(jsonObject, response, error);
           
+          handler(jsonObject, response, error);
       }] resume];
 }
 

@@ -1,14 +1,14 @@
 //
-//  AdminEventCell.m
+//  SelectedEventWrapperEventCell.m
 //  SchemeApp
 //
 //  Created by Marcus Norling on 9/19/13.
 //  Copyright (c) 2013 Team leet. All rights reserved.
 //
 
-#import "AdminEventCell.h"
+#import "SelectedEventWrapperEventCell.h"
 
-@implementation AdminEventCell
+@implementation SelectedEventWrapperEventCell
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

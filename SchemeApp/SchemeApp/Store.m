@@ -95,41 +95,58 @@
 + (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion
 {
 #warning Implement password
-    [Store.dbConnection readByEmail:email callback:^(id result) {
-
-        if (result[@"error"]) {
-            NSLog(@"%@", result);
-            completion(NO);
-            return;
-        }
-        NSDictionary *currentUser = result;
-        if ([currentUser[@"email"] isEqualToString:email]) {
-            User *user = [[User alloc]initWithUserDictionary:currentUser];
-            if ([currentUser[@"messages"] count] > 0) {
-                for (NSDictionary *message in currentUser[@"messages"]){
-                    Message *msg = [[Message alloc]initWithMsgDictionary:message];
-                    [user.messages addObject:msg];
-                }
-            }
-                if (currentUser[@"eventWrappers"] > 0) {
-                    for (NSDictionary *eventWrapper in currentUser[@"eventWrappers"]){
-                        EventWrapper *eW = [[EventWrapper alloc] initWithEventWrapperDictionary:eventWrapper];
-                        for (NSDictionary *event in eventWrapper[@"events"]){
-                            Event *e = [[Event alloc]initWithEventDictionary:event];
-                            [eW.events addObject:e];
-                        }
-                        [user.eventWrappers addObject:eW];
-                    }
-                }
-                Store.mainStore.currentUser = user;
-                
-                completion(YES);
-                return;
-
-            
-        }
-        
-    }];
+    [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/email/%@", DB_TYPE_USER, email]
+                            withParams:nil
+                         andCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"setCurrentUserToUserWithEmail:andPassword:completion: got response: %@ and error: %@", response, error.userInfo);
+             completion(NO);
+         }
+         else
+         {
+             Store.mainStore.currentUser = [[User alloc] initWithUserDictionary:jsonObject];
+             completion(YES);
+         }
+     }];
+  
+#warning Testing
+//    [Store.dbConnection readByEmail:email callback:^(id result) {
+//
+//        if (result[@"error"]) {
+//            NSLog(@"%@", result);
+//            completion(NO);
+//            return;
+//        }
+//        NSDictionary *currentUser = result;
+//        if ([currentUser[@"email"] isEqualToString:email]) {
+//            User *user = [[User alloc]initWithUserDictionary:currentUser];
+//            if ([currentUser[@"messages"] count] > 0) {
+//                for (NSDictionary *message in currentUser[@"messages"]){
+//                    Message *msg = [[Message alloc]initWithMsgDictionary:message];
+//                    [user.messages addObject:msg];
+//                }
+//            }
+//                if (currentUser[@"eventWrappers"] > 0) {
+//                    for (NSDictionary *eventWrapper in currentUser[@"eventWrappers"]){
+//                        EventWrapper *eW = [[EventWrapper alloc] initWithEventWrapperDictionary:eventWrapper];
+//                        for (NSDictionary *event in eventWrapper[@"events"]){
+//                            Event *e = [[Event alloc]initWithEventDictionary:event];
+//                            [eW.events addObject:e];
+//                        }
+//                        [user.eventWrappers addObject:eW];
+//                    }
+//                }
+//                Store.mainStore.currentUser = user;
+//                
+//                completion(YES);
+//                return;
+//
+//            
+//        }
+//        
+//    }];
 }
 
 @end

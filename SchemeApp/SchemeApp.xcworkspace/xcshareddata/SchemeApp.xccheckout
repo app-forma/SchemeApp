@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C03AC9A3-D102-4F41-834A-786D8E9FFE30</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SchemeApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E9C222F0-F961-4F1F-9AFF-D3C59B1C1FD1</key>
+		<string>https://github.com/rickardz/SchemeApp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SchemeApp/SchemeApp.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E9C222F0-F961-4F1F-9AFF-D3C59B1C1FD1</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/rickardz/SchemeApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E9C222F0-F961-4F1F-9AFF-D3C59B1C1FD1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E9C222F0-F961-4F1F-9AFF-D3C59B1C1FD1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SchemeAppGit</string>
+		</dict>
+	</array>
+</dict>
+</plist>
