@@ -19,6 +19,7 @@
     CLLocationManager *locationManager;
     CLRegion *testRegion;
     UIAlertView *automaticPresence;
+    UIAlertView *goodbye;
 }
 
 @end
@@ -49,13 +50,18 @@
     
     
     locationManager = [[CLLocationManager alloc] init];
-    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(59.345491, 17.977023);
-    testRegion = [[CLCircularRegion alloc] initWithCenter:center radius:50 identifier:@"test"];
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(59.34511573, 17.97674040);
+    testRegion = [[CLCircularRegion alloc] initWithCenter:center radius:40 identifier:@"test"];
     [locationManager setDelegate:self];
     [locationManager startMonitoringForRegion:testRegion];
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = 20;
+    [locationManager startUpdatingLocation];
     testRegion.notifyOnEntry = YES;
     
     automaticPresence = [[UIAlertView alloc] initWithTitle:@"Welcome" message:@"We have now confirmed your presence through our very advanced geolocation operating system!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    
+    goodbye = [[UIAlertView alloc] initWithTitle:@"Goodbye" message:@"Thank you for today!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
 }
 
 
@@ -64,9 +70,21 @@
     [automaticPresence show];
 }
 
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
+{
+    NSLog(@"Exit Region - %@", region.identifier);
+    [goodbye show];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
     NSLog(@"Started monitoring %@ region", region.identifier);
 }
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    NSLog(@"Location: %@", [locations lastObject]);
+}
+
 
 -(void)signOut
 {
