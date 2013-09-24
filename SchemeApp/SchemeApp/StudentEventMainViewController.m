@@ -103,7 +103,6 @@
     StudentEventsTableViewController *setvc = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentEventsTableViewController"];
     setvc.eventsWithEventWrapper = [self filteredDatesForScheme:dateDic];
     [self.navigationController pushViewController:setvc animated:YES];
-    
 }
 
 -(NSMutableArray *)filteredDatesForScheme:(NSDictionary *)dateDic

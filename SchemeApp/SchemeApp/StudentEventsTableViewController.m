@@ -33,17 +33,6 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Events";
-
-
-
-    
-    
-//    [self.tableView registerClass:[EventCell class] forCellReuseIdentifier:@"EventCell"];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 
@@ -82,9 +71,6 @@
     detailView.event = self.eventsWithEventWrapper[indexPath.row][@"event"];
     
     [self.navigationController pushViewController:detailView animated:YES];
-    
-    // skapa en StudentEventDetailsViewController och pusha den med detaljer för valda eventet.
-   
 }
 
 @end
