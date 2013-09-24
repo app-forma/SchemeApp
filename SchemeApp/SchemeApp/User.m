@@ -82,9 +82,6 @@
         }
     }
     
-    NSArray *eventWrappers = userDictionary[@"eventWrappers"];
-    NSLog(@"Test: %@", eventWrappers);
-    
     for (id eventWrapper in userDictionary[@"eventWrappers"])
     {
         if ([eventWrapper isKindOfClass:NSDictionary.class])
