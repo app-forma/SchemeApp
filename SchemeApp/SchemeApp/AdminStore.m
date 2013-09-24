@@ -15,33 +15,6 @@
 
 @implementation AdminStore
 
-#pragma mark - Event and EventWrappers
-- (void)createEvent:(Event *)event completion:(completion)handler
-{
-    [Store.dbSessionConnection postContent:event.asDictionary
-                                    toPath:DB_TYPE_EVENT
-                            withCompletion:^(id jsonObject, id response, NSError *error)
-     {
-         handler(jsonObject, response, error);
-     }];
-}
-- (void)updateEvent:(Event *)event completion:(completion)handler
-{
-    [Store.dbSessionConnection putContent:event.asDictionary
-                                   toPath:DB_TYPE_EVENT
-                           withCompletion:^(id jsonObject, id response, NSError *error)
-     {
-         handler(jsonObject, response, error);
-     }];
-}
-- (void)deleteEvent:(Event *)event completion:(completion)handler
-{
-    [Store.dbSessionConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, event.docID]
-                           withCompletion:^(id jsonObject, id response, NSError *error)
-     {
-         handler(jsonObject, response, error);
-     }];
-}
 - (void)eventWrappersCompletion:(void (^)(NSArray *allEventWrappers))handler
 {
     [Store.dbSessionConnection getPath:DB_TYPE_EVENTWRAPPER
@@ -65,6 +38,56 @@
          }
          
          handler(collectedEventWrappers);
+     }];
+}
+- (void)eventsCompletion:(void (^)(NSArray *allEventWrappers))handler
+{
+#warning Implement
+    
+}
+- (void)eventWithDocID:(NSString *)docID completion:(void (^)(Event *event))handler
+{
+    [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, docID]
+                            withParams:nil
+                         andCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"eventWithDocID:completion: got response: %@ and error: %@", response, error.userInfo);
+             handler(nil);
+         }
+         else
+         {
+             handler([[Event alloc] initWithEventDictionary:jsonObject]);
+         }
+     }];
+}
+
+#pragma mark - Event and EventWrappers CRUD
+- (void)createEvent:(Event *)event completion:(completion)handler
+{
+    [Store.dbSessionConnection postContent:event.asDictionary
+                                    toPath:DB_TYPE_EVENT
+                            withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
+}
+- (void)updateEvent:(Event *)event completion:(completion)handler
+{
+    [Store.dbSessionConnection putContent:event.asDictionary
+                                   toPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, event.docID]
+                           withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
+     }];
+}
+- (void)deleteEvent:(Event *)event completion:(completion)handler
+{
+    [Store.dbSessionConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, event.docID]
+                           withCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         handler(jsonObject, response, error);
      }];
 }
 - (void)createEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler

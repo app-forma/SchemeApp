@@ -24,6 +24,7 @@
 
 - (void)eventWrappersCompletion:(void (^)(NSArray *allEventWrappers))handler;
 - (void)eventsCompletion:(void (^)(NSArray *allEventWrappers))handler;
+- (void)eventWithDocID:(NSString *)docID completion:(void (^)(Event *event))handler;
 
 - (void)createEvent:(Event *)event completion:(completion)handler;
 - (void)updateEvent:(Event *)event completion:(completion)handler;

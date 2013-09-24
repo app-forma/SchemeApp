@@ -1,17 +1,17 @@
 //
-//  AdminEventTableViewController.m
+//  SelectedEventTableViewController.m
 //  SchemeApp
 //
 //  Created by Henrik on 2013-09-19.
 //  Copyright (c) 2013 Team leet. All rights reserved.
 //
 
-#import "AdminEventTableViewController.h"
+#import "SelectedEventTableViewController.h"
 #import "Event.h"
 #import "EventWrapper.h"
 
 
-@interface AdminEventTableViewController ()
+@interface SelectedEventTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *infoTextField;
 @property (weak, nonatomic) IBOutlet UITextField *roomTextField;
@@ -29,7 +29,7 @@
 @end
 
 
-@implementation AdminEventTableViewController
+@implementation SelectedEventTableViewController
 {
     BOOL shouldShowStartDatePicker, shouldShowEndDatePicker;
 }
@@ -75,46 +75,30 @@
 }
 - (IBAction)save:(id)sender
 {
-    void(^saveHandler)(void) = ^(void)
+    if (!self.selectedEvent)
     {
-        [NSOperationQueue.mainQueue addOperationWithBlock:^
-         {
-             [self.navigationController popViewControllerAnimated:YES];
-         }];
-    };
+        self.selectedEvent = [[Event alloc] init];
+    }
+    
+    [self setSelectedEventPropertiesToInputValues];
     
     if (self.isNew)
     {
-        self.selectedEvent = [[Event alloc] init];
-        [self setSelectedEventPropertiesToInputValues];
         [Store.adminStore createEvent:self.selectedEvent
                            completion:^(id jsonObject, id response, NSError *error)
          {
              if (error)
              {
                  NSLog(@"save: got response: %@ and error: %@", response, error.userInfo);
-                 saveHandler();
              }
              else
              {
-#warning Testing
-                 NSLog(@"jsonObject: %@", jsonObject);
-                 [self.selectedEventWrapper.events addObject:[[Event alloc] initWithEventDictionary:jsonObject]];
-                 [Store.adminStore updateEventWrapper:self.selectedEventWrapper
-                                           completion:^(id jsonObject, id response, NSError *error)
-                  {
-                      if (error)
-                      {
-                          NSLog(@"save: got response: %@ and error: %@", response, error.userInfo);
-                      }
-                      saveHandler();
-                  }];
+                 [self.delegate didAddEvent:[[Event alloc] initWithEventDictionary:jsonObject]];
              }
          }];
     }
     else
     {
-        [self setSelectedEventPropertiesToInputValues];
         [Store.adminStore updateEvent:self.selectedEvent
                            completion:^(id jsonObject, id response, NSError *error)
          {
@@ -122,9 +106,14 @@
              {
                  NSLog(@"save: got response: %@ and error: %@", response, error);
              }
-             saveHandler();
+             else
+             {
+                 [self.delegate didEditEvent:self.selectedEvent];
+             }
          }];
     }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableViewDatasource

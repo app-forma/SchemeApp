@@ -8,7 +8,7 @@
 
 #import "AdminEventWrapperTableViewController.h"
 #import "EventWrapper.h"
-#import "AdminEventsViewController.h"
+#import "SelectedEventWrapperEventsViewController.h"
 
 
 @interface AdminEventWrapperTableViewController ()
@@ -120,7 +120,7 @@
 {
     if ([segue.identifier isEqualToString:@"Lessons"])
     {
-        AdminEventsViewController *vc = segue.destinationViewController;
+        SelectedEventWrapperEventsViewController *vc = segue.destinationViewController;
         vc.selectedEventWrapper = self.selectedEventWrapper;
     }
 }
