@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AuthViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, AuthDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
