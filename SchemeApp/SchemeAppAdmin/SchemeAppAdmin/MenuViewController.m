@@ -8,10 +8,17 @@
 
 #import "MenuViewController.h"
 #import "MessageViewController.h"
+#import "EventWrappersViewController.h"
+#import "UsersViewController.h"
+#import "SchoolInfoViewController.h"
 
 @interface MenuViewController ()
 {
-    MessageViewController *messageVC;
+    MessageViewController *messageViewController;
+    EventWrappersViewController *eventWrapperViewController;
+    UsersViewController *usersViewController;
+    SchoolInfoViewController *schoolInfoViewController;
+    NSArray *menuItems;
 }
 @end
 
@@ -21,7 +28,11 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        messageVC = [[MessageViewController alloc] init];
+        NSDictionary *menuItem1 = @{@"label":@"School info", @"tag":@(0)};
+        NSDictionary *menuItem2 = @{@"label":@"Users", @"tag":@(1)};
+        NSDictionary *menuItem3 = @{@"label":@"Courses", @"tag":@(2)};
+        NSDictionary *menuItem4 = @{@"label":@"Messages", @"tag":@(3)};
+        menuItems = @[menuItem1, menuItem2, menuItem3, menuItem4];
     }
     return self;
 }
@@ -56,7 +67,7 @@
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 2;
+    return [menuItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,7 +77,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text = @"Trött";
+    cell.textLabel.text = menuItems[indexPath.row][@"label"];
     
     return cell;
 }
@@ -75,8 +86,42 @@
 {
     UINavigationController *navCtrl = self.splitViewController.viewControllers[1];
     
-    if (navCtrl.visibleViewController != messageVC) {
-        [self.splitViewController.viewControllers[1] pushViewController:messageVC animated:YES];
+    if (navCtrl.visibleViewController != [self viewControllerForIndexPath:indexPath]) {
+        [self.splitViewController.viewControllers[1] pushViewController:[self viewControllerForIndexPath:indexPath] animated:NO];
     }
+}
+
+- (UIViewController *)viewControllerForIndexPath:(NSIndexPath*)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+            if (!schoolInfoViewController) {
+                return [[SchoolInfoViewController alloc] init];
+            }
+            return schoolInfoViewController;
+            break;
+        case 1:
+            if (!usersViewController) {
+                return [[UsersViewController alloc] init];
+            }
+            return usersViewController;
+            break;
+        case 2:
+            if (!eventWrapperViewController) {
+                return [[EventWrappersViewController alloc] init];
+            }
+            return eventWrapperViewController;
+            break;
+        case 3:
+            if (!messageViewController) {
+           return [[MessageViewController alloc] init];
+            }
+            return messageViewController;
+            break;
+        default:
+            break;
+    }
+    NSLog(@"FAIL");
+    return nil;
 }
 @end

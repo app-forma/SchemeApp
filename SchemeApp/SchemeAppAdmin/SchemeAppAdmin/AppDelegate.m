@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MenuViewController.h"
+#import "AppStartViewController.h"
 
 @implementation AppDelegate
 
@@ -27,8 +28,8 @@
 -(void)didSuccesfullyLogin
 {
     UISplitViewController *splitVC = [UISplitViewController new];
-    UIViewController *view = [UIViewController new];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:view];
+    AppStartViewController *startView = [[AppStartViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:startView];
     navController.navigationBar.hidden = YES;
     MenuViewController *tableViewController = [[MenuViewController alloc] init];
     splitVC.viewControllers = @[tableViewController, navController];
