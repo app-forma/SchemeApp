@@ -1,5 +1,5 @@
 //
-//  AdminEventCell.h
+//  SelectedEventWrapperEventCell.h
 //  SchemeApp
 //
 //  Created by Marcus Norling on 9/19/13.
@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AdminEventCell : UITableViewCell
+
+@interface SelectedEventWrapperEventCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
+@property (weak, nonatomic) IBOutlet UIView *loadedContentView;
 @property (weak, nonatomic) IBOutlet UILabel *info;
 @property (weak, nonatomic) IBOutlet UILabel *startDate;
 @property (weak, nonatomic) IBOutlet UILabel *endDate;
