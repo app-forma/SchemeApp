@@ -53,7 +53,6 @@
     [self.view addSubview:datePickerView];
     datePickerView.hidden = YES;
     datePicker.delegate = self;
-
 }
 
 -(void)signOut
@@ -77,6 +76,7 @@
         self.endDateForScheme.text = dateText;
     }
 }
+
 - (IBAction)getSchemeForToday:(id)sender
 {
     NSDictionary *today = [Helpers startAndEndTimeForDate:[NSDate date]];

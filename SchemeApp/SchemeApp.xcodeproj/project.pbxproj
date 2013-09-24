@@ -62,6 +62,7 @@
 		8F5D541517F1BACE0096C7EA /* StudentWhatToReadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D541417F1BACE0096C7EA /* StudentWhatToReadTableViewController.m */; };
 		8F5D541817F1BCE70096C7EA /* StudentWhatToReadMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D541717F1BCE70096C7EA /* StudentWhatToReadMainViewController.m */; };
 		8F5D541B17F2029C0096C7EA /* WhatToReadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D541A17F2029C0096C7EA /* WhatToReadCell.m */; };
+		8FDECC0117F2105A0059DFF3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FDECC0017F2105A0059DFF3 /* CoreLocation.framework */; };
 		AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
 		AF05FD3D17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
 		AF2551F017E04628006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
@@ -189,6 +190,7 @@
 		8F5D541717F1BCE70096C7EA /* StudentWhatToReadMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentWhatToReadMainViewController.m; sourceTree = "<group>"; };
 		8F5D541917F2029C0096C7EA /* WhatToReadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhatToReadCell.h; sourceTree = "<group>"; };
 		8F5D541A17F2029C0096C7EA /* WhatToReadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhatToReadCell.m; sourceTree = "<group>"; };
+		8FDECC0017F2105A0059DFF3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AC99216210684512B293A9D8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF05FD3A17E71638004A5B01 /* AdminEditStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEditStudentViewController.h; sourceTree = "<group>"; };
 		AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEditStudentViewController.m; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FDECC0117F2105A0059DFF3 /* CoreLocation.framework in Frameworks */,
 				0493B52C17DDF80C003B3D23 /* CoreGraphics.framework in Frameworks */,
 				0493B52E17DDF80C003B3D23 /* UIKit.framework in Frameworks */,
 				0493B52A17DDF80C003B3D23 /* Foundation.framework in Frameworks */,
@@ -282,6 +285,7 @@
 		0493B52817DDF80C003B3D23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8FDECC0017F2105A0059DFF3 /* CoreLocation.framework */,
 				0493B52917DDF80C003B3D23 /* Foundation.framework */,
 				0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */,
 				0493B52D17DDF80C003B3D23 /* UIKit.framework */,
@@ -469,18 +473,18 @@
 				27BCC1EB17E1F335009977BB /* Admin */,
 				27BCC1E817E1E8B5009977BB /* LoginViewController.h */,
 				27BCC1E917E1E8B5009977BB /* LoginViewController.m */,
+				8F2407D717E1C43600BB9B8B /* DatePickerViewController.h */,
+				8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */,
+				0437DE2317E307F000DB9F5A /* StudentMessageViewController.h */,
+				0437DE2417E307F000DB9F5A /* StudentMessageViewController.m */,
+				AFE538EE17E0972C00C0B776 /* StudentMessageDetailsViewController.m */,
+				AFE538ED17E0972C00C0B776 /* StudentMessageDetailsViewController.h */,
 				AFE538EB17E0972C00C0B776 /* StudentEventMainViewController.h */,
 				AFE538EC17E0972C00C0B776 /* StudentEventMainViewController.m */,
 				AFE538E917E0972C00C0B776 /* StudentEventsTableViewController.h */,
 				AFE538EA17E0972C00C0B776 /* StudentEventsTableViewController.m */,
 				AFE538E717E0972C00C0B776 /* StudentEventDetailsViewController.h */,
 				AFE538E817E0972C00C0B776 /* StudentEventDetailsViewController.m */,
-				0437DE2317E307F000DB9F5A /* StudentMessageViewController.h */,
-				0437DE2417E307F000DB9F5A /* StudentMessageViewController.m */,
-				AFE538ED17E0972C00C0B776 /* StudentMessageDetailsViewController.h */,
-				AFE538EE17E0972C00C0B776 /* StudentMessageDetailsViewController.m */,
-				8F2407D717E1C43600BB9B8B /* DatePickerViewController.h */,
-				8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */,
 				8F5D541617F1BCE70096C7EA /* StudentWhatToReadMainViewController.h */,
 				8F5D541717F1BCE70096C7EA /* StudentWhatToReadMainViewController.m */,
 				8F5D541317F1BACE0096C7EA /* StudentWhatToReadTableViewController.h */,

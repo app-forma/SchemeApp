@@ -12,14 +12,19 @@
 #import "User.h"
 #import "Helpers.h"
 #import "StudentMessageDetailsViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface StudentMessageViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface StudentMessageViewController ()<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UIAlertViewDelegate>
+{
+    CLLocationManager *locationManager;
+    CLRegion *testRegion;
+    UIAlertView *automaticPresence;
+}
 
 @end
 
 @implementation StudentMessageViewController
 {
-    //for testing:
     NSArray *messages;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,6 +46,26 @@
     // Sign out
     UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
     self.navigationItem.rightBarButtonItem = signOutButton;
+    
+    
+    locationManager = [[CLLocationManager alloc] init];
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(59.345491, 17.977023);
+    testRegion = [[CLCircularRegion alloc] initWithCenter:center radius:50 identifier:@"test"];
+    [locationManager setDelegate:self];
+    [locationManager startMonitoringForRegion:testRegion];
+    testRegion.notifyOnEntry = YES;
+    
+    automaticPresence = [[UIAlertView alloc] initWithTitle:@"Welcome" message:@"We have now confirmed your presence through our very advanced geolocation operating system!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+    NSLog(@"Entered Region - %@", region.identifier);
+    [automaticPresence show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
+    NSLog(@"Started monitoring %@ region", region.identifier);
 }
 
 -(void)signOut
