@@ -99,17 +99,15 @@
                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
       {
           id jsonObject;
+          
           if (!error)
           {
               jsonObject = [NSJSONSerialization JSONObjectWithData:data
                                                            options:NSJSONReadingMutableContainers
                                                              error:&error];
           }
-#warning Testing
-          NSLog([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-          NSLog(@"Response: %@", response);
-          handler(jsonObject, response, error);
           
+          handler(jsonObject, response, error);
       }] resume];
 }
 
