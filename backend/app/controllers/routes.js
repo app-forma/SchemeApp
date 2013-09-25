@@ -53,6 +53,14 @@ module.exports = function(app) {
   app.put('/messages/:id', messages.update);
   app.del('/messages/:id', messages.destroy);
 
+    // Locations
+  var locations = require('./locations.js');
+  app.get('/locations', locations.index);
+  app.get('/locations/:id', locations.byId);
+  app.post('/locations', locations.create);
+  app.put('/locations/:id', locations.update);
+  app.del('/locations/:id', locations.destroy);
+
 /* VG
   app.post('/events', passport.ensureAuthenticated, passport.ensureAdmin(), events.create);
   app.put('/events/:id', passport.ensureAuthenticated, passport.ensureAdmin(), events.update);
