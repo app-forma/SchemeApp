@@ -75,6 +75,7 @@
 		279D065A17F1DA3E00586DF7 /* EventWrappersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D065817F1DA3E00586DF7 /* EventWrappersViewController.xib */; };
 		279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */; };
 		279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */; };
+		AF99542717F30BC4003C450B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99542617F30BC4003C450B /* Location.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +169,8 @@
 		279D066C17F1DCEE00586DF7 /* SchoolInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolInfoViewController.h; sourceTree = "<group>"; };
 		279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolInfoViewController.m; sourceTree = "<group>"; };
 		279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolInfoViewController.xib; sourceTree = "<group>"; };
+		AF99542517F30BC4003C450B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		AF99542617F30BC4003C450B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +326,8 @@
 				279AB6AE17F191490094CE64 /* EventWrapper.m */,
 				279AB6AF17F191490094CE64 /* Event.h */,
 				279AB6B017F191490094CE64 /* Event.m */,
+				AF99542517F30BC4003C450B /* Location.h */,
+				AF99542617F30BC4003C450B /* Location.m */,
 				279AB6B117F191490094CE64 /* Message.h */,
 				279AB6B217F191490094CE64 /* Message.m */,
 				279AB6B317F191490094CE64 /* User.h */,
@@ -623,6 +628,7 @@
 				274E553F17F2E71000E97A12 /* TabBarController.m in Sources */,
 				279D061917F19F1300586DF7 /* Validation.m in Sources */,
 				279D061A17F19F1300586DF7 /* AFNetworking.m in Sources */,
+				AF99542717F30BC4003C450B /* Location.m in Sources */,
 				274E556617F2F56300E97A12 /* MasterUserViewController.m in Sources */,
 				279D061B17F19F1300586DF7 /* Helpers.m in Sources */,
 				279AB66017F18C200094CE64 /* AppDelegate.m in Sources */,
