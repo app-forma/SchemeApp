@@ -29,6 +29,9 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="926" id="5tA-Di-Bee"/>
                     </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="b1r-zs-Rcz"/>
+                    </connections>
                 </mapView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5VS-DY-BKK">
                     <rect key="frame" x="702" y="41" width="46" height="30"/>

@@ -7,8 +7,7 @@
 //
 
 #import "SchoolInfoViewController.h"
-
-@import MapKit;
+#import "Location.h"
 
 
 @interface SchoolInfoViewController ()
@@ -22,16 +21,78 @@
 
 
 @implementation SchoolInfoViewController
+{
+    MKPointAnnotation *location;
+}
 
 - (void)viewDidLoad
 {
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    [super viewDidLoad];
+    
+    if (Store.mainStore.currentLocation)
+    {
+        [self setLocationAnnotation];
+        [self showCurrentLocationInMapView];
+    }
+    else
+    {
+        self.mapView.showsUserLocation = YES;
+    }
 }
 
 - (IBAction)save:(id)sender
 {
 #warning Implement
     
+}
+
+#pragma mark - MKMapViewDelegate
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    self.mapView.showsUserLocation = NO;
+    
+    [self.mapView setRegion:[self regionForCoordinate:userLocation.coordinate]
+                   animated:YES];
+}
+- (void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered
+{
+    if (location && self.mapView.annotations.count == 0)
+    {
+        [self.mapView addAnnotation:location];
+    }
+}
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    MKPinAnnotationView *pav;
+    
+    if (![annotation isKindOfClass:MKUserLocation.class])
+    {
+        pav = [[MKPinAnnotationView alloc] init];
+        pav.animatesDrop = YES;
+    }
+    
+    return pav;
+}
+
+#pragma mark - Extracted methods
+- (void)setLocationAnnotation
+{
+    if (!location)
+    {
+        location = [[MKPointAnnotation alloc] init];
+    }
+    
+    location.coordinate = CLLocationCoordinate2DMake(Store.mainStore.currentLocation.latitude.doubleValue,
+                                                     Store.mainStore.currentLocation.longitude.doubleValue);
+}
+- (MKCoordinateRegion)regionForCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    return MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000);
+}
+- (void)showCurrentLocationInMapView
+{
+    [self.mapView setRegion:[self regionForCoordinate:location.coordinate]
+                   animated:YES];
 }
 
 @end
