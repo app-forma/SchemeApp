@@ -1,0 +1,88 @@
+//
+//  tabBarViewController.m
+//  SchemeAppAdmin
+//
+//  Created by Marcus Norling on 9/25/13.
+//  Copyright (c) 2013 Marcus Norling. All rights reserved.
+//
+
+#import "TabBarController.h"
+#import "MasterEventWrapperViewController.h"
+#import "DetailEventWrapperViewController.h"
+#import "MasterMessageViewController.h"
+#import "DetailMessageViewController.h"
+#import "MasterUserViewController.h"
+#import "DetailUserViewController.h"
+#import "SplitViewController.h"
+
+@interface TabBarController ()<UITabBarControllerDelegate>
+{
+ 
+    MasterEventWrapperViewController *mevc;
+    DetailEventWrapperViewController *devc;
+    MasterMessageViewController *mmvc;
+    DetailMessageViewController *dmvc;
+    MasterUserViewController *muvc;
+    DetailUserViewController *duvc;
+    SplitViewController *eventWrapperSplitView;
+    SplitViewController *usersSplitView;
+    SplitViewController *messagesSplitView;
+}
+@end
+
+@implementation TabBarController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+-(id)init{
+    self = [super init];
+    if (self)
+    {
+        self.tabBarController.delegate = self;
+        
+        
+        mevc = [MasterEventWrapperViewController new];
+        devc = [DetailEventWrapperViewController new];
+        
+        mevc.delegate = devc;
+        
+        eventWrapperSplitView = [[SplitViewController alloc]initWithLeftVC:mevc rightVC:devc];
+        UITabBarItem *eventWrapperItem = [[UITabBarItem alloc] initWithTitle:@"Courses" image:[UIImage imageNamed:@"courses_unselected"] selectedImage:[UIImage imageNamed:@"courses_selected"]];
+        eventWrapperSplitView.tabBarItem = eventWrapperItem;
+    
+        
+        mmvc = [MasterMessageViewController new];
+        dmvc = [DetailMessageViewController new];
+        messagesSplitView = [[SplitViewController alloc]initWithLeftVC:mmvc rightVC:dmvc];
+        UITabBarItem *messageItem = [[UITabBarItem alloc] initWithTitle:@"Messages" image:[UIImage imageNamed:@"messages_unselected"] selectedImage:[UIImage imageNamed:@"messages_selected"]];
+        messagesSplitView.tabBarItem = messageItem;
+        
+        
+        muvc = [MasterUserViewController new];
+        duvc = [DetailUserViewController new];
+        usersSplitView = [[SplitViewController alloc]initWithLeftVC:muvc rightVC:duvc];
+        UITabBarItem *userItem = [[UITabBarItem alloc]initWithTitle:@"Users" image:[UIImage imageNamed:@"users_unselected"] selectedImage:[UIImage imageNamed:@"users_selected"]];
+        usersSplitView.tabBarItem = userItem;
+        
+        self.viewControllers = @[eventWrapperSplitView, messagesSplitView, usersSplitView];
+        
+    }
+    return self;
+}
+
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+}
+
+
+@end

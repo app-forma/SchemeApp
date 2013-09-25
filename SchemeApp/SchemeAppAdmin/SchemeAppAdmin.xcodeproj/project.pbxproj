@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		274E553F17F2E71000E97A12 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E553E17F2E71000E97A12 /* TabBarController.m */; };
+		274E554217F2EB0200E97A12 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E554117F2EB0200E97A12 /* SplitViewController.m */; };
+		274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E555717F2F4CC00E97A12 /* MasterEventWrapperViewController.m */; };
+		274E555B17F2F4E800E97A12 /* MasterMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E555A17F2F4E800E97A12 /* MasterMessageViewController.m */; };
+		274E555F17F2F52C00E97A12 /* DetailEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E555D17F2F52C00E97A12 /* DetailEventWrapperViewController.m */; };
+		274E556017F2F52C00E97A12 /* DetailEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274E555E17F2F52C00E97A12 /* DetailEventWrapperViewController.xib */; };
+		274E556317F2F54C00E97A12 /* DetailMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E556217F2F54C00E97A12 /* DetailMessageViewController.m */; };
+		274E556617F2F56300E97A12 /* MasterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E556517F2F56300E97A12 /* MasterUserViewController.m */; };
+		274E556A17F2F58F00E97A12 /* DetailUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E556817F2F58F00E97A12 /* DetailUserViewController.m */; };
+		274E556B17F2F58F00E97A12 /* DetailUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274E556917F2F58F00E97A12 /* DetailUserViewController.xib */; };
 		279AB65017F18C200094CE64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279AB64F17F18C200094CE64 /* Foundation.framework */; };
 		279AB65217F18C200094CE64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279AB65117F18C200094CE64 /* CoreGraphics.framework */; };
 		279AB65417F18C200094CE64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279AB65317F18C200094CE64 /* UIKit.framework */; };
@@ -60,17 +70,12 @@
 		279D061B17F19F1300586DF7 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 279AB6E117F1920E0094CE64 /* Helpers.m */; };
 		279D064717F1C97F00586DF7 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D064517F1C97F00586DF7 /* AuthViewController.m */; };
 		279D064817F1C97F00586DF7 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D064617F1C97F00586DF7 /* AuthViewController.xib */; };
-		279D064C17F1D07900586DF7 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D064A17F1D07900586DF7 /* MessageViewController.m */; };
 		279D064D17F1D07900586DF7 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D064B17F1D07900586DF7 /* MessageViewController.xib */; };
-		279D065017F1D0B400586DF7 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D064F17F1D0B400586DF7 /* MenuViewController.m */; };
-		279D065417F1DA2400586DF7 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D065217F1DA2400586DF7 /* UsersViewController.m */; };
 		279D065517F1DA2400586DF7 /* UsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D065317F1DA2400586DF7 /* UsersViewController.xib */; };
-		279D065917F1DA3E00586DF7 /* EventWrappersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D065717F1DA3E00586DF7 /* EventWrappersViewController.m */; };
 		279D065A17F1DA3E00586DF7 /* EventWrappersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D065817F1DA3E00586DF7 /* EventWrappersViewController.xib */; };
-		279D066617F1DBB000586DF7 /* AppStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D066417F1DBB000586DF7 /* AppStartViewController.m */; };
-		279D066717F1DBB000586DF7 /* AppStartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066517F1DBB000586DF7 /* AppStartViewController.xib */; };
 		279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */; };
 		279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */; };
+		AF99542717F30BC4003C450B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99542617F30BC4003C450B /* Location.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +89,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		274E553D17F2E71000E97A12 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		274E553E17F2E71000E97A12 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
+		274E554017F2EB0200E97A12 /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
+		274E554117F2EB0200E97A12 /* SplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitViewController.m; sourceTree = "<group>"; };
+		274E555617F2F4CC00E97A12 /* MasterEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterEventWrapperViewController.h; sourceTree = "<group>"; };
+		274E555717F2F4CC00E97A12 /* MasterEventWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterEventWrapperViewController.m; sourceTree = "<group>"; };
+		274E555917F2F4E800E97A12 /* MasterMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterMessageViewController.h; sourceTree = "<group>"; };
+		274E555A17F2F4E800E97A12 /* MasterMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterMessageViewController.m; sourceTree = "<group>"; };
+		274E555C17F2F52C00E97A12 /* DetailEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailEventWrapperViewController.h; sourceTree = "<group>"; };
+		274E555D17F2F52C00E97A12 /* DetailEventWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailEventWrapperViewController.m; sourceTree = "<group>"; };
+		274E555E17F2F52C00E97A12 /* DetailEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailEventWrapperViewController.xib; sourceTree = "<group>"; };
+		274E556117F2F54C00E97A12 /* DetailMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailMessageViewController.h; sourceTree = "<group>"; };
+		274E556217F2F54C00E97A12 /* DetailMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailMessageViewController.m; sourceTree = "<group>"; };
+		274E556417F2F56300E97A12 /* MasterUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterUserViewController.h; sourceTree = "<group>"; };
+		274E556517F2F56300E97A12 /* MasterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterUserViewController.m; sourceTree = "<group>"; };
+		274E556717F2F58F00E97A12 /* DetailUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailUserViewController.h; sourceTree = "<group>"; };
+		274E556817F2F58F00E97A12 /* DetailUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailUserViewController.m; sourceTree = "<group>"; };
+		274E556917F2F58F00E97A12 /* DetailUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailUserViewController.xib; sourceTree = "<group>"; };
 		279AB64C17F18C200094CE64 /* SchemeAppAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchemeAppAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279AB64F17F18C200094CE64 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		279AB65117F18C200094CE64 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -140,23 +163,14 @@
 		279D064417F1C97F00586DF7 /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
 		279D064517F1C97F00586DF7 /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
 		279D064617F1C97F00586DF7 /* AuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
-		279D064917F1D07900586DF7 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
-		279D064A17F1D07900586DF7 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		279D064B17F1D07900586DF7 /* MessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
-		279D064E17F1D0B400586DF7 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
-		279D064F17F1D0B400586DF7 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		279D065117F1DA2400586DF7 /* UsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersViewController.h; sourceTree = "<group>"; };
-		279D065217F1DA2400586DF7 /* UsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersViewController.m; sourceTree = "<group>"; };
 		279D065317F1DA2400586DF7 /* UsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsersViewController.xib; sourceTree = "<group>"; };
-		279D065617F1DA3E00586DF7 /* EventWrappersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventWrappersViewController.h; sourceTree = "<group>"; };
-		279D065717F1DA3E00586DF7 /* EventWrappersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventWrappersViewController.m; sourceTree = "<group>"; };
 		279D065817F1DA3E00586DF7 /* EventWrappersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventWrappersViewController.xib; sourceTree = "<group>"; };
-		279D066317F1DBB000586DF7 /* AppStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStartViewController.h; sourceTree = "<group>"; };
-		279D066417F1DBB000586DF7 /* AppStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStartViewController.m; sourceTree = "<group>"; };
-		279D066517F1DBB000586DF7 /* AppStartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppStartViewController.xib; sourceTree = "<group>"; };
 		279D066C17F1DCEE00586DF7 /* SchoolInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolInfoViewController.h; sourceTree = "<group>"; };
 		279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolInfoViewController.m; sourceTree = "<group>"; };
 		279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolInfoViewController.xib; sourceTree = "<group>"; };
+		AF99542517F30BC4003C450B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		AF99542617F30BC4003C450B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,7 +278,6 @@
 			children = (
 				279D067217F1DCFA00586DF7 /* SchoolInfo */,
 				279D066917F1DC0A00586DF7 /* Login */,
-				279D066817F1DBFB00586DF7 /* App lunch */,
 				279D066217F1DB1300586DF7 /* Messages */,
 				279D066117F1DB0D00586DF7 /* Users */,
 				279D066017F1DB0700586DF7 /* EventWrappers */,
@@ -278,10 +291,13 @@
 			children = (
 				279D067117F1DCF300586DF7 /* SchoolInfo */,
 				279D066B17F1DC3500586DF7 /* Login */,
-				279D066A17F1DC2300586DF7 /* App launch */,
 				279D065D17F1DAA400586DF7 /* EventWrappers */,
 				279D065B17F1DA8E00586DF7 /* Messages */,
 				279D065C17F1DA9600586DF7 /* Users */,
+				274E553D17F2E71000E97A12 /* TabBarController.h */,
+				274E553E17F2E71000E97A12 /* TabBarController.m */,
+				274E554017F2EB0200E97A12 /* SplitViewController.h */,
+				274E554117F2EB0200E97A12 /* SplitViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -310,6 +326,8 @@
 				279AB6AE17F191490094CE64 /* EventWrapper.m */,
 				279AB6AF17F191490094CE64 /* Event.h */,
 				279AB6B017F191490094CE64 /* Event.m */,
+				AF99542517F30BC4003C450B /* Location.h */,
+				AF99542617F30BC4003C450B /* Location.m */,
 				279AB6B117F191490094CE64 /* Message.h */,
 				279AB6B217F191490094CE64 /* Message.m */,
 				279AB6B317F191490094CE64 /* User.h */,
@@ -365,8 +383,10 @@
 		279D065B17F1DA8E00586DF7 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				279D064917F1D07900586DF7 /* MessageViewController.h */,
-				279D064A17F1D07900586DF7 /* MessageViewController.m */,
+				274E555917F2F4E800E97A12 /* MasterMessageViewController.h */,
+				274E555A17F2F4E800E97A12 /* MasterMessageViewController.m */,
+				274E556117F2F54C00E97A12 /* DetailMessageViewController.h */,
+				274E556217F2F54C00E97A12 /* DetailMessageViewController.m */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -374,8 +394,11 @@
 		279D065C17F1DA9600586DF7 /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				279D065117F1DA2400586DF7 /* UsersViewController.h */,
-				279D065217F1DA2400586DF7 /* UsersViewController.m */,
+				274E556417F2F56300E97A12 /* MasterUserViewController.h */,
+				274E556517F2F56300E97A12 /* MasterUserViewController.m */,
+				274E556717F2F58F00E97A12 /* DetailUserViewController.h */,
+				274E556817F2F58F00E97A12 /* DetailUserViewController.m */,
+				274E556917F2F58F00E97A12 /* DetailUserViewController.xib */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -384,8 +407,11 @@
 			isa = PBXGroup;
 			children = (
 				279D065E17F1DAAB00586DF7 /* Events */,
-				279D065617F1DA3E00586DF7 /* EventWrappersViewController.h */,
-				279D065717F1DA3E00586DF7 /* EventWrappersViewController.m */,
+				274E555617F2F4CC00E97A12 /* MasterEventWrapperViewController.h */,
+				274E555717F2F4CC00E97A12 /* MasterEventWrapperViewController.m */,
+				274E555C17F2F52C00E97A12 /* DetailEventWrapperViewController.h */,
+				274E555D17F2F52C00E97A12 /* DetailEventWrapperViewController.m */,
+				274E555E17F2F52C00E97A12 /* DetailEventWrapperViewController.xib */,
 			);
 			name = EventWrappers;
 			sourceTree = "<group>";
@@ -428,31 +454,12 @@
 			name = Messages;
 			sourceTree = "<group>";
 		};
-		279D066817F1DBFB00586DF7 /* App lunch */ = {
-			isa = PBXGroup;
-			children = (
-				279D066517F1DBB000586DF7 /* AppStartViewController.xib */,
-			);
-			name = "App lunch";
-			sourceTree = "<group>";
-		};
 		279D066917F1DC0A00586DF7 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				279D064617F1C97F00586DF7 /* AuthViewController.xib */,
 			);
 			name = Login;
-			sourceTree = "<group>";
-		};
-		279D066A17F1DC2300586DF7 /* App launch */ = {
-			isa = PBXGroup;
-			children = (
-				279D064E17F1D0B400586DF7 /* MenuViewController.h */,
-				279D064F17F1D0B400586DF7 /* MenuViewController.m */,
-				279D066317F1DBB000586DF7 /* AppStartViewController.h */,
-				279D066417F1DBB000586DF7 /* AppStartViewController.m */,
-			);
-			name = "App launch";
 			sourceTree = "<group>";
 		};
 		279D066B17F1DC3500586DF7 /* Login */ = {
@@ -561,11 +568,12 @@
 				279AB6B717F191490094CE64 /* EventWrapper.m in Resources */,
 				279AB65A17F18C200094CE64 /* InfoPlist.strings in Resources */,
 				279AB6B817F191490094CE64 /* Event.h in Resources */,
-				279D066717F1DBB000586DF7 /* AppStartViewController.xib in Resources */,
+				274E556B17F2F58F00E97A12 /* DetailUserViewController.xib in Resources */,
 				279D060F17F196E300586DF7 /* TypeDef in Resources */,
 				279AB6D017F191570094CE64 /* messages_selected@1x.png in Resources */,
 				279AB6E517F1920E0094CE64 /* AFNetworking.h in Resources */,
 				279AB6E617F1920E0094CE64 /* AFNetworking.m in Resources */,
+				274E556017F2F52C00E97A12 /* DetailEventWrapperViewController.xib in Resources */,
 				279AB6D717F191570094CE64 /* users_unselected@2x.png in Resources */,
 				279AB6BA17F191490094CE64 /* Message.h in Resources */,
 				279AB6E717F1920E0094CE64 /* Helpers.h in Resources */,
@@ -610,26 +618,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				279D061517F19F1300586DF7 /* EventWrapper.m in Sources */,
-				279D065017F1D0B400586DF7 /* MenuViewController.m in Sources */,
+				274E554217F2EB0200E97A12 /* SplitViewController.m in Sources */,
 				279D064717F1C97F00586DF7 /* AuthViewController.m in Sources */,
 				279D061617F19F1300586DF7 /* Event.m in Sources */,
 				279D061717F19F1300586DF7 /* Message.m in Sources */,
+				274E556317F2F54C00E97A12 /* DetailMessageViewController.m in Sources */,
 				279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */,
-				279D065917F1DA3E00586DF7 /* EventWrappersViewController.m in Sources */,
 				279D061817F19F1300586DF7 /* User.m in Sources */,
+				274E553F17F2E71000E97A12 /* TabBarController.m in Sources */,
 				279D061917F19F1300586DF7 /* Validation.m in Sources */,
-				279D064C17F1D07900586DF7 /* MessageViewController.m in Sources */,
 				279D061A17F19F1300586DF7 /* AFNetworking.m in Sources */,
-				279D065417F1DA2400586DF7 /* UsersViewController.m in Sources */,
+				AF99542717F30BC4003C450B /* Location.m in Sources */,
+				274E556617F2F56300E97A12 /* MasterUserViewController.m in Sources */,
 				279D061B17F19F1300586DF7 /* Helpers.m in Sources */,
 				279AB66017F18C200094CE64 /* AppDelegate.m in Sources */,
-				279D066617F1DBB000586DF7 /* AppStartViewController.m in Sources */,
 				279AB69417F190300094CE64 /* AdminStore.m in Sources */,
 				279AB65C17F18C200094CE64 /* main.m in Sources */,
+				274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */,
 				279AB69717F190300094CE64 /* SuperAdminStore.m in Sources */,
+				274E555F17F2F52C00E97A12 /* DetailEventWrapperViewController.m in Sources */,
 				279AB69617F190300094CE64 /* StudentStore.m in Sources */,
 				279D061417F19BB900586DF7 /* Store.m in Sources */,
 				279AB69517F190300094CE64 /* DatabaseConnection.m in Sources */,
+				274E556A17F2F58F00E97A12 /* DetailUserViewController.m in Sources */,
+				274E555B17F2F4E800E97A12 /* MasterMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

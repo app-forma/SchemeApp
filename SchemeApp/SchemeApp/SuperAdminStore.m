@@ -18,26 +18,26 @@
 {
     [Store.dbSessionConnection postContent:user.asDictionary
                                     toPath:DB_TYPE_USER
-                            withCompletion:^(id jsonObject, id response, NSError *error)
+                            withCompletion:^(id responseBody, id response, NSError *error)
      {
-         handler(jsonObject, response, error);
+         handler(responseBody, response, error);
      }];
 }
 - (void)updateUser:(User *)user completion:(completion)handler
 {
     [Store.dbSessionConnection putContent:user.asDictionary
                                    toPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, user.docID]
-                           withCompletion:^(id jsonObject, id response, NSError *error)
+                           withCompletion:^(id responseBody, id response, NSError *error)
      {
-         handler(jsonObject, response, error);
+         handler(responseBody, response, error);
      }];
 }
 - (void)deleteUser:(User *)user completion:(completion)handler
 {
     [Store.dbSessionConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, user.docID]
-                           withCompletion:^(id jsonObject, id response, NSError *error)
+                           withCompletion:^(id responseBody, id response, NSError *error)
      {
-         handler(jsonObject, response, error);
+         handler(responseBody, response, error);
      }];
 }
 
