@@ -80,6 +80,8 @@
 		279D065A17F1DA3E00586DF7 /* EventWrappersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D065817F1DA3E00586DF7 /* EventWrappersViewController.xib */; };
 		279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */; };
 		279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */; };
+		8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */; };
+		8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */; };
 		AF99542717F30BC4003C450B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99542617F30BC4003C450B /* Location.m */; };
 /* End PBXBuildFile section */
 
@@ -180,6 +182,9 @@
 		279D066C17F1DCEE00586DF7 /* SchoolInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolInfoViewController.h; sourceTree = "<group>"; };
 		279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolInfoViewController.m; sourceTree = "<group>"; };
 		279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolInfoViewController.xib; sourceTree = "<group>"; };
+		8F12E85717F3261B00FCEDCE /* PopoverEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverEventWrapperViewController.h; sourceTree = "<group>"; };
+		8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverEventWrapperViewController.m; sourceTree = "<group>"; };
+		8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverEventWrapperViewController.xib; sourceTree = "<group>"; };
 		AF99542517F30BC4003C450B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		AF99542617F30BC4003C450B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -429,6 +434,9 @@
 				274E555C17F2F52C00E97A12 /* DetailEventWrapperViewController.h */,
 				274E555D17F2F52C00E97A12 /* DetailEventWrapperViewController.m */,
 				274E555E17F2F52C00E97A12 /* DetailEventWrapperViewController.xib */,
+				8F12E85717F3261B00FCEDCE /* PopoverEventWrapperViewController.h */,
+				8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */,
+				8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */,
 			);
 			name = EventWrappers;
 			sourceTree = "<group>";
@@ -614,6 +622,7 @@
 				279D065517F1DA2400586DF7 /* UsersViewController.xib in Resources */,
 				279AB6B617F191490094CE64 /* EventWrapper.h in Resources */,
 				274E90DC17F320F900E97A12 /* editIcon@2x.png in Resources */,
+				8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */,
 				279D065A17F1DA3E00586DF7 /* EventWrappersViewController.xib in Resources */,
 				279AB6BB17F191490094CE64 /* Message.m in Resources */,
 				279AB6D617F191570094CE64 /* users_unselected@1x.png in Resources */,
@@ -655,6 +664,7 @@
 				279AB66017F18C200094CE64 /* AppDelegate.m in Sources */,
 				279AB69417F190300094CE64 /* AdminStore.m in Sources */,
 				279AB65C17F18C200094CE64 /* main.m in Sources */,
+				8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */,
 				274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */,
 				279AB69717F190300094CE64 /* SuperAdminStore.m in Sources */,
 				274E555F17F2F52C00E97A12 /* DetailEventWrapperViewController.m in Sources */,

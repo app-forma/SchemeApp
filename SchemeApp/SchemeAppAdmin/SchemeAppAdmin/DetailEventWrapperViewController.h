@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "MasterEventWrapperViewController.h"
+
 @class EventWrapper;
 
 @interface DetailEventWrapperViewController : UIViewController<MasterEventWrapperDelegate>
 
 @property (weak, nonatomic) EventWrapper *selectedEventWrapper;
+
 
 @end

@@ -9,11 +9,15 @@
 #import "DetailEventWrapperViewController.h"
 #import "EventWrapper.h"
 #import "UIButton+CustomButton.h"
+#import "PopoverEventWrapperViewController.h"
 
-@interface DetailEventWrapperViewController ()
+@interface DetailEventWrapperViewController () <PopoverEventWrapperDelegate>
 {
     UIButton *addButton;
     UIButton *editButton;
+    UIPopoverController *eventWrapperInfoPopover;
+    PopoverEventWrapperViewController *pewvc;
+    EventWrapper *currentEventWrapper;
 }
 @property (weak, nonatomic) IBOutlet UILabel *eventWrapperName;
 @property (weak, nonatomic) IBOutlet UILabel *teacherLabel;
@@ -34,6 +38,14 @@
     return self;
 }
 
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    pewvc = [[PopoverEventWrapperViewController alloc] init];
+    pewvc.delegate = self;
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -50,12 +62,37 @@
 
 - (void)addNewEventWrapper:(id)sender
 {
-    NSLog(@"123123123");
+    [self showPopover:sender for:@"add"];
 }
 
 - (void)editEventWrapper:(id)sender
 {
-    NSLog(@"asdasd");
+    [self showPopover:sender for:@"edit"];
+}
+
+-(EventWrapper *)currentEventWrapper
+{
+    return currentEventWrapper;
+}
+
+-(void)showPopover:(id)sender for:(NSString *)method
+{
+    
+    if ([method isEqualToString:@"edit"]) {
+        pewvc.isInEditingMode = YES;
+    } else if ([method isEqualToString:@"add"]) {
+        pewvc.isInEditingMode = NO;
+    }
+    
+    eventWrapperInfoPopover = [[UIPopoverController alloc] initWithContentViewController:pewvc];
+    UIButton *senderButton = (UIButton *)sender;
+    [eventWrapperInfoPopover setPopoverContentSize:CGSizeMake(300, 400)];
+    [eventWrapperInfoPopover presentPopoverFromRect:senderButton.bounds inView:senderButton permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
+-(void)dismissPopover
+{
+    [eventWrapperInfoPopover dismissPopoverAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,5 +108,10 @@
     self.litteratureLabel.text = eventWrapper.litterature;
     self.startDateLabel.text = [Helpers stringFromNSDate:eventWrapper.startDate];
     self.endDateLabel.text = [Helpers stringFromNSDate:eventWrapper.endDate];
+    currentEventWrapper = eventWrapper;
 }
+
+
+
+
 @end
