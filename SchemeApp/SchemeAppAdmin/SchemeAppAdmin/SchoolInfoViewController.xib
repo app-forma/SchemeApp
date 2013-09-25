@@ -26,11 +26,13 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Z31-ev-Sil">
                     <rect key="frame" x="20" y="79" width="728" height="925"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="height" constant="926" id="5tA-Di-Bee"/>
                     </constraints>
                     <connections>
                         <outlet property="delegate" destination="-1" id="b1r-zs-Rcz"/>
+                        <outletCollection property="gestureRecognizers" destination="bY3-h3-9Bh" appends="YES" id="0TJ-MF-VI1"/>
                     </connections>
                 </mapView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5VS-DY-BKK">
@@ -47,5 +49,10 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
         </view>
+        <tapGestureRecognizer id="bY3-h3-9Bh">
+            <connections>
+                <action selector="addCurrentLocationAnnotation:" destination="-1" id="fWH-51-syC"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>
