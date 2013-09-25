@@ -39,8 +39,8 @@
 - (void)sendMessage:(Message *)message toUsers:(NSArray *)users completion:(void (^)(Message *message))handler;
 - (void)updateMessages:(NSArray*)messages forUser:(User*)user;
 
-- (void)createLocation:(Location *)location completion:(completion)handler;
-- (void)updateLocation:(Location *)location completion:(completion)handler;
-- (void)deleteLocation:(Location *)location completion:(completion)handler;
+- (void)createLocation:(Location *)location completion:(void (^)(Location *location))handler;
+- (void)updateLocation:(Location *)location completion:(void (^)(Location *location))handler;
+- (void)deleteLocation:(Location *)location completion:(void (^)(BOOL success))handler;
 
 @end
