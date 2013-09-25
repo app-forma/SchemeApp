@@ -1,3 +1,8 @@
+typedef enum CurrentDatePicker{
+StartDatePicker,
+EndDatePicker
+}CurrentDatePicker;
+
 typedef enum RoleType{
     StudentRole,
     AdminRole ,

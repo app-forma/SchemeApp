@@ -5,6 +5,9 @@
       location = "group:SchemeApp.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:SchemeAppAdmin/SchemeAppAdmin.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
