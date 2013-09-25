@@ -81,6 +81,7 @@
 		279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */; };
 		279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */; };
 		AF99542717F30BC4003C450B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99542617F30BC4003C450B /* Location.m */; };
+		AFA2F76F17F333840084210E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA2F76E17F333840084210E /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +183,7 @@
 		279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolInfoViewController.xib; sourceTree = "<group>"; };
 		AF99542517F30BC4003C450B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		AF99542617F30BC4003C450B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		AFA2F76E17F333840084210E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFA2F76F17F333840084210E /* MapKit.framework in Frameworks */,
 				279AB65217F18C200094CE64 /* CoreGraphics.framework in Frameworks */,
 				279AB65417F18C200094CE64 /* UIKit.framework in Frameworks */,
 				279AB65017F18C200094CE64 /* Foundation.framework in Frameworks */,
@@ -230,6 +233,7 @@
 		279AB64E17F18C200094CE64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AFA2F76E17F333840084210E /* MapKit.framework */,
 				279AB64F17F18C200094CE64 /* Foundation.framework */,
 				279AB65117F18C200094CE64 /* CoreGraphics.framework */,
 				279AB65317F18C200094CE64 /* UIKit.framework */,
