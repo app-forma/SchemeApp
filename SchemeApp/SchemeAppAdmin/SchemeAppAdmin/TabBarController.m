@@ -14,10 +14,10 @@
 #import "MasterUserViewController.h"
 #import "DetailUserViewController.h"
 #import "SplitViewController.h"
+#import "SchoolInfoViewController.h"
 
 @interface TabBarController ()<UITabBarControllerDelegate>
 {
- 
     MasterEventWrapperViewController *mevc;
     DetailEventWrapperViewController *devc;
     MasterMessageViewController *mmvc;
@@ -70,7 +70,12 @@
         UITabBarItem *userItem = [[UITabBarItem alloc]initWithTitle:@"Users" image:[UIImage imageNamed:@"users_unselected"] selectedImage:[UIImage imageNamed:@"users_selected"]];
         usersSplitView.tabBarItem = userItem;
         
-        self.viewControllers = @[eventWrapperSplitView, messagesSplitView, usersSplitView];
+        
+        SchoolInfoViewController *locationViewController = [[SchoolInfoViewController alloc] init];
+#warning Add TabBar icon
+        locationViewController.tabBarItem.title = @"Location";
+        
+        self.viewControllers = @[eventWrapperSplitView, messagesSplitView, usersSplitView, locationViewController];
         
     }
     return self;
