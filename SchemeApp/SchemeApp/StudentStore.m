@@ -20,7 +20,7 @@
     [Store.dbSessionConnection getPath:DB_TYPE_EVENTWRAPPER
                             withParams:@{@"startDate": [Helpers stringFromNSDate:startDate],
                                          @"endDate": [Helpers stringFromNSDate:endDate]}
-                         andCompletion:^(id jsonObject, id response, NSError *error)
+                         andCompletion:^(id responseBody, id response, NSError *error)
     {
         NSMutableArray *eventWrappers = NSMutableArray.array;
         
@@ -30,7 +30,7 @@
         }
         else
         {
-            for (NSDictionary *eventWrapperDictionary in jsonObject)
+            for (NSDictionary *eventWrapperDictionary in responseBody)
             {
                 [eventWrappers addObject:[[EventWrapper alloc] initWithEventWrapperDictionary:eventWrapperDictionary]];
             }
@@ -44,7 +44,7 @@
 {
     [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_MESSAGE, docID]
                             withParams:nil
-                         andCompletion:^(id jsonObject, id response, NSError *error)
+                         andCompletion:^(id responseBody, id response, NSError *error)
      {
          if (error)
          {
@@ -53,7 +53,7 @@
          }
          else
          {
-             handler([[Message alloc] initWithMsgDictionary:jsonObject]);
+             handler([[Message alloc] initWithMsgDictionary:responseBody]);
          }
      }];
 }

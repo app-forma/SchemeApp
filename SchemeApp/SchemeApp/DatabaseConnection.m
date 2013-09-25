@@ -73,20 +73,20 @@
 }
 
 #pragma mark - Extracted methods
-- (NSMutableURLRequest *)requestWithPath:(NSString *)path bodyJSONObject:(id)jsonObject andMethod:(NSString *)methodString
+- (NSMutableURLRequest *)requestWithPath:(NSString *)path bodyJSONObject:(id)responseBody andMethod:(NSString *)methodString
 {
     NSString *urlString = [NSString stringWithFormat:@"%@/%@", dbURL, path];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     request.HTTPMethod = methodString;
     
-    if (jsonObject)
+    if (responseBody)
     {
         NSError *error;
-        request.HTTPBody = [NSJSONSerialization dataWithJSONObject:jsonObject
+        request.HTTPBody = [NSJSONSerialization dataWithJSONObject:responseBody
                                                            options:NSJSONWritingPrettyPrinted error:&error];
         if (error)
         {
-            NSLog(@"%@ tried to parse incomming jsonObject but got error: %@", self.class, error);
+            NSLog(@"%@ tried to parse incomming responseBody but got error: %@", self.class, error);
             return nil;
         }
     }
@@ -98,16 +98,16 @@
     [[urlSession dataTaskWithRequest:request
                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
       {
-          id jsonObject;
+          id responseBody;
           
           if (!error)
           {
-              jsonObject = [NSJSONSerialization JSONObjectWithData:data
+              responseBody = [NSJSONSerialization JSONObjectWithData:data
                                                            options:NSJSONReadingMutableContainers
                                                              error:&error];
           }
           
-          handler(jsonObject, response, error);
+          handler(responseBody, response, error);
       }] resume];
 }
 

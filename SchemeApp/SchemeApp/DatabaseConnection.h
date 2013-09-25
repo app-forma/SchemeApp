@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^completion)(id jsonObject, id response, NSError *error);
+typedef void (^completion)(id responseBody, id response, NSError *error);
 
 
 @interface DatabaseConnection : NSObject
