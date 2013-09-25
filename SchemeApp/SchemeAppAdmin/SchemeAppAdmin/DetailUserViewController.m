@@ -1,18 +1,18 @@
 //
-//  AppStartViewController.m
+//  DetailUserViewController.m
 //  SchemeAppAdmin
 //
-//  Created by Marcus Norling on 9/24/13.
+//  Created by Marcus Norling on 9/25/13.
 //  Copyright (c) 2013 Marcus Norling. All rights reserved.
 //
 
-#import "AppStartViewController.h"
+#import "DetailUserViewController.h"
 
-@interface AppStartViewController ()
+@interface DetailUserViewController ()
 
 @end
 
-@implementation AppStartViewController
+@implementation DetailUserViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
