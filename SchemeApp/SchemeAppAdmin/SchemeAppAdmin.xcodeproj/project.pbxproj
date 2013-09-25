@@ -71,6 +71,7 @@
 		279D066717F1DBB000586DF7 /* AppStartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066517F1DBB000586DF7 /* AppStartViewController.xib */; };
 		279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */; };
 		279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */; };
+		AF99541E17F2F41E003C450B /* AdminTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99541D17F2F41E003C450B /* AdminTabBarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +158,8 @@
 		279D066C17F1DCEE00586DF7 /* SchoolInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolInfoViewController.h; sourceTree = "<group>"; };
 		279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolInfoViewController.m; sourceTree = "<group>"; };
 		279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolInfoViewController.xib; sourceTree = "<group>"; };
+		AF99541C17F2F41E003C450B /* AdminTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdminTabBarViewController.h; path = ../../SchemeApp/AdminTabBarViewController.h; sourceTree = "<group>"; };
+		AF99541D17F2F41E003C450B /* AdminTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdminTabBarViewController.m; path = ../../SchemeApp/AdminTabBarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,7 +271,6 @@
 				279D066217F1DB1300586DF7 /* Messages */,
 				279D066117F1DB0D00586DF7 /* Users */,
 				279D066017F1DB0700586DF7 /* EventWrappers */,
-				279D065F17F1DB0200586DF7 /* Events */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -282,6 +284,8 @@
 				279D065D17F1DAA400586DF7 /* EventWrappers */,
 				279D065B17F1DA8E00586DF7 /* Messages */,
 				279D065C17F1DA9600586DF7 /* Users */,
+				AF99541C17F2F41E003C450B /* AdminTabBarViewController.h */,
+				AF99541D17F2F41E003C450B /* AdminTabBarViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -407,6 +411,7 @@
 		279D066017F1DB0700586DF7 /* EventWrappers */ = {
 			isa = PBXGroup;
 			children = (
+				279D065F17F1DB0200586DF7 /* Events */,
 				279D065817F1DA3E00586DF7 /* EventWrappersViewController.xib */,
 			);
 			name = EventWrappers;
@@ -629,6 +634,7 @@
 				279AB69717F190300094CE64 /* SuperAdminStore.m in Sources */,
 				279AB69617F190300094CE64 /* StudentStore.m in Sources */,
 				279D061417F19BB900586DF7 /* Store.m in Sources */,
+				AF99541E17F2F41E003C450B /* AdminTabBarViewController.m in Sources */,
 				279AB69517F190300094CE64 /* DatabaseConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
