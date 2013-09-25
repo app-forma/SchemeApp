@@ -49,6 +49,9 @@
         
         mevc = [MasterEventWrapperViewController new];
         devc = [DetailEventWrapperViewController new];
+        
+        mevc.delegate = devc;
+        
         eventWrapperSplitView = [[SplitViewController alloc]initWithLeftVC:mevc rightVC:devc];
         UITabBarItem *eventWrapperItem = [[UITabBarItem alloc] initWithTitle:@"Courses" image:[UIImage imageNamed:@"courses_unselected"] selectedImage:[UIImage imageNamed:@"courses_selected"]];
         eventWrapperSplitView.tabBarItem = eventWrapperItem;

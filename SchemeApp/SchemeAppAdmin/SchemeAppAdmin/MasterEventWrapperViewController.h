@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class EventWrapper;
+
+@protocol MasterEventWrapperDelegate <NSObject>
+
+- (void)masterEventWrapperDidSelectEventWrapper:(EventWrapper*)eventWrapper;
+
+@end
+
+
 @interface MasterEventWrapperViewController : UITableViewController
+
+@property (weak) id <MasterEventWrapperDelegate> delegate;
 
 @end
