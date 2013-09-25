@@ -393,6 +393,14 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		274E556E17F3184700E97A12 /* miscIcons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = miscIcons;
+			path = images/miscIcons;
+			sourceTree = "<group>";
+		};
 		27BCC1EB17E1F335009977BB /* Admin */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +416,7 @@
 		27BCC1F817E1FAC7009977BB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				274E556E17F3184700E97A12 /* miscIcons */,
 				27BCC1F917E1FACE009977BB /* AdminTabBar */,
 			);
 			name = Images;
@@ -573,6 +582,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 0493B51D17DDF80C003B3D23;
 			productRefGroup = 0493B52717DDF80C003B3D23 /* Products */;
@@ -827,13 +837,21 @@
 		};
 		0493B55317DDF80C003B3D23 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3A8AE02C30B439C96244CB9 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchemeApp/SchemeApp-Prefix.pch";
 				INFOPLIST_FILE = "SchemeApp/SchemeApp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/norl1ng/Dropbox/iOS/Dev/w8ctrl/Web/Backend/node_modules/mongoose/node_modules/mongodb/node_modules/bson/build/Release,
+					/Users/norl1ng/Dropbox/iOS/Dev/w8ctrl/Web/Backend/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/build/Release,
+					/Users/norl1ng/Dropbox/iOS/Projects/FrostyRestLib/RESTApi/node_modules/couchbase/build/Release,
+					/Users/norl1ng/Dropbox/iOS/Projects/ShoppingList/RESTApi/node_modules/couchbase/build/Release,
+					/Users/norl1ng/Dropbox/iOS/tmp/schemAppBackend/node_modules/mongoose/node_modules/mongodb/node_modules/bson/build/Release,
+					/Users/norl1ng/Dropbox/iOS/tmp/schemAppBackend/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/build/Release,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -842,13 +860,21 @@
 		};
 		0493B55417DDF80C003B3D23 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3A8AE02C30B439C96244CB9 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchemeApp/SchemeApp-Prefix.pch";
 				INFOPLIST_FILE = "SchemeApp/SchemeApp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/norl1ng/Dropbox/iOS/Dev/w8ctrl/Web/Backend/node_modules/mongoose/node_modules/mongodb/node_modules/bson/build/Release,
+					/Users/norl1ng/Dropbox/iOS/Dev/w8ctrl/Web/Backend/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/build/Release,
+					/Users/norl1ng/Dropbox/iOS/Projects/FrostyRestLib/RESTApi/node_modules/couchbase/build/Release,
+					/Users/norl1ng/Dropbox/iOS/Projects/ShoppingList/RESTApi/node_modules/couchbase/build/Release,
+					/Users/norl1ng/Dropbox/iOS/tmp/schemAppBackend/node_modules/mongoose/node_modules/mongodb/node_modules/bson/build/Release,
+					/Users/norl1ng/Dropbox/iOS/tmp/schemAppBackend/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/build/Release,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

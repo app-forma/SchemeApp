@@ -17,6 +17,11 @@
 		274E556617F2F56300E97A12 /* MasterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E556517F2F56300E97A12 /* MasterUserViewController.m */; };
 		274E556A17F2F58F00E97A12 /* DetailUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E556817F2F58F00E97A12 /* DetailUserViewController.m */; };
 		274E556B17F2F58F00E97A12 /* DetailUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274E556917F2F58F00E97A12 /* DetailUserViewController.xib */; };
+		274E557917F318AA00E97A12 /* UIButton+CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E557817F318AA00E97A12 /* UIButton+CustomButton.m */; };
+		274E90DB17F320F900E97A12 /* editIcon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 274E90D717F320F900E97A12 /* editIcon@1x.png */; };
+		274E90DC17F320F900E97A12 /* editIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 274E90D817F320F900E97A12 /* editIcon@2x.png */; };
+		274E90DD17F320F900E97A12 /* newIcon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 274E90D917F320F900E97A12 /* newIcon@1x.png */; };
+		274E90DE17F320F900E97A12 /* newIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 274E90DA17F320F900E97A12 /* newIcon@2x.png */; };
 		279AB65017F18C200094CE64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279AB64F17F18C200094CE64 /* Foundation.framework */; };
 		279AB65217F18C200094CE64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279AB65117F18C200094CE64 /* CoreGraphics.framework */; };
 		279AB65417F18C200094CE64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279AB65317F18C200094CE64 /* UIKit.framework */; };
@@ -107,6 +112,12 @@
 		274E556717F2F58F00E97A12 /* DetailUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailUserViewController.h; sourceTree = "<group>"; };
 		274E556817F2F58F00E97A12 /* DetailUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailUserViewController.m; sourceTree = "<group>"; };
 		274E556917F2F58F00E97A12 /* DetailUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailUserViewController.xib; sourceTree = "<group>"; };
+		274E557717F318AA00E97A12 /* UIButton+CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CustomButton.h"; sourceTree = "<group>"; };
+		274E557817F318AA00E97A12 /* UIButton+CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CustomButton.m"; sourceTree = "<group>"; };
+		274E90D717F320F900E97A12 /* editIcon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "editIcon@1x.png"; path = "images/editIcon@1x.png"; sourceTree = "<group>"; };
+		274E90D817F320F900E97A12 /* editIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "editIcon@2x.png"; path = "images/editIcon@2x.png"; sourceTree = "<group>"; };
+		274E90D917F320F900E97A12 /* newIcon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "newIcon@1x.png"; path = "images/newIcon@1x.png"; sourceTree = "<group>"; };
+		274E90DA17F320F900E97A12 /* newIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "newIcon@2x.png"; path = "images/newIcon@2x.png"; sourceTree = "<group>"; };
 		279AB64C17F18C200094CE64 /* SchemeAppAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchemeAppAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279AB64F17F18C200094CE64 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		279AB65117F18C200094CE64 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -359,6 +370,10 @@
 		279AB6CB17F191570094CE64 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				274E90D717F320F900E97A12 /* editIcon@1x.png */,
+				274E90D817F320F900E97A12 /* editIcon@2x.png */,
+				274E90D917F320F900E97A12 /* newIcon@1x.png */,
+				274E90DA17F320F900E97A12 /* newIcon@2x.png */,
 				279AB6CA17F191570094CE64 /* AdminTabBar */,
 			);
 			name = Images;
@@ -368,6 +383,8 @@
 		279AB6E217F1920E0094CE64 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				274E557717F318AA00E97A12 /* UIButton+CustomButton.h */,
+				274E557817F318AA00E97A12 /* UIButton+CustomButton.m */,
 				279AB6DC17F1920E0094CE64 /* Validation.h */,
 				279AB6DD17F1920E0094CE64 /* Validation.m */,
 				279AB6DE17F1920E0094CE64 /* AFNetworking.h */,
@@ -573,6 +590,7 @@
 				279AB6D017F191570094CE64 /* messages_selected@1x.png in Resources */,
 				279AB6E517F1920E0094CE64 /* AFNetworking.h in Resources */,
 				279AB6E617F1920E0094CE64 /* AFNetworking.m in Resources */,
+				274E90DD17F320F900E97A12 /* newIcon@1x.png in Resources */,
 				274E556017F2F52C00E97A12 /* DetailEventWrapperViewController.xib in Resources */,
 				279AB6D717F191570094CE64 /* users_unselected@2x.png in Resources */,
 				279AB6BA17F191490094CE64 /* Message.h in Resources */,
@@ -582,7 +600,9 @@
 				279AB6D517F191570094CE64 /* users_selected@2x.png in Resources */,
 				279AB6BD17F191490094CE64 /* User.m in Resources */,
 				279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */,
+				274E90DB17F320F900E97A12 /* editIcon@1x.png in Resources */,
 				279D064D17F1D07900586DF7 /* MessageViewController.xib in Resources */,
+				274E90DE17F320F900E97A12 /* newIcon@2x.png in Resources */,
 				279AB6E317F1920E0094CE64 /* Validation.h in Resources */,
 				279AB6E817F1920E0094CE64 /* Helpers.m in Resources */,
 				279AB6D317F191570094CE64 /* messages_unselected@2x.png in Resources */,
@@ -593,6 +613,7 @@
 				279AB6D217F191570094CE64 /* messages_unselected@1x.png in Resources */,
 				279D065517F1DA2400586DF7 /* UsersViewController.xib in Resources */,
 				279AB6B617F191490094CE64 /* EventWrapper.h in Resources */,
+				274E90DC17F320F900E97A12 /* editIcon@2x.png in Resources */,
 				279D065A17F1DA3E00586DF7 /* EventWrappersViewController.xib in Resources */,
 				279AB6BB17F191490094CE64 /* Message.m in Resources */,
 				279AB6D617F191570094CE64 /* users_unselected@1x.png in Resources */,
@@ -637,6 +658,7 @@
 				274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */,
 				279AB69717F190300094CE64 /* SuperAdminStore.m in Sources */,
 				274E555F17F2F52C00E97A12 /* DetailEventWrapperViewController.m in Sources */,
+				274E557917F318AA00E97A12 /* UIButton+CustomButton.m in Sources */,
 				279AB69617F190300094CE64 /* StudentStore.m in Sources */,
 				279D061417F19BB900586DF7 /* Store.m in Sources */,
 				279AB69517F190300094CE64 /* DatabaseConnection.m in Sources */,
