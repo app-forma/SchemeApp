@@ -273,4 +273,21 @@
     }];
 }
 
+#pragma mark - Location
+- (void)createLocation:(Location *)location completion:(completion)handler
+{
+#warning Implement
+    
+}
+- (void)updateLocation:(Location *)location completion:(completion)handler
+{
+#warning Implement
+    
+}
+- (void)deleteLocation:(Location *)location completion:(completion)handler
+{
+#warning Implement
+    
+}
+
 @end
