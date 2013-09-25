@@ -12,27 +12,21 @@
 #import "User.h"
 #import "Helpers.h"
 #import "StudentMessageDetailsViewController.h"
-#import <CoreLocation/CoreLocation.h>
+#import "StudentAutomaticPresence.h"
 
-@interface StudentMessageViewController ()<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UIAlertViewDelegate>
-{
-    CLLocationManager *locationManager;
-    CLRegion *testRegion;
-    UIAlertView *automaticPresence;
-    UIAlertView *goodbye;
-}
+@interface StudentMessageViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
 
 @implementation StudentMessageViewController
 {
     NSArray *messages;
+    StudentAutomaticPresence *sap;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -44,47 +38,13 @@
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected.png"]];
     self.navigationItem.title = @"Messages";
     
-    // Sign out
     UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
     self.navigationItem.rightBarButtonItem = signOutButton;
     
-    
-    locationManager = [[CLLocationManager alloc] init];
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake(59.34511573, 17.97674040);
-    testRegion = [[CLCircularRegion alloc] initWithCenter:center radius:40 identifier:@"test"];
-    [locationManager setDelegate:self];
-    [locationManager startMonitoringForRegion:testRegion];
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = 20;
-    [locationManager startUpdatingLocation];
-    testRegion.notifyOnEntry = YES;
-    
-    automaticPresence = [[UIAlertView alloc] initWithTitle:@"Welcome" message:@"We have now confirmed your presence through our very advanced geolocation operating system!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    
-    goodbye = [[UIAlertView alloc] initWithTitle:@"Goodbye" message:@"Thank you for today!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    sap = [[StudentAutomaticPresence alloc] init];
+    [sap setCenterForRegion:center];
 }
-
-
-- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
-    NSLog(@"Entered Region - %@", region.identifier);
-    [automaticPresence show];
-}
-
--(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
-{
-    NSLog(@"Exit Region - %@", region.identifier);
-    [goodbye show];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
-    NSLog(@"Started monitoring %@ region", region.identifier);
-}
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    NSLog(@"Location: %@", [locations lastObject]);
-}
-
 
 -(void)signOut
 {
