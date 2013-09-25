@@ -12,6 +12,7 @@
 
 @implementation User
 
+
 #warning Comment
 // We should use enum on backend as well for Role (Henrik)
 + (RoleType)roleTypeFromString:(NSString *)roleString
