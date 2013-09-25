@@ -1,24 +1,24 @@
 //
-//  UsersViewController.m
+//  DetailMessageViewController.m
 //  SchemeAppAdmin
 //
-//  Created by Marcus Norling on 9/24/13.
+//  Created by Marcus Norling on 9/25/13.
 //  Copyright (c) 2013 Marcus Norling. All rights reserved.
 //
 
-#import "UsersViewController.h"
+#import "DetailMessageViewController.h"
 
-@interface UsersViewController ()
+@interface DetailMessageViewController ()
 
 @end
 
-@implementation UsersViewController
-
+@implementation DetailMessageViewController
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.view.backgroundColor = [UIColor orangeColor];
     }
     return self;
 }
