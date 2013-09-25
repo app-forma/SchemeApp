@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "AuthViewController.h"
-#import "AdminTabBarViewController.h"
+#import "MenuViewController.h"
+#import "AppStartViewController.h"
 
 @implementation AppDelegate
 
@@ -27,7 +27,13 @@
 
 -(void)didSuccesfullyLogin
 {
-    self.window.rootViewController = [[AdminTabBarViewController alloc] init];
+    UISplitViewController *splitVC = [UISplitViewController new];
+    AppStartViewController *startView = [[AppStartViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:startView];
+    navController.navigationBar.hidden = YES;
+    MenuViewController *tableViewController = [[MenuViewController alloc] init];
+    splitVC.viewControllers = @[tableViewController, navController];
+    self.window.rootViewController = splitVC;    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

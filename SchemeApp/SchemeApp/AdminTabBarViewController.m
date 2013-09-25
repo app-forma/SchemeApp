@@ -7,10 +7,7 @@
 //
 
 #import "AdminTabBarViewController.h"
-#import "EventWrappersViewController.h"
-#import "MessageViewController.h"
-#import "UsersViewController.h"
-#import "SchoolInfoViewController.h"
+
 
 @implementation AdminTabBarViewController
 
@@ -41,11 +38,9 @@
 - (void)setupAdminTabBarViewController
 {
     NSMutableArray *array = [NSMutableArray new];
-    
-    [array addObject:[[EventWrappersViewController alloc] init]];
-    [array addObject:[[MessageViewController alloc] init]];
-    [array addObject:[[UsersViewController alloc] init]];
-    [array addObject:[[SchoolInfoViewController alloc] init]];
+    [array addObject:[[UIStoryboard storyboardWithName:@"AdminEventWrapperStoryboard" bundle:nil] instantiateInitialViewController]];
+    [array addObject:[[UIStoryboard storyboardWithName:@"AdminMessagesStoryboard" bundle:nil] instantiateInitialViewController]];
+    [array addObject:[[UIStoryboard storyboardWithName:@"AdminUserStoryboard" bundle:nil] instantiateInitialViewController]];
     
     self.viewControllers = array;
 }
