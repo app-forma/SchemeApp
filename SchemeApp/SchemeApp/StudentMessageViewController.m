@@ -12,14 +12,20 @@
 #import "User.h"
 #import "Helpers.h"
 #import "StudentMessageDetailsViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface StudentMessageViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface StudentMessageViewController ()<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UIAlertViewDelegate>
+{
+    CLLocationManager *locationManager;
+    CLRegion *testRegion;
+    UIAlertView *automaticPresence;
+    UIAlertView *goodbye;
+}
 
 @end
 
 @implementation StudentMessageViewController
 {
-    //for testing:
     NSArray *messages;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,7 +47,44 @@
     // Sign out
     UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
     self.navigationItem.rightBarButtonItem = signOutButton;
+    
+    
+    locationManager = [[CLLocationManager alloc] init];
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(59.34511573, 17.97674040);
+    testRegion = [[CLCircularRegion alloc] initWithCenter:center radius:40 identifier:@"test"];
+    [locationManager setDelegate:self];
+    [locationManager startMonitoringForRegion:testRegion];
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = 20;
+    [locationManager startUpdatingLocation];
+    testRegion.notifyOnEntry = YES;
+    
+    automaticPresence = [[UIAlertView alloc] initWithTitle:@"Welcome" message:@"We have now confirmed your presence through our very advanced geolocation operating system!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    
+    goodbye = [[UIAlertView alloc] initWithTitle:@"Goodbye" message:@"Thank you for today!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
 }
+
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+    NSLog(@"Entered Region - %@", region.identifier);
+    [automaticPresence show];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
+{
+    NSLog(@"Exit Region - %@", region.identifier);
+    [goodbye show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
+    NSLog(@"Started monitoring %@ region", region.identifier);
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    NSLog(@"Location: %@", [locations lastObject]);
+}
+
 
 -(void)signOut
 {
