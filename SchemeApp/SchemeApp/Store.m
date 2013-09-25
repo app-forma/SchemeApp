@@ -10,7 +10,7 @@
 #import "User.h"
 #import "EventWrapper.h"
 #import "Event.h"
-
+#import "Location.h"
 
 @implementation Store
 
@@ -107,6 +107,27 @@
          {
              Store.mainStore.currentUser = [[User alloc] initWithUserDictionary:jsonObject];
              completion(YES);
+         }
+     }];
+}
++ (void)fetchLocation
+{
+    [Store.dbSessionConnection getPath:DB_TYPE_LOCATION
+                            withParams:nil
+                         andCompletion:^(id jsonObject, id response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"setCurrentLocation got response: %@ and error: %@", response, error.userInfo);
+         }
+         else
+         {
+             if ([jsonObject count])
+             {
+                 Store.mainStore.currentLocation = [[Location alloc] initWithLocationDictionary:jsonObject[0]];
+#warning Testing
+                 NSLog(@"Current location: %@", Store.mainStore.currentLocation.name);
+             }
          }
      }];
 }

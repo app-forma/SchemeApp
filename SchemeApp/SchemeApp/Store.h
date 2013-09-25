@@ -30,5 +30,6 @@
 @property (nonatomic, strong) Location *currentLocation;
 
 + (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion;
++ (void)fetchLocation;
 
 @end
