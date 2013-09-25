@@ -32,7 +32,7 @@
     if (Store.mainStore.currentLocation)
     {
         [self setLocationAnnotation];
-        [self showCurrentLocationInMapView];
+        [self setInputsToCurrentLocation];
     }
     else
     {
@@ -68,6 +68,7 @@
     if (![annotation isKindOfClass:MKUserLocation.class])
     {
         pav = [[MKPinAnnotationView alloc] init];
+        pav.draggable = YES;
         pav.animatesDrop = YES;
     }
     
@@ -89,10 +90,12 @@
 {
     return MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000);
 }
-- (void)showCurrentLocationInMapView
+- (void)setInputsToCurrentLocation
 {
     [self.mapView setRegion:[self regionForCoordinate:location.coordinate]
                    animated:YES];
+    
+    self.nameTextField.text = Store.mainStore.currentLocation.name;
 }
 
 @end
