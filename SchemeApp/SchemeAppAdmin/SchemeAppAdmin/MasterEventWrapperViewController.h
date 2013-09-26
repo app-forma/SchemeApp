@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class EventWrapper;
+@class DetailEventWrapperViewController;
 
 @protocol MasterEventWrapperDelegate <NSObject>
 
@@ -17,8 +18,9 @@
 @end
 
 
-@interface MasterEventWrapperViewController : UITableViewController
+@interface MasterEventWrapperViewController : UIViewController
 
+@property (nonatomic, weak) DetailEventWrapperViewController *detailEventWrapperViewController;
 @property (weak) id <MasterEventWrapperDelegate> delegate;
 
 @end

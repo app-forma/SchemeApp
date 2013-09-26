@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		274E553F17F2E71000E97A12 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E553E17F2E71000E97A12 /* TabBarController.m */; };
 		274E554217F2EB0200E97A12 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E554117F2EB0200E97A12 /* SplitViewController.m */; };
-		274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E555717F2F4CC00E97A12 /* MasterEventWrapperViewController.m */; };
 		274E555B17F2F4E800E97A12 /* MasterMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E555A17F2F4E800E97A12 /* MasterMessageViewController.m */; };
 		274E555F17F2F52C00E97A12 /* DetailEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E555D17F2F52C00E97A12 /* DetailEventWrapperViewController.m */; };
 		274E556017F2F52C00E97A12 /* DetailEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274E555E17F2F52C00E97A12 /* DetailEventWrapperViewController.xib */; };
@@ -82,6 +81,8 @@
 		279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */; };
 		8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */; };
 		8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */; };
+		8F59C53F17F4B68B00C163DE /* MasterEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F59C53E17F4B68B00C163DE /* MasterEventWrapperViewController.m */; };
+		8F59C54117F4B6BB00C163DE /* MasterEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F59C54017F4B6BB00C163DE /* MasterEventWrapperViewController.xib */; };
 		AF99542717F30BC4003C450B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99542617F30BC4003C450B /* Location.m */; };
 /* End PBXBuildFile section */
 
@@ -100,8 +101,6 @@
 		274E553E17F2E71000E97A12 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		274E554017F2EB0200E97A12 /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
 		274E554117F2EB0200E97A12 /* SplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitViewController.m; sourceTree = "<group>"; };
-		274E555617F2F4CC00E97A12 /* MasterEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterEventWrapperViewController.h; sourceTree = "<group>"; };
-		274E555717F2F4CC00E97A12 /* MasterEventWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterEventWrapperViewController.m; sourceTree = "<group>"; };
 		274E555917F2F4E800E97A12 /* MasterMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterMessageViewController.h; sourceTree = "<group>"; };
 		274E555A17F2F4E800E97A12 /* MasterMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterMessageViewController.m; sourceTree = "<group>"; };
 		274E555C17F2F52C00E97A12 /* DetailEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailEventWrapperViewController.h; sourceTree = "<group>"; };
@@ -185,6 +184,9 @@
 		8F12E85717F3261B00FCEDCE /* PopoverEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverEventWrapperViewController.h; sourceTree = "<group>"; };
 		8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverEventWrapperViewController.m; sourceTree = "<group>"; };
 		8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverEventWrapperViewController.xib; sourceTree = "<group>"; };
+		8F59C53D17F4B68B00C163DE /* MasterEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterEventWrapperViewController.h; sourceTree = "<group>"; };
+		8F59C53E17F4B68B00C163DE /* MasterEventWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterEventWrapperViewController.m; sourceTree = "<group>"; };
+		8F59C54017F4B6BB00C163DE /* MasterEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterEventWrapperViewController.xib; sourceTree = "<group>"; };
 		AF99542517F30BC4003C450B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		AF99542617F30BC4003C450B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -429,8 +431,9 @@
 			isa = PBXGroup;
 			children = (
 				279D065E17F1DAAB00586DF7 /* Events */,
-				274E555617F2F4CC00E97A12 /* MasterEventWrapperViewController.h */,
-				274E555717F2F4CC00E97A12 /* MasterEventWrapperViewController.m */,
+				8F59C53D17F4B68B00C163DE /* MasterEventWrapperViewController.h */,
+				8F59C53E17F4B68B00C163DE /* MasterEventWrapperViewController.m */,
+				8F59C54017F4B6BB00C163DE /* MasterEventWrapperViewController.xib */,
 				274E555C17F2F52C00E97A12 /* DetailEventWrapperViewController.h */,
 				274E555D17F2F52C00E97A12 /* DetailEventWrapperViewController.m */,
 				274E555E17F2F52C00E97A12 /* DetailEventWrapperViewController.xib */,
@@ -629,6 +632,7 @@
 				279AB6CD17F191570094CE64 /* courses_selected@1x.png in Resources */,
 				279AB6B917F191490094CE64 /* Event.m in Resources */,
 				279AB6D417F191570094CE64 /* users_selected@1x.png in Resources */,
+				8F59C54117F4B6BB00C163DE /* MasterEventWrapperViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,12 +664,12 @@
 				279D061A17F19F1300586DF7 /* AFNetworking.m in Sources */,
 				AF99542717F30BC4003C450B /* Location.m in Sources */,
 				274E556617F2F56300E97A12 /* MasterUserViewController.m in Sources */,
+				8F59C53F17F4B68B00C163DE /* MasterEventWrapperViewController.m in Sources */,
 				279D061B17F19F1300586DF7 /* Helpers.m in Sources */,
 				279AB66017F18C200094CE64 /* AppDelegate.m in Sources */,
 				279AB69417F190300094CE64 /* AdminStore.m in Sources */,
 				279AB65C17F18C200094CE64 /* main.m in Sources */,
 				8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */,
-				274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */,
 				279AB69717F190300094CE64 /* SuperAdminStore.m in Sources */,
 				274E555F17F2F52C00E97A12 /* DetailEventWrapperViewController.m in Sources */,
 				274E557917F318AA00E97A12 /* UIButton+CustomButton.m in Sources */,

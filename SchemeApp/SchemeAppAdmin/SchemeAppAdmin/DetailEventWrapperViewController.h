@@ -11,7 +11,7 @@
 
 @class EventWrapper;
 
-@interface DetailEventWrapperViewController : UIViewController<MasterEventWrapperDelegate>
+@interface DetailEventWrapperViewController : UIViewController<MasterEventWrapperDelegate, UISplitViewControllerDelegate>
 
 @property (weak, nonatomic) EventWrapper *selectedEventWrapper;
 

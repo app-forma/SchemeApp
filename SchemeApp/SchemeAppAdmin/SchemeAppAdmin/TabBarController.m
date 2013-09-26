@@ -45,17 +45,22 @@
     if (self)
     {
         self.tabBarController.delegate = self;
-        
-        
+    
         mevc = [MasterEventWrapperViewController new];
         devc = [DetailEventWrapperViewController new];
         
         mevc.delegate = devc;
         
-        eventWrapperSplitView = [[SplitViewController alloc]initWithLeftVC:mevc rightVC:devc];
+        mevc.detailEventWrapperViewController = devc;
+        
+        eventWrapperSplitView = [SplitViewController new];
+        eventWrapperSplitView.viewControllers = @[mevc, devc];
+        eventWrapperSplitView.delegate = devc;
+        
         UITabBarItem *eventWrapperItem = [[UITabBarItem alloc] initWithTitle:@"Courses" image:[UIImage imageNamed:@"courses_unselected"] selectedImage:[UIImage imageNamed:@"courses_selected"]];
         eventWrapperSplitView.tabBarItem = eventWrapperItem;
     
+        
         
         mmvc = [MasterMessageViewController new];
         dmvc = [DetailMessageViewController new];

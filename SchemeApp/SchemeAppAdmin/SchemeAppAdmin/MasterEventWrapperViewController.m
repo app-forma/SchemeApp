@@ -8,20 +8,27 @@
 
 #import "MasterEventWrapperViewController.h"
 #import "EventWrapper.h"
+#import "PopoverEventWrapperViewController.h"
 
-@interface MasterEventWrapperViewController ()
+@interface MasterEventWrapperViewController () <UITableViewDelegate>
 {
     NSMutableArray *eventWrappers;
+    UIPopoverController *addEventWrapperPopover;
+    PopoverEventWrapperViewController *pewvc;
 }
+
+
+@property (weak, nonatomic) IBOutlet UITableView *eventWrappersTableView;
+
 @end
 
 @implementation MasterEventWrapperViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
+        
     }
     return self;
 }
@@ -33,10 +40,10 @@
          eventWrappers = [NSMutableArray arrayWithArray:allEventWrappers];
          [NSOperationQueue.mainQueue addOperationWithBlock:^
           {
-              [self.tableView reloadData];
+              [self.eventWrappersTableView reloadData];
               NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-              [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-              [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+              [self.eventWrappersTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+              [self tableView:self.eventWrappersTableView didSelectRowAtIndexPath:indexPath];
           }];
      }];
 }
@@ -44,6 +51,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    pewvc = [[PopoverEventWrapperViewController alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,10 +99,25 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSString *url = [NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENTWRAPPER, [eventWrappers[indexPath.row]docID]];
         [[Store dbSessionConnection] deletePath:url withCompletion:^(id jsonObject, id response, NSError *error) {
-            [self.tableView reloadData];
+            [self.eventWrappersTableView reloadData];
         }];
         [eventWrappers removeObject:eventWrappers[indexPath.row]];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        [self.eventWrappersTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
+
+- (IBAction)addEventWrapper:(id)sender
+{
+    [self showPopover:sender];
+}
+
+-(void)showPopover:(id)sender
+{
+    pewvc.isInEditingMode = NO;
+    
+    addEventWrapperPopover = [[UIPopoverController alloc] initWithContentViewController:pewvc];
+    [addEventWrapperPopover setPopoverContentSize:CGSizeMake(300, 400)];
+    [addEventWrapperPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
 @end
