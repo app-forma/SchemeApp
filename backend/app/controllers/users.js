@@ -271,7 +271,7 @@ exports.byEmailPassport = function (email, cb) {
     User.findOne({
         email: email
     }).exec(function (err, doc) {
-            cb(err. doc)
+            cb(err, doc)
         });
     };
 
@@ -283,14 +283,13 @@ exports.login = function (req, res, next) {
             return next(err);
         }
         if (!user) {
-            req.session.messages = [info.message];
             return res.json(401, info);
         }
         req.logIn(user, function (err) {
             if (err) {
                 return next(err);
             }
-            return res.json(200, info);
+            return res.json(200, user);
         });
     })(req, res, next);
 };
