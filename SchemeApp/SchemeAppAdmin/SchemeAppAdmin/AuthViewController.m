@@ -36,7 +36,31 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)login:(id)sender {
-    [self.delegate didSuccesfullyLogin];
+- (IBAction)login:(id)sender
+{
+    [Store setCurrentUserToUserWithEmail:@"joe@gmail.com"
+                             andPassword:nil
+                              completion:^(BOOL success)
+    {
+        if (success)
+        {
+            if (Store.mainStore.currentUser.role == StudentRole)
+            {
+                [Store.studentStore addAttendanceCompletion:^(BOOL success)
+                 {
+                     if (!success)
+                     {
+                         NSLog(@"[%@] Could not register attendance for current user %@", self.class, Store.mainStore.currentUser.email);
+                     }
+                 }];
+            }
+            
+            [self.delegate didSuccesfullyLogin];
+        }
+        else
+        {
+            NSLog(@"[%@] Could not login.", self.class);
+        }
+    }];
 }
 @end
