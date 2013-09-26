@@ -73,6 +73,10 @@ exports.update = function (req, res) {
     if (err) {
       res.json(500, err);
     } else {
+        // Testar varför jag inte får tillbaka något mer än 200. /Henrik
+        if (!doc) {
+            doc = { success: true };
+        }
       res.json(200, doc);
     }
   });
