@@ -41,8 +41,11 @@
 
 - (IBAction)login:(id)sender
 {
-    NSLog(@"Email: %@", self.loginEmailTextField.text);
-    NSLog(@"Password: %@", self.loginEmailTextField.text);
+#warning TESTING
+    [Store sendAuthenticationRequestForEmail:self.loginEmailTextField.text password:self.loginPasswordField.text completion:^(BOOL success) {
+        NSLog(@"LOGGED IN: %d", success);
+    }];
+     
     [Store setCurrentUserToUserWithEmail:@"joe@gmail.com"
                              andPassword:nil
                               completion:^(BOOL success)
