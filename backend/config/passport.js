@@ -14,8 +14,9 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-passport.use(new LocalStrategy(function(email, password, done) {
-  User.findOne({ email: email }, function(err, user) {
+//username == email
+passport.use(new LocalStrategy(function(username, password, done) {
+  User.findOne({ email: username }, function(err, user) {
     if (err) { return done(err); }
     if (!user) { return done(null, false, { message: 'Unknown email ' + email }); }
       if (!Helpers.validateCryptoPassword(password, user.password)) return done(err);
