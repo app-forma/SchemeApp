@@ -114,10 +114,15 @@
     self.mapView.showsUserLocation = NO;
     [self.mapView setRegion:[self regionForCoordinate:userLocation.coordinate]
                    animated:YES];
+    
+    [self.mapView removeAnnotations:self.mapView.annotations];
 }
 - (void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered
 {
-    [self addCurrentLocationAnnotation:nil];
+    if (currentLocation)
+    {
+        [self addCurrentLocationAnnotation:nil];
+    }
 }
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
