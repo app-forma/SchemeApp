@@ -66,6 +66,7 @@
         
         muvc = [MasterUserViewController new];
         duvc = [DetailUserViewController new];
+        muvc.delegate = duvc;
         usersSplitView = [[SplitViewController alloc]initWithLeftVC:muvc rightVC:duvc];
         UITabBarItem *userItem = [[UITabBarItem alloc]initWithTitle:@"Users" image:[UIImage imageNamed:@"users_unselected"] selectedImage:[UIImage imageNamed:@"users_selected"]];
         usersSplitView.tabBarItem = userItem;

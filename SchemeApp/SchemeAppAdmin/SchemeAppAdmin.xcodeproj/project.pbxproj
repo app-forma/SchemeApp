@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA657517F4BB990088E589 /* PopoverUserViewController.m */; };
+		04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA657617F4BB990088E589 /* PopoverUserViewController.xib */; };
 		274E553F17F2E71000E97A12 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E553E17F2E71000E97A12 /* TabBarController.m */; };
 		274E554217F2EB0200E97A12 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E554117F2EB0200E97A12 /* SplitViewController.m */; };
 		274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E555717F2F4CC00E97A12 /* MasterEventWrapperViewController.m */; };
@@ -96,6 +98,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04DA657417F4BB990088E589 /* PopoverUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverUserViewController.h; sourceTree = "<group>"; };
+		04DA657517F4BB990088E589 /* PopoverUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverUserViewController.m; sourceTree = "<group>"; };
+		04DA657617F4BB990088E589 /* PopoverUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverUserViewController.xib; sourceTree = "<group>"; };
 		274E553D17F2E71000E97A12 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		274E553E17F2E71000E97A12 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		274E554017F2EB0200E97A12 /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
@@ -421,6 +426,9 @@
 				274E556717F2F58F00E97A12 /* DetailUserViewController.h */,
 				274E556817F2F58F00E97A12 /* DetailUserViewController.m */,
 				274E556917F2F58F00E97A12 /* DetailUserViewController.xib */,
+				04DA657417F4BB990088E589 /* PopoverUserViewController.h */,
+				04DA657517F4BB990088E589 /* PopoverUserViewController.m */,
+				04DA657617F4BB990088E589 /* PopoverUserViewController.xib */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -623,6 +631,7 @@
 				279AB6B617F191490094CE64 /* EventWrapper.h in Resources */,
 				274E90DC17F320F900E97A12 /* editIcon@2x.png in Resources */,
 				8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */,
+				04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */,
 				279D065A17F1DA3E00586DF7 /* EventWrappersViewController.xib in Resources */,
 				279AB6BB17F191490094CE64 /* Message.m in Resources */,
 				279AB6D617F191570094CE64 /* users_unselected@1x.png in Resources */,
@@ -674,6 +683,7 @@
 				279AB69517F190300094CE64 /* DatabaseConnection.m in Sources */,
 				274E556A17F2F58F00E97A12 /* DetailUserViewController.m in Sources */,
 				274E555B17F2F4E800E97A12 /* MasterMessageViewController.m in Sources */,
+				04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

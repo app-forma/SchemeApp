@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class User;
+@protocol MasterUserDelegate <NSObject>
 
+- (void)masterUserDidSelectUser:(User*)user;
+
+@end
 @interface MasterUserViewController : UITableViewController
-
+@property (weak) id <MasterUserDelegate> delegate;
 @end
