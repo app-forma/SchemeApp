@@ -11,6 +11,7 @@ module.exports = function(app) {
   app.post('/users', users.create);
   app.put('/users/:id', users.update);
   app.del('/users/:id', users.destroy);
+  app.post('/users/login', users.login);
 
   app.post('/users/:id/attendance/:date', users.addAttendance);
   app.del('/users/:id/attendance/:date', users.removeAttendance);
