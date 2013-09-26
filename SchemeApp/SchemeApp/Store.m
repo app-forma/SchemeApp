@@ -110,6 +110,19 @@
          }
      }];
 }
+
+#warning EXPERIMENTAL
++ (void)sendAuthenticationRequestForEmail:(NSString *)email password:(NSString *)password completion:(void (^)(BOOL success))completion
+{
+    [Store.dbSessionConnection postContent:@{@"email":email, @"password":password} toPath:@"users/login" withCompletion:^(id responseBody, id response, NSError *error) {
+        NSLog(@"RESPONSE BODY: %@", responseBody);
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger statusCode = [httpResponse statusCode];
+        NSLog(@"RESPONSE: %d", statusCode);
+        NSLog(@"ERROR: %@", error);
+    }];
+}
+
 + (void)fetchLocation
 {
     [Store.dbSessionConnection getPath:DB_TYPE_LOCATION

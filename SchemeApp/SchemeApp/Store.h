@@ -31,5 +31,6 @@
 
 + (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion;
 + (void)fetchLocation;
++ (void)sendAuthenticationRequestForEmail:(NSString *)email password:(NSString *)password completion:(void (^)(BOOL success))completion;
 
 @end
