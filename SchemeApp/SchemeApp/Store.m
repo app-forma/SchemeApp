@@ -10,7 +10,7 @@
 #import "User.h"
 #import "EventWrapper.h"
 #import "Event.h"
-
+#import "Location.h"
 
 @implementation Store
 
@@ -96,7 +96,7 @@
 #warning Implement password
     [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/email/%@", DB_TYPE_USER, email]
                             withParams:nil
-                         andCompletion:^(id jsonObject, id response, NSError *error)
+                         andCompletion:^(id responseBody, id response, NSError *error)
      {
          if (error)
          {
@@ -105,8 +105,45 @@
          }
          else
          {
-             Store.mainStore.currentUser = [[User alloc] initWithUserDictionary:jsonObject];
+             Store.mainStore.currentUser = [[User alloc] initWithUserDictionary:responseBody];
              completion(YES);
+         }
+     }];
+}
+
+#warning EXPERIMENTAL
++ (void)sendAuthenticationRequestForEmail:(NSString *)email password:(NSString *)password completion:(void (^)(BOOL success))completion
+{
+    [Store.dbSessionConnection postContent:@{@"email":email, @"password":password} toPath:@"users/login" withCompletion:^(id responseBody, id response, NSError *error) {
+        NSLog(@"RESPONSE BODY: %@", responseBody);
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger statusCode = [httpResponse statusCode];
+        NSLog(@"RESPONSE: %d", statusCode);
+        NSLog(@"ERROR: %@", error);
+        if (statusCode == 200) {
+            completion(YES);
+        } else {
+            completion(NO);            
+        }
+    }];
+}
+
++ (void)fetchLocation
+{
+    [Store.dbSessionConnection getPath:DB_TYPE_LOCATION
+                            withParams:nil
+                         andCompletion:^(id responseBody, id response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"setCurrentLocation got response: %@ and error: %@", response, error.userInfo);
+         }
+         else
+         {
+             if ([responseBody count])
+             {
+                 Store.mainStore.currentLocation = [[Location alloc] initWithLocationDictionary:responseBody[0]];
+             }
          }
      }];
 }

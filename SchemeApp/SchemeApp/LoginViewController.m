@@ -44,7 +44,11 @@
         if (success) {
             NSLog(@"Logged in as User: %@ %@", Store.mainStore.currentUser.firstname,
                   Store.mainStore.currentUser.lastname);
-            [self presentViewController:[[AdminTabBarViewController alloc] init] animated:YES completion:nil];
+
+            [NSOperationQueue.mainQueue addOperationWithBlock:^
+            {
+                [self presentViewController:[[AdminTabBarViewController alloc] init] animated:YES completion:nil];
+            }];
         }
     }];
 }

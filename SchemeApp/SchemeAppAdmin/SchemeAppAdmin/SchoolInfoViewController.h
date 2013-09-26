@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Marcus Norling. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import MapKit;
+@import UIKit;
 
-@interface SchoolInfoViewController : UIViewController
-
+@interface SchoolInfoViewController : UIViewController <MKMapViewDelegate>
 @end

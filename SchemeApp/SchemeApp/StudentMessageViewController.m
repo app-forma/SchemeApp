@@ -12,6 +12,7 @@
 #import "User.h"
 #import "Helpers.h"
 #import "StudentMessageDetailsViewController.h"
+#import "StudentAutomaticPresence.h"
 
 @interface StudentMessageViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -19,14 +20,13 @@
 
 @implementation StudentMessageViewController
 {
-    //for testing:
     NSArray *messages;
+    StudentAutomaticPresence *sap;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -38,9 +38,12 @@
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected.png"]];
     self.navigationItem.title = @"Messages";
     
-    // Sign out
     UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
     self.navigationItem.rightBarButtonItem = signOutButton;
+    
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(59.34511573, 17.97674040);
+    sap = [[StudentAutomaticPresence alloc] init];
+    [sap setCenterForRegion:center];
 }
 
 -(void)signOut

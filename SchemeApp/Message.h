@@ -17,4 +17,5 @@
 
 - (NSDictionary *)asDictionary;
 - (id)initWithMsgDictionary:(NSDictionary *)msgDictionary;
+
 @end

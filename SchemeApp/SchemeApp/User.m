@@ -12,6 +12,7 @@
 
 @implementation User
 
+
 #warning Comment
 // We should use enum on backend as well for Role (Henrik)
 + (RoleType)roleTypeFromString:(NSString *)roleString
@@ -67,12 +68,34 @@
 }
 - (id)initWithUserDictionary:(NSDictionary *)userDictionary
 {
-    return  [self initWithDocID:[userDictionary objectForKey:@"_id"]
-                           Role:[User roleTypeFromString:[userDictionary objectForKey:@"role"]]
-                      firstname:[userDictionary objectForKey:@"firstname"]
-                       lastname:[userDictionary objectForKey:@"lastname"]
-                          email:[userDictionary objectForKey:@"email"]
-                       password:[userDictionary objectForKey:@"password"]];
+    self = [self initWithDocID:[userDictionary objectForKey:@"_id"]
+                          Role:[User roleTypeFromString:[userDictionary objectForKey:@"role"]]
+                     firstname:[userDictionary objectForKey:@"firstname"]
+                      lastname:[userDictionary objectForKey:@"lastname"]
+                         email:[userDictionary objectForKey:@"email"]
+                      password:[userDictionary objectForKey:@"password"]];
+#warning Testing
+    for (id messageDictionary in userDictionary[@"messages"])
+    {
+        if ([messageDictionary isKindOfClass:NSDictionary.class])
+        {
+            [self.messages addObject:[[Message alloc] initWithMsgDictionary:messageDictionary]];
+        }
+    }
+    
+    for (id eventWrapper in userDictionary[@"eventWrappers"])
+    {
+        if ([eventWrapper isKindOfClass:NSDictionary.class])
+        {
+            [self.eventWrappers addObject:[[EventWrapper alloc] initWithEventWrapperDictionary:eventWrapper]];
+        }
+        else if ([eventWrapper isKindOfClass:NSString.class])
+        {
+            [self.eventWrappers addObject:eventWrapper];
+        }
+    }
+    
+    return self;
 }
 
 - (NSDictionary *)asDictionary

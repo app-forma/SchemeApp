@@ -25,15 +25,12 @@
     User *selectedUser;
 }
 
--(void)loadView
-{
-    [super loadView];
-    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"users_selected"]];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"users_selected"]];
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 

@@ -29,17 +29,14 @@
     return YES;
 }
 
--(void)loadView
-{
-    [super loadView];
-    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected"]];
-}
-
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected"]];
+    
     messages = Store.mainStore.currentUser.messages;
-
+    
     self.navigationItem.title = @"Messages";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddMessage)];
 }

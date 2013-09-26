@@ -7,9 +7,10 @@
 //
 
 #import "Event.h"
-#import "Helpers.h"
+
 
 @implementation Event
+
 -(id)initWithEventDictionary:(NSDictionary *)dic
 {
     self = [super init];
@@ -29,6 +30,10 @@
     [jsonEvent setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
     [jsonEvent setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
     [jsonEvent setObject:self.room forKey:@"room"];
+    
+    if (self.docID) {
+        [jsonEvent setObject:self.docID forKey:@"_id"];
+    }
     
     return jsonEvent;
 }
