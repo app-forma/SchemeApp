@@ -76,6 +76,10 @@
             if (success)
             {
                 currentLocation = nil;
+                [NSOperationQueue.mainQueue addOperationWithBlock:^
+                {
+                    [self reset];
+                }];
             }
             else
             {
@@ -199,6 +203,11 @@
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil] show];
     }
+}
+- (void)reset
+{
+    self.nameTextField.text = nil;
+    [self.mapView removeAnnotations:self.mapView.annotations];
 }
 
 @end
