@@ -66,6 +66,11 @@
 - (IBAction)saveEventWrapper:(id)sender
 {
     [self.delegate dismissPopover];
+    if (self.isInEditingMode) {
+        NSLog(@"PUT");
+    } else {
+        NSLog(@"POST");
+    }
 }
 
 @end
