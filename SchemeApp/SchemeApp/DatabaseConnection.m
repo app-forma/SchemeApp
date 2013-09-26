@@ -8,7 +8,7 @@
 
 #import "DatabaseConnection.h"
 
-@interface DatabaseConnection ()<NSURLSessionDelegate>
+@interface DatabaseConnection ()<NSURLSessionTaskDelegate>
 
 @end
 
@@ -31,7 +31,7 @@
                                                 @"Content-Type": @"application/json"};
         
         urlSession = [NSURLSession sessionWithConfiguration:sessionConfig
-                                                   delegate:nil
+                                                   delegate:self
                                               delegateQueue:queue];
         
         dbURL = @"http://schemeapp.erikosterberg.com";
@@ -75,11 +75,10 @@
                           andCompletion:handler];
 }
 
-#pragma mark - NSURLSession delegate
-- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
- completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
+#warning EXPERIMENTAL
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
 {
-    NSLog(@"GOT CHALLENGE");
+    NSLog(@"CHALLANGE");
 }
 
 #pragma mark - Extracted methods

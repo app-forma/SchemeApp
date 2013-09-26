@@ -41,10 +41,7 @@
 
 - (IBAction)login:(id)sender
 {
-#warning TESTING
-    [Store sendAuthenticationRequestForEmail:self.loginEmailTextField.text password:self.loginPasswordField.text completion:^(BOOL success) {
-        NSLog(@"LOGGED IN: %d", success);
-    }];
+#warning TESTING SET CURRENT USER AFTER LOGIN
      
     [Store setCurrentUserToUserWithEmail:@"joe@gmail.com"
                              andPassword:nil
@@ -62,8 +59,17 @@
                      }
                  }];
             }
-                        
-            //[self.delegate didSuccesfullyLogin];
+            [Store sendAuthenticationRequestForEmail:self.loginEmailTextField.text password:self.loginPasswordField.text completion:^(BOOL success) {
+                if (success) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.delegate didSuccesfullyLogin];
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.loginStatusLabel.text = @"Invalid credentials, try again";
+                    });
+                }
+            }];
         }
         else
         {

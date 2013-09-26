@@ -120,6 +120,11 @@
         NSInteger statusCode = [httpResponse statusCode];
         NSLog(@"RESPONSE: %d", statusCode);
         NSLog(@"ERROR: %@", error);
+        if (statusCode == 200) {
+            completion(YES);
+        } else {
+            completion(NO);            
+        }
     }];
 }
 
