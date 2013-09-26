@@ -276,13 +276,13 @@ exports.login = function (req, res, next) {
         }
         if (!user) {
             req.session.messages = [info.message];
-            return res.send(401);
+            return res.json(401, info);
         }
         req.logIn(user, function (err) {
             if (err) {
                 return next(err);
             }
-            return res.send(200);
+            return res.json(200, info);
         });
     })(req, res, next);
 };
