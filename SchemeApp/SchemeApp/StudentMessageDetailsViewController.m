@@ -37,10 +37,6 @@
     self.fromLabel.text = self.from;
     self.dateLabel.text = [Helpers stringFromNSDate:self.date];
     self.messageTextView.text = self.message;
-    
-    
-
-    
 }
 
 @end
