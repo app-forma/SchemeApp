@@ -43,6 +43,7 @@
     }
 }
 
+#pragma mark - Actions
 - (IBAction)addCurrentLocationAnnotation:(UITapGestureRecognizer*)recognizer
 {
     if (!self.mapAnnotation)
@@ -65,7 +66,6 @@
         [self.mapView addAnnotation:pa];
     }
 }
-
 - (IBAction)delete:(id)sender
 {
     if (currentLocation)
