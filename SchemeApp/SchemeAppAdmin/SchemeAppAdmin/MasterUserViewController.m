@@ -7,24 +7,22 @@
 //
 
 #import "MasterUserViewController.h"
+#import "PopoverUserViewController.h"
 #import "User.h"
 
-@interface MasterUserViewController ()
+@interface MasterUserViewController () <UITableViewDelegate, PopoverUserDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *usersTableView;
 
 @end
 
 @implementation MasterUserViewController
 {
     NSMutableArray *users;
+    UIPopoverController *addUserPopover;
+    PopoverUserViewController *puvc;
 }
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
 
-    }
-    return self;
-}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -33,10 +31,10 @@
          users = [NSMutableArray arrayWithArray:allUsers];
          [NSOperationQueue.mainQueue addOperationWithBlock:^
           {
-              [self.tableView reloadData];
+              [self.usersTableView reloadData];
               NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-              [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-              [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+              [self.usersTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+              [self tableView:self.usersTableView didSelectRowAtIndexPath:indexPath];
 
           }];
      }];
@@ -44,6 +42,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    puvc = [[PopoverUserViewController alloc] init];
+    puvc.delegate = self;
 
 }
 
@@ -80,7 +80,6 @@
     User *user = users[indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
 
-    
     return cell;
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,12 +91,30 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSString *url = [NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, [users[indexPath.row]docID]];
         [[Store dbSessionConnection] deletePath:url withCompletion:^(id jsonObject, id response, NSError *error) {
-            [self.tableView reloadData];
+            [self.usersTableView reloadData];
         }];
         [users removeObject:users[indexPath.row]];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        [self.usersTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 
+
+- (IBAction)addUser:(id)sender
+{
+    [self showPopover:sender];
+}
+
+-(void)showPopover:(id)sender
+{
+    puvc.isInEditingMode = NO;
+    addUserPopover = [[UIPopoverController alloc] initWithContentViewController:puvc];
+    [addUserPopover setPopoverContentSize:CGSizeMake(300, 555)];
+    [addUserPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
+-(void)dismissPopover
+{
+    [addUserPopover dismissPopoverAnimated:YES];
+}
 
 @end

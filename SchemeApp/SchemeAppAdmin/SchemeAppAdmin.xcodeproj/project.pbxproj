@@ -84,6 +84,8 @@
 		279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */; };
 		8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */; };
 		8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */; };
+		8FE68A2A17F4DABB00FAD042 /* MasterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE68A2917F4DABB00FAD042 /* MasterUserViewController.xib */; };
+		8FE68A2C17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE68A2B17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib */; };
 		AF99542717F30BC4003C450B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99542617F30BC4003C450B /* Location.m */; };
 /* End PBXBuildFile section */
 
@@ -190,6 +192,8 @@
 		8F12E85717F3261B00FCEDCE /* PopoverEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverEventWrapperViewController.h; sourceTree = "<group>"; };
 		8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverEventWrapperViewController.m; sourceTree = "<group>"; };
 		8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverEventWrapperViewController.xib; sourceTree = "<group>"; };
+		8FE68A2917F4DABB00FAD042 /* MasterUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterUserViewController.xib; sourceTree = "<group>"; };
+		8FE68A2B17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterEventWrapperViewController.xib; sourceTree = "<group>"; };
 		AF99542517F30BC4003C450B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		AF99542617F30BC4003C450B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -423,6 +427,7 @@
 			children = (
 				274E556417F2F56300E97A12 /* MasterUserViewController.h */,
 				274E556517F2F56300E97A12 /* MasterUserViewController.m */,
+				8FE68A2917F4DABB00FAD042 /* MasterUserViewController.xib */,
 				274E556717F2F58F00E97A12 /* DetailUserViewController.h */,
 				274E556817F2F58F00E97A12 /* DetailUserViewController.m */,
 				274E556917F2F58F00E97A12 /* DetailUserViewController.xib */,
@@ -439,6 +444,7 @@
 				279D065E17F1DAAB00586DF7 /* Events */,
 				274E555617F2F4CC00E97A12 /* MasterEventWrapperViewController.h */,
 				274E555717F2F4CC00E97A12 /* MasterEventWrapperViewController.m */,
+				8FE68A2B17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib */,
 				274E555C17F2F52C00E97A12 /* DetailEventWrapperViewController.h */,
 				274E555D17F2F52C00E97A12 /* DetailEventWrapperViewController.m */,
 				274E555E17F2F52C00E97A12 /* DetailEventWrapperViewController.xib */,
@@ -615,6 +621,7 @@
 				279AB6BC17F191490094CE64 /* User.h in Resources */,
 				279AB6D517F191570094CE64 /* users_selected@2x.png in Resources */,
 				279AB6BD17F191490094CE64 /* User.m in Resources */,
+				8FE68A2C17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib in Resources */,
 				279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */,
 				274E90DB17F320F900E97A12 /* editIcon@1x.png in Resources */,
 				279D064D17F1D07900586DF7 /* MessageViewController.xib in Resources */,
@@ -629,6 +636,7 @@
 				279AB6D217F191570094CE64 /* messages_unselected@1x.png in Resources */,
 				279D065517F1DA2400586DF7 /* UsersViewController.xib in Resources */,
 				279AB6B617F191490094CE64 /* EventWrapper.h in Resources */,
+				8FE68A2A17F4DABB00FAD042 /* MasterUserViewController.xib in Resources */,
 				274E90DC17F320F900E97A12 /* editIcon@2x.png in Resources */,
 				8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */,
 				04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */,

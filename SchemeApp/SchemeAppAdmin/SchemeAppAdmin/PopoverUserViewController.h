@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 @protocol PopoverUserDelegate <NSObject>
--(void)dismissPopover;
+@optional
 -(User *)currentUser;
+@required
+-(void)dismissPopover;
 @end
 
 #import <UIKit/UIKit.h>

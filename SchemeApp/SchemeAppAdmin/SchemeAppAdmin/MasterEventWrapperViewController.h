@@ -12,9 +12,7 @@
 @class DetailEventWrapperViewController;
 
 @protocol MasterEventWrapperDelegate <NSObject>
-
 - (void)masterEventWrapperDidSelectEventWrapper:(EventWrapper*)eventWrapper;
-
 @end
 
 

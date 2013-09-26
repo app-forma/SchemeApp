@@ -63,7 +63,6 @@
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-
     return [User stringFromRoleType:[roles[row] intValue]];;
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
@@ -91,5 +90,11 @@
 
 - (IBAction)saveUser:(id)sender {
     [self.delegate dismissPopover];
+    
+    if (self.isInEditingMode) {
+        NSLog(@"PUT");
+    } else {
+        NSLog(@"POST");
+    }
 }
 @end

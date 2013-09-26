@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterUserViewController.h"
+
 @class User;
-@interface DetailUserViewController : UIViewController
+
+@interface DetailUserViewController : UIViewController <MasterUserDelegate, UISplitViewControllerDelegate>
 
 @end

@@ -10,7 +10,7 @@
 #import "MasterUserViewController.h"
 #import "UIButton+CustomButton.h"
 #import "PopoverUserViewController.h"
-@interface DetailUserViewController ()<MasterUserDelegate, PopoverUserDelegate>
+@interface DetailUserViewController ()<PopoverUserDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *roleLabel;
@@ -25,6 +25,22 @@
     PopoverUserViewController *puvc;
     User *currentUser;
 }
+
+
+- (void)splitViewController:(UISplitViewController *)svc
+     willHideViewController:(UIViewController *)aViewController
+          withBarButtonItem:(UIBarButtonItem *)barButtonItem
+       forPopoverController:(UIPopoverController *)pc
+{
+}
+
+
+- (void)splitViewController:(UISplitViewController *)svc
+     willShowViewController:(UIViewController *)aViewController
+  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,20 +59,15 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    addButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"newIcon"] tag:1];
+    /*addButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"newIcon"] tag:1];
     [addButton addTarget:self action:@selector(addNewUser:) forControlEvents:UIControlEventTouchUpInside];
     [addButton setFrame:CGRectMake(500, 24, 50, 50)];
-    [self.view addSubview:addButton];
+    [self.view addSubview:addButton];*/
     
     editButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"editIcon"] tag:2];
     [editButton addTarget:self action:@selector(editUser:) forControlEvents:UIControlEventTouchUpInside];
-    [editButton setFrame:CGRectMake(600, 20, 50, 50)];
+    [editButton setFrame:CGRectMake(338, 40, 50, 50)];
     [self.view addSubview:editButton];
-}
-
-- (void)addNewUser:(id)sender
-{
-    [self showPopover:sender for:@"add"];
 }
 
 - (void)editUser:(id)sender
@@ -71,12 +82,7 @@
 
 -(void)showPopover:(id)sender for:(NSString *)method
 {
-    
-    if ([method isEqualToString:@"edit"]) {
-        puvc.isInEditingMode = YES;
-    } else if ([method isEqualToString:@"add"]) {
-        puvc.isInEditingMode = NO;
-    }
+    puvc.isInEditingMode = YES;
     
     userInfoPopover = [[UIPopoverController alloc] initWithContentViewController:puvc];
     UIButton *senderButton = (UIButton *)sender;
