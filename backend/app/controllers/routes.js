@@ -28,10 +28,10 @@ module.exports = function(app) {
   app.get('/eventWrappers', eventWrappers.index);
   app.get('/eventWrappers/:id', eventWrappers.byId);
   app.get('/eventWrappers-raw/:id', eventWrappers.byIdRaw);
-  app.post('/eventWrappers', eventWrappers.create);  
+  app.post('/eventWrappers', eventWrappers.create, passport.ensureAuthenticated);  
   app.post('/eventWrappers/findbydate', eventWrappers.findByDate);
-  app.put('/eventWrappers/:id', eventWrappers.update);
-  app.del('/eventWrappers/:id', eventWrappers.destroy);
+  app.put('/eventWrappers/:id', eventWrappers.update, passport.ensureAuthenticated);
+  app.del('/eventWrappers/:id', eventWrappers.destroy, passport.ensureAuthenticated);
 
   /* VG
   app.post('/eventWrappers', passport.ensureAuthenticated, passport.ensureAdmin(), eventWrappers.create);
@@ -44,27 +44,27 @@ module.exports = function(app) {
   app.get('/events', events.index);
   app.get('/events/:id', events.byId);
   app.get('/events-raw/:id', events.byIdRaw);
-  app.post('/events', events.create);
-  app.put('/events/:id', events.update);
-  app.del('/events/:id', events.destroy);
+  app.post('/events', events.create, passport.ensureAuthenticated);
+  app.put('/events/:id', events.update, passport.ensureAuthenticated);
+  app.del('/events/:id', events.destroy, passport.ensureAuthenticated);
 
   // Messages
   var messages = require('./messages.js');
   app.get('/messages', messages.index);
   app.get('/messages/:id', messages.byId);
   app.get('/messages-raw/:id', messages.byIdRaw);
-  app.post('/messages', messages.create);
-  app.post('/messages/broadcast', messages.broadcast);
-  app.put('/messages/:id', messages.update);
-  app.del('/messages/:id', messages.destroy);
+  app.post('/messages', messages.create, passport.ensureAuthenticated);
+  app.post('/messages/broadcast', messages.broadcast, passport.ensureAuthenticated);
+  app.put('/messages/:id', messages.update, passport.ensureAuthenticated);
+  app.del('/messages/:id', messages.destroy, passport.ensureAuthenticated);
 
     // Locations
   var locations = require('./locations.js');
   app.get('/locations', locations.index);
   app.get('/locations/:id', locations.byId);
-  app.post('/locations', locations.create);
-  app.put('/locations/:id', locations.update);
-  app.del('/locations/:id', locations.destroy);
+  app.post('/locations', locations.create, passport.ensureAuthenticated);
+  app.put('/locations/:id', locations.update, passport.ensureAuthenticated);
+  app.del('/locations/:id', locations.destroy, passport.ensureAuthenticated);
 
 /* VG
   app.post('/events', passport.ensureAuthenticated, passport.ensureAdmin(), events.create);
