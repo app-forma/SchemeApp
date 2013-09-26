@@ -198,7 +198,9 @@ exports.addAttendance = function (req, res) {
           if (err) {
             res.json(500, err.errors);
           } else {
-            res.json(200, user);
+            res.json(200, {
+              added: true
+            });
           }
         });
       } else {
