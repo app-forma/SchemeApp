@@ -9,11 +9,12 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  UserCtrl.byId(id, function (err, user) {
+  UserCtrl.byEmailPassport(id, function (err, user) {
     done(err, user);
   });
 });
 
+//username == email
 passport.use(new LocalStrategy(function(email, password, done) {
   User.findOne({ email: email }, function(err, user) {
     if (err) { return done(err); }

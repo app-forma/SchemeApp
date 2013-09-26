@@ -64,6 +64,25 @@
      }];
 }
 
+- (void)deleteAttendanceDate:(NSDate *)date forStudent:(User *)student completion:(void (^)(BOOL success))handler
+{
+    NSString *path = [NSString stringWithFormat:@"%@/%@/attendance/%@", DB_TYPE_USER, student.docID, [Helpers dateStringFromNSDate:date]];
+    
+    [Store.dbSessionConnection deletePath:path
+                           withCompletion:^(id responseBody, id response, NSError *error)
+    {
+        if (error)
+        {
+            NSLog(@"[%@] deleteAttendanceDate:forStudent:completion: got response: %@ and error: %@", self.class, response, error.userInfo);
+            handler(NO);
+        }
+        else
+        {
+            handler(YES);
+        }
+    }];
+}
+
 #pragma mark - Event and EventWrappers CRUD
 - (void)createEvent:(Event *)event completion:(completion)handler
 {

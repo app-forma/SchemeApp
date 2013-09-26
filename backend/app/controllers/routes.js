@@ -11,6 +11,11 @@ module.exports = function(app) {
   app.post('/users', users.create);
   app.put('/users/:id', users.update);
   app.del('/users/:id', users.destroy);
+  app.post('/users/login', users.login);
+
+  app.post('/users/:id/attendance/:date', users.addAttendance);
+  app.del('/users/:id/attendance/:date', users.removeAttendance);
+
 
   /* VG
   app.post('/users', passport.ensureAuthenticated, passport.ensureAdmin(), users.create);
@@ -23,7 +28,7 @@ module.exports = function(app) {
   app.get('/eventWrappers', eventWrappers.index);
   app.get('/eventWrappers/:id', eventWrappers.byId);
   app.get('/eventWrappers-raw/:id', eventWrappers.byIdRaw);
-  app.post('/eventWrappers', eventWrappers.create);
+  app.post('/eventWrappers', eventWrappers.create);  
   app.post('/eventWrappers/findbydate', eventWrappers.findByDate);
   app.put('/eventWrappers/:id', eventWrappers.update);
   app.del('/eventWrappers/:id', eventWrappers.destroy);
@@ -69,7 +74,6 @@ module.exports = function(app) {
 
   // Login / logout
   app.get('/logout', users.logout);
-  app.post('/login', users.login);
 
   // Catch all, assume 404
   app.get('/*', function(req, res) {

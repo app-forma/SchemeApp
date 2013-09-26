@@ -8,6 +8,9 @@
 
 #import "DatabaseConnection.h"
 
+@interface DatabaseConnection ()<NSURLSessionTaskDelegate>
+
+@end
 
 @implementation DatabaseConnection
 {
@@ -28,7 +31,7 @@
                                                 @"Content-Type": @"application/json"};
         
         urlSession = [NSURLSession sessionWithConfiguration:sessionConfig
-                                                   delegate:nil
+                                                   delegate:self
                                               delegateQueue:queue];
         
         dbURL = @"http://schemeapp.erikosterberg.com";
@@ -70,6 +73,12 @@
 {
     [self runSessionDataTaskWithRequest:[self requestWithPath:path bodyJSONObject:nil andMethod:@"DELETE"]
                           andCompletion:handler];
+}
+
+#warning EXPERIMENTAL
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
+{
+    NSLog(@"CHALLANGE");
 }
 
 #pragma mark - Extracted methods

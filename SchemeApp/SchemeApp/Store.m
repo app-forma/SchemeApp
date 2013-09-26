@@ -110,6 +110,24 @@
          }
      }];
 }
+
+#warning EXPERIMENTAL
++ (void)sendAuthenticationRequestForEmail:(NSString *)email password:(NSString *)password completion:(void (^)(BOOL success))completion
+{
+    [Store.dbSessionConnection postContent:@{@"email":email, @"password":password} toPath:@"users/login" withCompletion:^(id responseBody, id response, NSError *error) {
+        NSLog(@"RESPONSE BODY: %@", responseBody);
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger statusCode = [httpResponse statusCode];
+        NSLog(@"RESPONSE: %d", statusCode);
+        NSLog(@"ERROR: %@", error);
+        if (statusCode == 200) {
+            completion(YES);
+        } else {
+            completion(NO);            
+        }
+    }];
+}
+
 + (void)fetchLocation
 {
     [Store.dbSessionConnection getPath:DB_TYPE_LOCATION
@@ -125,8 +143,6 @@
              if ([responseBody count])
              {
                  Store.mainStore.currentLocation = [[Location alloc] initWithLocationDictionary:responseBody[0]];
-#warning Testing
-                 NSLog(@"Current location: %@", Store.mainStore.currentLocation.name);
              }
          }
      }];
