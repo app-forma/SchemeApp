@@ -8,6 +8,9 @@
 
 #import "DatabaseConnection.h"
 
+@interface DatabaseConnection ()<NSURLSessionDelegate>
+
+@end
 
 @implementation DatabaseConnection
 {
@@ -70,6 +73,13 @@
 {
     [self runSessionDataTaskWithRequest:[self requestWithPath:path bodyJSONObject:nil andMethod:@"DELETE"]
                           andCompletion:handler];
+}
+
+#pragma mark - NSURLSession delegate
+- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
+ completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
+{
+    NSLog(@"GOT CHALLENGE");
 }
 
 #pragma mark - Extracted methods
