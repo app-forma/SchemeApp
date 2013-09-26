@@ -125,8 +125,6 @@
              if ([responseBody count])
              {
                  Store.mainStore.currentLocation = [[Location alloc] initWithLocationDictionary:responseBody[0]];
-#warning Testing
-                 NSLog(@"Current location: %@", Store.mainStore.currentLocation.name);
              }
          }
      }];
