@@ -10,6 +10,9 @@
 
 @interface AuthViewController ()
 - (IBAction)login:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *loginStatusLabel;
+@property (weak, nonatomic) IBOutlet UITextField *loginEmailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *loginPasswordField;
 
 @end
 
@@ -38,6 +41,8 @@
 
 - (IBAction)login:(id)sender
 {
+    NSLog(@"Email: %@", self.loginEmailTextField.text);
+    NSLog(@"Password: %@", self.loginEmailTextField.text);
     [Store setCurrentUserToUserWithEmail:@"joe@gmail.com"
                              andPassword:nil
                               completion:^(BOOL success)
@@ -55,7 +60,7 @@
                  }];
             }
                         
-            [self.delegate didSuccesfullyLogin];
+            //[self.delegate didSuccesfullyLogin];
         }
         else
         {
