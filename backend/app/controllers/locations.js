@@ -63,23 +63,27 @@ exports.location = function (req, res, next, id) {
  * Update a location
  */
 exports.update = function (req, res) {
-  // Obj can't contain _id. Will generate error.
-  delete req.body._id;
-  Location.update({
-    _id: req.params.id
-  }, req.body, {
-    upsert: true
-  }, function (err, doc) {
-    if (err) {
-      res.json(500, err);
-    } else {
-        // Testar varför jag inte får tillbaka något mer än 200. /Henrik
-        if (!doc) {
-            doc = { success: true };
+    // Obj can't contain _id. Will generate error.
+    delete req.body._id;
+    Location.update({
+        _id: req.params.id
+    }, req.body, {
+        upsert: true
+    }, function (err, doc) {
+        if (err) {
+            res.json(500, err);
+        } else {
+            Location.findOne({
+                _id: req.params.id
+            }).exec(function(err, doc) {
+                    if(err) {
+                        res.json(500, err.errors);
+                    } else {
+                        res.json(200, doc);
+                    }
+                });
         }
-      res.json(200, doc);
-    }
-  });
+    });
 };
 
 /**
