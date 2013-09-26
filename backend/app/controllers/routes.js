@@ -74,7 +74,6 @@ module.exports = function(app) {
 
   // Login / logout
   app.get('/logout', users.logout);
-  app.post('/login', users.login);
 
   // Catch all, assume 404
   app.get('/*', function(req, res) {
