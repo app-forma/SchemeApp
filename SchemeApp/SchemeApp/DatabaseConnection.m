@@ -8,7 +8,7 @@
 
 #import "DatabaseConnection.h"
 
-@interface DatabaseConnection ()<NSURLSessionTaskDelegate>
+@interface DatabaseConnection ()<NSURLSessionDelegate, NSURLSessionTaskDelegate>
 
 @end
 
@@ -24,17 +24,20 @@
     self = [super init];
     if (self)
     {
+        dbURL = @"http://schemeapp.erikosterberg.com";
+        
         queue = [[NSOperationQueue alloc] init];
         
         NSURLSessionConfiguration *sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration;
         sessionConfig.HTTPAdditionalHeaders = @{@"Accept": @"application/json",
                                                 @"Content-Type": @"application/json"};
+        sessionConfig.HTTPShouldSetCookies = YES;
+        sessionConfig.HTTPCookieAcceptPolicy = NSHTTPCookieAcceptPolicyAlways;
         
         urlSession = [NSURLSession sessionWithConfiguration:sessionConfig
                                                    delegate:self
                                               delegateQueue:queue];
         
-        dbURL = @"http://schemeapp.erikosterberg.com";
     }
     return self;
 }
@@ -80,6 +83,12 @@
 {
     NSLog(@"CHALLANGE");
 }
+
+-(void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
+{
+    NSLog(@"CHALLANGE 2");
+}
+
 
 #pragma mark - Extracted methods
 - (NSMutableURLRequest *)requestWithPath:(NSString *)path bodyJSONObject:(id)responseBody andMethod:(NSString *)methodString

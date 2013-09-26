@@ -27,6 +27,14 @@
     return self;
 }
 
+#warning TEST
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.loginEmailTextField.text = @"aa@a.se";
+    self.loginPasswordField.text = @"asdf";
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -41,39 +49,29 @@
 
 - (IBAction)login:(id)sender
 {
-#warning TESTING SET CURRENT USER AFTER LOGIN
-     
-    [Store setCurrentUserToUserWithEmail:@"joe@gmail.com"
-                             andPassword:nil
-                              completion:^(BOOL success)
-    {
-        if (success)
-        {
-            if (Store.mainStore.currentUser.role == StudentRole)
-            {
-                [Store.studentStore addAttendanceCompletion:^(BOOL success)
-                 {
-                     if (!success)
+    [Store sendAuthenticationRequestForEmail:self.loginEmailTextField.text password:self.loginPasswordField.text completion:^(BOOL success, id user) {
+        if (success) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                Store.mainStore.currentUser = [[User alloc] initWithUserDictionary:user];
+
+                if (Store.mainStore.currentUser.role == StudentRole)
+                {
+                    [Store.studentStore addAttendanceCompletion:^(BOOL success)
                      {
-                         NSLog(@"[%@] Could not register attendance for current user %@", self.class, Store.mainStore.currentUser.email);
-                     }
-                 }];
-            }
-            [Store sendAuthenticationRequestForEmail:self.loginEmailTextField.text password:self.loginPasswordField.text completion:^(BOOL success) {
-                if (success) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.delegate didSuccesfullyLogin];
-                    });
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        self.loginStatusLabel.text = @"Invalid credentials, try again";
-                    });
+                         if (!success)
+                         {
+                             NSLog(@"[%@] Could not register attendance for current user %@", self.class, Store.mainStore.currentUser.email);
+                         }
+                     }];
                 }
-            }];
-        }
-        else
-        {
-            NSLog(@"[%@] Could not login.", self.class);
+                
+                [self.delegate didSuccesfullyLogin];                
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.loginStatusLabel.text = @"Invalid credentials, try again";
+            });
         }
     }];
 }

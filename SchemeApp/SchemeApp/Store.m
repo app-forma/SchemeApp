@@ -91,9 +91,13 @@
     return studentStore;
 }
 
+#warning DEPRECATED(SINCE MARCUS ADDED AWESOME CODE 26/9 22:29)
+/**
+ *  LoginController sets currentUser if successful login
+ *  sendAuthenticationRequestForEmail: password: completion:
+ */
 + (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion
 {
-#warning Implement password
     [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/email/%@", DB_TYPE_USER, email]
                             withParams:nil
                          andCompletion:^(id responseBody, id response, NSError *error)
@@ -111,19 +115,16 @@
      }];
 }
 
-#warning EXPERIMENTAL
-+ (void)sendAuthenticationRequestForEmail:(NSString *)email password:(NSString *)password completion:(void (^)(BOOL success))completion
++ (void)sendAuthenticationRequestForEmail:(NSString *)email password:(NSString *)password completion:(authentication)completion
 {
     [Store.dbSessionConnection postContent:@{@"email":email, @"password":password} toPath:@"users/login" withCompletion:^(id responseBody, id response, NSError *error) {
-        NSLog(@"RESPONSE BODY: %@", responseBody);
+        
         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
         NSInteger statusCode = [httpResponse statusCode];
-        NSLog(@"RESPONSE: %d", statusCode);
-        NSLog(@"ERROR: %@", error);
         if (statusCode == 200) {
-            completion(YES);
+            completion(YES, responseBody);
         } else {
-            completion(NO);            
+            completion(NO, nil);
         }
     }];
 }

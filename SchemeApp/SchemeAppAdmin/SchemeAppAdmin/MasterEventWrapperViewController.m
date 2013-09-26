@@ -10,7 +10,7 @@
 #import "EventWrapper.h"
 #import "PopoverEventWrapperViewController.h"
 
-@interface MasterEventWrapperViewController () <UITableViewDelegate>
+@interface MasterEventWrapperViewController () <UITableViewDelegate, PopoverEventWrapperDelegate>
 {
     NSMutableArray *eventWrappers;
     UIPopoverController *addEventWrapperPopover;
@@ -52,6 +52,7 @@
 {
     [super viewDidLoad];
     pewvc = [[PopoverEventWrapperViewController alloc] init];
+    pewvc.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,6 +119,11 @@
     addEventWrapperPopover = [[UIPopoverController alloc] initWithContentViewController:pewvc];
     [addEventWrapperPopover setPopoverContentSize:CGSizeMake(300, 400)];
     [addEventWrapperPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
+-(void)dismissPopover
+{
+    [addEventWrapperPopover dismissPopoverAnimated:YES];
 }
 
 @end
