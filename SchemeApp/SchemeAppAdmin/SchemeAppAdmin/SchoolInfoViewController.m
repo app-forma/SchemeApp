@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @end
 
@@ -65,9 +66,30 @@
     }
 }
 
+- (IBAction)delete:(id)sender
+{
+    if (currentLocation)
+    {
+        [Store.adminStore deleteLocation:currentLocation
+                              completion:^(BOOL success)
+        {
+            if (success)
+            {
+                currentLocation = nil;
+            }
+            else
+            {
+                [[[UIAlertView alloc] initWithTitle:@"Deletion error"
+                                            message:@"Current location could not be deleted at the moment, please try again later."
+                                           delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil] show];
+            }
+        }];
+    }
+}
 - (IBAction)save:(id)sender
 {
-#warning Implement
     BOOL inputsNotEmpty = self.nameTextField.text.length != 0 && self.mapAnnotation;
     
     if (inputsNotEmpty)

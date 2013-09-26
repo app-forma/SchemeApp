@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SchoolInfoViewController">
             <connections>
+                <outlet property="deleteButton" destination="uGQ-v9-bZi" id="L8i-70-18m"/>
                 <outlet property="mapView" destination="Z31-ev-Sil" id="j5H-cP-z3m"/>
                 <outlet property="nameTextField" destination="5RP-4R-tEJ" id="q8E-zR-Ti9"/>
                 <outlet property="saveButton" destination="5VS-DY-BKK" id="RL2-hq-66H"/>
@@ -43,6 +44,17 @@
                     </state>
                     <connections>
                         <action selector="save:" destination="-1" eventType="touchUpInside" id="iLf-ZD-oSI"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGQ-v9-bZi">
+                    <rect key="frame" x="648" y="41" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Delete">
+                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="delete:" destination="-1" eventType="touchUpInside" id="d3r-2B-6Y8"/>
                     </connections>
                 </button>
             </subviews>

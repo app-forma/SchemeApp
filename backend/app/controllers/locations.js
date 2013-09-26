@@ -96,7 +96,7 @@ exports.destroy = function (req, res) {
     if (err) {
       res.json(500, err.errors);
     } else {
-      res.json(200);
+      res.json(200, { "deleted": true });
     }
   });
 };
