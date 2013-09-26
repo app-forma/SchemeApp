@@ -18,7 +18,7 @@
     UIAlertView *startedMonitoringForRegion;
 }
 
--(void)setCenterForRegion:(CLLocationCoordinate2D)center;
+- (void)setCenterForRegion:(CLLocationCoordinate2D)center;
 
 @end
 

@@ -47,7 +47,6 @@
 		27BCC21717E201EE009977BB /* courses_unselected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC21617E201EE009977BB /* courses_unselected@1x.png */; };
 		27BCC21A17E24304009977BB /* EventWrapperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC21917E24304009977BB /* EventWrapperCell.m */; };
 		27CECEAA17EB22A7004522C0 /* AdminEventWrapperTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CECEA917EB22A7004522C0 /* AdminEventWrapperTableViewController.m */; };
-		2BA0F02C13F44B069424EEB9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC99216210684512B293A9D8 /* libPods.a */; };
 		4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC5DD817E1EFAD0032C92F /* MessageCell.m */; };
 		4DED32BF17E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED32B817E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m */; };
 		4DED32C017E993F7008A5D3A /* AdminMessagesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED32BA17E993F7008A5D3A /* AdminMessagesDetailViewController.m */; };
@@ -60,6 +59,7 @@
 		8F5D541B17F2029C0096C7EA /* WhatToReadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D541A17F2029C0096C7EA /* WhatToReadCell.m */; };
 		AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
 		AF05FD3D17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
+		AF1FE93117F47CB1005D54E5 /* StudentAutomaticPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1FE93017F47CB1005D54E5 /* StudentAutomaticPresence.m */; };
 		AF2551F017E04628006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F117E04629006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7817DF0FE900DC2DEC /* AdminStore.m */; };
@@ -184,9 +184,10 @@
 		8F5D541717F1BCE70096C7EA /* StudentWhatToReadMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentWhatToReadMainViewController.m; sourceTree = "<group>"; };
 		8F5D541917F2029C0096C7EA /* WhatToReadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhatToReadCell.h; sourceTree = "<group>"; };
 		8F5D541A17F2029C0096C7EA /* WhatToReadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhatToReadCell.m; sourceTree = "<group>"; };
-		AC99216210684512B293A9D8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF05FD3A17E71638004A5B01 /* AdminEditStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEditStudentViewController.h; sourceTree = "<group>"; };
 		AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEditStudentViewController.m; sourceTree = "<group>"; };
+		AF1FE92F17F47CB1005D54E5 /* StudentAutomaticPresence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudentAutomaticPresence.h; path = SchemeApp/StudentAutomaticPresence.h; sourceTree = "<group>"; };
+		AF1FE93017F47CB1005D54E5 /* StudentAutomaticPresence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StudentAutomaticPresence.m; path = SchemeApp/StudentAutomaticPresence.m; sourceTree = "<group>"; };
 		AF2551F617E04883006EDD02 /* SuperAdminStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperAdminStore.h; sourceTree = "<group>"; };
 		AF2551F717E04883006EDD02 /* SuperAdminStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperAdminStore.m; sourceTree = "<group>"; };
 		AF301B7717DF0FE900DC2DEC /* AdminStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdminStore.h; sourceTree = "<group>"; };
@@ -220,7 +221,6 @@
 		AFE538ED17E0972C00C0B776 /* StudentMessageDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentMessageDetailsViewController.h; sourceTree = "<group>"; };
 		AFE538EE17E0972C00C0B776 /* StudentMessageDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentMessageDetailsViewController.m; sourceTree = "<group>"; };
 		AFE538EF17E0972C00C0B776 /* StudentStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StudentStoryboard.storyboard; sourceTree = "<group>"; };
-		C3A8AE02C30B439C96244CB9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,7 +231,6 @@
 				0493B52C17DDF80C003B3D23 /* CoreGraphics.framework in Frameworks */,
 				0493B52E17DDF80C003B3D23 /* UIKit.framework in Frameworks */,
 				0493B52A17DDF80C003B3D23 /* Foundation.framework in Frameworks */,
-				2BA0F02C13F44B069424EEB9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,11 +267,12 @@
 		0493B51D17DDF80C003B3D23 = {
 			isa = PBXGroup;
 			children = (
+				AF1FE92F17F47CB1005D54E5 /* StudentAutomaticPresence.h */,
+				AF1FE93017F47CB1005D54E5 /* StudentAutomaticPresence.m */,
 				0493B52F17DDF80C003B3D23 /* SchemeApp */,
 				0493B52817DDF80C003B3D23 /* Frameworks */,
 				0493B52717DDF80C003B3D23 /* Products */,
 				0493B54817DDF80C003B3D23 /* SchemeAppTests */,
-				C3A8AE02C30B439C96244CB9 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -292,7 +292,6 @@
 				0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */,
 				0493B52D17DDF80C003B3D23 /* UIKit.framework */,
 				0493B54217DDF80C003B3D23 /* XCTest.framework */,
-				AC99216210684512B293A9D8 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -529,11 +528,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0493B55217DDF80C003B3D23 /* Build configuration list for PBXNativeTarget "SchemeApp" */;
 			buildPhases = (
-				D8E453B9FF6D486A9E6ECF2C /* Check Pods Manifest.lock */,
 				0493B52217DDF80C003B3D23 /* Sources */,
 				0493B52317DDF80C003B3D23 /* Frameworks */,
 				0493B52417DDF80C003B3D23 /* Resources */,
-				B09351AD050A4D33A86C10E0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -638,37 +635,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		B09351AD050A4D33A86C10E0 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-		};
-		D8E453B9FF6D486A9E6ECF2C /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		0493B52217DDF80C003B3D23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -700,6 +666,7 @@
 				AFE538F017E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */,
 				4DED32C217E993F7008A5D3A /* SearchCell.m in Sources */,
 				AFE3E54B17F212FD00586321 /* SelectedEventWrapperEventsViewController.m in Sources */,
+				AF1FE93117F47CB1005D54E5 /* StudentAutomaticPresence.m in Sources */,
 				AF8CD8FA17E850C8004551F8 /* AdminTabBarViewController.m in Sources */,
 				4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */,
 				8F5D541517F1BACE0096C7EA /* StudentWhatToReadTableViewController.m in Sources */,
