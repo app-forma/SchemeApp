@@ -192,8 +192,8 @@ exports.addAttendance = function (req, res) {
     if (err) {
       res.json(500, err.errors);
     } else {
-      if (req.params.attendance) {
-        user.attendances.push(req.params.attendance);
+      if (req.params.date) {
+        user.attendances.push(req.params.date);
         user.save(function (err) {
           if (err) {
             res.json(500, err.errors);
@@ -219,11 +219,11 @@ exports.removeAttendance = function (req, res) {
     if (err) {
       res.json(500, err.errors);
     } else {
-      console.log(req.params.attendance);
-      if (req.params.attendance) {
+      console.log(req.params.date);
+      if (req.params.date) {
         var deletions = 0;
-        user.attendances.forEach(function (attendance, i) {
-          if (attendance === req.params.attendance) {
+        user.attendances.forEach(function (date, i) {
+          if (date === req.params.date) {
             user.attendances.splice(i, 1);
             deletions++;
           }

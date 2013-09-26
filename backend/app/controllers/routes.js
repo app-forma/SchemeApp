@@ -12,8 +12,8 @@ module.exports = function(app) {
   app.put('/users/:id', users.update);
   app.del('/users/:id', users.destroy);
 
-  app.post('/users/:id/addattendance/:attendance', users.addAttendance);
-  app.del('/users/:id/removeattendance/:attendance', users.removeAttendance);
+  app.post('/users/:id/attendance/:date', users.addAttendance);
+  app.del('/users/:id/attendance/:date', users.removeAttendance);
 
 
   /* VG
