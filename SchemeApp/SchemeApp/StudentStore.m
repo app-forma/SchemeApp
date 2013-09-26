@@ -58,4 +58,37 @@
      }];
 }
 
+- (void)addAttendanceCompletion:(void (^)(BOOL))handler
+{
+    NSString *dateString = [Helpers dateStringFromNSDate:NSDate.date];
+    NSString *latestAttendanceDateString = [NSUserDefaults.standardUserDefaults objectForKey:@"latestAttendance"];
+    BOOL attendanceForTodayNotSent = ![latestAttendanceDateString isEqualToString:dateString];
+    
+    if (Store.mainStore.currentUser && attendanceForTodayNotSent)
+    {
+        [NSUserDefaults.standardUserDefaults setObject:dateString forKey:@"latestAttendance"];
+        
+        NSString *path = [NSString stringWithFormat:@"%@/%@/attendance/%@", DB_TYPE_USER, Store.mainStore.currentUser.docID, dateString];
+        [Store.dbSessionConnection postContent:nil
+                                        toPath:path
+                                withCompletion:^(id responseBody, id response, NSError *error)
+         {
+             if (error)
+             {
+                 NSLog(@"[%@] addAttendanceCompletion: got response: %@ and error: %@", self.class, response, error.userInfo);
+                 handler(NO);
+             }
+             else
+             {
+                 handler(YES);
+             }
+         }];
+    }
+    else
+    {
+        NSLog(@"[%@] Could not add attendance because current user was not set.", self.class);
+        handler(NO);
+    }
+}
+
 @end
