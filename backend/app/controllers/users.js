@@ -12,8 +12,8 @@ var mongoose = require('mongoose'),
 /**
  * List of users
  */
-exports.index = function(req, res) {
-  User.list(function(err, users) {
+exports.index = function (req, res) {
+  User.list(function (err, users) {
     if (err) return res.json(500, err.errors);
     res.json(200, users);
   });
@@ -22,8 +22,8 @@ exports.index = function(req, res) {
 /**
  * Find item by id
  */
-exports.user = function(req, res, next, id) {
-  User.load(id, function(err, user) {
+exports.user = function (req, res, next, id) {
+  User.load(id, function (err, user) {
     if (err) return next(err);
     if (!user) return next(new Error('Failed to load user ' + id));
     req.user = user;
@@ -31,12 +31,12 @@ exports.user = function(req, res, next, id) {
   });
 };
 
-exports.create = function(req, res) {
+exports.create = function (req, res) {
   console.log(req.body);
   var user = new User(req.body);
   if (typeof req.body.password === 'string') {
     user.password = Helpers.generateCryptoPassword(user.password);
-    user.saveToDisk(user, function(err, user) {
+    user.saveToDisk(user, function (err, user) {
       if (err) {
         console.log(err);
         res.json(500, err.errors);
@@ -55,21 +55,21 @@ exports.create = function(req, res) {
 /**
  * Update a user
  */
-exports.update = function(req, res) {
+exports.update = function (req, res) {
   // Obj can't contain _id. Will generate error.
   delete req.body._id;
   User.update({
     _id: req.params.id
   }, req.body, {
     upsert: true
-  }, function(err, doc) {
+  }, function (err, doc) {
     if (err) {
       res.json(500, err);
     } else {
       User.findOne({
         _id: req.params.id
       }).populate('eventWrappers').populate('messages')
-        .exec(function(err, doc) {
+        .exec(function (err, doc) {
           if (err) {
             res.json(500, err.errors);
           } else {
@@ -83,10 +83,10 @@ exports.update = function(req, res) {
 /**
  * Delete a user
  */
-exports.destroy = function(req, res) {
+exports.destroy = function (req, res) {
   User.remove({
     _id: req.params.id
-  }, function(err) {
+  }, function (err) {
     if (err) {
       res.json(500, err.errors);
     } else {
@@ -98,11 +98,11 @@ exports.destroy = function(req, res) {
 /**
  * User by id
  */
-exports.byId = function(req, res) {
+exports.byId = function (req, res) {
   User.findOne({
     _id: req.params.id
   }).populate('eventWrappers').populate('messages')
-    .exec(function(err, doc) {
+    .exec(function (err, doc) {
       if (err) {
         res.json(500, err.errors);
       } else {
@@ -111,10 +111,10 @@ exports.byId = function(req, res) {
     });
 };
 
-exports.byIdRaw = function(req, res) {
+exports.byIdRaw = function (req, res) {
   User.findOne({
     _id: req.params.id
-  }).exec(function(err, doc) {
+  }).exec(function (err, doc) {
     if (err) {
       res.json(500, err.errors);
     } else {
@@ -122,12 +122,12 @@ exports.byIdRaw = function(req, res) {
     }
   });
 };
-var populateMessagesToUser = function(messages, callback) {
+var populateMessagesToUser = function (messages, callback) {
   Message.find({
     _id: {
       $in: messages
     }
-  }).populate('from').exec(function(err, doc) {
+  }).populate('from').exec(function (err, doc) {
     if (err) {
       callback(null, err);
     } else {
@@ -136,12 +136,12 @@ var populateMessagesToUser = function(messages, callback) {
   });
 
 };
-var populateEventWrappersToUser = function(eventWrappers, callback) {
+var populateEventWrappersToUser = function (eventWrappers, callback) {
   EventWrapper.find({
     _id: {
       $in: eventWrappers
     }
-  }).populate('owner').populate('events').exec(function(err, doc) {
+  }).populate('owner').populate('events').exec(function (err, doc) {
     if (err) {
       callback(null, e);
     } else {
@@ -150,23 +150,23 @@ var populateEventWrappersToUser = function(eventWrappers, callback) {
     }
   });
 };
-exports.byEmail = function(req, res) {
+exports.byEmail = function (req, res) {
   User.findOne({
     email: req.params.email
   }).populate('messages').populate('eventWrappers')
-    .exec(function(err, doc) {
+    .exec(function (err, doc) {
       if (err) {
         res.json(500, err.errors);
       } else {
         if (doc !== null) {
-          populateEventWrappersToUser(doc.eventWrappers, function(evntwrps, e) {
+          populateEventWrappersToUser(doc.eventWrappers, function (evntwrps, e) {
             if (e) {
               console.log(e);
             } else {
               doc.eventWrappers = evntwrps;
             }
             if (doc.messages.length > 0) {
-              populateMessagesToUser(doc.messages, function(msgs, err) {
+              populateMessagesToUser(doc.messages, function (msgs, err) {
                 if (err) {
                   console.log(err);
                 } else {
@@ -185,28 +185,92 @@ exports.byEmail = function(req, res) {
     });
 };
 
+exports.addAttendance = function (req, res) {
+  User.findOne({
+    _id: req.params.id
+  }).exec(function (err, user) {
+    if (err) {
+      res.json(500, err.errors);
+    } else {
+      if (req.body.attendance) {
+        user.attendances.push(req.body.attendance);
+        user.save(function (err) {
+          if (err) {
+            res.json(500, err.errors);
+          } else {
+            res.json(200, user);
+          }
+        });
+      } else {
+        res.json(500, {
+          error: "invalid data"
+        });
+      }
+    }
+  });
+};
+
+exports.removeAttendance = function (req, res) {
+  User.findOne({
+    _id: req.params.id
+  }).exec(function (err, user) {
+    if (err) {
+      res.json(500, err.errors);
+    } else {
+      console.log(req.params.attendance);
+      if (req.params.attendance) {
+        var deletions = 0;
+        user.attendances.forEach(function (attendance, i) {
+          if (attendance === req.params.attendance) {
+            user.attendances.splice(i, 1);
+            deletions++;
+          }
+        });
+        user.save(function (err) {
+          if (err) {
+            res.json(500, err.errors);
+          } else if (deletions > 0) {
+            res.json(200, {
+              deletions: deletions
+            });
+          } else {
+            res.json(500, {
+              error: "no deletions"
+            });
+          }
+        });
+      } else {
+        res.json(500, {
+          error: "invalid data"
+        });
+      }
+    }
+  });
+};
+
+
 /**
  *   Compare test to hashed password
  */
-exports.comparePasswords = function(password, passwordHash) {
+exports.comparePasswords = function (password, passwordHash) {
   return Helpers.validateCryptoPassword(password, passwordHash);
 };
 
 /**
  *   Authentication
  */
-exports.login = function(req, res, next) {
+exports.login = function (req, res, next) {
   user = req.body;
   user.username = req.body.email;
-  passport.authenticate('local', function(err, user, info) {
+  passport.authenticate('local', function (err, user, info) {
     if (err) {
-      return next(err)
+      return next(err);
     }
     if (!user) {
       req.session.messages = [info.message];
       return res.send(401);
     }
-    req.logIn(user, function(err) {
+    req.logIn(user, function (err) {
       if (err) {
         return next(err);
       }
@@ -215,7 +279,7 @@ exports.login = function(req, res, next) {
   })(req, res, next);
 };
 
-exports.logout = function(req, res) {
+exports.logout = function (req, res) {
   req.logout();
   res.send(200);
 };

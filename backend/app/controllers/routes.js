@@ -12,6 +12,10 @@ module.exports = function(app) {
   app.put('/users/:id', users.update);
   app.del('/users/:id', users.destroy);
 
+  app.post('/users/:id/addattendance', users.addAttendance);
+  app.del('/users/:id/removeattendance/:attendance', users.removeAttendance);
+
+
   /* VG
   app.post('/users', passport.ensureAuthenticated, passport.ensureAdmin(), users.create);
   app.put('/users/:id', passport.ensureAuthenticated, passport.ensureAdmin(), users.update);
