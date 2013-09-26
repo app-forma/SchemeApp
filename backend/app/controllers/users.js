@@ -267,6 +267,14 @@ exports.comparePasswords = function (password, passwordHash) {
 /**
  *   Authentication
  */
+exports.byEmailPassport = function (email, cb) {
+    User.findOne({
+        email: email
+    }).exec(function (err, doc) {
+            cb(err. doc)
+        });
+    };
+
 exports.login = function (req, res, next) {
     user = req.body;
     user.username = req.body.email;
