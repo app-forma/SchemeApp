@@ -64,25 +64,34 @@
     NSString *latestAttendanceDateString = [NSUserDefaults.standardUserDefaults objectForKey:@"latestAttendance"];
     BOOL attendanceForTodayNotSent = ![latestAttendanceDateString isEqualToString:dateString];
     
-    if (Store.mainStore.currentUser && attendanceForTodayNotSent)
+    if (Store.mainStore.currentUser)
     {
-        [NSUserDefaults.standardUserDefaults setObject:dateString forKey:@"latestAttendance"];
-        
-        NSString *path = [NSString stringWithFormat:@"%@/%@/attendance/%@", DB_TYPE_USER, Store.mainStore.currentUser.docID, dateString];
-        [Store.dbSessionConnection postContent:nil
-                                        toPath:path
-                                withCompletion:^(id responseBody, id response, NSError *error)
-         {
-             if (error)
+        if (attendanceForTodayNotSent)
+        {
+            [NSUserDefaults.standardUserDefaults setObject:dateString forKey:@"latestAttendance"];
+            
+            NSString *path = [NSString stringWithFormat:@"%@/%@/attendance/%@", DB_TYPE_USER, Store.mainStore.currentUser.docID, dateString];
+            
+            [Store.dbSessionConnection postContent:nil
+                                            toPath:path
+                                    withCompletion:^(id responseBody, id response, NSError *error)
              {
-                 NSLog(@"[%@] addAttendanceCompletion: got response: %@ and error: %@", self.class, response, error.userInfo);
-                 handler(NO);
-             }
-             else
-             {
-                 handler(YES);
-             }
-         }];
+                 if (error)
+                 {
+                     NSLog(@"[%@] addAttendanceCompletion: got response: %@ and error: %@", self.class, response, error.userInfo);
+                     handler(NO);
+                 }
+                 else
+                 {
+                     handler(YES);
+                 }
+             }];
+        }
+        else
+        {
+            NSLog(@"[%@] Attendance has allready been set.", self.class);
+            handler(YES);
+        }
     }
     else
     {
