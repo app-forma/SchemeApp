@@ -192,8 +192,8 @@ exports.addAttendance = function (req, res) {
     if (err) {
       res.json(500, err.errors);
     } else {
-      if (req.body.attendance) {
-        user.attendances.push(req.body.attendance);
+      if (req.params.attendance) {
+        user.attendances.push(req.params.attendance);
         user.save(function (err) {
           if (err) {
             res.json(500, err.errors);
