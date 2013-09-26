@@ -22,6 +22,7 @@
 
 @implementation SchoolInfoViewController
 {
+    Location *currentLocation;
     MKPointAnnotation *currentLocationAnnotation;
 }
 
@@ -29,7 +30,9 @@
 {
     [super viewDidLoad];
     
-    if (Store.mainStore.currentLocation)
+    currentLocation = Store.mainStore.currentLocation;
+    
+    if (currentLocation)
     {
         [self setInputsToCurrentLocation];
     }
@@ -41,7 +44,7 @@
 
 - (IBAction)addCurrentLocationAnnotation:(UITapGestureRecognizer*)recognizer
 {
-    if (!self.mapHasAnnotation)
+    if (!self.mapAnnotation)
     {
         CLLocationCoordinate2D coordinate;
         if (recognizer)
@@ -51,8 +54,8 @@
         }
         else
         {
-            coordinate = CLLocationCoordinate2DMake(Store.mainStore.currentLocation.latitude.doubleValue,
-                                                    Store.mainStore.currentLocation.longitude.doubleValue);
+            coordinate = CLLocationCoordinate2DMake(currentLocation.latitude.doubleValue,
+                                                    currentLocation.longitude.doubleValue);
         }
         
         MKPointAnnotation *pa = [[MKPointAnnotation alloc] init];
@@ -65,7 +68,44 @@
 - (IBAction)save:(id)sender
 {
 #warning Implement
+    BOOL inputsNotEmpty = self.nameTextField.text.length != 0 && self.mapAnnotation;
     
+    if (inputsNotEmpty)
+    {
+        if (currentLocation)
+        {
+            currentLocation.name = self.nameTextField.text;
+            currentLocation.latitude = [NSNumber numberWithDouble:self.mapAnnotation.coordinate.latitude];
+            currentLocation.longitude = [NSNumber numberWithDouble:self.mapAnnotation.coordinate.longitude];
+            
+            [Store.adminStore updateLocation:currentLocation
+                                  completion:^(Location *location)
+             {
+                 [self setCurrentLocationTo:location];
+             }];
+        }
+        else
+        {
+            Location *location = [[Location alloc] init];
+            location.name = self.nameTextField.text;
+            location.latitude = [NSNumber numberWithDouble:self.mapAnnotation.coordinate.latitude];
+            location.longitude = [NSNumber numberWithDouble:self.mapAnnotation.coordinate.longitude];
+            
+            [Store.adminStore createLocation:location
+                                  completion:^(Location *location)
+             {
+                 [self setCurrentLocationTo:location];
+             }];
+        }
+    }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Input error"
+                                    message:@"Please make sure all inputs are valid"
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
+    }
 }
 
 #pragma mark - MKMapViewDelegate
@@ -77,8 +117,7 @@
 }
 - (void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered
 {
-#warning Testing
-//    [self addCurrentLocationAnnotation:nil];
+    [self addCurrentLocationAnnotation:nil];
 }
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
@@ -95,13 +134,9 @@
 }
 
 #pragma mark - Queries
-- (BOOL)mapHasAnnotation
-{
-    return self.mapView.annotations.count > 0;
-}
 - (id <MKAnnotation>)mapAnnotation
 {
-    if (self.mapHasAnnotation)
+    if (self.mapView.annotations.count > 0)
     {
         return self.mapView.annotations[0];
     }
@@ -118,10 +153,25 @@
 }
 - (void)setInputsToCurrentLocation
 {
-    self.nameTextField.text = Store.mainStore.currentLocation.name;
-    [self.mapView setRegion:[self regionForCoordinate:CLLocationCoordinate2DMake(Store.mainStore.currentLocation.latitude.doubleValue,
-                                                                                 Store.mainStore.currentLocation.longitude.doubleValue)]
+    self.nameTextField.text = currentLocation.name;
+    [self.mapView setRegion:[self regionForCoordinate:CLLocationCoordinate2DMake(currentLocation.latitude.doubleValue,
+                                                                                 currentLocation.longitude.doubleValue)]
                    animated:YES];
+}
+- (void)setCurrentLocationTo:(Location *)location
+{
+    if (location)
+    {
+        currentLocation = location;
+    }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Update error"
+                                    message:@"Current location could not be saved at the moment, please try again later."
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
+    }
 }
 
 @end
