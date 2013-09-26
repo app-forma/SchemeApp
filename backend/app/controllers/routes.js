@@ -25,7 +25,7 @@ module.exports = function(app) {
 
   // EventWrapper routes
   var eventWrappers = require('./eventWrappers.js');
-  app.get('/eventWrappers', eventWrappers.index, passport.ensureAuthenticated);
+  app.get('/eventWrappers', eventWrappers.index);
   app.get('/eventWrappers/:id', eventWrappers.byId);
   app.get('/eventWrappers-raw/:id', eventWrappers.byIdRaw);
   app.post('/eventWrappers', eventWrappers.create);  
