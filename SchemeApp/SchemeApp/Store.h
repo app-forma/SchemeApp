@@ -14,6 +14,8 @@
 #import "StudentStore.h"
 #import "AFNetworking.h"
 
+typedef void (^authentication)(BOOL success, id user);
+
 @class User, AFNetworking, SuperAdminStore, StudentStore, AdminStore, Message, Location;
 
 
@@ -31,6 +33,6 @@
 
 + (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion;
 + (void)fetchLocation;
-+ (void)sendAuthenticationRequestForEmail:(NSString *)email password:(NSString *)password completion:(void (^)(BOOL success))completion;
++ (void)sendAuthenticationRequestForEmail:(NSString *)email password:(NSString *)password completion:(authentication)completion;
 
 @end
