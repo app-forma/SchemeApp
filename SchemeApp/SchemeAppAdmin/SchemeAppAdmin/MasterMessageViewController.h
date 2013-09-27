@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterMessageViewController : UITableViewController
+@interface MasterMessageViewController : UIViewController
+
+
+
+
 
 @end

@@ -28,7 +28,7 @@ module.exports = function(app) {
   app.get('/eventWrappers', eventWrappers.index);
   app.get('/eventWrappers/:id', eventWrappers.byId);
   app.get('/eventWrappers-raw/:id', eventWrappers.byIdRaw);
-  app.post('/eventWrappers', eventWrappers.create, passport.ensureAuthenticated);  
+  app.post('/eventWrappers', eventWrappers.create, passport.ensureAuthenticated);
   app.post('/eventWrappers/findbydate', eventWrappers.findByDate);
   app.put('/eventWrappers/:id', eventWrappers.update, passport.ensureAuthenticated);
   app.del('/eventWrappers/:id', eventWrappers.destroy, passport.ensureAuthenticated);

@@ -271,9 +271,9 @@ exports.byEmailPassport = function (email, cb) {
     User.findOne({
         email: email
     }).exec(function (err, doc) {
-            cb(err, doc)
-        });
-    };
+        cb(err, doc)
+    });
+};
 
 exports.login = function (req, res, next) {
     user = req.body;
@@ -289,7 +289,16 @@ exports.login = function (req, res, next) {
             if (err) {
                 return next(err);
             }
-            return res.json(200, user);
+            User.findOne({
+                _id: user._id
+            }).exec(function (err, doc) {
+                if (err) {
+                    res.json(500, err.errors);
+                } else {
+                    res.json(200, doc);
+                }
+            });
+            //return res.json(200, user);
         });
     })(req, res, next);
 };
