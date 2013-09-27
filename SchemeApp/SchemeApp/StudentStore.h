@@ -21,7 +21,7 @@
 
 - (void)messageWithDocID:(NSString *)docID completion:(void (^)(Message *message))completion;
 
-- (void)messagesForUser:(User*)user completion:(void (^)(NSArray *messages))handler;
+- (void)messagesForUser:(User*)user completion:(void (^)(NSArray *messagesForUser))handler;
 
 - (void)addAttendanceCompletion:(void (^)(BOOL success))handler;
 

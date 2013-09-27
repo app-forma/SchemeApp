@@ -28,28 +28,14 @@ exports.message = function (req, res, next, id) {
 };
 
 exports.create = function (req, res) {
-  if (req.body.receivers && req.body.receivers instanceof Array) {
-    var message = new Message(req.body);
-    message.saveToDisk(message, function (err, message) {
-      if (err) {
-        res.json(500, err.errors);
-      } else {
-        respondPopulatedMessageWithId(message._id, res);
-        User.find({
-          '_id': {
-            $in: req.body.receivers
-          }
-        }, function (err, users) {
-          users.forEach(function (user) {
-            user.messages.push(message._id);
-            user.save();
-          });
-        });
-      }
-    });
-  } else {
-    res.send(500);
-  }
+  var message = new Message(req.body);
+  message.saveToDisk(message, function (err, message) {
+    if (err) {
+      res.json(500, err.errors);
+    } else {
+      respondPopulatedMessageWithId(message._id, res);
+    }
+  });
 };
 
 exports.update = function (req, res) {
@@ -93,15 +79,17 @@ exports.byId = function (req, res) {
 };
 
 exports.forUser = function (req, res) {
-    User.findOne({
-        _id: req.params.id
-    }).populate('messages').exec(function (err, doc) {
-        if (err) {
-            res.json(500, err.errors);
-        } else {
-            res.json(200, doc.messages);
-        }
-    });
+  Message.find({
+    req.params.id: {
+      $in: receivers
+    }
+  }).populate('messages').exec(function (err, doc) {
+    if (err) {
+      res.json(500, err.errors);
+    } else {
+      res.json(200, doc.messages);
+    }
+  });
 };
 
 

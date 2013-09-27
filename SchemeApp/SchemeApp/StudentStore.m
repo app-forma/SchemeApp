@@ -58,9 +58,26 @@
      }];
 }
 
-- (void)messagesForUser:(User*)user completion:(void (^)(NSArray *messages))handler
+- (void)messagesForUser:(User*)user completion:(void (^)(NSArray *messagesForUser))handler
 {
-    [Store dbSessionConnection]getPath:[NSString stringWithFormat:@"%@/%@", ] withParams: andCompletion:<#^(id responseBody, id response, NSError *error)handler#>
+    [[Store dbSessionConnection]getPath:[NSString stringWithFormat:@"%@/%@/%@", DB_TYPE_MESSAGE, @"foruser", [Store mainStore].currentUser.docID] withParams:nil andCompletion:^(id responseBody, id response, NSError *error) {
+        if (error)
+        {
+            NSLog(@"messagesForUser:completion: got response: %@ and error: %@", response, error.userInfo);
+            handler(nil);
+        }
+        else
+        {
+            NSArray *jsonMessages = (NSArray *)responseBody;
+            NSMutableArray *messages = [NSMutableArray new];
+            for (NSDictionary *jsonMessage in jsonMessages) {
+                [messages addObject:[[Message alloc]initWithMsgDictionary:jsonMessage]];
+            }
+#warning implement set currentuser messages here???
+            //[Store mainStore].currentUser.messages = messages; ???
+            handler(messages);
+        }
+    }];
 }
 
 

@@ -24,9 +24,10 @@
 {
     [super viewDidLoad];
 
-    messages = [Store mainStore].currentUser.messages;
-//    messages = [Store studentStore]
-    NSLog(@"Messages: %@", messages);
+    [[Store studentStore]messagesForUser:[Store mainStore].currentUser completion:^(NSArray *messagesForUser) {
+        messages = [messagesForUser mutableCopy];
+    }];
+    
 }
 
 #pragma mark - Table view data source
