@@ -78,17 +78,6 @@
                           andCompletion:handler];
 }
 
-#warning EXPERIMENTAL
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
-{
-    NSLog(@"CHALLANGE");
-}
-
--(void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
-{
-    NSLog(@"CHALLANGE 2");
-}
-
 
 #pragma mark - Extracted methods
 - (NSMutableURLRequest *)requestWithPath:(NSString *)path bodyJSONObject:(id)responseBody andMethod:(NSString *)methodString
