@@ -26,8 +26,7 @@ var MessageSchema = new Schema({
     },
     receivers: [{
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+        ref: 'User'
     }]
 });
 
