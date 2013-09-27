@@ -19,7 +19,7 @@
     return [NSDate dateStringFromNSDate:self];
 }
 
-
+#warning MOST OF THIS IS UNTOUCHED! THIS NEEDS TO BE LOOKED THROUGH AND REFACTORED!!!! /Erik
 
 #pragma mark - Date helpers
 +(NSDate*)dateFromString:(NSString*)string

@@ -10,6 +10,7 @@
 
 @interface NSDate (Helpers)
 
+
 -(NSString *)asString;
 -(NSString *)asDateString;
 

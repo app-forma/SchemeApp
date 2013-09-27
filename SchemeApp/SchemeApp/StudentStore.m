@@ -9,6 +9,7 @@
 #import "StudentStore.h"
 #import "EventWrapper.h"
 #import "Message.h"
+#import "NSDate+Helpers.h"
 
 
 @implementation StudentStore
@@ -84,7 +85,7 @@
 
 - (void)addAttendanceCompletion:(void (^)(BOOL))handler
 {
-    NSString *dateString = [Helpers dateStringFromNSDate:NSDate.date];
+    NSString *dateString = NSDate.date.asDateString;
     NSString *latestAttendanceDateString = [NSUserDefaults.standardUserDefaults objectForKey:@"latestAttendance"];
     BOOL attendanceForTodayNotSent = ![latestAttendanceDateString isEqualToString:dateString];
     

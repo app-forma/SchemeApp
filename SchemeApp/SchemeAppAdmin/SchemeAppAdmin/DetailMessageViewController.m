@@ -45,7 +45,7 @@
 {
     self.navItem.title = [NSString stringWithFormat:@"Message from %@", message.from.firstname];
     self.fromLabel.text = [message.from fullName];
-//    self.dateLabel.text = [NSDate d]
+    self.dateLabel.text = [message.date asDateString];
     self.textView.text = message.text;
 }
 

@@ -12,7 +12,7 @@
 #import "User.h"
 #import "Message.h"
 #import "Location.h"
-
+#import "NSDate+Helpers.h"
 
 @implementation AdminStore
 
@@ -66,7 +66,7 @@
 
 - (void)deleteAttendanceDate:(NSDate *)date forStudent:(User *)student completion:(void (^)(BOOL success))handler
 {
-    NSString *path = [NSString stringWithFormat:@"%@/%@/attendance/%@", DB_TYPE_USER, student.docID, [Helpers dateStringFromNSDate:date]];
+    NSString *path = [NSString stringWithFormat:@"%@/%@/attendance/%@", DB_TYPE_USER, student.docID, date.asDateString];
     
     [Store.dbSessionConnection deletePath:path
                            withCompletion:^(id responseBody, id response, NSError *error)
