@@ -92,7 +92,6 @@ exports.forUser = function (req, res) {
   });
 };
 
-
 exports.byIdRaw = function (req, res) {
   Message.findOne({
     _id: req.params.id
@@ -107,15 +106,14 @@ exports.byIdRaw = function (req, res) {
 
 exports.broadcast = function (req, res) {
   var message = new Message(req.body);
-  message.saveToDisk(message, function (err, message) {
-    respondPopulatedMessageWithId(message._id, res);
-    User.find({
-      'role': 'student'
-    }, function (err, docs) {
-      docs.forEach(function (user, i) {
-        user.messages.push(message._id);
-        user.save();
-      });
+  User.find({
+    'role': 'student'
+  }, function (err, users) {
+    users.forEach(function (user, i) {
+      message.receivers.push(user._id);
+    });
+    message.saveToDisk(message, function (err, message) {
+      respondPopulatedMessageWithId(message._id, res);
     });
   });
 };
