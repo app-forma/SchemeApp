@@ -105,6 +105,7 @@ exports.byIdRaw = function (req, res) {
 };
 
 exports.broadcast = function (req, res) {
+  req.body.receivers = [];
   User.find({
     'role': 'student'
   }, function (err, users) {
