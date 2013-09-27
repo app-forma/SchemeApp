@@ -289,17 +289,7 @@ exports.login = function (req, res, next) {
             if (err) {
                 return next(err);
             }
-            User.findOne({
-                _id: user._id
-            }).populate('messages')
-            .exec(function (err, doc) {
-                if (err) {
-                    res.json(500, err.errors);
-                } else {
-                    res.json(200, doc);
-                }
-            });
-            //return res.json(200, user);
+            return res.json(200, user);
         });
     })(req, res, next);
 };

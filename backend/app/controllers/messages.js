@@ -92,6 +92,19 @@ exports.byId = function (req, res) {
   respondPopulatedMessageWithId(req.params.id, res);
 };
 
+exports.forUser = function (req, res) {
+    User.findOne({
+        _id: req.params.id
+    }).populate('messages').exec(function (err, doc) {
+        if (err) {
+            res.json(500, err.errors);
+        } else {
+            res.json(200, doc.messages);
+        }
+    });
+};
+
+
 exports.byIdRaw = function (req, res) {
   Message.findOne({
     _id: req.params.id
