@@ -83,11 +83,11 @@ exports.forUser = function (req, res) {
     "receivers": {
       $in: [req.params.id]
     }
-  }).populate('from').exec(function (err, doc) {
+  }).populate('from').exec(function (err, docs) {
     if (err) {
       res.json(500, err.errors);
     } else {
-      res.json(200, doc.messages);
+      res.json(200, docs);
     }
   });
 };
