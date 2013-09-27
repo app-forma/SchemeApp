@@ -253,16 +253,10 @@
          }
      }];
 }
-- (void)sendMessage:(Message *)message toUsers:(NSArray *)users completion:(void (^)(Message *message))handler
+- (void)sendMessage:(Message *)message completion:(void (^)(Message *message))handler
 {
     NSMutableDictionary *jsonMessage = [NSMutableDictionary dictionaryWithDictionary:message.asDictionary];
-    
-    NSMutableArray *receivers = [NSMutableArray new];
-    for (User *user in users) {
-        [receivers addObject:user.docID];
-    }
-    [jsonMessage setObject:receivers forKey:@"receivers"];
-    
+
     [Store.dbSessionConnection postContent:jsonMessage
                                     toPath:DB_TYPE_MESSAGE
                             withCompletion:^(id responseBody, id response, NSError *error)

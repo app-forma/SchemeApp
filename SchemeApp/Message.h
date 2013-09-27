@@ -16,6 +16,7 @@
 @property (nonatomic, copy) NSDate *date;
 @property (nonatomic, copy) NSString *text;
 
++ (id)messageWithText:(NSString*)text receivers:(NSArray *)receivers;
 - (NSDictionary *)asDictionary;
 - (id)initWithMsgDictionary:(NSDictionary *)msgDictionary;
 

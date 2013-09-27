@@ -82,7 +82,12 @@
 		279D065A17F1DA3E00586DF7 /* EventWrappersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D065817F1DA3E00586DF7 /* EventWrappersViewController.xib */; };
 		279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */; };
 		279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */; };
+		4D757A8A17F6195E007255E1 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A8917F6195E007255E1 /* SearchCell.m */; };
+		4D757A8D17F6196C007255E1 /* ReceiverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A8C17F6196C007255E1 /* ReceiverCell.m */; };
 		4DF2615E17F5C69900983735 /* MasterMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2615D17F5C69900983735 /* MasterMessageViewController.xib */; };
+		4DF2616017F6078900983735 /* DetailMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2615F17F6078900983735 /* DetailMessageViewController.xib */; };
+		4DF2616417F607B900983735 /* CreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2616217F607B900983735 /* CreateMessageViewController.m */; };
+		4DF2616717F6083200983735 /* CreateMessage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2616617F6083200983735 /* CreateMessage.storyboard */; };
 		8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */; };
 		8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */; };
 		8FE68A2A17F4DABB00FAD042 /* MasterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE68A2917F4DABB00FAD042 /* MasterUserViewController.xib */; };
@@ -190,7 +195,15 @@
 		279D066C17F1DCEE00586DF7 /* SchoolInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolInfoViewController.h; sourceTree = "<group>"; };
 		279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolInfoViewController.m; sourceTree = "<group>"; };
 		279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolInfoViewController.xib; sourceTree = "<group>"; };
+		4D757A8817F6195E007255E1 /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
+		4D757A8917F6195E007255E1 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
+		4D757A8B17F6196C007255E1 /* ReceiverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverCell.h; sourceTree = "<group>"; };
+		4D757A8C17F6196C007255E1 /* ReceiverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverCell.m; sourceTree = "<group>"; };
 		4DF2615D17F5C69900983735 /* MasterMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterMessageViewController.xib; sourceTree = "<group>"; };
+		4DF2615F17F6078900983735 /* DetailMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailMessageViewController.xib; sourceTree = "<group>"; };
+		4DF2616117F607B900983735 /* CreateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMessageViewController.h; sourceTree = "<group>"; };
+		4DF2616217F607B900983735 /* CreateMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMessageViewController.m; sourceTree = "<group>"; };
+		4DF2616617F6083200983735 /* CreateMessage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateMessage.storyboard; sourceTree = "<group>"; };
 		8F12E85717F3261B00FCEDCE /* PopoverEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverEventWrapperViewController.h; sourceTree = "<group>"; };
 		8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverEventWrapperViewController.m; sourceTree = "<group>"; };
 		8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverEventWrapperViewController.xib; sourceTree = "<group>"; };
@@ -421,6 +434,14 @@
 				4DF2615D17F5C69900983735 /* MasterMessageViewController.xib */,
 				274E556117F2F54C00E97A12 /* DetailMessageViewController.h */,
 				274E556217F2F54C00E97A12 /* DetailMessageViewController.m */,
+				4DF2615F17F6078900983735 /* DetailMessageViewController.xib */,
+				4DF2616117F607B900983735 /* CreateMessageViewController.h */,
+				4DF2616217F607B900983735 /* CreateMessageViewController.m */,
+				4DF2616617F6083200983735 /* CreateMessage.storyboard */,
+				4D757A8817F6195E007255E1 /* SearchCell.h */,
+				4D757A8917F6195E007255E1 /* SearchCell.m */,
+				4D757A8B17F6196C007255E1 /* ReceiverCell.h */,
+				4D757A8C17F6196C007255E1 /* ReceiverCell.m */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -606,6 +627,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				279AB6E417F1920E0094CE64 /* Validation.m in Resources */,
+				4DF2616017F6078900983735 /* DetailMessageViewController.xib in Resources */,
 				279AB6D117F191570094CE64 /* messages_selected@2x.png in Resources */,
 				279AB6B717F191490094CE64 /* EventWrapper.m in Resources */,
 				279AB65A17F18C200094CE64 /* InfoPlist.strings in Resources */,
@@ -616,6 +638,7 @@
 				279AB6E517F1920E0094CE64 /* AFNetworking.h in Resources */,
 				279AB6E617F1920E0094CE64 /* AFNetworking.m in Resources */,
 				274E90DD17F320F900E97A12 /* newIcon@1x.png in Resources */,
+				4DF2616717F6083200983735 /* CreateMessage.storyboard in Resources */,
 				274E556017F2F52C00E97A12 /* DetailEventWrapperViewController.xib in Resources */,
 				4DF2615E17F5C69900983735 /* MasterMessageViewController.xib in Resources */,
 				279AB6D717F191570094CE64 /* users_unselected@2x.png in Resources */,
@@ -686,6 +709,7 @@
 				279AB69417F190300094CE64 /* AdminStore.m in Sources */,
 				279AB65C17F18C200094CE64 /* main.m in Sources */,
 				8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */,
+				4D757A8D17F6196C007255E1 /* ReceiverCell.m in Sources */,
 				274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */,
 				279AB69717F190300094CE64 /* SuperAdminStore.m in Sources */,
 				274E555F17F2F52C00E97A12 /* DetailEventWrapperViewController.m in Sources */,
@@ -695,7 +719,9 @@
 				279AB69517F190300094CE64 /* DatabaseConnection.m in Sources */,
 				274E556A17F2F58F00E97A12 /* DetailUserViewController.m in Sources */,
 				274E555B17F2F4E800E97A12 /* MasterMessageViewController.m in Sources */,
+				4D757A8A17F6195E007255E1 /* SearchCell.m in Sources */,
 				04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */,
+				4DF2616417F607B900983735 /* CreateMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

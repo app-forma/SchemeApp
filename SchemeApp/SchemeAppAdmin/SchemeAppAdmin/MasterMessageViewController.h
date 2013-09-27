@@ -11,7 +11,4 @@
 @interface MasterMessageViewController : UIViewController
 
 
-
-
-
 @end

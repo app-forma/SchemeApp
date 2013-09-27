@@ -1,9 +1,9 @@
 //
 //  ReceiverCell.h
-//  SchemeApp
+//  SchemeAppAdmin
 //
-//  Created by Erik Österberg on 2013-09-17.
-//  Copyright (c) 2013 Team leet. All rights reserved.
+//  Created by Erik Österberg on 2013-09-27.
+//  Copyright (c) 2013 Marcus Norling. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

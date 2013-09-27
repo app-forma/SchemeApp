@@ -7,8 +7,9 @@
 //
 
 #import "MasterMessageViewController.h"
+#import "CreateMessageViewController.h"
 
-@interface MasterMessageViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MasterMessageViewController () <UITableViewDataSource, UITableViewDelegate, CreateMessageViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -17,8 +18,8 @@
 @implementation MasterMessageViewController
 {
     NSMutableArray *messages;
+    UIPopoverController *createMessagePopover;
 }
-
 
 - (void)viewDidLoad
 {
@@ -34,7 +35,6 @@
 }
 
 #pragma mark - Table view data source
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return messages.count;
@@ -48,16 +48,31 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     Message *message = messages[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [message.from name], [Helpers dateStringFromNSDate:message.date]];
-    cell.detailTextLabel.text = message.text;
-    
+    cell.textLabel.text = [message.from name];
+    cell.detailTextLabel.text = message.text;   
     
     return cell;
 }
 
 
 - (IBAction)didPressAdd:(id)sender {
-    
+    UIStoryboard *createMessageStoryboard = [UIStoryboard storyboardWithName:@"CreateMessage" bundle:nil];
+    CreateMessageViewController *createMessageView = [createMessageStoryboard instantiateInitialViewController];
+    createMessageView.delegate = self;
+    createMessagePopover = [[UIPopoverController alloc] initWithContentViewController:createMessageView];
+    [createMessagePopover setPopoverContentSize:CGSizeMake(300, 500)];
+    [createMessagePopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
+-(void)didCreateMessage
+{
+    [createMessagePopover dismissPopoverAnimated:YES];
+}
+
+-(void)didCreateAndGetMessage:(Message *)message
+{
+    [messages addObject:message];
+    [createMessagePopover dismissPopoverAnimated:YES];
 }
 
 /*
