@@ -26,6 +26,7 @@
 
     [[Store studentStore]messagesForUser:[Store mainStore].currentUser completion:^(NSArray *messagesForUser) {
         messages = [messagesForUser mutableCopy];
+        NSLog(@"%@", messages);
     }];
     
 }

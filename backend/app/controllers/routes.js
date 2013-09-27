@@ -56,7 +56,7 @@ module.exports = function(app) {
   app.get('/messages-raw/:id', messages.byIdRaw);
   app.post('/messages', messages.create, passport.ensureAuthenticated);
   app.post('/messages/broadcast', messages.broadcast);
-  app.put('/messages/:id', messages.update, passport.ensureAuthenticated);
+  app.put('/messages/:id', messages.update);
   app.del('/messages/:id', messages.destroy, passport.ensureAuthenticated);
 
     // Locations
