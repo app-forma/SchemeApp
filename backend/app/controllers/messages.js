@@ -79,17 +79,17 @@ exports.byId = function (req, res) {
 };
 
 exports.forUser = function (req, res) {
-  /*Message.find({
-    "_id": {
-      $in: receivers
+  Message.find({
+    "receivers": {
+      $in: [req.params.id]
     }
-  }).populate('messages').exec(function (err, doc) {
+  }).populate('from').exec(function (err, doc) {
     if (err) {
       res.json(500, err.errors);
     } else {
       res.json(200, doc.messages);
     }
-  });*/
+  });
 };
 
 
