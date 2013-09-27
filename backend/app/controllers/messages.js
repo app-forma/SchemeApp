@@ -111,6 +111,7 @@ exports.broadcast = function (req, res) {
     users.forEach(function (user) {
       req.body.receivers.push(user._id);
     });
+    console.log(req.body);
     var message = new Message(req.body);
     message.saveToDisk(message, function (err, message) {
       respondPopulatedMessageWithId(message._id, res);
