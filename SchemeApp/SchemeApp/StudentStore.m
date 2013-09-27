@@ -58,6 +58,13 @@
      }];
 }
 
+- (void)messagesForUser:(User*)user completion:(void (^)(NSArray *messages))handler
+{
+    [Store dbSessionConnection]getPath:[NSString stringWithFormat:@"%@/%@", ] withParams: andCompletion:<#^(id responseBody, id response, NSError *error)handler#>
+}
+
+
+
 - (void)addAttendanceCompletion:(void (^)(BOOL))handler
 {
     NSString *dateString = [Helpers dateStringFromNSDate:NSDate.date];
