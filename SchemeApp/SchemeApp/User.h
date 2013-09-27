@@ -34,6 +34,6 @@ firstname:(NSString *)firstname
 
 - (NSString *)fullName;
 
-- (NSString *)roleTypeAsString;
+- (NSString *)roleAsString;
 
 @end

@@ -108,7 +108,7 @@
     return [NSString stringWithFormat:@"%@ %@", self.firstname, self.lastname];
 }
 
--(NSString *)roleTypeAsString
+-(NSString *)roleAsString
 {
     return [User stringFromRoleType:self.role];
 }

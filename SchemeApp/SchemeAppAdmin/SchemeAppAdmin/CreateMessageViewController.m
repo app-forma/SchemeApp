@@ -117,7 +117,7 @@
     cell.accessoryType = section == RECIPIENTS_SECTION ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     cell.backgroundColor = section == SUGGESTIONS_SECTION ? lightGrayColor : whiteColor;
     cell.nameLabel.text = [user fullName];
-    cell.roleLabel.text = [user roleTypeAsString];
+    cell.roleLabel.text = [user roleAsString];
     return cell;
 }
 
