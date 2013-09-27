@@ -159,12 +159,14 @@
     
     Message *message = [Message messageWithText:self.textView.text receivers:receivers];
     
+    NSLog(@"RECEIVERS: %@, USERS: %@", receivers, users);
+    
     if (self.messageTypeControl.selectedSegmentIndex == MESSAGE_TYPE) {
         [[Store adminStore]sendMessage:message completion:^(Message *message) {
-            [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                NSPredicate *containsUser = [NSPredicate predicateWithFormat:@"self.email matches %@", [Store mainStore].currentUser.email];
+            NSPredicate *containsUser = [NSPredicate predicateWithFormat:@"self.email matches %@", [Store mainStore].currentUser.email];
+            dispatch_async(dispatch_get_main_queue(), ^{
                 [receivers filteredArrayUsingPredicate:containsUser].count > 0 ? [self.delegate didCreateAndGetMessage:message] : [self.delegate didCreateMessage];
-            }];
+            });
         }];
     } else {
         message.receiverIDs = [NSMutableArray new]; //handled automatically by backend
