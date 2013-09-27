@@ -24,8 +24,8 @@
 {
     [super viewDidLoad];
 
-    //messages = [Store mainStore].currentUser.messages;
-    messages = [Store studentStore]
+    messages = [Store mainStore].currentUser.messages;
+//    messages = [Store studentStore]
     NSLog(@"Messages: %@", messages);
 }
 

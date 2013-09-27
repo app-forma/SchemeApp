@@ -291,7 +291,8 @@ exports.login = function (req, res, next) {
             }
             User.findOne({
                 _id: user._id
-            }).exec(function (err, doc) {
+            }).populate('messages')
+            .exec(function (err, doc) {
                 if (err) {
                     res.json(500, err.errors);
                 } else {
