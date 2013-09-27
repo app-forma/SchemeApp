@@ -79,8 +79,8 @@ exports.byId = function (req, res) {
 };
 
 exports.forUser = function (req, res) {
-  Message.find({
-    req.params.id: {
+  /*Message.find({
+    "_id": {
       $in: receivers
     }
   }).populate('messages').exec(function (err, doc) {
@@ -89,7 +89,7 @@ exports.forUser = function (req, res) {
     } else {
       res.json(200, doc.messages);
     }
-  });
+  });*/
 };
 
 
