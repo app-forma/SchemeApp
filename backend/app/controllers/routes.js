@@ -52,7 +52,7 @@ module.exports = function(app) {
   var messages = require('./messages.js');
   app.get('/messages', messages.index);
   app.get('/messages/:id', messages.byId);
-  app.get('messagesforuser/:id', messages.forUser);
+  app.get('/messagesforuser/:id', messages.forUser);
   app.get('/messages-raw/:id', messages.byIdRaw);
   app.post('/messages', messages.create, passport.ensureAuthenticated);
   app.post('/messages/broadcast', messages.broadcast, passport.ensureAuthenticated);
