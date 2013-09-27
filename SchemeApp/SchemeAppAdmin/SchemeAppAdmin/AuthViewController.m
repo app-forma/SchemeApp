@@ -52,8 +52,6 @@
     [Store sendAuthenticationRequestForEmail:self.loginEmailTextField.text password:self.loginPasswordField.text completion:^(BOOL success, id user) {
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                
-                Store.mainStore.currentUser = [[User alloc] initWithUserDictionary:user];
 
                 if (Store.mainStore.currentUser.role == StudentRole)
                 {

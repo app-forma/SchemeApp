@@ -122,6 +122,7 @@
         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
         NSInteger statusCode = [httpResponse statusCode];
         if (statusCode == 200) {
+            Store.mainStore.currentUser = [[User alloc] initWithUserDictionary:responseBody];
             completion(YES, responseBody);
         } else {
             completion(NO, nil);
