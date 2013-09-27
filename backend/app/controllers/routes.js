@@ -28,7 +28,7 @@ module.exports = function(app) {
   app.get('/eventWrappers', eventWrappers.index);
   app.get('/eventWrappers/:id', eventWrappers.byId);
   app.get('/eventWrappers-raw/:id', eventWrappers.byIdRaw);
-  app.post('/eventWrappers', eventWrappers.create, passport.ensureAuthenticated);  
+  app.post('/eventWrappers', eventWrappers.create, passport.ensureAuthenticated);
   app.post('/eventWrappers/findbydate', eventWrappers.findByDate);
   app.put('/eventWrappers/:id', eventWrappers.update, passport.ensureAuthenticated);
   app.del('/eventWrappers/:id', eventWrappers.destroy, passport.ensureAuthenticated);
@@ -52,10 +52,11 @@ module.exports = function(app) {
   var messages = require('./messages.js');
   app.get('/messages', messages.index);
   app.get('/messages/:id', messages.byId);
+  app.get('/messages/foruser/:id', messages.forUser);
   app.get('/messages-raw/:id', messages.byIdRaw);
   app.post('/messages', messages.create, passport.ensureAuthenticated);
-  app.post('/messages/broadcast', messages.broadcast, passport.ensureAuthenticated);
-  app.put('/messages/:id', messages.update, passport.ensureAuthenticated);
+  app.post('/messages/broadcast', messages.broadcast);
+  app.put('/messages/:id', messages.update);
   app.del('/messages/:id', messages.destroy, passport.ensureAuthenticated);
 
     // Locations

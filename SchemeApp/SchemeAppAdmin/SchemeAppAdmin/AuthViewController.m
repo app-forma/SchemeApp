@@ -33,6 +33,8 @@
     [super viewWillAppear:animated];
     self.loginEmailTextField.text = @"aa@a.se";
     self.loginPasswordField.text = @"asdf";
+
+
 }
 
 - (void)viewDidLoad

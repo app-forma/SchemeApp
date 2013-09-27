@@ -61,7 +61,6 @@
         self.lastname = lastname;
         self.email = email;
         self.password = password;
-        self.messages = [NSMutableArray new];
         self.eventWrappers = [NSMutableArray new];
     }
     return  self;
@@ -74,14 +73,6 @@
                       lastname:[userDictionary objectForKey:@"lastname"]
                          email:[userDictionary objectForKey:@"email"]
                       password:[userDictionary objectForKey:@"password"]];
-#warning Testing
-    for (id messageDictionary in userDictionary[@"messages"])
-    {
-        if ([messageDictionary isKindOfClass:NSDictionary.class])
-        {
-            [self.messages addObject:[[Message alloc] initWithMsgDictionary:messageDictionary]];
-        }
-    }
     
     for (id eventWrapper in userDictionary[@"eventWrappers"])
     {
@@ -102,15 +93,10 @@
 {
     NSMutableDictionary *jsonUser = [[NSMutableDictionary alloc]init];
     
-    NSMutableArray *userMessages = [[NSMutableArray alloc]init];
-    for (Message *message in self.messages) {
-        [userMessages addObject:message.docID];
-    }
     NSMutableArray *userEventWrappers = [[NSMutableArray alloc]init];
     for (EventWrapper *eventWrapper in userEventWrappers) {
         [userEventWrappers addObject:eventWrapper.docID];
     }
-    [jsonUser setValue:userMessages forKey:@"messages"];
     [jsonUser setValue:userEventWrappers forKey:@"eventWrappers"];
     [jsonUser setValue:[User stringFromRoleType:self.role] forKey:@"role"];
     [jsonUser setValue:self.firstname forKey:@"firstname"];

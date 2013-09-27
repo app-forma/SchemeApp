@@ -85,7 +85,34 @@
 {
     return currentEventWrapper;
 }
+-(void)saveOrUpdateEventWrapper:(EventWrapper *)eventWrapper for:(NSString *)method
+{
+    NSLog(@"%@", eventWrapper);
+//    void(^saveHandler)(void) = ^(void)
+//    {
+//        [NSOperationQueue.mainQueue addOperationWithBlock:^
+//         {
+//             [self.navigationController popViewControllerAnimated:YES];
+//         }];
+//    };
+//    
+//    if ([method isEqualToString:@"POST"]) {
+//        [Store.adminStore createEventWrapper:eventWrapper
+//                                  completion:^(id jsonObject, id response, NSError *error)
+//         {
+//             saveHandler();
+//         }];
+//    }else if ([method isEqualToString:@"PUT"]){
+//        [Store.adminStore updateEventWrapper:eventWrapper
+//                                  completion:^(id jsonObject, id response, NSError *error)
+//         {
+//             saveHandler();
+//         }];
+//    }
+    
 
+    
+}
 -(void)showPopover:(id)sender
 {
     

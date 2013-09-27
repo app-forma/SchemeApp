@@ -379,6 +379,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Messages" image="messages_unselected.png" id="qEF-VG-dhV"/>
                     <navigationItem key="navigationItem" id="4RE-HV-fWO"/>
+                    <connections>
+                        <outlet property="tableView" destination="KOI-Kh-LRB" id="ZP8-rd-vZl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eil-bY-Wg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

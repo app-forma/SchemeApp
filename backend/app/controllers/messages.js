@@ -28,28 +28,14 @@ exports.message = function (req, res, next, id) {
 };
 
 exports.create = function (req, res) {
-  if (req.body.receivers && req.body.receivers instanceof Array) {
-    var message = new Message(req.body);
-    message.saveToDisk(message, function (err, message) {
-      if (err) {
-        res.json(500, err.errors);
-      } else {
-        respondPopulatedMessageWithId(message._id, res);
-        User.find({
-          '_id': {
-            $in: req.body.receivers
-          }
-        }, function (err, users) {
-          users.forEach(function (user) {
-            user.messages.push(message._id);
-            user.save();
-          });
-        });
-      }
-    });
-  } else {
-    res.send(500);
-  }
+  var message = new Message(req.body);
+  message.saveToDisk(message, function (err, message) {
+    if (err) {
+      res.json(500, err.errors);
+    } else {
+      respondPopulatedMessageWithId(message._id, res);
+    }
+  });
 };
 
 exports.update = function (req, res) {
@@ -92,6 +78,20 @@ exports.byId = function (req, res) {
   respondPopulatedMessageWithId(req.params.id, res);
 };
 
+exports.forUser = function (req, res) {
+  Message.find({
+    "receivers": {
+      $in: [req.params.id]
+    }
+  }).populate('from').exec(function (err, docs) {
+    if (err) {
+      res.json(500, err.errors);
+    } else {
+      res.json(200, docs);
+    }
+  });
+};
+
 exports.byIdRaw = function (req, res) {
   Message.findOne({
     _id: req.params.id
@@ -105,16 +105,17 @@ exports.byIdRaw = function (req, res) {
 };
 
 exports.broadcast = function (req, res) {
-  var message = new Message(req.body);
-  message.saveToDisk(message, function (err, message) {
-    respondPopulatedMessageWithId(message._id, res);
-    User.find({
-      'role': 'student'
-    }, function (err, docs) {
-      docs.forEach(function (user, i) {
-        user.messages.push(message._id);
-        user.save();
-      });
+  req.body.receivers = [];
+  User.find({
+    'role': 'student'
+  }, function (err, users) {
+    users.forEach(function (user) {
+      req.body.receivers.push(user._id);
+    });
+    console.log(req.body);
+    var message = new Message(req.body);
+    message.saveToDisk(message, function (err, message) {
+      respondPopulatedMessageWithId(message._id, res);
     });
   });
 };

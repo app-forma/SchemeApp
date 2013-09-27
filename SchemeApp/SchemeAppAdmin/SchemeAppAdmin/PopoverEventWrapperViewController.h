@@ -9,8 +9,10 @@
 @protocol PopoverEventWrapperDelegate <NSObject>
 @optional
 -(EventWrapper *)currentEventWrapper;
+-(void)saveOrUpdateEventWrapper:(EventWrapper *)eventWrapper for:(NSString *)method;
 @required
 -(void)dismissPopover;
+
 @end
 
 #import <UIKit/UIKit.h>

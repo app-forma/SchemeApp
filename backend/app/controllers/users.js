@@ -5,7 +5,6 @@ var mongoose = require('mongoose'),
     Helpers = require('../../helpers.js'),
     User = mongoose.model('User'),
     EventWrapper = mongoose.model('EventWrapper'),
-    Message = mongoose.model('Message'),
     passport = require('passport');
 
 
@@ -68,7 +67,7 @@ exports.update = function (req, res) {
         } else {
             User.findOne({
                 _id: req.params.id
-            }).populate('eventWrappers').populate('messages')
+            }).populate('eventWrappers')
                 .exec(function (err, doc) {
                     if (err) {
                         res.json(500, err.errors);
@@ -101,7 +100,7 @@ exports.destroy = function (req, res) {
 exports.byId = function (req, res) {
     User.findOne({
         _id: req.params.id
-    }).populate('eventWrappers').populate('messages')
+    }).populate('eventWrappers')
         .exec(function (err, doc) {
             if (err) {
                 res.json(500, err.errors);
@@ -122,20 +121,7 @@ exports.byIdRaw = function (req, res) {
         }
     });
 };
-var populateMessagesToUser = function (messages, callback) {
-    Message.find({
-        _id: {
-            $in: messages
-        }
-    }).populate('from').exec(function (err, doc) {
-        if (err) {
-            callback(null, err);
-        } else {
-            callback(doc, null);
-        }
-    });
 
-};
 var populateEventWrappersToUser = function (eventWrappers, callback) {
     EventWrapper.find({
         _id: {
@@ -153,7 +139,7 @@ var populateEventWrappersToUser = function (eventWrappers, callback) {
 exports.byEmail = function (req, res) {
     User.findOne({
         email: req.params.email
-    }).populate('messages').populate('eventWrappers')
+    }).populate('eventWrappers')
         .exec(function (err, doc) {
             if (err) {
                 res.json(500, err.errors);
@@ -165,18 +151,7 @@ exports.byEmail = function (req, res) {
                         } else {
                             doc.eventWrappers = evntwrps;
                         }
-                        if (doc.messages.length > 0) {
-                            populateMessagesToUser(doc.messages, function (msgs, err) {
-                                if (err) {
-                                    console.log(err);
-                                } else {
-                                    doc.messages = msgs;
-                                    res.json(200, doc);
-                                }
-                            });
-                        } else {
-                            res.json(200, doc);
-                        }
+                        res.json(200, doc);
                     });
                 } else {
                     res.send(404);
@@ -271,9 +246,9 @@ exports.byEmailPassport = function (email, cb) {
     User.findOne({
         email: email
     }).exec(function (err, doc) {
-            cb(err, doc)
-        });
-    };
+        cb(err, doc);
+    });
+};
 
 exports.login = function (req, res, next) {
     user = req.body;

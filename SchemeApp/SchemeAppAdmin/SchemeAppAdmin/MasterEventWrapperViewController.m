@@ -10,7 +10,7 @@
 #import "EventWrapper.h"
 #import "PopoverEventWrapperViewController.h"
 
-@interface MasterEventWrapperViewController () <UITableViewDelegate, PopoverEventWrapperDelegate>
+@interface MasterEventWrapperViewController () <UITableViewDelegate>
 {
     NSMutableArray *eventWrappers;
     UIPopoverController *addEventWrapperPopover;
