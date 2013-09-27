@@ -95,7 +95,7 @@
 
     self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
     self.emailLabel.text = user.email;
-    self.roleLabel.text = [User stringFromRoleType:user.role];
+    self.roleLabel.text = [user roleTypeAsString];
     currentUser = user;
     
 }

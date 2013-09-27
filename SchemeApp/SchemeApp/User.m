@@ -21,7 +21,7 @@
     else if ([roleString isEqualToString:@"admin"])
     {
         return AdminRole;
-    }    
+    }
     return StudentRole;
 }
 
@@ -110,13 +110,7 @@
 
 -(NSString *)roleTypeAsString
 {
-    switch (self.role) {
-        case StudentRole:
-            return @"student";
-        case AdminRole:
-            return @"admin";
-    }
-    return @"superadmin";
+    return [User stringFromRoleType:self.role];
 }
 
 @end
