@@ -35,10 +35,15 @@
     
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected"]];
     
-    messages = Store.mainStore.currentUser.messages;
-    
     self.navigationItem.title = @"Messages";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddMessage)];
+
+    [[Store studentStore]messagesForUser:[Store mainStore].currentUser completion:^(NSArray *messagesForUser) {
+        messages = [messagesForUser mutableCopy];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated {

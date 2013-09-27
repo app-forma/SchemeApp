@@ -15,6 +15,7 @@
 #import "StudentAutomaticPresence.h"
 
 @interface StudentMessageViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -34,7 +35,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    messages = Store.mainStore.currentUser.messages;
+    [[Store studentStore]messagesForUser:[Store mainStore].currentUser completion:^(NSArray *messagesForUser) {
+        messages = messagesForUser;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
+    
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected.png"]];
     self.navigationItem.title = @"Messages";
     
