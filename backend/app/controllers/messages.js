@@ -105,13 +105,13 @@ exports.byIdRaw = function (req, res) {
 };
 
 exports.broadcast = function (req, res) {
-  var message = new Message(req.body);
   User.find({
     'role': 'student'
   }, function (err, users) {
-    users.forEach(function (user, i) {
-      message.receivers.push(user._id);
+    users.forEach(function (user) {
+      req.body.receivers.push(user._id);
     });
+    var message = new Message(req.body);
     message.saveToDisk(message, function (err, message) {
       respondPopulatedMessageWithId(message._id, res);
     });
