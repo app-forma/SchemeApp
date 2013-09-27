@@ -18,6 +18,13 @@
     [jsonMessage setObject:self.text forKey:@"text"];
     [jsonMessage setObject:[Helpers stringFromNSDate:self.date] forKey:@"date"];
     [jsonMessage setObject:self.from.docID forKey:@"from"];
+
+    NSMutableArray *receiverIDs = [NSMutableArray new];
+    for (NSString *receiverID in self.receiverIDs) {
+        [receiverIDs addObject:receiverID];
+    }
+    [jsonMessage setObject:receiverIDs forKey:@"receivers"];
+    
     if (self.docID) {
         [jsonMessage setObject:self.docID forKey:@"_id"];
     }    
@@ -31,6 +38,9 @@
         self.from = [[User alloc]initWithUserDictionary:msgDictionary[@"from"]];
         self.date = [Helpers dateFromString:msgDictionary[@"date"]];
         self.text = msgDictionary[@"text"];
+        for (NSString *receiverID in msgDictionary[@"receivers"]) {
+            [self.receiverIDs addObject:receiverID];
+        }
     }
     return self;
 }

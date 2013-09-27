@@ -12,6 +12,7 @@
 
 @property (nonatomic, readonly) NSString *docID;
 @property (nonatomic, strong) User *from;
+@property (nonatomic, strong) NSMutableArray *receiverIDs;
 @property (nonatomic, copy) NSDate *date;
 @property (nonatomic, copy) NSString *text;
 

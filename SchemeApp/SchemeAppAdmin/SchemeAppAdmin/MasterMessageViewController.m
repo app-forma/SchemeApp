@@ -26,7 +26,9 @@
 
     [[Store studentStore]messagesForUser:[Store mainStore].currentUser completion:^(NSArray *messagesForUser) {
         messages = [messagesForUser mutableCopy];
-        NSLog(@"%@", messages);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
     }];
     
 }
@@ -41,10 +43,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
     Message *message = messages[indexPath.row];
-    cell.textLabel.text = message.text;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [message.from name], [Helpers dateStringFromNSDate:message.date]];
+    cell.detailTextLabel.text = message.text;
+    
     
     return cell;
 }
