@@ -12,9 +12,6 @@
 
 @implementation User
 
-
-#warning Comment
-// We should use enum on backend as well for Role (Henrik)
 + (RoleType)roleTypeFromString:(NSString *)roleString
 {
     if ([roleString isEqualToString:@"superadmin"])
@@ -24,25 +21,19 @@
     else if ([roleString isEqualToString:@"admin"])
     {
         return AdminRole;
-    }
-    else
-    {
-        return StudentRole;
-    }
+    }    
+    return StudentRole;
 }
+
 + (NSString *)stringFromRoleType:(RoleType)role
 {
     switch (role) {
         case StudentRole:
             return @"student";
-            break;
         case AdminRole:
             return @"admin";
         case SuperAdminRole:
-            return @"superadmin"
-            ;
-        default:
-            break;
+            return @"superadmin";
     }
 }
 
@@ -112,9 +103,20 @@
     return jsonUser;
 }
 
-- (NSString *)name
+- (NSString *)fullName
 {
     return [NSString stringWithFormat:@"%@ %@", self.firstname, self.lastname];
+}
+
+-(NSString *)roleTypeAsString
+{
+    switch (self.role) {
+        case StudentRole:
+            return @"student";
+        case AdminRole:
+            return @"admin";
+    }
+    return @"superadmin";
 }
 
 @end

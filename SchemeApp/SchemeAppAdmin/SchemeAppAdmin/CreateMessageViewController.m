@@ -116,8 +116,8 @@
     User *user = section == SUGGESTIONS_SECTION ? suggestedUsers[indexPath.row] : receivers[indexPath.row];
     cell.accessoryType = section == RECIPIENTS_SECTION ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     cell.backgroundColor = section == SUGGESTIONS_SECTION ? lightGrayColor : whiteColor;
-    cell.nameLabel.text = [user name];
-    cell.roleLabel.text = [User stringFromRoleType:user.role];
+    cell.nameLabel.text = [user fullName];
+    cell.roleLabel.text = [user roleTypeAsString];
     return cell;
 }
 
@@ -152,15 +152,12 @@
     }
 }
 
-
 - (IBAction)didPressSend:(id)sender {
     if (self.textView.text.length < 3) { return; }
     sendButton.enabled = NO;
     
     Message *message = [Message messageWithText:self.textView.text receivers:receivers];
-    
-    NSLog(@"RECEIVERS: %@, USERS: %@", receivers, users);
-    
+
     if (self.messageTypeControl.selectedSegmentIndex == MESSAGE_TYPE) {
         [[Store adminStore]sendMessage:message completion:^(Message *message) {
             NSPredicate *containsUser = [NSPredicate predicateWithFormat:@"self.email matches %@", [Store mainStore].currentUser.email];
@@ -169,7 +166,7 @@
             });
         }];
     } else {
-        message.receiverIDs = [NSMutableArray new]; //handled automatically by backend
+        message.receiverIDs = [NSMutableArray new]; //receivers are handled automatically in backend
         [[Store adminStore]broadcastMessage:message completion:^(Message *message) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate didCreateMessage];
@@ -182,7 +179,5 @@
 - (IBAction)didChangeMessageType:(UISegmentedControl *)sender {
     [self.tableView reloadData];
 }
-
-
 
 @end

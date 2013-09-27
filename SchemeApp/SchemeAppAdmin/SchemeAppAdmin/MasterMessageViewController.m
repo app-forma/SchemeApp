@@ -48,7 +48,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     Message *message = messages[indexPath.row];
-    cell.textLabel.text = [message.from name];
+    cell.textLabel.text = [message.from fullName];
     cell.detailTextLabel.text = message.text;   
     
     return cell;
