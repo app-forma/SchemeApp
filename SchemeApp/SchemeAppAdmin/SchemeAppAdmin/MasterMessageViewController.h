@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Message;
+
+@protocol MasterMessageDelegate <NSObject>
+
+-(void)didSelectMessage:(Message*)message;
+
+@end
 
 @interface MasterMessageViewController : UIViewController
-
+@property (nonatomic, assign) id <MasterMessageDelegate> delegate;
 
 @end

@@ -84,6 +84,7 @@
 		279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */; };
 		4D757A8A17F6195E007255E1 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A8917F6195E007255E1 /* SearchCell.m */; };
 		4D757A8D17F6196C007255E1 /* ReceiverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A8C17F6196C007255E1 /* ReceiverCell.m */; };
+		4D757A9317F63EB0007255E1 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A9217F63EB0007255E1 /* NSDate+Helpers.m */; };
 		4DF2615E17F5C69900983735 /* MasterMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2615D17F5C69900983735 /* MasterMessageViewController.xib */; };
 		4DF2616017F6078900983735 /* DetailMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2615F17F6078900983735 /* DetailMessageViewController.xib */; };
 		4DF2616417F607B900983735 /* CreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2616217F607B900983735 /* CreateMessageViewController.m */; };
@@ -199,6 +200,8 @@
 		4D757A8917F6195E007255E1 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		4D757A8B17F6196C007255E1 /* ReceiverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverCell.h; sourceTree = "<group>"; };
 		4D757A8C17F6196C007255E1 /* ReceiverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverCell.m; sourceTree = "<group>"; };
+		4D757A9117F63EB0007255E1 /* NSDate+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helpers.h"; sourceTree = "<group>"; };
+		4D757A9217F63EB0007255E1 /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
 		4DF2615D17F5C69900983735 /* MasterMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterMessageViewController.xib; sourceTree = "<group>"; };
 		4DF2615F17F6078900983735 /* DetailMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailMessageViewController.xib; sourceTree = "<group>"; };
 		4DF2616117F607B900983735 /* CreateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMessageViewController.h; sourceTree = "<group>"; };
@@ -412,6 +415,8 @@
 		279AB6E217F1920E0094CE64 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4D757A9117F63EB0007255E1 /* NSDate+Helpers.h */,
+				4D757A9217F63EB0007255E1 /* NSDate+Helpers.m */,
 				274E557717F318AA00E97A12 /* UIButton+CustomButton.h */,
 				274E557817F318AA00E97A12 /* UIButton+CustomButton.m */,
 				279AB6DC17F1920E0094CE64 /* Validation.h */,
@@ -697,6 +702,7 @@
 				279D061617F19F1300586DF7 /* Event.m in Sources */,
 				279D061717F19F1300586DF7 /* Message.m in Sources */,
 				274E556317F2F54C00E97A12 /* DetailMessageViewController.m in Sources */,
+				4D757A9317F63EB0007255E1 /* NSDate+Helpers.m in Sources */,
 				279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */,
 				279D061817F19F1300586DF7 /* User.m in Sources */,
 				274E553F17F2E71000E97A12 /* TabBarController.m in Sources */,

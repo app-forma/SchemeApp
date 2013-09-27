@@ -59,6 +59,7 @@
 
         mmvc = [MasterMessageViewController new];
         dmvc = [DetailMessageViewController new];
+        mmvc.delegate = dmvc;
         messagesSplitView = [[SplitViewController alloc]initWithLeftVC:mmvc rightVC:dmvc];
         UITabBarItem *messageItem = [[UITabBarItem alloc] initWithTitle:@"Messages" image:[UIImage imageNamed:@"messages_unselected"] selectedImage:[UIImage imageNamed:@"messages_selected"]];
         messagesSplitView.delegate = dmvc;
