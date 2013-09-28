@@ -81,37 +81,31 @@
     [self showPopover:sender];
 }
 
--(EventWrapper *)currentEventWrapper
+-(EventWrapper *)popoverEventWrapperCurrentEventWrapper
 {
     return currentEventWrapper;
 }
--(void)saveOrUpdateEventWrapper:(EventWrapper *)eventWrapper for:(NSString *)method
+-(void)popoverEventWrapperUpdateEventWrapper:(EventWrapper *)eventWrapper
 {
-    NSLog(@"%@", eventWrapper);
-//    void(^saveHandler)(void) = ^(void)
-//    {
-//        [NSOperationQueue.mainQueue addOperationWithBlock:^
-//         {
-//             [self.navigationController popViewControllerAnimated:YES];
-//         }];
-//    };
-//    
-//    if ([method isEqualToString:@"POST"]) {
-//        [Store.adminStore createEventWrapper:eventWrapper
-//                                  completion:^(id jsonObject, id response, NSError *error)
-//         {
-//             saveHandler();
-//         }];
-//    }else if ([method isEqualToString:@"PUT"]){
-//        [Store.adminStore updateEventWrapper:eventWrapper
-//                                  completion:^(id jsonObject, id response, NSError *error)
-//         {
-//             saveHandler();
-//         }];
-//    }
+
+    void(^saveHandler)(void) = ^(void)
+    {
+        [NSOperationQueue.mainQueue addOperationWithBlock:^
+         {
+             [self.navigationController popViewControllerAnimated:YES];
+         }];
+    };
     
 
+        [Store.adminStore updateEventWrapper:eventWrapper
+                                  completion:^(id jsonObject, id response, NSError *error)
+         {
+
+             saveHandler();
+         }];
     
+
+
 }
 -(void)showPopover:(id)sender
 {
@@ -124,7 +118,7 @@
     [eventWrapperInfoPopover presentPopoverFromRect:senderButton.bounds inView:senderButton permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
--(void)dismissPopover
+-(void)popoverEventWrapperDismissPopover
 {
     [eventWrapperInfoPopover dismissPopoverAnimated:YES];
 }

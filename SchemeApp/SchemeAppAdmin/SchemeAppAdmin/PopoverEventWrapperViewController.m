@@ -9,6 +9,7 @@
 #import "PopoverEventWrapperViewController.h"
 #import "DetailEventWrapperViewController.h"
 #import "EventWrapper.h"
+#import "User.h"
 
 @interface PopoverEventWrapperViewController () <UITextFieldDelegate>
 
@@ -22,7 +23,7 @@
 
 @implementation PopoverEventWrapperViewController
 {
-    NSString *currentMethod;
+    EventWrapper *currentEventWrapper;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,7 +44,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     if (self.isInEditingMode) {
-        EventWrapper *currentEventWrapper = [self.delegate currentEventWrapper];
+        currentEventWrapper = [self.delegate popoverEventWrapperCurrentEventWrapper];
         [self populateTextFieldsWith:currentEventWrapper for:@"PUT"];
     } else {
         [self populateTextFieldsWith:nil for:@"POST"];
@@ -67,27 +68,33 @@
 
     }
 }
--(EventWrapper *)returnEventWrapperFromPopover
+-(EventWrapper *)returnEventWrapperFromPopoverForUpdate
 {
-    EventWrapper *eventWrapper = [EventWrapper new];
-    eventWrapper.name = self.courseName.text;
-    eventWrapper.user = Store.mainStore.currentUser;
-    eventWrapper.litterature = self.litterature.text;
-    eventWrapper.startDate = [Helpers dateFromString:self.startDate.text];
-    eventWrapper.endDate = [Helpers dateFromString:self.endDate.text];
+    NSDictionary *ownerDic = [currentEventWrapper.user asDictionary];
+    
+    EventWrapper *eventWrapper = [[EventWrapper alloc]initWithEventWrapperDictionary:@{@"name": self.courseName.text, @"owner": ownerDic, @"litterature": self.litterature.text, @"startDate":self.startDate.text, @"endDate": self.endDate.text, @"_id" : currentEventWrapper.docID}];
+    
+    return eventWrapper;
+}
+-(EventWrapper *)returnEventWrapperFromPopoverForCreate
+{
+    NSDictionary *ownerDic = [Store.mainStore.currentUser asDictionary];
+    EventWrapper *eventWrapper = [[EventWrapper alloc]initWithEventWrapperDictionary:@{@"name": self.courseName.text, @"owner": ownerDic, @"litterature": self.litterature.text, @"startDate":self.startDate.text, @"endDate": self.endDate.text}];
+    
     return eventWrapper;
 }
 - (IBAction)saveEventWrapper:(id)sender
 {
 
-//    if (self.isInEditingMode) {
-//        [self.delegate saveOrUpdateEventWrapper:[self returnEventWrapperFromPopover] for:@"PUT"];
-//    } else {
-//        [self.delegate saveOrUpdateEventWrapper:[self returnEventWrapperFromPopover] for:@"POST"];
-//    }
+    if (self.isInEditingMode) {
+        [self.delegate popoverEventWrapperUpdateEventWrapper:[self returnEventWrapperFromPopoverForUpdate]];
+    } else {
+        [self.delegate popoverEventWrapperCreateEventWrapper:[self returnEventWrapperFromPopoverForCreate]];
+    }
    
-    [self.delegate dismissPopover];
+    [self.delegate popoverEventWrapperDismissPopover];
 
 }
+
 
 @end

@@ -10,7 +10,7 @@
 #import "EventWrapper.h"
 #import "PopoverEventWrapperViewController.h"
 
-@interface MasterEventWrapperViewController () <UITableViewDelegate>
+@interface MasterEventWrapperViewController () <UITableViewDelegate, PopoverEventWrapperDelegate>
 {
     NSMutableArray *eventWrappers;
     UIPopoverController *addEventWrapperPopover;
@@ -121,9 +121,34 @@
     [addEventWrapperPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
--(void)dismissPopover
+-(void)popoverEventWrapperDismissPopover
 {
     [addEventWrapperPopover dismissPopoverAnimated:YES];
 }
+-(void)popoverEventWrapperCreateEventWrapper:(EventWrapper *)eventWrapper
+{
+    void(^saveHandler)(void) = ^(void)
+    {
+        [NSOperationQueue.mainQueue addOperationWithBlock:^
+         {
+             [self.navigationController popViewControllerAnimated:YES];
+         }];
+    };
+    [Store.adminStore createEventWrapper:eventWrapper completion:^(id jsonObject, id response, NSError *error)
+     {
 
+         saveHandler();
+         [Store.adminStore eventWrappersCompletion:^(NSArray *allEventWrappers)
+          {
+              eventWrappers = [NSMutableArray arrayWithArray:allEventWrappers];
+              [NSOperationQueue.mainQueue addOperationWithBlock:^
+               {
+                   [self.eventWrappersTableView reloadData];
+                   NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[eventWrappers count] - 1 inSection:0];
+                   [self.eventWrappersTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+                   [self tableView:self.eventWrappersTableView didSelectRowAtIndexPath:indexPath];
+               }];
+          }];
+     }];
+}
 @end

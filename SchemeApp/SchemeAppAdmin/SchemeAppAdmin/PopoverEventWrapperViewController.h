@@ -8,10 +8,11 @@
 
 @protocol PopoverEventWrapperDelegate <NSObject>
 @optional
--(EventWrapper *)currentEventWrapper;
--(void)saveOrUpdateEventWrapper:(EventWrapper *)eventWrapper for:(NSString *)method;
+-(EventWrapper *)popoverEventWrapperCurrentEventWrapper;
+-(void)popoverEventWrapperCreateEventWrapper:(EventWrapper *)eventWrapper;
+-(void)popoverEventWrapperUpdateEventWrapper:(EventWrapper *)eventWrapper;
 @required
--(void)dismissPopover;
+-(void)popoverEventWrapperDismissPopover;
 
 @end
 
