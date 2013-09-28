@@ -32,6 +32,8 @@ firstname:(NSString *)firstname
 
 - (NSDictionary *)asDictionary;
 
-- (NSString *)name;
+- (NSString *)fullName;
+
+- (NSString *)roleAsString;
 
 @end

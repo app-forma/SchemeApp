@@ -150,9 +150,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="textField" destination="mKE-Hx-B55" id="3zg-KF-Uag"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReceiverCell" rowHeight="30" id="BZ9-hf-9de" customClass="ReceiverCell">
                                         <rect key="frame" x="0.0" y="110" width="320" height="30"/>
@@ -175,10 +172,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="nameLabel" destination="YBK-NP-BNY" id="PKE-br-F9C"/>
-                                            <outlet property="roleLabel" destination="sAe-VT-G9I" id="MYR-9Q-nmE"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

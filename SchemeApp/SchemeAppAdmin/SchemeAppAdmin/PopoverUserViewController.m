@@ -63,7 +63,7 @@
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [User stringFromRoleType:[roles[row] intValue]];;
+    return [User stringFromRoleType:[roles[row] intValue]];
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {

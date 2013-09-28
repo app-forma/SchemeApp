@@ -1,9 +1,9 @@
 //
-//  AdminMessagesCreateMessageViewController.m
-//  SchemeApp
+//  MessageEditViewController.m
+//  SchemeAppAdmin
 //
-//  Created by Erik Österberg on 2013-09-17.
-//  Copyright (c) 2013 Team leet. All rights reserved.
+//  Created by Erik Österberg on 2013-09-27.
+//  Copyright (c) 2013 Marcus Norling. All rights reserved.
 //
 
 #define MESSAGE_TYPE 0
@@ -13,52 +13,46 @@
 #define SEARCH_SECTION 1
 #define SUGGESTIONS_SECTION 2
 
-#import "AdminMessagesCreateMessageViewController.h"
 #import "SearchCell.h"
 #import "ReceiverCell.h"
 #import "Message.h"
 #import "User.h"
-#import "Helpers.h"
 
-@interface AdminMessagesCreateMessageViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
+#import "CreateMessageViewController.h"
+
+@interface CreateMessageViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *messageTypeControl;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation AdminMessagesCreateMessageViewController
+@implementation CreateMessageViewController
 {
     UIBarButtonItem *sendButton;
     
     NSArray *users;
     NSMutableArray *receivers;
     NSMutableArray *suggestedUsers;
-
+    
     UIColor *lightGrayColor;
     UIColor *whiteColor;
+    
+    UITextField *searchTextField;
 }
--(BOOL)prefersStatusBarHidden { return YES; }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     lightGrayColor = [UIColor colorWithRed:0.96 green:0.96 blue:0.96 alpha:1];
     whiteColor = [UIColor whiteColor];
+    
+    self.tableView.backgroundColor = whiteColor;
     
     self.textView.layer.borderWidth = 1.0f;
     self.textView.layer.borderColor = [[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1]CGColor];
     self.textView.layer.cornerRadius = 7.0f;
-    
-    UINavigationItem *navItem = [[UINavigationItem alloc]initWithTitle:@"New message"];
-    navItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didPressCancel)];
-    sendButton = [[UIBarButtonItem alloc]initWithTitle:@"Send" style:UIBarButtonItemStyleDone target:self action:@selector(didPressSend)];
-    navItem.rightBarButtonItem = sendButton;
-    [self.navBar pushNavigationItem:navItem animated:NO];
-    
-    [self.messageTypeControl addTarget:self action:@selector(messageTypeDidChange:) forControlEvents:UIControlEventValueChanged];
     
     receivers = [NSMutableArray new];
     users = [NSArray new];
@@ -66,8 +60,6 @@
     [[Store adminStore]usersCompletion:^(NSArray *allUsers) {
         users = allUsers;
     }];
-        
-    [self.tableView reloadData];
 }
 
 #pragma mark - textfield delegate
@@ -115,6 +107,7 @@
     if (section == SEARCH_SECTION) {
         SearchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCell" forIndexPath:indexPath];
         cell.textField.delegate = self;
+        searchTextField = cell.textField;
         [cell.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         return cell;
     }
@@ -123,7 +116,7 @@
     User *user = section == SUGGESTIONS_SECTION ? suggestedUsers[indexPath.row] : receivers[indexPath.row];
     cell.accessoryType = section == RECIPIENTS_SECTION ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     cell.backgroundColor = section == SUGGESTIONS_SECTION ? lightGrayColor : whiteColor;
-    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
+    cell.nameLabel.text = [user fullName];
     cell.roleLabel.text = [user roleAsString];
     return cell;
 }
@@ -149,53 +142,42 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == SUGGESTIONS_SECTION) {
+        searchTextField.text = nil;
         [receivers addObject:suggestedUsers[indexPath.row]];
-
+        
         [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:receivers.count -
                                              1 inSection:RECIPIENTS_SECTION]] withRowAnimation:UITableViewRowAnimationAutomatic];
         [suggestedUsers removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];        
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 
-#pragma mark - events
--(void)messageTypeDidChange:(UISegmentedControl*)control
-{
-    [self.tableView reloadData];
-}
-
--(void)didPressCancel
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)didPressSend {
+- (IBAction)didPressSend:(id)sender {
     if (self.textView.text.length < 3) { return; }
     sendButton.enabled = NO;
     
-    Message *message = [[Message alloc]init];
-    message.text = self.textView.text;
-    message.from = Store.mainStore.currentUser;;
-    message.date = [NSDate date];
-    
+    Message *message = [Message messageWithText:self.textView.text receivers:receivers];
+
     if (self.messageTypeControl.selectedSegmentIndex == MESSAGE_TYPE) {
-        [[Store adminStore]sendMessage:message toUsers:receivers completion:^(Message *message) {
-            [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                NSPredicate *containsUser = [NSPredicate predicateWithFormat:@"self.email matches %@", [Store mainStore].currentUser.email];
-                [receivers filteredArrayUsingPredicate:containsUser].count > 0 ? [self returnToMessageViewAndSetMessage:message] : [self dismissViewControllerAnimated:YES completion:nil];
-            }];
+        [[Store adminStore]sendMessage:message completion:^(Message *message) {
+            NSPredicate *containsUser = [NSPredicate predicateWithFormat:@"self.email matches %@", [Store mainStore].currentUser.email];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [receivers filteredArrayUsingPredicate:containsUser].count > 0 ? [self.delegate didCreateAndGetMessage:message] : [self.delegate didCreateMessage];
+            });
         }];
     } else {
+        message.receiverIDs = [NSMutableArray new]; //receivers are handled automatically in backend
         [[Store adminStore]broadcastMessage:message completion:^(Message *message) {
-            [self performSelectorOnMainThread:@selector(returnToMessageViewAndSetMessage:) withObject:message waitUntilDone:YES];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate didCreateMessage];
+            });
         }];
     }
+    
 }
 
--(void)returnToMessageViewAndSetMessage:(Message*)message
-{
-    [self.delegate didCreateMessage:message];
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)didChangeMessageType:(UISegmentedControl *)sender {
+    [self.tableView reloadData];
 }
 
 @end

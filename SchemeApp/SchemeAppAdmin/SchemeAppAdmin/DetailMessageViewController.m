@@ -7,32 +7,50 @@
 //
 
 #import "DetailMessageViewController.h"
+#import "MasterMessageViewController.h"
+#import "Message.h"
+#import "NSDate+Helpers.h"
 
-@interface DetailMessageViewController ()
+@interface DetailMessageViewController () <MasterMessageDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *fromLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+
 
 @end
 
 @implementation DetailMessageViewController
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        self.view.backgroundColor = [UIColor orangeColor];
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
-- (void)didReceiveMemoryWarning
+- (void)splitViewController:(UISplitViewController *)svc
+     willHideViewController:(UIViewController *)aViewController
+          withBarButtonItem:(UIBarButtonItem *)barButtonItem
+       forPopoverController:(UIPopoverController *)pc
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+
+- (void)splitViewController:(UISplitViewController *)svc
+     willShowViewController:(UIViewController *)aViewController
+  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+}
+
+-(void)didSelectMessage:(Message *)message
+{
+    self.navItem.title = [NSString stringWithFormat:@"Message from %@", message.from.firstname];
+    self.fromLabel.text = [message.from fullName];
+    self.dateLabel.text = [message.date asDateString];
+    self.textView.text = message.text;
+}
+
+
+- (IBAction)didPressTrash:(id)sender {
 }
 
 @end

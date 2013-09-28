@@ -1,14 +1,14 @@
 //
-//  ReceiverCell.m
-//  SchemeApp
+//  SearchCell.m
+//  SchemeAppAdmin
 //
-//  Created by Erik Österberg on 2013-09-17.
-//  Copyright (c) 2013 Team leet. All rights reserved.
+//  Created by Erik Österberg on 2013-09-27.
+//  Copyright (c) 2013 Marcus Norling. All rights reserved.
 //
 
-#import "ReceiverCell.h"
+#import "SearchCell.h"
 
-@implementation ReceiverCell
+@implementation SearchCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

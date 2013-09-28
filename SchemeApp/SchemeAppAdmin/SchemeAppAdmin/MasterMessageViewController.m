@@ -7,8 +7,9 @@
 //
 
 #import "MasterMessageViewController.h"
+#import "CreateMessageViewController.h"
 
-@interface MasterMessageViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MasterMessageViewController () <UITableViewDataSource, UITableViewDelegate, CreateMessageViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -17,24 +18,22 @@
 @implementation MasterMessageViewController
 {
     NSMutableArray *messages;
+    UIPopoverController *createMessagePopover;
 }
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     [[Store studentStore]messagesForUser:[Store mainStore].currentUser completion:^(NSArray *messagesForUser) {
         messages = [messagesForUser mutableCopy];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
     }];
-    
 }
 
 #pragma mark - Table view data source
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return messages.count;
@@ -48,67 +47,36 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     Message *message = messages[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [message.from name], [Helpers dateStringFromNSDate:message.date]];
-    cell.detailTextLabel.text = message.text;
-    
+    cell.textLabel.text = [message.from fullName];
+    cell.detailTextLabel.text = message.text;   
     
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.delegate didSelectMessage:messages[indexPath.row]];
+}
 
+#pragma callbacks
 - (IBAction)didPressAdd:(id)sender {
-    
+    UIStoryboard *createMessageStoryboard = [UIStoryboard storyboardWithName:@"CreateMessage" bundle:nil];
+    CreateMessageViewController *createMessageView = [createMessageStoryboard instantiateInitialViewController];
+    createMessageView.delegate = self;
+    createMessagePopover = [[UIPopoverController alloc] initWithContentViewController:createMessageView];
+    [createMessagePopover setPopoverContentSize:CGSizeMake(300, 500)];
+    [createMessagePopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)didCreateMessage
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    [createMessagePopover dismissPopoverAnimated:YES];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)didCreateAndGetMessage:(Message *)message
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    [messages addObject:message];
+    [createMessagePopover dismissPopoverAnimated:YES];
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

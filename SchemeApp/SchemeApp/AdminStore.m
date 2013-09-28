@@ -12,7 +12,7 @@
 #import "User.h"
 #import "Message.h"
 #import "Location.h"
-
+#import "NSDate+Helpers.h"
 
 @implementation AdminStore
 
@@ -66,7 +66,7 @@
 
 - (void)deleteAttendanceDate:(NSDate *)date forStudent:(User *)student completion:(void (^)(BOOL success))handler
 {
-    NSString *path = [NSString stringWithFormat:@"%@/%@/attendance/%@", DB_TYPE_USER, student.docID, [Helpers dateStringFromNSDate:date]];
+    NSString *path = [NSString stringWithFormat:@"%@/%@/attendance/%@", DB_TYPE_USER, student.docID, date.asDateString];
     
     [Store.dbSessionConnection deletePath:path
                            withCompletion:^(id responseBody, id response, NSError *error)
@@ -253,16 +253,10 @@
          }
      }];
 }
-- (void)sendMessage:(Message *)message toUsers:(NSArray *)users completion:(void (^)(Message *message))handler
+- (void)sendMessage:(Message *)message completion:(void (^)(Message *message))handler
 {
     NSMutableDictionary *jsonMessage = [NSMutableDictionary dictionaryWithDictionary:message.asDictionary];
-    
-    NSMutableArray *receivers = [NSMutableArray new];
-    for (User *user in users) {
-        [receivers addObject:user.docID];
-    }
-    [jsonMessage setObject:receivers forKey:@"receivers"];
-    
+
     [Store.dbSessionConnection postContent:jsonMessage
                                     toPath:DB_TYPE_MESSAGE
                             withCompletion:^(id responseBody, id response, NSError *error)

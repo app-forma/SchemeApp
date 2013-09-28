@@ -12,6 +12,19 @@
 
 @implementation Message
 
++ (id)messageWithText:(NSString*)text receivers:(NSArray *)receivers
+{
+    Message *message = [[self alloc]init];
+    message.text = text;
+    message.from = [Store mainStore].currentUser;
+    message.date = [NSDate date];
+    message.receiverIDs = [NSMutableArray new];
+    for (User *receiver in receivers) {
+        [message.receiverIDs addObject:receiver.docID];
+    }
+    return message;
+}
+
 - (NSDictionary *)asDictionary
 {
     NSMutableDictionary *jsonMessage = [[NSMutableDictionary alloc]init];
@@ -38,10 +51,12 @@
         self.from = [[User alloc]initWithUserDictionary:msgDictionary[@"from"]];
         self.date = [Helpers dateFromString:msgDictionary[@"date"]];
         self.text = msgDictionary[@"text"];
+        self.receiverIDs = [NSMutableArray new];
         for (NSString *receiverID in msgDictionary[@"receivers"]) {
             [self.receiverIDs addObject:receiverID];
         }
     }
     return self;
 }
+
 @end
