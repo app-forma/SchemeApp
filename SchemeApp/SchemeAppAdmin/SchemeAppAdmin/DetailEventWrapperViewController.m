@@ -13,7 +13,6 @@
 
 @interface DetailEventWrapperViewController () <PopoverEventWrapperDelegate>
 {
-    UIButton *addButton;
     UIButton *editButton;
     UIPopoverController *eventWrapperInfoPopover;
     PopoverEventWrapperViewController *pewvc;
@@ -24,10 +23,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *litteratureLabel;
 @property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
 
 @end
 
 @implementation DetailEventWrapperViewController
+
+
+
+- (IBAction)deleteEventWrapper:(id)sender
+{
+    NSLog(@"Delete this shit!");
+}
+
 
 
 - (void)splitViewController:(UISplitViewController *)svc
@@ -64,15 +72,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    /*
-    addButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"newIcon"] tag:1];
-    [addButton addTarget:self action:@selector(addNewEventWrapper:) forControlEvents:UIControlEventTouchUpInside];
-    [addButton setFrame:CGRectMake(500, 24, 50, 50)];
-    [self.view addSubview:addButton];*/
     
     editButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"editIcon"] tag:2];
     [editButton addTarget:self action:@selector(editEventWrapper:) forControlEvents:UIControlEventTouchUpInside];
-    [editButton setFrame:CGRectMake(338, 40, 50, 50)];
+    [editButton setFrame:CGRectMake(338, 80, 50, 50)];
     [self.view addSubview:editButton];
 }
 
@@ -132,6 +135,8 @@
 -(void)masterEventWrapperDidSelectEventWrapper:(EventWrapper *)eventWrapper
 {
     self.eventWrapperName.text = eventWrapper.name;
+    self.navItem.title = eventWrapper.name;
+    
     self.teacherLabel.text = [NSString  stringWithFormat:@"%@ %@", eventWrapper.user.firstname, eventWrapper.user.lastname];
     self.litteratureLabel.text = eventWrapper.litterature;
     self.startDateLabel.text = [Helpers stringFromNSDate:eventWrapper.startDate];

@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MasterEventWrapperViewController">
             <connections>
-                <outlet property="eventWrappersTableView" destination="Ps8-AN-4UV" id="C1d-MW-eW2"/>
+                <outlet property="eventWrappersTableView" destination="XlA-fR-bGh" id="cjS-4D-Q0v"/>
                 <outlet property="view" destination="dvB-Fj-Kcv" id="3Sa-hR-eI0"/>
             </connections>
         </placeholder>
@@ -20,31 +20,23 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="SEe-tR-f92"/>
-                        <outlet property="delegate" destination="-1" id="xvw-aY-fqQ"/>
+                        <outlet property="dataSource" destination="-1" id="ZRl-KI-C3J"/>
+                        <outlet property="delegate" destination="-1" id="P0L-4O-gu1"/>
                     </connections>
                 </tableView>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MBM-Xr-Lij">
+                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nS7-MP-Msd">
                     <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <items>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="iG4-bM-kcF"/>
-                        <barButtonItem systemItem="add" id="y06-8K-MYK">
-                            <connections>
-                                <action selector="addEventWrapper:" destination="-1" id="eSH-JA-kQc"/>
-                            </connections>
-                        </barButtonItem>
+                        <navigationItem title="Courses" id="hxf-05-OR8">
+                            <barButtonItem key="rightBarButtonItem" systemItem="add" id="U7s-to-5Tl">
+                                <connections>
+                                    <action selector="addEventWrapper:" destination="-1" id="Qoo-P9-B3w"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
                     </items>
-                </toolbar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ps8-AN-4UV">
-                    <rect key="frame" x="0.0" y="64" width="320" height="788"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="eZZ-Z4-jB9"/>
-                        <outlet property="delegate" destination="-1" id="vci-m2-Vd0"/>
-                    </connections>
-                </tableView>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

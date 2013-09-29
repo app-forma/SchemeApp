@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *roleLabel;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
 
 @end
 
@@ -66,7 +67,7 @@
     
     editButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"editIcon"] tag:2];
     [editButton addTarget:self action:@selector(editUser:) forControlEvents:UIControlEventTouchUpInside];
-    [editButton setFrame:CGRectMake(338, 40, 50, 50)];
+    [editButton setFrame:CGRectMake(338, 80, 50, 50)];
     [self.view addSubview:editButton];
 }
 
@@ -78,6 +79,10 @@
 -(User *)currentUser
 {
     return currentUser;
+}
+- (IBAction)deleteUser:(id)sender
+{
+    NSLog(@"Delete this fucking USELESS USER SON OF STUDENT!");
 }
 
 -(void)showPopover:(id)sender for:(NSString *)method
@@ -92,7 +97,7 @@
 
 -(void)masterUserDidSelectUser:(User *)user
 {
-
+    self.navItem.title = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
     self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
     self.emailLabel.text = user.email;
     self.roleLabel.text = [user roleAsString];
