@@ -133,6 +133,7 @@
 {
     datePicker.currentDatePicker = StartDatePicker;
     datePickerView.hidden = NO;
+    
 }
 
 -(void)pickEndDateForScheme
