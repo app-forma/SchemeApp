@@ -22,6 +22,7 @@
 
 @property (weak) id <PicturePickerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadIndicator;
+@property (weak, nonatomic) IBOutlet UIView *loadingView;
 
 /**
  *  Set this when loading this vc if user already has a picture

@@ -156,9 +156,9 @@
         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
         NSInteger statusCode = [httpResponse statusCode];
         if (statusCode == 200) {
-            NSLog(@"Success: %@", responseBody);
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
+#warning add error msg
             NSLog(@"Error saving image: %@", error);
         }
     }];

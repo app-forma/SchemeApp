@@ -25,16 +25,21 @@
     if (self) {
         if (self.user.image) {
             self.imageView.image = self.user.image;
-            [self.loadIndicator stopAnimating];
         }
     }
     return self;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self.loadIndicator stopAnimating];
+    self.loadingView.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,9 +59,8 @@
 }
 
 - (IBAction)saveChanges:(id)sender {
-    NSLog(@"SAVING");
-    self.loadIndicator.hidden = NO;
     [self.loadIndicator startAnimating];
+    self.loadingView.hidden = NO;
     if (self.user.image) {
         [self.delegate picturePicker:self didFinishPickingPicture:self.user.image forUser:self.user];
     } else {
