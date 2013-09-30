@@ -11,10 +11,11 @@
 #import "User.h"
 
 
-@interface AdminStudentsViewController ()
+@interface AdminStudentsViewController () <UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
