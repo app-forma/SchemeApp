@@ -85,7 +85,7 @@
 
 - (void)addAttendanceCompletion:(void (^)(BOOL))handler
 {
-    NSString *dateString = NSDate.date.asDateString;
+    NSString *dateString = [Helpers dateStringFromNSDate:[NSDate date]];
     NSString *latestAttendanceDateString = [NSUserDefaults.standardUserDefaults objectForKey:@"latestAttendance"];
     BOOL attendanceForTodayNotSent = ![latestAttendanceDateString isEqualToString:dateString];
     

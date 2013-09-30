@@ -37,8 +37,6 @@
 {
     masterViewController = aViewController;
     barButtonForMaster = barButtonItem;
-    
-    
 }
 
 
