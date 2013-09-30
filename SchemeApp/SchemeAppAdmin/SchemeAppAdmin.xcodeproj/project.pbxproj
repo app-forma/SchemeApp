@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0426C9C817F9D1B100C94BAD /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9C717F9D1B100C94BAD /* Base64.m */; };
 		0426C9CB17F9D1C000C94BAD /* UIImage+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9CA17F9D1C000C94BAD /* UIImage+Base64.m */; };
 		0426C9D717F9F5EF00C94BAD /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9D417F9F5EF00C94BAD /* NavigationBar.m */; };
 		0426C9D817F9F5EF00C94BAD /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9D617F9F5EF00C94BAD /* NavigationController.m */; };
+		0426C9DC17FA096300C94BAD /* PicturePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9DA17FA096300C94BAD /* PicturePickerViewController.m */; };
+		0426C9DD17FA096300C94BAD /* PicturePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0426C9DB17FA096300C94BAD /* PicturePickerViewController.xib */; };
 		04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA657517F4BB990088E589 /* PopoverUserViewController.m */; };
 		04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA657617F4BB990088E589 /* PopoverUserViewController.xib */; };
 		274E553F17F2E71000E97A12 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E553E17F2E71000E97A12 /* TabBarController.m */; };
@@ -119,14 +120,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0426C9C617F9D1B100C94BAD /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = ../../SchemeApp/Base64.h; sourceTree = "<group>"; };
-		0426C9C717F9D1B100C94BAD /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = ../../SchemeApp/Base64.m; sourceTree = "<group>"; };
 		0426C9C917F9D1C000C94BAD /* UIImage+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Base64.h"; path = "../../SchemeApp/UIImage+Base64.h"; sourceTree = "<group>"; };
 		0426C9CA17F9D1C000C94BAD /* UIImage+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Base64.m"; path = "../../SchemeApp/UIImage+Base64.m"; sourceTree = "<group>"; };
 		0426C9D317F9F5EF00C94BAD /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBar.h; sourceTree = "<group>"; };
 		0426C9D417F9F5EF00C94BAD /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBar.m; sourceTree = "<group>"; };
 		0426C9D517F9F5EF00C94BAD /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		0426C9D617F9F5EF00C94BAD /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		0426C9D917FA096300C94BAD /* PicturePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturePickerViewController.h; sourceTree = "<group>"; };
+		0426C9DA17FA096300C94BAD /* PicturePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturePickerViewController.m; sourceTree = "<group>"; };
+		0426C9DB17FA096300C94BAD /* PicturePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicturePickerViewController.xib; sourceTree = "<group>"; };
 		04DA657417F4BB990088E589 /* PopoverUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverUserViewController.h; sourceTree = "<group>"; };
 		04DA657517F4BB990088E589 /* PopoverUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverUserViewController.m; sourceTree = "<group>"; };
 		04DA657617F4BB990088E589 /* PopoverUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverUserViewController.xib; sourceTree = "<group>"; };
@@ -271,10 +273,6 @@
 		0426C9CC17F9D1DE00C94BAD /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
-				0426C9C917F9D1C000C94BAD /* UIImage+Base64.h */,
-				0426C9CA17F9D1C000C94BAD /* UIImage+Base64.m */,
-				0426C9C617F9D1B100C94BAD /* Base64.h */,
-				0426C9C717F9D1B100C94BAD /* Base64.m */,
 			);
 			name = Base64;
 			sourceTree = "<group>";
@@ -312,6 +310,8 @@
 		279AB65517F18C200094CE64 /* SchemeAppAdmin */ = {
 			isa = PBXGroup;
 			children = (
+				0426C9C917F9D1C000C94BAD /* UIImage+Base64.h */,
+				0426C9CA17F9D1C000C94BAD /* UIImage+Base64.m */,
 				0426C9CC17F9D1DE00C94BAD /* Base64 */,
 				279AB6CB17F191570094CE64 /* Images */,
 				279AB6B517F191490094CE64 /* Models */,
@@ -372,6 +372,9 @@
 		279AB68117F18D680094CE64 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0426C9D917FA096300C94BAD /* PicturePickerViewController.h */,
+				0426C9DA17FA096300C94BAD /* PicturePickerViewController.m */,
+				0426C9DB17FA096300C94BAD /* PicturePickerViewController.xib */,
 				0426C9D317F9F5EF00C94BAD /* NavigationBar.h */,
 				0426C9D417F9F5EF00C94BAD /* NavigationBar.m */,
 				0426C9D517F9F5EF00C94BAD /* NavigationController.h */,
@@ -692,6 +695,7 @@
 				27776A8417F9994D00D84839 /* location_selected@2x.png in Resources */,
 				279AB6B817F191490094CE64 /* Event.h in Resources */,
 				274E556B17F2F58F00E97A12 /* DetailUserViewController.xib in Resources */,
+				0426C9DD17FA096300C94BAD /* PicturePickerViewController.xib in Resources */,
 				279D060F17F196E300586DF7 /* TypeDef in Resources */,
 				279AB6D017F191570094CE64 /* messages_selected@1x.png in Resources */,
 				279AB6E517F1920E0094CE64 /* AFNetworking.h in Resources */,
@@ -757,6 +761,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				279D061517F19F1300586DF7 /* EventWrapper.m in Sources */,
+				0426C9DC17FA096300C94BAD /* PicturePickerViewController.m in Sources */,
 				274E554217F2EB0200E97A12 /* SplitViewController.m in Sources */,
 				279D064717F1C97F00586DF7 /* AuthViewController.m in Sources */,
 				279D061617F19F1300586DF7 /* Event.m in Sources */,
@@ -767,7 +772,6 @@
 				0426C9CB17F9D1C000C94BAD /* UIImage+Base64.m in Sources */,
 				279D061817F19F1300586DF7 /* User.m in Sources */,
 				274E553F17F2E71000E97A12 /* TabBarController.m in Sources */,
-				0426C9C817F9D1B100C94BAD /* Base64.m in Sources */,
 				279D061917F19F1300586DF7 /* Validation.m in Sources */,
 				0426C9D717F9F5EF00C94BAD /* NavigationBar.m in Sources */,
 				279D061A17F19F1300586DF7 /* AFNetworking.m in Sources */,

@@ -14,7 +14,7 @@
 #import "StudentAutomaticPresence.h"
 #import "NSDate+Helpers.h"
 
-@interface StudentMessageViewController ()<UITableViewDelegate, UITableViewDataSource, StudentMessageDetailDelegate>
+@interface StudentMessageViewController ()<UITableViewDelegate, UITableViewDataSource, StudentMessageDetailDelegate, UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -22,6 +22,7 @@
 @implementation StudentMessageViewController
 {
     NSMutableArray *messages;
+    UIActionSheet *signOutPopup;
     StudentAutomaticPresence *sap;
 }
 
@@ -38,20 +39,9 @@
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected.png"]];
     self.navigationItem.title = @"Messages";
     
-    UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
-    self.navigationItem.leftBarButtonItem = signOutButton;
-    
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake(59.34511573, 17.97674040);
     sap = [[StudentAutomaticPresence alloc] init];
     [sap setCenterForRegion:center];
-}
-
--(void)signOut
-{
-    UIStoryboard *loginSb = [UIStoryboard storyboardWithName:@"LoginStoryboard" bundle:nil];
-    UIViewController *initialLoginVC = [loginSb instantiateInitialViewController];
-    initialLoginVC.modalTransitionStyle = UIModalPresentationFullScreen;
-    [self presentViewController:initialLoginVC animated:YES completion:nil];
 }
 
 #pragma mark - Table view data source

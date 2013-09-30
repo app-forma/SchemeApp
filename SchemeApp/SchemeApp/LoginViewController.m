@@ -7,9 +7,9 @@
 //
 
 #import "LoginViewController.h"
-#import "AdminTabBarViewController.h"
+#import "TabBarSetupViewController.h"
 
-@interface LoginViewController () <UITextFieldDelegate, UIAlertViewDelegate>
+@interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UILabel *loginStatusLabel;
@@ -31,10 +31,12 @@
     [Store sendAuthenticationRequestForEmail:self.emailField.text password:self.passwordField.text completion:^(BOOL success, id user) {
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                if ([Store mainStore].currentUser.role != StudentRole) {
-                    [self adminDidLogin];
+                if ([Store mainStore].currentUser.role == StudentRole) {
+                    [self registerAttendance];
+                    [self enterAppWithViewController:[[TabBarSetupViewController alloc]initWithMode:StudentMode]];
                 } else {
-                    [self studentDidLogin];
+                    //[self enterAppWithViewController:[[UIStoryboard storyboardWithName:@"StudentStoryboard" bundle:nil]instantiateInitialViewController]];
+                    [self enterAppWithViewController:[[TabBarSetupViewController alloc]initWithMode:AdminMode]];
                 }
             });
         } else {
@@ -45,17 +47,7 @@
     }];
 }
 
-- (void)adminDidLogin
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        AdminTabBarViewController *adminTabBar = [[AdminTabBarViewController alloc]init];
-        adminTabBar.modalPresentationStyle = UIModalPresentationFullScreen;
-        [self presentViewController:adminTabBar animated:YES completion:nil];
-    });
-}
-
-- (void)studentDidLogin
-{
+- (void)registerAttendance {
     [Store.studentStore addAttendanceCompletion:^(BOOL success)
      {
          if (!success)
@@ -63,13 +55,11 @@
              NSLog(@"[%@] Could not register attendance for current user %@", self.class, Store.mainStore.currentUser.email);
          }
      }];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIViewController *initialStudentVC = [[UIStoryboard storyboardWithName:@"StudentStoryboard" bundle:nil]instantiateInitialViewController];
-        initialStudentVC.modalTransitionStyle = UIModalPresentationFullScreen;
-        
-        [self presentViewController:initialStudentVC animated:YES completion:nil];
-    });
+}
+
+- (void)enterAppWithViewController:(UIViewController*)viewToBePresented {
+    viewToBePresented.modalTransitionStyle = UIModalPresentationFullScreen;
+    [self presentViewController:viewToBePresented animated:YES completion:nil];
 }
 
 - (IBAction)populateAdminCredentials:(id)sender {

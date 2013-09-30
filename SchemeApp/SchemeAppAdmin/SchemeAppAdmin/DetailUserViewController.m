@@ -10,11 +10,15 @@
 #import "MasterUserViewController.h"
 #import "UIButton+CustomButton.h"
 #import "PopoverUserViewController.h"
-@interface DetailUserViewController ()<PopoverUserDelegate>
+#import "PicturePickerViewController.h"
+
+@interface DetailUserViewController ()<PopoverUserDelegate, PicturePickerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *roleLabel;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+- (IBAction)showImagePicker:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
 
 @end
 
@@ -110,9 +114,15 @@
     self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
     self.emailLabel.text = user.email;
     self.roleLabel.text = [user roleAsString];
+    if (user.image) {
+        self.userImage.image = user.image;
+    } else {
+        self.userImage.image = nil;
+    }
     currentUser = user;
     
 }
+
 -(void)popoverUserUpdateUser:(User *)user
 {
     void(^saveHandler)(void) = ^(void)
@@ -123,11 +133,8 @@
          }];
     };
     
-    
     [[Store superAdminStore] updateUser:user completion:^(id responseBody, id response, NSError *error) {
-        
         saveHandler();
-        
     }];
 }
 -(void)popoverUserDismissPopover
@@ -135,4 +142,29 @@
     [userInfoPopover dismissPopoverAnimated:YES];
 }
 
+#pragma mark - ImagePicker delegate and actions
+-(void)picturePickerDidCancel
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)picturePickerDidFinishPickingPicture:(UIImage *)image forUser:(User *)user
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        self.userImage.image = image;
+        NSLog(@"SAVING USER %@", user);
+        [[Store superAdminStore] updateUser:user completion:^(id responseBody, id response, NSError *error) {
+            NSLog(@"RESP BDY %@", responseBody);
+                        NSLog(@"RESP  %@", response);
+                        NSLog(@"ERR %@", error);
+        }];
+    }];
+}
+
+- (IBAction)showImagePicker:(id)sender {
+    PicturePickerViewController *pickerController = [[PicturePickerViewController alloc] init];
+    pickerController.user = currentUser;
+    pickerController.delegate = self;
+    [self presentViewController:pickerController animated:YES completion:nil];
+}
 @end

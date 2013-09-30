@@ -12,6 +12,7 @@
 #import "EventWrapper.h"
 #import "StudentEventsTableViewController.h"
 #import "User.h"
+#import "NSDate+Helpers.h"
 @interface StudentEventMainViewController ()<DatePickerDelegate>
 {
     DatePickerViewController *datePicker;
@@ -38,11 +39,6 @@
 
     self.navigationItem.title = @"Classes";
     
-    // Sign out
-    UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
-    self.navigationItem.rightBarButtonItem = signOutButton;
-    
-    
     datePicker = [[DatePickerViewController alloc] init];
     
     UITapGestureRecognizer *tapForStartDate = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickStartDateForScheme)];
@@ -58,25 +54,13 @@
     datePicker.delegate = self;
 }
 
--(void)signOut
-{
-    UIStoryboard *loginSb = [UIStoryboard storyboardWithName:@"LoginStoryboard" bundle:nil];
-    UIViewController *initialLoginVC = [loginSb instantiateInitialViewController];
-    initialLoginVC.modalTransitionStyle = UIModalPresentationFullScreen;
-    [self presentViewController:initialLoginVC animated:YES completion:nil];
-}
-
 -(void)DatePickerDonePickingDate:(NSDate *)datePicked
 {
     datePickerView.hidden = YES;
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    NSString *dateText = [dateFormat stringFromDate:datePicked];
     if (datePicker.currentDatePicker == StartDatePicker) {
-        self.startDateForScheme.text = dateText;
+        self.startDateForScheme.text = datePicked.asDateString;
     }else if (datePicker.currentDatePicker == EndDatePicker){
-        self.endDateForScheme.text = dateText;
+        self.endDateForScheme.text = datePicked.asDateString;
     }
 }
 
@@ -133,7 +117,6 @@
 {
     datePicker.currentDatePicker = StartDatePicker;
     datePickerView.hidden = NO;
-    
 }
 
 -(void)pickEndDateForScheme

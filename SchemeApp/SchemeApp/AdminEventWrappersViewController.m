@@ -21,6 +21,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.title = @"Courses";
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"courses_selected"]];
 }
 
@@ -49,10 +51,6 @@
     }
 }
 
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
 
 #pragma mark - UITableViewDatasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
