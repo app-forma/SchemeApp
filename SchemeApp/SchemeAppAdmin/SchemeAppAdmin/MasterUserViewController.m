@@ -9,7 +9,7 @@
 #import "MasterUserViewController.h"
 #import "PopoverUserViewController.h"
 #import "User.h"
-#import "CRNavigationBar.h"
+#import "NavigationBar.h"
 
 @interface MasterUserViewController () <UITableViewDelegate, PopoverUserDelegate>
 

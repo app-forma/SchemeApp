@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 SpacePyro Inc. All rights reserved.
 //
 
-#import "CRNavigationBar.h"
+#import "NavigationBar.h"
 
-@interface CRNavigationBar ()
+@interface NavigationBar ()
 @property (nonatomic, strong) CALayer *colorLayer;
 @end
 
-@implementation CRNavigationBar
+@implementation NavigationBar
 
 static CGFloat const kDefaultColorLayerOpacity = 0.5f;
 static CGFloat const kSpaceToCoverStatusBars = 20.0f;

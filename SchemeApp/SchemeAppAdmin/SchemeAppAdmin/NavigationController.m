@@ -6,17 +6,17 @@
 //  Copyright (c) 2013 SpacePyro Inc. All rights reserved.
 //
 
-#import "CRNavigationController.h"
-#import "CRNavigationBar.h"
+#import "NavigationController.h"
+#import "NavigationBar.h"
 
-@interface CRNavigationController ()
+@interface NavigationController ()
 
 @end
 
-@implementation CRNavigationController
+@implementation NavigationController
 
 - (id)init {
-    self = [super initWithNavigationBarClass:[CRNavigationBar class] toolbarClass:nil];
+    self = [super initWithNavigationBarClass:[NavigationBar class] toolbarClass:nil];
     if(self) {
         // Custom initialization here, if needed.
     }
@@ -24,7 +24,7 @@
 }
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController {
-    self = [super initWithNavigationBarClass:[CRNavigationBar class] toolbarClass:nil];
+    self = [super initWithNavigationBarClass:[NavigationBar class] toolbarClass:nil];
     if(self) {
         self.viewControllers = @[rootViewController];
     }

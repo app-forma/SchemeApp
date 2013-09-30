@@ -25,7 +25,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CRNavigationBar : UINavigationBar
+@interface NavigationBar : UINavigationBar
 
 /**
  * Determines whether or not the extra color layer should be displayed.

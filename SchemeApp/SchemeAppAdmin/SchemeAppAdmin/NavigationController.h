@@ -25,6 +25,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CRNavigationController : UINavigationController
+@interface NavigationController : UINavigationController
 
 @end
