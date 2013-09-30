@@ -213,29 +213,6 @@
 }
 
 #pragma mark - Messages
-- (void)messagesCompletion:(void (^)(NSArray *allMessages))handler
-{
-    [Store.dbSessionConnection getPath:DB_TYPE_MESSAGE
-                            withParams:nil
-                         andCompletion:^(id responseBody, id response, NSError *error)
-    {
-        NSMutableArray *collectedMessages = NSMutableArray.array;
-        
-        if (error)
-        {
-            NSLog(@"messagesCompletion: got response: %@ and error: %@", response, error.userInfo);
-        }
-        else
-        {
-            for (NSDictionary *messageDictionary in responseBody)
-            {
-                [collectedMessages addObject:[[Message alloc] initWithMsgDictionary:messageDictionary]];
-            }
-        }
-        
-        handler(collectedMessages);
-    }];
-}
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))handler
 {
     [Store.dbSessionConnection postContent:message.asDictionary
@@ -273,7 +250,7 @@
          }
      }];
 }
-- (void)updateMessages:(NSArray*)messages forUser:(User*)user
+- (void)updateMessages:(NSArray*)messages forUser:(User*)user //deprecated
 {
     NSMutableArray *messageIds = [NSMutableArray new];
     for (Message *message in messages) {

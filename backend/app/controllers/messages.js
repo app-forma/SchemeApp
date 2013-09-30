@@ -75,7 +75,7 @@ exports.removeReceiver = function (req, res) {
             res.json(500, err.errors);
         } else {
             for (var i = message.receivers.length - 1; i >= 0; i--) {
-                if (req.params.receiverID == message.receivers[i]) {
+                if (req.params.receiverID == message.receivers[i]) { // must be ==, not === since message.receivers[i] is not a native string type
                     message.receivers.splice(i, 1);
                     break;
                 }

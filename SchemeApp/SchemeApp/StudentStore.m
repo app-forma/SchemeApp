@@ -41,23 +41,23 @@
     }];
 }
 
-- (void)messageWithDocID:(NSString *)docID completion:(void (^)(Message *message))handler
-{
-    [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_MESSAGE, docID]
-                            withParams:nil
-                         andCompletion:^(id responseBody, id response, NSError *error)
-     {
-         if (error)
-         {
-             NSLog(@"messageWithDocID:completion: got response: %@ and error: %@", response, error.userInfo);
-             handler(nil);
-         }
-         else
-         {
-             handler([[Message alloc] initWithMsgDictionary:responseBody]);
-         }
-     }];
-}
+//- (void)messageWithDocID:(NSString *)docID completion:(void (^)(Message *message))handler
+//{
+//    [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_MESSAGE, docID]
+//                            withParams:nil
+//                         andCompletion:^(id responseBody, id response, NSError *error)
+//     {
+//         if (error)
+//         {
+//             NSLog(@"messageWithDocID:completion: got response: %@ and error: %@", response, error.userInfo);
+//             handler(nil);
+//         }
+//         else
+//         {
+//             handler([[Message alloc] initWithMsgDictionary:responseBody]);
+//         }
+//     }];
+//}
 
 - (void)messagesForUser:(User*)user completion:(void (^)(NSArray *messagesForUser))handler
 {
@@ -74,14 +74,18 @@
             for (NSDictionary *jsonMessage in jsonMessages) {
                 [messages addObject:[[Message alloc]initWithMsgDictionary:jsonMessage]];
             }
-#warning implement set currentuser messages here???
-            //[Store mainStore].currentUser.messages = messages; ???
             handler(messages);
         }
     }];
 }
 
-
+-(void)deleteMessage:(Message *)message forUser:(User *)user completion:(void (^)(BOOL))handler
+{
+    [[Store dbSessionConnection]deletePath:[NSString stringWithFormat:@"%@/%@/%@/%@", DB_TYPE_MESSAGE, message.docID, @"receivers", user.docID] withCompletion:^(id responseBody, id response, NSError *error) {
+        BOOL isSuccess = !error ? YES : NO;
+        handler(isSuccess);
+    }];
+}
 
 - (void)addAttendanceCompletion:(void (^)(BOOL))handler
 {
