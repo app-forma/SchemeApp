@@ -18,27 +18,30 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5RP-4R-tEJ">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5RP-4R-tEJ">
                     <rect key="frame" x="20" y="41" width="300" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="w70-76-h2I"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Z31-ev-Sil">
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Z31-ev-Sil">
                     <rect key="frame" x="20" y="79" width="728" height="925"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <gestureRecognizers/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="926" id="5tA-Di-Bee"/>
-                    </constraints>
                     <connections>
                         <outlet property="delegate" destination="-1" id="b1r-zs-Rcz"/>
                         <outletCollection property="gestureRecognizers" destination="bY3-h3-9Bh" appends="YES" id="0TJ-MF-VI1"/>
                     </connections>
                 </mapView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5VS-DY-BKK">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5VS-DY-BKK">
                     <rect key="frame" x="702" y="41" width="46" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="ifg-mh-n4i"/>
+                    </constraints>
                     <state key="normal" title="Save">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -46,9 +49,12 @@
                         <action selector="save:" destination="-1" eventType="touchUpInside" id="iLf-ZD-oSI"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGQ-v9-bZi">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGQ-v9-bZi">
                     <rect key="frame" x="648" y="41" width="46" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="ODF-Ym-VPG"/>
+                    </constraints>
                     <state key="normal" title="Delete">
                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,6 +65,18 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Z31-ev-Sil" firstAttribute="top" secondItem="5RP-4R-tEJ" secondAttribute="bottom" constant="8" symbolic="YES" id="JvX-IG-5UG"/>
+                <constraint firstAttribute="bottom" secondItem="Z31-ev-Sil" secondAttribute="bottom" constant="20" symbolic="YES" id="K48-pJ-k1o"/>
+                <constraint firstItem="Z31-ev-Sil" firstAttribute="top" secondItem="uGQ-v9-bZi" secondAttribute="bottom" constant="8" symbolic="YES" id="LMT-n8-Eol"/>
+                <constraint firstItem="5RP-4R-tEJ" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20" symbolic="YES" id="SNC-Me-1n2"/>
+                <constraint firstItem="5VS-DY-BKK" firstAttribute="leading" secondItem="uGQ-v9-bZi" secondAttribute="trailing" constant="8" symbolic="YES" id="X84-Gw-c24"/>
+                <constraint firstItem="5VS-DY-BKK" firstAttribute="trailing" secondItem="Z31-ev-Sil" secondAttribute="trailing" id="YN3-py-LG2"/>
+                <constraint firstAttribute="trailing" secondItem="5VS-DY-BKK" secondAttribute="trailing" constant="20" symbolic="YES" id="Z6b-LV-L4x"/>
+                <constraint firstItem="Z31-ev-Sil" firstAttribute="leading" secondItem="5RP-4R-tEJ" secondAttribute="leading" id="ZAI-N2-Q3l"/>
+                <constraint firstItem="5RP-4R-tEJ" firstAttribute="top" secondItem="2" secondAttribute="top" constant="41" id="aCS-Cs-LBu"/>
+                <constraint firstItem="5VS-DY-BKK" firstAttribute="baseline" secondItem="uGQ-v9-bZi" secondAttribute="baseline" id="yEE-uW-7Jv"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
         </view>
         <tapGestureRecognizer id="bY3-h3-9Bh">
