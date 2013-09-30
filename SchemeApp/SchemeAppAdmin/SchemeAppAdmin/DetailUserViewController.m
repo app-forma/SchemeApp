@@ -148,16 +148,19 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)picturePickerDidFinishPickingPicture:(UIImage *)image forUser:(User *)user
+-(void)picturePicker:(PicturePickerViewController *)picturePicker didFinishPickingPicture:(UIImage *)image forUser:(User *)user
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        self.userImage.image = image;
-        NSLog(@"SAVING USER %@", user);
-        [[Store superAdminStore] updateUser:user completion:^(id responseBody, id response, NSError *error) {
-            NSLog(@"RESP BDY %@", responseBody);
-                        NSLog(@"RESP  %@", response);
-                        NSLog(@"ERR %@", error);
-        }];
+    self.userImage.image = image;
+    user.image = image;
+    [[Store superAdminStore] updateUser:user completion:^(id responseBody, id response, NSError *error) {
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger statusCode = [httpResponse statusCode];
+        if (statusCode == 200) {
+            NSLog(@"Success: %@", responseBody);
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            NSLog(@"Error saving image: %@", error);
+        }
     }];
 }
 

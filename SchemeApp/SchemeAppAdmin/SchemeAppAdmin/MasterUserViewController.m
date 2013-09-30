@@ -9,7 +9,11 @@
 #import "MasterUserViewController.h"
 #import "PopoverUserViewController.h"
 #import "User.h"
+
 #import "NavigationBar.h"
+
+#import "DetailUserViewController.h"
+
 
 @interface MasterUserViewController () <UITableViewDelegate, PopoverUserDelegate>
 
@@ -23,8 +27,10 @@
     NSMutableArray *users;
     UIPopoverController *addUserPopover;
     PopoverUserViewController *puvc;
+
     NSArray *colorForRow;
-    NSUInteger selectedRow;
+    NSUInteger selectedIndex;
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -107,7 +113,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    UITableViewCell *prevCell= [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0]];
+
+    UITableViewCell *prevCell= [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]];
     prevCell.layer.borderColor = [UIColor clearColor].CGColor;
     prevCell.layer.borderWidth = 0;
     
@@ -119,8 +126,11 @@
     
     
     
+
+    selectedIndex = indexPath.row;
+
     [self.delegate masterUserDidSelectUser:users[indexPath.row]];
-    selectedRow = indexPath.row;
+    
     
 }
 
