@@ -173,7 +173,6 @@
     cell.textLabel.text = event.info;
     
     return cell;
-    
 }
 
 
