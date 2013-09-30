@@ -45,7 +45,7 @@
     self = [super init];
     if (self)
     {
-        self.tabBarController.delegate = self;
+        self.delegate = self;
     
         mevc = [MasterEventWrapperViewController new];
         devc = [DetailEventWrapperViewController new];
@@ -86,7 +86,6 @@
     }
     return self;
 }
-
 
 
 - (void)viewDidLoad
