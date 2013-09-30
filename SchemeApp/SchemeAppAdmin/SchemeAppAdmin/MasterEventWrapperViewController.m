@@ -43,8 +43,10 @@
           {
               [self.eventWrappersTableView reloadData];
               NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-              [self.eventWrappersTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-              [self tableView:self.eventWrappersTableView didSelectRowAtIndexPath:indexPath];
+              if ([allEventWrappers count]) {
+                  [self.eventWrappersTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+                  [self tableView:self.eventWrappersTableView didSelectRowAtIndexPath:indexPath];
+              }
           }];
      }];
     
