@@ -12,6 +12,7 @@
 #import "EventWrapper.h"
 #import "StudentEventsTableViewController.h"
 #import "User.h"
+#import "NSDate+Helpers.h"
 @interface StudentEventMainViewController ()<DatePickerDelegate>
 {
     DatePickerViewController *datePicker;
@@ -56,14 +57,10 @@
 -(void)DatePickerDonePickingDate:(NSDate *)datePicked
 {
     datePickerView.hidden = YES;
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    NSString *dateText = [dateFormat stringFromDate:datePicked];
     if (datePicker.currentDatePicker == StartDatePicker) {
-        self.startDateForScheme.text = dateText;
+        self.startDateForScheme.text = datePicked.asDateString;
     }else if (datePicker.currentDatePicker == EndDatePicker){
-        self.endDateForScheme.text = dateText;
+        self.endDateForScheme.text = datePicked.asDateString;
     }
 }
 
@@ -120,7 +117,6 @@
 {
     datePicker.currentDatePicker = StartDatePicker;
     datePickerView.hidden = NO;
-    
 }
 
 -(void)pickEndDateForScheme

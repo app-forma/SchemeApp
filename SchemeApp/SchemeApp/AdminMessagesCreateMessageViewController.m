@@ -38,6 +38,8 @@
 
     UIColor *lightGrayColor;
     UIColor *whiteColor;
+    
+    UITextField *searchTextField;
 }
 -(BOOL)prefersStatusBarHidden { return YES; }
 
@@ -114,6 +116,7 @@
     NSInteger section = indexPath.section;
     if (section == SEARCH_SECTION) {
         SearchCelliPhone *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCell" forIndexPath:indexPath];
+        searchTextField = cell.textField;
         cell.textField.delegate = self;
         [cell.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         return cell;
@@ -149,8 +152,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == SUGGESTIONS_SECTION) {
-        [receivers addObject:suggestedUsers[indexPath.row]];
-
+        searchTextField.text = nil;
+        [receivers addObject:suggestedUsers[indexPath.row]];        
         [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:receivers.count -
                                              1 inSection:RECIPIENTS_SECTION]] withRowAnimation:UITableViewRowAnimationAutomatic];
         [suggestedUsers removeObjectAtIndex:indexPath.row];
