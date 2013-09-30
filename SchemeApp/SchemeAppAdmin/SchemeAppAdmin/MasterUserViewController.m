@@ -108,7 +108,7 @@
 {
     puvc.isInEditingMode = NO;
     addUserPopover = [[UIPopoverController alloc] initWithContentViewController:puvc];
-    [addUserPopover setPopoverContentSize:CGSizeMake(300, 555)];
+    [addUserPopover setPopoverContentSize:CGSizeMake(320, 380)];
     [addUserPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 

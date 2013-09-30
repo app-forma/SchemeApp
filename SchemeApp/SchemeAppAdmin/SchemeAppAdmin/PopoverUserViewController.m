@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *rolePickerView;
 - (IBAction)saveUser:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 
 @end
@@ -43,8 +45,22 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     if (self.isInEditingMode) {
+        [self.passwordTextField removeFromSuperview];
+        [self.passwordLabel removeFromSuperview];
+        [self.rolePickerView removeFromSuperview];
+        [self.saveButton removeFromSuperview];
+        
         User *currentUser = [self.delegate currentUser];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 120, 320, 220)];
+        self.rolePickerView.frame = CGRectMake(0, 10, 320, 180);
+        self.saveButton.frame = CGRectMake(110, 165, 100, 40);
+        [view addSubview:self.saveButton];
+        [view addSubview:self.rolePickerView];
+        [self.view addSubview:view];
+        
         [self populateTextFieldsWith:currentUser for:@"PUT"];
+        
+        
     } else {
         [self populateTextFieldsWith:nil for:@"POST"];
     }

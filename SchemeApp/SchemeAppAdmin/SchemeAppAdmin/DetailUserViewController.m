@@ -60,10 +60,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    /*addButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"newIcon"] tag:1];
-    [addButton addTarget:self action:@selector(addNewUser:) forControlEvents:UIControlEventTouchUpInside];
-    [addButton setFrame:CGRectMake(500, 24, 50, 50)];
-    [self.view addSubview:addButton];*/
     
     editButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"editIcon"] tag:2];
     [editButton addTarget:self action:@selector(editUser:) forControlEvents:UIControlEventTouchUpInside];
@@ -91,8 +87,8 @@
     
     userInfoPopover = [[UIPopoverController alloc] initWithContentViewController:puvc];
     UIButton *senderButton = (UIButton *)sender;
-    [userInfoPopover setPopoverContentSize:CGSizeMake(300, 555)];
-    [userInfoPopover presentPopoverFromRect:senderButton.bounds inView:senderButton permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    [userInfoPopover setPopoverContentSize:CGSizeMake(320, 350)];
+    [userInfoPopover presentPopoverFromRect:senderButton.bounds inView:senderButton permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
 }
 
 -(void)masterUserDidSelectUser:(User *)user
