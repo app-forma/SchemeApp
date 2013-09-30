@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 - (IBAction)didPressSignIn:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *loginStatusLabel;
+- (IBAction)populateAdminCredentials:(id)sender;
+- (IBAction)populateStudentCredentials:(id)sender;
+
 
 @end
 
@@ -90,5 +93,14 @@
         return YES;
     }
     return NO;
+}
+- (IBAction)populateAdminCredentials:(id)sender {
+    self.emailField.text = @"anders@coredev.se";
+    self.passwordField.text = @"asdf";
+}
+
+- (IBAction)populateStudentCredentials:(id)sender {
+    self.emailField.text = @"tobie@tobie.se";
+    self.passwordField.text = @"tobie";
 }
 @end
