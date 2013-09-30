@@ -86,18 +86,7 @@
     }
     return self;
 }
--(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-{
 
-    UISplitViewController *splitViewController = (UISplitViewController *)viewController;
-    UIViewController *viewC = splitViewController.viewControllers[0];
-    [[[[UIApplication sharedApplication] delegate] window] sendSubviewToBack:viewC.view];
-    
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:self.view];
-    [[[[UIApplication sharedApplication] delegate] window] bringSubviewToFront:self.view];
-    
-
-}
 
 - (void)viewDidLoad
 {
