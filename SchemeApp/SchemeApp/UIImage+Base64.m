@@ -7,7 +7,7 @@
 //
 
 #import "UIImage+Base64.h"
-#import "Base64.h"
+
 @implementation UIImage (Base64)
 
 + (UIImage *)imageFromBase64:(NSString *)base64str
