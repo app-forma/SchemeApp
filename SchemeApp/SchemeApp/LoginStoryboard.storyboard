@@ -90,7 +90,6 @@
                     <navigationItem key="navigationItem" id="lZh-pr-BaN"/>
                     <connections>
                         <outlet property="emailField" destination="lW7-gn-oXN" id="61S-cE-VcZ"/>
-                        <outlet property="loginStatisLabel" destination="gp7-X5-PmU" id="ZxD-q9-ztW"/>
                         <outlet property="loginStatusLabel" destination="gp7-X5-PmU" id="dv8-lq-SNc"/>
                         <outlet property="passwordField" destination="zbj-FJ-aPm" id="7Jd-TS-sJc"/>
                     </connections>
