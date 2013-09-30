@@ -22,6 +22,8 @@
 {
     self.navigationItem.title = @"Click";
     [super viewDidLoad];
+    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"glasses_selected.png"]];
+    self.navigationItem.title = @"Guidance";
 }
 
 

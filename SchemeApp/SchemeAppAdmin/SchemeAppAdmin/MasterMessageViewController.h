@@ -16,6 +16,6 @@
 @end
 
 @interface MasterMessageViewController : UIViewController
-@property (nonatomic, assign) id <MasterMessageDelegate> delegate;
+@property (weak) id <MasterMessageDelegate> delegate;
 
 @end

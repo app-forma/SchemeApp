@@ -8,15 +8,17 @@
 
 #import "DetailEventWrapperViewController.h"
 #import "EventWrapper.h"
+#import "Event.h"
 #import "UIButton+CustomButton.h"
 #import "PopoverEventWrapperViewController.h"
 
-@interface DetailEventWrapperViewController () <PopoverEventWrapperDelegate>
+@interface DetailEventWrapperViewController () <PopoverEventWrapperDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     UIButton *editButton;
     UIPopoverController *eventWrapperInfoPopover;
     PopoverEventWrapperViewController *pewvc;
     EventWrapper *currentEventWrapper;
+    NSMutableArray *events;
    
 }
 @property (weak, nonatomic) IBOutlet UILabel *eventWrapperName;
@@ -25,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+@property (weak, nonatomic) IBOutlet UITableView *eventsTableView;
 
 @end
 
@@ -73,8 +76,6 @@
     
     pewvc = [[PopoverEventWrapperViewController alloc] init];
     pewvc.delegate = self;
-    
-
 }
 
 
@@ -153,6 +154,25 @@
     self.startDateLabel.text = [Helpers stringFromNSDate:eventWrapper.startDate];
     self.endDateLabel.text = [Helpers stringFromNSDate:eventWrapper.endDate];
     currentEventWrapper = eventWrapper;
+    events = [[NSMutableArray alloc] initWithArray:eventWrapper.events];
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [events count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    Event *event = [events objectAtIndex:indexPath.row];
+    cell.textLabel.text = event.info;
+    
+    return cell;
 }
 
 

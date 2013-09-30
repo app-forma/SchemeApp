@@ -78,8 +78,8 @@
         
         
         SchoolInfoViewController *locationViewController = [[SchoolInfoViewController alloc] init];
-#warning Add TabBar icon
-        locationViewController.tabBarItem.title = @"Location";
+        UITabBarItem *locationItem = [[UITabBarItem alloc] initWithTitle:@"Location" image:[UIImage imageNamed:@"location_unselected"] selectedImage:[UIImage imageNamed:@"location_selected"]];
+        locationViewController.tabBarItem = locationItem;
         
         self.viewControllers = @[eventWrapperSplitView, messagesSplitView, usersSplitView, locationViewController];
         

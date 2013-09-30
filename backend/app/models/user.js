@@ -1,4 +1,4 @@
-/**
+/** 
  * Module dependencies.
  */
 
@@ -39,7 +39,10 @@ var UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'EventWrapper'
     }],
-    attendances: [String]
+    attendances: [String],
+    image: {
+        type: String
+    }
 });
 
 /**

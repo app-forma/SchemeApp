@@ -112,9 +112,34 @@
     [addUserPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
--(void)dismissPopover
+-(void)popoverUserDismissPopover
 {
     [addUserPopover dismissPopoverAnimated:YES];
 }
-
+-(void)popoverUserCreateUser:(User *)user
+{
+    void(^saveHandler)(void) = ^(void)
+    {
+        [NSOperationQueue.mainQueue addOperationWithBlock:^
+         {
+             [self.navigationController popViewControllerAnimated:YES];
+         }];
+    };
+    [[Store superAdminStore] createUser:user completion:^(id responseBody, id response, NSError *error) {
+        saveHandler();
+        [Store.adminStore usersCompletion:^(NSArray *allUsers)
+         {
+             users = [NSMutableArray arrayWithArray:allUsers];
+             [NSOperationQueue.mainQueue addOperationWithBlock:^
+              {
+                  [self.usersTableView reloadData];
+                  NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[users count] - 1 inSection:0];
+                  [self.usersTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+                  [self tableView:self.usersTableView didSelectRowAtIndexPath:indexPath];
+              }];
+         }];
+        
+    }];
+    
+}
 @end

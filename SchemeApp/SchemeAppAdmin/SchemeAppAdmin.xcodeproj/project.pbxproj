@@ -24,6 +24,14 @@
 		274E90DC17F320F900E97A12 /* editIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 274E90D817F320F900E97A12 /* editIcon@2x.png */; };
 		274E90DD17F320F900E97A12 /* newIcon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 274E90D917F320F900E97A12 /* newIcon@1x.png */; };
 		274E90DE17F320F900E97A12 /* newIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 274E90DA17F320F900E97A12 /* newIcon@2x.png */; };
+		27776A7F17F9994D00D84839 /* glasses_selected@1x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A7717F9994D00D84839 /* glasses_selected@1x.png.png */; };
+		27776A8017F9994D00D84839 /* glasses_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A7817F9994D00D84839 /* glasses_selected@2x.png */; };
+		27776A8117F9994D00D84839 /* glasses_unselected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A7917F9994D00D84839 /* glasses_unselected@1x.png */; };
+		27776A8217F9994D00D84839 /* glasses_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A7A17F9994D00D84839 /* glasses_unselected@2x.png */; };
+		27776A8317F9994D00D84839 /* location_selected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A7B17F9994D00D84839 /* location_selected@1x.png */; };
+		27776A8417F9994D00D84839 /* location_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A7C17F9994D00D84839 /* location_selected@2x.png */; };
+		27776A8517F9994D00D84839 /* location_unselected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A7D17F9994D00D84839 /* location_unselected@1x.png */; };
+		27776A8617F9994D00D84839 /* location_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A7E17F9994D00D84839 /* location_unselected@2x.png */; };
 		279AB65017F18C200094CE64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279AB64F17F18C200094CE64 /* Foundation.framework */; };
 		279AB65217F18C200094CE64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279AB65117F18C200094CE64 /* CoreGraphics.framework */; };
 		279AB65417F18C200094CE64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279AB65317F18C200094CE64 /* UIKit.framework */; };
@@ -134,6 +142,14 @@
 		274E90D817F320F900E97A12 /* editIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "editIcon@2x.png"; path = "images/editIcon@2x.png"; sourceTree = "<group>"; };
 		274E90D917F320F900E97A12 /* newIcon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "newIcon@1x.png"; path = "images/newIcon@1x.png"; sourceTree = "<group>"; };
 		274E90DA17F320F900E97A12 /* newIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "newIcon@2x.png"; path = "images/newIcon@2x.png"; sourceTree = "<group>"; };
+		27776A7717F9994D00D84839 /* glasses_selected@1x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glasses_selected@1x.png.png"; path = "images/glasses_selected@1x.png.png"; sourceTree = "<group>"; };
+		27776A7817F9994D00D84839 /* glasses_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glasses_selected@2x.png"; path = "images/glasses_selected@2x.png"; sourceTree = "<group>"; };
+		27776A7917F9994D00D84839 /* glasses_unselected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glasses_unselected@1x.png"; path = "images/glasses_unselected@1x.png"; sourceTree = "<group>"; };
+		27776A7A17F9994D00D84839 /* glasses_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glasses_unselected@2x.png"; path = "images/glasses_unselected@2x.png"; sourceTree = "<group>"; };
+		27776A7B17F9994D00D84839 /* location_selected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_selected@1x.png"; path = "images/location_selected@1x.png"; sourceTree = "<group>"; };
+		27776A7C17F9994D00D84839 /* location_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_selected@2x.png"; path = "images/location_selected@2x.png"; sourceTree = "<group>"; };
+		27776A7D17F9994D00D84839 /* location_unselected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_unselected@1x.png"; path = "images/location_unselected@1x.png"; sourceTree = "<group>"; };
+		27776A7E17F9994D00D84839 /* location_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_unselected@2x.png"; path = "images/location_unselected@2x.png"; sourceTree = "<group>"; };
 		279AB64C17F18C200094CE64 /* SchemeAppAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchemeAppAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279AB64F17F18C200094CE64 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		279AB65117F18C200094CE64 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -383,6 +399,14 @@
 		279AB6CA17F191570094CE64 /* AdminTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				27776A7717F9994D00D84839 /* glasses_selected@1x.png.png */,
+				27776A7817F9994D00D84839 /* glasses_selected@2x.png */,
+				27776A7917F9994D00D84839 /* glasses_unselected@1x.png */,
+				27776A7A17F9994D00D84839 /* glasses_unselected@2x.png */,
+				27776A7B17F9994D00D84839 /* location_selected@1x.png */,
+				27776A7C17F9994D00D84839 /* location_selected@2x.png */,
+				27776A7D17F9994D00D84839 /* location_unselected@1x.png */,
+				27776A7E17F9994D00D84839 /* location_unselected@2x.png */,
 				279AB6BE17F191570094CE64 /* courses_unselected@1x.png */,
 				279AB6BF17F191570094CE64 /* courses_selected@1x.png */,
 				279AB6C017F191570094CE64 /* courses_selected@2x.png */,
@@ -635,7 +659,9 @@
 				4DF2616017F6078900983735 /* DetailMessageViewController.xib in Resources */,
 				279AB6D117F191570094CE64 /* messages_selected@2x.png in Resources */,
 				279AB6B717F191490094CE64 /* EventWrapper.m in Resources */,
+				27776A7F17F9994D00D84839 /* glasses_selected@1x.png.png in Resources */,
 				279AB65A17F18C200094CE64 /* InfoPlist.strings in Resources */,
+				27776A8417F9994D00D84839 /* location_selected@2x.png in Resources */,
 				279AB6B817F191490094CE64 /* Event.h in Resources */,
 				274E556B17F2F58F00E97A12 /* DetailUserViewController.xib in Resources */,
 				279D060F17F196E300586DF7 /* TypeDef in Resources */,
@@ -649,7 +675,9 @@
 				279AB6D717F191570094CE64 /* users_unselected@2x.png in Resources */,
 				279AB6BA17F191490094CE64 /* Message.h in Resources */,
 				279AB6E717F1920E0094CE64 /* Helpers.h in Resources */,
+				27776A8217F9994D00D84839 /* glasses_unselected@2x.png in Resources */,
 				279AB6CF17F191570094CE64 /* courses_unselected@2x.png in Resources */,
+				27776A8017F9994D00D84839 /* glasses_selected@2x.png in Resources */,
 				279AB6BC17F191490094CE64 /* User.h in Resources */,
 				279AB6D517F191570094CE64 /* users_selected@2x.png in Resources */,
 				279AB6BD17F191490094CE64 /* User.m in Resources */,
@@ -657,11 +685,14 @@
 				279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */,
 				274E90DB17F320F900E97A12 /* editIcon@1x.png in Resources */,
 				279D064D17F1D07900586DF7 /* MessageViewController.xib in Resources */,
+				27776A8317F9994D00D84839 /* location_selected@1x.png in Resources */,
 				274E90DE17F320F900E97A12 /* newIcon@2x.png in Resources */,
 				279AB6E317F1920E0094CE64 /* Validation.h in Resources */,
 				279AB6E817F1920E0094CE64 /* Helpers.m in Resources */,
 				279AB6D317F191570094CE64 /* messages_unselected@2x.png in Resources */,
 				279AB66217F18C200094CE64 /* Images.xcassets in Resources */,
+				27776A8617F9994D00D84839 /* location_unselected@2x.png in Resources */,
+				27776A8517F9994D00D84839 /* location_unselected@1x.png in Resources */,
 				279AB6CE17F191570094CE64 /* courses_selected@2x.png in Resources */,
 				279AB6CC17F191570094CE64 /* courses_unselected@1x.png in Resources */,
 				279D064817F1C97F00586DF7 /* AuthViewController.xib in Resources */,
@@ -671,6 +702,7 @@
 				8FE68A2A17F4DABB00FAD042 /* MasterUserViewController.xib in Resources */,
 				274E90DC17F320F900E97A12 /* editIcon@2x.png in Resources */,
 				8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */,
+				27776A8117F9994D00D84839 /* glasses_unselected@1x.png in Resources */,
 				04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */,
 				279D065A17F1DA3E00586DF7 /* EventWrappersViewController.xib in Resources */,
 				279AB6BB17F191490094CE64 /* Message.m in Resources */,

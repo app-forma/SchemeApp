@@ -104,7 +104,7 @@
         }
         else
         {
-            NSLog(@"[%@] Attendance has allready been set.", self.class);
+            NSLog(@"[%@] Attendance has already been set.", self.class);
             handler(YES);
         }
     }
