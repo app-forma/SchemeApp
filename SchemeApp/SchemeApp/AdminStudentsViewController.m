@@ -30,6 +30,8 @@
     [super viewDidLoad];
     
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"users_selected"]];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 -(void)viewWillAppear:(BOOL)animated
