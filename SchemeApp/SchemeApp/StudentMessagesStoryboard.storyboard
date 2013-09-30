@@ -160,7 +160,6 @@
     </scenes>
     <resources>
         <image name="messages_unselected.png" width="30" height="30"/>
-        <image name="messages_unselected.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
