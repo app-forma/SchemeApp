@@ -32,7 +32,7 @@
 -(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
     NSLog(@"Entered Region - %@", region.identifier);
-//    [locationManager stopMonitoringForRegion:testRegion];
+    [locationManager stopMonitoringForRegion:testRegion];
     [automaticPresence show];
 }
 
@@ -44,7 +44,6 @@
 
 
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
-    NSLog(@"Started monitoring %@ region", region.identifier);
     [startedMonitoringForRegion show];
 }
 
