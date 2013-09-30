@@ -146,7 +146,10 @@
 #pragma mark - ImagePicker delegate and actions
 -(void)picturePickerDidFinishPickingPicture:(UIImage *)image
 {
-    NSLog(@"Do stuff with image");
+    [self dismissViewControllerAnimated:YES completion:^{
+        self.userImage.image = image;
+#warning save changes to db / Handle empty image
+    }];
 }
 
 - (IBAction)showImagePicker:(id)sender {

@@ -8,10 +8,11 @@
 
 #import "PicturePickerViewController.h"
 
-@interface PicturePickerViewController ()
+@interface PicturePickerViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 - (IBAction)showCamera:(id)sender;
 - (IBAction)showLibrary:(id)sender;
+- (IBAction)saveChanges:(id)sender;
 
 @end
 
@@ -40,9 +41,48 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)showCamera:(id)sender {
+- (IBAction)showCamera:(id)sender
+{
+    [self showImagePickerControllerForType:UIImagePickerControllerSourceTypeCamera];
 }
 
-- (IBAction)showLibrary:(id)sender {
+- (IBAction)showLibrary:(id)sender
+{
+    [self showImagePickerControllerForType:UIImagePickerControllerSourceTypePhotoLibrary];
+}
+
+- (IBAction)saveChanges:(id)sender {
+#warning handle empty image
+    [self.delegate picturePickerDidFinishPickingPicture:self.image];
+}
+
+-(BOOL) showImagePickerControllerForType:(UIImagePickerControllerSourceType) sourceType
+{
+    if([UIImagePickerController isSourceTypeAvailable:sourceType])
+    {
+        UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
+        cameraUI.delegate = self;
+        cameraUI.sourceType = sourceType;
+  
+        [self presentViewController:cameraUI animated:YES completion:nil];
+        return YES;
+    }
+    
+    return NO;
+}
+
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    self.image = image;
+    self.imageView.image = image;
+    [self dismissViewControllerAnimated:YES completion:nil];    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

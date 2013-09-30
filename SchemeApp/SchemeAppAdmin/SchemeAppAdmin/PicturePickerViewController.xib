@@ -15,17 +15,23 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zxM-Ae-fbd">
-                    <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zxM-Ae-fbd">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FZw-ul-cb7">
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZw-ul-cb7">
                     <rect key="frame" x="0.0" y="960" width="768" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
                         <barButtonItem systemItem="camera" id="I9x-Su-35F">
                             <connections>
                                 <action selector="showCamera:" destination="-1" id="jTN-j6-gHL"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="jtQ-rS-56a"/>
+                        <barButtonItem systemItem="save" id="Fjg-6e-izX">
+                            <connections>
+                                <action selector="saveChanges:" destination="-1" id="eja-aZ-xMd"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="5NW-fJ-pxB"/>
@@ -38,6 +44,15 @@
                 </toolbar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="zxM-Ae-fbd" firstAttribute="bottom" secondItem="FZw-ul-cb7" secondAttribute="bottom" id="0ji-GS-j0o"/>
+                <constraint firstAttribute="trailing" secondItem="FZw-ul-cb7" secondAttribute="trailing" id="OGg-i6-C2c"/>
+                <constraint firstAttribute="bottom" secondItem="FZw-ul-cb7" secondAttribute="bottom" id="Qy1-gH-gLQ"/>
+                <constraint firstItem="zxM-Ae-fbd" firstAttribute="top" secondItem="2" secondAttribute="top" id="dSO-cs-RB1"/>
+                <constraint firstItem="FZw-ul-cb7" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="h7G-El-jXF"/>
+                <constraint firstItem="zxM-Ae-fbd" firstAttribute="leading" secondItem="FZw-ul-cb7" secondAttribute="leading" id="heE-lP-lMs"/>
+                <constraint firstItem="zxM-Ae-fbd" firstAttribute="trailing" secondItem="FZw-ul-cb7" secondAttribute="trailing" id="zAC-C2-Rak"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
         </view>
     </objects>
