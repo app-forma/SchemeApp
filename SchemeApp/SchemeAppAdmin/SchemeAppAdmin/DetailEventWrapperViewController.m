@@ -84,8 +84,13 @@
     
     editButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"editIcon"] tag:2];
     [editButton addTarget:self action:@selector(editEventWrapper:) forControlEvents:UIControlEventTouchUpInside];
-    [editButton setFrame:CGRectMake(338, 80, 50, 50)];
+    editButton.translatesAutoresizingMaskIntoConstraints = NO;
+    
     [self.view addSubview:editButton];
+    
+    NSDictionary *views = NSDictionaryOfVariableBindings(editButton);
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[editButton(50.0)]-(25.0)-|" options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(50.0)-[editButton(50.0)]" options:0 metrics:nil views:views]];
 }
 
 - (void)editEventWrapper:(id)sender
