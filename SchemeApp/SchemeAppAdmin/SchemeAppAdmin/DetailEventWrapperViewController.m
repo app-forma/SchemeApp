@@ -17,6 +17,8 @@
     UIPopoverController *eventWrapperInfoPopover;
     PopoverEventWrapperViewController *pewvc;
     EventWrapper *currentEventWrapper;
+    UIBarButtonItem *barButtonForMaster;
+    UIViewController *masterViewController;
 }
 @property (weak, nonatomic) IBOutlet UILabel *eventWrapperName;
 @property (weak, nonatomic) IBOutlet UILabel *teacherLabel;
@@ -43,6 +45,10 @@
           withBarButtonItem:(UIBarButtonItem *)barButtonItem
        forPopoverController:(UIPopoverController *)pc
 {
+    barButtonForMaster = barButtonItem;
+
+    masterViewController = aViewController;
+    
 }
 
 
@@ -67,6 +73,15 @@
     
     pewvc = [[PopoverEventWrapperViewController alloc] init];
     pewvc.delegate = self;
+    
+
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (!masterViewController.view.window) {
+        [barButtonForMaster.target performSelector:barButtonForMaster.action withObject:barButtonForMaster afterDelay:0.01];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

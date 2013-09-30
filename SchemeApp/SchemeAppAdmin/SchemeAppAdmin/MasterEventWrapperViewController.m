@@ -9,6 +9,7 @@
 #import "MasterEventWrapperViewController.h"
 #import "EventWrapper.h"
 #import "PopoverEventWrapperViewController.h"
+#import "AppDelegate.h"
 
 @interface MasterEventWrapperViewController () <UITableViewDelegate, PopoverEventWrapperDelegate>
 {
@@ -46,6 +47,7 @@
               [self tableView:self.eventWrappersTableView didSelectRowAtIndexPath:indexPath];
           }];
      }];
+    
 }
 
 - (void)viewDidLoad
