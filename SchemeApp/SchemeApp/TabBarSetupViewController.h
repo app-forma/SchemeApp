@@ -8,5 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AdminTabBarViewController : UITabBarController
+@interface TabBarSetupViewController : UITabBarController <UIActionSheetDelegate>
+
+-(id)initWithMode:(ViewMode)viewMode;
+
 @end

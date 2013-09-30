@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "AdminTabBarViewController.h"
+#import "TabBarSetupViewController.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
@@ -31,11 +31,12 @@
     [Store sendAuthenticationRequestForEmail:self.emailField.text password:self.passwordField.text completion:^(BOOL success, id user) {
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                if ([Store mainStore].currentUser.role != StudentRole) {
-                    [self enterAppWithView:[[AdminTabBarViewController alloc]init]];
-                } else {
+                if ([Store mainStore].currentUser.role == StudentRole) {
                     [self registerAttendance];
-                    [self enterAppWithView:[[UIStoryboard storyboardWithName:@"StudentStoryboard" bundle:nil]instantiateInitialViewController]];
+                    [self enterAppWithViewController:[[TabBarSetupViewController alloc]initWithMode:StudentMode]];
+                } else {
+                    //[self enterAppWithViewController:[[UIStoryboard storyboardWithName:@"StudentStoryboard" bundle:nil]instantiateInitialViewController]];
+                    [self enterAppWithViewController:[[TabBarSetupViewController alloc]initWithMode:AdminMode]];
                 }
             });
         } else {
@@ -56,7 +57,7 @@
      }];
 }
 
-- (void)enterAppWithView:(UIViewController*)viewToBePresented {
+- (void)enterAppWithViewController:(UIViewController*)viewToBePresented {
     viewToBePresented.modalTransitionStyle = UIModalPresentationFullScreen;
     [self presentViewController:viewToBePresented animated:YES completion:nil];
 }

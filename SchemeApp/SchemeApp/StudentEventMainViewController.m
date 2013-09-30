@@ -38,11 +38,6 @@
 
     self.navigationItem.title = @"Classes";
     
-    // Sign out
-    UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
-    self.navigationItem.rightBarButtonItem = signOutButton;
-    
-    
     datePicker = [[DatePickerViewController alloc] init];
     
     UITapGestureRecognizer *tapForStartDate = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickStartDateForScheme)];
@@ -56,14 +51,6 @@
     [self.view addSubview:datePickerView];
     datePickerView.hidden = YES;
     datePicker.delegate = self;
-}
-
--(void)signOut
-{
-    UIStoryboard *loginSb = [UIStoryboard storyboardWithName:@"LoginStoryboard" bundle:nil];
-    UIViewController *initialLoginVC = [loginSb instantiateInitialViewController];
-    initialLoginVC.modalTransitionStyle = UIModalPresentationFullScreen;
-    [self presentViewController:initialLoginVC animated:YES completion:nil];
 }
 
 -(void)DatePickerDonePickingDate:(NSDate *)datePicked

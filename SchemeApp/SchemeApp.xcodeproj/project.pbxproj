@@ -50,6 +50,11 @@
 		4D757AA017F963C2007255E1 /* SearchCelliPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A9F17F963C2007255E1 /* SearchCelliPhone.m */; };
 		4D757AA317F963CE007255E1 /* ReceiverCelliPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757AA217F963CE007255E1 /* ReceiverCelliPhone.m */; };
 		4D757AA617F9AB81007255E1 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757AA517F9AB81007255E1 /* NSDate+Helpers.m */; };
+		4D757AEA17F9DF38007255E1 /* StudentEventsStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D757AE917F9DF38007255E1 /* StudentEventsStoryBoard.storyboard */; };
+		4D757AEC17F9DF62007255E1 /* StudentMessagesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D757AEB17F9DF62007255E1 /* StudentMessagesStoryboard.storyboard */; };
+		4D757AEE17F9DF94007255E1 /* StudentWhatToReadStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D757AED17F9DF94007255E1 /* StudentWhatToReadStoryboard.storyboard */; };
+		4D757AF117F9E44A007255E1 /* glasses_unselected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D757AEF17F9E44A007255E1 /* glasses_unselected@1x.png */; };
+		4D757AF217F9E44A007255E1 /* glasses_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D757AF017F9E44A007255E1 /* glasses_unselected@2x.png */; };
 		4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC5DD817E1EFAD0032C92F /* MessageCell.m */; };
 		4DED32BF17E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED32B817E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m */; };
 		4DED32C017E993F7008A5D3A /* AdminMessagesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED32BA17E993F7008A5D3A /* AdminMessagesDetailViewController.m */; };
@@ -75,8 +80,8 @@
 		AF8CD8F417E85065004551F8 /* AdminMessagesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF8CD8F217E85065004551F8 /* AdminMessagesStoryboard.storyboard */; };
 		AF8CD8F617E8507F004551F8 /* AdminUserStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF8CD8F517E8507F004551F8 /* AdminUserStoryboard.storyboard */; };
 		AF8CD8F717E8507F004551F8 /* AdminUserStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF8CD8F517E8507F004551F8 /* AdminUserStoryboard.storyboard */; };
-		AF8CD8FA17E850C8004551F8 /* AdminTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8CD8F917E850C8004551F8 /* AdminTabBarViewController.m */; };
-		AF8CD8FB17E850C8004551F8 /* AdminTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8CD8F917E850C8004551F8 /* AdminTabBarViewController.m */; };
+		AF8CD8FA17E850C8004551F8 /* TabBarSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8CD8F917E850C8004551F8 /* TabBarSetupViewController.m */; };
+		AF8CD8FB17E850C8004551F8 /* TabBarSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8CD8F917E850C8004551F8 /* TabBarSetupViewController.m */; };
 		AF99541B17F2CD53003C450B /* TypeDef in Resources */ = {isa = PBXBuildFile; fileRef = AF99541A17F2CD53003C450B /* TypeDef */; };
 		AF99542417F2FDAC003C450B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99542317F2FDAC003C450B /* Location.m */; };
 		AFDA09EC17EAEAC300333A48 /* DatabaseConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */; };
@@ -172,6 +177,11 @@
 		4D757AA217F963CE007255E1 /* ReceiverCelliPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverCelliPhone.m; sourceTree = "<group>"; };
 		4D757AA417F9AB81007255E1 /* NSDate+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helpers.h"; sourceTree = "<group>"; };
 		4D757AA517F9AB81007255E1 /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
+		4D757AE917F9DF38007255E1 /* StudentEventsStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StudentEventsStoryBoard.storyboard; sourceTree = "<group>"; };
+		4D757AEB17F9DF62007255E1 /* StudentMessagesStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StudentMessagesStoryboard.storyboard; sourceTree = "<group>"; };
+		4D757AED17F9DF94007255E1 /* StudentWhatToReadStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StudentWhatToReadStoryboard.storyboard; sourceTree = "<group>"; };
+		4D757AEF17F9E44A007255E1 /* glasses_unselected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glasses_unselected@1x.png"; path = "images/glasses_unselected@1x.png"; sourceTree = "<group>"; };
+		4D757AF017F9E44A007255E1 /* glasses_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glasses_unselected@2x.png"; path = "images/glasses_unselected@2x.png"; sourceTree = "<group>"; };
 		4DAC5DD717E1EFAD0032C92F /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		4DAC5DD817E1EFAD0032C92F /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		4DED32B717E993F7008A5D3A /* AdminMessagesCreateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminMessagesCreateMessageViewController.h; sourceTree = "<group>"; };
@@ -202,8 +212,8 @@
 		AF8CD8EF17E84E87004551F8 /* AdminEventWrapperStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdminEventWrapperStoryboard.storyboard; sourceTree = "<group>"; };
 		AF8CD8F217E85065004551F8 /* AdminMessagesStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdminMessagesStoryboard.storyboard; sourceTree = "<group>"; };
 		AF8CD8F517E8507F004551F8 /* AdminUserStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdminUserStoryboard.storyboard; sourceTree = "<group>"; };
-		AF8CD8F817E850C8004551F8 /* AdminTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminTabBarViewController.h; sourceTree = "<group>"; };
-		AF8CD8F917E850C8004551F8 /* AdminTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminTabBarViewController.m; sourceTree = "<group>"; };
+		AF8CD8F817E850C8004551F8 /* TabBarSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarSetupViewController.h; sourceTree = "<group>"; };
+		AF8CD8F917E850C8004551F8 /* TabBarSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarSetupViewController.m; sourceTree = "<group>"; };
 		AF99541A17F2CD53003C450B /* TypeDef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TypeDef; sourceTree = "<group>"; };
 		AF99542217F2FDAC003C450B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		AF99542317F2FDAC003C450B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
@@ -415,8 +425,8 @@
 				270CF1A217EB52B1003BEBD2 /* Messages */,
 				270CF1A117EB5274003BEBD2 /* Users */,
 				270CF19F17EB5250003BEBD2 /* EventWrappers */,
-				AF8CD8F817E850C8004551F8 /* AdminTabBarViewController.h */,
-				AF8CD8F917E850C8004551F8 /* AdminTabBarViewController.m */,
+				AF8CD8F817E850C8004551F8 /* TabBarSetupViewController.h */,
+				AF8CD8F917E850C8004551F8 /* TabBarSetupViewController.m */,
 			);
 			name = Admin;
 			sourceTree = "<group>";
@@ -425,14 +435,16 @@
 			isa = PBXGroup;
 			children = (
 				274E556E17F3184700E97A12 /* miscIcons */,
-				27BCC1F917E1FACE009977BB /* AdminTabBar */,
+				27BCC1F917E1FACE009977BB /* TabBar */,
 			);
 			name = Images;
 			sourceTree = "<group>";
 		};
-		27BCC1F917E1FACE009977BB /* AdminTabBar */ = {
+		27BCC1F917E1FACE009977BB /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				4D757AEF17F9E44A007255E1 /* glasses_unselected@1x.png */,
+				4D757AF017F9E44A007255E1 /* glasses_unselected@2x.png */,
 				27BCC21617E201EE009977BB /* courses_unselected@1x.png */,
 				27BCC20617E201B8009977BB /* courses_selected@1x.png */,
 				27BCC20717E201B8009977BB /* courses_selected@2x.png */,
@@ -446,7 +458,7 @@
 				27BCC1FC17E1FAF5009977BB /* users_unselected@1x.png */,
 				27BCC1FD17E1FAF5009977BB /* users_unselected@2x.png */,
 			);
-			name = AdminTabBar;
+			name = TabBar;
 			sourceTree = "<group>";
 		};
 		27D8B45517E0B92A007EC0E5 /* Views */ = {
@@ -456,6 +468,9 @@
 				04E09F5A17E7249D00B946CB /* EventCell.m */,
 				27BCC1E617E1E7E7009977BB /* LoginStoryboard.storyboard */,
 				AFE538EF17E0972C00C0B776 /* StudentStoryboard.storyboard */,
+				4D757AE917F9DF38007255E1 /* StudentEventsStoryBoard.storyboard */,
+				4D757AED17F9DF94007255E1 /* StudentWhatToReadStoryboard.storyboard */,
+				4D757AEB17F9DF62007255E1 /* StudentMessagesStoryboard.storyboard */,
 				AF8CD8EF17E84E87004551F8 /* AdminEventWrapperStoryboard.storyboard */,
 				AF8CD8F217E85065004551F8 /* AdminMessagesStoryboard.storyboard */,
 				AF8CD8F517E8507F004551F8 /* AdminUserStoryboard.storyboard */,
@@ -604,11 +619,14 @@
 			files = (
 				27BCC21317E201B8009977BB /* messages_selected@2x.png in Resources */,
 				27BCC20017E1FAF5009977BB /* users_unselected@1x.png in Resources */,
+				4D757AEA17F9DF38007255E1 /* StudentEventsStoryBoard.storyboard in Resources */,
 				8F2407DB17E1C43600BB9B8B /* DatePickerViewController.xib in Resources */,
 				0493B53417DDF80C003B3D23 /* InfoPlist.strings in Resources */,
 				0493B53C17DDF80C003B3D23 /* Images.xcassets in Resources */,
 				AF99541B17F2CD53003C450B /* TypeDef in Resources */,
+				4D757AEC17F9DF62007255E1 /* StudentMessagesStoryboard.storyboard in Resources */,
 				27BCC21217E201B8009977BB /* messages_selected@1x.png in Resources */,
+				4D757AF217F9E44A007255E1 /* glasses_unselected@2x.png in Resources */,
 				27BCC20F17E201B8009977BB /* courses_selected@2x.png in Resources */,
 				27BCC21117E201B8009977BB /* courses_unselected@2x.png in Resources */,
 				AF8CD8F317E85065004551F8 /* AdminMessagesStoryboard.storyboard in Resources */,
@@ -616,6 +634,8 @@
 				27BCC20117E1FAF5009977BB /* users_unselected@2x.png in Resources */,
 				27BCC21717E201EE009977BB /* courses_unselected@1x.png in Resources */,
 				27BCC21517E201B8009977BB /* messages_unselected@2x.png in Resources */,
+				4D757AEE17F9DF94007255E1 /* StudentWhatToReadStoryboard.storyboard in Resources */,
+				4D757AF117F9E44A007255E1 /* glasses_unselected@1x.png in Resources */,
 				27BCC1E717E1E7E7009977BB /* LoginStoryboard.storyboard in Resources */,
 				27BCC20E17E201B8009977BB /* courses_selected@1x.png in Resources */,
 				27BCC21417E201B8009977BB /* messages_unselected@1x.png in Resources */,
@@ -672,7 +692,7 @@
 				AFE538F017E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */,
 				AFE3E54B17F212FD00586321 /* SelectedEventWrapperEventsViewController.m in Sources */,
 				AF1FE93117F47CB1005D54E5 /* StudentAutomaticPresence.m in Sources */,
-				AF8CD8FA17E850C8004551F8 /* AdminTabBarViewController.m in Sources */,
+				AF8CD8FA17E850C8004551F8 /* TabBarSetupViewController.m in Sources */,
 				4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */,
 				8F5D541517F1BACE0096C7EA /* StudentWhatToReadTableViewController.m in Sources */,
 				AF2551F417E04630006EDD02 /* StudentStore.m in Sources */,
@@ -697,7 +717,7 @@
 			files = (
 				AF05FD3D17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */,
 				AFE538F717E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */,
-				AF8CD8FB17E850C8004551F8 /* AdminTabBarViewController.m in Sources */,
+				AF8CD8FB17E850C8004551F8 /* TabBarSetupViewController.m in Sources */,
 				AFE538F117E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */,
 				AFE538F517E0972C00C0B776 /* StudentEventMainViewController.m in Sources */,
 				AFE538F317E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */,

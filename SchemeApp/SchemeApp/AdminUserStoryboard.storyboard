@@ -148,6 +148,7 @@
         <!--Navigation Controller - Students-->
         <scene sceneID="dhE-Lm-T6g">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QeC-Fe-SJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="isA-Xw-Lo2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="Students" image="users_unselected.png" id="RFV-tC-cj6"/>
                     <toolbarItems/>
@@ -160,7 +161,6 @@
                         <segue destination="k00-y1-HL7" kind="relationship" relationship="rootViewController" id="WP5-ze-gdk"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QeC-Fe-SJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="173" y="821"/>
         </scene>

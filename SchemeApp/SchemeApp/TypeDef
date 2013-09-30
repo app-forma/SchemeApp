@@ -8,3 +8,9 @@ typedef enum RoleType{
     AdminRole ,
     SuperAdminRole 
 }RoleType;
+
+
+typedef enum ViewMode{
+    StudentMode,
+    AdminMode
+}ViewMode;
