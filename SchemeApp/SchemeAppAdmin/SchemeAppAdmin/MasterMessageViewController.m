@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
     
-    [[Store studentStore]messagesForUser:[Store mainStore].currentUser completion:^(NSArray *messagesForUser) {
+    [[Store adminStore]messagesForUser:[Store mainStore].currentUser completion:^(NSArray *messagesForUser) {
         messages = [messagesForUser mutableCopy];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];

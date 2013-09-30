@@ -39,10 +39,9 @@
 - (void)userWithType:(RoleType)type completion:(void (^)(NSArray *users))handler;
 
 #pragma mark - Messages
-- (void)messagesCompletion:(void (^)(NSArray *allMessages))handler;
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))handler;
 - (void)sendMessage:(Message *)message completion:(void (^)(Message *message))handler;
-- (void)updateMessages:(NSArray*)messages forUser:(User*)user;
+- (void)updateMessages:(NSArray*)messages forUser:(User*)user; //deprecated
 
 #pragma mark - Location
 - (void)createLocation:(Location *)location completion:(void (^)(Location *location))handler;
