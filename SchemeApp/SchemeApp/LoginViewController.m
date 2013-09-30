@@ -7,37 +7,19 @@
 //
 
 #import "LoginViewController.h"
-#import "StudentEventMainViewController.h"
 #import "AdminTabBarViewController.h"
-#import "EventWrapper.h"
 
 @interface LoginViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
-- (IBAction)didPressSignIn:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *loginStatusLabel;
+- (IBAction)didPressSignIn:(id)sender;
 - (IBAction)populateAdminCredentials:(id)sender;
 - (IBAction)populateStudentCredentials:(id)sender;
-
 
 @end
 
 @implementation LoginViewController
-{
-    UIStoryboard *studentSb;
-    UIStoryboard *adminSb;
-    UIViewController *initialStudentVC;
-    UIViewController *initialAdminVC;
-}
--(void)viewDidLoad
-{
-    self.navigationController.navigationBarHidden = YES;
-    studentSb = [UIStoryboard storyboardWithName:@"StudentStoryboard" bundle:nil];
-    initialStudentVC = [studentSb instantiateInitialViewController];
-
-    adminSb = [UIStoryboard storyboardWithName:@"AdminEventWrapperStoryboard" bundle:nil];
-    initialAdminVC = [adminSb instantiateInitialViewController];
-}
 
 #pragma mark text field delegate methods:
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -49,7 +31,7 @@
     [Store sendAuthenticationRequestForEmail:self.emailField.text password:self.passwordField.text completion:^(BOOL success, id user) {
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                if ([self isAdmin:user]) {
+                if ([Store mainStore].currentUser.role != StudentRole) {
                     [self adminDidLogin];
                 } else {
                     [self studentDidLogin];
@@ -66,8 +48,9 @@
 - (void)adminDidLogin
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        initialAdminVC.modalTransitionStyle = UIModalPresentationFullScreen;
-        [self presentViewController:[[AdminTabBarViewController alloc] init] animated:YES completion:nil];
+        AdminTabBarViewController *adminTabBar = [[AdminTabBarViewController alloc]init];
+        adminTabBar.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:adminTabBar animated:YES completion:nil];
     });
 }
 
@@ -82,18 +65,13 @@
      }];
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        UIViewController *initialStudentVC = [[UIStoryboard storyboardWithName:@"StudentStoryboard" bundle:nil]instantiateInitialViewController];
         initialStudentVC.modalTransitionStyle = UIModalPresentationFullScreen;
+        
         [self presentViewController:initialStudentVC animated:YES completion:nil];
     });
 }
 
-- (BOOL)isAdmin:(NSDictionary *)userDict
-{
-    if ([[userDict valueForKey:@"role"] isEqualToString:@"admin"] || [[userDict valueForKey:@"role"] isEqualToString:@"superadmin"]) {
-        return YES;
-    }
-    return NO;
-}
 - (IBAction)populateAdminCredentials:(id)sender {
     self.emailField.text = @"anders@coredev.se";
     self.passwordField.text = @"anders";
@@ -103,4 +81,5 @@
     self.emailField.text = @"tobie@tobie.se";
     self.passwordField.text = @"tobie";
 }
+
 @end

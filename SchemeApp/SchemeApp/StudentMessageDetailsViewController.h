@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol StudentMessageDetailDelegate <NSObject>
+
+- (void)didDeleteMessage:(Message *)message;
+
+@end
+
+@class Message;
 @interface StudentMessageDetailsViewController : UIViewController
-@property (nonatomic, copy) NSString *message;
-@property (nonatomic, copy) NSString *from;
-@property (nonatomic, copy) NSDate *date;
+
+@property (nonatomic, assign) id delegate;
+@property (nonatomic) Message *message;
+
 @end
