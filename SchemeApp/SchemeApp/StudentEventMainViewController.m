@@ -17,6 +17,7 @@
     DatePickerViewController *datePicker;
     UIView *datePickerView;
     NSMutableArray *events;
+    UIAlertView *pickDate;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *startDateForScheme;
@@ -30,6 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    pickDate = [[UIAlertView alloc] initWithTitle:@"Pick Date" message:@"You have to pick a start date and an end date!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     events = [NSMutableArray new];
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"courses_selected.png"]];
 
@@ -91,10 +94,17 @@
 
 - (IBAction)getScheme:(id)sender
 {
+    
     NSDate *startDate = [Helpers stripStartDateFromTime:[Helpers dateFromString:self.startDateForScheme.text]];
     NSDate *endDate = [Helpers stripEndDateFromTime:[Helpers dateFromString:self.endDateForScheme.text]];
     NSDictionary *dateDic = [[NSDictionary alloc] initWithObjectsAndKeys:startDate, @"startDate", endDate, @"endDate", nil];
-    [self getEvents:dateDic];
+    
+    NSDate *checkDate = [Helpers dateFromString:@"2005-01-01 12:00"];
+    if ([[startDate laterDate:checkDate] isEqual:startDate] && [[endDate laterDate:checkDate] isEqual:endDate]) {
+        [self getEvents:dateDic];
+    } else {
+        [pickDate show];
+    }
 }
 
 
