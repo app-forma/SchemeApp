@@ -23,9 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        if (self.user.image) {
-            self.imageView.image = self.user.image;
-        }
+
     }
     return self;
 }
@@ -40,6 +38,9 @@
     [super viewDidLoad];
     [self.loadIndicator stopAnimating];
     self.loadingView.hidden = YES;
+    if (self.user.image) {
+        self.imageView.image = self.user.image;
+    }
 }
 
 - (void)didReceiveMemoryWarning
