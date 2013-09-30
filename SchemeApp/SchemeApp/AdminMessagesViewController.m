@@ -73,9 +73,14 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [messages removeObjectAtIndex:indexPath.row];
+        Message *message = messages[indexPath.row];
+        [messages removeObject:message];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [[Store adminStore]updateMessages:messages forUser:[Store mainStore].currentUser];
+        [[Store adminStore]deleteMessage:message forUser:[Store mainStore].currentUser completion:^(BOOL success) {
+            if (!success) {
+                NSLog(@"delete message failed");
+            }
+        }];
     }
 }
 
@@ -103,7 +108,11 @@
 {
     [messages removeObject:message];
     [self.tableView reloadData];
-    [[Store adminStore]updateMessages:messages forUser:[Store mainStore].currentUser];
+    [[Store adminStore]deleteMessage:message forUser:[Store mainStore].currentUser completion:^(BOOL success) {
+        if (!success) {
+            NSLog(@"delete message failed");
+        }
+    }];
 }
 
 -(void)didCreateMessage:(Message *)message

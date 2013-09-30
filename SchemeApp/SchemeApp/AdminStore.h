@@ -41,7 +41,6 @@
 #pragma mark - Messages
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))handler;
 - (void)sendMessage:(Message *)message completion:(void (^)(Message *message))handler;
-- (void)updateMessages:(NSArray*)messages forUser:(User*)user; //deprecated
 
 #pragma mark - Location
 - (void)createLocation:(Location *)location completion:(void (^)(Location *location))handler;

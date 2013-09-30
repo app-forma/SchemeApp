@@ -250,27 +250,6 @@
          }
      }];
 }
-- (void)updateMessages:(NSArray*)messages forUser:(User*)user //deprecated
-{
-    NSMutableArray *messageIds = [NSMutableArray new];
-    for (Message *message in messages) {
-        [messageIds addObject:message.docID];
-    }
-    NSDictionary *json = [NSDictionary dictionaryWithObject:messageIds forKey:@"messages"];
-    
-    [Store.dbSessionConnection putContent:json
-                                   toPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, user.docID]
-                           withCompletion:^(id responseBody, id response, NSError *error)
-    {
-        if (error)
-        {
-            NSLog(@"sendMessage:toUsers:completion: got response: %@ and error: %@", responseBody, error.userInfo);
-        }
-    }];
-}
-
-
-
 
 #pragma mark - Location
 - (void)createLocation:(Location *)location completion:(void (^)(Location *location))handler

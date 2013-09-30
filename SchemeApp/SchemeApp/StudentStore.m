@@ -41,24 +41,6 @@
     }];
 }
 
-//- (void)messageWithDocID:(NSString *)docID completion:(void (^)(Message *message))handler
-//{
-//    [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_MESSAGE, docID]
-//                            withParams:nil
-//                         andCompletion:^(id responseBody, id response, NSError *error)
-//     {
-//         if (error)
-//         {
-//             NSLog(@"messageWithDocID:completion: got response: %@ and error: %@", response, error.userInfo);
-//             handler(nil);
-//         }
-//         else
-//         {
-//             handler([[Message alloc] initWithMsgDictionary:responseBody]);
-//         }
-//     }];
-//}
-
 - (void)messagesForUser:(User*)user completion:(void (^)(NSArray *messagesForUser))handler
 {
     [[Store dbSessionConnection]getPath:[NSString stringWithFormat:@"%@/%@/%@", DB_TYPE_MESSAGE, @"foruser", [Store mainStore].currentUser.docID] withParams:nil andCompletion:^(id responseBody, id response, NSError *error) {
