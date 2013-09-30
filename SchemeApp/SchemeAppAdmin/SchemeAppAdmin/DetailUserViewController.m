@@ -116,6 +116,8 @@
     self.roleLabel.text = [user roleAsString];
     if (user.image) {
         self.userImage.image = user.image;
+    } else {
+        self.userImage.image = nil;
     }
     currentUser = user;
     
@@ -146,12 +148,12 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)picturePickerDidFinishPickingPicture:(UIImage *)image
+-(void)picturePickerDidFinishPickingPicture:(UIImage *)image forUser:(User *)user
 {
     [self dismissViewControllerAnimated:YES completion:^{
         self.userImage.image = image;
-        currentUser.image = image;
-        [[Store superAdminStore] updateUser:currentUser completion:^(id responseBody, id response, NSError *error) {
+        NSLog(@"SAVING USER %@", user);
+        [[Store superAdminStore] updateUser:user completion:^(id responseBody, id response, NSError *error) {
             NSLog(@"RESP BDY %@", responseBody);
                         NSLog(@"RESP  %@", response);
                         NSLog(@"ERR %@", error);
@@ -161,9 +163,7 @@
 
 - (IBAction)showImagePicker:(id)sender {
     PicturePickerViewController *pickerController = [[PicturePickerViewController alloc] init];
-    if (currentUser.image) {
-        pickerController.image = currentUser.image;
-    }
+    pickerController.user = currentUser;
     pickerController.delegate = self;
     [self presentViewController:pickerController animated:YES completion:nil];
 }

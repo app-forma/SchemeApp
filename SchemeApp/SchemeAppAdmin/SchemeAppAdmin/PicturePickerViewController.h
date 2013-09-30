@@ -8,12 +8,14 @@
 
 @protocol PicturePickerDelegate <NSObject>
 
-- (void)picturePickerDidFinishPickingPicture:(UIImage *)image;
+- (void)picturePickerDidFinishPickingPicture:(UIImage *)image forUser:(User *)user;
 - (void)picturePickerDidCancel;
 
 @end
 
 #import <UIKit/UIKit.h>
+
+@class User;
 
 @interface PicturePickerViewController : UIViewController
 
@@ -22,6 +24,6 @@
 /**
  *  Set this when loading this vc if user already has a picture
  */
-@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) User *user;
 
 @end

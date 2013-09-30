@@ -23,8 +23,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        if (self.image) {
-            self.imageView.image = self.image;
+        if (self.user.image) {
+            self.imageView.image = self.user.image;
         }
     }
     return self;
@@ -53,8 +53,8 @@
 }
 
 - (IBAction)saveChanges:(id)sender {
-    if (self.image) {
-        [self.delegate picturePickerDidFinishPickingPicture:self.image];
+    if (self.user.image) {
+        [self.delegate picturePickerDidFinishPickingPicture:self.user.image forUser:self.user];
     } else {
         [self.delegate picturePickerDidCancel];
     }
@@ -84,7 +84,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = info[UIImagePickerControllerOriginalImage];
-    self.image = image;
+    self.user.image = image;
     self.imageView.image = image;
     [self dismissViewControllerAnimated:YES completion:nil];    
 }
