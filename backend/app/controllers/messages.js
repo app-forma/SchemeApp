@@ -80,13 +80,18 @@ exports.removeReceiver = function (req, res) {
                     break;
                 }
             }
-            message.save(function (err, message) {
-                if (err) {
-                    res.json(500, err.errors);
-                } else {
-                    res.json(200, message);
-                }
-            });
+            if (message.receivers.length > 0) {
+                message.save(function (err, message) {
+                    if (err) {
+                        res.json(500, err.errors);
+                    } else {
+                        res.json(200, message);
+                    }
+                });
+            } else {
+                message.remove();
+                res.json(200);
+            }
         }
     });
 };
