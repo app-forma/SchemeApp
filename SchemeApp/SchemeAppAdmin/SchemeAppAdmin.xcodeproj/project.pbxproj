@@ -10,6 +10,8 @@
 		04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA657517F4BB990088E589 /* PopoverUserViewController.m */; };
 		04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA657617F4BB990088E589 /* PopoverUserViewController.xib */; };
 		27133EA817F9DE1300708346 /* UIImage+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 27133EA717F9DE1300708346 /* UIImage+Base64.m */; };
+		27133EAD17F9E02D00708346 /* PicturePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27133EAB17F9E02D00708346 /* PicturePickerViewController.m */; };
+		27133EAE17F9E02D00708346 /* PicturePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27133EAC17F9E02D00708346 /* PicturePickerViewController.xib */; };
 		274E553F17F2E71000E97A12 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E553E17F2E71000E97A12 /* TabBarController.m */; };
 		274E554217F2EB0200E97A12 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E554117F2EB0200E97A12 /* SplitViewController.m */; };
 		274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E555717F2F4CC00E97A12 /* MasterEventWrapperViewController.m */; };
@@ -121,6 +123,9 @@
 		04DA657617F4BB990088E589 /* PopoverUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverUserViewController.xib; sourceTree = "<group>"; };
 		27133EA617F9DE1300708346 /* UIImage+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Base64.h"; path = "../SchemeApp/UIImage+Base64.h"; sourceTree = "<group>"; };
 		27133EA717F9DE1300708346 /* UIImage+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Base64.m"; path = "/Users/norl1ng/Dropbox/iOS/Dev/SchemeApp/SchemeApp/SchemeApp/UIImage+Base64.m"; sourceTree = "<absolute>"; };
+		27133EAA17F9E02D00708346 /* PicturePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturePickerViewController.h; sourceTree = "<group>"; };
+		27133EAB17F9E02D00708346 /* PicturePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturePickerViewController.m; sourceTree = "<group>"; };
+		27133EAC17F9E02D00708346 /* PicturePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicturePickerViewController.xib; sourceTree = "<group>"; };
 		274E553D17F2E71000E97A12 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		274E553E17F2E71000E97A12 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		274E554017F2EB0200E97A12 /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
@@ -269,6 +274,16 @@
 			path = ../../SchemeApp/Base64;
 			sourceTree = "<group>";
 		};
+		27133EA917F9E00600708346 /* PicturePicker */ = {
+			isa = PBXGroup;
+			children = (
+				27133EAA17F9E02D00708346 /* PicturePickerViewController.h */,
+				27133EAB17F9E02D00708346 /* PicturePickerViewController.m */,
+				27133EAC17F9E02D00708346 /* PicturePickerViewController.xib */,
+			);
+			name = PicturePicker;
+			sourceTree = "<group>";
+		};
 		279AB64317F18C200094CE64 = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +377,7 @@
 		279AB68117F18D680094CE64 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				27133EA917F9E00600708346 /* PicturePicker */,
 				279D067117F1DCF300586DF7 /* SchoolInfo */,
 				279D066B17F1DC3500586DF7 /* Login */,
 				279D065D17F1DAA400586DF7 /* EventWrappers */,
@@ -678,6 +694,7 @@
 				27776A8417F9994D00D84839 /* location_selected@2x.png in Resources */,
 				279AB6B817F191490094CE64 /* Event.h in Resources */,
 				274E556B17F2F58F00E97A12 /* DetailUserViewController.xib in Resources */,
+				27133EAE17F9E02D00708346 /* PicturePickerViewController.xib in Resources */,
 				279D060F17F196E300586DF7 /* TypeDef in Resources */,
 				279AB6D017F191570094CE64 /* messages_selected@1x.png in Resources */,
 				279AB6E517F1920E0094CE64 /* AFNetworking.h in Resources */,
@@ -755,6 +772,7 @@
 				279D061917F19F1300586DF7 /* Validation.m in Sources */,
 				279D061A17F19F1300586DF7 /* AFNetworking.m in Sources */,
 				AF99542717F30BC4003C450B /* Location.m in Sources */,
+				27133EAD17F9E02D00708346 /* PicturePickerViewController.m in Sources */,
 				274E556617F2F56300E97A12 /* MasterUserViewController.m in Sources */,
 				279D061B17F19F1300586DF7 /* Helpers.m in Sources */,
 				279AB66017F18C200094CE64 /* AppDelegate.m in Sources */,

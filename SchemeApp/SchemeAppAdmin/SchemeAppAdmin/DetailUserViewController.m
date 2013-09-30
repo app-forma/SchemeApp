@@ -10,11 +10,15 @@
 #import "MasterUserViewController.h"
 #import "UIButton+CustomButton.h"
 #import "PopoverUserViewController.h"
-@interface DetailUserViewController ()<PopoverUserDelegate>
+#import "PicturePickerViewController.h"
+
+@interface DetailUserViewController ()<PopoverUserDelegate, PicturePickerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *roleLabel;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+- (IBAction)showImagePicker:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
 
 @end
 
@@ -110,6 +114,9 @@
     self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
     self.emailLabel.text = user.email;
     self.roleLabel.text = [user roleAsString];
+    if (user.image) {
+        self.userImage.image = user.image;
+    }
     currentUser = user;
     
 }
@@ -135,4 +142,19 @@
     [userInfoPopover dismissPopoverAnimated:YES];
 }
 
+
+#pragma mark - ImagePicker delegate and actions
+-(void)picturePickerDidFinishPickingPicture:(UIImage *)image
+{
+    NSLog(@"Do stuff with image");
+}
+
+- (IBAction)showImagePicker:(id)sender {
+    PicturePickerViewController *pickerController = [[PicturePickerViewController alloc] init];
+    if (currentUser.image) {
+        pickerController.image = currentUser.image;
+    }
+    pickerController.delegate = self;
+    [self presentViewController:pickerController animated:YES completion:nil];
+}
 @end
