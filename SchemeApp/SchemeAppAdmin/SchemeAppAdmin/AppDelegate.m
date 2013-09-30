@@ -34,6 +34,7 @@
     TabBarController *tabBarController = [[TabBarController alloc]init];
     self.window.rootViewController = tabBarController;
     tabBarController.selectedIndex = 0;
+   
     
 }
 

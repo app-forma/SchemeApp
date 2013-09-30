@@ -11,6 +11,7 @@
 #import "Message.h"
 #import "NSDate+Helpers.h"
 
+
 @interface DetailMessageViewController () <MasterMessageDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *fromLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -21,13 +22,11 @@
 @end
 
 @implementation DetailMessageViewController
-{
-    UIBarButtonItem *barButtonForMaster;
-    UIViewController *masterViewController;
-}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 }
 
 - (void)splitViewController:(UISplitViewController *)svc
@@ -35,8 +34,7 @@
           withBarButtonItem:(UIBarButtonItem *)barButtonItem
        forPopoverController:(UIPopoverController *)pc
 {
-    barButtonForMaster = barButtonItem;
-    masterViewController = aViewController;
+    
 }
 
 
@@ -45,13 +43,14 @@
   invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
 }
--(void)viewWillAppear:(BOOL)animated
+-(BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
 {
-    [super viewWillAppear:animated];
-    if (!masterViewController.view.window) {
-        [barButtonForMaster.target performSelector:barButtonForMaster.action withObject:barButtonForMaster afterDelay:0.01];
-    }
-    
+    return NO;
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
 }
 -(void)didSelectMessage:(Message *)message
 {

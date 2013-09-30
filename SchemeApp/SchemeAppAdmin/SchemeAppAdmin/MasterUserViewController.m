@@ -44,7 +44,7 @@
     [super viewDidLoad];
     puvc = [[PopoverUserViewController alloc] init];
     puvc.delegate = self;
-
+    
 }
 
 - (void)didReceiveMemoryWarning

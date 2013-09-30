@@ -17,8 +17,7 @@
     UIPopoverController *eventWrapperInfoPopover;
     PopoverEventWrapperViewController *pewvc;
     EventWrapper *currentEventWrapper;
-    UIBarButtonItem *barButtonForMaster;
-    UIViewController *masterViewController;
+   
 }
 @property (weak, nonatomic) IBOutlet UILabel *eventWrapperName;
 @property (weak, nonatomic) IBOutlet UILabel *teacherLabel;
@@ -45,9 +44,7 @@
           withBarButtonItem:(UIBarButtonItem *)barButtonItem
        forPopoverController:(UIPopoverController *)pc
 {
-    barButtonForMaster = barButtonItem;
-
-    masterViewController = aViewController;
+    
     
 }
 
@@ -57,7 +54,10 @@
   invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
 }
-
+-(BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
+{
+    return NO;
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -76,13 +76,7 @@
     
 
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    if (!masterViewController.view.window) {
-        [barButtonForMaster.target performSelector:barButtonForMaster.action withObject:barButtonForMaster afterDelay:0.01];
-    }
-}
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
