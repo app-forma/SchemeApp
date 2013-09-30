@@ -96,7 +96,7 @@
 }
 - (IBAction)populateAdminCredentials:(id)sender {
     self.emailField.text = @"anders@coredev.se";
-    self.passwordField.text = @"asdf";
+    self.passwordField.text = @"anders";
 }
 
 - (IBAction)populateStudentCredentials:(id)sender {
