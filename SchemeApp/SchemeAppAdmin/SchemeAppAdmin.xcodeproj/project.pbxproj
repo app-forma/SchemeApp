@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA657517F4BB990088E589 /* PopoverUserViewController.m */; };
 		04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA657617F4BB990088E589 /* PopoverUserViewController.xib */; };
-		27133EA817F9DE1300708346 /* UIImage+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 27133EA717F9DE1300708346 /* UIImage+Base64.m */; };
 		27133EAD17F9E02D00708346 /* PicturePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27133EAB17F9E02D00708346 /* PicturePickerViewController.m */; };
 		27133EAE17F9E02D00708346 /* PicturePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27133EAC17F9E02D00708346 /* PicturePickerViewController.xib */; };
+		27133EB117F9F4DF00708346 /* UIImage+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 27133EB017F9F4DF00708346 /* UIImage+Base64.m */; };
 		274E553F17F2E71000E97A12 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E553E17F2E71000E97A12 /* TabBarController.m */; };
 		274E554217F2EB0200E97A12 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E554117F2EB0200E97A12 /* SplitViewController.m */; };
 		274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E555717F2F4CC00E97A12 /* MasterEventWrapperViewController.m */; };
@@ -121,11 +121,11 @@
 		04DA657417F4BB990088E589 /* PopoverUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverUserViewController.h; sourceTree = "<group>"; };
 		04DA657517F4BB990088E589 /* PopoverUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverUserViewController.m; sourceTree = "<group>"; };
 		04DA657617F4BB990088E589 /* PopoverUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverUserViewController.xib; sourceTree = "<group>"; };
-		27133EA617F9DE1300708346 /* UIImage+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Base64.h"; path = "../SchemeApp/UIImage+Base64.h"; sourceTree = "<group>"; };
-		27133EA717F9DE1300708346 /* UIImage+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Base64.m"; path = "/Users/erik82osterberg/Documents/iOSProjects/SchemeApp/SchemeApp/SchemeApp/UIImage+Base64.m"; sourceTree = "<absolute>"; };
 		27133EAA17F9E02D00708346 /* PicturePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturePickerViewController.h; sourceTree = "<group>"; };
 		27133EAB17F9E02D00708346 /* PicturePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturePickerViewController.m; sourceTree = "<group>"; };
 		27133EAC17F9E02D00708346 /* PicturePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicturePickerViewController.xib; sourceTree = "<group>"; };
+		27133EAF17F9F4DF00708346 /* UIImage+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Base64.h"; path = "/Users/norl1ng/Dropbox/iOS/Dev/SchemeApp/SchemeApp/SchemeApp/UIImage+Base64.h"; sourceTree = "<absolute>"; };
+		27133EB017F9F4DF00708346 /* UIImage+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Base64.m"; path = "/Users/norl1ng/Dropbox/iOS/Dev/SchemeApp/SchemeApp/SchemeApp/UIImage+Base64.m"; sourceTree = "<absolute>"; };
 		274E553D17F2E71000E97A12 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		274E553E17F2E71000E97A12 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		274E554017F2EB0200E97A12 /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
@@ -267,8 +267,8 @@
 		27133EA117F9C6AC00708346 /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
-				27133EA617F9DE1300708346 /* UIImage+Base64.h */,
-				27133EA717F9DE1300708346 /* UIImage+Base64.m */,
+				27133EAF17F9F4DF00708346 /* UIImage+Base64.h */,
+				27133EB017F9F4DF00708346 /* UIImage+Base64.m */,
 			);
 			name = Base64;
 			path = ../../SchemeApp/Base64;
@@ -767,6 +767,7 @@
 				274E556317F2F54C00E97A12 /* DetailMessageViewController.m in Sources */,
 				4D757A9317F63EB0007255E1 /* NSDate+Helpers.m in Sources */,
 				279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */,
+				27133EB117F9F4DF00708346 /* UIImage+Base64.m in Sources */,
 				279D061817F19F1300586DF7 /* User.m in Sources */,
 				274E553F17F2E71000E97A12 /* TabBarController.m in Sources */,
 				279D061917F19F1300586DF7 /* Validation.m in Sources */,
@@ -781,7 +782,6 @@
 				8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */,
 				4D757A8D17F6196C007255E1 /* ReceiverCell.m in Sources */,
 				274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */,
-				27133EA817F9DE1300708346 /* UIImage+Base64.m in Sources */,
 				279AB69717F190300094CE64 /* SuperAdminStore.m in Sources */,
 				274E555F17F2F52C00E97A12 /* DetailEventWrapperViewController.m in Sources */,
 				274E557917F318AA00E97A12 /* UIButton+CustomButton.m in Sources */,

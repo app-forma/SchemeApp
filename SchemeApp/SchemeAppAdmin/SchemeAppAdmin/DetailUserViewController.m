@@ -150,7 +150,12 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
         self.userImage.image = image;
-#warning save to db
+        currentUser.image = image;
+        [[Store superAdminStore] updateUser:currentUser completion:^(id responseBody, id response, NSError *error) {
+            NSLog(@"RESP BDY %@", responseBody);
+                        NSLog(@"RESP  %@", response);
+                        NSLog(@"ERR %@", error);
+        }];
     }];
 }
 
