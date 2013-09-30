@@ -48,7 +48,13 @@
     self = [super init];
     if (self) {
         _docID = msgDictionary[@"_id"];
-        self.from = [[User alloc]initWithUserDictionary:msgDictionary[@"from"]];
+        if ([msgDictionary[@"from"] isKindOfClass:[NSDictionary class]]) {
+            self.from = [[User alloc]initWithUserDictionary:msgDictionary[@"from"]];
+        } else {
+            self.from = [User new];
+            self.from.firstname = @"Deleted";
+            self.from.lastname = @" user";
+        }
         self.date = [Helpers dateFromString:msgDictionary[@"date"]];
         self.text = msgDictionary[@"text"];
         self.receiverIDs = [NSMutableArray new];
