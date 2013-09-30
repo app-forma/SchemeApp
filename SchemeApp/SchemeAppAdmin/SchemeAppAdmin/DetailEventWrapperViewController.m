@@ -143,7 +143,6 @@
 {
     self.eventWrapperName.text = eventWrapper.name;
     self.navItem.title = eventWrapper.name;
-    
     self.teacherLabel.text = [NSString  stringWithFormat:@"%@ %@", eventWrapper.user.firstname, eventWrapper.user.lastname];
     self.litteratureLabel.text = eventWrapper.litterature;
     self.startDateLabel.text = [Helpers stringFromNSDate:eventWrapper.startDate];
