@@ -9,10 +9,12 @@
 #import "MasterUserViewController.h"
 #import "PopoverUserViewController.h"
 #import "User.h"
+#import "CRNavigationBar.h"
 
 @interface MasterUserViewController () <UITableViewDelegate, PopoverUserDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *usersTableView;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
 @end
 
@@ -21,6 +23,8 @@
     NSMutableArray *users;
     UIPopoverController *addUserPopover;
     PopoverUserViewController *puvc;
+    NSArray *colorForRow;
+    NSUInteger selectedRow;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -44,7 +48,9 @@
     [super viewDidLoad];
     puvc = [[PopoverUserViewController alloc] init];
     puvc.delegate = self;
-    
+    colorForRow = @[[UIColor colorWithRed:239/255.0f green:148/255.0f blue:71/255.0f alpha:1.0f], [UIColor colorWithRed:243/255.0f green:82/255.0f blue:66/255.0f alpha:1.0f], [UIColor colorWithRed:221/255.0f green:49/255.0f blue:91/255.0f alpha:1.0f], [UIColor colorWithRed:155/255.0f green:49/255.0f blue:97/255.0f alpha:1.0f], [UIColor colorWithRed:67/255.0f green:46/255.0f blue:56/255.0f alpha:1.0f]];
+    self.usersTableView.separatorColor = [UIColor clearColor];
+    self.usersTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,9 +71,57 @@
 
     return [users count];
 }
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = colorForRow[indexPath.row%5];
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:22];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 40;
+}
+- (NSString *)tableView:(UITableView *)aTableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Users";
+}
+
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//
+//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 244, 40)];
+//    
+//    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(20, 0, 30, 30)];
+//    button.titleLabel.text = @"Add";
+//    button.titleLabel.textColor = [UIColor blackColor];
+//    [button addTarget:self action:@selector(showPopover:) forControlEvents:UIControlEventTouchUpInside];
+//    [view addSubview:button];
+//    return view;
+//    
+//}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    UITableViewCell *prevCell= [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0]];
+    prevCell.layer.borderColor = [UIColor clearColor].CGColor;
+    prevCell.layer.borderWidth = 0;
+    
+    UITableViewCell *selCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    selCell.layer.borderColor = [UIColor whiteColor].CGColor;
+    selCell.layer.borderWidth = 1;
+    selCell.layer.cornerRadius = 2;
+    
+    
+    
     [self.delegate masterUserDidSelectUser:users[indexPath.row]];
+    selectedRow = indexPath.row;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,6 +133,8 @@
     }
     User *user = users[indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
+    
+    
 
     return cell;
 }

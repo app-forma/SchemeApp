@@ -46,7 +46,7 @@
     if (self)
     {
         self.delegate = self;
-    
+        
         mevc = [MasterEventWrapperViewController new];
         devc = [DetailEventWrapperViewController new];
         mevc.delegate = devc;

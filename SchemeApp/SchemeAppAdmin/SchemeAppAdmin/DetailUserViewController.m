@@ -77,7 +77,7 @@
     
     NSDictionary *views = NSDictionaryOfVariableBindings(editButton);
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[editButton(50.0)]-(25.0)-|" options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(50.0)-[editButton(50.0)]" options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(70.0)-[editButton(50.0)]" options:0 metrics:nil views:views]];
 }
 
 - (void)editUser:(id)sender
