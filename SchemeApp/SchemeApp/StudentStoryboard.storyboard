@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="fAy-8E-kbr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="fAy-8E-kbr">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
@@ -77,7 +77,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="G7J-i2-J4j"/>
+                    <tabBarItem key="tabBarItem" title="Item 1" image="glasses_unselected.png" id="G7J-i2-J4j"/>
                     <navigationItem key="navigationItem" id="5b5-Vd-G2a"/>
                     <connections>
                         <outlet property="endDateForScheme" destination="Mo2-lp-DHF" id="70Y-5h-OaU"/>
@@ -184,11 +184,11 @@
             </objects>
             <point key="canvasLocation" x="-1130" y="601"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Guidance-->
         <scene sceneID="jcf-TJ-xi0">
             <objects>
                 <navigationController definesPresentationContext="YES" id="4H0-2y-aso" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="fdF-nd-cis"/>
+                    <tabBarItem key="tabBarItem" title="Guidance" image="glasses_unselected.png" id="fdF-nd-cis"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QOy-gA-B9F">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -545,6 +545,7 @@
     </scenes>
     <resources>
         <image name="courses_unselected.png" width="30" height="30"/>
+        <image name="glasses_unselected.png" width="30" height="30"/>
         <image name="messages_unselected.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

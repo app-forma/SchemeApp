@@ -28,7 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"What To Read";
+    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"glasses_selected.png"]];
+    self.navigationItem.title = @"Guidance";
 }
 
 #pragma mark - Table view data source
