@@ -121,13 +121,11 @@
 }
 -(void)showPopover:(id)sender
 {
-    
     pewvc.isInEditingMode = YES;
-    
     eventWrapperInfoPopover = [[UIPopoverController alloc] initWithContentViewController:pewvc];
     UIButton *senderButton = (UIButton *)sender;
-    [eventWrapperInfoPopover setPopoverContentSize:CGSizeMake(300, 400)];
-    [eventWrapperInfoPopover presentPopoverFromRect:senderButton.bounds inView:senderButton permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    [eventWrapperInfoPopover setPopoverContentSize:CGSizeMake(300, 290)];
+    [eventWrapperInfoPopover presentPopoverFromRect:senderButton.bounds inView:senderButton permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
 }
 
 -(void)popoverEventWrapperDismissPopover

@@ -119,7 +119,7 @@
     pewvc.isInEditingMode = NO;
     
     addEventWrapperPopover = [[UIPopoverController alloc] initWithContentViewController:pewvc];
-    [addEventWrapperPopover setPopoverContentSize:CGSizeMake(300, 400)];
+    [addEventWrapperPopover setPopoverContentSize:CGSizeMake(300, 290)];
     [addEventWrapperPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
