@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA657517F4BB990088E589 /* PopoverUserViewController.m */; };
 		04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA657617F4BB990088E589 /* PopoverUserViewController.xib */; };
+		27133EA817F9DE1300708346 /* UIImage+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 27133EA717F9DE1300708346 /* UIImage+Base64.m */; };
 		274E553F17F2E71000E97A12 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E553E17F2E71000E97A12 /* TabBarController.m */; };
 		274E554217F2EB0200E97A12 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E554117F2EB0200E97A12 /* SplitViewController.m */; };
 		274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E555717F2F4CC00E97A12 /* MasterEventWrapperViewController.m */; };
@@ -118,6 +119,8 @@
 		04DA657417F4BB990088E589 /* PopoverUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverUserViewController.h; sourceTree = "<group>"; };
 		04DA657517F4BB990088E589 /* PopoverUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverUserViewController.m; sourceTree = "<group>"; };
 		04DA657617F4BB990088E589 /* PopoverUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverUserViewController.xib; sourceTree = "<group>"; };
+		27133EA617F9DE1300708346 /* UIImage+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Base64.h"; path = "../SchemeApp/UIImage+Base64.h"; sourceTree = "<group>"; };
+		27133EA717F9DE1300708346 /* UIImage+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Base64.m"; path = "/Users/norl1ng/Dropbox/iOS/Dev/SchemeApp/SchemeApp/SchemeApp/UIImage+Base64.m"; sourceTree = "<absolute>"; };
 		274E553D17F2E71000E97A12 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		274E553E17F2E71000E97A12 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		274E554017F2EB0200E97A12 /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
@@ -256,6 +259,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27133EA117F9C6AC00708346 /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				27133EA617F9DE1300708346 /* UIImage+Base64.h */,
+				27133EA717F9DE1300708346 /* UIImage+Base64.m */,
+			);
+			name = Base64;
+			path = ../../SchemeApp/Base64;
+			sourceTree = "<group>";
+		};
 		279AB64317F18C200094CE64 = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +302,7 @@
 		279AB65517F18C200094CE64 /* SchemeAppAdmin */ = {
 			isa = PBXGroup;
 			children = (
+				27133EA117F9C6AC00708346 /* Base64 */,
 				279AB6CB17F191570094CE64 /* Images */,
 				279AB6B517F191490094CE64 /* Models */,
 				279AB67E17F18CD30094CE64 /* Views */,
@@ -749,6 +763,7 @@
 				8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */,
 				4D757A8D17F6196C007255E1 /* ReceiverCell.m in Sources */,
 				274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */,
+				27133EA817F9DE1300708346 /* UIImage+Base64.m in Sources */,
 				279AB69717F190300094CE64 /* SuperAdminStore.m in Sources */,
 				274E555F17F2F52C00E97A12 /* DetailEventWrapperViewController.m in Sources */,
 				274E557917F318AA00E97A12 /* UIButton+CustomButton.m in Sources */,
