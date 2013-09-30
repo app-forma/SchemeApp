@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterMessageViewController.h"
 
-@interface DetailMessageViewController : UIViewController <UISplitViewControllerDelegate>
+@interface DetailMessageViewController : UIViewController <UISplitViewControllerDelegate, MasterMessageDelegate>
 
 @end

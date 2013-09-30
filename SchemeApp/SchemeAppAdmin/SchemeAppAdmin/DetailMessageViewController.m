@@ -12,7 +12,7 @@
 #import "NSDate+Helpers.h"
 
 
-@interface DetailMessageViewController () <MasterMessageDelegate>
+@interface DetailMessageViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *fromLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
