@@ -9,6 +9,7 @@
 @protocol PicturePickerDelegate <NSObject>
 
 - (void)picturePickerDidFinishPickingPicture:(UIImage *)image;
+- (void)picturePickerDidCancel;
 
 @end
 

@@ -120,6 +120,7 @@
     currentUser = user;
     
 }
+
 -(void)popoverUserUpdateUser:(User *)user
 {
     void(^saveHandler)(void) = ^(void)
@@ -130,11 +131,8 @@
          }];
     };
     
-    
     [[Store superAdminStore] updateUser:user completion:^(id responseBody, id response, NSError *error) {
-        
         saveHandler();
-        
     }];
 }
 -(void)popoverUserDismissPopover
@@ -142,13 +140,17 @@
     [userInfoPopover dismissPopoverAnimated:YES];
 }
 
-
 #pragma mark - ImagePicker delegate and actions
+-(void)picturePickerDidCancel
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 -(void)picturePickerDidFinishPickingPicture:(UIImage *)image
 {
     [self dismissViewControllerAnimated:YES completion:^{
         self.userImage.image = image;
-#warning save changes to db / Handle empty image
+#warning save to db
     }];
 }
 

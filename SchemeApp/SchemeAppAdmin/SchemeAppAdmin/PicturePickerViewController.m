@@ -13,6 +13,7 @@
 - (IBAction)showCamera:(id)sender;
 - (IBAction)showLibrary:(id)sender;
 - (IBAction)saveChanges:(id)sender;
+- (IBAction)cancel:(id)sender;
 
 @end
 
@@ -52,8 +53,15 @@
 }
 
 - (IBAction)saveChanges:(id)sender {
-#warning handle empty image
-    [self.delegate picturePickerDidFinishPickingPicture:self.image];
+    if (self.image) {
+        [self.delegate picturePickerDidFinishPickingPicture:self.image];
+    } else {
+        [self.delegate picturePickerDidCancel];
+    }
+}
+
+- (IBAction)cancel:(id)sender {
+    [self.delegate picturePickerDidCancel];
 }
 
 -(BOOL) showImagePickerControllerForType:(UIImagePickerControllerSourceType) sourceType
