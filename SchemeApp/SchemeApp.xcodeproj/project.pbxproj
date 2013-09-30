@@ -47,6 +47,8 @@
 		27BCC21717E201EE009977BB /* courses_unselected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC21617E201EE009977BB /* courses_unselected@1x.png */; };
 		27BCC21A17E24304009977BB /* EventWrapperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC21917E24304009977BB /* EventWrapperCell.m */; };
 		27CECEAA17EB22A7004522C0 /* AdminEventWrapperTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CECEA917EB22A7004522C0 /* AdminEventWrapperTableViewController.m */; };
+		27F1910E17F9748600FA52A6 /* NSDate+Helpers.h in Resources */ = {isa = PBXBuildFile; fileRef = 27F1910C17F9748600FA52A6 /* NSDate+Helpers.h */; };
+		27F1910F17F9748600FA52A6 /* NSDate+Helpers.m in Resources */ = {isa = PBXBuildFile; fileRef = 27F1910D17F9748600FA52A6 /* NSDate+Helpers.m */; };
 		4D757AA017F963C2007255E1 /* SearchCelliPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A9F17F963C2007255E1 /* SearchCelliPhone.m */; };
 		4D757AA317F963CE007255E1 /* ReceiverCelliPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757AA217F963CE007255E1 /* ReceiverCelliPhone.m */; };
 		4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC5DD817E1EFAD0032C92F /* MessageCell.m */; };
@@ -165,6 +167,8 @@
 		27BCC21917E24304009977BB /* EventWrapperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventWrapperCell.m; sourceTree = "<group>"; };
 		27CECEA817EB22A7004522C0 /* AdminEventWrapperTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEventWrapperTableViewController.h; sourceTree = "<group>"; };
 		27CECEA917EB22A7004522C0 /* AdminEventWrapperTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEventWrapperTableViewController.m; sourceTree = "<group>"; };
+		27F1910C17F9748600FA52A6 /* NSDate+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = "NSDate+Helpers.h"; sourceTree = "<group>"; };
+		27F1910D17F9748600FA52A6 /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
 		4D757A9E17F963C2007255E1 /* SearchCelliPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCelliPhone.h; sourceTree = "<group>"; };
 		4D757A9F17F963C2007255E1 /* SearchCelliPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCelliPhone.m; sourceTree = "<group>"; };
 		4D757AA117F963CE007255E1 /* ReceiverCelliPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverCelliPhone.h; sourceTree = "<group>"; };
@@ -386,6 +390,8 @@
 		2748CDC617DF35EA00A06467 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				27F1910C17F9748600FA52A6 /* NSDate+Helpers.h */,
+				27F1910D17F9748600FA52A6 /* NSDate+Helpers.m */,
 				0437DDA817E2240400DB9F5A /* Validation.h */,
 				0437DDA917E2240400DB9F5A /* Validation.m */,
 				04199A8117E0B88D00E922D5 /* AFNetworking.h */,
@@ -599,6 +605,7 @@
 			files = (
 				27BCC21317E201B8009977BB /* messages_selected@2x.png in Resources */,
 				27BCC20017E1FAF5009977BB /* users_unselected@1x.png in Resources */,
+				27F1910F17F9748600FA52A6 /* NSDate+Helpers.m in Resources */,
 				8F2407DB17E1C43600BB9B8B /* DatePickerViewController.xib in Resources */,
 				0493B53417DDF80C003B3D23 /* InfoPlist.strings in Resources */,
 				0493B53C17DDF80C003B3D23 /* Images.xcassets in Resources */,
@@ -608,6 +615,7 @@
 				27BCC21117E201B8009977BB /* courses_unselected@2x.png in Resources */,
 				AF8CD8F317E85065004551F8 /* AdminMessagesStoryboard.storyboard in Resources */,
 				AF8CD8F017E84E87004551F8 /* AdminEventWrapperStoryboard.storyboard in Resources */,
+				27F1910E17F9748600FA52A6 /* NSDate+Helpers.h in Resources */,
 				27BCC20117E1FAF5009977BB /* users_unselected@2x.png in Resources */,
 				27BCC21717E201EE009977BB /* courses_unselected@1x.png in Resources */,
 				27BCC21517E201B8009977BB /* messages_unselected@2x.png in Resources */,

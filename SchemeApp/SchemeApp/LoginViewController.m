@@ -15,8 +15,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 - (IBAction)didPressSignIn:(id)sender;
-- (IBAction)didPressForgotPassword:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *loginStatusLabel;
+- (IBAction)populateAdminCredentials:(id)sender;
+- (IBAction)populateStudentCredentials:(id)sender;
+
 
 @end
 
@@ -43,53 +45,7 @@
     return [textField resignFirstResponder];
 }
 
-- (IBAction)loadAdminSB:(id)sender {
-    [Store setCurrentUserToUserWithEmail:@"joe@gmail.com" andPassword:nil completion:^(BOOL success) {
-        if (success) {
-            NSLog(@"Logged in as User: %@ %@", Store.mainStore.currentUser.firstname,
-                  Store.mainStore.currentUser.lastname);
-            
-            [NSOperationQueue.mainQueue addOperationWithBlock:^
-             {
-                 [self presentViewController:[[AdminTabBarViewController alloc] init] animated:YES completion:nil];
-             }];
-        }
-    }];
-}
-
-- (IBAction)loadStudentSB:(id)sender {
-    //    UIStoryboard *studentSB = [UIStoryboard storyboardWithName:@"StudentStoryboard" bundle:nil];
-    //    UIViewController *initialVC = [studentSB instantiateInitialViewController];
-    [Store setCurrentUserToUserWithEmail:@"joe@gmail.com" andPassword:nil completion:^(BOOL success) {
-        
-        if (success) {
-            NSLog(@"Logged in as User: %@ %@", Store.mainStore.currentUser.firstname,
-                  Store.mainStore.currentUser.lastname);
-            initialStudentVC.modalTransitionStyle = UIModalPresentationFullScreen;
-            [self presentViewController:initialStudentVC animated:YES completion:nil];
-        }
-    }];
-    
-    
-}
-
 - (IBAction)didPressSignIn:(id)sender {
-    //For demo, setting a student to current user
-    
-    
-    /* IF STUDENT ADD ATTENDANCE
-     if (Store.mainStore.currentUser.role == StudentRole)
-     {
-     [Store.studentStore addAttendanceCompletion:^(BOOL success)
-     {
-     if (!success)
-     {
-     NSLog(@"[%@] Could not register attendance for current user %@", self.class, Store.mainStore.currentUser.email);
-     }
-     }];
-     }
-     */
-    
     [Store sendAuthenticationRequestForEmail:self.emailField.text password:self.passwordField.text completion:^(BOOL success, id user) {
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -105,29 +61,6 @@
             });
         }
     }];
-    
-    //    [Store setCurrentUserToUserWithEmail:self.emailField.text andPassword:nil completion:^(BOOL success) {
-    //        if (success) {
-    //            [self.view endEditing:YES];
-    //            //Här har vi hämtat en user med alla eventwrappers, events och messages
-    //            NSString *message = [NSString stringWithFormat:@"Login succeeded %@", Store.mainStore.currentUser.firstname];
-    //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hurray!" message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    //            [alert show];
-    //            if ([[Store mainStore] currentUser].role == StudentRole) {
-    //                initialStudentVC.modalTransitionStyle = UIModalPresentationFullScreen;
-    //                [self presentViewController:initialStudentVC animated:YES completion:nil];
-    //            }if ([[Store mainStore] currentUser].role == AdminRole || [[Store mainStore] currentUser].role == SuperAdminRole) {
-    //                initialAdminVC.modalTransitionStyle = UIModalPresentationFullScreen;
-    //                [self presentViewController:[[AdminTabBarViewController alloc] init] animated:YES completion:nil];
-    //            }
-    //
-    //        }else{
-    //            UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"Stop" message:@"Login failed, check your email and try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    //            [alert2 show];
-    //        }
-    //    }];
-    
-    //    NSDictionary *credentials = [[NSDictionary alloc]initWithObjects:@[self.emailField.text, self.passwordField.text] forKeys:@[@"email", @"password"]];
 }
 
 - (void)adminDidLogin
@@ -140,6 +73,14 @@
 
 - (void)studentDidLogin
 {
+    [Store.studentStore addAttendanceCompletion:^(BOOL success)
+     {
+         if (!success)
+         {
+             NSLog(@"[%@] Could not register attendance for current user %@", self.class, Store.mainStore.currentUser.email);
+         }
+     }];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         initialStudentVC.modalTransitionStyle = UIModalPresentationFullScreen;
         [self presentViewController:initialStudentVC animated:YES completion:nil];
@@ -152,5 +93,14 @@
         return YES;
     }
     return NO;
+}
+- (IBAction)populateAdminCredentials:(id)sender {
+    self.emailField.text = @"anders@coredev.se";
+    self.passwordField.text = @"asdf";
+}
+
+- (IBAction)populateStudentCredentials:(id)sender {
+    self.emailField.text = @"tobie@tobie.se";
+    self.passwordField.text = @"tobie";
 }
 @end
