@@ -59,7 +59,9 @@ exports.update = function (req, res) {
     delete req.body._id;
     User.update({
         _id: req.params.id
-    }, req.body, function (err, doc) {
+    }, req.body, {
+        upsert: true
+    }, function (err, doc) {
         if (err) {
             res.json(500, err);
         } else {
