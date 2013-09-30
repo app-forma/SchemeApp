@@ -7,6 +7,7 @@
 //
 
 #import "PopoverUserViewController.h"
+#import "User.h"
 
 @interface PopoverUserViewController ()<UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *firstnameTextField;
@@ -24,6 +25,8 @@
 @implementation PopoverUserViewController
 {
     NSArray *roles;
+    int roleRow;
+    User *currentUser;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,7 +53,7 @@
         [self.rolePickerView removeFromSuperview];
         [self.saveButton removeFromSuperview];
         
-        User *currentUser = [self.delegate currentUser];
+        currentUser = [self.delegate popoverUserCurrentUser];
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 120, 320, 220)];
         self.rolePickerView.frame = CGRectMake(0, 10, 320, 180);
         self.saveButton.frame = CGRectMake(110, 165, 100, 40);
@@ -83,7 +86,7 @@
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    
+    roleRow = row;
 }
 
 -(void)populateTextFieldsWith:(User *)user for:(NSString *)method
@@ -103,14 +106,24 @@
         self.passwordTextField.text = @"";
     }
 }
+-(User *)returnUserFromPopoverForUpdate
+{
+    User *user = [[User alloc]initWithUserDictionary:@{@"firstname": self.firstnameTextField.text, @"lastname": self.lastnameTextField.text, @"role": [User stringFromRoleType:roleRow], @"email": self.emailTextField.text, @"_id": currentUser.docID}];
+    return user;
+}
+-(User *)returnUserFromPopoverForCreate
+{
+    User *user = [[User alloc]initWithUserDictionary:@{@"firstname": self.firstnameTextField.text, @"lastname": self.lastnameTextField.text, @"role": [User stringFromRoleType:roleRow], @"email": self.emailTextField.text, @"password":self.passwordTextField.text}];
+    return user;
 
+}
 - (IBAction)saveUser:(id)sender {
-    [self.delegate dismissPopover];
-    
     if (self.isInEditingMode) {
-        NSLog(@"PUT");
+        [self.delegate popoverUserUpdateUser:[self returnUserFromPopoverForUpdate]];
     } else {
-        NSLog(@"POST");
+        [self.delegate popoverUserCreateUser:[self returnUserFromPopoverForCreate]];
     }
+    
+    [self.delegate popoverUserDismissPopover];
 }
 @end

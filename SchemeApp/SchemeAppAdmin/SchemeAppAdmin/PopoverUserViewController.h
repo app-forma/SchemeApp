@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 @protocol PopoverUserDelegate <NSObject>
 @optional
--(User *)currentUser;
+-(User *)popoverUserCurrentUser;
+-(void)popoverUserCreateUser:(User *)user;
+-(void)popoverUserUpdateUser:(User *)user;
 @required
--(void)dismissPopover;
+-(void)popoverUserDismissPopover;
 @end
 
 #import <UIKit/UIKit.h>

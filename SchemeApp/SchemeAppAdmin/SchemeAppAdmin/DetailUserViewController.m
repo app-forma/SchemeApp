@@ -85,7 +85,7 @@
     [self showPopover:sender for:@"edit"];
 }
 
--(User *)currentUser
+-(User *)popoverUserCurrentUser
 {
     return currentUser;
 }
@@ -113,7 +113,24 @@
     currentUser = user;
     
 }
--(void)dismissPopover
+-(void)popoverUserUpdateUser:(User *)user
+{
+    void(^saveHandler)(void) = ^(void)
+    {
+        [NSOperationQueue.mainQueue addOperationWithBlock:^
+         {
+             [self.navigationController popViewControllerAnimated:YES];
+         }];
+    };
+    
+    
+    [[Store superAdminStore] updateUser:user completion:^(id responseBody, id response, NSError *error) {
+        
+        saveHandler();
+        
+    }];
+}
+-(void)popoverUserDismissPopover
 {
     [userInfoPopover dismissPopoverAnimated:YES];
 }
