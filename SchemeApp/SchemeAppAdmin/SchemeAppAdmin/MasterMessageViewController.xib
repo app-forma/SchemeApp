@@ -41,5 +41,10 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <view contentMode="scaleToFill" id="yb0-ri-dKY">
+            <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+        </view>
     </objects>
 </document>

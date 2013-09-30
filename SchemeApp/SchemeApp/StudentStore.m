@@ -82,6 +82,10 @@
 -(void)deleteMessage:(Message *)message forUser:(User *)user completion:(void (^)(BOOL))handler
 {
     [[Store dbSessionConnection]deletePath:[NSString stringWithFormat:@"%@/%@/%@/%@", DB_TYPE_MESSAGE, message.docID, @"receivers", user.docID] withCompletion:^(id responseBody, id response, NSError *error) {
+        if (error)
+        {
+            NSLog(@"deleteMessage forUser completion: got response: %@ and error: %@", response, error.userInfo);
+        }
         BOOL isSuccess = !error ? YES : NO;
         handler(isSuccess);
     }];

@@ -67,6 +67,22 @@
     [self.delegate didSelectMessage:messages[indexPath.row]];
 }
 
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Message *message = messages[indexPath.row];
+        [messages removeObject:message];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [[Store adminStore]deleteMessage:message forUser:[Store mainStore].currentUser completion:^(BOOL success) {
+            if (!success) {
+                NSLog(@"delete message failed");
+            }
+        }];
+    }
+}
+
+
+
 #pragma callbacks
 - (IBAction)didPressAdd:(id)sender {
     UIStoryboard *createMessageStoryboard = [UIStoryboard storyboardWithName:@"CreateMessage" bundle:nil];
@@ -85,7 +101,13 @@
 -(void)didCreateAndGetMessage:(Message *)message
 {
     [messages addObject:message];
-    [createMessagePopover dismissPopoverAnimated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [createMessagePopover dismissPopoverAnimated:YES];
+        NSIndexPath *thisIndexPath = [NSIndexPath indexPathForItem:messages.count - 1 inSection:0];
+        [self.delegate didSelectMessage:message];
+        [self.tableView insertRowsAtIndexPaths:@[thisIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView selectRowAtIndexPath:thisIndexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    });
 }
 
 @end

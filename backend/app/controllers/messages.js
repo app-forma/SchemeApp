@@ -62,7 +62,9 @@ exports.destroy = function (req, res) {
             res.json(500, err.errors);
         } else {
             doc.remove();
-            res.json(200);
+            res.json(200, {
+                "deleted": true
+            });
         }
     });
 };
@@ -90,13 +92,13 @@ exports.removeReceiver = function (req, res) {
                 });
             } else {
                 message.remove();
-                res.json(200);
+                res.json(200, {
+                    "deleted": true
+                });
             }
         }
     });
 };
-
-
 
 exports.index = function (req, res) {
     Message.list(function (err, messages) {
