@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA657517F4BB990088E589 /* PopoverUserViewController.m */; };
 		04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA657617F4BB990088E589 /* PopoverUserViewController.xib */; };
-		27133EA217F9C6AC00708346 /* Base64.h in Resources */ = {isa = PBXBuildFile; fileRef = 27133E9D17F9C6AC00708346 /* Base64.h */; };
-		27133EA317F9C6AC00708346 /* Base64.m in Resources */ = {isa = PBXBuildFile; fileRef = 27133E9E17F9C6AC00708346 /* Base64.m */; };
 		27133EA417F9C6AC00708346 /* UIImage+Base64.h in Resources */ = {isa = PBXBuildFile; fileRef = 27133E9F17F9C6AC00708346 /* UIImage+Base64.h */; };
 		27133EA517F9C6AC00708346 /* UIImage+Base64.m in Resources */ = {isa = PBXBuildFile; fileRef = 27133EA017F9C6AC00708346 /* UIImage+Base64.m */; };
 		274E553F17F2E71000E97A12 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E553E17F2E71000E97A12 /* TabBarController.m */; };
@@ -122,10 +120,8 @@
 		04DA657417F4BB990088E589 /* PopoverUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverUserViewController.h; sourceTree = "<group>"; };
 		04DA657517F4BB990088E589 /* PopoverUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverUserViewController.m; sourceTree = "<group>"; };
 		04DA657617F4BB990088E589 /* PopoverUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverUserViewController.xib; sourceTree = "<group>"; };
-		27133E9D17F9C6AC00708346 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = Base64.h; path = ../SchemeApp/Base64.h; sourceTree = "<group>"; };
-		27133E9E17F9C6AC00708346 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = Base64.m; path = ../SchemeApp/Base64.m; sourceTree = "<group>"; };
-		27133E9F17F9C6AC00708346 /* UIImage+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = "UIImage+Base64.h"; path = "../SchemeApp/UIImage+Base64.h"; sourceTree = "<group>"; };
-		27133EA017F9C6AC00708346 /* UIImage+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = "UIImage+Base64.m"; path = "../SchemeApp/UIImage+Base64.m"; sourceTree = "<group>"; };
+		27133E9F17F9C6AC00708346 /* UIImage+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Base64.h"; path = "../SchemeApp/UIImage+Base64.h"; sourceTree = "<group>"; };
+		27133EA017F9C6AC00708346 /* UIImage+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Base64.m"; path = "../SchemeApp/UIImage+Base64.m"; sourceTree = "<group>"; };
 		274E553D17F2E71000E97A12 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		274E553E17F2E71000E97A12 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		274E554017F2EB0200E97A12 /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
@@ -267,8 +263,6 @@
 		27133EA117F9C6AC00708346 /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
-				27133E9D17F9C6AC00708346 /* Base64.h */,
-				27133E9E17F9C6AC00708346 /* Base64.m */,
 				27133E9F17F9C6AC00708346 /* UIImage+Base64.h */,
 				27133EA017F9C6AC00708346 /* UIImage+Base64.m */,
 			);
@@ -680,7 +674,6 @@
 				27133EA417F9C6AC00708346 /* UIImage+Base64.h in Resources */,
 				4DF2616017F6078900983735 /* DetailMessageViewController.xib in Resources */,
 				279AB6D117F191570094CE64 /* messages_selected@2x.png in Resources */,
-				27133EA217F9C6AC00708346 /* Base64.h in Resources */,
 				279AB6B717F191490094CE64 /* EventWrapper.m in Resources */,
 				27776A7F17F9994D00D84839 /* glasses_selected@1x.png.png in Resources */,
 				279AB65A17F18C200094CE64 /* InfoPlist.strings in Resources */,
@@ -706,7 +699,6 @@
 				279AB6D517F191570094CE64 /* users_selected@2x.png in Resources */,
 				279AB6BD17F191490094CE64 /* User.m in Resources */,
 				8FE68A2C17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib in Resources */,
-				27133EA317F9C6AC00708346 /* Base64.m in Resources */,
 				279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */,
 				274E90DB17F320F900E97A12 /* editIcon@1x.png in Resources */,
 				279D064D17F1D07900586DF7 /* MessageViewController.xib in Resources */,

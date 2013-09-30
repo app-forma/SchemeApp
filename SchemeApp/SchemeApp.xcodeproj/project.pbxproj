@@ -27,7 +27,6 @@
 		0493B54D17DDF80C003B3D23 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0493B54B17DDF80C003B3D23 /* InfoPlist.strings */; };
 		0493B54F17DDF80C003B3D23 /* SchemeAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */; };
 		04E09F5B17E7249D00B946CB /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E09F5A17E7249D00B946CB /* EventCell.m */; };
-		27133E9C17F9C5BB00708346 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 27133E9B17F9C5BB00708346 /* Base64.m */; };
 		2748CDC917DF360F00A06467 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748CDC817DF360F00A06467 /* Helpers.m */; };
 		27776A6F17F9992E00D84839 /* glasses_selected@1x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A6717F9992E00D84839 /* glasses_selected@1x.png.png */; };
 		27776A7017F9992E00D84839 /* glasses_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A6817F9992E00D84839 /* glasses_selected@2x.png */; };
@@ -148,8 +147,6 @@
 		0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeAppTests.m; sourceTree = "<group>"; };
 		04E09F5917E7249D00B946CB /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
 		04E09F5A17E7249D00B946CB /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
-		27133E9A17F9C5BB00708346 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = SchemeApp/Base64.h; sourceTree = SOURCE_ROOT; };
-		27133E9B17F9C5BB00708346 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = SchemeApp/Base64.m; sourceTree = SOURCE_ROOT; };
 		2748CDC717DF360F00A06467 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		2748CDC817DF360F00A06467 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		27776A6717F9992E00D84839 /* glasses_selected@1x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glasses_selected@1x.png.png"; path = "images/glasses_selected@1x.png.png"; sourceTree = "<group>"; };
@@ -478,8 +475,6 @@
 		27C878F417F9AB0A0082DA6E /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
-				27133E9A17F9C5BB00708346 /* Base64.h */,
-				27133E9B17F9C5BB00708346 /* Base64.m */,
 				2797ACDB17F9C4BE008BC7DA /* UIImage+Base64.h */,
 				2797ACDC17F9C4BE008BC7DA /* UIImage+Base64.m */,
 			);
@@ -722,7 +717,6 @@
 				8F5D541517F1BACE0096C7EA /* StudentWhatToReadTableViewController.m in Sources */,
 				AF2551F417E04630006EDD02 /* StudentStore.m in Sources */,
 				2797ACDE17F9C4BE008BC7DA /* UIImage+Base64.m in Sources */,
-				27133E9C17F9C5BB00708346 /* Base64.m in Sources */,
 				27BCC1F717E1F5D9009977BB /* AdminStudentsViewController.m in Sources */,
 				AF99542417F2FDAC003C450B /* Location.m in Sources */,
 				4DED32C017E993F7008A5D3A /* AdminMessagesDetailViewController.m in Sources */,
