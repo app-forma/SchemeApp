@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 Marcus Norling. All rights reserved.
 //
 
+@class PicturePickerViewController;
 @protocol PicturePickerDelegate <NSObject>
 
-- (void)picturePickerDidFinishPickingPicture:(UIImage *)image forUser:(User *)user;
+- (void)picturePicker:(PicturePickerViewController *)picturePicker didFinishPickingPicture:(UIImage *)image forUser:(User *)user;
 - (void)picturePickerDidCancel;
 
 @end
@@ -20,6 +21,7 @@
 @interface PicturePickerViewController : UIViewController
 
 @property (weak) id <PicturePickerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadIndicator;
 
 /**
  *  Set this when loading this vc if user already has a picture

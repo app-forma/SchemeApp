@@ -9,6 +9,7 @@
 #import "MasterUserViewController.h"
 #import "PopoverUserViewController.h"
 #import "User.h"
+#import "DetailUserViewController.h"
 
 @interface MasterUserViewController () <UITableViewDelegate, PopoverUserDelegate>
 
@@ -21,6 +22,7 @@
     NSMutableArray *users;
     UIPopoverController *addUserPopover;
     PopoverUserViewController *puvc;
+    NSUInteger selectedIndex;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -67,6 +69,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    selectedIndex = indexPath.row;
     [self.delegate masterUserDidSelectUser:users[indexPath.row]];
 }
 

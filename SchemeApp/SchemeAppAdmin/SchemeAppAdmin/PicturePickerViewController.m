@@ -25,6 +25,7 @@
     if (self) {
         if (self.user.image) {
             self.imageView.image = self.user.image;
+            [self.loadIndicator stopAnimating];
         }
     }
     return self;
@@ -53,8 +54,11 @@
 }
 
 - (IBAction)saveChanges:(id)sender {
+    NSLog(@"SAVING");
+    self.loadIndicator.hidden = NO;
+    [self.loadIndicator startAnimating];
     if (self.user.image) {
-        [self.delegate picturePickerDidFinishPickingPicture:self.user.image forUser:self.user];
+        [self.delegate picturePicker:self didFinishPickingPicture:self.user.image forUser:self.user];
     } else {
         [self.delegate picturePickerDidCancel];
     }
@@ -64,7 +68,7 @@
     [self.delegate picturePickerDidCancel];
 }
 
--(BOOL) showImagePickerControllerForType:(UIImagePickerControllerSourceType) sourceType
+- (BOOL)showImagePickerControllerForType:(UIImagePickerControllerSourceType) sourceType
 {
     if([UIImagePickerController isSourceTypeAvailable:sourceType])
     {
