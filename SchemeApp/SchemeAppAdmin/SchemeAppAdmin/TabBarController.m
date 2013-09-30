@@ -16,7 +16,7 @@
 #import "SplitViewController.h"
 #import "SchoolInfoViewController.h"
 
-@interface TabBarController ()<UITabBarControllerDelegate>
+@interface TabBarController ()<UITabBarControllerDelegate, UISplitViewControllerDelegate>
 {
     MasterEventWrapperViewController *mevc;
     DetailEventWrapperViewController *devc;
@@ -27,6 +27,7 @@
     SplitViewController *eventWrapperSplitView;
     SplitViewController *usersSplitView;
     SplitViewController *messagesSplitView;
+    UIBarButtonItem *barButtonForMaster;
 }
 @end
 
@@ -91,8 +92,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view.
 }
-
 
 @end

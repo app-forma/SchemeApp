@@ -21,7 +21,10 @@
 @end
 
 @implementation DetailMessageViewController
-
+{
+    UIBarButtonItem *barButtonForMaster;
+    UIViewController *masterViewController;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,6 +35,8 @@
           withBarButtonItem:(UIBarButtonItem *)barButtonItem
        forPopoverController:(UIPopoverController *)pc
 {
+    barButtonForMaster = barButtonItem;
+    masterViewController = aViewController;
 }
 
 
@@ -40,7 +45,14 @@
   invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (!masterViewController.view.window) {
+        [barButtonForMaster.target performSelector:barButtonForMaster.action withObject:barButtonForMaster afterDelay:0.01];
+    }
+    
+}
 -(void)didSelectMessage:(Message *)message
 {
     self.navItem.title = [NSString stringWithFormat:@"Message from %@", message.from.firstname];

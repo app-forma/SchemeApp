@@ -14,8 +14,8 @@
 #define SUGGESTIONS_SECTION 2
 
 #import "AdminMessagesCreateMessageViewController.h"
-#import "SearchCell.h"
-#import "ReceiverCell.h"
+#import "SearchCelliPhone.h"
+#import "ReceiverCelliPhone.h"
 #import "Message.h"
 #import "User.h"
 #import "Helpers.h"
@@ -113,13 +113,13 @@
 {
     NSInteger section = indexPath.section;
     if (section == SEARCH_SECTION) {
-        SearchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCell" forIndexPath:indexPath];
+        SearchCelliPhone *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCell" forIndexPath:indexPath];
         cell.textField.delegate = self;
         [cell.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         return cell;
     }
     static NSString *cellIdentifier = @"ReceiverCell";
-    ReceiverCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    ReceiverCelliPhone *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     User *user = section == SUGGESTIONS_SECTION ? suggestedUsers[indexPath.row] : receivers[indexPath.row];
     cell.accessoryType = section == RECIPIENTS_SECTION ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     cell.backgroundColor = section == SUGGESTIONS_SECTION ? lightGrayColor : whiteColor;
@@ -173,13 +173,10 @@
     if (self.textView.text.length < 3) { return; }
     sendButton.enabled = NO;
     
-    Message *message = [[Message alloc]init];
-    message.text = self.textView.text;
-    message.from = Store.mainStore.currentUser;;
-    message.date = [NSDate date];
+    Message *message = [Message messageWithText:self.textView.text receivers:receivers];
     
     if (self.messageTypeControl.selectedSegmentIndex == MESSAGE_TYPE) {
-        [[Store adminStore]sendMessage:message toUsers:receivers completion:^(Message *message) {
+        [[Store adminStore]sendMessage:message completion:^(Message *message) {
             [[NSOperationQueue mainQueue]addOperationWithBlock:^{
                 NSPredicate *containsUser = [NSPredicate predicateWithFormat:@"self.email matches %@", [Store mainStore].currentUser.email];
                 [receivers filteredArrayUsingPredicate:containsUser].count > 0 ? [self returnToMessageViewAndSetMessage:message] : [self dismissViewControllerAnimated:YES completion:nil];

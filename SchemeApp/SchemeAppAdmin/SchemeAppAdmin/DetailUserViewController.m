@@ -25,6 +25,8 @@
     UIPopoverController *userInfoPopover;
     PopoverUserViewController *puvc;
     User *currentUser;
+    UIBarButtonItem *barButtonForMaster;
+    UIViewController *masterViewController;
 }
 
 
@@ -33,6 +35,10 @@
           withBarButtonItem:(UIBarButtonItem *)barButtonItem
        forPopoverController:(UIPopoverController *)pc
 {
+    masterViewController = aViewController;
+    barButtonForMaster = barButtonItem;
+    
+    
 }
 
 
@@ -55,7 +61,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     // Do any additional setup after loading the view from its nib.
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (!masterViewController.view.window) {
+        [barButtonForMaster.target performSelector:barButtonForMaster.action withObject:barButtonForMaster afterDelay:0.01];
+    }
+    
+    
 }
 -(void)viewDidAppear:(BOOL)animated
 {

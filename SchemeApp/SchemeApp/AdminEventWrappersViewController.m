@@ -72,7 +72,7 @@
     cell.eventWrapperName.text = eventWrapper.name;
     cell.eventWrapperStartDate.text = [Helpers dateStringFromNSDate:eventWrapper.startDate];
     cell.eventWrapperEndDate.text = [Helpers dateStringFromNSDate:eventWrapper.endDate];
-    cell.eventWrapperOwnerName.text = eventWrapper.user.name;
+    cell.eventWrapperOwnerName.text = eventWrapper.user.fullName;
     
     return cell;
 }
