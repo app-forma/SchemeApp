@@ -27,6 +27,7 @@
 		0493B54D17DDF80C003B3D23 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0493B54B17DDF80C003B3D23 /* InfoPlist.strings */; };
 		0493B54F17DDF80C003B3D23 /* SchemeAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */; };
 		04E09F5B17E7249D00B946CB /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E09F5A17E7249D00B946CB /* EventCell.m */; };
+		27133E9C17F9C5BB00708346 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 27133E9B17F9C5BB00708346 /* Base64.m */; };
 		2748CDC917DF360F00A06467 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748CDC817DF360F00A06467 /* Helpers.m */; };
 		27776A6F17F9992E00D84839 /* glasses_selected@1x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A6717F9992E00D84839 /* glasses_selected@1x.png.png */; };
 		27776A7017F9992E00D84839 /* glasses_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A6817F9992E00D84839 /* glasses_selected@2x.png */; };
@@ -36,6 +37,7 @@
 		27776A7417F9992E00D84839 /* location_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A6C17F9992E00D84839 /* location_selected@2x.png */; };
 		27776A7517F9992E00D84839 /* location_unselected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A6D17F9992E00D84839 /* location_unselected@1x.png */; };
 		27776A7617F9992E00D84839 /* location_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27776A6E17F9992E00D84839 /* location_unselected@2x.png */; };
+		2797ACDE17F9C4BE008BC7DA /* UIImage+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2797ACDC17F9C4BE008BC7DA /* UIImage+Base64.m */; };
 		27BCC1E717E1E7E7009977BB /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC1E617E1E7E7009977BB /* LoginStoryboard.storyboard */; };
 		27BCC1EA17E1E8B5009977BB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC1E917E1E8B5009977BB /* LoginViewController.m */; };
 		27BCC1EE17E1F347009977BB /* AdminMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC1ED17E1F347009977BB /* AdminMessagesViewController.m */; };
@@ -146,6 +148,8 @@
 		0493B54E17DDF80C003B3D23 /* SchemeAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeAppTests.m; sourceTree = "<group>"; };
 		04E09F5917E7249D00B946CB /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
 		04E09F5A17E7249D00B946CB /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
+		27133E9A17F9C5BB00708346 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = SchemeApp/Base64.h; sourceTree = SOURCE_ROOT; };
+		27133E9B17F9C5BB00708346 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = SchemeApp/Base64.m; sourceTree = SOURCE_ROOT; };
 		2748CDC717DF360F00A06467 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		2748CDC817DF360F00A06467 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		27776A6717F9992E00D84839 /* glasses_selected@1x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glasses_selected@1x.png.png"; path = "images/glasses_selected@1x.png.png"; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 		27776A6C17F9992E00D84839 /* location_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_selected@2x.png"; path = "images/location_selected@2x.png"; sourceTree = "<group>"; };
 		27776A6D17F9992E00D84839 /* location_unselected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_unselected@1x.png"; path = "images/location_unselected@1x.png"; sourceTree = "<group>"; };
 		27776A6E17F9992E00D84839 /* location_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_unselected@2x.png"; path = "images/location_unselected@2x.png"; sourceTree = "<group>"; };
+		2797ACDB17F9C4BE008BC7DA /* UIImage+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Base64.h"; path = "SchemeApp/UIImage+Base64.h"; sourceTree = SOURCE_ROOT; };
+		2797ACDC17F9C4BE008BC7DA /* UIImage+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Base64.m"; path = "SchemeApp/UIImage+Base64.m"; sourceTree = SOURCE_ROOT; };
 		27BCC1E617E1E7E7009977BB /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		27BCC1E817E1E8B5009977BB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		27BCC1E917E1E8B5009977BB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -315,6 +321,7 @@
 		0493B52F17DDF80C003B3D23 /* SchemeApp */ = {
 			isa = PBXGroup;
 			children = (
+				27C878F417F9AB0A0082DA6E /* Base64 */,
 				27BCC1F817E1FAC7009977BB /* Images */,
 				0423298E17DF2C6E005B47F9 /* Models */,
 				27D8B45517E0B92A007EC0E5 /* Views */,
@@ -466,6 +473,17 @@
 				27BCC1FD17E1FAF5009977BB /* users_unselected@2x.png */,
 			);
 			name = AdminTabBar;
+			sourceTree = "<group>";
+		};
+		27C878F417F9AB0A0082DA6E /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				27133E9A17F9C5BB00708346 /* Base64.h */,
+				27133E9B17F9C5BB00708346 /* Base64.m */,
+				2797ACDB17F9C4BE008BC7DA /* UIImage+Base64.h */,
+				2797ACDC17F9C4BE008BC7DA /* UIImage+Base64.m */,
+			);
+			path = Base64;
 			sourceTree = "<group>";
 		};
 		27D8B45517E0B92A007EC0E5 /* Views */ = {
@@ -703,6 +721,8 @@
 				4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */,
 				8F5D541517F1BACE0096C7EA /* StudentWhatToReadTableViewController.m in Sources */,
 				AF2551F417E04630006EDD02 /* StudentStore.m in Sources */,
+				2797ACDE17F9C4BE008BC7DA /* UIImage+Base64.m in Sources */,
+				27133E9C17F9C5BB00708346 /* Base64.m in Sources */,
 				27BCC1F717E1F5D9009977BB /* AdminStudentsViewController.m in Sources */,
 				AF99542417F2FDAC003C450B /* Location.m in Sources */,
 				4DED32C017E993F7008A5D3A /* AdminMessagesDetailViewController.m in Sources */,
