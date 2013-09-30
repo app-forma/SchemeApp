@@ -53,7 +53,7 @@
         } else {
             self.from = [User new];
             self.from.firstname = @"Deleted";
-            self.from.lastname = @" user";
+            self.from.lastname = @"user";
         }
         self.date = [Helpers dateFromString:msgDictionary[@"date"]];
         self.text = msgDictionary[@"text"];

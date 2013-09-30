@@ -49,6 +49,7 @@
 		27CECEAA17EB22A7004522C0 /* AdminEventWrapperTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CECEA917EB22A7004522C0 /* AdminEventWrapperTableViewController.m */; };
 		4D757AA017F963C2007255E1 /* SearchCelliPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A9F17F963C2007255E1 /* SearchCelliPhone.m */; };
 		4D757AA317F963CE007255E1 /* ReceiverCelliPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757AA217F963CE007255E1 /* ReceiverCelliPhone.m */; };
+		4D757AA617F9AB81007255E1 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757AA517F9AB81007255E1 /* NSDate+Helpers.m */; };
 		4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC5DD817E1EFAD0032C92F /* MessageCell.m */; };
 		4DED32BF17E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED32B817E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m */; };
 		4DED32C017E993F7008A5D3A /* AdminMessagesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED32BA17E993F7008A5D3A /* AdminMessagesDetailViewController.m */; };
@@ -169,6 +170,8 @@
 		4D757A9F17F963C2007255E1 /* SearchCelliPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCelliPhone.m; sourceTree = "<group>"; };
 		4D757AA117F963CE007255E1 /* ReceiverCelliPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverCelliPhone.h; sourceTree = "<group>"; };
 		4D757AA217F963CE007255E1 /* ReceiverCelliPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverCelliPhone.m; sourceTree = "<group>"; };
+		4D757AA417F9AB81007255E1 /* NSDate+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helpers.h"; sourceTree = "<group>"; };
+		4D757AA517F9AB81007255E1 /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
 		4DAC5DD717E1EFAD0032C92F /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		4DAC5DD817E1EFAD0032C92F /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		4DED32B717E993F7008A5D3A /* AdminMessagesCreateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminMessagesCreateMessageViewController.h; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 		2748CDC617DF35EA00A06467 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4D757AA417F9AB81007255E1 /* NSDate+Helpers.h */,
+				4D757AA517F9AB81007255E1 /* NSDate+Helpers.m */,
 				0437DDA817E2240400DB9F5A /* Validation.h */,
 				0437DDA917E2240400DB9F5A /* Validation.m */,
 				04199A8117E0B88D00E922D5 /* AFNetworking.h */,
@@ -675,6 +680,7 @@
 				AF99542417F2FDAC003C450B /* Location.m in Sources */,
 				4DED32C017E993F7008A5D3A /* AdminMessagesDetailViewController.m in Sources */,
 				4D757AA017F963C2007255E1 /* SearchCelliPhone.m in Sources */,
+				4D757AA617F9AB81007255E1 /* NSDate+Helpers.m in Sources */,
 				27BCC1F417E1F581009977BB /* AdminEventWrappersViewController.m in Sources */,
 				27BCC1EA17E1E8B5009977BB /* LoginViewController.m in Sources */,
 				27CECEAA17EB22A7004522C0 /* AdminEventWrapperTableViewController.m in Sources */,
