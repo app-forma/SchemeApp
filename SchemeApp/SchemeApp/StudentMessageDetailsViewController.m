@@ -24,20 +24,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"Message";
+    self.navigationItem.title = self.message.from.fullName;
     self.fromLabel.text = self.message.from.fullName;
     self.dateLabel.text = [self.message.date asDateString];
+    self.messageTextView.contentInset = UIEdgeInsetsMake(-7, -5, -5, 0);
     self.messageTextView.text = self.message.text;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(didPressTrash)];
     
-    deletePrompt = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil, nil];
+    deletePrompt = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete message" otherButtonTitles:nil, nil];
 }
 
 -(void)didPressTrash
 {
-    [deletePrompt showFromTabBar:self.tabBarController.tabBar];
-  
+    [deletePrompt showFromTabBar:self.tabBarController.tabBar];  
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
