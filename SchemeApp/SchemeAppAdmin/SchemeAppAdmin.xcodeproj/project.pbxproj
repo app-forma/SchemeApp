@@ -101,6 +101,7 @@
 		4DF2616017F6078900983735 /* DetailMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2615F17F6078900983735 /* DetailMessageViewController.xib */; };
 		4DF2616417F607B900983735 /* CreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2616217F607B900983735 /* CreateMessageViewController.m */; };
 		4DF2616717F6083200983735 /* CreateMessage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2616617F6083200983735 /* CreateMessage.storyboard */; };
+		4DF963D217FB45250092F44D /* testbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF963D117FB45250092F44D /* testbackground.png */; };
 		8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */; };
 		8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */; };
 		8FE68A2A17F4DABB00FAD042 /* MasterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE68A2917F4DABB00FAD042 /* MasterUserViewController.xib */; };
@@ -236,6 +237,7 @@
 		4DF2616117F607B900983735 /* CreateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMessageViewController.h; sourceTree = "<group>"; };
 		4DF2616217F607B900983735 /* CreateMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMessageViewController.m; sourceTree = "<group>"; };
 		4DF2616617F6083200983735 /* CreateMessage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateMessage.storyboard; sourceTree = "<group>"; };
+		4DF963D117FB45250092F44D /* testbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = testbackground.png; path = images/testbackground.png; sourceTree = "<group>"; };
 		8F12E85717F3261B00FCEDCE /* PopoverEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverEventWrapperViewController.h; sourceTree = "<group>"; };
 		8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverEventWrapperViewController.m; sourceTree = "<group>"; };
 		8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverEventWrapperViewController.xib; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 		279AB6CB17F191570094CE64 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4DF963D117FB45250092F44D /* testbackground.png */,
 				274E90D717F320F900E97A12 /* editIcon@1x.png */,
 				274E90D817F320F900E97A12 /* editIcon@2x.png */,
 				274E90D917F320F900E97A12 /* newIcon@1x.png */,
@@ -732,6 +735,7 @@
 				274E90DE17F320F900E97A12 /* newIcon@2x.png in Resources */,
 				279AB6E317F1920E0094CE64 /* Validation.h in Resources */,
 				279AB6E817F1920E0094CE64 /* Helpers.m in Resources */,
+				4DF963D217FB45250092F44D /* testbackground.png in Resources */,
 				279AB6D317F191570094CE64 /* messages_unselected@2x.png in Resources */,
 				279AB66217F18C200094CE64 /* Images.xcassets in Resources */,
 				27776A8617F9994D00D84839 /* location_unselected@2x.png in Resources */,
