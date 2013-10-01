@@ -7,11 +7,12 @@
 //
 
 #import "TabBarSetupViewController.h"
-
+#import "StudentAutomaticPresence.h"
 
 @implementation TabBarSetupViewController
 {
     UIActionSheet *signOutPopup;
+    StudentAutomaticPresence *attendanceMonitor;
 }
 -(id)initForRoleType:(RoleType)role;
 {
@@ -20,12 +21,32 @@
          signOutPopup = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Sign out" otherButtonTitles:nil, nil];
         
         if (role == StudentRole) {
+            [self checkAttendance];
             [self setupTabBarWithStoryboards:@[@"StudentMessagesStoryboard", @"StudentEventsStoryBoard", @"StudentWhatToReadStoryboard"]];
+
         } else {
             [self setupTabBarWithStoryboards:@[@"AdminEventWrapperStoryboard", @"AdminMessagesStoryboard", @"AdminUserStoryboard"]];
         }
     }
     return self;
+}
+
+- (void)checkAttendance {
+    NSString *dateString = [Helpers dateStringFromNSDate:[NSDate date]];
+    NSString *latestAttendanceDateString = [NSUserDefaults.standardUserDefaults objectForKey:@"latestAttendance"];
+    BOOL attendanceForTodayNotSent = ![latestAttendanceDateString isEqualToString:dateString];
+    
+    if (attendanceForTodayNotSent) {
+        [Store fetchLocationCompletion:^(Location *location) {
+            if (location) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    attendanceMonitor = [[StudentAutomaticPresence alloc] initWithSchoolLocation:location];
+                });
+            }
+        }];
+    } else {
+        NSLog(@"Attendance already set.");
+    }
 }
 
 - (void)setupTabBarWithStoryboards:(NSArray *)storyboards
@@ -50,6 +71,8 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
+        //sign ut
+        attendanceMonitor = nil;
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }

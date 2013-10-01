@@ -8,6 +8,7 @@
 
 #import "StudentAutomaticPresence.h"
 #import "Location.h"
+#import "NSDate+Helpers.h"
 
 @implementation StudentAutomaticPresence
 {
@@ -39,25 +40,29 @@
 {
     [locationManager stopMonitoringForRegion:schoolRegion];
     
-    NSLog(@"Entered Region - %@", region.identifier);
-    
     [[[UIAlertView alloc] initWithTitle:@"Welcome" message:@"We have now confirmed your presence through our very advanced geolocation system!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil]show];
     
     [[Store studentStore] addAttendanceCompletion:^(BOOL success) {
         if (success) {
             NSLog(@"Attendance registered.");
+            [NSUserDefaults.standardUserDefaults setObject:NSDate.date.asDateString forKey:@"latestAttendance"];
         }
     }];
 }
 
+-(void)dealloc {
+    [locationManager stopMonitoringForRegion:schoolRegion];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
     NSLog(@"did start monitoring");
-    [[[UIAlertView alloc] initWithTitle:@"Started" message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil]show];
 }
 
 -(void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error
 {
     NSLog(@"monitoring did fail: %@", error);
 }
+
+
 
 @end

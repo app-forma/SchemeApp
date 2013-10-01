@@ -9,7 +9,6 @@
 #import "LoginViewController.h"
 #import "TabBarSetupViewController.h"
 #import "Location.h"
-#import "StudentAutomaticPresence.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
@@ -22,9 +21,6 @@
 @end
 
 @implementation LoginViewController
-{
-    StudentAutomaticPresence *sap;
-}
 
 #pragma mark text field delegate methods:
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -37,24 +33,11 @@
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 RoleType role = [Store mainStore].currentUser.role;
-                if (role == StudentRole) {
-                    [self checkAttendance];
-                }
                 [self enterAppWithViewController:[[TabBarSetupViewController alloc]initForRoleType:role]];
             });
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.loginStatusLabel.text = @"Invalid credentials, try again";
-            });
-        }
-    }];
-}
-
-- (void)checkAttendance {
-    [Store fetchLocationCompletion:^(Location *location) {
-        if (location) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                sap = [[StudentAutomaticPresence alloc] initWithSchoolLocation:location];
             });
         }
     }];
