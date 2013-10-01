@@ -20,7 +20,8 @@
     PopoverEventWrapperViewController *pewvc;
     EventWrapper *currentEventWrapper;
     NSMutableArray *events;
-   
+    UIView *coverView;
+    
 }
 @property (weak, nonatomic) IBOutlet UILabel *eventWrapperName;
 @property (weak, nonatomic) IBOutlet UILabel *teacherLabel;
@@ -78,56 +79,47 @@
     pewvc = [[PopoverEventWrapperViewController alloc] init];
     pewvc.delegate = self;
     
-    /**
-     *    DESIGN UTKAST!
-     *    Se vad metoden gör
-     */
-    [self isViewEmpty];
+    editButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"editIcon"] tag:2];
+    [editButton addTarget:self action:@selector(editEventWrapper:) forControlEvents:UIControlEventTouchUpInside];
+    editButton.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view addSubview:editButton];
+    NSDictionary *views = NSDictionaryOfVariableBindings(editButton);
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[editButton(50.0)]-(25.0)-|" options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(50.0)-[editButton(50.0)]" options:0 metrics:nil views:views]];
 }
 
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    editButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"editIcon"] tag:2];
-    [editButton addTarget:self action:@selector(editEventWrapper:) forControlEvents:UIControlEventTouchUpInside];
-    editButton.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [self.view addSubview:editButton];
-    
-    NSDictionary *views = NSDictionaryOfVariableBindings(editButton);
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[editButton(50.0)]-(25.0)-|" options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(50.0)-[editButton(50.0)]" options:0 metrics:nil views:views]];
 }
 
 /**
- *  Checks if view has no data. If no it adds a view over the detail xib view saying "you got no x"
+ *  Called by masterViewDelegate incase of no data
  */
-- (void)isViewEmpty
+- (void)setViewToEmptyState
 {
-    if ([self.teacherLabel.text isEqualToString:@"Label"] || !self.teacherLabel.text) {
-        UIView *coverView = [[UIView alloc] init];
-        coverView.translatesAutoresizingMaskIntoConstraints = NO;
-        coverView.backgroundColor = [AwesomeUI backgroundColorForCoverViews];
-        
-        UILabel *noContentLabel = [[UILabel alloc] init];
-        noContentLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        noContentLabel.text = @"You have no courses yet...";
-        noContentLabel.font = [AwesomeUI fontForCoverViews];
-        noContentLabel.textColor = [AwesomeUI fontColorForCoverViews];
-        
-        [self.view addSubview:coverView];
-        [coverView addSubview:noContentLabel];
-
-        NSDictionary *views = NSDictionaryOfVariableBindings(coverView, noContentLabel);
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[coverView]|" options:0 metrics:nil views:views]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[coverView]|" options:0 metrics:nil views:views]];
-        
-        [coverView addConstraint:[NSLayoutConstraint constraintWithItem:noContentLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:coverView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:-4.0]];
-
-        [coverView addConstraint:[NSLayoutConstraint constraintWithItem:noContentLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:coverView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
-    }
+    coverView = [[UIView alloc] init];
+    coverView.translatesAutoresizingMaskIntoConstraints = NO;
+    coverView.backgroundColor = [AwesomeUI backgroundColorForCoverViews];
+    
+    UILabel *noContentLabel = [[UILabel alloc] init];
+    noContentLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    noContentLabel.text = @"You have no courses yet...";
+    noContentLabel.font = [AwesomeUI fontForCoverViews];
+    noContentLabel.textColor = [AwesomeUI fontColorForCoverViews];
+    
+    [self.view addSubview:coverView];
+    [coverView addSubview:noContentLabel];
+    
+    NSDictionary *views = NSDictionaryOfVariableBindings(coverView, noContentLabel);
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[coverView]|" options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[coverView]|" options:0 metrics:nil views:views]];
+    
+    [coverView addConstraint:[NSLayoutConstraint constraintWithItem:noContentLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:coverView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:-4.0]];
+    
+    [coverView addConstraint:[NSLayoutConstraint constraintWithItem:noContentLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:coverView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
 }
 
 - (void)editEventWrapper:(id)sender
@@ -141,7 +133,7 @@
 }
 -(void)popoverEventWrapperUpdateEventWrapper:(EventWrapper *)eventWrapper
 {
-
+    
     void(^saveHandler)(void) = ^(void)
     {
         [NSOperationQueue.mainQueue addOperationWithBlock:^
@@ -150,16 +142,16 @@
          }];
     };
     
-
-        [Store.adminStore updateEventWrapper:eventWrapper
-                                  completion:^(id jsonObject, id response, NSError *error)
-         {
-
-             saveHandler();
-         }];
     
-
-
+    [Store.adminStore updateEventWrapper:eventWrapper
+                              completion:^(id jsonObject, id response, NSError *error)
+     {
+         
+         saveHandler();
+     }];
+    
+    
+    
 }
 -(void)showPopover:(id)sender
 {
@@ -181,8 +173,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - MasterEventWrapper delegate
 -(void)masterEventWrapperDidSelectEventWrapper:(EventWrapper *)eventWrapper
 {
+    [coverView removeFromSuperview];
     self.eventWrapperName.text = eventWrapper.name;
     self.navItem.title = eventWrapper.name;
     self.teacherLabel.text = [NSString  stringWithFormat:@"%@ %@", eventWrapper.user.firstname, eventWrapper.user.lastname];
@@ -191,6 +185,11 @@
     self.endDateLabel.text = [Helpers stringFromNSDate:eventWrapper.endDate];
     currentEventWrapper = eventWrapper;
     events = [[NSMutableArray alloc] initWithArray:eventWrapper.events];
+}
+
+- (void)masterEventWrapperHasNoData
+{
+    [self setViewToEmptyState];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

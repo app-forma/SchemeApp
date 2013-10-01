@@ -13,6 +13,7 @@
 
 @protocol MasterEventWrapperDelegate <NSObject>
 - (void)masterEventWrapperDidSelectEventWrapper:(EventWrapper*)eventWrapper;
+- (void)masterEventWrapperHasNoData;
 @end
 
 

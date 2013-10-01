@@ -44,6 +44,7 @@
                    */
                   self.tableView.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
                   self.view.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
+                  [self.delegate masterEventWrapperHasNoData];
               }
           }];
      }];
@@ -98,6 +99,9 @@
         }];
         [eventWrappers removeObject:eventWrappers[indexPath.row]];
         [self.eventWrappersTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        if (![eventWrappers count]) {
+            [self.delegate masterEventWrapperHasNoData];
+        }
     }
 }
 
