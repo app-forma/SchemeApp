@@ -27,7 +27,8 @@
 firstname:(NSString *)firstname
      lastname:(NSString *)lastname
         email:(NSString *)email
-     password:(NSString *)password;
+     password:(NSString *)password
+        image:(NSString*)image;
 
 - (id)initWithUserDictionary:(NSDictionary *)userDictionary;
 

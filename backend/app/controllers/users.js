@@ -264,7 +264,29 @@ exports.login = function (req, res, next) {
             if (err) {
                 return next(err);
             }
-            return res.json(200, user);
+/**/
+ User.findOne({
+        _id: user._id
+    }).populate('eventWrappers')
+        .exec(function (err, doc) {
+            if (err) {
+                res.json(500, err.errors);
+            } else {
+                if (doc !== null) {
+                    populateEventWrappersToUser(doc.eventWrappers, function (evntwrps, e) {
+                        if (e) {
+                            console.log(e);
+                        } else {
+                            doc.eventWrappers = evntwrps;
+                        }
+                        res.json(200, doc);
+                    });
+                } else {
+                    res.send(404);
+                }
+            }
+        });
+/**/
         });
     })(req, res, next);
 };
