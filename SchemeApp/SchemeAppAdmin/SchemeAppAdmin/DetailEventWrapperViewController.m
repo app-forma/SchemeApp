@@ -11,6 +11,7 @@
 #import "Event.h"
 #import "UIButton+CustomButton.h"
 #import "PopoverEventWrapperViewController.h"
+#import "AwesomeUI.h"
 
 @interface DetailEventWrapperViewController () <PopoverEventWrapperDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -76,6 +77,11 @@
     
     pewvc = [[PopoverEventWrapperViewController alloc] init];
     pewvc.delegate = self;
+    
+    /**
+     *    DESIGN UTKAST!
+     *    Se vad metoden gör
+     */
     [self isViewEmpty];
 }
 
@@ -103,13 +109,13 @@
     if ([self.teacherLabel.text isEqualToString:@"Label"] || !self.teacherLabel.text) {
         UIView *coverView = [[UIView alloc] init];
         coverView.translatesAutoresizingMaskIntoConstraints = NO;
-        coverView.backgroundColor = [UIColor darkGrayColor];
+        coverView.backgroundColor = [AwesomeUI backgroundColorForCoverViews];
         
         UILabel *noContentLabel = [[UILabel alloc] init];
         noContentLabel.translatesAutoresizingMaskIntoConstraints = NO;
         noContentLabel.text = @"You have no courses yet...";
-        noContentLabel.font = [UIFont fontWithName:@"Avenir-Heavy" size:22];
-        noContentLabel.textColor = [UIColor whiteColor];
+        noContentLabel.font = [AwesomeUI fontForCoverViews];
+        noContentLabel.textColor = [AwesomeUI fontColorForCoverViews];
         
         [self.view addSubview:coverView];
         [coverView addSubview:noContentLabel];

@@ -9,14 +9,55 @@
 #import "AwesomeUI.h"
 
 static NSArray *colors;
+static UIColor *tableViewBackgroundColor;
+static UIColor *coverViewBackgroundColor;
+static UIFont *coverViewFont;
+static UIColor *fontColorForCoverViews;
 
 @implementation AwesomeUI
 
 + (void)initialize
 {
     [super initialize];
-    
+
+    /**
+     *  TableView row colors
+     */
     colors = @[[UIColor colorWithRed:239/255.0f green:148/255.0f blue:71/255.0f alpha:1.0f], [UIColor colorWithRed:243/255.0f green:82/255.0f blue:66/255.0f alpha:1.0f], [UIColor colorWithRed:221/255.0f green:49/255.0f blue:91/255.0f alpha:1.0f], [UIColor colorWithRed:155/255.0f green:49/255.0f blue:97/255.0f alpha:1.0f], [UIColor colorWithRed:67/255.0f green:46/255.0f blue:56/255.0f alpha:1.0f]];
+
+    /**
+     *  Theme colors
+     */
+    tableViewBackgroundColor = [UIColor colorWithRed:220/255.0f green:46/255.0f blue:77/255.0f alpha:1.0f];
+    coverViewBackgroundColor = [UIColor darkGrayColor];
+    fontColorForCoverViews = [UIColor whiteColor];
+    
+    /**
+     *  CoverView font
+     */
+    coverViewFont = [UIFont fontWithName:@"Avenir-Heavy" size:22];
+}
+
+#pragma mark - THEME COLORS
++ (UIColor *)backgroundColorForEmptyTableView
+{
+    return tableViewBackgroundColor;
+}
+
++ (UIColor *)backgroundColorForCoverViews;
+{
+    return coverViewBackgroundColor;
+}
+
++ (UIColor *)fontColorForCoverViews
+{
+    return fontColorForCoverViews;
+}
+
+#pragma mark - THEME FONTS
++ (UIFont *)fontForCoverViews
+{
+    return coverViewFont;
 }
 
 #pragma mark - TABLE VIEWS

@@ -11,6 +11,18 @@
 @interface AwesomeUI : NSObject
 
 /**
+ *  Theme colors
+ */
++ (UIColor *)backgroundColorForEmptyTableView;
++ (UIColor *)backgroundColorForCoverViews;
++ (UIColor *)fontColorForCoverViews;
+
+/**
+ *  Theme fonts
+ */
++ (UIFont *)fontForCoverViews;
+
+/**
  *  TableView style
  */
 + (void)setGGstyleTo:(UITableView *)tableView;
@@ -22,5 +34,6 @@
  *  Cell style
  */
 + (void)addDefaultStyleTo:(UITableViewCell*)cell;
-
++ (void)setStateSelectedfor:(UITableViewCell*)cell;
++ (void)setStateUnselectedfor:(UITableViewCell*)cell;
 @end

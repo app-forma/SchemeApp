@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MasterEventWrapperViewController">
             <connections>
                 <outlet property="eventWrappersTableView" destination="XlA-fR-bGh" id="cjS-4D-Q0v"/>
+                <outlet property="tableView" destination="XlA-fR-bGh" id="o5U-wU-ch4"/>
                 <outlet property="view" destination="dvB-Fj-Kcv" id="3Sa-hR-eI0"/>
             </connections>
         </placeholder>

@@ -10,6 +10,7 @@
 #import "EventWrapper.h"
 #import "PopoverEventWrapperViewController.h"
 #import "AppDelegate.h"
+#import "AwesomeUI.h"
 
 @interface MasterEventWrapperViewController () <UITableViewDelegate, PopoverEventWrapperDelegate>
 {
@@ -36,6 +37,13 @@
               if ([allEventWrappers count]) {
                   [self.eventWrappersTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
                   [self tableView:self.eventWrappersTableView didSelectRowAtIndexPath:indexPath];
+              } else {
+                  
+                  /**
+                   *    DESIGN UTKAST!
+                   */
+                  self.tableView.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
+                  self.view.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
               }
           }];
      }];
@@ -46,6 +54,10 @@
     [super viewDidLoad];
     pewvc = [[PopoverEventWrapperViewController alloc] init];
     pewvc.delegate = self;
+    /**
+     *    DESIGN UTKAST!
+     */
+    [AwesomeUI setGGstyleTo:self.tableView];
 }
 
 #pragma mark - Table view data source
