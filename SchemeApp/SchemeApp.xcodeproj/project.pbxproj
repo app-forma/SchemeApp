@@ -85,6 +85,10 @@
 		AF8CD8FB17E850C8004551F8 /* TabBarSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8CD8F917E850C8004551F8 /* TabBarSetupViewController.m */; };
 		AF99541B17F2CD53003C450B /* TypeDef in Resources */ = {isa = PBXBuildFile; fileRef = AF99541A17F2CD53003C450B /* TypeDef */; };
 		AF99542417F2FDAC003C450B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99542317F2FDAC003C450B /* Location.m */; };
+		AFC5F79817FADA6600E01D3B /* MonthCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC5F79717FADA6600E01D3B /* MonthCollectionViewCell.m */; };
+		AFC5F79B17FADE0D00E01D3B /* MonthCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC5F79A17FADE0D00E01D3B /* MonthCollectionViewController.m */; };
+		AFC5F79E17FAF67200E01D3B /* DayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC5F79D17FAF67200E01D3B /* DayCollectionViewCell.m */; };
+		AFC5F7A317FAFB3900E01D3B /* DayCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC5F7A217FAFB3900E01D3B /* DayCollectionViewController.m */; };
 		AFDA09EC17EAEAC300333A48 /* DatabaseConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */; };
 		AFDA09ED17EAEAC300333A48 /* DatabaseConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */; };
 		AFE3E54917F212FD00586321 /* SelectedEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE3E54417F212FD00586321 /* SelectedEventTableViewController.m */; };
@@ -220,6 +224,14 @@
 		AF99541A17F2CD53003C450B /* TypeDef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TypeDef; sourceTree = "<group>"; };
 		AF99542217F2FDAC003C450B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		AF99542317F2FDAC003C450B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		AFC5F79617FADA6600E01D3B /* MonthCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthCollectionViewCell.h; sourceTree = "<group>"; };
+		AFC5F79717FADA6600E01D3B /* MonthCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCollectionViewCell.m; sourceTree = "<group>"; };
+		AFC5F79917FADE0D00E01D3B /* MonthCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthCollectionViewController.h; sourceTree = "<group>"; };
+		AFC5F79A17FADE0D00E01D3B /* MonthCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCollectionViewController.m; sourceTree = "<group>"; };
+		AFC5F79C17FAF67200E01D3B /* DayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCollectionViewCell.h; sourceTree = "<group>"; };
+		AFC5F79D17FAF67200E01D3B /* DayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCollectionViewCell.m; sourceTree = "<group>"; };
+		AFC5F7A117FAFB3900E01D3B /* DayCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCollectionViewController.h; sourceTree = "<group>"; };
+		AFC5F7A217FAFB3900E01D3B /* DayCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCollectionViewController.m; sourceTree = "<group>"; };
 		AFDA09EA17EAEAC300333A48 /* DatabaseConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseConnection.h; sourceTree = "<group>"; };
 		AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseConnection.m; sourceTree = "<group>"; };
 		AFE3E54317F212FD00586321 /* SelectedEventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedEventTableViewController.h; sourceTree = "<group>"; };
@@ -510,6 +522,14 @@
 				AFE538EC17E0972C00C0B776 /* StudentEventMainViewController.m */,
 				AFE538E917E0972C00C0B776 /* StudentEventsTableViewController.h */,
 				AFE538EA17E0972C00C0B776 /* StudentEventsTableViewController.m */,
+				AFC5F79917FADE0D00E01D3B /* MonthCollectionViewController.h */,
+				AFC5F79A17FADE0D00E01D3B /* MonthCollectionViewController.m */,
+				AFC5F79617FADA6600E01D3B /* MonthCollectionViewCell.h */,
+				AFC5F79717FADA6600E01D3B /* MonthCollectionViewCell.m */,
+				AFC5F7A117FAFB3900E01D3B /* DayCollectionViewController.h */,
+				AFC5F7A217FAFB3900E01D3B /* DayCollectionViewController.m */,
+				AFC5F79C17FAF67200E01D3B /* DayCollectionViewCell.h */,
+				AFC5F79D17FAF67200E01D3B /* DayCollectionViewCell.m */,
 				AFE538E717E0972C00C0B776 /* StudentEventDetailsViewController.h */,
 				AFE538E817E0972C00C0B776 /* StudentEventDetailsViewController.m */,
 				0437DE2317E307F000DB9F5A /* StudentMessageViewController.h */,
@@ -686,6 +706,7 @@
 				0493B53A17DDF80C003B3D23 /* AppDelegate.m in Sources */,
 				8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */,
 				4D757AA317F963CE007255E1 /* ReceiverCelliPhone.m in Sources */,
+				AFC5F79817FADA6600E01D3B /* MonthCollectionViewCell.m in Sources */,
 				AFE3E54917F212FD00586321 /* SelectedEventTableViewController.m in Sources */,
 				4DED32BF17E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m in Sources */,
 				AF2551F017E04628006EDD02 /* Store.m in Sources */,
@@ -693,6 +714,8 @@
 				04E09F5B17E7249D00B946CB /* EventCell.m in Sources */,
 				0493B53617DDF80C003B3D23 /* main.m in Sources */,
 				0437DDAA17E2240400DB9F5A /* Validation.m in Sources */,
+				AFC5F79E17FAF67200E01D3B /* DayCollectionViewCell.m in Sources */,
+				AFC5F7A317FAFB3900E01D3B /* DayCollectionViewController.m in Sources */,
 				AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */,
 				0423298117DF230B005B47F9 /* User.m in Sources */,
 				AFE3E54A17F212FD00586321 /* SelectedEventWrapperEventCell.m in Sources */,
@@ -721,6 +744,7 @@
 				0423298A17DF2ABA005B47F9 /* Event.m in Sources */,
 				AFE538F217E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */,
 				0437DE2517E307F000DB9F5A /* StudentMessageViewController.m in Sources */,
+				AFC5F79B17FADE0D00E01D3B /* MonthCollectionViewController.m in Sources */,
 				0423298D17DF2B7B005B47F9 /* Message.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
