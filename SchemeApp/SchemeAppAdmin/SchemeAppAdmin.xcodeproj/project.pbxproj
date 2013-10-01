@@ -93,6 +93,7 @@
 		279D065A17F1DA3E00586DF7 /* EventWrappersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D065817F1DA3E00586DF7 /* EventWrappersViewController.xib */; };
 		279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */; };
 		279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */; };
+		27A6380417FAC0B8003F567C /* AwesomeUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A6380317FAC0B8003F567C /* AwesomeUI.m */; };
 		4D757A8A17F6195E007255E1 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A8917F6195E007255E1 /* SearchCell.m */; };
 		4D757A8D17F6196C007255E1 /* ReceiverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A8C17F6196C007255E1 /* ReceiverCell.m */; };
 		4D757A9317F63EB0007255E1 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A9217F63EB0007255E1 /* NSDate+Helpers.m */; };
@@ -125,7 +126,7 @@
 		27133EAB17F9E02D00708346 /* PicturePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturePickerViewController.m; sourceTree = "<group>"; };
 		27133EAC17F9E02D00708346 /* PicturePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicturePickerViewController.xib; sourceTree = "<group>"; };
 		27133EAF17F9F4DF00708346 /* UIImage+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Base64.h"; path = "/Users/erik82osterberg/Documents/iOSProjects/SchemeApp/SchemeApp/SchemeApp/UIImage+Base64.h"; sourceTree = "<absolute>"; };
-		27133EB017F9F4DF00708346 /* UIImage+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Base64.m"; path = "/Users/erik82osterberg/Documents/iOSProjects/SchemeApp/SchemeApp/SchemeApp/UIImage+Base64.m"; sourceTree = "<absolute>"; };
+		27133EB017F9F4DF00708346 /* UIImage+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Base64.m"; path = "/Applications/Xcode.app/Contents/Developer/../../../../Users/erik82osterberg/Documents/iOSProjects/SchemeApp/SchemeApp/SchemeApp/UIImage+Base64.m"; sourceTree = "<absolute>"; };
 		274E553D17F2E71000E97A12 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		274E553E17F2E71000E97A12 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		274E554017F2EB0200E97A12 /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
@@ -220,6 +221,8 @@
 		279D066C17F1DCEE00586DF7 /* SchoolInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolInfoViewController.h; sourceTree = "<group>"; };
 		279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolInfoViewController.m; sourceTree = "<group>"; };
 		279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolInfoViewController.xib; sourceTree = "<group>"; };
+		27A6380217FAC0B8003F567C /* AwesomeUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeUI.h; sourceTree = "<group>"; };
+		27A6380317FAC0B8003F567C /* AwesomeUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeUI.m; sourceTree = "<group>"; };
 		4D757A8817F6195E007255E1 /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		4D757A8917F6195E007255E1 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		4D757A8B17F6196C007255E1 /* ReceiverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverCell.h; sourceTree = "<group>"; };
@@ -480,6 +483,8 @@
 				279AB6E017F1920E0094CE64 /* Helpers.h */,
 				279AB6E117F1920E0094CE64 /* Helpers.m */,
 				279D060E17F196E300586DF7 /* TypeDef */,
+				27A6380217FAC0B8003F567C /* AwesomeUI.h */,
+				27A6380317FAC0B8003F567C /* AwesomeUI.m */,
 			);
 			name = Classes;
 			path = ../../SchemeApp;
@@ -769,6 +774,7 @@
 				279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */,
 				27133EB117F9F4DF00708346 /* UIImage+Base64.m in Sources */,
 				279D061817F19F1300586DF7 /* User.m in Sources */,
+				27A6380417FAC0B8003F567C /* AwesomeUI.m in Sources */,
 				274E553F17F2E71000E97A12 /* TabBarController.m in Sources */,
 				279D061917F19F1300586DF7 /* Validation.m in Sources */,
 				279D061A17F19F1300586DF7 /* AFNetworking.m in Sources */,
