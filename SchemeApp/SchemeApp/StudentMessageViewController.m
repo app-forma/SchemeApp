@@ -38,10 +38,6 @@
     
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected.png"]];
     self.navigationItem.title = @"Messages";
-    
-    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(59.34511573, 17.97674040);
-    sap = [[StudentAutomaticPresence alloc] init];
-    [sap setCenterForRegion:center];
 }
 
 #pragma mark - Table view data source

@@ -11,7 +11,11 @@
 #import "Event.h"
 #import "UIButton+CustomButton.h"
 #import "PopoverEventWrapperViewController.h"
+<<<<<<< HEAD
 #import "SelectedEventWrapperEventCell.h"
+=======
+#import "AwesomeUI.h"
+>>>>>>> 3e9629df75945b0eb1e036bd84b7e8ffce9f1af4
 
 @interface DetailEventWrapperViewController () <PopoverEventWrapperDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -20,7 +24,8 @@
     PopoverEventWrapperViewController *pewvc;
     EventWrapper *currentEventWrapper;
     NSMutableArray *events;
-   
+    UIView *coverView;
+    
 }
 @property (weak, nonatomic) IBOutlet UILabel *eventWrapperName;
 @property (weak, nonatomic) IBOutlet UILabel *teacherLabel;
@@ -77,22 +82,48 @@
     
     pewvc = [[PopoverEventWrapperViewController alloc] init];
     pewvc.delegate = self;
-}
-
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     
     editButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"editIcon"] tag:2];
     [editButton addTarget:self action:@selector(editEventWrapper:) forControlEvents:UIControlEventTouchUpInside];
     editButton.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view addSubview:editButton];
-    
     NSDictionary *views = NSDictionaryOfVariableBindings(editButton);
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[editButton(50.0)]-(25.0)-|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(50.0)-[editButton(50.0)]" options:0 metrics:nil views:views]];
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
+/**
+ *  Called by masterViewDelegate incase of no data
+ */
+- (void)setViewToEmptyState
+{
+    coverView = [[UIView alloc] init];
+    coverView.translatesAutoresizingMaskIntoConstraints = NO;
+    coverView.backgroundColor = [AwesomeUI backgroundColorForCoverViews];
+    
+    UILabel *noContentLabel = [[UILabel alloc] init];
+    noContentLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    noContentLabel.text = @"You have no courses yet...";
+    noContentLabel.font = [AwesomeUI fontForCoverViews];
+    noContentLabel.textColor = [AwesomeUI fontColorForCoverViews];
+    
+    [self.view addSubview:coverView];
+    [coverView addSubview:noContentLabel];
+    
+    NSDictionary *views = NSDictionaryOfVariableBindings(coverView, noContentLabel);
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[coverView]|" options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[coverView]|" options:0 metrics:nil views:views]];
+    
+    [coverView addConstraint:[NSLayoutConstraint constraintWithItem:noContentLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:coverView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:-4.0]];
+    
+    [coverView addConstraint:[NSLayoutConstraint constraintWithItem:noContentLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:coverView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
 }
 
 - (void)editEventWrapper:(id)sender
@@ -107,7 +138,7 @@
 
 -(void)popoverEventWrapperUpdateEventWrapper:(EventWrapper *)eventWrapper
 {
-
+    
     void(^saveHandler)(void) = ^(void)
     {
         [NSOperationQueue.mainQueue addOperationWithBlock:^
@@ -116,12 +147,25 @@
          }];
     };
     
+<<<<<<< HEAD
         [Store.adminStore updateEventWrapper:eventWrapper
                                   completion:^(id jsonObject, id response, NSError *error)
          {
 
              saveHandler();
          }];
+=======
+    
+    [Store.adminStore updateEventWrapper:eventWrapper
+                              completion:^(id jsonObject, id response, NSError *error)
+     {
+         
+         saveHandler();
+     }];
+    
+    
+    
+>>>>>>> 3e9629df75945b0eb1e036bd84b7e8ffce9f1af4
 }
 
 -(void)showPopover:(id)sender
@@ -138,8 +182,19 @@
     [eventWrapperInfoPopover dismissPopoverAnimated:YES];
 }
 
+<<<<<<< HEAD
+=======
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - MasterEventWrapper delegate
+>>>>>>> 3e9629df75945b0eb1e036bd84b7e8ffce9f1af4
 -(void)masterEventWrapperDidSelectEventWrapper:(EventWrapper *)eventWrapper
 {
+    [coverView removeFromSuperview];
     self.eventWrapperName.text = eventWrapper.name;
     self.navItem.title = eventWrapper.name;
     self.teacherLabel.text = [NSString  stringWithFormat:@"%@ %@", eventWrapper.user.firstname, eventWrapper.user.lastname];
@@ -149,6 +204,11 @@
     currentEventWrapper = eventWrapper;
     events = [[NSMutableArray alloc] initWithArray:eventWrapper.events];
     NSLog(@"Events: %@", events);
+}
+
+- (void)masterEventWrapperHasNoData
+{
+    [self setViewToEmptyState];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

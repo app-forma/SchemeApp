@@ -29,10 +29,9 @@ typedef void (^authentication)(BOOL success, id user);
 + (SuperAdminStore *)superAdminStore;
 
 @property (nonatomic, strong) User *currentUser;
-@property (nonatomic, strong) Location *currentLocation;
 
 + (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion;
-+ (void)fetchLocation;
++ (void)fetchLocationCompletion:(void (^)(Location *location))completion;
 + (void)sendAuthenticationRequestForEmail:(NSString *)email password:(NSString *)password completion:(authentication)completion;
 
 @end

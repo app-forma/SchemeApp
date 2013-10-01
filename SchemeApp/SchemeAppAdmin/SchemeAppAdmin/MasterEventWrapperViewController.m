@@ -10,6 +10,7 @@
 #import "EventWrapper.h"
 #import "PopoverEventWrapperViewController.h"
 #import "AppDelegate.h"
+#import "AwesomeUI.h"
 
 @interface MasterEventWrapperViewController () <UITableViewDelegate, PopoverEventWrapperDelegate>
 {
@@ -18,21 +19,11 @@
     PopoverEventWrapperViewController *pewvc;
 }
 
-
 @property (weak, nonatomic) IBOutlet UITableView *eventWrappersTableView;
 
 @end
 
 @implementation MasterEventWrapperViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self;
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -46,10 +37,17 @@
               if ([allEventWrappers count]) {
                   [self.eventWrappersTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
                   [self tableView:self.eventWrappersTableView didSelectRowAtIndexPath:indexPath];
+              } else {
+                  
+                  /**
+                   *    DESIGN UTKAST!
+                   */
+                  self.tableView.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
+                  self.view.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
+                  [self.delegate masterEventWrapperHasNoData];
               }
           }];
      }];
-    
 }
 
 - (void)viewDidLoad
@@ -57,20 +55,13 @@
     [super viewDidLoad];
     pewvc = [[PopoverEventWrapperViewController alloc] init];
     pewvc.delegate = self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    /**
+     *    DESIGN UTKAST!
+     */
+    [AwesomeUI setGGstyleTo:self.tableView];
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -108,6 +99,9 @@
         }];
         [eventWrappers removeObject:eventWrappers[indexPath.row]];
         [self.eventWrappersTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        if (![eventWrappers count]) {
+            [self.delegate masterEventWrapperHasNoData];
+        }
     }
 }
 
@@ -118,6 +112,11 @@
 
 -(void)showPopover:(id)sender
 {
+    //to avoid crash if it already showing:
+    if (addEventWrapperPopover.popoverVisible) {
+        return [addEventWrapperPopover dismissPopoverAnimated:YES];
+    }
+    
     pewvc.isInEditingMode = NO;
     
     addEventWrapperPopover = [[UIPopoverController alloc] initWithContentViewController:pewvc];

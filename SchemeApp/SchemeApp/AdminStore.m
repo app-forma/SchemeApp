@@ -31,11 +31,15 @@
          }
          else
          {
+             // Admin's should only see it's own courses
+             if ([Store mainStore].currentUser.role == AdminRole) {
+                 [responseBody filterUsingPredicate:[NSPredicate predicateWithFormat:@"owner._id == [cd]%@", [Store mainStore].currentUser.docID]];
+             }
+             
              for (NSDictionary *eventWrapperDictionary in responseBody)
              {
                  [collectedEventWrappers addObject:[[EventWrapper alloc] initWithEventWrapperDictionary:eventWrapperDictionary]];
              }
-             
          }
          
          handler(collectedEventWrappers);

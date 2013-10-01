@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import "TabBarSetupViewController.h"
+#import "Location.h"
+#import "StudentAutomaticPresence.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
@@ -33,7 +35,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 RoleType role = [Store mainStore].currentUser.role;
                 if (role == StudentRole) {
-                    [self registerAttendance];
+                    [self checkAttendance];
                 }
                 [self enterAppWithViewController:[[TabBarSetupViewController alloc]initForRoleType:role]];
             });
@@ -45,14 +47,12 @@
     }];
 }
 
-- (void)registerAttendance {
-    [Store.studentStore addAttendanceCompletion:^(BOOL success)
-     {
-         if (!success)
-         {
-             NSLog(@"[%@] Could not register attendance for current user %@", self.class, Store.mainStore.currentUser.email);
-         }
-     }];
+- (void)checkAttendance {
+    [Store fetchLocationCompletion:^(Location *location) {
+        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(location.longitude.doubleValue, location.latitude.doubleValue);
+        StudentAutomaticPresence *sap = [[StudentAutomaticPresence alloc] init];
+        [sap setCenterForRegion:center];
+    }];
 }
 
 - (void)enterAppWithViewController:(UIViewController*)viewToBePresented {

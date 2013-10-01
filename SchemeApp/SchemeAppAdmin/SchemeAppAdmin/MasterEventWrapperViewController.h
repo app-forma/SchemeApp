@@ -13,6 +13,7 @@
 
 @protocol MasterEventWrapperDelegate <NSObject>
 - (void)masterEventWrapperDidSelectEventWrapper:(EventWrapper*)eventWrapper;
+- (void)masterEventWrapperHasNoData;
 @end
 
 
@@ -20,5 +21,6 @@
 
 @property (nonatomic, weak) DetailEventWrapperViewController *detailEventWrapperViewController;
 @property (weak) id <MasterEventWrapperDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
