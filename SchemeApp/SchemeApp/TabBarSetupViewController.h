@@ -10,6 +10,6 @@
 
 @interface TabBarSetupViewController : UITabBarController <UIActionSheetDelegate>
 
--(id)initWithMode:(ViewMode)viewMode;
+-(id)initForRoleType:(RoleType)role;
 
 @end

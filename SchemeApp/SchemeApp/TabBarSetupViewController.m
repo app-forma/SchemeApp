@@ -13,13 +13,13 @@
 {
     UIActionSheet *signOutPopup;
 }
-- (id)initWithMode:(ViewMode)viewMode
+-(id)initForRoleType:(RoleType)role;
 {
     self = [super init];
     if (self) {        
          signOutPopup = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Sign out" otherButtonTitles:nil, nil];
         
-        if (viewMode == StudentMode) {
+        if (role == StudentRole) {
             [self setupTabBarWithStoryboards:@[@"StudentMessagesStoryboard", @"StudentEventsStoryBoard", @"StudentWhatToReadStoryboard"]];
         } else {
             [self setupTabBarWithStoryboards:@[@"AdminEventWrapperStoryboard", @"AdminMessagesStoryboard", @"AdminUserStoryboard"]];

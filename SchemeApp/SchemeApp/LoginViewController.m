@@ -31,13 +31,11 @@
     [Store sendAuthenticationRequestForEmail:self.emailField.text password:self.passwordField.text completion:^(BOOL success, id user) {
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                if ([Store mainStore].currentUser.role == StudentRole) {
+                RoleType role = [Store mainStore].currentUser.role;
+                if (role == StudentRole) {
                     [self registerAttendance];
-                    [self enterAppWithViewController:[[TabBarSetupViewController alloc]initWithMode:StudentMode]];
-                } else {
-                    //[self enterAppWithViewController:[[UIStoryboard storyboardWithName:@"StudentStoryboard" bundle:nil]instantiateInitialViewController]];
-                    [self enterAppWithViewController:[[TabBarSetupViewController alloc]initWithMode:AdminMode]];
                 }
+                [self enterAppWithViewController:[[TabBarSetupViewController alloc]initForRoleType:role]];
             });
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
