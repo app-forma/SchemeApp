@@ -13,6 +13,7 @@
 #import "StudentEventsTableViewController.h"
 #import "User.h"
 #import "NSDate+Helpers.h"
+#import "MonthCollectionViewController.h"
 @interface StudentEventMainViewController ()<DatePickerDelegate>
 {
     DatePickerViewController *datePicker;
