@@ -12,7 +12,7 @@
 #import "NSDate+Helpers.h"
 
 
-@interface DetailMessageViewController ()
+@interface DetailMessageViewController () <UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *fromLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -61,7 +61,13 @@
 }
 
 
-- (IBAction)didPressTrash:(id)sender {
+- (IBAction)didPressTrash:(UIBarButtonItem *)sender {
+    UIActionSheet *trashPrompt = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete message" otherButtonTitles:nil, nil];
+    [trashPrompt showFromBarButtonItem:sender animated:YES];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"clicked delete.");
 }
 
 @end

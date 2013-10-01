@@ -118,6 +118,11 @@
 
 -(void)showPopover:(id)sender
 {
+    //to avoid crash if it already showing:
+    if (addEventWrapperPopover.popoverVisible) {
+        return [addEventWrapperPopover dismissPopoverAnimated:YES];
+    }
+    
     pewvc.isInEditingMode = NO;
     
     addEventWrapperPopover = [[UIPopoverController alloc] initWithContentViewController:pewvc];

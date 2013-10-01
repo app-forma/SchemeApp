@@ -24,9 +24,9 @@
                     <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
                         <navigationItem title="Title" id="Ytx-te-slz">
-                            <barButtonItem key="rightBarButtonItem" systemItem="trash" id="vL7-Ql-he2">
+                            <barButtonItem key="rightBarButtonItem" systemItem="trash" id="wbV-Ld-mZ0">
                                 <connections>
-                                    <action selector="didPressTrash:" destination="-1" id="vGv-uq-WRw"/>
+                                    <action selector="didPressTrash:" destination="-1" id="hrt-hs-rTq"/>
                                 </connections>
                             </barButtonItem>
                         </navigationItem>
