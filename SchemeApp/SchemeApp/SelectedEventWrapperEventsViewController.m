@@ -47,10 +47,12 @@
 {
     return 1;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return events.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SelectedEventWrapperEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdminEventCell"];
@@ -177,6 +179,7 @@
                                withRowAnimation:UITableViewRowAnimationAutomatic];
      }];
 }
+
 - (void)removeEventWithIndexPath:(NSIndexPath *)indexPath
 {
     [self.selectedEventWrapper.events removeObjectAtIndex:indexPath.row];

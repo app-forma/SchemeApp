@@ -11,7 +11,11 @@
 #import "Event.h"
 #import "UIButton+CustomButton.h"
 #import "PopoverEventWrapperViewController.h"
+<<<<<<< HEAD
+#import "SelectedEventWrapperEventCell.h"
+=======
 #import "AwesomeUI.h"
+>>>>>>> 3e9629df75945b0eb1e036bd84b7e8ffce9f1af4
 
 @interface DetailEventWrapperViewController () <PopoverEventWrapperDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -131,6 +135,7 @@
 {
     return currentEventWrapper;
 }
+
 -(void)popoverEventWrapperUpdateEventWrapper:(EventWrapper *)eventWrapper
 {
     
@@ -142,6 +147,14 @@
          }];
     };
     
+<<<<<<< HEAD
+        [Store.adminStore updateEventWrapper:eventWrapper
+                                  completion:^(id jsonObject, id response, NSError *error)
+         {
+
+             saveHandler();
+         }];
+=======
     
     [Store.adminStore updateEventWrapper:eventWrapper
                               completion:^(id jsonObject, id response, NSError *error)
@@ -152,7 +165,9 @@
     
     
     
+>>>>>>> 3e9629df75945b0eb1e036bd84b7e8ffce9f1af4
 }
+
 -(void)showPopover:(id)sender
 {
     pewvc.isInEditingMode = YES;
@@ -167,6 +182,8 @@
     [eventWrapperInfoPopover dismissPopoverAnimated:YES];
 }
 
+<<<<<<< HEAD
+=======
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -174,6 +191,7 @@
 }
 
 #pragma mark - MasterEventWrapper delegate
+>>>>>>> 3e9629df75945b0eb1e036bd84b7e8ffce9f1af4
 -(void)masterEventWrapperDidSelectEventWrapper:(EventWrapper *)eventWrapper
 {
     [coverView removeFromSuperview];
@@ -185,6 +203,7 @@
     self.endDateLabel.text = [Helpers stringFromNSDate:eventWrapper.endDate];
     currentEventWrapper = eventWrapper;
     events = [[NSMutableArray alloc] initWithArray:eventWrapper.events];
+    NSLog(@"Events: %@", events);
 }
 
 - (void)masterEventWrapperHasNoData
@@ -194,22 +213,67 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"Count: %d", [events count]);
     return [events count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    Event *event = [events objectAtIndex:indexPath.row];
-    cell.textLabel.text = event.info;
+    SelectedEventWrapperEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdminEventCell"];
+    
+    [self resetCell:cell];
+    [self fetchEventForIndexPath:indexPath andLoadIntoCell:cell];
     
     return cell;
 }
 
+
+- (void)resetCell:(SelectedEventWrapperEventCell *)cell
+{
+    [cell.activityIndicator startAnimating];
+    cell.loadedContentView.hidden = YES;
+    cell.userInteractionEnabled = NO;
+    cell.activityIndicator.hidden = NO;
+}
+
+- (void)showLoadedContentInCell:(SelectedEventWrapperEventCell *)cell
+{
+    cell.loadedContentView.hidden = NO;
+    cell.userInteractionEnabled = YES;
+    [cell.activityIndicator stopAnimating];
+}
+
+- (void)fetchEventForIndexPath:(NSIndexPath *)indexPath andLoadIntoCell:(SelectedEventWrapperEventCell *)cell
+{
+    NSLog(@"CURRENT EVENTWRAPPER: %@", currentEventWrapper.events[indexPath.row]);
+    [Store.adminStore eventWithDocID:currentEventWrapper.events[indexPath.row]
+                          completion:^(Event *event)
+     {
+         events[indexPath.row] = event;
+         
+         [NSOperationQueue.mainQueue addOperationWithBlock:^
+          {
+              cell.info.text = event.info;
+              cell.room.text = event.room;
+              cell.startDate.text = [Helpers stringFromNSDate:event.startDate];
+              cell.endDate.text = [Helpers stringFromNSDate:event.endDate];
+              
+              [self showLoadedContentInCell:cell];
+          }];
+     }];
+}
+
+/*
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SelectedEventWrapperEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdminEventCell"];
+    
+    [self resetCell:cell];
+    [self fetchEventForIndexPath:indexPath
+                 andLoadIntoCell:cell];
+    
+    return cell;
+}*/
 
 
 
