@@ -269,7 +269,7 @@ exports.login = function (req, res, next) {
                 if (err) {
                     return res.json(500, err);
                 } else {
-                    return res.json(200, user);                    
+                    return res.json(200, doc);                    
                 }
             });
         });
