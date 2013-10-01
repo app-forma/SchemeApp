@@ -22,6 +22,9 @@
 @end
 
 @implementation LoginViewController
+{
+    StudentAutomaticPresence *sap;
+}
 
 #pragma mark text field delegate methods:
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -49,9 +52,11 @@
 
 - (void)checkAttendance {
     [Store fetchLocationCompletion:^(Location *location) {
-        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(location.longitude.doubleValue, location.latitude.doubleValue);
-        StudentAutomaticPresence *sap = [[StudentAutomaticPresence alloc] init];
-        [sap setCenterForRegion:center];
+        if (location) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                sap = [[StudentAutomaticPresence alloc] initWithSchoolLocation:location];
+            });
+        }
     }];
 }
 

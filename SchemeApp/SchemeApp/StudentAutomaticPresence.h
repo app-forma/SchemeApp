@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+@class Location;
 @interface StudentAutomaticPresence : NSObject <CLLocationManagerDelegate, UIAlertViewDelegate>
 
-- (void)setCenterForRegion:(CLLocationCoordinate2D)center;
+-(id)initWithSchoolLocation:(Location*)schoolLocation;
 
 @end
 
