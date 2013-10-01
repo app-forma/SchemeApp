@@ -102,6 +102,8 @@
 		4DF2616417F607B900983735 /* CreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2616217F607B900983735 /* CreateMessageViewController.m */; };
 		4DF2616717F6083200983735 /* CreateMessage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2616617F6083200983735 /* CreateMessage.storyboard */; };
 		4DF963D217FB45250092F44D /* testbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF963D117FB45250092F44D /* testbackground.png */; };
+		4DF963D517FB4D7C0092F44D /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF963D417FB4D7C0092F44D /* NavigationController.m */; };
+		4DF963D817FB4DA10092F44D /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF963D717FB4DA10092F44D /* NavigationBar.m */; };
 		8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */; };
 		8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */; };
 		8FE68A2A17F4DABB00FAD042 /* MasterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE68A2917F4DABB00FAD042 /* MasterUserViewController.xib */; };
@@ -238,6 +240,10 @@
 		4DF2616217F607B900983735 /* CreateMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMessageViewController.m; sourceTree = "<group>"; };
 		4DF2616617F6083200983735 /* CreateMessage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateMessage.storyboard; sourceTree = "<group>"; };
 		4DF963D117FB45250092F44D /* testbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = testbackground.png; path = images/testbackground.png; sourceTree = "<group>"; };
+		4DF963D317FB4D7C0092F44D /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationController.h; path = SchemeAppAdmin/NavigationController.h; sourceTree = SOURCE_ROOT; };
+		4DF963D417FB4D7C0092F44D /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationController.m; path = SchemeAppAdmin/NavigationController.m; sourceTree = SOURCE_ROOT; };
+		4DF963D617FB4DA10092F44D /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationBar.h; path = SchemeAppAdmin/NavigationBar.h; sourceTree = SOURCE_ROOT; };
+		4DF963D717FB4DA10092F44D /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationBar.m; path = SchemeAppAdmin/NavigationBar.m; sourceTree = SOURCE_ROOT; };
 		8F12E85717F3261B00FCEDCE /* PopoverEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverEventWrapperViewController.h; sourceTree = "<group>"; };
 		8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverEventWrapperViewController.m; sourceTree = "<group>"; };
 		8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverEventWrapperViewController.xib; sourceTree = "<group>"; };
@@ -480,6 +486,10 @@
 		279AB6E217F1920E0094CE64 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4DF963D617FB4DA10092F44D /* NavigationBar.h */,
+				4DF963D717FB4DA10092F44D /* NavigationBar.m */,
+				4DF963D317FB4D7C0092F44D /* NavigationController.h */,
+				4DF963D417FB4D7C0092F44D /* NavigationController.m */,
 				4D757A9117F63EB0007255E1 /* NSDate+Helpers.h */,
 				4D757A9217F63EB0007255E1 /* NSDate+Helpers.m */,
 				274E557717F318AA00E97A12 /* UIButton+CustomButton.h */,
@@ -776,6 +786,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				279D061517F19F1300586DF7 /* EventWrapper.m in Sources */,
+				4DF963D817FB4DA10092F44D /* NavigationBar.m in Sources */,
 				274E554217F2EB0200E97A12 /* SplitViewController.m in Sources */,
 				279D064717F1C97F00586DF7 /* AuthViewController.m in Sources */,
 				279D061617F19F1300586DF7 /* Event.m in Sources */,
@@ -796,6 +807,7 @@
 				279AB69417F190300094CE64 /* AdminStore.m in Sources */,
 				279AB65C17F18C200094CE64 /* main.m in Sources */,
 				8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */,
+				4DF963D517FB4D7C0092F44D /* NavigationController.m in Sources */,
 				4D757A8D17F6196C007255E1 /* ReceiverCell.m in Sources */,
 				274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */,
 				0426C9EC17FB1AB900C94BAD /* UIImage+Base64.m in Sources */,
