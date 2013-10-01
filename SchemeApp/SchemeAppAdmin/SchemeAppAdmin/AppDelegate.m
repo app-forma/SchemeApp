@@ -10,6 +10,7 @@
 #import "TabBarController.h"
 #import "AuthViewController.h"
 #import "SplitViewController.h"
+#import "NavigationController.h"
 
 
 @implementation AppDelegate
@@ -29,8 +30,11 @@
 
 -(void)didSuccesfullyLogin
 {
+    
     TabBarController *tabBarController = [[TabBarController alloc]init];
-    self.window.rootViewController = tabBarController;
+    NavigationController *navCtrl = [[NavigationController alloc] initWithRootViewController:tabBarController];
+    [navCtrl.navigationBar setBarTintColor:[UIColor colorWithRed:0.27 green:0.37 blue:0.55 alpha:1.0]];
+    self.window.rootViewController = navCtrl;
     tabBarController.selectedIndex = 0;
    
     

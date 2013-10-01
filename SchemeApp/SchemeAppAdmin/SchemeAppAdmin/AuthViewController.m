@@ -31,8 +31,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.loginEmailTextField.text = @"aa@a.se";
-    self.loginPasswordField.text = @"asdf";
+    self.loginEmailTextField.text = @"anders@coredev.se";
+    self.loginPasswordField.text = @"anders";
 }
 
 - (void)viewDidLoad

@@ -10,6 +10,7 @@
 #import "PopoverUserViewController.h"
 #import "User.h"
 #import "DetailUserViewController.h"
+#import "AwesomeUI.h"
 
 @interface MasterUserViewController () <UITableViewDelegate, PopoverUserDelegate>
 
@@ -46,7 +47,7 @@
     [super viewDidLoad];
     puvc = [[PopoverUserViewController alloc] init];
     puvc.delegate = self;
-    
+    [AwesomeUI setGGstyleTo:self.usersTableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,8 +70,10 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectedIndex = indexPath.row;
+    [AwesomeUI setStateUnselectedfor:[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]]];
+    [AwesomeUI setStateSelectedfor:[tableView cellForRowAtIndexPath:indexPath]];
     [self.delegate masterUserDidSelectUser:users[indexPath.row]];
+    selectedIndex = indexPath.row;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -100,8 +103,24 @@
         [self.usersTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
-
-
+- (NSString *)tableView:(UITableView *)aTableView titleForHeaderInSection:(NSInteger)section
+{
+    //Temporär, skapar en custom view för denna sen med add knapp.
+    return @"Users";
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return [AwesomeUI tableViewHeaderHeight];
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [AwesomeUI tableViewCellHeight];
+}
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [AwesomeUI colorForIndexPath:indexPath];
+    [AwesomeUI addDefaultStyleTo:cell];
+}
 - (IBAction)addUser:(id)sender
 {
     [self showPopover:sender];

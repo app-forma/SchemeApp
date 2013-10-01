@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0426C9E917FB1A9200C94BAD /* AwesomeUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9E817FB1A9200C94BAD /* AwesomeUI.m */; };
 		0426C9EC17FB1AB900C94BAD /* UIImage+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9EB17FB1AB900C94BAD /* UIImage+Base64.m */; };
+		0426C9F017FB39B200C94BAD /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9EF17FB39B200C94BAD /* NavigationController.m */; };
+		0426C9F317FB39BD00C94BAD /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9F217FB39BD00C94BAD /* NavigationBar.m */; };
 		04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA657517F4BB990088E589 /* PopoverUserViewController.m */; };
 		04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA657617F4BB990088E589 /* PopoverUserViewController.xib */; };
 		27133EAD17F9E02D00708346 /* PicturePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27133EAB17F9E02D00708346 /* PicturePickerViewController.m */; };
@@ -125,6 +127,10 @@
 		0426C9E817FB1A9200C94BAD /* AwesomeUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeUI.m; sourceTree = "<group>"; };
 		0426C9EA17FB1AB900C94BAD /* UIImage+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Base64.h"; sourceTree = "<group>"; };
 		0426C9EB17FB1AB900C94BAD /* UIImage+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Base64.m"; sourceTree = "<group>"; };
+		0426C9EE17FB39B200C94BAD /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		0426C9EF17FB39B200C94BAD /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		0426C9F117FB39BD00C94BAD /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBar.h; sourceTree = "<group>"; };
+		0426C9F217FB39BD00C94BAD /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBar.m; sourceTree = "<group>"; };
 		04DA657417F4BB990088E589 /* PopoverUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverUserViewController.h; sourceTree = "<group>"; };
 		04DA657517F4BB990088E589 /* PopoverUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverUserViewController.m; sourceTree = "<group>"; };
 		04DA657617F4BB990088E589 /* PopoverUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverUserViewController.xib; sourceTree = "<group>"; };
@@ -372,6 +378,8 @@
 		279AB67E17F18CD30094CE64 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0426C9F117FB39BD00C94BAD /* NavigationBar.h */,
+				0426C9F217FB39BD00C94BAD /* NavigationBar.m */,
 				279D067217F1DCFA00586DF7 /* SchoolInfo */,
 				279D066917F1DC0A00586DF7 /* Login */,
 				279D066217F1DB1300586DF7 /* Messages */,
@@ -385,6 +393,8 @@
 		279AB68117F18D680094CE64 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0426C9EE17FB39B200C94BAD /* NavigationController.h */,
+				0426C9EF17FB39B200C94BAD /* NavigationController.m */,
 				27133EA917F9E00600708346 /* PicturePicker */,
 				279D067117F1DCF300586DF7 /* SchoolInfo */,
 				279D066B17F1DC3500586DF7 /* Login */,
@@ -772,6 +782,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				279D061517F19F1300586DF7 /* EventWrapper.m in Sources */,
+				0426C9F317FB39BD00C94BAD /* NavigationBar.m in Sources */,
 				274E554217F2EB0200E97A12 /* SplitViewController.m in Sources */,
 				279D064717F1C97F00586DF7 /* AuthViewController.m in Sources */,
 				279D061617F19F1300586DF7 /* Event.m in Sources */,
@@ -792,6 +803,7 @@
 				279AB69417F190300094CE64 /* AdminStore.m in Sources */,
 				279AB65C17F18C200094CE64 /* main.m in Sources */,
 				8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */,
+				0426C9F017FB39B200C94BAD /* NavigationController.m in Sources */,
 				4D757A8D17F6196C007255E1 /* ReceiverCell.m in Sources */,
 				274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */,
 				0426C9EC17FB1AB900C94BAD /* UIImage+Base64.m in Sources */,
