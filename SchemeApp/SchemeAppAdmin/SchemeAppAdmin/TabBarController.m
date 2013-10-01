@@ -16,7 +16,7 @@
 #import "SplitViewController.h"
 #import "SchoolInfoViewController.h"
 
-@interface TabBarController ()<UITabBarControllerDelegate, UISplitViewControllerDelegate, UIBarPositioningDelegate>
+@interface TabBarController ()<UITabBarControllerDelegate, UISplitViewControllerDelegate>
 {
     MasterEventWrapperViewController *mevc;
     DetailEventWrapperViewController *devc;
@@ -61,9 +61,6 @@
         mmvc = [MasterMessageViewController new];
         dmvc = [DetailMessageViewController new];
         
-        mmvc.navBar.delegate = self;
-        dmvc.navBar.delegate = self;
-        
         mmvc.delegate = dmvc;
         messagesSplitView = [[SplitViewController alloc]initWithLeftVC:mmvc rightVC:dmvc];
         UITabBarItem *messageItem = [[UITabBarItem alloc] initWithTitle:@"Messages" image:[UIImage imageNamed:@"messages_unselected"] selectedImage:[UIImage imageNamed:@"messages_selected"]];
@@ -82,7 +79,6 @@
         
         
         SchoolInfoViewController *locationViewController = [SchoolInfoViewController new];
-        locationViewController.navBar.delegate = self;
         
         UITabBarItem *locationItem = [[UITabBarItem alloc] initWithTitle:@"Location" image:[UIImage imageNamed:@"location_unselected"] selectedImage:[UIImage imageNamed:@"location_selected"]];
         locationViewController.tabBarItem = locationItem;
@@ -91,11 +87,6 @@
         
     }
     return self;
-}
-
--(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
-{
-    return UIBarPositionTopAttached;
 }
 
 - (void)viewDidLoad

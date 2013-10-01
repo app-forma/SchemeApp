@@ -29,6 +29,12 @@
     [super viewDidLoad];
 }
 
+-(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
+{
+    return UIBarPositionTopAttached;
+}
+
+
 - (void)splitViewController:(UISplitViewController *)svc
      willHideViewController:(UIViewController *)aViewController
           withBarButtonItem:(UIBarButtonItem *)barButtonItem

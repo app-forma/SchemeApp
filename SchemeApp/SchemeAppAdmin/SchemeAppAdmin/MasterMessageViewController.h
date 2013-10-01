@@ -17,6 +17,5 @@
 
 @interface MasterMessageViewController : UIViewController
 @property (weak) id <MasterMessageDelegate> delegate;
-@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
 @end

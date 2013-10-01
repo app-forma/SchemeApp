@@ -11,6 +11,4 @@
 
 @interface DetailMessageViewController : UIViewController <UISplitViewControllerDelegate, MasterMessageDelegate>
 
-@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
-
 @end

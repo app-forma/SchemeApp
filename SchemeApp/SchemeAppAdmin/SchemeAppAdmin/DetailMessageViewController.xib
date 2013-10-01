@@ -8,7 +8,6 @@
             <connections>
                 <outlet property="dateLabel" destination="77u-iM-SYM" id="6dY-qL-SF4"/>
                 <outlet property="fromLabel" destination="NCE-eo-TYE" id="eX3-2G-zEP"/>
-                <outlet property="navBar" destination="wtX-dO-Tyb" id="YBr-jg-Mf6"/>
                 <outlet property="navItem" destination="Ytx-te-slz" id="Ezb-uN-E3S"/>
                 <outlet property="textView" destination="gPv-Mo-seA" id="a1X-LR-RQV"/>
                 <outlet property="view" destination="5nr-LF-f9c" id="D1S-hu-qjw"/>
@@ -32,6 +31,9 @@
                             </barButtonItem>
                         </navigationItem>
                     </items>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="eQ9-1f-QVM"/>
+                    </connections>
                 </navigationBar>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="From:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8Z-ow-txT">
                     <rect key="frame" x="46" y="169" width="60" height="21"/>

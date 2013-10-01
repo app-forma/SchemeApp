@@ -10,7 +10,7 @@
 #import "Location.h"
 
 
-@interface SchoolInfoViewController () <UITextFieldDelegate>
+@interface SchoolInfoViewController () <UITextFieldDelegate, UIBarPositioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -29,10 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    currentLocationAnnotation = [[MKPointAnnotation alloc] init];
     
-    self.nameTextField.delegate = self;
+    currentLocationAnnotation = [[MKPointAnnotation alloc] init];
     
     [Store fetchLocationCompletion:^(Location *location) {
         currentLocation = location;
@@ -40,6 +38,11 @@
             [self setInputsToCurrentLocation];
         });
     }];
+}
+
+-(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
+{
+    return UIBarPositionTopAttached;
 }
 
 #pragma mark - text field delegate
