@@ -105,10 +105,10 @@
 		4DF2616717F6083200983735 /* CreateMessage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2616617F6083200983735 /* CreateMessage.storyboard */; };
 		8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */; };
 		8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */; };
+		8F30599417FB5E4300593A75 /* IpadEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F30599317FB5E4300593A75 /* IpadEventCell.m */; };
+		8F30599617FB5E5500593A75 /* IpadEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F30599517FB5E5500593A75 /* IpadEventCell.xib */; };
 		8FE68A2A17F4DABB00FAD042 /* MasterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE68A2917F4DABB00FAD042 /* MasterUserViewController.xib */; };
 		8FE68A2C17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE68A2B17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib */; };
-		8FFE7F8517FAC7B10064E0F7 /* SelectedEventWrapperEventCell.h in Resources */ = {isa = PBXBuildFile; fileRef = 8FFE7F8317FAC7B10064E0F7 /* SelectedEventWrapperEventCell.h */; };
-		8FFE7F8617FAC7B10064E0F7 /* SelectedEventWrapperEventCell.m in Resources */ = {isa = PBXBuildFile; fileRef = 8FFE7F8417FAC7B10064E0F7 /* SelectedEventWrapperEventCell.m */; };
 		AF99542717F30BC4003C450B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99542617F30BC4003C450B /* Location.m */; };
 /* End PBXBuildFile section */
 
@@ -245,10 +245,11 @@
 		8F12E85717F3261B00FCEDCE /* PopoverEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverEventWrapperViewController.h; sourceTree = "<group>"; };
 		8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverEventWrapperViewController.m; sourceTree = "<group>"; };
 		8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverEventWrapperViewController.xib; sourceTree = "<group>"; };
+		8F30599217FB5E4300593A75 /* IpadEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpadEventCell.h; sourceTree = "<group>"; };
+		8F30599317FB5E4300593A75 /* IpadEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IpadEventCell.m; sourceTree = "<group>"; };
+		8F30599517FB5E5500593A75 /* IpadEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IpadEventCell.xib; sourceTree = "<group>"; };
 		8FE68A2917F4DABB00FAD042 /* MasterUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterUserViewController.xib; sourceTree = "<group>"; };
 		8FE68A2B17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterEventWrapperViewController.xib; sourceTree = "<group>"; };
-		8FFE7F8317FAC7B10064E0F7 /* SelectedEventWrapperEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectedEventWrapperEventCell.h; path = ../../SchemeApp/SelectedEventWrapperEventCell.h; sourceTree = "<group>"; };
-		8FFE7F8417FAC7B10064E0F7 /* SelectedEventWrapperEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectedEventWrapperEventCell.m; path = ../../SchemeApp/SelectedEventWrapperEventCell.m; sourceTree = "<group>"; };
 		AF99542517F30BC4003C450B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		AF99542617F30BC4003C450B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -559,6 +560,9 @@
 		279D065E17F1DAAB00586DF7 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				8F30599217FB5E4300593A75 /* IpadEventCell.h */,
+				8F30599317FB5E4300593A75 /* IpadEventCell.m */,
+				8F30599517FB5E5500593A75 /* IpadEventCell.xib */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -573,8 +577,6 @@
 		279D066017F1DB0700586DF7 /* EventWrappers */ = {
 			isa = PBXGroup;
 			children = (
-				8FFE7F8317FAC7B10064E0F7 /* SelectedEventWrapperEventCell.h */,
-				8FFE7F8417FAC7B10064E0F7 /* SelectedEventWrapperEventCell.m */,
 				279D065817F1DA3E00586DF7 /* EventWrappersViewController.xib */,
 			);
 			name = EventWrappers;
@@ -709,6 +711,7 @@
 				4DF2616017F6078900983735 /* DetailMessageViewController.xib in Resources */,
 				279AB6D117F191570094CE64 /* messages_selected@2x.png in Resources */,
 				279AB6B717F191490094CE64 /* EventWrapper.m in Resources */,
+				8F30599617FB5E5500593A75 /* IpadEventCell.xib in Resources */,
 				27776A7F17F9994D00D84839 /* glasses_selected@1x.png.png in Resources */,
 				279AB65A17F18C200094CE64 /* InfoPlist.strings in Resources */,
 				27776A8417F9994D00D84839 /* location_selected@2x.png in Resources */,
@@ -723,9 +726,7 @@
 				4DF2616717F6083200983735 /* CreateMessage.storyboard in Resources */,
 				274E556017F2F52C00E97A12 /* DetailEventWrapperViewController.xib in Resources */,
 				4DF2615E17F5C69900983735 /* MasterMessageViewController.xib in Resources */,
-				8FFE7F8617FAC7B10064E0F7 /* SelectedEventWrapperEventCell.m in Resources */,
 				279AB6D717F191570094CE64 /* users_unselected@2x.png in Resources */,
-				8FFE7F8517FAC7B10064E0F7 /* SelectedEventWrapperEventCell.h in Resources */,
 				279AB6BA17F191490094CE64 /* Message.h in Resources */,
 				279AB6E717F1920E0094CE64 /* Helpers.h in Resources */,
 				27776A8217F9994D00D84839 /* glasses_unselected@2x.png in Resources */,
@@ -807,6 +808,7 @@
 				4D757A8D17F6196C007255E1 /* ReceiverCell.m in Sources */,
 				274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */,
 				0426C9EC17FB1AB900C94BAD /* UIImage+Base64.m in Sources */,
+				8F30599417FB5E4300593A75 /* IpadEventCell.m in Sources */,
 				279AB69717F190300094CE64 /* SuperAdminStore.m in Sources */,
 				274E555F17F2F52C00E97A12 /* DetailEventWrapperViewController.m in Sources */,
 				274E557917F318AA00E97A12 /* UIButton+CustomButton.m in Sources */,

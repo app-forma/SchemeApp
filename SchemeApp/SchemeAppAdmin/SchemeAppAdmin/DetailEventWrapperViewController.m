@@ -11,9 +11,7 @@
 #import "Event.h"
 #import "UIButton+CustomButton.h"
 #import "PopoverEventWrapperViewController.h"
-
-#import "SelectedEventWrapperEventCell.h"
-
+#import "IpadEventCell.h"
 #import "AwesomeUI.h"
 
 
@@ -27,6 +25,7 @@
     UIView *coverView;
     
 }
+
 @property (weak, nonatomic) IBOutlet UILabel *eventWrapperName;
 @property (weak, nonatomic) IBOutlet UILabel *teacherLabel;
 @property (weak, nonatomic) IBOutlet UILabel *litteratureLabel;
@@ -80,6 +79,10 @@
 {
     [super viewDidLoad];
     
+    
+    UINib *nib = [UINib nibWithNibName:@"IpadEventCell" bundle:nil];
+    [self.eventsTableView registerNib:nib forCellReuseIdentifier:@"IpadEventCell"];
+    
     pewvc = [[PopoverEventWrapperViewController alloc] init];
     pewvc.delegate = self;
     
@@ -93,6 +96,10 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(50.0)-[editButton(50.0)]" options:0 metrics:nil views:views]];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 150.0;
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -154,12 +161,6 @@
 
              saveHandler();
          }];
-
-    
-   
-    
-    
-
 }
 
 -(void)showPopover:(id)sender
@@ -189,7 +190,8 @@
     self.endDateLabel.text = [Helpers stringFromNSDate:eventWrapper.endDate];
     currentEventWrapper = eventWrapper;
     events = [[NSMutableArray alloc] initWithArray:eventWrapper.events];
-    NSLog(@"Events: %@", events);
+    [self.eventsTableView reloadData];
+
 }
 
 - (void)masterEventWrapperHasNoData
@@ -199,40 +201,14 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"Count: %d", [events count]);
     return [events count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SelectedEventWrapperEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdminEventCell"];
+    IpadEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IpadEventCell" forIndexPath:indexPath];
     
-    [self resetCell:cell];
-    [self fetchEventForIndexPath:indexPath andLoadIntoCell:cell];
-    
-    return cell;
-}
-
-
-- (void)resetCell:(SelectedEventWrapperEventCell *)cell
-{
-    [cell.activityIndicator startAnimating];
-    cell.loadedContentView.hidden = YES;
-    cell.userInteractionEnabled = NO;
-    cell.activityIndicator.hidden = NO;
-}
-
-- (void)showLoadedContentInCell:(SelectedEventWrapperEventCell *)cell
-{
-    cell.loadedContentView.hidden = NO;
-    cell.userInteractionEnabled = YES;
-    [cell.activityIndicator stopAnimating];
-}
-
-- (void)fetchEventForIndexPath:(NSIndexPath *)indexPath andLoadIntoCell:(SelectedEventWrapperEventCell *)cell
-{
-    NSLog(@"CURRENT EVENTWRAPPER: %@", currentEventWrapper.events[indexPath.row]);
-    [Store.adminStore eventWithDocID:currentEventWrapper.events[indexPath.row]
+    [Store.adminStore eventWithDocID:currentEventWrapper.events[0]
                           completion:^(Event *event)
      {
          events[indexPath.row] = event;
@@ -240,27 +216,13 @@
          [NSOperationQueue.mainQueue addOperationWithBlock:^
           {
               cell.info.text = event.info;
-              cell.room.text = event.room;
-              cell.startDate.text = [Helpers stringFromNSDate:event.startDate];
-              cell.endDate.text = [Helpers stringFromNSDate:event.endDate];
-              
-              [self showLoadedContentInCell:cell];
+              cell.date.text = [NSString stringWithFormat:@"%@ - %@", [Helpers stringFromNSDate:event.startDate], [Helpers stringFromNSDate:event.endDate]];
+              cell.room.text = [NSString stringWithFormat:@"Room: %@", event.room];
           }];
      }];
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    SelectedEventWrapperEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdminEventCell"];
-    
-    [self resetCell:cell];
-    [self fetchEventForIndexPath:indexPath
-                 andLoadIntoCell:cell];
     
     return cell;
-}*/
-
+}
 
 
 @end
