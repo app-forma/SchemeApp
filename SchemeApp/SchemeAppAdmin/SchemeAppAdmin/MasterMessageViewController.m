@@ -81,10 +81,11 @@
     }
 }
 
-
-
 #pragma callbacks
 - (IBAction)didPressAdd:(id)sender {
+    if (createMessagePopover.popoverVisible) {
+        return [createMessagePopover dismissPopoverAnimated:YES];
+    }
     UIStoryboard *createMessageStoryboard = [UIStoryboard storyboardWithName:@"CreateMessage" bundle:nil];
     CreateMessageViewController *createMessageView = [createMessageStoryboard instantiateInitialViewController];
     createMessageView.delegate = self;

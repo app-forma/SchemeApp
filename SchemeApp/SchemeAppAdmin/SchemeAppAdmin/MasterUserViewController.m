@@ -109,6 +109,10 @@
 
 -(void)showPopover:(id)sender
 {
+    //to avoid crash if it already showing
+    if (addUserPopover.popoverVisible) {
+        return [addUserPopover dismissPopoverAnimated:YES];
+    }
     puvc.isInEditingMode = NO;
     addUserPopover = [[UIPopoverController alloc] initWithContentViewController:puvc];
     [addUserPopover setPopoverContentSize:CGSizeMake(320, 380)];

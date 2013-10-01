@@ -18,21 +18,11 @@
     PopoverEventWrapperViewController *pewvc;
 }
 
-
 @property (weak, nonatomic) IBOutlet UITableView *eventWrappersTableView;
 
 @end
 
 @implementation MasterEventWrapperViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self;
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -49,7 +39,6 @@
               }
           }];
      }];
-    
 }
 
 - (void)viewDidLoad
@@ -59,18 +48,7 @@
     pewvc.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -118,6 +96,11 @@
 
 -(void)showPopover:(id)sender
 {
+    //to avoid crash if it already showing:
+    if (addEventWrapperPopover.popoverVisible) {
+        return [addEventWrapperPopover dismissPopoverAnimated:YES];
+    }
+    
     pewvc.isInEditingMode = NO;
     
     addEventWrapperPopover = [[UIPopoverController alloc] initWithContentViewController:pewvc];
