@@ -264,7 +264,14 @@ exports.login = function (req, res, next) {
             if (err) {
                 return next(err);
             }
-            return res.json(200, user);
+            var user = new User(user);
+            user.populate('eventWrappers').exec(function (err, doc) {
+                if (err) {
+                    return res.json(500, err);
+                } else {
+                    return res.json(200, user);                    
+                }
+            });
         });
     })(req, res, next);
 };
