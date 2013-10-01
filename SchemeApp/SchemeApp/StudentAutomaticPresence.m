@@ -8,7 +8,6 @@
 
 #import "StudentAutomaticPresence.h"
 #import "Location.h"
-#import "NSDate+Helpers.h"
 
 @implementation StudentAutomaticPresence
 {
@@ -20,9 +19,7 @@
 {
     self = [super init];
     if (self) {
-        
-        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(schoolLocation.longitude.doubleValue, schoolLocation.latitude.doubleValue);
-        
+        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(schoolLocation.longitude.doubleValue, schoolLocation.latitude.doubleValue);        
         locationManager = [[CLLocationManager alloc] init];
         schoolRegion = [[CLCircularRegion alloc] initWithCenter:center radius:300 identifier:@"School"];
         schoolRegion.notifyOnEntry = YES;
@@ -30,8 +27,6 @@
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.distanceFilter = kCLDistanceFilterNone;
         [locationManager startMonitoringForRegion:schoolRegion];
-        
-        NSLog(@"center.long: %f, center.lat: %f", center.longitude, center.latitude);
     }
     return self;
 }
