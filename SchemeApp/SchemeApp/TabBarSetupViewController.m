@@ -14,6 +14,7 @@
     UIActionSheet *signOutPopup;
     StudentAutomaticPresence *attendanceMonitor;
 }
+
 -(id)initForRoleType:(RoleType)role;
 {
     self = [super init];
@@ -32,9 +33,8 @@
 }
 
 - (void)checkAttendance {
-    NSString *dateString = [Helpers dateStringFromNSDate:[NSDate date]];
     NSString *latestAttendanceDateString = [NSUserDefaults.standardUserDefaults objectForKey:@"latestAttendance"];
-    BOOL attendanceForTodayNotSent = ![latestAttendanceDateString isEqualToString:dateString];
+    BOOL attendanceForTodayNotSent = ![latestAttendanceDateString isEqualToString:NSDate.date.asDateString];
     
     if (attendanceForTodayNotSent) {
         [Store fetchLocationCompletion:^(Location *location) {
@@ -76,24 +76,5 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
-
-
-
-//- (id)initWithCoder:(NSCoder *)aDecoder
-//{
-//    self = [super initWithCoder:aDecoder];
-//    if (self) {
-//        [self setupAdminTabBarViewController];
-//    }
-//    return self;
-//}
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//{
-//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    if (self) {
-//        [self setupAdminTabBarViewController];
-//    }
-//    return self;
-//}
 
 @end
