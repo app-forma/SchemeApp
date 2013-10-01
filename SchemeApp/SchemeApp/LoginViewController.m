@@ -46,6 +46,14 @@
 }
 
 - (void)registerAttendance {
+    
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(59.34511573, 17.97674040);
+    sap = [[StudentAutomaticPresence alloc] init];
+    [sap setCenterForRegion:center];
+    
+    
+    [Store mainStore].currentLocation
+    
     [Store.studentStore addAttendanceCompletion:^(BOOL success)
      {
          if (!success)
