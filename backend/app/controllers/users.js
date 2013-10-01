@@ -264,14 +264,29 @@ exports.login = function (req, res, next) {
             if (err) {
                 return next(err);
             }
-            var user = new User(user);
-            user.populate('eventWrappers').exec(function (err, doc) {
-                if (err) {
-                    return res.json(500, err);
+/**/
+ User.findOne({
+        _id: user._id
+    }).populate('eventWrappers')
+        .exec(function (err, doc) {
+            if (err) {
+                res.json(500, err.errors);
+            } else {
+                if (doc !== null) {
+                    populateEventWrappersToUser(doc.eventWrappers, function (evntwrps, e) {
+                        if (e) {
+                            console.log(e);
+                        } else {
+                            doc.eventWrappers = evntwrps;
+                        }
+                        res.json(200, doc);
+                    });
                 } else {
-                    return res.json(200, doc);                    
+                    res.send(404);
                 }
-            });
+            }
+        });
+/**/
         });
     })(req, res, next);
 };
