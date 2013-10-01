@@ -76,7 +76,7 @@ static NSArray *colors;
  */
 + (void)setStateUnselectedfor:(UITableViewCell*)cell
 {
-    prevCell.layer.borderColor = [UIColor clearColor].CGColor;
-    prevCell.layer.borderWidth = 0;
+    cell.layer.borderColor = [UIColor clearColor].CGColor;
+    cell.layer.borderWidth = 0;
 }
 @end
