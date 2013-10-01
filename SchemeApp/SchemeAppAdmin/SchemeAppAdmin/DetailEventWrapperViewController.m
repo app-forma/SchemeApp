@@ -11,11 +11,11 @@
 #import "Event.h"
 #import "UIButton+CustomButton.h"
 #import "PopoverEventWrapperViewController.h"
-<<<<<<< HEAD
+
 #import "SelectedEventWrapperEventCell.h"
-=======
+
 #import "AwesomeUI.h"
->>>>>>> 3e9629df75945b0eb1e036bd84b7e8ffce9f1af4
+
 
 @interface DetailEventWrapperViewController () <PopoverEventWrapperDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -147,25 +147,19 @@
          }];
     };
     
-<<<<<<< HEAD
+
         [Store.adminStore updateEventWrapper:eventWrapper
                                   completion:^(id jsonObject, id response, NSError *error)
          {
 
              saveHandler();
          }];
-=======
+
     
-    [Store.adminStore updateEventWrapper:eventWrapper
-                              completion:^(id jsonObject, id response, NSError *error)
-     {
-         
-         saveHandler();
-     }];
+   
     
     
-    
->>>>>>> 3e9629df75945b0eb1e036bd84b7e8ffce9f1af4
+
 }
 
 -(void)showPopover:(id)sender
@@ -182,16 +176,8 @@
     [eventWrapperInfoPopover dismissPopoverAnimated:YES];
 }
 
-<<<<<<< HEAD
-=======
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - MasterEventWrapper delegate
->>>>>>> 3e9629df75945b0eb1e036bd84b7e8ffce9f1af4
+
 -(void)masterEventWrapperDidSelectEventWrapper:(EventWrapper *)eventWrapper
 {
     [coverView removeFromSuperview];
