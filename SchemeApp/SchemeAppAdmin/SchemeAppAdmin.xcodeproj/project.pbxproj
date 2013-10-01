@@ -104,6 +104,8 @@
 		8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */; };
 		8FE68A2A17F4DABB00FAD042 /* MasterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE68A2917F4DABB00FAD042 /* MasterUserViewController.xib */; };
 		8FE68A2C17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE68A2B17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib */; };
+		8FFE7F8517FAC7B10064E0F7 /* SelectedEventWrapperEventCell.h in Resources */ = {isa = PBXBuildFile; fileRef = 8FFE7F8317FAC7B10064E0F7 /* SelectedEventWrapperEventCell.h */; };
+		8FFE7F8617FAC7B10064E0F7 /* SelectedEventWrapperEventCell.m in Resources */ = {isa = PBXBuildFile; fileRef = 8FFE7F8417FAC7B10064E0F7 /* SelectedEventWrapperEventCell.m */; };
 		AF99542717F30BC4003C450B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99542617F30BC4003C450B /* Location.m */; };
 /* End PBXBuildFile section */
 
@@ -236,6 +238,8 @@
 		8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverEventWrapperViewController.xib; sourceTree = "<group>"; };
 		8FE68A2917F4DABB00FAD042 /* MasterUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterUserViewController.xib; sourceTree = "<group>"; };
 		8FE68A2B17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterEventWrapperViewController.xib; sourceTree = "<group>"; };
+		8FFE7F8317FAC7B10064E0F7 /* SelectedEventWrapperEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = SelectedEventWrapperEventCell.h; path = ../../SchemeApp/SelectedEventWrapperEventCell.h; sourceTree = "<group>"; };
+		8FFE7F8417FAC7B10064E0F7 /* SelectedEventWrapperEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = SelectedEventWrapperEventCell.m; path = ../../SchemeApp/SelectedEventWrapperEventCell.m; sourceTree = "<group>"; };
 		AF99542517F30BC4003C450B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		AF99542617F30BC4003C450B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -555,6 +559,8 @@
 		279D066017F1DB0700586DF7 /* EventWrappers */ = {
 			isa = PBXGroup;
 			children = (
+				8FFE7F8317FAC7B10064E0F7 /* SelectedEventWrapperEventCell.h */,
+				8FFE7F8417FAC7B10064E0F7 /* SelectedEventWrapperEventCell.m */,
 				279D065817F1DA3E00586DF7 /* EventWrappersViewController.xib */,
 			);
 			name = EventWrappers;
@@ -703,7 +709,9 @@
 				4DF2616717F6083200983735 /* CreateMessage.storyboard in Resources */,
 				274E556017F2F52C00E97A12 /* DetailEventWrapperViewController.xib in Resources */,
 				4DF2615E17F5C69900983735 /* MasterMessageViewController.xib in Resources */,
+				8FFE7F8617FAC7B10064E0F7 /* SelectedEventWrapperEventCell.m in Resources */,
 				279AB6D717F191570094CE64 /* users_unselected@2x.png in Resources */,
+				8FFE7F8517FAC7B10064E0F7 /* SelectedEventWrapperEventCell.h in Resources */,
 				279AB6BA17F191490094CE64 /* Message.h in Resources */,
 				279AB6E717F1920E0094CE64 /* Helpers.h in Resources */,
 				27776A8217F9994D00D84839 /* glasses_unselected@2x.png in Resources */,
