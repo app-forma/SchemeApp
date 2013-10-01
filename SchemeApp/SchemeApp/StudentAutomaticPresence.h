@@ -10,13 +10,6 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface StudentAutomaticPresence : NSObject <CLLocationManagerDelegate, UIAlertViewDelegate>
-{
-    CLLocationManager *locationManager;
-    CLRegion *testRegion;
-    UIAlertView *automaticPresence;
-    UIAlertView *goodbye;
-    UIAlertView *startedMonitoringForRegion;
-}
 
 - (void)setCenterForRegion:(CLLocationCoordinate2D)center;
 
