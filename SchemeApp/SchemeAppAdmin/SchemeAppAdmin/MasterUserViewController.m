@@ -11,6 +11,7 @@
 #import "User.h"
 #import "DetailUserViewController.h"
 #import "AwesomeUI.h"
+#import "CircleImage.h"
 
 @interface MasterUserViewController () <UITableViewDelegate, PopoverUserDelegate>
 
@@ -85,7 +86,9 @@
     }
     User *user = users[indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
-
+#warning just temporary, initiate custom cell
+    UIView *image = [[CircleImage alloc]initWithImageForThumbnail:user.image rect:CGRectMake(250,20, 60, 60)];
+    [cell.contentView addSubview:image];
     return cell;
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,15 +106,7 @@
         [self.usersTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
-- (NSString *)tableView:(UITableView *)aTableView titleForHeaderInSection:(NSInteger)section
-{
-    //Temporär, skapar en custom view för denna sen med add knapp.
-    return @"Users";
-}
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return [AwesomeUI tableViewHeaderHeight];
-}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [AwesomeUI tableViewCellHeight];
