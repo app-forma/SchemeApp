@@ -41,6 +41,10 @@ static CGFloat const kSpaceToCoverStatusBars = 20.0f;
 
 - (void)displayColorLayer:(BOOL)display {
     self.colorLayer.hidden = !display;
+    
+    
+
+    
 }
 
 @end
