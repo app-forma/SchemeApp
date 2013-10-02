@@ -83,9 +83,9 @@
     
     return eventWrapper;
 }
+
 - (IBAction)saveEventWrapper:(id)sender
 {
-
     if (self.isInEditingMode) {
         [self.delegate popoverEventWrapperUpdateEventWrapper:[self returnEventWrapperFromPopoverForUpdate]];
     } else {
@@ -93,7 +93,6 @@
     }
    
     [self.delegate popoverEventWrapperDismissPopover];
-
 }
 
 

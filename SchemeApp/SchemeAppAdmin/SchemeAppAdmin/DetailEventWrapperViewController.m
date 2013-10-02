@@ -11,19 +11,26 @@
 #import "Event.h"
 #import "UIButton+CustomButton.h"
 #import "PopoverEventWrapperViewController.h"
+#import "PopoverEventViewController.h"
 #import "IpadEventCell.h"
 #import "AwesomeUI.h"
 
 
-@interface DetailEventWrapperViewController () <PopoverEventWrapperDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface DetailEventWrapperViewController () <PopoverEventWrapperDelegate, PopoverEventDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     UIButton *editButton;
+    
     UIPopoverController *eventWrapperInfoPopover;
     PopoverEventWrapperViewController *pewvc;
     EventWrapper *currentEventWrapper;
-    NSMutableArray *events;
-    UIView *coverView;
     
+    UIPopoverController *eventInfoPopover;
+    PopoverEventViewController *pevc;
+    Event *currentEvent;
+    
+    NSMutableArray *events;
+    
+    UIView *coverView;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *eventWrapperName;
@@ -85,6 +92,9 @@
     
     pewvc = [[PopoverEventWrapperViewController alloc] init];
     pewvc.delegate = self;
+    
+    pevc = [[PopoverEventViewController alloc] init];
+    pevc.delegate = self;
     
     editButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"editIcon"] tag:2];
     [editButton addTarget:self action:@selector(editEventWrapper:) forControlEvents:UIControlEventTouchUpInside];
@@ -163,6 +173,7 @@
          }];
 }
 
+
 -(void)showPopover:(id)sender
 {
     pewvc.isInEditingMode = YES;
@@ -191,8 +202,8 @@
     currentEventWrapper = eventWrapper;
     events = [[NSMutableArray alloc] initWithArray:eventWrapper.events];
     [self.eventsTableView reloadData];
-
 }
+
 
 - (void)masterEventWrapperHasNoData
 {
@@ -223,6 +234,84 @@
     
     return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    pevc.eventIsInEditingMode = YES;
+    currentEvent = events[indexPath.row];
+    [self showEventPopover:nil];
+}
+
+-(Event *)eventPopoverCurrentEvent
+{
+    NSLog(@"hello");
+    return currentEvent;
+}
+
+- (IBAction)addEvent:(id)sender
+{
+    [self showEventPopover:sender];
+    pevc.eventIsInEditingMode = NO;
+}
+
+-(void)showEventPopover:(id)sender
+{
+    if (eventInfoPopover.isPopoverVisible) {
+        return [eventInfoPopover dismissPopoverAnimated:YES];
+    }
+    
+    eventInfoPopover = [[UIPopoverController alloc] initWithContentViewController:pevc];
+    [eventInfoPopover setPopoverContentSize:CGSizeMake(300, 310)];
+    
+    if (pevc.eventIsInEditingMode) {
+        [eventInfoPopover presentPopoverFromRect:CGRectMake(0, 0, 320, 1) inView:self.eventsTableView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    } else {
+        [eventInfoPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }
+    
+}
+
+-(void)dismissEventPopover
+{
+    [eventInfoPopover dismissPopoverAnimated:YES];
+}
+
+-(void)eventPopoverCreateEvent:(Event *)event
+{
+    NSLog(@"Should create event!");
+}
+
+-(void)eventPopoverUpdateEvent:(Event *)event
+{
+    NSLog(@"Should update event!");
+}
+
+//- (void)didAddEvent:(Event *)event
+//{
+//    [self addEvent:event];
+//    
+//    [Store.adminStore updateEventWrapper:self.selectedEventWrapper
+//                              completion:^(id jsonObject, id response, NSError *error)
+//     {
+//         if (error)
+//         {
+//             NSLog(@"[%@] didAddEvent got response: %@ and error: %@", self.class, response, error.userInfo);
+//         }
+//     }];
+//}
+
+//- (IBAction)addEvent:(id)sender
+//{
+//    [self.selectedEventWrapper.events addObject:event.docID];
+//    [events addObject:event.docID];
+//    
+//    [NSOperationQueue.mainQueue addOperationWithBlock:^
+//     {
+//         [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:events.count - 1 inSection:0]]
+//                               withRowAnimation:UITableViewRowAnimationAutomatic];
+//     }];
+//}
+
 
 
 @end

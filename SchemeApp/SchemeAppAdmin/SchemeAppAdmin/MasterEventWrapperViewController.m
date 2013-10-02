@@ -55,6 +55,7 @@
     [super viewDidLoad];
     pewvc = [[PopoverEventWrapperViewController alloc] init];
     pewvc.delegate = self;
+    
     /**
      *    DESIGN UTKAST!
      */
@@ -112,7 +113,6 @@
 
 -(void)showPopover:(id)sender
 {
-    //to avoid crash if it already showing:
     if (addEventWrapperPopover.popoverVisible) {
         return [addEventWrapperPopover dismissPopoverAnimated:YES];
     }
@@ -128,6 +128,7 @@
 {
     [addEventWrapperPopover dismissPopoverAnimated:YES];
 }
+
 -(void)popoverEventWrapperCreateEventWrapper:(EventWrapper *)eventWrapper
 {
     void(^saveHandler)(void) = ^(void)
