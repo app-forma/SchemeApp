@@ -244,14 +244,13 @@
 
 -(Event *)eventPopoverCurrentEvent
 {
-    NSLog(@"hello");
     return currentEvent;
 }
 
 - (IBAction)addEvent:(id)sender
 {
-    [self showEventPopover:sender];
     pevc.eventIsInEditingMode = NO;
+    [self showEventPopover:sender];
 }
 
 -(void)showEventPopover:(id)sender
@@ -259,7 +258,6 @@
     if (eventInfoPopover.isPopoverVisible) {
         return [eventInfoPopover dismissPopoverAnimated:YES];
     }
-    
     eventInfoPopover = [[UIPopoverController alloc] initWithContentViewController:pevc];
     [eventInfoPopover setPopoverContentSize:CGSizeMake(300, 310)];
     
@@ -278,40 +276,40 @@
 
 -(void)eventPopoverCreateEvent:(Event *)event
 {
-    NSLog(@"Should create event!");
+    [self didAddEvent:event];
 }
 
 -(void)eventPopoverUpdateEvent:(Event *)event
 {
-    NSLog(@"Should update event!");
+    NSLog(@"Event id: %@", event.docID);
 }
 
-//- (void)didAddEvent:(Event *)event
-//{
-//    [self addEvent:event];
-//    
-//    [Store.adminStore updateEventWrapper:self.selectedEventWrapper
-//                              completion:^(id jsonObject, id response, NSError *error)
-//     {
-//         if (error)
-//         {
-//             NSLog(@"[%@] didAddEvent got response: %@ and error: %@", self.class, response, error.userInfo);
-//         }
-//     }];
-//}
+- (void)didAddEvent:(Event *)event
+{
+    [self addEvent:event];
+    NSLog(@"%@", currentEventWrapper);
+    
+    [Store.adminStore updateEventWrapper:currentEventWrapper
+                              completion:^(id jsonObject, id response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"[%@] didAddEvent got response: %@ and error: %@", self.class, response, error.userInfo);
+         }
+     }];
+}
 
-//- (IBAction)addEvent:(id)sender
-//{
-//    [self.selectedEventWrapper.events addObject:event.docID];
-//    [events addObject:event.docID];
-//    
-//    [NSOperationQueue.mainQueue addOperationWithBlock:^
-//     {
-//         [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:events.count - 1 inSection:0]]
-//                               withRowAnimation:UITableViewRowAnimationAutomatic];
-//     }];
-//}
-
+-(void)addevent:(Event *)event
+{
+    [currentEventWrapper.events addObject:event.docID];
+    [events addObject:event.docID];
+    
+    [NSOperationQueue.mainQueue addOperationWithBlock:^
+     {
+         [self.eventsTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:events.count - 1 inSection:0]]
+                                     withRowAnimation:UITableViewRowAnimationAutomatic];
+     }];
+}
 
 
 @end

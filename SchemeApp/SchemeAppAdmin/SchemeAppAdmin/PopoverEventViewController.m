@@ -40,7 +40,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     if (self.eventIsInEditingMode) {
-        [self populateTextfieldsWithEvent:[self.delegate eventPopoverCurrentEvent] forMethod:@"PUT"];
+        currentEvent = [self.delegate eventPopoverCurrentEvent];
+        [self populateTextfieldsWithEvent:currentEvent forMethod:@"PUT"];
     } else {
         [self populateTextfieldsWithEvent:nil forMethod:@"POST"];
     }
@@ -50,22 +51,28 @@
 -(void)populateTextfieldsWithEvent:(Event *)event forMethod:(NSString *)method
 {
     if ([method isEqualToString:@"POST"]) {
-        NSLog(@"POST");
+        self.info.text = @"";
+        self.room.text = @"";
+        self.startDate.text = @"";
+        self.endDate.text = @"";
     } else if ([method isEqualToString:@"PUT"]) {
-        NSLog(@"PUT");
-        NSLog(@"Current event. %@", event);
+        self.info.text = event.info;
+        self.room.text = event.room;
+        self.startDate.text = [Helpers stringFromNSDate:event.startDate];
+        self.endDate.text = [Helpers stringFromNSDate:event.endDate];
     }
 }
 
-
 -(Event *)returnEventFromPopoverForCreate
 {
-    return nil;
+    Event *event = [[Event alloc] initWithEventDictionary:@{@"info": self.info.text, @"room": self.room.text, @"startDate": self.startDate.text, @"endDate":self.endDate.text}];
+    return event;
 }
 
 -(Event *)returnEventFromPopoverForUpdate
 {
-    return nil;
+    Event *event = [[Event alloc] initWithEventDictionary:@{@"info": self.info.text, @"room": self.room.text, @"startDate": self.startDate.text, @"endDate":self.endDate.text, @"_id": currentEvent.docID}];
+    return event;
 }
 
 - (IBAction)saveEvent:(id)sender
