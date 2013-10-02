@@ -11,6 +11,8 @@
 		0426C9EC17FB1AB900C94BAD /* UIImage+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9EB17FB1AB900C94BAD /* UIImage+Base64.m */; };
 		0426C9F017FB39B200C94BAD /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9EF17FB39B200C94BAD /* NavigationController.m */; };
 		0426C9F317FB39BD00C94BAD /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9F217FB39BD00C94BAD /* NavigationBar.m */; };
+		0426C9F617FC7EAF00C94BAD /* CircleImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9F517FC7EAF00C94BAD /* CircleImage.m */; };
+		0426C9F817FC857100C94BAD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0426C9F717FC857100C94BAD /* QuartzCore.framework */; };
 		04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA657517F4BB990088E589 /* PopoverUserViewController.m */; };
 		04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA657617F4BB990088E589 /* PopoverUserViewController.xib */; };
 		27133EAD17F9E02D00708346 /* PicturePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27133EAB17F9E02D00708346 /* PicturePickerViewController.m */; };
@@ -131,6 +133,9 @@
 		0426C9EF17FB39B200C94BAD /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		0426C9F117FB39BD00C94BAD /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBar.h; sourceTree = "<group>"; };
 		0426C9F217FB39BD00C94BAD /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBar.m; sourceTree = "<group>"; };
+		0426C9F417FC7EAF00C94BAD /* CircleImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleImage.h; sourceTree = "<group>"; };
+		0426C9F517FC7EAF00C94BAD /* CircleImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleImage.m; sourceTree = "<group>"; };
+		0426C9F717FC857100C94BAD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		04DA657417F4BB990088E589 /* PopoverUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverUserViewController.h; sourceTree = "<group>"; };
 		04DA657517F4BB990088E589 /* PopoverUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverUserViewController.m; sourceTree = "<group>"; };
 		04DA657617F4BB990088E589 /* PopoverUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverUserViewController.xib; sourceTree = "<group>"; };
@@ -259,6 +264,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0426C9F817FC857100C94BAD /* QuartzCore.framework in Frameworks */,
 				279AB65217F18C200094CE64 /* CoreGraphics.framework in Frameworks */,
 				279AB65417F18C200094CE64 /* UIKit.framework in Frameworks */,
 				279AB65017F18C200094CE64 /* Foundation.framework in Frameworks */,
@@ -321,6 +327,7 @@
 		279AB64E17F18C200094CE64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0426C9F717FC857100C94BAD /* QuartzCore.framework */,
 				279AB64F17F18C200094CE64 /* Foundation.framework */,
 				279AB65117F18C200094CE64 /* CoreGraphics.framework */,
 				279AB65317F18C200094CE64 /* UIKit.framework */,
@@ -379,6 +386,8 @@
 		279AB67E17F18CD30094CE64 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0426C9F417FC7EAF00C94BAD /* CircleImage.h */,
+				0426C9F517FC7EAF00C94BAD /* CircleImage.m */,
 				0426C9F117FB39BD00C94BAD /* NavigationBar.h */,
 				0426C9F217FB39BD00C94BAD /* NavigationBar.m */,
 				279D067217F1DCFA00586DF7 /* SchoolInfo */,
@@ -789,6 +798,7 @@
 				279D061617F19F1300586DF7 /* Event.m in Sources */,
 				279D061717F19F1300586DF7 /* Message.m in Sources */,
 				274E556317F2F54C00E97A12 /* DetailMessageViewController.m in Sources */,
+				0426C9F617FC7EAF00C94BAD /* CircleImage.m in Sources */,
 				4D757A9317F63EB0007255E1 /* NSDate+Helpers.m in Sources */,
 				279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */,
 				279D061817F19F1300586DF7 /* User.m in Sources */,
