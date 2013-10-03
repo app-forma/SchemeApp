@@ -10,8 +10,8 @@
 
 @interface IpadEventCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UITextView *info;
 @property (weak, nonatomic) IBOutlet UILabel *room;
 @property (weak, nonatomic) IBOutlet UILabel *date;
+@property (weak, nonatomic) IBOutlet UILabel *info;
 
 @end

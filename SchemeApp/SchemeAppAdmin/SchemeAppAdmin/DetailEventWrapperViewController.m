@@ -41,6 +41,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
 @property (weak, nonatomic) IBOutlet UITableView *eventsTableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *toolbarTitle;
 
 @end
 
@@ -53,15 +54,12 @@
     NSLog(@"Delete this shit!");
 }
 
-
-
 - (void)splitViewController:(UISplitViewController *)svc
      willHideViewController:(UIViewController *)aViewController
           withBarButtonItem:(UIBarButtonItem *)barButtonItem
        forPopoverController:(UIPopoverController *)pc
 {
 }
-
 
 - (void)splitViewController:(UISplitViewController *)svc
      willShowViewController:(UIViewController *)aViewController
@@ -85,6 +83,7 @@
 {
     [super viewDidLoad];
     
+    self.toolbarTitle.enabled = FALSE;
     
     UINib *nib = [UINib nibWithNibName:@"IpadEventCell" bundle:nil];
     [self.eventsTableView registerNib:nib forCellReuseIdentifier:@"IpadEventCell"];
@@ -101,8 +100,8 @@
     
     [self.view addSubview:editButton];
     NSDictionary *views = NSDictionaryOfVariableBindings(editButton);
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[editButton(50.0)]-(25.0)-|" options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(50.0)-[editButton(50.0)]" options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[editButton(50.0)]-(15.0)-|" options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(70.0)-[editButton(50.0)]" options:0 metrics:nil views:views]];
     events = [[NSMutableArray alloc] init];
 }
 
@@ -212,15 +211,12 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"Count: %d", [events count]);
     return [events count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IpadEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IpadEventCell" forIndexPath:indexPath];
-    
-    NSLog(@"Current event: %@", currentEventWrapper.events[indexPath.row]);
     
     [Store.adminStore eventWithDocID:currentEventWrapper.events[indexPath.row]
                           completion:^(Event *event)
