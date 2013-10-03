@@ -9,8 +9,10 @@
 #import "AdminMessagesViewController.h"
 #import "AdminMessagesDetailViewController.h"
 #import "AdminMessagesCreateMessageViewController.h"
-#import "MessageCell.h"
+#import "MasterMessageCell.h"
 #import "Message.h"
+#import "AwesomeUI.h"
+#import "CircleImage.h"
 @interface AdminMessagesViewController () <UITableViewDelegate, UITableViewDataSource, MessageDetailViewDelegate, MessageCreateViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -21,12 +23,15 @@
 @implementation AdminMessagesViewController
 {
     NSMutableArray *messages;
-    Message *selectedMessage;
 }
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"MasterMessageCell" bundle:nil] forCellReuseIdentifier:@"MasterMessageCell"];
+    [AwesomeUI setGGstyleTo:self.tableView];
+    self.tableView.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
     
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected"]];
     
@@ -55,13 +60,24 @@
     return messages.count;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 65;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell"];
+    MasterMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MasterMessageCell"];
     Message *message = messages[indexPath.row];
-    cell.dateLabel.text = [Helpers stringFromNSDate:message.date];
-    cell.messageTextView.text = message.text;
-    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", message.from.firstname, message.from.lastname];
+    [AwesomeUI addDefaultStyleTo:cell];
+    cell.backgroundColor = [AwesomeUI colorForIndexPath:indexPath];
+    cell.nameLabel.text = message.from.fullName;
+    cell.dateLabel.text = message.date.asDateString;
+    cell.messageLabel.text = message.text;
+    UIView *image = [[CircleImage alloc]initWithImageForThumbnail:message.from.image rect:CGRectMake(260, 7, 50, 50)];
+    [cell addSubview:image];
+    
+
     return cell;
 }
 
@@ -79,16 +95,12 @@
     }
 }
 
--(void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectedMessage = messages[indexPath.row];
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    AdminMessagesDetailViewController *detailView = (AdminMessagesDetailViewController*)segue.destinationViewController;
-    detailView.message = selectedMessage;
+    AdminMessagesDetailViewController *detailView = [self.storyboard instantiateViewControllerWithIdentifier:@"MessageDetailView"];
+    detailView.message = messages[indexPath.row];
     detailView.delegate = self;
+    [self.navigationController pushViewController:detailView animated:YES];
 }
 
 -(void)didPressAddMessage
