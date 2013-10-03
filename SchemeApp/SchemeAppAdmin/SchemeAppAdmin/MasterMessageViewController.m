@@ -31,7 +31,7 @@
     [super viewDidLoad];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"MasterMessageCell" bundle:nil] forCellReuseIdentifier:@"MasterMessageCell"];
-    
+    self.tableView.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
     
     
     [[Store adminStore]messagesForUser:[Store mainStore].currentUser completion:^(NSArray *messagesForUser) {
