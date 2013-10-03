@@ -13,5 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *room;
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet UILabel *info;
+@property (weak, nonatomic) IBOutlet UIView *loadingView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingCellActivityIndicator;
 
 @end

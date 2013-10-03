@@ -217,6 +217,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IpadEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IpadEventCell" forIndexPath:indexPath];
+    [self performSelectorOnMainThread:@selector(startAnimating:) withObject:cell waitUntilDone:YES];
+
     
     [Store.adminStore eventWithDocID:currentEventWrapper.events[indexPath.row]
                           completion:^(Event *event)
@@ -228,17 +230,26 @@
               cell.info.text = event.info;
               cell.date.text = [NSString stringWithFormat:@"%@ - %@", [Helpers stringFromNSDate:event.startDate], [Helpers stringFromNSDate:event.endDate]];
               cell.room.text = [NSString stringWithFormat:@"Room: %@", event.room];
+
           }];
+         [self performSelectorOnMainThread:@selector(stopAnimating:) withObject:cell waitUntilDone:YES];
      }];
     
     return cell;
 }
+
+
+
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
         Event *selectedEvent = events[indexPath.row];
+        
+        IpadEventCell *cell = (IpadEventCell *)[self.eventsTableView cellForRowAtIndexPath:indexPath];
+        [self performSelectorOnMainThread:@selector(startAnimating:) withObject:cell waitUntilDone:YES];
+        
         [self removeEventWithIndexPath:indexPath];
         
         [Store.adminStore updateEventWrapper:currentEventWrapper
@@ -262,17 +273,31 @@
                       {
                           NSLog(@"[%@] deleteEvent got respone: %@ and error: %@", self.class, response, error.userInfo);
                       }
+                    [self performSelectorOnMainThread:@selector(stopAnimating:) withObject:cell waitUntilDone:YES];
                   }];
              }
+             
          }];
+        
     }
+}
+
+-(void)startAnimating:(IpadEventCell *)cell
+{
+    [cell addSubview:cell.loadingView];
+    [cell.loadingCellActivityIndicator startAnimating];
+}
+
+-(void)stopAnimating:(IpadEventCell *)cell
+{
+    [cell.loadingCellActivityIndicator stopAnimating];
+    [cell.loadingView removeFromSuperview];
 }
 
 - (void)removeEventWithIndexPath:(NSIndexPath *)indexPath
 {
     [currentEventWrapper.events removeObjectAtIndex:indexPath.row];
     [events removeObjectAtIndex:indexPath.row];
-    
     
     [NSOperationQueue.mainQueue addOperationWithBlock:^
      {
@@ -376,7 +401,7 @@
     [NSOperationQueue.mainQueue addOperationWithBlock:^
      {
          [self.eventsTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:events.count - 1 inSection:0]]
-                                     withRowAnimation:UITableViewRowAnimationAutomatic];
+                                     withRowAnimation:UITableViewRowAnimationLeft];
      }];
 }
 
@@ -388,6 +413,5 @@
                                withRowAnimation:UITableViewRowAnimationAutomatic];
      }];
 }
-
 
 @end

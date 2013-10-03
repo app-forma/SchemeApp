@@ -28,12 +28,25 @@
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="umn-PE-jiT">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8AA-HR-xTk">
+                            <rect key="frame" x="150" y="65" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="date" destination="sOW-EX-dtY" id="z0T-bX-4d9"/>
                 <outlet property="info" destination="e3j-cc-YfU" id="5vT-3T-yAK"/>
+                <outlet property="loadingCellActivityIndicator" destination="8AA-HR-xTk" id="rBw-vo-7AF"/>
+                <outlet property="loadingView" destination="umn-PE-jiT" id="LG8-2f-Dlr"/>
                 <outlet property="room" destination="oG7-Or-wSD" id="B3a-s4-uaI"/>
             </connections>
         </view>
