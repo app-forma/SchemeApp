@@ -22,11 +22,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="avW-8y-r6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="883" y="38"/>
+            <point key="canvasLocation" x="633" y="264"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UAT-1A-i0n">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xWK-Of-dLm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ttF-RR-2u2" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -36,12 +37,11 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BG2-aR-FMI" kind="relationship" relationship="rootViewController" id="d24-ri-5iu"/>
+                        <segue destination="BG2-aR-FMI" kind="relationship" relationship="rootViewController" id="bLV-SU-yEw"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xWK-Of-dLm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="357" y="38"/>
+            <point key="canvasLocation" x="21" y="264"/>
         </scene>
     </scenes>
     <resources>

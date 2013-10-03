@@ -8,7 +8,7 @@
 
 #import "PicturePickerViewController.h"
 
-@interface PicturePickerViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface PicturePickerViewController ()<UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 - (IBAction)showCamera:(id)sender;
@@ -37,11 +37,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
     [self.loadIndicator stopAnimating];
     self.loadingView.hidden = YES;
     if (self.user.image) {
         self.imageView.image = self.user.image;
     }
+    [self.tabBarController.tabBar setHidden:YES];
+    [self.navigationController.navigationBar setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning

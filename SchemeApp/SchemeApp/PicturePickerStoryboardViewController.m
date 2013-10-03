@@ -13,6 +13,7 @@
 {
     PicturePickerViewController *picturePicker;
 }
+
 @property (weak, nonatomic) IBOutlet UIView *storyboardView;
 
 @end
@@ -44,12 +45,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tabBarController.tabBar setHidden:YES];
     picturePicker = [[PicturePickerViewController alloc] init];
     picturePicker.delegate = self;
     picturePicker.user = [Store mainStore].currentUser;
     [self.navigationController pushViewController:picturePicker animated:YES];
-    [self.navigationController.navigationBar setHidden:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
