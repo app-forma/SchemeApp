@@ -7,44 +7,57 @@
 //
 
 #import "StudentAutomaticPresence.h"
+#import "Location.h"
 
 @implementation StudentAutomaticPresence
-
--(void)setCenterForRegion:(CLLocationCoordinate2D)center
 {
-    locationManager = [[CLLocationManager alloc] init];
-    testRegion = [[CLCircularRegion alloc] initWithCenter:center radius:300 identifier:@"test"];
-    [locationManager setDelegate:self];
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    [locationManager startMonitoringForRegion:testRegion];
-    testRegion.notifyOnEntry = YES;
-    
-    automaticPresence = [[UIAlertView alloc] initWithTitle:@"Welcome" message:@"We have now confirmed your presence through our very advanced geolocation operating system!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    
-    goodbye = [[UIAlertView alloc] initWithTitle:@"Goodbye" message:@"Thank you for today!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    
-    startedMonitoringForRegion = [[UIAlertView alloc] initWithTitle:@"Started" message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    
-    
+    CLLocationManager *locationManager;
+    CLRegion *schoolRegion;
+}
+
+-(id)initWithSchoolLocation:(Location *)schoolLocation
+{
+    self = [super init];
+    if (self) {
+        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(schoolLocation.longitude.doubleValue, schoolLocation.latitude.doubleValue);        
+        locationManager = [[CLLocationManager alloc] init];
+        schoolRegion = [[CLCircularRegion alloc] initWithCenter:center radius:300 identifier:@"School"];
+        schoolRegion.notifyOnEntry = YES;
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+        [locationManager startMonitoringForRegion:schoolRegion];
+    }
+    return self;
 }
 
 -(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
-    NSLog(@"Entered Region - %@", region.identifier);
-    [locationManager stopMonitoringForRegion:testRegion];
-    [automaticPresence show];
+    [locationManager stopMonitoringForRegion:schoolRegion];
+    
+    [[[UIAlertView alloc] initWithTitle:@"Welcome" message:@"We have now confirmed your presence through our very advanced geolocation system!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil]show];
+    
+    [[Store studentStore] addAttendanceCompletion:^(BOOL success) {
+        if (success) {
+            NSLog(@"Attendance registered.");
+            [NSUserDefaults.standardUserDefaults setObject:NSDate.date.asDateString forKey:@"latestAttendance"];
+        }
+    }];
 }
 
--(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
-{
-    NSLog(@"Exit Region - %@", region.identifier);
-    [goodbye show];
+-(void)dealloc {
+    [locationManager stopMonitoringForRegion:schoolRegion];
 }
-
 
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
-    [startedMonitoringForRegion show];
+    NSLog(@"did start monitoring");
 }
+
+-(void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error
+{
+    NSLog(@"monitoring did fail: %@", error);
+}
+
+
 
 @end

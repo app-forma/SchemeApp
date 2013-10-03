@@ -131,7 +131,7 @@
     }];
 }
 
-+ (void)fetchLocation
++ (void)fetchLocationCompletion:(void (^)(Location *location))completion
 {
     [Store.dbSessionConnection getPath:DB_TYPE_LOCATION
                             withParams:nil
@@ -145,7 +145,9 @@
          {
              if ([responseBody count])
              {
-                 Store.mainStore.currentLocation = [[Location alloc] initWithLocationDictionary:responseBody[0]];
+                 completion([[Location alloc]initWithLocationDictionary:responseBody[0]]);
+             } else {
+                 completion(nil);
              }
          }
      }];

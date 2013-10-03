@@ -10,4 +10,5 @@
 @import UIKit;
 
 @interface SchoolInfoViewController : UIViewController <MKMapViewDelegate>
+
 @end

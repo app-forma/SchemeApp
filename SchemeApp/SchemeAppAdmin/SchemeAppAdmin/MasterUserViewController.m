@@ -10,6 +10,9 @@
 #import "PopoverUserViewController.h"
 #import "User.h"
 #import "DetailUserViewController.h"
+#import "AwesomeUI.h"
+#import "CircleImage.h"
+
 
 @interface MasterUserViewController () <UITableViewDelegate, PopoverUserDelegate>
 
@@ -46,7 +49,7 @@
     [super viewDidLoad];
     puvc = [[PopoverUserViewController alloc] init];
     puvc.delegate = self;
-    
+    [AwesomeUI setGGstyleTo:self.usersTableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,8 +72,10 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectedIndex = indexPath.row;
+    [AwesomeUI setStateUnselectedfor:[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]]];
+    [AwesomeUI setStateSelectedfor:[tableView cellForRowAtIndexPath:indexPath]];
     [self.delegate masterUserDidSelectUser:users[indexPath.row]];
+    selectedIndex = indexPath.row;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,7 +87,9 @@
     }
     User *user = users[indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
-
+#warning just temporary, initiate custom cell
+    UIView *image = [[CircleImage alloc]initWithImageForThumbnail:user.image rect:CGRectMake(250,20, 60, 60)];
+    [cell.contentView addSubview:image];
     return cell;
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -101,7 +108,15 @@
     }
 }
 
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [AwesomeUI tableViewCellHeight];
+}
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [AwesomeUI colorForIndexPath:indexPath];
+    [AwesomeUI addDefaultStyleTo:cell];
+}
 - (IBAction)addUser:(id)sender
 {
     [self showPopover:sender];

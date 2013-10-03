@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0426C9E917FB1A9200C94BAD /* AwesomeUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9E817FB1A9200C94BAD /* AwesomeUI.m */; };
+		0426C9EC17FB1AB900C94BAD /* UIImage+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9EB17FB1AB900C94BAD /* UIImage+Base64.m */; };
+		0426C9F017FB39B200C94BAD /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9EF17FB39B200C94BAD /* NavigationController.m */; };
+		0426C9F317FB39BD00C94BAD /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9F217FB39BD00C94BAD /* NavigationBar.m */; };
 		04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA657517F4BB990088E589 /* PopoverUserViewController.m */; };
 		04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA657617F4BB990088E589 /* PopoverUserViewController.xib */; };
 		27133EAD17F9E02D00708346 /* PicturePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27133EAB17F9E02D00708346 /* PicturePickerViewController.m */; };
 		27133EAE17F9E02D00708346 /* PicturePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27133EAC17F9E02D00708346 /* PicturePickerViewController.xib */; };
-		27133EB117F9F4DF00708346 /* UIImage+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 27133EB017F9F4DF00708346 /* UIImage+Base64.m */; };
 		274E553F17F2E71000E97A12 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E553E17F2E71000E97A12 /* TabBarController.m */; };
 		274E554217F2EB0200E97A12 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E554117F2EB0200E97A12 /* SplitViewController.m */; };
 		274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E555717F2F4CC00E97A12 /* MasterEventWrapperViewController.m */; };
@@ -93,7 +96,6 @@
 		279D065A17F1DA3E00586DF7 /* EventWrappersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D065817F1DA3E00586DF7 /* EventWrappersViewController.xib */; };
 		279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */; };
 		279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */; };
-		27A6380417FAC0B8003F567C /* AwesomeUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A6380317FAC0B8003F567C /* AwesomeUI.m */; };
 		4D757A8A17F6195E007255E1 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A8917F6195E007255E1 /* SearchCell.m */; };
 		4D757A8D17F6196C007255E1 /* ReceiverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A8C17F6196C007255E1 /* ReceiverCell.m */; };
 		4D757A9317F63EB0007255E1 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A9217F63EB0007255E1 /* NSDate+Helpers.m */; };
@@ -103,6 +105,10 @@
 		4DF2616717F6083200983735 /* CreateMessage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2616617F6083200983735 /* CreateMessage.storyboard */; };
 		8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */; };
 		8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */; };
+		8F30599417FB5E4300593A75 /* IpadEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F30599317FB5E4300593A75 /* IpadEventCell.m */; };
+		8F30599617FB5E5500593A75 /* IpadEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F30599517FB5E5500593A75 /* IpadEventCell.xib */; };
+		8F8248A417FCA35B00C96B7D /* PopoverEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8248A217FCA35B00C96B7D /* PopoverEventViewController.m */; };
+		8F8248A517FCA35B00C96B7D /* PopoverEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F8248A317FCA35B00C96B7D /* PopoverEventViewController.xib */; };
 		8FE68A2A17F4DABB00FAD042 /* MasterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE68A2917F4DABB00FAD042 /* MasterUserViewController.xib */; };
 		8FE68A2C17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE68A2B17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib */; };
 		AF99542717F30BC4003C450B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99542617F30BC4003C450B /* Location.m */; };
@@ -119,14 +125,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0426C9E717FB1A9200C94BAD /* AwesomeUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeUI.h; sourceTree = "<group>"; };
+		0426C9E817FB1A9200C94BAD /* AwesomeUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeUI.m; sourceTree = "<group>"; };
+		0426C9EA17FB1AB900C94BAD /* UIImage+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Base64.h"; sourceTree = "<group>"; };
+		0426C9EB17FB1AB900C94BAD /* UIImage+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Base64.m"; sourceTree = "<group>"; };
+		0426C9EE17FB39B200C94BAD /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		0426C9EF17FB39B200C94BAD /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		0426C9F117FB39BD00C94BAD /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBar.h; sourceTree = "<group>"; };
+		0426C9F217FB39BD00C94BAD /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBar.m; sourceTree = "<group>"; };
 		04DA657417F4BB990088E589 /* PopoverUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverUserViewController.h; sourceTree = "<group>"; };
 		04DA657517F4BB990088E589 /* PopoverUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverUserViewController.m; sourceTree = "<group>"; };
 		04DA657617F4BB990088E589 /* PopoverUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverUserViewController.xib; sourceTree = "<group>"; };
 		27133EAA17F9E02D00708346 /* PicturePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturePickerViewController.h; sourceTree = "<group>"; };
 		27133EAB17F9E02D00708346 /* PicturePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturePickerViewController.m; sourceTree = "<group>"; };
 		27133EAC17F9E02D00708346 /* PicturePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicturePickerViewController.xib; sourceTree = "<group>"; };
-		27133EAF17F9F4DF00708346 /* UIImage+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Base64.h"; path = "../SchemeApp/UIImage+Base64.h"; sourceTree = SOURCE_ROOT; };
-		27133EB017F9F4DF00708346 /* UIImage+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Base64.m"; path = "../SchemeApp/UIImage+Base64.m"; sourceTree = SOURCE_ROOT; };
 		274E553D17F2E71000E97A12 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		274E553E17F2E71000E97A12 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		274E554017F2EB0200E97A12 /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
@@ -221,8 +233,6 @@
 		279D066C17F1DCEE00586DF7 /* SchoolInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolInfoViewController.h; sourceTree = "<group>"; };
 		279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolInfoViewController.m; sourceTree = "<group>"; };
 		279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolInfoViewController.xib; sourceTree = "<group>"; };
-		27A6380217FAC0B8003F567C /* AwesomeUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeUI.h; sourceTree = "<group>"; };
-		27A6380317FAC0B8003F567C /* AwesomeUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeUI.m; sourceTree = "<group>"; };
 		4D757A8817F6195E007255E1 /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		4D757A8917F6195E007255E1 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		4D757A8B17F6196C007255E1 /* ReceiverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverCell.h; sourceTree = "<group>"; };
@@ -237,6 +247,12 @@
 		8F12E85717F3261B00FCEDCE /* PopoverEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverEventWrapperViewController.h; sourceTree = "<group>"; };
 		8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverEventWrapperViewController.m; sourceTree = "<group>"; };
 		8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverEventWrapperViewController.xib; sourceTree = "<group>"; };
+		8F30599217FB5E4300593A75 /* IpadEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpadEventCell.h; sourceTree = "<group>"; };
+		8F30599317FB5E4300593A75 /* IpadEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IpadEventCell.m; sourceTree = "<group>"; };
+		8F30599517FB5E5500593A75 /* IpadEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IpadEventCell.xib; sourceTree = "<group>"; };
+		8F8248A117FCA35B00C96B7D /* PopoverEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverEventViewController.h; sourceTree = "<group>"; };
+		8F8248A217FCA35B00C96B7D /* PopoverEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverEventViewController.m; sourceTree = "<group>"; };
+		8F8248A317FCA35B00C96B7D /* PopoverEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverEventViewController.xib; sourceTree = "<group>"; };
 		8FE68A2917F4DABB00FAD042 /* MasterUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterUserViewController.xib; sourceTree = "<group>"; };
 		8FE68A2B17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterEventWrapperViewController.xib; sourceTree = "<group>"; };
 		AF99542517F30BC4003C450B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
@@ -267,14 +283,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		27133EA117F9C6AC00708346 /* Base64 */ = {
+		0426C9ED17FB1AC200C94BAD /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
-				27133EAF17F9F4DF00708346 /* UIImage+Base64.h */,
-				27133EB017F9F4DF00708346 /* UIImage+Base64.m */,
+				0426C9EA17FB1AB900C94BAD /* UIImage+Base64.h */,
+				0426C9EB17FB1AB900C94BAD /* UIImage+Base64.m */,
 			);
 			name = Base64;
-			path = ../../SchemeApp/Base64;
 			sourceTree = "<group>";
 		};
 		27133EA917F9E00600708346 /* PicturePicker */ = {
@@ -290,6 +305,8 @@
 		279AB64317F18C200094CE64 = {
 			isa = PBXGroup;
 			children = (
+				0426C9E717FB1A9200C94BAD /* AwesomeUI.h */,
+				0426C9E817FB1A9200C94BAD /* AwesomeUI.m */,
 				279AB65517F18C200094CE64 /* SchemeAppAdmin */,
 				279AB66E17F18C200094CE64 /* SchemeAppAdminTests */,
 				279AB64E17F18C200094CE64 /* Frameworks */,
@@ -320,7 +337,7 @@
 		279AB65517F18C200094CE64 /* SchemeAppAdmin */ = {
 			isa = PBXGroup;
 			children = (
-				27133EA117F9C6AC00708346 /* Base64 */,
+				0426C9ED17FB1AC200C94BAD /* Base64 */,
 				279AB6CB17F191570094CE64 /* Images */,
 				279AB6B517F191490094CE64 /* Models */,
 				279AB67E17F18CD30094CE64 /* Views */,
@@ -367,6 +384,8 @@
 		279AB67E17F18CD30094CE64 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0426C9F117FB39BD00C94BAD /* NavigationBar.h */,
+				0426C9F217FB39BD00C94BAD /* NavigationBar.m */,
 				279D067217F1DCFA00586DF7 /* SchoolInfo */,
 				279D066917F1DC0A00586DF7 /* Login */,
 				279D066217F1DB1300586DF7 /* Messages */,
@@ -380,6 +399,8 @@
 		279AB68117F18D680094CE64 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0426C9EE17FB39B200C94BAD /* NavigationController.h */,
+				0426C9EF17FB39B200C94BAD /* NavigationController.m */,
 				27133EA917F9E00600708346 /* PicturePicker */,
 				279D067117F1DCF300586DF7 /* SchoolInfo */,
 				279D066B17F1DC3500586DF7 /* Login */,
@@ -483,8 +504,6 @@
 				279AB6E017F1920E0094CE64 /* Helpers.h */,
 				279AB6E117F1920E0094CE64 /* Helpers.m */,
 				279D060E17F196E300586DF7 /* TypeDef */,
-				27A6380217FAC0B8003F567C /* AwesomeUI.h */,
-				27A6380317FAC0B8003F567C /* AwesomeUI.m */,
 			);
 			name = Classes;
 			path = ../../SchemeApp;
@@ -546,6 +565,12 @@
 		279D065E17F1DAAB00586DF7 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				8F30599217FB5E4300593A75 /* IpadEventCell.h */,
+				8F30599317FB5E4300593A75 /* IpadEventCell.m */,
+				8F30599517FB5E5500593A75 /* IpadEventCell.xib */,
+				8F8248A117FCA35B00C96B7D /* PopoverEventViewController.h */,
+				8F8248A217FCA35B00C96B7D /* PopoverEventViewController.m */,
+				8F8248A317FCA35B00C96B7D /* PopoverEventViewController.xib */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -694,8 +719,10 @@
 				4DF2616017F6078900983735 /* DetailMessageViewController.xib in Resources */,
 				279AB6D117F191570094CE64 /* messages_selected@2x.png in Resources */,
 				279AB6B717F191490094CE64 /* EventWrapper.m in Resources */,
+				8F30599617FB5E5500593A75 /* IpadEventCell.xib in Resources */,
 				27776A7F17F9994D00D84839 /* glasses_selected@1x.png.png in Resources */,
 				279AB65A17F18C200094CE64 /* InfoPlist.strings in Resources */,
+				8F8248A517FCA35B00C96B7D /* PopoverEventViewController.xib in Resources */,
 				27776A8417F9994D00D84839 /* location_selected@2x.png in Resources */,
 				279AB6B817F191490094CE64 /* Event.h in Resources */,
 				274E556B17F2F58F00E97A12 /* DetailUserViewController.xib in Resources */,
@@ -765,6 +792,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				279D061517F19F1300586DF7 /* EventWrapper.m in Sources */,
+				0426C9F317FB39BD00C94BAD /* NavigationBar.m in Sources */,
 				274E554217F2EB0200E97A12 /* SplitViewController.m in Sources */,
 				279D064717F1C97F00586DF7 /* AuthViewController.m in Sources */,
 				279D061617F19F1300586DF7 /* Event.m in Sources */,
@@ -772,9 +800,8 @@
 				274E556317F2F54C00E97A12 /* DetailMessageViewController.m in Sources */,
 				4D757A9317F63EB0007255E1 /* NSDate+Helpers.m in Sources */,
 				279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */,
-				27133EB117F9F4DF00708346 /* UIImage+Base64.m in Sources */,
 				279D061817F19F1300586DF7 /* User.m in Sources */,
-				27A6380417FAC0B8003F567C /* AwesomeUI.m in Sources */,
+				0426C9E917FB1A9200C94BAD /* AwesomeUI.m in Sources */,
 				274E553F17F2E71000E97A12 /* TabBarController.m in Sources */,
 				279D061917F19F1300586DF7 /* Validation.m in Sources */,
 				279D061A17F19F1300586DF7 /* AFNetworking.m in Sources */,
@@ -786,8 +813,11 @@
 				279AB69417F190300094CE64 /* AdminStore.m in Sources */,
 				279AB65C17F18C200094CE64 /* main.m in Sources */,
 				8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */,
+				0426C9F017FB39B200C94BAD /* NavigationController.m in Sources */,
 				4D757A8D17F6196C007255E1 /* ReceiverCell.m in Sources */,
 				274E555817F2F4CC00E97A12 /* MasterEventWrapperViewController.m in Sources */,
+				0426C9EC17FB1AB900C94BAD /* UIImage+Base64.m in Sources */,
+				8F30599417FB5E4300593A75 /* IpadEventCell.m in Sources */,
 				279AB69717F190300094CE64 /* SuperAdminStore.m in Sources */,
 				274E555F17F2F52C00E97A12 /* DetailEventWrapperViewController.m in Sources */,
 				274E557917F318AA00E97A12 /* UIButton+CustomButton.m in Sources */,
@@ -797,6 +827,7 @@
 				274E556A17F2F58F00E97A12 /* DetailUserViewController.m in Sources */,
 				274E555B17F2F4E800E97A12 /* MasterMessageViewController.m in Sources */,
 				4D757A8A17F6195E007255E1 /* SearchCell.m in Sources */,
+				8F8248A417FCA35B00C96B7D /* PopoverEventViewController.m in Sources */,
 				04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */,
 				4DF2616417F607B900983735 /* CreateMessageViewController.m in Sources */,
 			);

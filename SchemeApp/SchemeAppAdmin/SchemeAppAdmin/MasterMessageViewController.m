@@ -9,7 +9,7 @@
 #import "MasterMessageViewController.h"
 #import "CreateMessageViewController.h"
 
-@interface MasterMessageViewController () <UITableViewDataSource, UITableViewDelegate, CreateMessageViewDelegate>
+@interface MasterMessageViewController () <UITableViewDataSource, UITableViewDelegate, CreateMessageViewDelegate, UIBarPositioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -41,6 +41,12 @@
     
     
     
+}
+
+
+-(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
+{
+    return UIBarPositionTopAttached;
 }
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

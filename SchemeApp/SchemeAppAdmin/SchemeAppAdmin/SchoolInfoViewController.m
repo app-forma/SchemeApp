@@ -10,13 +10,12 @@
 #import "Location.h"
 
 
-@interface SchoolInfoViewController ()
+@interface SchoolInfoViewController () <UITextFieldDelegate, UIBarPositioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
-@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @end
 
@@ -31,96 +30,76 @@
 {
     [super viewDidLoad];
     
-    currentLocation = Store.mainStore.currentLocation;
+    currentLocationAnnotation = [[MKPointAnnotation alloc] init];
     
-    if (currentLocation)
-    {
-        [self setInputsToCurrentLocation];
-    }
-    else
-    {
-        self.mapView.showsUserLocation = YES;
-    }
+    [Store fetchLocationCompletion:^(Location *location) {
+        currentLocation = location;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self setInputsToCurrentLocation];
+        });
+    }];
+}
+
+-(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
+{
+    return UIBarPositionTopAttached;
+}
+
+#pragma mark - text field delegate
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    return [textField resignFirstResponder];
 }
 
 #pragma mark - Actions
-- (IBAction)addCurrentLocationAnnotation:(UITapGestureRecognizer*)recognizer
+- (IBAction)userTapped:(UITapGestureRecognizer*)recognizer
 {
-    if (!self.mapAnnotation)
-    {
-        CLLocationCoordinate2D coordinate;
-        if (recognizer)
-        {
-            CGPoint tappedPoint = [recognizer locationInView:self.mapView];
-            coordinate = [self.mapView convertPoint:tappedPoint toCoordinateFromView:self.mapView];
-        }
-        else
-        {
-            coordinate = CLLocationCoordinate2DMake(currentLocation.latitude.doubleValue,
-                                                    currentLocation.longitude.doubleValue);
-        }
-        
-        MKPointAnnotation *pa = [[MKPointAnnotation alloc] init];
-        pa.coordinate = coordinate;
-        
-        [self.mapView addAnnotation:pa];
-    }
-}
-- (IBAction)delete:(id)sender
-{
-    if (currentLocation)
-    {
-        [Store.adminStore deleteLocation:currentLocation
-                              completion:^(BOOL success)
-        {
-            if (success)
-            {
-                currentLocation = nil;
-                [NSOperationQueue.mainQueue addOperationWithBlock:^
-                {
-                    [self reset];
-                }];
-            }
-            else
-            {
-                [[[UIAlertView alloc] initWithTitle:@"Deletion error"
-                                            message:@"Current location could not be deleted at the moment, please try again later."
-                                           delegate:nil
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil] show];
-            }
-        }];
-    }
-}
-- (IBAction)save:(id)sender
-{
-    BOOL inputsNotEmpty = self.nameTextField.text.length != 0 && self.mapAnnotation;
+    [self.mapView removeAnnotation:currentLocationAnnotation];
     
-    if (inputsNotEmpty)
+    CLLocationCoordinate2D coordinate;
+    if (recognizer) {
+        CGPoint tappedPoint = [recognizer locationInView:self.mapView];
+        coordinate = [self.mapView convertPoint:tappedPoint toCoordinateFromView:self.mapView];
+        
+        if (currentLocation) {
+            currentLocation.latitude = [NSNumber numberWithDouble:coordinate.latitude];
+            currentLocation.longitude = [NSNumber numberWithDouble:coordinate.longitude];
+        }
+    } else {
+        coordinate = CLLocationCoordinate2DMake(currentLocation.latitude.doubleValue,
+                                                currentLocation.longitude.doubleValue);
+    }
+    
+    currentLocationAnnotation.coordinate = coordinate;
+    [self.mapView addAnnotation:currentLocationAnnotation];
+}
+
+- (IBAction)userPressedSave:(id)sender
+{
+    if (self.nameTextField.text.length && currentLocationAnnotation)
     {
         if (currentLocation)
         {
             currentLocation.name = self.nameTextField.text;
-            currentLocation.latitude = [NSNumber numberWithDouble:self.mapAnnotation.coordinate.latitude];
-            currentLocation.longitude = [NSNumber numberWithDouble:self.mapAnnotation.coordinate.longitude];
+            currentLocation.latitude = [NSNumber numberWithDouble:currentLocationAnnotation.coordinate.latitude];
+            currentLocation.longitude = [NSNumber numberWithDouble:currentLocationAnnotation.coordinate.longitude];
             
             [Store.adminStore updateLocation:currentLocation
                                   completion:^(Location *location)
              {
-                 [self setCurrentLocationTo:location];
+                 currentLocation = location;
              }];
         }
         else
         {
             Location *location = [[Location alloc] init];
             location.name = self.nameTextField.text;
-            location.latitude = [NSNumber numberWithDouble:self.mapAnnotation.coordinate.latitude];
-            location.longitude = [NSNumber numberWithDouble:self.mapAnnotation.coordinate.longitude];
+            location.latitude = [NSNumber numberWithDouble:currentLocationAnnotation.coordinate.latitude];
+            location.longitude = [NSNumber numberWithDouble:currentLocationAnnotation.coordinate.longitude];
             
             [Store.adminStore createLocation:location
                                   completion:^(Location *location)
              {
-                 [self setCurrentLocationTo:location];
+                 currentLocation = location;
              }];
         }
     }
@@ -147,7 +126,7 @@
 {
     if (currentLocation)
     {
-        [self addCurrentLocationAnnotation:nil];
+        [self userTapped:nil];
     }
 }
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -164,19 +143,6 @@
     return pav;
 }
 
-#pragma mark - Queries
-- (id <MKAnnotation>)mapAnnotation
-{
-    if (self.mapView.annotations.count > 0)
-    {
-        return self.mapView.annotations[0];
-    }
-    else
-    {
-        return nil;
-    }
-}
-
 #pragma mark - Extracted methods
 - (MKCoordinateRegion)regionForCoordinate:(CLLocationCoordinate2D)coordinate
 {
@@ -184,30 +150,15 @@
 }
 - (void)setInputsToCurrentLocation
 {
-    self.nameTextField.text = currentLocation.name;
-    [self.mapView setRegion:[self regionForCoordinate:CLLocationCoordinate2DMake(currentLocation.latitude.doubleValue,
-                                                                                 currentLocation.longitude.doubleValue)]
-                   animated:YES];
-}
-- (void)setCurrentLocationTo:(Location *)location
-{
-    if (location)
-    {
-        currentLocation = location;
+    if (currentLocation) {
+        self.nameTextField.text = currentLocation.name;
+        [self.mapView setRegion:[self regionForCoordinate:CLLocationCoordinate2DMake(currentLocation.latitude.doubleValue,
+                                                                                     currentLocation.longitude.doubleValue)]
+                       animated:YES];
+        
+    } else {
+        self.mapView.showsUserLocation = YES;
     }
-    else
-    {
-        [[[UIAlertView alloc] initWithTitle:@"Update error"
-                                    message:@"Current location could not be saved at the moment, please try again later."
-                                   delegate:nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil] show];
-    }
-}
-- (void)reset
-{
-    self.nameTextField.text = nil;
-    [self.mapView removeAnnotations:self.mapView.annotations];
 }
 
 @end

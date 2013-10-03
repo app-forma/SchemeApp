@@ -11,14 +11,17 @@
 #import "UIButton+CustomButton.h"
 #import "PopoverUserViewController.h"
 #import "PicturePickerViewController.h"
+#import "CircleImage.h"
 
 @interface DetailUserViewController ()<PopoverUserDelegate, PicturePickerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *roleLabel;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+@property (strong, nonatomic) IBOutlet UIView *userImage;
 - (IBAction)showImagePicker:(id)sender;
-@property (weak, nonatomic) IBOutlet UIImageView *userImage;
+
+
 
 @end
 
@@ -29,6 +32,7 @@
     UIPopoverController *userInfoPopover;
     PopoverUserViewController *puvc;
     User *currentUser;
+    CGRect imageSize;
 }
 
 
@@ -52,6 +56,7 @@
     if (self) {
         puvc = [[PopoverUserViewController alloc] init];
         puvc.delegate = self;
+        imageSize = CGRectMake(100, 154, 160, 160);
     }
     return self;
 }
@@ -81,7 +86,7 @@
     
     NSDictionary *views = NSDictionaryOfVariableBindings(editButton);
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[editButton(50.0)]-(25.0)-|" options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(50.0)-[editButton(50.0)]" options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(50.0)-[editButton(90.0)]" options:0 metrics:nil views:views]];
 }
 
 - (void)editUser:(id)sender
@@ -110,14 +115,18 @@
 
 -(void)masterUserDidSelectUser:(User *)user
 {
+    [self.userImage removeFromSuperview];
     self.navItem.title = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
     self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
     self.emailLabel.text = user.email;
     self.roleLabel.text = [user roleAsString];
     if (user.image) {
-        self.userImage.image = user.image;
+        CircleImage *userImage = [[CircleImage alloc]initWithImageForDetailView:user.image rect:imageSize];
+        self.userImage = userImage;
+        [self.view addSubview:self.userImage];
+        
     } else {
-        self.userImage.image = nil;
+        self.userImage = nil;
     }
     currentUser = user;
     
@@ -150,7 +159,8 @@
 
 -(void)picturePicker:(PicturePickerViewController *)picturePicker didFinishPickingPicture:(UIImage *)image forUser:(User *)user
 {
-    self.userImage.image = image;
+    self.userImage = [[CircleImage alloc] initWithImageForDetailView:image rect:imageSize];
+    [self.view addSubview:self.userImage];
     user.image = image;
     [[Store superAdminStore] updateUser:user completion:^(id responseBody, id response, NSError *error) {
         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;

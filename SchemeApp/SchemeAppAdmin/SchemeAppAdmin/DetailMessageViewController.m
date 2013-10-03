@@ -12,11 +12,12 @@
 #import "NSDate+Helpers.h"
 
 
-@interface DetailMessageViewController () <UIActionSheetDelegate>
+@interface DetailMessageViewController () <UIActionSheetDelegate, UIBarPositioningDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *fromLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+
 
 
 @end
@@ -26,8 +27,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 }
+
+-(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
+{
+    return UIBarPositionTopAttached;
+}
+
 
 - (void)splitViewController:(UISplitViewController *)svc
      willHideViewController:(UIViewController *)aViewController

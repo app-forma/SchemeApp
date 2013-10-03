@@ -75,17 +75,9 @@
 
 - (void)addAttendanceCompletion:(void (^)(BOOL))handler
 {
-    NSString *dateString = [Helpers dateStringFromNSDate:[NSDate date]];
-    NSString *latestAttendanceDateString = [NSUserDefaults.standardUserDefaults objectForKey:@"latestAttendance"];
-    BOOL attendanceForTodayNotSent = ![latestAttendanceDateString isEqualToString:dateString];
-    
     if (Store.mainStore.currentUser)
     {
-        if (attendanceForTodayNotSent)
-        {
-            [NSUserDefaults.standardUserDefaults setObject:dateString forKey:@"latestAttendance"];
-            
-            NSString *path = [NSString stringWithFormat:@"%@/%@/attendance/%@", DB_TYPE_USER, Store.mainStore.currentUser.docID, dateString];
+            NSString *path = [NSString stringWithFormat:@"%@/%@/attendance/%@", DB_TYPE_USER, Store.mainStore.currentUser.docID, NSDate.date.asDateString];
             
             [Store.dbSessionConnection postContent:nil
                                             toPath:path
@@ -101,12 +93,6 @@
                      handler(YES);
                  }
              }];
-        }
-        else
-        {
-            NSLog(@"[%@] Attendance has already been set.", self.class);
-            handler(YES);
-        }
     }
     else
     {

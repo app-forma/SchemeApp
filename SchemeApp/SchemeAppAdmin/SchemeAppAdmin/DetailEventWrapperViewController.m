@@ -11,18 +11,28 @@
 #import "Event.h"
 #import "UIButton+CustomButton.h"
 #import "PopoverEventWrapperViewController.h"
+#import "PopoverEventViewController.h"
+#import "IpadEventCell.h"
 #import "AwesomeUI.h"
 
-@interface DetailEventWrapperViewController () <PopoverEventWrapperDelegate, UITableViewDataSource, UITableViewDelegate>
+
+@interface DetailEventWrapperViewController () <PopoverEventWrapperDelegate, PopoverEventDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     UIButton *editButton;
+    
     UIPopoverController *eventWrapperInfoPopover;
     PopoverEventWrapperViewController *pewvc;
     EventWrapper *currentEventWrapper;
-    NSMutableArray *events;
-    UIView *coverView;
     
+    UIPopoverController *eventInfoPopover;
+    PopoverEventViewController *pevc;
+    Event *currentEvent;
+    
+    NSMutableArray *events;
+    
+    UIView *coverView;
 }
+
 @property (weak, nonatomic) IBOutlet UILabel *eventWrapperName;
 @property (weak, nonatomic) IBOutlet UILabel *teacherLabel;
 @property (weak, nonatomic) IBOutlet UILabel *litteratureLabel;
@@ -76,8 +86,15 @@
 {
     [super viewDidLoad];
     
+    
+    UINib *nib = [UINib nibWithNibName:@"IpadEventCell" bundle:nil];
+    [self.eventsTableView registerNib:nib forCellReuseIdentifier:@"IpadEventCell"];
+    
     pewvc = [[PopoverEventWrapperViewController alloc] init];
     pewvc.delegate = self;
+    
+    pevc = [[PopoverEventViewController alloc] init];
+    pevc.delegate = self;
     
     editButton = [UIButton customButtonWithIconImage:[UIImage imageNamed:@"editIcon"] tag:2];
     [editButton addTarget:self action:@selector(editEventWrapper:) forControlEvents:UIControlEventTouchUpInside];
@@ -89,6 +106,10 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(50.0)-[editButton(50.0)]" options:0 metrics:nil views:views]];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 150.0;
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -131,6 +152,7 @@
 {
     return currentEventWrapper;
 }
+
 -(void)popoverEventWrapperUpdateEventWrapper:(EventWrapper *)eventWrapper
 {
     
@@ -142,17 +164,16 @@
          }];
     };
     
-    
-    [Store.adminStore updateEventWrapper:eventWrapper
-                              completion:^(id jsonObject, id response, NSError *error)
-     {
-         
-         saveHandler();
-     }];
-    
-    
-    
+
+        [Store.adminStore updateEventWrapper:eventWrapper
+                                  completion:^(id jsonObject, id response, NSError *error)
+         {
+
+             saveHandler();
+         }];
 }
+
+
 -(void)showPopover:(id)sender
 {
     pewvc.isInEditingMode = YES;
@@ -167,13 +188,8 @@
     [eventWrapperInfoPopover dismissPopoverAnimated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - MasterEventWrapper delegate
+
 -(void)masterEventWrapperDidSelectEventWrapper:(EventWrapper *)eventWrapper
 {
     [coverView removeFromSuperview];
@@ -185,7 +201,9 @@
     self.endDateLabel.text = [Helpers stringFromNSDate:eventWrapper.endDate];
     currentEventWrapper = eventWrapper;
     events = [[NSMutableArray alloc] initWithArray:eventWrapper.events];
+    [self.eventsTableView reloadData];
 }
+
 
 - (void)masterEventWrapperHasNoData
 {
@@ -199,18 +217,99 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    Event *event = [events objectAtIndex:indexPath.row];
-    cell.textLabel.text = event.info;
+    IpadEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IpadEventCell" forIndexPath:indexPath];
+    
+    [Store.adminStore eventWithDocID:currentEventWrapper.events[0]
+                          completion:^(Event *event)
+     {
+         events[indexPath.row] = event;
+         
+         [NSOperationQueue.mainQueue addOperationWithBlock:^
+          {
+              cell.info.text = event.info;
+              cell.date.text = [NSString stringWithFormat:@"%@ - %@", [Helpers stringFromNSDate:event.startDate], [Helpers stringFromNSDate:event.endDate]];
+              cell.room.text = [NSString stringWithFormat:@"Room: %@", event.room];
+          }];
+     }];
     
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    pevc.eventIsInEditingMode = YES;
+    currentEvent = events[indexPath.row];
+    [self showEventPopover:nil];
+}
 
+-(Event *)eventPopoverCurrentEvent
+{
+    return currentEvent;
+}
+
+- (IBAction)addEvent:(id)sender
+{
+    pevc.eventIsInEditingMode = NO;
+    [self showEventPopover:sender];
+}
+
+-(void)showEventPopover:(id)sender
+{
+    if (eventInfoPopover.isPopoverVisible) {
+        return [eventInfoPopover dismissPopoverAnimated:YES];
+    }
+    eventInfoPopover = [[UIPopoverController alloc] initWithContentViewController:pevc];
+    [eventInfoPopover setPopoverContentSize:CGSizeMake(300, 310)];
+    
+    if (pevc.eventIsInEditingMode) {
+        [eventInfoPopover presentPopoverFromRect:CGRectMake(0, 0, 320, 1) inView:self.eventsTableView permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    } else {
+        [eventInfoPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }
+    
+}
+
+-(void)dismissEventPopover
+{
+    [eventInfoPopover dismissPopoverAnimated:YES];
+}
+
+-(void)eventPopoverCreateEvent:(Event *)event
+{
+    [self didAddEvent:event];
+}
+
+-(void)eventPopoverUpdateEvent:(Event *)event
+{
+    NSLog(@"Event id: %@", event.docID);
+}
+
+- (void)didAddEvent:(Event *)event
+{
+    [self addEvent:event];
+    NSLog(@"%@", currentEventWrapper);
+    
+    [Store.adminStore updateEventWrapper:currentEventWrapper
+                              completion:^(id jsonObject, id response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"[%@] didAddEvent got response: %@ and error: %@", self.class, response, error.userInfo);
+         }
+     }];
+}
+
+-(void)addevent:(Event *)event
+{
+    [currentEventWrapper.events addObject:event.docID];
+    [events addObject:event.docID];
+    
+    [NSOperationQueue.mainQueue addOperationWithBlock:^
+     {
+         [self.eventsTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:events.count - 1 inSection:0]]
+                                     withRowAnimation:UITableViewRowAnimationAutomatic];
+     }];
+}
 
 
 @end

@@ -15,23 +15,22 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
-
 
 @implementation AdminStudentsViewController
 {
     NSMutableArray *users;
     User *selectedUser;
+    
+    BOOL isFiltered;
+    NSMutableArray *filteredUsers;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"users_selected"]];
-    
     self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
@@ -49,6 +48,31 @@
      }];
 }
 
+#pragma mark Search Bar delegate
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (searchText.length == 0) {
+        isFiltered = NO;
+    } else {
+        isFiltered = YES;
+        filteredUsers = [NSMutableArray new];
+        for (User *user in users) {
+            NSRange textRange = [user.fullName rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            if (textRange.location != NSNotFound) {
+                [filteredUsers addObject:user];
+            }
+        }
+    }
+    [self.tableview reloadData];
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+
+
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 #warning Testing
@@ -63,13 +87,9 @@
 }
 
 #pragma mark - Table view data source
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return users.count;
+    return isFiltered ? filteredUsers.count : users.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -77,17 +97,14 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [users[indexPath.row] firstname];
+    cell.textLabel.text =  isFiltered ? [filteredUsers[indexPath.row]fullName] : [users[indexPath.row] fullName];
     
     return cell;
 }
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
-}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectedUser = users[indexPath.row];
+    selectedUser = isFiltered ? filteredUsers[indexPath.row] : users[indexPath.row];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [Store.superAdminStore deleteUser:selectedUser
                                completion:^(id jsonObject, id response, NSError *error)
@@ -119,7 +136,7 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectedUser = users[indexPath.row];
+    selectedUser = isFiltered ? filteredUsers[indexPath.row] : users[indexPath.row];
 }
 
 @end
