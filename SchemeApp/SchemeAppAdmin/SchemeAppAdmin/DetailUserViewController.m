@@ -12,6 +12,7 @@
 #import "PopoverUserViewController.h"
 #import "PicturePickerViewController.h"
 #import "CircleImage.h"
+#import "AttendanceViewController.h"
 
 @interface DetailUserViewController ()<PopoverUserDelegate, PicturePickerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -29,7 +30,9 @@
 {
     UIButton *addButton;
     UIButton *editButton;
+    UIBarButtonItem *attendanceButton;
     UIPopoverController *userInfoPopover;
+    UIPopoverController *attendancePopover;
     PopoverUserViewController *puvc;
     User *currentUser;
     CGRect imageSize;
@@ -64,9 +67,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    // Do any additional setup after loading the view from its nib.
+    attendanceButton = [[UIBarButtonItem alloc]initWithTitle:@"Attendance" style:UIBarButtonItemStylePlain target:self action:@selector(didPressAttendance:)];
 }
 
 -(BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
@@ -124,12 +125,12 @@
         CircleImage *userImage = [[CircleImage alloc]initWithImageForDetailView:user.image rect:imageSize];
         self.userImage = userImage;
         [self.view addSubview:self.userImage];
-        
     } else {
         self.userImage = nil;
     }
-    currentUser = user;
+    [self updateAttendanceButtonForUser:user];
     
+    currentUser = user;
 }
 
 -(void)popoverUserUpdateUser:(User *)user
@@ -141,10 +142,10 @@
              [self.navigationController popViewControllerAnimated:YES];
          }];
     };
-    
     [[Store superAdminStore] updateUser:user completion:^(id responseBody, id response, NSError *error) {
         saveHandler();
     }];
+    [self updateAttendanceButtonForUser:user];
 }
 -(void)popoverUserDismissPopover
 {
@@ -174,10 +175,31 @@
     }];
 }
 
+-(void)didPressAttendance:(UIBarButtonItem*)sender {
+    if (attendancePopover.popoverVisible) {
+        return [attendancePopover dismissPopoverAnimated:YES];
+    }
+    AttendanceViewController *attendanceTable = [AttendanceViewController new];
+    attendanceTable.user = currentUser;
+    attendancePopover = [[UIPopoverController alloc] initWithContentViewController:attendanceTable];
+    [attendancePopover setPopoverContentSize:CGSizeMake(300, 500)];
+    [attendancePopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+
+}
+
 - (IBAction)showImagePicker:(id)sender {
     PicturePickerViewController *pickerController = [[PicturePickerViewController alloc] init];
     pickerController.user = currentUser;
     pickerController.delegate = self;
     [self presentViewController:pickerController animated:YES completion:nil];
 }
+
+-(void)updateAttendanceButtonForUser:(User*)user {
+    if (user.role == StudentRole) {
+        [self.navItem setLeftBarButtonItem:attendanceButton animated:YES];
+    } else {
+        [self.navItem setLeftBarButtonItem:nil animated:YES];
+    }
+}
+
 @end

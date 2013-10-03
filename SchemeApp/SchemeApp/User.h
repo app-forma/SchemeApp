@@ -18,6 +18,7 @@
 @property (nonatomic, copy) NSString *password;
 @property (nonatomic, strong) NSMutableArray *eventWrappers;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic) NSMutableArray *attendances;
 
 + (RoleType)roleTypeFromString:(NSString *)roleString;
 + (NSString *)stringFromRoleType:(RoleType)role;

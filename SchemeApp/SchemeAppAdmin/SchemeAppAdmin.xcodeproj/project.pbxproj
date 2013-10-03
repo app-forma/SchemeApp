@@ -97,6 +97,8 @@
 		279D065A17F1DA3E00586DF7 /* EventWrappersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D065817F1DA3E00586DF7 /* EventWrappersViewController.xib */; };
 		279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */; };
 		279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */; };
+		4D48886417FDB2BF00C7E9A3 /* AttendanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D48886217FDB2BF00C7E9A3 /* AttendanceViewController.m */; };
+		4D48886517FDB2BF00C7E9A3 /* AttendanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D48886317FDB2BF00C7E9A3 /* AttendanceViewController.xib */; };
 		4D757A8A17F6195E007255E1 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A8917F6195E007255E1 /* SearchCell.m */; };
 		4D757A8D17F6196C007255E1 /* ReceiverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A8C17F6196C007255E1 /* ReceiverCell.m */; };
 		4D757A9317F63EB0007255E1 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A9217F63EB0007255E1 /* NSDate+Helpers.m */; };
@@ -239,6 +241,9 @@
 		279D066C17F1DCEE00586DF7 /* SchoolInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolInfoViewController.h; sourceTree = "<group>"; };
 		279D066D17F1DCEE00586DF7 /* SchoolInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolInfoViewController.m; sourceTree = "<group>"; };
 		279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolInfoViewController.xib; sourceTree = "<group>"; };
+		4D48886117FDB2BF00C7E9A3 /* AttendanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendanceViewController.h; sourceTree = "<group>"; };
+		4D48886217FDB2BF00C7E9A3 /* AttendanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendanceViewController.m; sourceTree = "<group>"; };
+		4D48886317FDB2BF00C7E9A3 /* AttendanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceViewController.xib; sourceTree = "<group>"; };
 		4D757A8817F6195E007255E1 /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		4D757A8917F6195E007255E1 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		4D757A8B17F6196C007255E1 /* ReceiverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverCell.h; sourceTree = "<group>"; };
@@ -559,6 +564,9 @@
 				04DA657417F4BB990088E589 /* PopoverUserViewController.h */,
 				04DA657517F4BB990088E589 /* PopoverUserViewController.m */,
 				04DA657617F4BB990088E589 /* PopoverUserViewController.xib */,
+				4D48886117FDB2BF00C7E9A3 /* AttendanceViewController.h */,
+				4D48886217FDB2BF00C7E9A3 /* AttendanceViewController.m */,
+				4D48886317FDB2BF00C7E9A3 /* AttendanceViewController.xib */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -752,6 +760,7 @@
 				274E90DD17F320F900E97A12 /* newIcon@1x.png in Resources */,
 				4DF2616717F6083200983735 /* CreateMessage.storyboard in Resources */,
 				274E556017F2F52C00E97A12 /* DetailEventWrapperViewController.xib in Resources */,
+				4D48886517FDB2BF00C7E9A3 /* AttendanceViewController.xib in Resources */,
 				4DF2615E17F5C69900983735 /* MasterMessageViewController.xib in Resources */,
 				279AB6D717F191570094CE64 /* users_unselected@2x.png in Resources */,
 				279AB6BA17F191490094CE64 /* Message.h in Resources */,
@@ -818,6 +827,7 @@
 				279D061717F19F1300586DF7 /* Message.m in Sources */,
 				274E556317F2F54C00E97A12 /* DetailMessageViewController.m in Sources */,
 				4D757A9317F63EB0007255E1 /* NSDate+Helpers.m in Sources */,
+				4D48886417FDB2BF00C7E9A3 /* AttendanceViewController.m in Sources */,
 				279D066F17F1DCEE00586DF7 /* SchoolInfoViewController.m in Sources */,
 				279D061817F19F1300586DF7 /* User.m in Sources */,
 				0426C9E917FB1A9200C94BAD /* AwesomeUI.m in Sources */,

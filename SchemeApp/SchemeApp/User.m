@@ -55,6 +55,7 @@
         self.email = email;
         self.password = password;
         self.eventWrappers = [NSMutableArray new];
+        self.attendances = [NSMutableArray new];
         if (image) {
             self.image = [UIImage imageFromBase64:image];
         }
@@ -82,7 +83,9 @@
             [self.eventWrappers addObject:eventWrapper];
         }
     }
-    
+    for (NSString *attendanceDateString in [userDictionary objectForKey:@"attendances"]) {
+        [self.attendances addObject:attendanceDateString];
+    }
     return self;
 }
 
@@ -95,6 +98,11 @@
         [userEventWrappers addObject:eventWrapper.docID];
     }
     [jsonUser setValue:userEventWrappers forKey:@"eventWrappers"];
+    NSMutableArray *userAttendances = [NSMutableArray new];
+    for (NSString *attendanceDateString in self.attendances) {
+        [userAttendances addObject:attendanceDateString];
+    }
+    [jsonUser setValue:userAttendances forKey:@"attendances"];
     [jsonUser setValue:[User stringFromRoleType:self.role] forKey:@"role"];
     [jsonUser setValue:self.firstname forKey:@"firstname"];
     [jsonUser setValue:self.lastname forKey:@"lastname"];

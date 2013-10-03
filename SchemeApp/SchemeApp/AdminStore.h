@@ -38,6 +38,8 @@
 - (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))handler;
 - (void)userWithType:(RoleType)type completion:(void (^)(NSArray *users))handler;
 
+- (void)removeAttendance:(NSString *)attendanceDateString forUser:(User *)user completion:(void (^)(BOOL success))handler;
+
 #pragma mark - Messages
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))handler;
 - (void)sendMessage:(Message *)message completion:(void (^)(Message *message))handler;

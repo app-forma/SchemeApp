@@ -27,8 +27,8 @@
         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
         NSInteger statusCode = [httpResponse statusCode];
         if (statusCode == 200) {
-            [self.tabBarController setSelectedIndex:0];
             [self.tabBarController.tabBar setHidden:NO];
+            [self.tabBarController setSelectedIndex:0];
         } else {
             NSLog(@"Error saving image: %@", error);
         }
@@ -37,8 +37,8 @@
 
 -(void)picturePickerDidCancel
 {
+    [self.tabBarController.tabBar setHidden:NO];    
     [self.tabBarController setSelectedIndex:0];
-    [self.tabBarController.tabBar setHidden:NO];
 }
 
 - (void)viewDidLoad
