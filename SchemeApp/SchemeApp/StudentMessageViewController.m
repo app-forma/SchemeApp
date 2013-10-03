@@ -7,12 +7,15 @@
 //
 
 #import "StudentMessageViewController.h"
-#import "MessageCell.h"
+//#import "MessageCell.h"
+#import "MasterMessageCell.h"
 #import "Message.h"
 #import "User.h"
 #import "StudentMessageDetailsViewController.h"
 #import "StudentAutomaticPresence.h"
-#import "NSDate+Helpers.h"
+#import "AwesomeUI.h"
+#import "CircleImage.h"
+
 
 @interface StudentMessageViewController ()<UITableViewDelegate, UITableViewDataSource, StudentMessageDetailDelegate, UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -29,6 +32,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"MasterMessageCell" bundle:nil] forCellReuseIdentifier:@"MasterMessageCell"];
+    [AwesomeUI setGGstyleTo:self.tableView];
+    
     [[Store studentStore]messagesForUser:[Store mainStore].currentUser completion:^(NSArray *messagesForUser) {
         messages = [messagesForUser mutableCopy];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -47,15 +54,24 @@
     return [messages count];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 65;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellId = @"MessageCell";
-    MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+    static NSString *cellId = @"MasterMessageCell";
+    MasterMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     
     Message *message = messages[indexPath.row];
+    [AwesomeUI addDefaultStyleTo:cell];
+    cell.backgroundColor = [AwesomeUI colorForIndexPath:indexPath];
     cell.nameLabel.text = message.from.fullName;
     cell.dateLabel.text = message.date.asDateString;
-    cell.messageTextView.text = message.text;
+    cell.messageLabel.text = message.text;
+    UIView *image = [[CircleImage alloc]initWithImageForThumbnail:message.from.image rect:CGRectMake(260, 7, 50, 50)];
+    [cell addSubview:image];
     
     return cell;
 }

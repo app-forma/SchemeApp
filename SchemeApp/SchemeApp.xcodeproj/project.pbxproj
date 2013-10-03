@@ -56,6 +56,7 @@
 		27BCC21717E201EE009977BB /* courses_unselected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC21617E201EE009977BB /* courses_unselected@1x.png */; };
 		27BCC21A17E24304009977BB /* EventWrapperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC21917E24304009977BB /* EventWrapperCell.m */; };
 		27CECEAA17EB22A7004522C0 /* AdminEventWrapperTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CECEA917EB22A7004522C0 /* AdminEventWrapperTableViewController.m */; };
+		4D48885B17FDA59300C7E9A3 /* AwesomeUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D48885A17FDA59300C7E9A3 /* AwesomeUI.m */; };
 		4D757AA017F963C2007255E1 /* SearchCelliPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A9F17F963C2007255E1 /* SearchCelliPhone.m */; };
 		4D757AA317F963CE007255E1 /* ReceiverCelliPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757AA217F963CE007255E1 /* ReceiverCelliPhone.m */; };
 		4D757AA617F9AB81007255E1 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757AA517F9AB81007255E1 /* NSDate+Helpers.m */; };
@@ -67,6 +68,9 @@
 		4DAC5DD917E1EFAD0032C92F /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC5DD817E1EFAD0032C92F /* MessageCell.m */; };
 		4DED32BF17E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED32B817E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m */; };
 		4DED32C017E993F7008A5D3A /* AdminMessagesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED32BA17E993F7008A5D3A /* AdminMessagesDetailViewController.m */; };
+		4DF963E917FD9FD90092F44D /* MasterMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF963E717FD9FD90092F44D /* MasterMessageCell.m */; };
+		4DF963EA17FD9FD90092F44D /* MasterMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF963E817FD9FD90092F44D /* MasterMessageCell.xib */; };
+		4DF963F617FDA3D70092F44D /* CircleImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF963F517FDA3D70092F44D /* CircleImage.m */; };
 		8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */; };
 		8F2407DB17E1C43600BB9B8B /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F2407D917E1C43600BB9B8B /* DatePickerViewController.xib */; };
 		8F5D541517F1BACE0096C7EA /* StudentWhatToReadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D541417F1BACE0096C7EA /* StudentWhatToReadTableViewController.m */; };
@@ -192,6 +196,8 @@
 		27BCC21917E24304009977BB /* EventWrapperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventWrapperCell.m; sourceTree = "<group>"; };
 		27CECEA817EB22A7004522C0 /* AdminEventWrapperTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEventWrapperTableViewController.h; sourceTree = "<group>"; };
 		27CECEA917EB22A7004522C0 /* AdminEventWrapperTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEventWrapperTableViewController.m; sourceTree = "<group>"; };
+		4D48885917FDA59300C7E9A3 /* AwesomeUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AwesomeUI.h; path = SchemeAppAdmin/AwesomeUI.h; sourceTree = SOURCE_ROOT; };
+		4D48885A17FDA59300C7E9A3 /* AwesomeUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AwesomeUI.m; path = SchemeAppAdmin/AwesomeUI.m; sourceTree = SOURCE_ROOT; };
 		4D757A9E17F963C2007255E1 /* SearchCelliPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCelliPhone.h; sourceTree = "<group>"; };
 		4D757A9F17F963C2007255E1 /* SearchCelliPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCelliPhone.m; sourceTree = "<group>"; };
 		4D757AA117F963CE007255E1 /* ReceiverCelliPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverCelliPhone.h; sourceTree = "<group>"; };
@@ -209,6 +215,11 @@
 		4DED32B817E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminMessagesCreateMessageViewController.m; sourceTree = "<group>"; };
 		4DED32B917E993F7008A5D3A /* AdminMessagesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminMessagesDetailViewController.h; sourceTree = "<group>"; };
 		4DED32BA17E993F7008A5D3A /* AdminMessagesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminMessagesDetailViewController.m; sourceTree = "<group>"; };
+		4DF963E617FD9FD90092F44D /* MasterMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterMessageCell.h; path = SchemeAppAdmin/SchemeAppAdmin/MasterMessageCell.h; sourceTree = SOURCE_ROOT; };
+		4DF963E717FD9FD90092F44D /* MasterMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterMessageCell.m; path = SchemeAppAdmin/SchemeAppAdmin/MasterMessageCell.m; sourceTree = SOURCE_ROOT; };
+		4DF963E817FD9FD90092F44D /* MasterMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MasterMessageCell.xib; path = SchemeAppAdmin/SchemeAppAdmin/MasterMessageCell.xib; sourceTree = SOURCE_ROOT; };
+		4DF963F417FDA3D70092F44D /* CircleImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleImage.h; path = SchemeAppAdmin/SchemeAppAdmin/CircleImage.h; sourceTree = SOURCE_ROOT; };
+		4DF963F517FDA3D70092F44D /* CircleImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleImage.m; path = SchemeAppAdmin/SchemeAppAdmin/CircleImage.m; sourceTree = SOURCE_ROOT; };
 		8F2407D717E1C43600BB9B8B /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		8F2407D917E1C43600BB9B8B /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
@@ -404,6 +415,9 @@
 		270CF1A217EB52B1003BEBD2 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				4DF963E617FD9FD90092F44D /* MasterMessageCell.h */,
+				4DF963E717FD9FD90092F44D /* MasterMessageCell.m */,
+				4DF963E817FD9FD90092F44D /* MasterMessageCell.xib */,
 				27BCC1EC17E1F347009977BB /* AdminMessagesViewController.h */,
 				27BCC1ED17E1F347009977BB /* AdminMessagesViewController.m */,
 				4DED32B717E993F7008A5D3A /* AdminMessagesCreateMessageViewController.h */,
@@ -421,6 +435,10 @@
 		2748CDC617DF35EA00A06467 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4D48885917FDA59300C7E9A3 /* AwesomeUI.h */,
+				4D48885A17FDA59300C7E9A3 /* AwesomeUI.m */,
+				4DF963F417FDA3D70092F44D /* CircleImage.h */,
+				4DF963F517FDA3D70092F44D /* CircleImage.m */,
 				4D757AA417F9AB81007255E1 /* NSDate+Helpers.h */,
 				4D757AA517F9AB81007255E1 /* NSDate+Helpers.m */,
 				0437DDA817E2240400DB9F5A /* Validation.h */,
@@ -670,6 +688,7 @@
 				27BCC20017E1FAF5009977BB /* users_unselected@1x.png in Resources */,
 				2791F56017FD5C4400D8795F /* StudentPicturePickerStoryboard.storyboard in Resources */,
 				4D757AEA17F9DF38007255E1 /* StudentEventsStoryBoard.storyboard in Resources */,
+				4DF963EA17FD9FD90092F44D /* MasterMessageCell.xib in Resources */,
 				8F2407DB17E1C43600BB9B8B /* DatePickerViewController.xib in Resources */,
 				0493B53417DDF80C003B3D23 /* InfoPlist.strings in Resources */,
 				0493B53C17DDF80C003B3D23 /* Images.xcassets in Resources */,
@@ -733,6 +752,7 @@
 				AF2551F017E04628006EDD02 /* Store.m in Sources */,
 				AFE538F617E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */,
 				04E09F5B17E7249D00B946CB /* EventCell.m in Sources */,
+				4DF963E917FD9FD90092F44D /* MasterMessageCell.m in Sources */,
 				0493B53617DDF80C003B3D23 /* main.m in Sources */,
 				0437DDAA17E2240400DB9F5A /* Validation.m in Sources */,
 				AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */,
@@ -758,11 +778,13 @@
 				4DED32C017E993F7008A5D3A /* AdminMessagesDetailViewController.m in Sources */,
 				4D757AA017F963C2007255E1 /* SearchCelliPhone.m in Sources */,
 				4D757AA617F9AB81007255E1 /* NSDate+Helpers.m in Sources */,
+				4DF963F617FDA3D70092F44D /* CircleImage.m in Sources */,
 				2791F55917FD566300D8795F /* PicturePickerViewController.m in Sources */,
 				27BCC1F417E1F581009977BB /* AdminEventWrappersViewController.m in Sources */,
 				27BCC1EA17E1E8B5009977BB /* LoginViewController.m in Sources */,
 				27CECEAA17EB22A7004522C0 /* AdminEventWrapperTableViewController.m in Sources */,
 				0423298A17DF2ABA005B47F9 /* Event.m in Sources */,
+				4D48885B17FDA59300C7E9A3 /* AwesomeUI.m in Sources */,
 				AFE538F217E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */,
 				0437DE2517E307F000DB9F5A /* StudentMessageViewController.m in Sources */,
 				0423298D17DF2B7B005B47F9 /* Message.m in Sources */,
