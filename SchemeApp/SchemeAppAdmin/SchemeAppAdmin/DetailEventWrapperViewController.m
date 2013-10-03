@@ -179,7 +179,7 @@
     eventWrapperInfoPopover = [[UIPopoverController alloc] initWithContentViewController:pewvc];
     UIButton *senderButton = (UIButton *)sender;
     [eventWrapperInfoPopover setPopoverContentSize:CGSizeMake(300, 290)];
-    [eventWrapperInfoPopover presentPopoverFromRect:senderButton.bounds inView:senderButton permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+    [eventWrapperInfoPopover presentPopoverFromRect:senderButton.bounds inView:senderButton permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 -(void)popoverEventWrapperDismissPopover
