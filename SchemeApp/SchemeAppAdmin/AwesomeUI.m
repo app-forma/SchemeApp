@@ -98,8 +98,16 @@ static UIColor *fontColorForCoverViews;
 + (void)addDefaultStyleTo:(UITableViewCell*)cell
 {
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:22];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:16];
     cell.textLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
++(void)addColorAndDefaultStyleTo:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath
+{
+    [self addDefaultStyleTo:cell];
+    cell.backgroundColor = [self colorForIndexPath:indexPath];
 }
 
 /**

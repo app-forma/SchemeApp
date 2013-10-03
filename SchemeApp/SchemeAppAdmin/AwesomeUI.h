@@ -34,6 +34,7 @@
  *  Cell style
  */
 + (void)addDefaultStyleTo:(UITableViewCell*)cell;
++(void)addColorAndDefaultStyleTo:(UITableViewCell *)cell forIndexPath:(NSIndexPath*)indexPath;
 + (void)setStateSelectedfor:(UITableViewCell*)cell;
 + (void)setStateUnselectedfor:(UITableViewCell*)cell;
 @end

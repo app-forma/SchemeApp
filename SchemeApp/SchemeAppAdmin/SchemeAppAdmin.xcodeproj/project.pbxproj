@@ -105,6 +105,8 @@
 		4DF2616417F607B900983735 /* CreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2616217F607B900983735 /* CreateMessageViewController.m */; };
 		4DF2616717F6083200983735 /* CreateMessage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2616617F6083200983735 /* CreateMessage.storyboard */; };
 		4DF963DB17FD69B80092F44D /* UIViewController+BarPositionTopBehaviour.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF963DA17FD69B80092F44D /* UIViewController+BarPositionTopBehaviour.m */; };
+		4DF963E317FD96D00092F44D /* MasterMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF963E217FD96D00092F44D /* MasterMessageCell.m */; };
+		4DF963E517FD96E60092F44D /* MasterMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF963E417FD96E60092F44D /* MasterMessageCell.xib */; };
 		8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */; };
 		8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */; };
 		8F30599417FB5E4300593A75 /* IpadEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F30599317FB5E4300593A75 /* IpadEventCell.m */; };
@@ -250,6 +252,9 @@
 		4DF2616617F6083200983735 /* CreateMessage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateMessage.storyboard; sourceTree = "<group>"; };
 		4DF963D917FD69B80092F44D /* UIViewController+BarPositionTopBehaviour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BarPositionTopBehaviour.h"; sourceTree = "<group>"; };
 		4DF963DA17FD69B80092F44D /* UIViewController+BarPositionTopBehaviour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BarPositionTopBehaviour.m"; sourceTree = "<group>"; };
+		4DF963E117FD96D00092F44D /* MasterMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterMessageCell.h; sourceTree = "<group>"; };
+		4DF963E217FD96D00092F44D /* MasterMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterMessageCell.m; sourceTree = "<group>"; };
+		4DF963E417FD96E60092F44D /* MasterMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterMessageCell.xib; sourceTree = "<group>"; };
 		8F12E85717F3261B00FCEDCE /* PopoverEventWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverEventWrapperViewController.h; sourceTree = "<group>"; };
 		8F12E85817F3261B00FCEDCE /* PopoverEventWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverEventWrapperViewController.m; sourceTree = "<group>"; };
 		8F12E85917F3261B00FCEDCE /* PopoverEventWrapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverEventWrapperViewController.xib; sourceTree = "<group>"; };
@@ -525,6 +530,9 @@
 				274E555917F2F4E800E97A12 /* MasterMessageViewController.h */,
 				274E555A17F2F4E800E97A12 /* MasterMessageViewController.m */,
 				4DF2615D17F5C69900983735 /* MasterMessageViewController.xib */,
+				4DF963E117FD96D00092F44D /* MasterMessageCell.h */,
+				4DF963E217FD96D00092F44D /* MasterMessageCell.m */,
+				4DF963E417FD96E60092F44D /* MasterMessageCell.xib */,
 				274E556117F2F54C00E97A12 /* DetailMessageViewController.h */,
 				274E556217F2F54C00E97A12 /* DetailMessageViewController.m */,
 				4DF2615F17F6078900983735 /* DetailMessageViewController.xib */,
@@ -778,6 +786,7 @@
 				27776A8117F9994D00D84839 /* glasses_unselected@1x.png in Resources */,
 				04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */,
 				279D065A17F1DA3E00586DF7 /* EventWrappersViewController.xib in Resources */,
+				4DF963E517FD96E60092F44D /* MasterMessageCell.xib in Resources */,
 				279AB6BB17F191490094CE64 /* Message.m in Resources */,
 				279AB6D617F191570094CE64 /* users_unselected@1x.png in Resources */,
 				279AB6CD17F191570094CE64 /* courses_selected@1x.png in Resources */,
@@ -842,6 +851,7 @@
 				8F8248A417FCA35B00C96B7D /* PopoverEventViewController.m in Sources */,
 				04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */,
 				4DF2616417F607B900983735 /* CreateMessageViewController.m in Sources */,
+				4DF963E317FD96D00092F44D /* MasterMessageCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
