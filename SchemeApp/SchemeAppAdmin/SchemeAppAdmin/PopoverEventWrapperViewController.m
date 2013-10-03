@@ -65,8 +65,8 @@
         self.litterature.text = @"";
         self.startDate.text = @"";
         self.endDate.text = @"";
-
     }
+    [self.teacher setUserInteractionEnabled:NO];
 }
 -(EventWrapper *)returnEventWrapperFromPopoverForUpdate
 {
@@ -91,7 +91,6 @@
     } else {
         [self.delegate popoverEventWrapperCreateEventWrapper:[self returnEventWrapperFromPopoverForCreate]];
     }
-   
     [self.delegate popoverEventWrapperDismissPopover];
 }
 

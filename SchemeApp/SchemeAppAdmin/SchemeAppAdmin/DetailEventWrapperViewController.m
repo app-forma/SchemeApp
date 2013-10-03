@@ -30,6 +30,7 @@
     NSIndexPath *selectedIndexPath;
     
     NSMutableArray *events;
+    NSMutableArray *arrayOfUnsortedEvents;
     
     UIView *coverView;
 }
@@ -84,6 +85,9 @@
     [super viewDidLoad];
     
     self.toolbarTitle.enabled = FALSE;
+    
+
+    arrayOfUnsortedEvents = [[NSMutableArray alloc] init];
     
     UINib *nib = [UINib nibWithNibName:@"IpadEventCell" bundle:nil];
     [self.eventsTableView registerNib:nib forCellReuseIdentifier:@"IpadEventCell"];
@@ -218,7 +222,6 @@
 {
     IpadEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IpadEventCell" forIndexPath:indexPath];
     [self performSelectorOnMainThread:@selector(startAnimating:) withObject:cell waitUntilDone:YES];
-
     
     [Store.adminStore eventWithDocID:currentEventWrapper.events[indexPath.row]
                           completion:^(Event *event)
@@ -234,7 +237,6 @@
           }];
          [self performSelectorOnMainThread:@selector(stopAnimating:) withObject:cell waitUntilDone:YES];
      }];
-    
     return cell;
 }
 
