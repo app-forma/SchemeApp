@@ -9,16 +9,12 @@
 #import "DetailMessageViewController.h"
 #import "MasterMessageViewController.h"
 #import "Message.h"
-#import "NSDate+Helpers.h"
-
 
 @interface DetailMessageViewController () <UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *fromLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
-
-
 
 @end
 
