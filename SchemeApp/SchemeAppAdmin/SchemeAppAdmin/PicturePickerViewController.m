@@ -10,6 +10,7 @@
 
 @interface PicturePickerViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 - (IBAction)showCamera:(id)sender;
 - (IBAction)showLibrary:(id)sender;
 - (IBAction)saveChanges:(id)sender;
@@ -23,7 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
+ 
     }
     return self;
 }

@@ -23,7 +23,7 @@
         
         if (role == StudentRole) {
             [self checkAttendance];
-            [self setupTabBarWithStoryboards:@[@"StudentMessagesStoryboard", @"StudentEventsStoryBoard", @"StudentWhatToReadStoryboard"]];
+            [self setupTabBarWithStoryboards:@[@"StudentMessagesStoryboard", @"StudentEventsStoryBoard", @"StudentWhatToReadStoryboard", @"StudentPicturePickerStoryboard"]];
 
         } else {
             [self setupTabBarWithStoryboards:@[@"AdminEventWrapperStoryboard", @"AdminMessagesStoryboard", @"AdminUserStoryboard"]];
