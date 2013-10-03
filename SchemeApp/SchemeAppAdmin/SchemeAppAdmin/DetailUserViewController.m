@@ -12,6 +12,7 @@
 #import "PopoverUserViewController.h"
 #import "PicturePickerViewController.h"
 #import "CircleImage.h"
+#import "AttendanceViewController.h"
 
 @interface DetailUserViewController ()<PopoverUserDelegate, PicturePickerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -30,6 +31,7 @@
     UIButton *addButton;
     UIButton *editButton;
     UIPopoverController *userInfoPopover;
+    UIPopoverController *attendancePopover;
     PopoverUserViewController *puvc;
     User *currentUser;
     CGRect imageSize;
@@ -64,9 +66,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    // Do any additional setup after loading the view from its nib.
+    self.navItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Attendance" style:UIBarButtonItemStylePlain target:self action:@selector(didPressAttendance:)];
 }
 
 -(BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
@@ -172,6 +172,18 @@
             NSLog(@"Error saving image: %@", error);
         }
     }];
+}
+
+-(void)didPressAttendance:(UIBarButtonItem*)sender {
+    if (attendancePopover.popoverVisible) {
+        return [attendancePopover dismissPopoverAnimated:YES];
+    }
+    AttendanceViewController *attendanceTable = [AttendanceViewController new];
+    attendanceTable.user = currentUser;
+    attendancePopover = [[UIPopoverController alloc] initWithContentViewController:attendanceTable];
+    [attendancePopover setPopoverContentSize:CGSizeMake(300, 500)];
+    [attendancePopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+
 }
 
 - (IBAction)showImagePicker:(id)sender {

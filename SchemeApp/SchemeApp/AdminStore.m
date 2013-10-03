@@ -216,6 +216,19 @@
      }];
 }
 
+- (void)removeAttendance:(NSString *)attendanceDateString forUser:(User *)user completion:(void (^)(BOOL success))handler
+{
+    [[Store dbSessionConnection]deletePath:[NSString stringWithFormat:@"%@/%@/%@/%@", DB_TYPE_USER, user.docID, @"attendance",attendanceDateString] withCompletion:
+    ^(id responseBody, id response, NSError *error) {
+        if (error) {
+            NSLog(@"removeAttendance got response: %@ and error: %@", response, error.userInfo);
+            handler(NO);
+        } else {
+            handler(YES);
+        }
+    }];
+}
+
 #pragma mark - Messages
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))handler
 {
