@@ -30,6 +30,7 @@
 {
     UIButton *addButton;
     UIButton *editButton;
+    UIBarButtonItem *attendanceButton;
     UIPopoverController *userInfoPopover;
     UIPopoverController *attendancePopover;
     PopoverUserViewController *puvc;
@@ -66,7 +67,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Attendance" style:UIBarButtonItemStylePlain target:self action:@selector(didPressAttendance:)];
+    attendanceButton = [[UIBarButtonItem alloc]initWithTitle:@"Attendance" style:UIBarButtonItemStylePlain target:self action:@selector(didPressAttendance:)];
 }
 
 -(BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
@@ -124,12 +125,12 @@
         CircleImage *userImage = [[CircleImage alloc]initWithImageForDetailView:user.image rect:imageSize];
         self.userImage = userImage;
         [self.view addSubview:self.userImage];
-        
     } else {
         self.userImage = nil;
     }
-    currentUser = user;
+    [self updateAttendanceButtonForUser:user];
     
+    currentUser = user;
 }
 
 -(void)popoverUserUpdateUser:(User *)user
@@ -141,10 +142,10 @@
              [self.navigationController popViewControllerAnimated:YES];
          }];
     };
-    
     [[Store superAdminStore] updateUser:user completion:^(id responseBody, id response, NSError *error) {
         saveHandler();
     }];
+    [self updateAttendanceButtonForUser:user];
 }
 -(void)popoverUserDismissPopover
 {
@@ -192,4 +193,13 @@
     pickerController.delegate = self;
     [self presentViewController:pickerController animated:YES completion:nil];
 }
+
+-(void)updateAttendanceButtonForUser:(User*)user {
+    if (user.role == StudentRole) {
+        [self.navItem setLeftBarButtonItem:attendanceButton animated:YES];
+    } else {
+        [self.navItem setLeftBarButtonItem:nil animated:YES];
+    }
+}
+
 @end
