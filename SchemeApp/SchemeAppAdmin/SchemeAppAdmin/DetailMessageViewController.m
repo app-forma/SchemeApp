@@ -12,7 +12,7 @@
 #import "NSDate+Helpers.h"
 
 
-@interface DetailMessageViewController () <UIActionSheetDelegate, UIBarPositioningDelegate>
+@interface DetailMessageViewController () <UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *fromLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -29,35 +29,20 @@
     [super viewDidLoad];
 }
 
--(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
-{
-    return UIBarPositionTopAttached;
-}
-
-
 - (void)splitViewController:(UISplitViewController *)svc
      willHideViewController:(UIViewController *)aViewController
           withBarButtonItem:(UIBarButtonItem *)barButtonItem
-       forPopoverController:(UIPopoverController *)pc
-{
-    
-}
-
+       forPopoverController:(UIPopoverController *)pc {}
 
 - (void)splitViewController:(UISplitViewController *)svc
      willShowViewController:(UIViewController *)aViewController
-  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-}
+  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {}
+
 -(BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
 {
     return NO;
 }
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
 
-}
 -(void)didSelectMessage:(Message *)message
 {
     self.navItem.title = [NSString stringWithFormat:@"Message from %@", message.from.firstname];
