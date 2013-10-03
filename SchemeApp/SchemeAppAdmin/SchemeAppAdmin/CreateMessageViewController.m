@@ -17,7 +17,6 @@
 #import "ReceiverCell.h"
 #import "Message.h"
 #import "User.h"
-
 #import "CreateMessageViewController.h"
 
 @interface CreateMessageViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate>
