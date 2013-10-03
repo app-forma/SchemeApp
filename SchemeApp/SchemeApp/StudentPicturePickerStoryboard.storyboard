@@ -15,20 +15,10 @@
                     <view key="view" contentMode="scaleToFill" id="2hc-7U-wgC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oQZ-gq-NMm">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Picture" image="camera_unselected.png" id="kNl-P3-VjK"/>
                     <navigationItem key="navigationItem" id="kMI-fl-cTQ"/>
-                    <connections>
-                        <outlet property="storyboardView" destination="oQZ-gq-NMm" id="gB6-zO-dLC"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="avW-8y-r6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
