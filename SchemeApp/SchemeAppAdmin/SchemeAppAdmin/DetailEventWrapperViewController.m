@@ -27,6 +27,7 @@
     UIPopoverController *eventInfoPopover;
     PopoverEventViewController *pevc;
     Event *currentEvent;
+    NSIndexPath *selectedIndexPath;
     
     NSMutableArray *events;
     
@@ -219,7 +220,7 @@
 {
     IpadEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IpadEventCell" forIndexPath:indexPath];
     
-    [Store.adminStore eventWithDocID:currentEventWrapper.events[0]
+    [Store.adminStore eventWithDocID:currentEventWrapper.events[indexPath.row]
                           completion:^(Event *event)
      {
          events[indexPath.row] = event;
@@ -237,6 +238,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    selectedIndexPath = indexPath;
     pevc.eventIsInEditingMode = YES;
     currentEvent = events[indexPath.row];
     [self showEventPopover:nil];
@@ -276,18 +278,39 @@
 
 -(void)eventPopoverCreateEvent:(Event *)event
 {
-    [self didAddEvent:event];
+    [Store.adminStore createEvent:event
+                       completion:^(id jsonObject, id response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"save: got response: %@ and error: %@", response, error.userInfo);
+         }
+         else
+         {
+             [self didAddEvent:[[Event alloc] initWithEventDictionary:jsonObject]];
+         }
+     }];
 }
 
 -(void)eventPopoverUpdateEvent:(Event *)event
 {
-    NSLog(@"Event id: %@", event.docID);
+    [Store.adminStore updateEvent:event
+                       completion:^(id jsonObject, id response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"save: got response: %@ and error: %@", response, error);
+         }
+         else
+         {
+             [self didEditEvent:event];
+         }
+     }];
 }
 
 - (void)didAddEvent:(Event *)event
 {
-    [self addEvent:event];
-    NSLog(@"%@", currentEventWrapper);
+    [self addEventToEventWrapper:event];
     
     [Store.adminStore updateEventWrapper:currentEventWrapper
                               completion:^(id jsonObject, id response, NSError *error)
@@ -299,7 +322,7 @@
      }];
 }
 
--(void)addevent:(Event *)event
+-(void)addEventToEventWrapper:(Event *)event
 {
     [currentEventWrapper.events addObject:event.docID];
     [events addObject:event.docID];
@@ -308,6 +331,15 @@
      {
          [self.eventsTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:events.count - 1 inSection:0]]
                                      withRowAnimation:UITableViewRowAnimationAutomatic];
+     }];
+}
+
+-(void)didEditEvent:(Event *)event
+{
+    [NSOperationQueue.mainQueue addOperationWithBlock:^
+     {
+         [self.eventsTableView reloadRowsAtIndexPaths:@[selectedIndexPath]
+                               withRowAnimation:UITableViewRowAnimationAutomatic];
      }];
 }
 
