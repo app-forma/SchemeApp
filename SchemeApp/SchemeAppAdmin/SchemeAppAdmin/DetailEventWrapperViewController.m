@@ -60,8 +60,6 @@
           withBarButtonItem:(UIBarButtonItem *)barButtonItem
        forPopoverController:(UIPopoverController *)pc
 {
-    
-    
 }
 
 
@@ -105,6 +103,7 @@
     NSDictionary *views = NSDictionaryOfVariableBindings(editButton);
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[editButton(50.0)]-(25.0)-|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(50.0)-[editButton(50.0)]" options:0 metrics:nil views:views]];
+    events = [[NSMutableArray alloc] init];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -213,12 +212,15 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"Count: %d", [events count]);
     return [events count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IpadEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IpadEventCell" forIndexPath:indexPath];
+    
+    NSLog(@"Current event: %@", currentEventWrapper.events[indexPath.row]);
     
     [Store.adminStore eventWithDocID:currentEventWrapper.events[indexPath.row]
                           completion:^(Event *event)
@@ -235,6 +237,54 @@
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        Event *selectedEvent = events[indexPath.row];
+        [self removeEventWithIndexPath:indexPath];
+        
+        [Store.adminStore updateEventWrapper:currentEventWrapper
+                                  completion:^(id jsonObject, id response, NSError *error)
+         {
+             if (error)
+             {
+                 NSLog(@"[%@] updateEventWrapper got respone: %@ and error: %@", self.class, response, error.userInfo);
+                 
+                 [NSOperationQueue.mainQueue addOperationWithBlock:^
+                  {
+                      [self.eventsTableView reloadData];
+                  }];
+             }
+             else
+             {
+                 [Store.adminStore deleteEvent:selectedEvent
+                                    completion:^(id jsonObject, id response, NSError *error)
+                  {
+                      if (error)
+                      {
+                          NSLog(@"[%@] deleteEvent got respone: %@ and error: %@", self.class, response, error.userInfo);
+                      }
+                  }];
+             }
+         }];
+    }
+}
+
+- (void)removeEventWithIndexPath:(NSIndexPath *)indexPath
+{
+    [currentEventWrapper.events removeObjectAtIndex:indexPath.row];
+    [events removeObjectAtIndex:indexPath.row];
+    
+    
+    [NSOperationQueue.mainQueue addOperationWithBlock:^
+     {
+         [self.eventsTableView deleteRowsAtIndexPaths:@[indexPath]
+                               withRowAnimation:UITableViewRowAnimationFade];
+     }];
+}
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
