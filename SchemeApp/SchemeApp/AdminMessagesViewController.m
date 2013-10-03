@@ -30,7 +30,8 @@
     [super viewDidLoad];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"MasterMessageCell" bundle:nil] forCellReuseIdentifier:@"MasterMessageCell"];
-    [AwesomeUI setGGstyleTo:self.tableView];    
+    [AwesomeUI setGGstyleTo:self.tableView];
+    self.tableView.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
     
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected"]];
     
