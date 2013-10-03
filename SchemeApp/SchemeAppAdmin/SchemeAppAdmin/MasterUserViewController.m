@@ -88,8 +88,11 @@
     User *user = users[indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
 #warning just temporary, initiate custom cell
-    UIView *image = [[CircleImage alloc]initWithImageForThumbnail:user.image rect:CGRectMake(250,20, 60, 60)];
-    [cell.contentView addSubview:image];
+    if (user.image) {
+        UIView *image = [[CircleImage alloc]initWithImageForThumbnail:user.image rect:CGRectMake(250,20, 60, 60)];
+        [cell.contentView addSubview:image];
+    }
+   
     return cell;
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

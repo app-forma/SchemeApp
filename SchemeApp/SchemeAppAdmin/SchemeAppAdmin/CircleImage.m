@@ -30,7 +30,7 @@ typedef enum Image{
         self.imageView.image = image;
         self.imageView.backgroundColor = [UIColor clearColor];
         self.backgroundColor = [UIColor clearColor];
-        [self drawRect:self.frame];
+//        [self drawRect:self.frame];
     }
     return self;
 }
@@ -67,9 +67,17 @@ typedef enum Image{
 }
 -(void)drawImageForThumbnail:(CGRect)rect
 {
-
+    
+    int radius = rect.size.width;
+    
+    UIBezierPath* roundedRect = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(10, 10, rect.size.width-14, rect.size.height-14) cornerRadius:radius/2];
+    [[UIColor whiteColor] setStroke];
+    roundedRect.lineWidth = 3;
+    [roundedRect stroke];
+    
+    
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, rect.size.width, rect.size.height) cornerRadius:self.imageView.frame.size.height/2];
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(13, 13, rect.size.width-20, rect.size.height-20) cornerRadius:self.imageView.frame.size.height/2];
     CGFloat imageRatio = self.imageView.image.size.width / self.imageView.image.size.height;
     CGSize imageSize = CGSizeMake(rect.size.height * imageRatio, rect.size.height);
     CGRect imageRect = CGRectMake(0, 0, imageSize.width, imageSize.height);
@@ -79,6 +87,24 @@ typedef enum Image{
     UIGraphicsEndImageContext();
     self.imageView.image = image;
     [self addSubview:self.imageView];
+
+
+//    [path addArcWithCenter:CGPointMake(0, 0)
+//                    radius:self.imageView.frame.size.height/2
+//                startAngle:0.0
+//                  endAngle:M_PI * 2.0
+//                 clockwise:YES];
+//    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+//    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, rect.size.width, rect.size.height) cornerRadius:self.imageView.frame.size.height/2];
+//    CGFloat imageRatio = self.imageView.image.size.width / self.imageView.image.size.height;
+//    CGSize imageSize = CGSizeMake(rect.size.height * imageRatio, rect.size.height);
+//    CGRect imageRect = CGRectMake(0, 0, imageSize.width, imageSize.height);
+//    [path addClip];
+//    [self.imageView.image drawInRect:imageRect];
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    self.imageView.image = image;
+//    [self addSubview:self.imageView];
     
 }
 -(UIImage *)resizeImage:(UIImage*)image scaledToSize:(CGSize)newSize
