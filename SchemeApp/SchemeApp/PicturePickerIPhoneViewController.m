@@ -6,37 +6,46 @@
 //  Copyright (c) 2013 Marcus Norling. All rights reserved.
 //
 
-#import "PicturePickerViewController.h"
+#import "PicturePickerIPhoneViewController.h"
 
-@interface PicturePickerViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface PicturePickerIPhoneViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 - (IBAction)showCamera:(id)sender;
 - (IBAction)showLibrary:(id)sender;
 - (IBAction)saveChanges:(id)sender;
-- (IBAction)cancel:(id)sender;
 
 @end
 
-@implementation PicturePickerViewController
+@implementation PicturePickerIPhoneViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+
     }
     return self;
 }
 
--(void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
+    [self.tabBarController.tabBar setHidden:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.tabBarController.tabBar setHidden:NO];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
+    self.user = [Store mainStore].currentUser;
     [self.loadIndicator stopAnimating];
     self.loadingView.hidden = YES;
     if (self.user.image) {
@@ -62,15 +71,28 @@
 - (IBAction)saveChanges:(id)sender {
     [self.loadIndicator startAnimating];
     self.loadingView.hidden = NO;
-    if (self.user.image) {
-        [self.delegate picturePicker:self didFinishPickingPicture:self.user.image forUser:self.user];
-    } else {
-        [self.delegate picturePickerDidCancel];
-    }
+    [[Store superAdminStore] updateUser:self.user completion:^(id responseBody, id response, NSError *error) {
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger statusCode = [httpResponse statusCode];
+        if (statusCode == 200 || statusCode == 201) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.loadingView setHidden:YES];
+                [self.tabBarController setSelectedIndex:3];
+            });
+        } else {
+            NSLog(@"Error saving image: %@", error);
+        }
+    }];
 }
 
 - (IBAction)cancel:(id)sender {
-    [self.delegate picturePickerDidCancel];
+    [self cancel];
+}
+
+- (void)cancel
+{
+    [self.tabBarController.tabBar setHidden:NO];
+    [self.tabBarController setSelectedIndex:0];
 }
 
 - (BOOL)showImagePickerControllerForType:(UIImagePickerControllerSourceType) sourceType

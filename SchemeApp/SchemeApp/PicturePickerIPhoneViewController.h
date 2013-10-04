@@ -7,20 +7,12 @@
 //
 
 @class PicturePickerViewController;
-@protocol PicturePickerDelegate <NSObject>
-
-- (void)picturePicker:(PicturePickerViewController *)picturePicker didFinishPickingPicture:(UIImage *)image forUser:(User *)user;
-- (void)picturePickerDidCancel;
-
-@end
-
 #import <UIKit/UIKit.h>
 
 @class User;
 
-@interface PicturePickerViewController : UIViewController
+@interface PicturePickerIPhoneViewController : UIViewController
 
-@property (weak) id <PicturePickerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadIndicator;
 @property (weak, nonatomic) IBOutlet UIView *loadingView;
 
