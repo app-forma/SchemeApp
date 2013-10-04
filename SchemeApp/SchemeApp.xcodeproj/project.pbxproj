@@ -66,7 +66,9 @@
 		8F5D541B17F2029C0096C7EA /* WhatToReadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D541A17F2029C0096C7EA /* WhatToReadCell.m */; };
 		AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
 		AF05FD3D17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
+		AF1693C817FB51CD00E045B9 /* YearCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1693C717FB51CD00E045B9 /* YearCollectionReusableView.m */; };
 		AF1FE93117F47CB1005D54E5 /* StudentAutomaticPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1FE93017F47CB1005D54E5 /* StudentAutomaticPresence.m */; };
+		AF22F03C17FEE74A00E227CF /* WeekCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F03B17FEE74900E227CF /* WeekCollectionViewCell.m */; };
 		AF2551F017E04628006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F117E04629006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7817DF0FE900DC2DEC /* AdminStore.m */; };
@@ -86,9 +88,9 @@
 		AF99541B17F2CD53003C450B /* TypeDef in Resources */ = {isa = PBXBuildFile; fileRef = AF99541A17F2CD53003C450B /* TypeDef */; };
 		AF99542417F2FDAC003C450B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99542317F2FDAC003C450B /* Location.m */; };
 		AFC5F79817FADA6600E01D3B /* MonthCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC5F79717FADA6600E01D3B /* MonthCollectionViewCell.m */; };
-		AFC5F79B17FADE0D00E01D3B /* MonthCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC5F79A17FADE0D00E01D3B /* MonthCollectionViewController.m */; };
+		AFC5F79B17FADE0D00E01D3B /* YearCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC5F79A17FADE0D00E01D3B /* YearCollectionViewController.m */; };
 		AFC5F79E17FAF67200E01D3B /* DayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC5F79D17FAF67200E01D3B /* DayCollectionViewCell.m */; };
-		AFC5F7A317FAFB3900E01D3B /* DayCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC5F7A217FAFB3900E01D3B /* DayCollectionViewController.m */; };
+		AFC5F7A317FAFB3900E01D3B /* MonthCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC5F7A217FAFB3900E01D3B /* MonthCollectionViewController.m */; };
 		AFDA09EC17EAEAC300333A48 /* DatabaseConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */; };
 		AFDA09ED17EAEAC300333A48 /* DatabaseConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */; };
 		AFE3E54917F212FD00586321 /* SelectedEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE3E54417F212FD00586321 /* SelectedEventTableViewController.m */; };
@@ -206,8 +208,12 @@
 		8F5D541A17F2029C0096C7EA /* WhatToReadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhatToReadCell.m; sourceTree = "<group>"; };
 		AF05FD3A17E71638004A5B01 /* AdminEditStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEditStudentViewController.h; sourceTree = "<group>"; };
 		AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEditStudentViewController.m; sourceTree = "<group>"; };
+		AF1693C617FB51CD00E045B9 /* YearCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearCollectionReusableView.h; sourceTree = "<group>"; };
+		AF1693C717FB51CD00E045B9 /* YearCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearCollectionReusableView.m; sourceTree = "<group>"; };
 		AF1FE92F17F47CB1005D54E5 /* StudentAutomaticPresence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudentAutomaticPresence.h; path = SchemeApp/StudentAutomaticPresence.h; sourceTree = "<group>"; };
 		AF1FE93017F47CB1005D54E5 /* StudentAutomaticPresence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StudentAutomaticPresence.m; path = SchemeApp/StudentAutomaticPresence.m; sourceTree = "<group>"; };
+		AF22F03A17FEE74900E227CF /* WeekCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekCollectionViewCell.h; sourceTree = "<group>"; };
+		AF22F03B17FEE74900E227CF /* WeekCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekCollectionViewCell.m; sourceTree = "<group>"; };
 		AF2551F617E04883006EDD02 /* SuperAdminStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperAdminStore.h; sourceTree = "<group>"; };
 		AF2551F717E04883006EDD02 /* SuperAdminStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperAdminStore.m; sourceTree = "<group>"; };
 		AF301B7717DF0FE900DC2DEC /* AdminStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdminStore.h; sourceTree = "<group>"; };
@@ -226,12 +232,12 @@
 		AF99542317F2FDAC003C450B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		AFC5F79617FADA6600E01D3B /* MonthCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthCollectionViewCell.h; sourceTree = "<group>"; };
 		AFC5F79717FADA6600E01D3B /* MonthCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCollectionViewCell.m; sourceTree = "<group>"; };
-		AFC5F79917FADE0D00E01D3B /* MonthCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthCollectionViewController.h; sourceTree = "<group>"; };
-		AFC5F79A17FADE0D00E01D3B /* MonthCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCollectionViewController.m; sourceTree = "<group>"; };
+		AFC5F79917FADE0D00E01D3B /* YearCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearCollectionViewController.h; sourceTree = "<group>"; };
+		AFC5F79A17FADE0D00E01D3B /* YearCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearCollectionViewController.m; sourceTree = "<group>"; };
 		AFC5F79C17FAF67200E01D3B /* DayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCollectionViewCell.h; sourceTree = "<group>"; };
 		AFC5F79D17FAF67200E01D3B /* DayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCollectionViewCell.m; sourceTree = "<group>"; };
-		AFC5F7A117FAFB3900E01D3B /* DayCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCollectionViewController.h; sourceTree = "<group>"; };
-		AFC5F7A217FAFB3900E01D3B /* DayCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCollectionViewController.m; sourceTree = "<group>"; };
+		AFC5F7A117FAFB3900E01D3B /* MonthCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthCollectionViewController.h; sourceTree = "<group>"; };
+		AFC5F7A217FAFB3900E01D3B /* MonthCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCollectionViewController.m; sourceTree = "<group>"; };
 		AFDA09EA17EAEAC300333A48 /* DatabaseConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseConnection.h; sourceTree = "<group>"; };
 		AFDA09EB17EAEAC300333A48 /* DatabaseConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseConnection.m; sourceTree = "<group>"; };
 		AFE3E54317F212FD00586321 /* SelectedEventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedEventTableViewController.h; sourceTree = "<group>"; };
@@ -516,20 +522,13 @@
 			isa = PBXGroup;
 			children = (
 				27BCC1EB17E1F335009977BB /* Admin */,
+				AF1693C217FB4C8A00E045B9 /* Calendar */,
 				27BCC1E817E1E8B5009977BB /* LoginViewController.h */,
 				27BCC1E917E1E8B5009977BB /* LoginViewController.m */,
 				AFE538EB17E0972C00C0B776 /* StudentEventMainViewController.h */,
 				AFE538EC17E0972C00C0B776 /* StudentEventMainViewController.m */,
 				AFE538E917E0972C00C0B776 /* StudentEventsTableViewController.h */,
 				AFE538EA17E0972C00C0B776 /* StudentEventsTableViewController.m */,
-				AFC5F79917FADE0D00E01D3B /* MonthCollectionViewController.h */,
-				AFC5F79A17FADE0D00E01D3B /* MonthCollectionViewController.m */,
-				AFC5F79617FADA6600E01D3B /* MonthCollectionViewCell.h */,
-				AFC5F79717FADA6600E01D3B /* MonthCollectionViewCell.m */,
-				AFC5F7A117FAFB3900E01D3B /* DayCollectionViewController.h */,
-				AFC5F7A217FAFB3900E01D3B /* DayCollectionViewController.m */,
-				AFC5F79C17FAF67200E01D3B /* DayCollectionViewCell.h */,
-				AFC5F79D17FAF67200E01D3B /* DayCollectionViewCell.m */,
 				AFE538E717E0972C00C0B776 /* StudentEventDetailsViewController.h */,
 				AFE538E817E0972C00C0B776 /* StudentEventDetailsViewController.m */,
 				0437DE2317E307F000DB9F5A /* StudentMessageViewController.h */,
@@ -544,6 +543,41 @@
 				8F5D541417F1BACE0096C7EA /* StudentWhatToReadTableViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		AF1693C217FB4C8A00E045B9 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				AF22F03D17FF042400E227CF /* Year */,
+				AF22F03E17FF042D00E227CF /* Month */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		AF22F03D17FF042400E227CF /* Year */ = {
+			isa = PBXGroup;
+			children = (
+				AFC5F79917FADE0D00E01D3B /* YearCollectionViewController.h */,
+				AFC5F79A17FADE0D00E01D3B /* YearCollectionViewController.m */,
+				AF1693C617FB51CD00E045B9 /* YearCollectionReusableView.h */,
+				AF1693C717FB51CD00E045B9 /* YearCollectionReusableView.m */,
+				AFC5F79617FADA6600E01D3B /* MonthCollectionViewCell.h */,
+				AFC5F79717FADA6600E01D3B /* MonthCollectionViewCell.m */,
+			);
+			name = Year;
+			sourceTree = "<group>";
+		};
+		AF22F03E17FF042D00E227CF /* Month */ = {
+			isa = PBXGroup;
+			children = (
+				AFC5F7A117FAFB3900E01D3B /* MonthCollectionViewController.h */,
+				AFC5F7A217FAFB3900E01D3B /* MonthCollectionViewController.m */,
+				AFC5F79C17FAF67200E01D3B /* DayCollectionViewCell.h */,
+				AFC5F79D17FAF67200E01D3B /* DayCollectionViewCell.m */,
+				AF22F03A17FEE74900E227CF /* WeekCollectionViewCell.h */,
+				AF22F03B17FEE74900E227CF /* WeekCollectionViewCell.m */,
+			);
+			name = Month;
 			sourceTree = "<group>";
 		};
 		AF301B7617DF0FDC00DC2DEC /* Store */ = {
@@ -706,6 +740,7 @@
 				0493B53A17DDF80C003B3D23 /* AppDelegate.m in Sources */,
 				8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */,
 				4D757AA317F963CE007255E1 /* ReceiverCelliPhone.m in Sources */,
+				AF22F03C17FEE74A00E227CF /* WeekCollectionViewCell.m in Sources */,
 				AFC5F79817FADA6600E01D3B /* MonthCollectionViewCell.m in Sources */,
 				AFE3E54917F212FD00586321 /* SelectedEventTableViewController.m in Sources */,
 				4DED32BF17E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m in Sources */,
@@ -715,7 +750,7 @@
 				0493B53617DDF80C003B3D23 /* main.m in Sources */,
 				0437DDAA17E2240400DB9F5A /* Validation.m in Sources */,
 				AFC5F79E17FAF67200E01D3B /* DayCollectionViewCell.m in Sources */,
-				AFC5F7A317FAFB3900E01D3B /* DayCollectionViewController.m in Sources */,
+				AFC5F7A317FAFB3900E01D3B /* MonthCollectionViewController.m in Sources */,
 				AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */,
 				0423298117DF230B005B47F9 /* User.m in Sources */,
 				AFE3E54A17F212FD00586321 /* SelectedEventWrapperEventCell.m in Sources */,
@@ -744,7 +779,8 @@
 				0423298A17DF2ABA005B47F9 /* Event.m in Sources */,
 				AFE538F217E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */,
 				0437DE2517E307F000DB9F5A /* StudentMessageViewController.m in Sources */,
-				AFC5F79B17FADE0D00E01D3B /* MonthCollectionViewController.m in Sources */,
+				AF1693C817FB51CD00E045B9 /* YearCollectionReusableView.m in Sources */,
+				AFC5F79B17FADE0D00E01D3B /* YearCollectionViewController.m in Sources */,
 				0423298D17DF2B7B005B47F9 /* Message.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
