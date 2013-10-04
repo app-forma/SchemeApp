@@ -94,8 +94,13 @@
     NSMutableDictionary *jsonUser = [[NSMutableDictionary alloc]init];
     
     NSMutableArray *userEventWrappers = [[NSMutableArray alloc]init];
-    for (EventWrapper *eventWrapper in userEventWrappers) {
-        [userEventWrappers addObject:eventWrapper.docID];
+    for (id eventWrapper in self.eventWrappers) {
+        if ([eventWrapper isKindOfClass:[EventWrapper class]]) {
+            EventWrapper *nativeEventWrapper = (EventWrapper*)eventWrapper;
+            [userEventWrappers addObject:nativeEventWrapper.docID];
+        } else if ([eventWrapper isKindOfClass:[NSString class]]) {
+            [userEventWrappers addObject:eventWrapper];
+        }
     }
     [jsonUser setValue:userEventWrappers forKey:@"eventWrappers"];
     NSMutableArray *userAttendances = [NSMutableArray new];
