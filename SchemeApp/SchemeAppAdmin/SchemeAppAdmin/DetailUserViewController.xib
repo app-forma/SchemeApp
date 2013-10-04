@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailUserViewController">
             <connections>
+                <outlet property="coursesButton" destination="iF2-8t-orm" id="NGC-OB-OrF"/>
                 <outlet property="emailLabel" destination="IsY-NE-vYe" id="8gl-Ro-dOD"/>
                 <outlet property="nameLabel" destination="eGb-wi-KYf" id="Ody-x2-PKA"/>
                 <outlet property="navItem" destination="8yG-wU-bgW" id="bPb-mx-NA8"/>
@@ -93,6 +94,16 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iF2-8t-orm">
+                    <rect key="frame" x="20" y="78" width="57" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Courses">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didPressCourses:" destination="-1" eventType="touchUpInside" id="jNr-UR-lwX"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

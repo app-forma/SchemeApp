@@ -105,6 +105,8 @@
 		279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279D066E17F1DCEE00586DF7 /* SchoolInfoViewController.xib */; };
 		4D48886417FDB2BF00C7E9A3 /* AttendanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D48886217FDB2BF00C7E9A3 /* AttendanceViewController.m */; };
 		4D48886517FDB2BF00C7E9A3 /* AttendanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D48886317FDB2BF00C7E9A3 /* AttendanceViewController.xib */; };
+		4D4888DC17FEED1900C7E9A3 /* EventWrappersForUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4888DA17FEED1900C7E9A3 /* EventWrappersForUserViewController.m */; };
+		4D4888DD17FEED1900C7E9A3 /* EventWrappersForUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D4888DB17FEED1900C7E9A3 /* EventWrappersForUserViewController.xib */; };
 		4D757A8A17F6195E007255E1 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A8917F6195E007255E1 /* SearchCell.m */; };
 		4D757A8D17F6196C007255E1 /* ReceiverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A8C17F6196C007255E1 /* ReceiverCell.m */; };
 		4D757A9317F63EB0007255E1 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A9217F63EB0007255E1 /* NSDate+Helpers.m */; };
@@ -253,6 +255,9 @@
 		4D48886117FDB2BF00C7E9A3 /* AttendanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendanceViewController.h; sourceTree = "<group>"; };
 		4D48886217FDB2BF00C7E9A3 /* AttendanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendanceViewController.m; sourceTree = "<group>"; };
 		4D48886317FDB2BF00C7E9A3 /* AttendanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceViewController.xib; sourceTree = "<group>"; };
+		4D4888D917FEED1900C7E9A3 /* EventWrappersForUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventWrappersForUserViewController.h; sourceTree = "<group>"; };
+		4D4888DA17FEED1900C7E9A3 /* EventWrappersForUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventWrappersForUserViewController.m; sourceTree = "<group>"; };
+		4D4888DB17FEED1900C7E9A3 /* EventWrappersForUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventWrappersForUserViewController.xib; sourceTree = "<group>"; };
 		4D757A8817F6195E007255E1 /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		4D757A8917F6195E007255E1 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		4D757A8B17F6196C007255E1 /* ReceiverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverCell.h; sourceTree = "<group>"; };
@@ -576,6 +581,9 @@
 				4D48886117FDB2BF00C7E9A3 /* AttendanceViewController.h */,
 				4D48886217FDB2BF00C7E9A3 /* AttendanceViewController.m */,
 				4D48886317FDB2BF00C7E9A3 /* AttendanceViewController.xib */,
+				4D4888D917FEED1900C7E9A3 /* EventWrappersForUserViewController.h */,
+				4D4888DA17FEED1900C7E9A3 /* EventWrappersForUserViewController.m */,
+				4D4888DB17FEED1900C7E9A3 /* EventWrappersForUserViewController.xib */,
 				04597E9A17FEB76900F903A7 /* MasterUserCell.h */,
 				04597E9B17FEB76900F903A7 /* MasterUserCell.m */,
 				04597E9D17FEB78100F903A7 /* MasterUserCell.xib */,
@@ -811,6 +819,7 @@
 				8F12E85B17F3261B00FCEDCE /* PopoverEventWrapperViewController.xib in Resources */,
 				27776A8117F9994D00D84839 /* glasses_unselected@1x.png in Resources */,
 				04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */,
+				4D4888DD17FEED1900C7E9A3 /* EventWrappersForUserViewController.xib in Resources */,
 				279D065A17F1DA3E00586DF7 /* EventWrappersViewController.xib in Resources */,
 				4DF963E517FD96E60092F44D /* MasterMessageCell.xib in Resources */,
 				279AB6BB17F191490094CE64 /* Message.m in Resources */,
@@ -859,6 +868,7 @@
 				279AB66017F18C200094CE64 /* AppDelegate.m in Sources */,
 				279AB69417F190300094CE64 /* AdminStore.m in Sources */,
 				279AB65C17F18C200094CE64 /* main.m in Sources */,
+				4D4888DC17FEED1900C7E9A3 /* EventWrappersForUserViewController.m in Sources */,
 				2791F55517FD51D400D8795F /* CircleImage.m in Sources */,
 				4DF963DB17FD69B80092F44D /* UIViewController+BarPositionTopBehaviour.m in Sources */,
 				8F12E85A17F3261B00FCEDCE /* PopoverEventWrapperViewController.m in Sources */,

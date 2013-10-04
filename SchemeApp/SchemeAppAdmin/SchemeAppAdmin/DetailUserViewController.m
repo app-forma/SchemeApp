@@ -13,6 +13,7 @@
 #import "PicturePickerViewController.h"
 #import "CircleImage.h"
 #import "AttendanceViewController.h"
+#import "EventWrappersForUserViewController.h"
 
 @interface DetailUserViewController ()<PopoverUserDelegate, PicturePickerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -20,7 +21,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *roleLabel;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
 @property (strong, nonatomic) IBOutlet UIView *userImage;
+@property (weak, nonatomic) IBOutlet UIButton *coursesButton;
 - (IBAction)showImagePicker:(id)sender;
+
 
 
 
@@ -33,9 +36,12 @@
     UIBarButtonItem *attendanceButton;
     UIPopoverController *userInfoPopover;
     UIPopoverController *attendancePopover;
+    UIPopoverController *eventWrappersForUserPopover;
     PopoverUserViewController *puvc;
     User *currentUser;
     CGRect imageSize;
+    
+    NSArray *eventWrappers;
 }
 
 
@@ -68,6 +74,10 @@
 {
     [super viewDidLoad];
     attendanceButton = [[UIBarButtonItem alloc]initWithTitle:@"Attendance" style:UIBarButtonItemStylePlain target:self action:@selector(didPressAttendance:)];
+    
+    [[Store adminStore]eventWrappersCompletion:^(NSArray *allEventWrappers) {
+        eventWrappers = allEventWrappers;
+    }];    
 }
 
 -(BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
@@ -128,7 +138,7 @@
     } else {
         self.userImage = nil;
     }
-    [self updateAttendanceButtonForUser:user];
+    [self updateButtonVisibilityForUser:user];
     
     currentUser = user;
 }
@@ -145,7 +155,7 @@
     [[Store superAdminStore] updateUser:user completion:^(id responseBody, id response, NSError *error) {
         saveHandler();
     }];
-    [self updateAttendanceButtonForUser:user];
+    [self updateButtonVisibilityForUser:user];
 }
 -(void)popoverUserDismissPopover
 {
@@ -182,6 +192,16 @@
     [self presentViewController:pickerController animated:YES completion:nil];
 }
 
+- (IBAction)didPressCourses:(UIButton *)sender {
+    if (eventWrappersForUserPopover.popoverVisible) {
+        return [eventWrappersForUserPopover dismissPopoverAnimated:YES];
+    }
+    EventWrappersForUserViewController *coursesTable = [[EventWrappersForUserViewController alloc]initWithUser:currentUser eventWrappers:eventWrappers];
+    eventWrappersForUserPopover = [[UIPopoverController alloc]initWithContentViewController:coursesTable];
+    [eventWrappersForUserPopover setPopoverContentSize:CGSizeMake(300, 500)];
+    [eventWrappersForUserPopover presentPopoverFromRect:sender.bounds inView:sender.viewForBaselineLayout permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
 -(void)didPressAttendance:(UIBarButtonItem*)sender {
     if (attendancePopover.popoverVisible) {
         return [attendancePopover dismissPopoverAnimated:YES];
@@ -194,11 +214,19 @@
 
 }
 
--(void)updateAttendanceButtonForUser:(User*)user {
+-(void)updateButtonVisibilityForUser:(User*)user {
     if (user.role == StudentRole) {
         [self.navItem setLeftBarButtonItem:attendanceButton animated:YES];
+        self.coursesButton.enabled = YES;
+        [UIView animateWithDuration:0.25 animations:^{
+            self.coursesButton.alpha = 1;
+        }];
     } else {
         [self.navItem setLeftBarButtonItem:nil animated:YES];
+        self.coursesButton.enabled = NO;
+        [UIView animateWithDuration:0.25 animations:^{
+            self.coursesButton.alpha = 0;
+        }];
     }
 }
 
