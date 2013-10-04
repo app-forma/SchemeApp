@@ -175,6 +175,13 @@
     }];
 }
 
+- (IBAction)showImagePicker:(id)sender {
+    PicturePickerViewController *pickerController = [[PicturePickerViewController alloc] init];
+    pickerController.user = currentUser;
+    pickerController.delegate = self;
+    [self presentViewController:pickerController animated:YES completion:nil];
+}
+
 -(void)didPressAttendance:(UIBarButtonItem*)sender {
     if (attendancePopover.popoverVisible) {
         return [attendancePopover dismissPopoverAnimated:YES];
@@ -185,13 +192,6 @@
     [attendancePopover setPopoverContentSize:CGSizeMake(300, 500)];
     [attendancePopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 
-}
-
-- (IBAction)showImagePicker:(id)sender {
-    PicturePickerViewController *pickerController = [[PicturePickerViewController alloc] init];
-    pickerController.user = currentUser;
-    pickerController.delegate = self;
-    [self presentViewController:pickerController animated:YES completion:nil];
 }
 
 -(void)updateAttendanceButtonForUser:(User*)user {
