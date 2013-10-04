@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="87" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CwM-SC-AFu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="lBx-Tk-rIa">
@@ -60,7 +60,6 @@
                                             <outlet property="dateLabel" destination="WZi-oy-qAg" id="8ZP-O9-sZ7"/>
                                             <outlet property="messageTextView" destination="E3b-WN-4Gg" id="Yed-aI-lvj"/>
                                             <outlet property="nameLabel" destination="Fjn-Ul-Jlx" id="zj4-zb-jJY"/>
-                                            <segue destination="Riy-ah-tyR" kind="push" id="a2l-xx-u6F"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -129,7 +128,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" id="adu-ky-6RI" customClass="SearchCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" id="adu-ky-6RI" customClass="SearchCelliPhone">
                                         <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="adu-ky-6RI" id="0Ao-Rd-hH1">
@@ -151,10 +150,10 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="textField" destination="mKE-Hx-B55" id="3zg-KF-Uag"/>
+                                            <outlet property="textField" destination="mKE-Hx-B55" id="ShK-hN-Mus"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReceiverCell" rowHeight="30" id="BZ9-hf-9de" customClass="ReceiverCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReceiverCell" rowHeight="30" id="BZ9-hf-9de" customClass="ReceiverCelliPhone">
                                         <rect key="frame" x="0.0" y="110" width="320" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BZ9-hf-9de" id="gq3-fW-Ocw">
@@ -176,8 +175,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="nameLabel" destination="YBK-NP-BNY" id="PKE-br-F9C"/>
-                                            <outlet property="roleLabel" destination="sAe-VT-G9I" id="MYR-9Q-nmE"/>
+                                            <outlet property="nameLabel" destination="YBK-NP-BNY" id="b1E-0Y-Ba9"/>
+                                            <outlet property="roleLabel" destination="sAe-VT-G9I" id="zf2-TI-sZf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -212,7 +211,7 @@
         <!--Admin Messages Detail View Controller-->
         <scene sceneID="eFX-jf-xDj">
             <objects>
-                <viewController storyboardIdentifier="MessageView" id="Riy-ah-tyR" customClass="AdminMessagesDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageDetailView" id="Riy-ah-tyR" customClass="AdminMessagesDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yaw-fy-lzq"/>
                         <viewControllerLayoutGuide type="bottom" id="Jzy-ig-4Zq"/>

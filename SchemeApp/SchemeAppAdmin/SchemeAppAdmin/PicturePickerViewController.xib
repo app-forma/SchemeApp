@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PicturePickerViewController">
+            <connections>
+                <outlet property="imageView" destination="3ec-M3-sHx" id="ElI-be-iuK"/>
+                <outlet property="loadIndicator" destination="e6V-Jm-b35" id="ee4-VJ-dnm"/>
+                <outlet property="loadingView" destination="pF6-ss-zd8" id="vXh-vQ-FCk"/>
+                <outlet property="view" destination="2" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ec-M3-sHx">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="768" id="H9P-Z3-5aa"/>
+                        <constraint firstAttribute="height" constant="960" id="cLj-SD-Rni"/>
+                    </constraints>
+                </imageView>
+                <view alpha="0.79999999999999982" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pF6-ss-zd8">
+                    <rect key="frame" x="344" y="473" width="80" height="80"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saving..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcS-JK-nTy">
+                            <rect key="frame" x="0.0" y="59" width="80" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="e6V-Jm-b35">
+                            <rect key="frame" x="21" y="22" width="37" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="dcS-JK-nTy" secondAttribute="trailing" id="3te-Fx-aeJ"/>
+                        <constraint firstAttribute="trailing" secondItem="e6V-Jm-b35" secondAttribute="trailing" constant="22" id="42A-kt-fJm"/>
+                        <constraint firstItem="e6V-Jm-b35" firstAttribute="top" secondItem="pF6-ss-zd8" secondAttribute="top" constant="22" id="8QQ-k0-RJS"/>
+                        <constraint firstItem="e6V-Jm-b35" firstAttribute="centerY" secondItem="pF6-ss-zd8" secondAttribute="centerY" id="BZc-Cl-jAi"/>
+                        <constraint firstItem="dcS-JK-nTy" firstAttribute="leading" secondItem="pF6-ss-zd8" secondAttribute="leading" id="DgW-Gx-dkx"/>
+                        <constraint firstItem="e6V-Jm-b35" firstAttribute="leading" secondItem="pF6-ss-zd8" secondAttribute="leading" constant="21" id="SZF-4W-Dlr"/>
+                        <constraint firstItem="dcS-JK-nTy" firstAttribute="top" secondItem="e6V-Jm-b35" secondAttribute="bottom" id="yUc-uC-ac6"/>
+                        <constraint firstAttribute="bottom" secondItem="dcS-JK-nTy" secondAttribute="bottom" id="zSf-yY-JHH"/>
+                    </constraints>
+                </view>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZw-ul-cb7">
+                    <rect key="frame" x="0.0" y="960" width="768" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem systemItem="camera" id="I9x-Su-35F">
+                            <connections>
+                                <action selector="showCamera:" destination="-1" id="jTN-j6-gHL"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="jtQ-rS-56a"/>
+                        <barButtonItem systemItem="save" id="Fjg-6e-izX">
+                            <connections>
+                                <action selector="saveChanges:" destination="-1" id="eja-aZ-xMd"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="5NW-fJ-pxB"/>
+                        <barButtonItem systemItem="organize" id="A0b-Dd-QCP">
+                            <connections>
+                                <action selector="showLibrary:" destination="-1" id="0dB-c6-XLT"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OiF-lU-6xY">
+                    <rect key="frame" x="690" y="20" width="58" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="KGo-0O-rdO"/>
+                        <constraint firstAttribute="width" constant="58" id="ZgP-XK-e3M"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancel:" destination="-1" eventType="touchUpInside" id="Fze-oW-hvU"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="FZw-ul-cb7" firstAttribute="centerX" secondItem="pF6-ss-zd8" secondAttribute="centerX" id="6J0-VP-CKy"/>
+                <constraint firstAttribute="trailing" secondItem="FZw-ul-cb7" secondAttribute="trailing" id="7VI-E8-l0s"/>
+                <constraint firstItem="3ec-M3-sHx" firstAttribute="bottom" secondItem="FZw-ul-cb7" secondAttribute="top" id="9al-r1-Iwk"/>
+                <constraint firstItem="3ec-M3-sHx" firstAttribute="top" secondItem="2" secondAttribute="top" id="Fil-Uj-hBV"/>
+                <constraint firstAttribute="bottom" secondItem="FZw-ul-cb7" secondAttribute="bottom" id="Jbb-WC-qsh"/>
+                <constraint firstItem="3ec-M3-sHx" firstAttribute="trailing" secondItem="FZw-ul-cb7" secondAttribute="trailing" id="OIp-rN-sy9"/>
+                <constraint firstAttribute="trailing" secondItem="OiF-lU-6xY" secondAttribute="trailing" constant="20" symbolic="YES" id="Rhl-TK-A9m"/>
+                <constraint firstItem="pF6-ss-zd8" firstAttribute="top" secondItem="2" secondAttribute="top" constant="473" id="UeV-7R-luu"/>
+                <constraint firstItem="3ec-M3-sHx" firstAttribute="leading" secondItem="FZw-ul-cb7" secondAttribute="leading" id="dgh-Sa-gjH"/>
+                <constraint firstItem="OiF-lU-6xY" firstAttribute="top" secondItem="2" secondAttribute="top" constant="20" symbolic="YES" id="ho6-7p-hGb"/>
+                <constraint firstItem="FZw-ul-cb7" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="xHh-Jn-K8C"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+        </view>
+    </objects>
+</document>

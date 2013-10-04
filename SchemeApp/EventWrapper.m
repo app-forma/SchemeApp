@@ -16,6 +16,8 @@
 
 - (id)initWithEventWrapperDictionary:(NSDictionary *)eventWrapperDictionary
 {
+#warning Testing
+
     self = [super init];
     if (self)
     {
@@ -25,7 +27,21 @@
         self.startDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"startDate"]];
         self.endDate = [Helpers dateFromString:[eventWrapperDictionary objectForKey:@"endDate"]];
         _docID = [eventWrapperDictionary objectForKey:@"_id"];
-        self.events = [NSMutableArray new];
+
+        NSMutableArray *newEvents = NSMutableArray.array;        
+        for (id event in [eventWrapperDictionary objectForKey:@"events"])
+        {
+            if ([event isKindOfClass:NSDictionary.class])
+            {
+                Event *newEvent = [[Event alloc] initWithEventDictionary:event];
+                [newEvents addObject:newEvent];
+            }
+            else if ([event isKindOfClass:NSString.class])
+            {
+                [newEvents addObject:event];
+            }
+        }
+        self.events = newEvents;
     }
     return self;
 }
@@ -35,8 +51,8 @@
     NSMutableDictionary *jsonEventWrapper = [[NSMutableDictionary alloc]init];
     
     NSMutableArray *jsonEvents = [[NSMutableArray alloc]init];
-    for (Event *event in self.events) {
-        [jsonEvents addObject:event.docID];
+    for (NSString *eventDocID in self.events) {
+        [jsonEvents addObject:eventDocID];
     }
     
     [jsonEventWrapper setObject:jsonEvents forKey:@"events"];
@@ -45,13 +61,10 @@
     [jsonEventWrapper setObject:[Helpers stringFromNSDate:self.startDate] forKey:@"startDate"];
     [jsonEventWrapper setObject:[Helpers stringFromNSDate:self.endDate] forKey:@"endDate"];
     [jsonEventWrapper setObject:self.name forKey:@"name"];
+    
     if (self.docID) {
         [jsonEventWrapper setObject:self.docID forKey:@"_id"];
     }
-    
-#warning Testing
-    NSData *JSONData = [NSJSONSerialization dataWithJSONObject:jsonEventWrapper options:nil error:nil];
-    NSLog(@"JSON: %@", [[NSString alloc] initWithData:JSONData encoding:NSUTF8StringEncoding]);
     
     return jsonEventWrapper;
 }

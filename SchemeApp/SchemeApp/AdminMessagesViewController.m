@@ -9,8 +9,10 @@
 #import "AdminMessagesViewController.h"
 #import "AdminMessagesDetailViewController.h"
 #import "AdminMessagesCreateMessageViewController.h"
-#import "MessageCell.h"
+#import "MasterMessageCell.h"
 #import "Message.h"
+#import "AwesomeUI.h"
+#import "CircleImage.h"
 @interface AdminMessagesViewController () <UITableViewDelegate, UITableViewDataSource, MessageDetailViewDelegate, MessageCreateViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -21,27 +23,27 @@
 @implementation AdminMessagesViewController
 {
     NSMutableArray *messages;
-    Message *selectedMessage;
-}
-
--(BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
-
--(void)loadView
-{
-    [super loadView];
-    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected"]];
 }
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    messages = Store.mainStore.currentUser.messages;
-
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"MasterMessageCell" bundle:nil] forCellReuseIdentifier:@"MasterMessageCell"];
+    [AwesomeUI setGGstyleTo:self.tableView];
+    self.tableView.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
+    
+    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected"]];
+    
     self.navigationItem.title = @"Messages";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddMessage)];
+
+    [[Store studentStore]messagesForUser:[Store mainStore].currentUser completion:^(NSArray *messagesForUser) {
+        messages = [messagesForUser mutableCopy];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -58,35 +60,51 @@
     return messages.count;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 81;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell"];
+    MasterMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MasterMessageCell"];
     Message *message = messages[indexPath.row];
-    cell.dateLabel.text = [Helpers stringFromNSDate:message.date];
-    cell.messageTextView.text = message.text;
-    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", message.from.firstname, message.from.lastname];
+    [AwesomeUI addDefaultStyleTo:cell];
+    cell.backgroundColor = [AwesomeUI colorForIndexPath:indexPath];
+    cell.nameLabel.text = message.from.fullName;
+    cell.dateLabel.text = message.date.asDateString;
+    cell.messageLabel.text = message.text;
+    if (message.from.image) {
+        [cell.userImage removeFromSuperview];
+        cell.userImage = [[CircleImage alloc]initWithImageForThumbnail:message.from.image rect:CGRectMake(7, 9, 58, 58)];
+        [cell addSubview:cell.userImage];
+    }
+    
+    
+
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [messages removeObjectAtIndex:indexPath.row];
+        Message *message = messages[indexPath.row];
+        [messages removeObject:message];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [[Store adminStore]updateMessages:messages forUser:[Store mainStore].currentUser];
+        [[Store adminStore]deleteMessage:message forUser:[Store mainStore].currentUser completion:^(BOOL success) {
+            if (!success) {
+                NSLog(@"delete message failed");
+            }
+        }];
     }
 }
 
--(void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectedMessage = messages[indexPath.row];
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    AdminMessagesDetailViewController *detailView = (AdminMessagesDetailViewController*)segue.destinationViewController;
-    detailView.message = selectedMessage;
+    AdminMessagesDetailViewController *detailView = [self.storyboard instantiateViewControllerWithIdentifier:@"MessageDetailView"];
+    detailView.message = messages[indexPath.row];
     detailView.delegate = self;
+    [self.navigationController pushViewController:detailView animated:YES];
 }
 
 -(void)didPressAddMessage
@@ -101,7 +119,11 @@
 {
     [messages removeObject:message];
     [self.tableView reloadData];
-    [[Store adminStore]updateMessages:messages forUser:[Store mainStore].currentUser];
+    [[Store adminStore]deleteMessage:message forUser:[Store mainStore].currentUser completion:^(BOOL success) {
+        if (!success) {
+            NSLog(@"delete message failed");
+        }
+    }];
 }
 
 -(void)didCreateMessage:(Message *)message

@@ -16,4 +16,6 @@
     #import "TypeDef"
     #import "Helpers.h"
     #import "Store.h"
+    #import "UIViewController+BarPositionTopBehaviour.h"
+    #import "NSDate+Helpers.h"
 #endif

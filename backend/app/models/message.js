@@ -23,14 +23,18 @@ var MessageSchema = new Schema({
         type: Schema.Types.ObjectId,
         required: true,
         ref: 'User'
-    }
+    },
+    receivers: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 });
 
 /**
  * Methods
  */
-MessageSchema.methods.saveToDisk = function(message, callback) {
-    message.save(function(err, message) {
+MessageSchema.methods.saveToDisk = function (message, callback) {
+    message.save(function (err, message) {
         if (err) {
             callback(err, null);
         } else {
@@ -45,7 +49,7 @@ MessageSchema.methods.saveToDisk = function(message, callback) {
 
 MessageSchema.statics = {
 
-    load: function(id, callback) {
+    load: function (id, callback) {
         this.findOne({
             _id: id
         })
@@ -56,8 +60,8 @@ MessageSchema.statics = {
     /**
      * List
      */
-    list: function(callback) {
-        this.find(function(err, Messages) {
+    list: function (callback) {
+        this.find(function (err, Messages) {
             if (err) {
                 callback(err, undefined);
             }

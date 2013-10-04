@@ -14,7 +14,9 @@
 #import "StudentStore.h"
 #import "AFNetworking.h"
 
-@class User, AFNetworking, SuperAdminStore, StudentStore, AdminStore, Message;
+typedef void (^authentication)(BOOL success, id user);
+
+@class User, AFNetworking, SuperAdminStore, StudentStore, AdminStore, Message, Location;
 
 
 @interface Store : NSObject
@@ -29,5 +31,7 @@
 @property (nonatomic, strong) User *currentUser;
 
 + (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion;
++ (void)fetchLocationCompletion:(void (^)(Location *location))completion;
++ (void)sendAuthenticationRequestForEmail:(NSString *)email password:(NSString *)password completion:(authentication)completion;
 
 @end

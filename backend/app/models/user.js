@@ -35,14 +35,14 @@ var UserSchema = new Schema({
         required: true,
         trim: true
     },
-    eventWrappers: [{ // e.g. this user is registered on following courses
+    eventWrappers: [{ // e.g. this user is registered on following courses.
         type: Schema.Types.ObjectId,
         ref: 'EventWrapper'
     }],
-    messages: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Message'
-    }]
+    attendances: [String],
+    image: {
+        type: String
+    }
 });
 
 /**

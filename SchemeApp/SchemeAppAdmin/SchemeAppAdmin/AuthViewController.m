@@ -10,33 +10,33 @@
 
 @interface AuthViewController ()
 - (IBAction)login:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *loginStatusLabel;
+@property (weak, nonatomic) IBOutlet UITextField *loginEmailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *loginPasswordField;
 
 @end
 
 @implementation AuthViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(void)viewWillAppear:(BOOL)animated
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    [super viewWillAppear:animated];
+    self.loginEmailTextField.text = @"anders@coredev.se";
+    self.loginPasswordField.text = @"anders";
 }
 
-- (void)viewDidLoad
+- (IBAction)login:(id)sender
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)login:(id)sender {
-    [self.delegate didSuccesfullyLogin];
+    [Store sendAuthenticationRequestForEmail:self.loginEmailTextField.text password:self.loginPasswordField.text completion:^(BOOL success, id user) {
+        if (success) {
+            dispatch_async(dispatch_get_main_queue(), ^{                
+                [self.delegate didSuccesfullyLogin];                
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.loginStatusLabel.text = @"Invalid credentials, try again";
+            });
+        }
+    }];
 }
 @end

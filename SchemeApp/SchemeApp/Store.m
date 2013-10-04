@@ -10,7 +10,7 @@
 #import "User.h"
 #import "EventWrapper.h"
 #import "Event.h"
-
+#import "Location.h"
 
 @implementation Store
 
@@ -91,12 +91,16 @@
     return studentStore;
 }
 
+#warning DEPRECATED(SINCE MARCUS ADDED AWESOME CODE 26/9 22:29)
+/**
+ *  LoginController sets currentUser if successful login
+ *  sendAuthenticationRequestForEmail: password: completion:
+ */
 + (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion
 {
-#warning Implement password
     [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/email/%@", DB_TYPE_USER, email]
                             withParams:nil
-                         andCompletion:^(id jsonObject, id response, NSError *error)
+                         andCompletion:^(id responseBody, id response, NSError *error)
      {
          if (error)
          {
@@ -105,8 +109,46 @@
          }
          else
          {
-             Store.mainStore.currentUser = [[User alloc] initWithUserDictionary:jsonObject];
+             Store.mainStore.currentUser = [[User alloc] initWithUserDictionary:responseBody];
              completion(YES);
+         }
+     }];
+}
+
++ (void)sendAuthenticationRequestForEmail:(NSString *)email password:(NSString *)password completion:(authentication)completion
+{
+    [Store.dbSessionConnection postContent:@{@"email":email, @"password":password} toPath:@"users/login" withCompletion:^(id responseBody, id response, NSError *error) {
+        
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger statusCode = [httpResponse statusCode];
+        
+        if (statusCode == 200) {
+            Store.mainStore.currentUser = [[User alloc] initWithUserDictionary:responseBody];
+            completion(YES, responseBody);
+        } else {
+            completion(NO, nil);
+        }
+    }];
+}
+
++ (void)fetchLocationCompletion:(void (^)(Location *location))completion
+{
+    [Store.dbSessionConnection getPath:DB_TYPE_LOCATION
+                            withParams:nil
+                         andCompletion:^(id responseBody, id response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"setCurrentLocation got response: %@ and error: %@", response, error.userInfo);
+         }
+         else
+         {
+             if ([responseBody count])
+             {
+                 completion([[Location alloc]initWithLocationDictionary:responseBody[0]]);
+             } else {
+                 completion(nil);
+             }
          }
      }];
 }

@@ -9,7 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController
-- (IBAction)loadAdminSB:(id)sender;
-- (IBAction)loadStudentSB:(id)sender;
 
 @end

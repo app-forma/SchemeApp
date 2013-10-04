@@ -16,8 +16,9 @@
 @property (nonatomic, copy) NSString *lastname;
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSString *password;
-@property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) NSMutableArray *eventWrappers;
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic) NSMutableArray *attendances;
 
 + (RoleType)roleTypeFromString:(NSString *)roleString;
 + (NSString *)stringFromRoleType:(RoleType)role;
@@ -27,12 +28,15 @@
 firstname:(NSString *)firstname
      lastname:(NSString *)lastname
         email:(NSString *)email
-     password:(NSString *)password;
+     password:(NSString *)password
+        image:(NSString*)image;
 
 - (id)initWithUserDictionary:(NSDictionary *)userDictionary;
 
 - (NSDictionary *)asDictionary;
 
-- (NSString *)name;
+- (NSString *)fullName;
+
+- (NSString *)roleAsString;
 
 @end

@@ -5,15 +5,18 @@ var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  console.log('ser: ' + user);
+  done(null, user.email);
 });
 
-passport.deserializeUser(function(id, done) {
-  UserCtrl.byId(id, function (err, user) {
+passport.deserializeUser(function(email, done) {
+console.log('desz: ' + email);  
+  UserCtrl.byEmailPassport(email, function (err, user) {
     done(err, user);
   });
 });
 
+//username == email
 passport.use(new LocalStrategy(function(email, password, done) {
   User.findOne({ email: email }, function(err, user) {
     if (err) { return done(err); }

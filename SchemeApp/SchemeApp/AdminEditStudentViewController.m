@@ -67,7 +67,8 @@
                                        firstname:self.firstnameTextField.text
                                         lastname:self.lastnameTextField.text
                                            email:self.emailTextField.text
-                                        password:self.passwordTextField.text];
+                                        password:self.passwordTextField.text
+                                           image:nil];
         
         [Store.superAdminStore createUser:user completion:^(id jsonObject, id response, NSError *error)
         {
