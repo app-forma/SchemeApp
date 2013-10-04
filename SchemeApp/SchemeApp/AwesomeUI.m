@@ -31,7 +31,7 @@ static UIColor *fontColorForCoverViews;
      *  Theme colors
      */
     tintColor = [UIColor lightGrayColor];
-    barColor = [UIColor colorWithRed:0.1788 green:0.1075 blue:0.25 alpha:1];
+    barColor = [UIColor colorWithRed:0.111 green:0.072 blue:0.15 alpha:1];
     tableViewBackgroundColor = [UIColor colorWithRed:220/255.0f green:46/255.0f blue:77/255.0f alpha:1.0f];
     coverViewBackgroundColor = [UIColor darkGrayColor];
     fontColorForCoverViews = [UIColor whiteColor];
