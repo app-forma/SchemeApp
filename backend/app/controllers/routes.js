@@ -16,6 +16,9 @@ module.exports = function(app) {
   app.post('/users/:id/attendance/:date', users.addAttendance);
   app.del('/users/:id/attendance/:date', users.removeAttendance);
 
+  app.post("/users/:id/eventWrapper/:eventWrapperID", users.addEventWrapperID);
+  app.del("/users/:id/eventWrapper/:eventWrapperID", users.removeEventWrapperID);
+
 
   /* VG
   app.post('/users', passport.ensureAuthenticated, passport.ensureAdmin(), users.create);

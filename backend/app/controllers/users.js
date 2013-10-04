@@ -160,7 +160,7 @@ exports.byEmail = function (req, res) {
         });
 };
 
-exports.addAttendance = function (req, res) {
+/*exports.addAttendance = function (req, res) {
     User.findOne({
         _id: req.params.id
     }).exec(function (err, user) {
@@ -230,6 +230,96 @@ exports.removeAttendance = function (req, res) {
         }
     });
 };
+*/
+
+// add and remove attendance from a user
+exports.addAttendance = function (req, res) {
+    addReferenceToUserProperty(req.params.id, 'attendances', req.params.date, res);
+};
+
+exports.removeAttendance = function (req, res) {
+    removeReferenceFromUserProperty(req.params.id, 'attendances', req.params.date, res);
+};
+
+// add and remove eventwrappers from a user
+exports.addEventWrapperID = function (req, res) {
+    addReferenceToUserProperty(req.params.id, 'eventWrappers', req.params.eventWrapperID, res);
+};
+
+exports.removeEventWrapperID = function (req, res) {
+    removeReferenceFromUserProperty(req.params.id, 'eventWrappers', req.params.eventWrapperID, res);
+};
+
+
+function addReferenceToUserProperty (userID, propertyName, referenceID, res) {
+    User.findOne({
+        _id: userID
+    }).exec(function (err, user) {
+        if (err) {
+            res.json(500, err.errors);
+        } else {
+            var foundDuplicate = false;
+            for (var i = 0; i < user[propertyName].length; i++) {
+                if (referenceID == user[propertyName][i]) {
+                    foundDuplicate = true;
+                    break;
+                }
+            }
+            if (!foundDuplicate) {
+                user[propertyName].push(referenceID);
+                user.save(function (err) {
+                    if (err) {
+                        res.json(500, err.errors);
+                        return;
+                    }
+                });
+            }
+            res.json(200, {
+                added: true
+            });
+        }
+    });
+}
+
+function removeReferenceFromUserProperty (userID, propertyName, referenceID, res) {
+    User.findOne({
+        _id: userID
+    }).exec(function (err, user) {
+        if (err) {
+            res.json(500, err.errors);
+        } else {
+            if (referenceID) {
+                var deletions = 0;
+                var newArray = [];
+                for (var i = 0; i < user[propertyName].length; i++) {
+                    if (referenceID != user[propertyName][i]) {
+                        newArray.push(user[propertyName][i]);
+                    } else {
+                        deletions++;
+                    }
+                }
+                user[propertyName] = newArray;
+                user.save(function (err) {
+                    if (err) {
+                        res.json(500, err.errors);
+                    } else if (deletions > 0) {
+                        res.json(200, {
+                            deletions: deletions
+                        });
+                    } else {
+                        res.json(500, {
+                            error: "no deletions"
+                        });
+                    }
+                });
+            } else {
+                res.json(500, {
+                    error: "invalid data"
+                });
+            }
+        }
+    });
+}
 
 
 /**
