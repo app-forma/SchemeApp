@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>AB8623D5-E65C-461D-951B-6E726B44AD7B</string>
+	<string>0A9763A8-BEEC-4135-8DF7-C358A1510103</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SchemeApp</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>61FBB01A-AFB0-41CB-A6D2-4D8348E72EAE</key>
+		<key>E8924A8F-051C-49C9-BC22-6102BF99C258</key>
 		<string>https://github.com/rickardz/SchemeApp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SchemeApp/SchemeApp.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>61FBB01A-AFB0-41CB-A6D2-4D8348E72EAE</key>
+		<key>E8924A8F-051C-49C9-BC22-6102BF99C258</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>61FBB01A-AFB0-41CB-A6D2-4D8348E72EAE</string>
+	<string>E8924A8F-051C-49C9-BC22-6102BF99C258</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>61FBB01A-AFB0-41CB-A6D2-4D8348E72EAE</string>
+			<string>E8924A8F-051C-49C9-BC22-6102BF99C258</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SchemeApp</string>
 		</dict>
