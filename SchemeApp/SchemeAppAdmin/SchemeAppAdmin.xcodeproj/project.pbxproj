@@ -11,6 +11,12 @@
 		0426C9EC17FB1AB900C94BAD /* UIImage+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9EB17FB1AB900C94BAD /* UIImage+Base64.m */; };
 		0426C9F017FB39B200C94BAD /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9EF17FB39B200C94BAD /* NavigationController.m */; };
 		0426C9F317FB39BD00C94BAD /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426C9F217FB39BD00C94BAD /* NavigationBar.m */; };
+		04597E9C17FEB76900F903A7 /* MasterUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04597E9B17FEB76900F903A7 /* MasterUserCell.m */; };
+		04597E9E17FEB78100F903A7 /* MasterUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04597E9D17FEB78100F903A7 /* MasterUserCell.xib */; };
+		04762B8B17FEB8730065CCE9 /* MasterUserCell.m in Resources */ = {isa = PBXBuildFile; fileRef = 04597E9B17FEB76900F903A7 /* MasterUserCell.m */; };
+		04762B8C17FEB88F0065CCE9 /* MasterUserCell.h in Resources */ = {isa = PBXBuildFile; fileRef = 04597E9A17FEB76900F903A7 /* MasterUserCell.h */; };
+		04AC78AF17FEB9990051EE1B /* Store.m in Resources */ = {isa = PBXBuildFile; fileRef = 279D061317F19BB900586DF7 /* Store.m */; };
+		04AC78B017FEB9A60051EE1B /* Store.h in Resources */ = {isa = PBXBuildFile; fileRef = 279D061217F19BB900586DF7 /* Store.h */; };
 		04DA657717F4BB990088E589 /* PopoverUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA657517F4BB990088E589 /* PopoverUserViewController.m */; };
 		04DA657817F4BB990088E589 /* PopoverUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA657617F4BB990088E589 /* PopoverUserViewController.xib */; };
 		27133EAD17F9E02D00708346 /* PicturePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27133EAB17F9E02D00708346 /* PicturePickerViewController.m */; };
@@ -139,6 +145,9 @@
 		0426C9EF17FB39B200C94BAD /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		0426C9F117FB39BD00C94BAD /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBar.h; sourceTree = "<group>"; };
 		0426C9F217FB39BD00C94BAD /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBar.m; sourceTree = "<group>"; };
+		04597E9A17FEB76900F903A7 /* MasterUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterUserCell.h; sourceTree = "<group>"; };
+		04597E9B17FEB76900F903A7 /* MasterUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterUserCell.m; sourceTree = "<group>"; };
+		04597E9D17FEB78100F903A7 /* MasterUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterUserCell.xib; sourceTree = "<group>"; };
 		04DA657417F4BB990088E589 /* PopoverUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverUserViewController.h; sourceTree = "<group>"; };
 		04DA657517F4BB990088E589 /* PopoverUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverUserViewController.m; sourceTree = "<group>"; };
 		04DA657617F4BB990088E589 /* PopoverUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverUserViewController.xib; sourceTree = "<group>"; };
@@ -567,6 +576,9 @@
 				4D48886117FDB2BF00C7E9A3 /* AttendanceViewController.h */,
 				4D48886217FDB2BF00C7E9A3 /* AttendanceViewController.m */,
 				4D48886317FDB2BF00C7E9A3 /* AttendanceViewController.xib */,
+				04597E9A17FEB76900F903A7 /* MasterUserCell.h */,
+				04597E9B17FEB76900F903A7 /* MasterUserCell.m */,
+				04597E9D17FEB78100F903A7 /* MasterUserCell.xib */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -741,6 +753,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04AC78B017FEB9A60051EE1B /* Store.h in Resources */,
+				04AC78AF17FEB9990051EE1B /* Store.m in Resources */,
+				04762B8C17FEB88F0065CCE9 /* MasterUserCell.h in Resources */,
+				04762B8B17FEB8730065CCE9 /* MasterUserCell.m in Resources */,
 				279AB6E417F1920E0094CE64 /* Validation.m in Resources */,
 				4DF2616017F6078900983735 /* DetailMessageViewController.xib in Resources */,
 				279AB6D117F191570094CE64 /* messages_selected@2x.png in Resources */,
@@ -771,6 +787,7 @@
 				279AB6BC17F191490094CE64 /* User.h in Resources */,
 				279AB6D517F191570094CE64 /* users_selected@2x.png in Resources */,
 				279AB6BD17F191490094CE64 /* User.m in Resources */,
+				04597E9E17FEB78100F903A7 /* MasterUserCell.xib in Resources */,
 				8FE68A2C17F4DD2F00FAD042 /* MasterEventWrapperViewController.xib in Resources */,
 				279D067017F1DCEE00586DF7 /* SchoolInfoViewController.xib in Resources */,
 				274E90DB17F320F900E97A12 /* editIcon@1x.png in Resources */,
@@ -825,6 +842,7 @@
 				279D064717F1C97F00586DF7 /* AuthViewController.m in Sources */,
 				279D061617F19F1300586DF7 /* Event.m in Sources */,
 				279D061717F19F1300586DF7 /* Message.m in Sources */,
+				04597E9C17FEB76900F903A7 /* MasterUserCell.m in Sources */,
 				274E556317F2F54C00E97A12 /* DetailMessageViewController.m in Sources */,
 				4D757A9317F63EB0007255E1 /* NSDate+Helpers.m in Sources */,
 				4D48886417FDB2BF00C7E9A3 /* AttendanceViewController.m in Sources */,

@@ -75,7 +75,7 @@ typedef enum Image{
     roundedRect.lineWidth = 3;
     [roundedRect stroke];
     
-    
+
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(13, 13, rect.size.width-20, rect.size.height-20) cornerRadius:self.imageView.frame.size.height/2];
     CGFloat imageRatio = self.imageView.image.size.width / self.imageView.image.size.height;

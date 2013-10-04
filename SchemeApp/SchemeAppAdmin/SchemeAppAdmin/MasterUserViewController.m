@@ -12,6 +12,7 @@
 #import "DetailUserViewController.h"
 #import "AwesomeUI.h"
 #import "CircleImage.h"
+#import "MasterUserCell.h"
 
 
 @interface MasterUserViewController () <UITableViewDelegate, PopoverUserDelegate>
@@ -31,6 +32,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.usersTableView registerNib:[UINib nibWithNibName:@"MasterUserCell" bundle:nil] forCellReuseIdentifier:@"MasterUserCell"];
     [Store.adminStore usersCompletion:^(NSArray *allUsers)
      {
          users = [NSMutableArray arrayWithArray:allUsers];
@@ -80,18 +82,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    static NSString *CellIdentifier = @"MasterUserCell";
+    MasterUserCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (!cell) {
+//        cell = [[MasterUserCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
     User *user = users[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
-#warning just temporary, initiate custom cell
+
+    
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
+    cell.roleLabel.text = [User stringFromRoleType:user.role];
     if (user.image) {
-        UIView *image = [[CircleImage alloc]initWithImageForThumbnail:user.image rect:CGRectMake(250,20, 60, 60)];
-        [cell.contentView addSubview:image];
+        [cell.userImage removeFromSuperview];
+       cell.userImage = [[CircleImage alloc]initWithImageForThumbnail:user.image rect:CGRectMake(7, 9, 58, 58)];
+        [cell addSubview:cell.userImage];
     }
+    
+    
+    
    
     return cell;
 }
@@ -113,7 +121,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [AwesomeUI tableViewCellHeight];
+    return 81;
 }
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
