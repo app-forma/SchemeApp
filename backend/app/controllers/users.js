@@ -179,7 +179,7 @@ exports.removeEventWrapperID = function (req, res) {
 };
 
 
-function addReferenceToUserProperty (userID, propertyName, referenceID, res) {
+function addReferenceToUserProperty(userID, propertyName, referenceID, res) {
     User.findOne({
         _id: userID
     }).exec(function (err, user) {
@@ -209,7 +209,7 @@ function addReferenceToUserProperty (userID, propertyName, referenceID, res) {
     });
 }
 
-function removeReferenceFromUserProperty (userID, propertyName, referenceID, res) {
+function removeReferenceFromUserProperty(userID, propertyName, referenceID, res) {
     User.findOne({
         _id: userID
     }).exec(function (err, user) {
@@ -230,13 +230,9 @@ function removeReferenceFromUserProperty (userID, propertyName, referenceID, res
                 user.save(function (err) {
                     if (err) {
                         res.json(500, err.errors);
-                    } else if (deletions > 0) {
+                    } else {
                         res.json(200, {
                             deletions: deletions
-                        });
-                    } else {
-                        res.json(500, {
-                            error: "no deletions"
                         });
                     }
                 });
@@ -282,29 +278,29 @@ exports.login = function (req, res, next) {
             if (err) {
                 return next(err);
             }
-/**/
- User.findOne({
-        _id: user._id
-    }).populate('eventWrappers')
-        .exec(function (err, doc) {
-            if (err) {
-                res.json(500, err.errors);
-            } else {
-                if (doc !== null) {
-                    populateEventWrappersToUser(doc.eventWrappers, function (evntwrps, e) {
-                        if (e) {
-                            console.log(e);
+            /**/
+            User.findOne({
+                _id: user._id
+            }).populate('eventWrappers')
+                .exec(function (err, doc) {
+                    if (err) {
+                        res.json(500, err.errors);
+                    } else {
+                        if (doc !== null) {
+                            populateEventWrappersToUser(doc.eventWrappers, function (evntwrps, e) {
+                                if (e) {
+                                    console.log(e);
+                                } else {
+                                    doc.eventWrappers = evntwrps;
+                                }
+                                res.json(200, doc);
+                            });
                         } else {
-                            doc.eventWrappers = evntwrps;
+                            res.send(404);
                         }
-                        res.json(200, doc);
-                    });
-                } else {
-                    res.send(404);
-                }
-            }
-        });
-/**/
+                    }
+                });
+            /**/
         });
     })(req, res, next);
 };
