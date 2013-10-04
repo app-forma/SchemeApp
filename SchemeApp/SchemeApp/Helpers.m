@@ -98,7 +98,7 @@
 {
 
     NSUInteger componentFlags =  NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit;
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:componentFlags fromDate:[Helpers currentDateTime]];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:componentFlags fromDate:date];
     [components setHour:0];
     [components setMinute:0];
     NSCalendar *gregorian = [NSCalendar currentCalendar];

@@ -86,9 +86,8 @@
  */
 +(NSDictionary *) startAndEndTimeForDate:(NSDate*)date
 {
-    
     NSUInteger componentFlags =  NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit;
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:componentFlags fromDate:[Helpers currentDateTime]];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:componentFlags fromDate:date];
     [components setHour:0];
     [components setMinute:0];
     NSCalendar *gregorian = [NSCalendar currentCalendar];
@@ -97,7 +96,7 @@
     [components setHour:23];
     [components setMinute:59];
     NSDate *end = [gregorian dateFromComponents:components];
-    return @{@"startTime":[Helpers stringFromNSDate:start], @"endTime":[Helpers stringFromNSDate:end]};
+    return @{@"startDate":[Helpers stringFromNSDate:start], @"endDate":[Helpers stringFromNSDate:end]};
 }
 
 
