@@ -51,7 +51,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 65;
+    return 81;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,8 +63,13 @@
     cell.nameLabel.text = [message.from fullName];
     cell.messageLabel.text = message.text;
     cell.dateLabel.text = message.date.asDateString;
-    UIView *image = [[CircleImage alloc]initWithImageForThumbnail:message.from.image rect:CGRectMake(260, 7, 50, 50)];
-    [cell addSubview:image];
+    if (message.from.image) {
+        [cell.userImage removeFromSuperview];
+        cell.userImage = [[CircleImage alloc]initWithImageForThumbnail:message.from.image rect:CGRectMake(7, 9, 58, 58)];
+            [cell addSubview:cell.userImage];
+    }
+
+
     
     return cell;
 }

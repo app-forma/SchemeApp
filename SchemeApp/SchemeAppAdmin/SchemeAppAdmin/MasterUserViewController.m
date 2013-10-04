@@ -42,7 +42,7 @@
               NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
               [self.usersTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
               [self tableView:self.usersTableView didSelectRowAtIndexPath:indexPath];
-
+             
           }];
      }];
 }
@@ -52,6 +52,7 @@
     puvc = [[PopoverUserViewController alloc] init];
     puvc.delegate = self;
     [AwesomeUI setGGstyleTo:self.usersTableView];
+    self.usersTableView.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -122,6 +123,10 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 81;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 1.0f;
 }
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
