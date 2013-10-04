@@ -68,25 +68,6 @@
      }];
 }
 
-- (void)deleteAttendanceDate:(NSDate *)date forStudent:(User *)student completion:(void (^)(BOOL success))handler
-{
-    NSString *path = [NSString stringWithFormat:@"%@/%@/attendance/%@", DB_TYPE_USER, student.docID, date.asDateString];
-    
-    [Store.dbSessionConnection deletePath:path
-                           withCompletion:^(id responseBody, id response, NSError *error)
-    {
-        if (error)
-        {
-            NSLog(@"[%@] deleteAttendanceDate:forStudent:completion: got response: %@ and error: %@", self.class, response, error.userInfo);
-            handler(NO);
-        }
-        else
-        {
-            handler(YES);
-        }
-    }];
-}
-
 #pragma mark - Event and EventWrappers CRUD
 - (void)createEvent:(Event *)event completion:(completion)handler
 {
@@ -222,6 +203,30 @@
     ^(id responseBody, id response, NSError *error) {
         if (error) {
             NSLog(@"removeAttendance got response: %@ and error: %@", response, error.userInfo);
+            handler(NO);
+        } else {
+            handler(YES);
+        }
+    }];
+}
+
+-(void)addEventWrapper:(EventWrapper *)eventWrapper toUser:(User *)user completion:(void (^)(BOOL success))handler
+{
+    [[Store dbSessionConnection]postContent:nil toPath:[NSString stringWithFormat:@"%@/%@/%@/%@", DB_TYPE_USER, user.docID, @"eventwrapper", eventWrapper.docID] withCompletion:^(id responseBody, id response, NSError *error) {
+        if (error) {
+            NSLog(@"addEventWrapper: toUser: Got error: %@", error.userInfo);
+            handler(NO);
+        } else {
+            handler(YES);
+        }
+    }];
+}
+
+-(void)removeEventWrapper:(EventWrapper *)eventWrapper fromUser:(User *)user completion:(void (^)(BOOL success))handler
+{
+    [[Store dbSessionConnection]deletePath:[NSString stringWithFormat:@"%@/%@/%@/%@", DB_TYPE_USER, user.docID, @"eventwrapper", eventWrapper.docID] withCompletion:^(id responseBody, id response, NSError *error) {
+        if (error) {
+            NSLog(@"removeEventWrapper: forUser: got error: %@", error.userInfo);
             handler(NO);
         } else {
             handler(YES);

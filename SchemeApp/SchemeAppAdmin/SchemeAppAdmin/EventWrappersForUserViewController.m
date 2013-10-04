@@ -50,20 +50,51 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-  
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+
     EventWrapper *course = eventWrappers[indexPath.row];
     
     cell.textLabel.text = course.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ to %@", course.startDate.asDateString, course.endDate.asDateString];
+    cell.accessoryType = [self userHasCourse:course] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"did select row.");
+    EventWrapper *thisEventWrapper = eventWrappers[indexPath.row];
+    
+    UITableViewCell *thisCell = [tableView cellForRowAtIndexPath:indexPath];
+    if (thisCell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        [[Store adminStore]removeEventWrapper:thisEventWrapper fromUser:user completion:^(BOOL success) {
+            if (success) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    thisCell.accessoryType = UITableViewCellAccessoryNone;
+                });
+                [user.eventWrappers removeObject:thisEventWrapper.docID];
+            }
+        }];
+    } else {
+        [[Store adminStore]addEventWrapper:thisEventWrapper toUser:user completion:^(BOOL success) {
+            if (success) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
+                });
+                [user.eventWrappers addObject:thisEventWrapper.docID];
+            }
+        }];
+    }
+}
+
+- (BOOL)userHasCourse:(EventWrapper *)course {
+    for (NSString *userCourseID in user.eventWrappers) {
+        if ([userCourseID isEqualToString:course.docID]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 

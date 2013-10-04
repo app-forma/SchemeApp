@@ -23,8 +23,6 @@
 - (void)eventsCompletion:(void (^)(NSArray *allEventWrappers))handler;
 - (void)eventWithDocID:(NSString *)docID completion:(void (^)(Event *event))handler;
 
-- (void)deleteAttendanceDate:(NSDate *)date forStudent:(User *)student completion:(void (^)(BOOL success))handler;
-
 #pragma mark - Event and EventWrappers CRUD
 - (void)createEvent:(Event *)event completion:(completion)handler;
 - (void)updateEvent:(Event *)event completion:(completion)handler;
@@ -39,6 +37,9 @@
 - (void)userWithType:(RoleType)type completion:(void (^)(NSArray *users))handler;
 
 - (void)removeAttendance:(NSString *)attendanceDateString forUser:(User *)user completion:(void (^)(BOOL success))handler;
+
+- (void)addEventWrapper:(EventWrapper *)eventWrapper toUser:(User *)user completion:(void (^)(BOOL success))handler;
+- (void)removeEventWrapper:(EventWrapper *)eventWrapper fromUser:(User *)user completion:(void (^)(BOOL success))handler;
 
 #pragma mark - Messages
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))handler;
