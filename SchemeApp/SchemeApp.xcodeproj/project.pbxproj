@@ -108,8 +108,6 @@
 		AFE538F517E0972C00C0B776 /* StudentEventMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538EC17E0972C00C0B776 /* StudentEventMainViewController.m */; };
 		AFE538F617E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538EE17E0972C00C0B776 /* StudentMessageDetailsViewController.m */; };
 		AFE538F717E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE538EE17E0972C00C0B776 /* StudentMessageDetailsViewController.m */; };
-		AFE538F817E0972C00C0B776 /* StudentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFE538EF17E0972C00C0B776 /* StudentStoryboard.storyboard */; };
-		AFE538F917E0972C00C0B776 /* StudentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFE538EF17E0972C00C0B776 /* StudentStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -260,7 +258,6 @@
 		AFE538EC17E0972C00C0B776 /* StudentEventMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentEventMainViewController.m; sourceTree = "<group>"; };
 		AFE538ED17E0972C00C0B776 /* StudentMessageDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentMessageDetailsViewController.h; sourceTree = "<group>"; };
 		AFE538EE17E0972C00C0B776 /* StudentMessageDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentMessageDetailsViewController.m; sourceTree = "<group>"; };
-		AFE538EF17E0972C00C0B776 /* StudentStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StudentStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -524,7 +521,6 @@
 				04E09F5917E7249D00B946CB /* EventCell.h */,
 				04E09F5A17E7249D00B946CB /* EventCell.m */,
 				27BCC1E617E1E7E7009977BB /* LoginStoryboard.storyboard */,
-				AFE538EF17E0972C00C0B776 /* StudentStoryboard.storyboard */,
 				4D757AE917F9DF38007255E1 /* StudentEventsStoryBoard.storyboard */,
 				2791F55F17FD5C4400D8795F /* StudentPicturePickerStoryboard.storyboard */,
 				4D757AED17F9DF94007255E1 /* StudentWhatToReadStoryboard.storyboard */,
@@ -706,7 +702,6 @@
 				27BCC20517E1FB8D009977BB /* users_selected@2x.png in Resources */,
 				2791F56B17FD8DAC00D8795F /* camera_unselected@1x.png in Resources */,
 				AF8CD8F617E8507F004551F8 /* AdminUserStoryboard.storyboard in Resources */,
-				AFE538F817E0972C00C0B776 /* StudentStoryboard.storyboard in Resources */,
 				27BCC20417E1FB8D009977BB /* users_selected@1x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -717,7 +712,6 @@
 			files = (
 				AF8CD8F117E84E87004551F8 /* AdminEventWrapperStoryboard.storyboard in Resources */,
 				0493B54D17DDF80C003B3D23 /* InfoPlist.strings in Resources */,
-				AFE538F917E0972C00C0B776 /* StudentStoryboard.storyboard in Resources */,
 				AF8CD8F417E85065004551F8 /* AdminMessagesStoryboard.storyboard in Resources */,
 				AF8CD8F717E8507F004551F8 /* AdminUserStoryboard.storyboard in Resources */,
 			);
