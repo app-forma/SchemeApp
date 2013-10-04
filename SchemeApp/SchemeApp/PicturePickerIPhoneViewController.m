@@ -71,11 +71,6 @@
 - (IBAction)saveChanges:(id)sender {
     [self.loadIndicator startAnimating];
     self.loadingView.hidden = NO;
-    
-    NSLog(@"USER: %@", self.user);
-    NSLog(@"EVENTWRAPPERS: %@", self.user.eventWrappers);
-    
-    
     [[Store superAdminStore] updateUser:self.user completion:^(id responseBody, id response, NSError *error) {
         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
         NSInteger statusCode = [httpResponse statusCode];
