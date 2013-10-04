@@ -8,6 +8,7 @@
 
 #import "TabBarSetupViewController.h"
 #import "StudentAutomaticPresence.h"
+#import "AwesomeUI.h"
 
 @implementation TabBarSetupViewController
 {
@@ -29,6 +30,7 @@
             [self setupTabBarWithStoryboards:@[@"AdminEventWrapperStoryboard", @"AdminMessagesStoryboard", @"AdminUserStoryboard"]];
         }
     }
+    [AwesomeUI setStyleToBar:self.tabBar];
     return self;
 }
 

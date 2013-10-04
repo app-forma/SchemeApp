@@ -2,7 +2,7 @@
 //  AwesomeUI.h
 //  SchemeAppAdmin
 //
-//  Created by Marcus Norling on 10/1/13.
+//  Created by Erik Österberg on 2013-10-04.
 //  Copyright (c) 2013 Marcus Norling. All rights reserved.
 //
 
@@ -10,30 +10,27 @@
 
 @interface AwesomeUI : NSObject
 
-/**
- *  Theme colors
- */
+#pragma mark - GLOBAL THEME
++(void)setGlobalStylingTo:(UIWindow *)window;
++(void)setStyleToBar:(id)bar;
+
+#pragma mark - THEME COLORS
 + (UIColor *)backgroundColorForEmptyTableView;
 + (UIColor *)backgroundColorForCoverViews;
 + (UIColor *)fontColorForCoverViews;
 
-/**
- *  Theme fonts
- */
+#pragma mark - THEME FONTS
 + (UIFont *)fontForCoverViews;
-
-/**
- *  TableView style
- */
-+ (void)setGGstyleTo:(UITableView *)tableView;
+#pragma mark - TABLE VIEWS
 + (UIColor *)colorForIndexPath:(NSIndexPath *)indexPath;
++ (void)setGGstyleTo:(UITableView *)tableView;
 + (NSInteger)tableViewCellHeight;
 + (NSUInteger)tableViewHeaderHeight;
 
-/**
- *  Cell style
- */
+#pragma mark - TABLE VIEW CELLS
 + (void)addDefaultStyleTo:(UITableViewCell*)cell;
++(void)addColorAndDefaultStyleTo:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath;
 + (void)setStateSelectedfor:(UITableViewCell*)cell;
 + (void)setStateUnselectedfor:(UITableViewCell*)cell;
+
 @end

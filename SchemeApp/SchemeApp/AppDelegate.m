@@ -7,11 +7,13 @@
 //
 
 #import "AppDelegate.h"
-#import "Message.h"
+//#import "Message.h"
+#import "AwesomeUI.h"
 
 @implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{    
+{
+    [AwesomeUI setGlobalStylingTo:self.window];
     return YES;
 }
 

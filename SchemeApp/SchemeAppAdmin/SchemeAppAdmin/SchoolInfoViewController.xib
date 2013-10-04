@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="mapView" destination="Z31-ev-Sil" id="j5H-cP-z3m"/>
                 <outlet property="nameTextField" destination="5RP-4R-tEJ" id="q8E-zR-Ti9"/>
+                <outlet property="navBar" destination="2ea-WR-aNJ" id="L0h-I9-dbG"/>
                 <outlet property="saveButton" destination="5VS-DY-BKK" id="RL2-hq-66H"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>

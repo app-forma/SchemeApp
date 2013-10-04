@@ -8,13 +8,12 @@
 
 #import "SchoolInfoViewController.h"
 #import "Location.h"
-
+#import "AwesomeUI.h"
 
 @interface SchoolInfoViewController () <UITextFieldDelegate, UIBarPositioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 @end
@@ -29,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [AwesomeUI setStyleToBar:self.navBar];
     
     currentLocationAnnotation = [[MKPointAnnotation alloc] init];
     

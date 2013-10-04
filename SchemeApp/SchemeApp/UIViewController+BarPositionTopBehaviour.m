@@ -7,13 +7,14 @@
 //
 
 #import "UIViewController+BarPositionTopBehaviour.h"
+#import "AwesomeUI.h"
 
 @implementation UIViewController (BarPositionTopBehaviour)
 
 -(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
 {
+    [AwesomeUI setStyleToBar:bar];
     return UIBarPositionTopAttached;
 }
-
 
 @end

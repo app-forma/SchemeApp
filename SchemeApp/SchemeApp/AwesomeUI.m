@@ -2,13 +2,15 @@
 //  AwesomeUI.m
 //  SchemeAppAdmin
 //
-//  Created by Marcus Norling on 10/1/13.
+//  Created by Erik Österberg on 2013-10-04.
 //  Copyright (c) 2013 Marcus Norling. All rights reserved.
 //
 
 #import "AwesomeUI.h"
 
 static NSArray *colors;
+static UIColor *tintColor;
+static UIColor *barColor;
 static UIColor *tableViewBackgroundColor;
 static UIColor *coverViewBackgroundColor;
 static UIFont *coverViewFont;
@@ -19,15 +21,17 @@ static UIColor *fontColorForCoverViews;
 + (void)initialize
 {
     [super initialize];
-
+    
     /**
      *  TableView row colors
      */
     colors = @[[UIColor colorWithRed:239/255.0f green:148/255.0f blue:71/255.0f alpha:1.0f], [UIColor colorWithRed:243/255.0f green:82/255.0f blue:66/255.0f alpha:1.0f], [UIColor colorWithRed:221/255.0f green:49/255.0f blue:91/255.0f alpha:1.0f], [UIColor colorWithRed:155/255.0f green:49/255.0f blue:97/255.0f alpha:1.0f], [UIColor colorWithRed:67/255.0f green:46/255.0f blue:56/255.0f alpha:1.0f]];
-
+    
     /**
      *  Theme colors
      */
+    tintColor = [UIColor lightGrayColor];
+    barColor = [UIColor colorWithRed:0.1788 green:0.1075 blue:0.25 alpha:1];
     tableViewBackgroundColor = [UIColor colorWithRed:220/255.0f green:46/255.0f blue:77/255.0f alpha:1.0f];
     coverViewBackgroundColor = [UIColor darkGrayColor];
     fontColorForCoverViews = [UIColor whiteColor];
@@ -36,6 +40,28 @@ static UIColor *fontColorForCoverViews;
      *  CoverView font
      */
     coverViewFont = [UIFont fontWithName:@"Avenir-Heavy" size:22];
+}
+
+#pragma mark - GLOBAL THEME
++(void)setGlobalStylingTo:(UIWindow *)window
+{
+    window.tintColor = tintColor;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+}
+
++(void)setStyleToBar:(id)bar {
+    if ([bar isKindOfClass:[UINavigationBar class]]) {
+        UINavigationBar *navBar = (UINavigationBar*)bar;
+        navBar.barStyle = UIBarStyleBlack;
+    } else if ([bar isKindOfClass:[UIToolbar class]]) {
+        UIToolbar *toolBar = (UIToolbar*)bar;
+        toolBar.barStyle = UIBarStyleBlack;
+    } else if (![bar isKindOfClass:[UITabBar class]]) {
+        return;
+    }
+    [bar performSelector:@selector(setTranslucent:) withObject:nil];
+    [bar performSelector:@selector(setBarTintColor:) withObject:barColor];
+    [bar performSelector:@selector(setTintColor:) withObject:tintColor];
 }
 
 #pragma mark - THEME COLORS
@@ -98,8 +124,16 @@ static UIColor *fontColorForCoverViews;
 + (void)addDefaultStyleTo:(UITableViewCell*)cell
 {
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:22];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:16];
     cell.textLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
++(void)addColorAndDefaultStyleTo:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath
+{
+    [self addDefaultStyleTo:cell];
+    cell.backgroundColor = [self colorForIndexPath:indexPath];
 }
 
 /**
@@ -120,4 +154,5 @@ static UIColor *fontColorForCoverViews;
     cell.layer.borderColor = [UIColor clearColor].CGColor;
     cell.layer.borderWidth = 0;
 }
+
 @end

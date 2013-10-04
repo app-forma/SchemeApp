@@ -54,7 +54,7 @@
 		27BCC21717E201EE009977BB /* courses_unselected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BCC21617E201EE009977BB /* courses_unselected@1x.png */; };
 		27BCC21A17E24304009977BB /* EventWrapperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BCC21917E24304009977BB /* EventWrapperCell.m */; };
 		27CECEAA17EB22A7004522C0 /* AdminEventWrapperTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CECEA917EB22A7004522C0 /* AdminEventWrapperTableViewController.m */; };
-		4D48885B17FDA59300C7E9A3 /* AwesomeUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D48885A17FDA59300C7E9A3 /* AwesomeUI.m */; };
+		4D4888E917FF626600C7E9A3 /* AwesomeUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4888E817FF626600C7E9A3 /* AwesomeUI.m */; };
 		4D757AA017F963C2007255E1 /* SearchCelliPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757A9F17F963C2007255E1 /* SearchCelliPhone.m */; };
 		4D757AA317F963CE007255E1 /* ReceiverCelliPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757AA217F963CE007255E1 /* ReceiverCelliPhone.m */; };
 		4D757AA617F9AB81007255E1 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D757AA517F9AB81007255E1 /* NSDate+Helpers.m */; };
@@ -196,8 +196,8 @@
 		27BCC21917E24304009977BB /* EventWrapperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventWrapperCell.m; sourceTree = "<group>"; };
 		27CECEA817EB22A7004522C0 /* AdminEventWrapperTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEventWrapperTableViewController.h; sourceTree = "<group>"; };
 		27CECEA917EB22A7004522C0 /* AdminEventWrapperTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEventWrapperTableViewController.m; sourceTree = "<group>"; };
-		4D48885917FDA59300C7E9A3 /* AwesomeUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AwesomeUI.h; path = SchemeAppAdmin/AwesomeUI.h; sourceTree = SOURCE_ROOT; };
-		4D48885A17FDA59300C7E9A3 /* AwesomeUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AwesomeUI.m; path = SchemeAppAdmin/AwesomeUI.m; sourceTree = SOURCE_ROOT; };
+		4D4888E717FF626600C7E9A3 /* AwesomeUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeUI.h; sourceTree = "<group>"; };
+		4D4888E817FF626600C7E9A3 /* AwesomeUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeUI.m; sourceTree = "<group>"; };
 		4D757A9E17F963C2007255E1 /* SearchCelliPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCelliPhone.h; sourceTree = "<group>"; };
 		4D757A9F17F963C2007255E1 /* SearchCelliPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCelliPhone.m; sourceTree = "<group>"; };
 		4D757AA117F963CE007255E1 /* ReceiverCelliPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverCelliPhone.h; sourceTree = "<group>"; };
@@ -449,8 +449,8 @@
 		2748CDC617DF35EA00A06467 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4D48885917FDA59300C7E9A3 /* AwesomeUI.h */,
-				4D48885A17FDA59300C7E9A3 /* AwesomeUI.m */,
+				4D4888E717FF626600C7E9A3 /* AwesomeUI.h */,
+				4D4888E817FF626600C7E9A3 /* AwesomeUI.m */,
 				4DF963F417FDA3D70092F44D /* CircleImage.h */,
 				4DF963F517FDA3D70092F44D /* CircleImage.m */,
 				4D757AA417F9AB81007255E1 /* NSDate+Helpers.h */,
@@ -807,6 +807,7 @@
 				27A6380117FABD1F003F567C /* UIImage+Base64.m in Sources */,
 				AF22F05117FF07A500E227CF /* MonthCollectionViewCell.m in Sources */,
 				AF99542417F2FDAC003C450B /* Location.m in Sources */,
+				4D4888E917FF626600C7E9A3 /* AwesomeUI.m in Sources */,
 				4DED32C017E993F7008A5D3A /* AdminMessagesDetailViewController.m in Sources */,
 				AF22F05017FF07A500E227CF /* DayCollectionViewCell.m in Sources */,
 				4D757AA017F963C2007255E1 /* SearchCelliPhone.m in Sources */,
@@ -817,7 +818,6 @@
 				27BCC1EA17E1E8B5009977BB /* LoginViewController.m in Sources */,
 				27CECEAA17EB22A7004522C0 /* AdminEventWrapperTableViewController.m in Sources */,
 				0423298A17DF2ABA005B47F9 /* Event.m in Sources */,
-				4D48885B17FDA59300C7E9A3 /* AwesomeUI.m in Sources */,
 				AFE538F217E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */,
 				0437DE2517E307F000DB9F5A /* StudentMessageViewController.m in Sources */,
 				0423298D17DF2B7B005B47F9 /* Message.m in Sources */,

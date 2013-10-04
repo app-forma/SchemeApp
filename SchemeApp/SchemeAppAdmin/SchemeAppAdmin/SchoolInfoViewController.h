@@ -11,4 +11,6 @@
 
 @interface SchoolInfoViewController : UIViewController <MKMapViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
+
 @end
