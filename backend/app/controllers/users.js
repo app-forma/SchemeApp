@@ -160,22 +160,41 @@ exports.byEmail = function (req, res) {
         });
 };
 
+// add and remove attendance from a user
 exports.addAttendance = function (req, res) {
+    addReferenceToUserProperty(req.params.id, 'attendances', req.params.date, res);
+};
+
+exports.removeAttendance = function (req, res) {
+    removeReferenceFromUserProperty(req.params.id, 'attendances', req.params.date, res);
+};
+
+// add and remove eventwrappers from a user
+exports.addEventWrapperID = function (req, res) {
+    addReferenceToUserProperty(req.params.id, 'eventWrappers', req.params.eventWrapperID, res);
+};
+
+exports.removeEventWrapperID = function (req, res) {
+    removeReferenceFromUserProperty(req.params.id, 'eventWrappers', req.params.eventWrapperID, res);
+};
+
+
+function addReferenceToUserProperty (userID, propertyName, referenceID, res) {
     User.findOne({
-        _id: req.params.id
+        _id: userID
     }).exec(function (err, user) {
         if (err) {
             res.json(500, err.errors);
         } else {
             var foundDuplicate = false;
-            for (var i = 0; i < user.attendances.length; i++) {
-                if (req.params.date === user.attendances[i]) {
+            for (var i = 0; i < user[propertyName].length; i++) {
+                if (referenceID == user[propertyName][i]) {
                     foundDuplicate = true;
                     break;
                 }
             }
             if (!foundDuplicate) {
-                user.attendances.push(req.params.date);
+                user[propertyName].push(referenceID);
                 user.save(function (err) {
                     if (err) {
                         res.json(500, err.errors);
@@ -188,27 +207,26 @@ exports.addAttendance = function (req, res) {
             });
         }
     });
-};
+}
 
-exports.removeAttendance = function (req, res) {
+function removeReferenceFromUserProperty (userID, propertyName, referenceID, res) {
     User.findOne({
-        _id: req.params.id
+        _id: userID
     }).exec(function (err, user) {
         if (err) {
             res.json(500, err.errors);
         } else {
-            console.log(req.params.date);
-            if (req.params.date) {
+            if (referenceID) {
                 var deletions = 0;
                 var newArray = [];
-                for (var i = 0; i < user.attendances.length; i++) {
-                    if (req.params.date !== user.attendances[i]) {
-                        newArray.push(user.attendances[i]);
+                for (var i = 0; i < user[propertyName].length; i++) {
+                    if (referenceID != user[propertyName][i]) {
+                        newArray.push(user[propertyName][i]);
                     } else {
                         deletions++;
                     }
                 }
-                user.attendances = newArray;
+                user[propertyName] = newArray;
                 user.save(function (err) {
                     if (err) {
                         res.json(500, err.errors);
@@ -229,7 +247,7 @@ exports.removeAttendance = function (req, res) {
             }
         }
     });
-};
+}
 
 
 /**
