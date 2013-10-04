@@ -11,6 +11,6 @@
 
 @interface MonthCollectionViewCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *monthLabel;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end

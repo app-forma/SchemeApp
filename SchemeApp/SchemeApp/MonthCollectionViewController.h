@@ -9,5 +9,9 @@
 @import UIKit;
 
 
-@interface MonthCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface MonthCollectionViewController : UICollectionViewController
+
+@property int year;
+@property int month;
+
 @end
