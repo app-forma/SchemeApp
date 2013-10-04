@@ -77,6 +77,13 @@
 		AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
 		AF05FD3D17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
 		AF1FE93117F47CB1005D54E5 /* StudentAutomaticPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1FE93017F47CB1005D54E5 /* StudentAutomaticPresence.m */; };
+		AF22F05017FF07A500E227CF /* DayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F04217FF07A500E227CF /* DayCollectionViewCell.m */; };
+		AF22F05117FF07A500E227CF /* MonthCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F04417FF07A500E227CF /* MonthCollectionViewCell.m */; };
+		AF22F05217FF07A500E227CF /* MonthCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F04617FF07A500E227CF /* MonthCollectionViewController.m */; };
+		AF22F05317FF07A500E227CF /* UIViewController+BarPositionTopBehaviour.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F04817FF07A500E227CF /* UIViewController+BarPositionTopBehaviour.m */; };
+		AF22F05417FF07A500E227CF /* WeekCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F04A17FF07A500E227CF /* WeekCollectionViewCell.m */; };
+		AF22F05517FF07A500E227CF /* YearCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F04C17FF07A500E227CF /* YearCollectionReusableView.m */; };
+		AF22F05617FF07A500E227CF /* YearCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F04E17FF07A500E227CF /* YearCollectionViewController.m */; };
 		AF2551F017E04628006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F117E04629006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7817DF0FE900DC2DEC /* AdminStore.m */; };
@@ -226,6 +233,20 @@
 		AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEditStudentViewController.m; sourceTree = "<group>"; };
 		AF1FE92F17F47CB1005D54E5 /* StudentAutomaticPresence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudentAutomaticPresence.h; path = SchemeApp/StudentAutomaticPresence.h; sourceTree = "<group>"; };
 		AF1FE93017F47CB1005D54E5 /* StudentAutomaticPresence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StudentAutomaticPresence.m; path = SchemeApp/StudentAutomaticPresence.m; sourceTree = "<group>"; };
+		AF22F04117FF07A500E227CF /* DayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCollectionViewCell.h; sourceTree = "<group>"; };
+		AF22F04217FF07A500E227CF /* DayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCollectionViewCell.m; sourceTree = "<group>"; };
+		AF22F04317FF07A500E227CF /* MonthCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthCollectionViewCell.h; sourceTree = "<group>"; };
+		AF22F04417FF07A500E227CF /* MonthCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCollectionViewCell.m; sourceTree = "<group>"; };
+		AF22F04517FF07A500E227CF /* MonthCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthCollectionViewController.h; sourceTree = "<group>"; };
+		AF22F04617FF07A500E227CF /* MonthCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCollectionViewController.m; sourceTree = "<group>"; };
+		AF22F04717FF07A500E227CF /* UIViewController+BarPositionTopBehaviour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BarPositionTopBehaviour.h"; sourceTree = "<group>"; };
+		AF22F04817FF07A500E227CF /* UIViewController+BarPositionTopBehaviour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BarPositionTopBehaviour.m"; sourceTree = "<group>"; };
+		AF22F04917FF07A500E227CF /* WeekCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekCollectionViewCell.h; sourceTree = "<group>"; };
+		AF22F04A17FF07A500E227CF /* WeekCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekCollectionViewCell.m; sourceTree = "<group>"; };
+		AF22F04B17FF07A500E227CF /* YearCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearCollectionReusableView.h; sourceTree = "<group>"; };
+		AF22F04C17FF07A500E227CF /* YearCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearCollectionReusableView.m; sourceTree = "<group>"; };
+		AF22F04D17FF07A500E227CF /* YearCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearCollectionViewController.h; sourceTree = "<group>"; };
+		AF22F04E17FF07A500E227CF /* YearCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearCollectionViewController.m; sourceTree = "<group>"; };
 		AF2551F617E04883006EDD02 /* SuperAdminStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperAdminStore.h; sourceTree = "<group>"; };
 		AF2551F717E04883006EDD02 /* SuperAdminStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperAdminStore.m; sourceTree = "<group>"; };
 		AF301B7717DF0FE900DC2DEC /* AdminStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdminStore.h; sourceTree = "<group>"; };
@@ -384,6 +405,7 @@
 		270CF19F17EB5250003BEBD2 /* EventWrappers */ = {
 			isa = PBXGroup;
 			children = (
+				AF22F05717FF07EC00E227CF /* Calendar */,
 				AFE3E54C17F2130400586321 /* Event */,
 				27BCC1F217E1F581009977BB /* AdminEventWrappersViewController.h */,
 				27BCC1F317E1F581009977BB /* AdminEventWrappersViewController.m */,
@@ -439,6 +461,8 @@
 				04199A8217E0B88D00E922D5 /* AFNetworking.m */,
 				2748CDC717DF360F00A06467 /* Helpers.h */,
 				2748CDC817DF360F00A06467 /* Helpers.m */,
+				AF22F04717FF07A500E227CF /* UIViewController+BarPositionTopBehaviour.h */,
+				AF22F04817FF07A500E227CF /* UIViewController+BarPositionTopBehaviour.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -566,6 +590,25 @@
 				8F5D541417F1BACE0096C7EA /* StudentWhatToReadTableViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		AF22F05717FF07EC00E227CF /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				AF22F04D17FF07A500E227CF /* YearCollectionViewController.h */,
+				AF22F04E17FF07A500E227CF /* YearCollectionViewController.m */,
+				AF22F04B17FF07A500E227CF /* YearCollectionReusableView.h */,
+				AF22F04C17FF07A500E227CF /* YearCollectionReusableView.m */,
+				AF22F04317FF07A500E227CF /* MonthCollectionViewCell.h */,
+				AF22F04417FF07A500E227CF /* MonthCollectionViewCell.m */,
+				AF22F04517FF07A500E227CF /* MonthCollectionViewController.h */,
+				AF22F04617FF07A500E227CF /* MonthCollectionViewController.m */,
+				AF22F04117FF07A500E227CF /* DayCollectionViewCell.h */,
+				AF22F04217FF07A500E227CF /* DayCollectionViewCell.m */,
+				AF22F04917FF07A500E227CF /* WeekCollectionViewCell.h */,
+				AF22F04A17FF07A500E227CF /* WeekCollectionViewCell.m */,
+			);
+			name = Calendar;
 			sourceTree = "<group>";
 		};
 		AF301B7617DF0FDC00DC2DEC /* Store */ = {
@@ -731,6 +774,7 @@
 				AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */,
 				0493B53A17DDF80C003B3D23 /* AppDelegate.m in Sources */,
 				8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */,
+				AF22F05217FF07A500E227CF /* MonthCollectionViewController.m in Sources */,
 				4D757AA317F963CE007255E1 /* ReceiverCelliPhone.m in Sources */,
 				AFE3E54917F212FD00586321 /* SelectedEventTableViewController.m in Sources */,
 				4DED32BF17E993F7008A5D3A /* AdminMessagesCreateMessageViewController.m in Sources */,
@@ -743,6 +787,7 @@
 				0437DDAA17E2240400DB9F5A /* Validation.m in Sources */,
 				AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */,
 				0423298117DF230B005B47F9 /* User.m in Sources */,
+				AF22F05417FF07A500E227CF /* WeekCollectionViewCell.m in Sources */,
 				AFE3E54A17F212FD00586321 /* SelectedEventWrapperEventCell.m in Sources */,
 				AF2551F817E04883006EDD02 /* SuperAdminStore.m in Sources */,
 				04199A8317E0B88D00E922D5 /* AFNetworking.m in Sources */,
@@ -751,6 +796,7 @@
 				AFDA09EC17EAEAC300333A48 /* DatabaseConnection.m in Sources */,
 				27BCC1EE17E1F347009977BB /* AdminMessagesViewController.m in Sources */,
 				AFE538F017E0972C00C0B776 /* StudentEventDetailsViewController.m in Sources */,
+				AF22F05617FF07A500E227CF /* YearCollectionViewController.m in Sources */,
 				AFE3E54B17F212FD00586321 /* SelectedEventWrapperEventsViewController.m in Sources */,
 				AF1FE93117F47CB1005D54E5 /* StudentAutomaticPresence.m in Sources */,
 				AF8CD8FA17E850C8004551F8 /* TabBarSetupViewController.m in Sources */,
@@ -759,11 +805,14 @@
 				AF2551F417E04630006EDD02 /* StudentStore.m in Sources */,
 				27BCC1F717E1F5D9009977BB /* AdminStudentsViewController.m in Sources */,
 				27A6380117FABD1F003F567C /* UIImage+Base64.m in Sources */,
+				AF22F05117FF07A500E227CF /* MonthCollectionViewCell.m in Sources */,
 				AF99542417F2FDAC003C450B /* Location.m in Sources */,
 				4DED32C017E993F7008A5D3A /* AdminMessagesDetailViewController.m in Sources */,
+				AF22F05017FF07A500E227CF /* DayCollectionViewCell.m in Sources */,
 				4D757AA017F963C2007255E1 /* SearchCelliPhone.m in Sources */,
 				4D757AA617F9AB81007255E1 /* NSDate+Helpers.m in Sources */,
 				4DF963F617FDA3D70092F44D /* CircleImage.m in Sources */,
+				AF22F05517FF07A500E227CF /* YearCollectionReusableView.m in Sources */,
 				27BCC1F417E1F581009977BB /* AdminEventWrappersViewController.m in Sources */,
 				27BCC1EA17E1E8B5009977BB /* LoginViewController.m in Sources */,
 				27CECEAA17EB22A7004522C0 /* AdminEventWrapperTableViewController.m in Sources */,
@@ -772,6 +821,7 @@
 				AFE538F217E0972C00C0B776 /* StudentEventsTableViewController.m in Sources */,
 				0437DE2517E307F000DB9F5A /* StudentMessageViewController.m in Sources */,
 				0423298D17DF2B7B005B47F9 /* Message.m in Sources */,
+				AF22F05317FF07A500E227CF /* UIViewController+BarPositionTopBehaviour.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
