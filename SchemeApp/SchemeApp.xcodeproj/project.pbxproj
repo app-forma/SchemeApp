@@ -84,6 +84,7 @@
 		AF22F05417FF07A500E227CF /* WeekCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F04A17FF07A500E227CF /* WeekCollectionViewCell.m */; };
 		AF22F05517FF07A500E227CF /* YearCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F04C17FF07A500E227CF /* YearCollectionReusableView.m */; };
 		AF22F05617FF07A500E227CF /* YearCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F04E17FF07A500E227CF /* YearCollectionViewController.m */; };
+		AF22F05A17FFD7E000E227CF /* MonthCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F05917FFD7E000E227CF /* MonthCollectionReusableView.m */; };
 		AF2551F017E04628006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F117E04629006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7817DF0FE900DC2DEC /* AdminStore.m */; };
@@ -247,6 +248,8 @@
 		AF22F04C17FF07A500E227CF /* YearCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearCollectionReusableView.m; sourceTree = "<group>"; };
 		AF22F04D17FF07A500E227CF /* YearCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearCollectionViewController.h; sourceTree = "<group>"; };
 		AF22F04E17FF07A500E227CF /* YearCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearCollectionViewController.m; sourceTree = "<group>"; };
+		AF22F05817FFD7E000E227CF /* MonthCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthCollectionReusableView.h; sourceTree = "<group>"; };
+		AF22F05917FFD7E000E227CF /* MonthCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCollectionReusableView.m; sourceTree = "<group>"; };
 		AF2551F617E04883006EDD02 /* SuperAdminStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperAdminStore.h; sourceTree = "<group>"; };
 		AF2551F717E04883006EDD02 /* SuperAdminStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperAdminStore.m; sourceTree = "<group>"; };
 		AF301B7717DF0FE900DC2DEC /* AdminStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdminStore.h; sourceTree = "<group>"; };
@@ -603,6 +606,8 @@
 				AF22F04417FF07A500E227CF /* MonthCollectionViewCell.m */,
 				AF22F04517FF07A500E227CF /* MonthCollectionViewController.h */,
 				AF22F04617FF07A500E227CF /* MonthCollectionViewController.m */,
+				AF22F05817FFD7E000E227CF /* MonthCollectionReusableView.h */,
+				AF22F05917FFD7E000E227CF /* MonthCollectionReusableView.m */,
 				AF22F04117FF07A500E227CF /* DayCollectionViewCell.h */,
 				AF22F04217FF07A500E227CF /* DayCollectionViewCell.m */,
 				AF22F04917FF07A500E227CF /* WeekCollectionViewCell.h */,
@@ -815,6 +820,7 @@
 				4DF963F617FDA3D70092F44D /* CircleImage.m in Sources */,
 				AF22F05517FF07A500E227CF /* YearCollectionReusableView.m in Sources */,
 				27BCC1F417E1F581009977BB /* AdminEventWrappersViewController.m in Sources */,
+				AF22F05A17FFD7E000E227CF /* MonthCollectionReusableView.m in Sources */,
 				27BCC1EA17E1E8B5009977BB /* LoginViewController.m in Sources */,
 				27CECEAA17EB22A7004522C0 /* AdminEventWrapperTableViewController.m in Sources */,
 				0423298A17DF2ABA005B47F9 /* Event.m in Sources */,

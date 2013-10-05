@@ -53,7 +53,8 @@
 {
     static NSString *ViewIdentifier = @"Year";
     YearCollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                                                          withReuseIdentifier:@"Year" forIndexPath:indexPath];
+                                                                          withReuseIdentifier:ViewIdentifier
+                                                                                 forIndexPath:indexPath];
 
     view.label.text = [NSString stringWithFormat:@"%d", 2013 + indexPath.section];
     
