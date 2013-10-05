@@ -18,7 +18,7 @@
 + (UIColor *)backgroundColorForEmptyTableView;
 + (UIColor *)backgroundColorForCoverViews;
 + (UIColor *)fontColorForCoverViews;
-
++ (UIColor *)barColor;
 #pragma mark - THEME FONTS
 + (UIFont *)fontForCoverViews;
 #pragma mark - TABLE VIEWS

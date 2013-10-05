@@ -30,8 +30,8 @@ static UIColor *fontColorForCoverViews;
     /**
      *  Theme colors
      */
-    tintColor = [UIColor whiteColor];
-    barColor = [UIColor colorWithRed:0.22 green:0.37 blue:0.62 alpha:1.0];
+    tintColor = [UIColor lightGrayColor];
+    barColor = [UIColor colorWithRed:0.07 green:0.18 blue:0.36 alpha:1.0];
     tableViewBackgroundColor = [UIColor colorWithRed:220/255.0f green:46/255.0f blue:77/255.0f alpha:1.0f];
     coverViewBackgroundColor = [UIColor darkGrayColor];
     fontColorForCoverViews = [UIColor whiteColor];
@@ -82,7 +82,10 @@ static UIColor *fontColorForCoverViews;
 {
     return fontColorForCoverViews;
 }
-
++ (UIColor *)barColor
+{
+    return barColor;
+}
 #pragma mark - THEME FONTS
 + (UIFont *)fontForCoverViews
 {
@@ -157,5 +160,6 @@ static UIColor *fontColorForCoverViews;
     cell.layer.borderColor = [UIColor clearColor].CGColor;
     cell.layer.borderWidth = 0;
 }
+
 
 @end

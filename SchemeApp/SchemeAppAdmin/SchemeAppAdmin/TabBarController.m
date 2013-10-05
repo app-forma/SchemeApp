@@ -15,6 +15,7 @@
 #import "DetailUserViewController.h"
 #import "SplitViewController.h"
 #import "SchoolInfoViewController.h"
+#import "AwesomeUI.h"
 
 
 @interface TabBarController ()<UITabBarControllerDelegate, UISplitViewControllerDelegate>
@@ -46,6 +47,12 @@
     self = [super init];
     if (self)
     {
+
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tabBar.frame.size.width + 260, self.tabBar.frame.size.height)];
+        view.backgroundColor = [AwesomeUI barColor];
+        [view setAlpha:0.5];
+        [self.tabBar addSubview:view];
+        
         
         self.delegate = self;
         
