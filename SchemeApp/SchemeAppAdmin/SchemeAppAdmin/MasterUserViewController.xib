@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MasterUserViewController">
             <connections>
+                <outlet property="navBar" destination="Knm-dC-EPr" id="7SL-Kl-OUs"/>
                 <outlet property="usersTableView" destination="W5o-Vu-QOi" id="bgG-6I-7bG"/>
                 <outlet property="view" destination="bAv-uN-aSF" id="UXm-gr-yve"/>
             </connections>
@@ -16,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="W5o-Vu-QOi">
-                    <rect key="frame" x="0.0" y="64" width="320" height="647"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="852"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -24,7 +25,7 @@
                         <outlet property="delegate" destination="-1" id="vL1-XR-HD6"/>
                     </connections>
                 </tableView>
-                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Knm-dC-EPr">
+                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Knm-dC-EPr" customClass="NavigationBar">
                     <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <items>

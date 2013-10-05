@@ -16,6 +16,7 @@
 #import "SplitViewController.h"
 #import "SchoolInfoViewController.h"
 
+
 @interface TabBarController ()<UITabBarControllerDelegate, UISplitViewControllerDelegate>
 {
     MasterEventWrapperViewController *mevc;
@@ -45,8 +46,10 @@
     self = [super init];
     if (self)
     {
+        
         self.delegate = self;
-    
+        
+        
         mevc = [MasterEventWrapperViewController new];
         devc = [DetailEventWrapperViewController new];
         mevc.delegate = devc;
@@ -56,7 +59,7 @@
         eventWrapperSplitView.delegate = devc;
         UITabBarItem *eventWrapperItem = [[UITabBarItem alloc] initWithTitle:@"Courses" image:[UIImage imageNamed:@"courses_unselected"] selectedImage:[UIImage imageNamed:@"courses_selected"]];
         eventWrapperSplitView.tabBarItem = eventWrapperItem;
-    
+
 
         mmvc = [MasterMessageViewController new];
         dmvc = [DetailMessageViewController new];

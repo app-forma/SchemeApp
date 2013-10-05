@@ -7,7 +7,7 @@
 //
 
 #import "AwesomeUI.h"
-
+#import "NavigationBar.h"
 static NSArray *colors;
 static UIColor *tintColor;
 static UIColor *barColor;
@@ -30,8 +30,8 @@ static UIColor *fontColorForCoverViews;
     /**
      *  Theme colors
      */
-    tintColor = [UIColor lightGrayColor];
-    barColor = [UIColor colorWithRed:0.111 green:0.072 blue:0.15 alpha:1];
+    tintColor = [UIColor whiteColor];
+    barColor = [UIColor colorWithRed:0.22 green:0.37 blue:0.62 alpha:1.0];
     tableViewBackgroundColor = [UIColor colorWithRed:220/255.0f green:46/255.0f blue:77/255.0f alpha:1.0f];
     coverViewBackgroundColor = [UIColor darkGrayColor];
     fontColorForCoverViews = [UIColor whiteColor];
@@ -50,8 +50,8 @@ static UIColor *fontColorForCoverViews;
 }
 
 +(void)setStyleToBar:(id)bar {
-    if ([bar isKindOfClass:[UINavigationBar class]]) {
-        UINavigationBar *navBar = (UINavigationBar*)bar;
+    if ([bar isKindOfClass:[NavigationBar class]]) {
+        NavigationBar *navBar = (NavigationBar*)bar;
         navBar.barStyle = UIBarStyleBlack;
     } else if ([bar isKindOfClass:[UIToolbar class]]) {
         UIToolbar *toolBar = (UIToolbar*)bar;
@@ -59,8 +59,11 @@ static UIColor *fontColorForCoverViews;
     } else if (![bar isKindOfClass:[UITabBar class]]) {
         return;
     }
-    [bar performSelector:@selector(setTranslucent:) withObject:nil];
+    
+//    [bar performSelector:@selector(setTranslucent:) withObject:nil];
+    
     [bar performSelector:@selector(setBarTintColor:) withObject:barColor];
+    
     [bar performSelector:@selector(setTintColor:) withObject:tintColor];
 }
 

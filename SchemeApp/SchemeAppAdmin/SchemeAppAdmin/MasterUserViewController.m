@@ -13,11 +13,12 @@
 #import "AwesomeUI.h"
 #import "CircleImage.h"
 #import "MasterUserCell.h"
-
+#import "NavigationBar.h"
 
 @interface MasterUserViewController () <UITableViewDelegate, PopoverUserDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *usersTableView;
+@property (weak, nonatomic) IBOutlet NavigationBar *navBar;
 
 @end
 
@@ -39,7 +40,7 @@
          [NSOperationQueue.mainQueue addOperationWithBlock:^
           {
               [self.usersTableView reloadData];
-              NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+              NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
               [self.usersTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
               [self tableView:self.usersTableView didSelectRowAtIndexPath:indexPath];
              
@@ -52,7 +53,8 @@
     puvc = [[PopoverUserViewController alloc] init];
     puvc.delegate = self;
     [AwesomeUI setGGstyleTo:self.usersTableView];
-    self.usersTableView.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
+    self.usersTableView.backgroundColor = [UIColor whiteColor];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,13 +73,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return [users count];
+    return [users count] + 2;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [AwesomeUI setStateUnselectedfor:[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]]];
     [AwesomeUI setStateSelectedfor:[tableView cellForRowAtIndexPath:indexPath]];
-    [self.delegate masterUserDidSelectUser:users[indexPath.row]];
+    [self.delegate masterUserDidSelectUser:users[indexPath.row-1]];
     selectedIndex = indexPath.row;
 }
 
@@ -88,7 +90,13 @@
 //    if (!cell) {
 //        cell = [[MasterUserCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 //    }
-    User *user = users[indexPath.row];
+    if (indexPath.row == 0 || indexPath.row == [users count] + 1) {
+        cell.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
+        cell.nameLabel.text = @"";
+        cell.roleLabel.text = @"";
+        return cell;
+    }
+    User *user = users[indexPath.row-1];
 
     
     cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
@@ -122,15 +130,21 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0) {
+        return 64;
+    }else if (indexPath.row == [users count] + 1){
+        return 140;
+    }
     return 81;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 1.0f;
-}
+
+
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = [AwesomeUI colorForIndexPath:indexPath];
+    if (indexPath.row == 0 || indexPath.row == [users count] + 1) {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
     [AwesomeUI addDefaultStyleTo:cell];
 }
 - (IBAction)addUser:(id)sender

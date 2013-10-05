@@ -14,6 +14,7 @@
 #import "CircleImage.h"
 #import "AttendanceViewController.h"
 #import "EventWrappersForUserViewController.h"
+#import "AwesomeUI.h"
 
 @interface DetailUserViewController ()<PopoverUserDelegate, PicturePickerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -73,6 +74,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     attendanceButton = [[UIBarButtonItem alloc]initWithTitle:@"Attendance" style:UIBarButtonItemStylePlain target:self action:@selector(didPressAttendance:)];
     
     [[Store adminStore]eventWrappersCompletion:^(NSArray *allEventWrappers) {
