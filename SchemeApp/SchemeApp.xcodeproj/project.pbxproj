@@ -405,7 +405,6 @@
 		270CF19F17EB5250003BEBD2 /* EventWrappers */ = {
 			isa = PBXGroup;
 			children = (
-				AF22F05717FF07EC00E227CF /* Calendar */,
 				AFE3E54C17F2130400586321 /* Event */,
 				27BCC1F217E1F581009977BB /* AdminEventWrappersViewController.h */,
 				27BCC1F317E1F581009977BB /* AdminEventWrappersViewController.m */,
@@ -570,6 +569,7 @@
 			children = (
 				2791F55E17FD59DB00D8795F /* Picture picker */,
 				27BCC1EB17E1F335009977BB /* Admin */,
+				AF22F05717FF07EC00E227CF /* Calendar */,
 				27BCC1E817E1E8B5009977BB /* LoginViewController.h */,
 				27BCC1E917E1E8B5009977BB /* LoginViewController.m */,
 				AFE538EB17E0972C00C0B776 /* StudentEventMainViewController.h */,
