@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040651781800404A005D63E9 /* NavigationBar.m in Resources */ = {isa = PBXBuildFile; fileRef = 040651761800404A005D63E9 /* NavigationBar.m */; };
 		04199A8317E0B88D00E922D5 /* AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 04199A8217E0B88D00E922D5 /* AFNetworking.m */; };
 		0423298117DF230B005B47F9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423298017DF230B005B47F9 /* User.m */; };
 		0423298717DF25A0005B47F9 /* EventWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423298617DF25A0005B47F9 /* EventWrapper.m */; };
@@ -14,6 +15,8 @@
 		0423298D17DF2B7B005B47F9 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423298C17DF2B7B005B47F9 /* Message.m */; };
 		0437DDAA17E2240400DB9F5A /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437DDA917E2240400DB9F5A /* Validation.m */; };
 		0437DE2517E307F000DB9F5A /* StudentMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437DE2417E307F000DB9F5A /* StudentMessageViewController.m */; };
+		045D903C1800415F00AE07D2 /* NavigationBar.h in Sources */ = {isa = PBXBuildFile; fileRef = 040651751800404A005D63E9 /* NavigationBar.h */; };
+		045D903D1800415F00AE07D2 /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 040651761800404A005D63E9 /* NavigationBar.m */; };
 		0493B52A17DDF80C003B3D23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52917DDF80C003B3D23 /* Foundation.framework */; };
 		0493B52C17DDF80C003B3D23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */; };
 		0493B52E17DDF80C003B3D23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B52D17DDF80C003B3D23 /* UIKit.framework */; };
@@ -129,6 +132,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040651751800404A005D63E9 /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationBar.h; path = SchemeAppAdmin/SchemeAppAdmin/NavigationBar.h; sourceTree = "<group>"; };
+		040651761800404A005D63E9 /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationBar.m; path = SchemeAppAdmin/SchemeAppAdmin/NavigationBar.m; sourceTree = "<group>"; };
 		04199A8117E0B88D00E922D5 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
 		04199A8217E0B88D00E922D5 /* AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworking.m; sourceTree = "<group>"; };
 		0423297F17DF230B005B47F9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -143,6 +148,7 @@
 		0437DDA917E2240400DB9F5A /* Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Validation.m; sourceTree = "<group>"; };
 		0437DE2317E307F000DB9F5A /* StudentMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentMessageViewController.h; sourceTree = "<group>"; };
 		0437DE2417E307F000DB9F5A /* StudentMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentMessageViewController.m; sourceTree = "<group>"; };
+		045D903B1800414300AE07D2 /* NavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NavigationBar.h; path = SchemeAppAdmin/SchemeAppAdmin/NavigationBar.h; sourceTree = "<group>"; };
 		0493B52617DDF80C003B3D23 /* SchemeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchemeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0493B52917DDF80C003B3D23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0493B52B17DDF80C003B3D23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -328,6 +334,9 @@
 		0493B51D17DDF80C003B3D23 = {
 			isa = PBXGroup;
 			children = (
+				045D903B1800414300AE07D2 /* NavigationBar.h */,
+				040651751800404A005D63E9 /* NavigationBar.h */,
+				040651761800404A005D63E9 /* NavigationBar.m */,
 				AF1FE92F17F47CB1005D54E5 /* StudentAutomaticPresence.h */,
 				AF1FE93017F47CB1005D54E5 /* StudentAutomaticPresence.m */,
 				0493B52F17DDF80C003B3D23 /* SchemeApp */,
@@ -750,6 +759,7 @@
 				27BCC20517E1FB8D009977BB /* users_selected@2x.png in Resources */,
 				2791F56B17FD8DAC00D8795F /* camera_unselected@1x.png in Resources */,
 				AF8CD8F617E8507F004551F8 /* AdminUserStoryboard.storyboard in Resources */,
+				040651781800404A005D63E9 /* NavigationBar.m in Resources */,
 				27BCC20417E1FB8D009977BB /* users_selected@1x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -772,6 +782,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045D903C1800415F00AE07D2 /* NavigationBar.h in Sources */,
+				045D903D1800415F00AE07D2 /* NavigationBar.m in Sources */,
 				27BCC21A17E24304009977BB /* EventWrapperCell.m in Sources */,
 				8F5D541B17F2029C0096C7EA /* WhatToReadCell.m in Sources */,
 				AFE538F417E0972C00C0B776 /* StudentEventMainViewController.m in Sources */,
