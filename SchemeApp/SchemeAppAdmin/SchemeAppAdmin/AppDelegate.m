@@ -38,7 +38,7 @@
 
     TabBarController *tabBarController = [[TabBarController alloc]init];
     //self.window.rootViewController = tabBarController;
-    tabBarController.selectedIndex = 0;
+    tabBarController.selectedIndex = 2;
     [AwesomeUI setStyleToBar:tabBarController.tabBar];
     [self.window.rootViewController presentViewController:tabBarController animated:YES completion:nil];
    

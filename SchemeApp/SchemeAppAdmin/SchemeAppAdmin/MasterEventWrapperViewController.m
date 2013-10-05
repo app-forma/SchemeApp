@@ -17,6 +17,7 @@
     NSMutableArray *eventWrappers;
     UIPopoverController *addEventWrapperPopover;
     PopoverEventWrapperViewController *pewvc;
+    NSInteger selectedIndex;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *eventWrappersTableView;
@@ -60,6 +61,7 @@
      *    DESIGN UTKAST!
      */
     [AwesomeUI setGGstyleTo:self.tableView];
+    self.tableView.backgroundColor = [UIColor whiteColor];
 }
 
 #pragma mark - Table view data source
@@ -76,6 +78,9 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    [AwesomeUI addDefaultStyleTo:cell];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [AwesomeUI colorForIndexPath:indexPath];
     EventWrapper *eventWrapper = eventWrappers[indexPath.row];
     cell.textLabel.text = eventWrapper.name;
     
@@ -84,6 +89,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [AwesomeUI setStateUnselectedfor:[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]]];
+    [AwesomeUI setStateSelectedfor:[tableView cellForRowAtIndexPath:indexPath]];
+    [self.delegate masterEventWrapperDidSelectEventWrapper:eventWrappers[indexPath.row]];
+    selectedIndex = indexPath.row;
     [self.delegate masterEventWrapperDidSelectEventWrapper:eventWrappers[indexPath.row]];
 }
 
@@ -105,7 +114,10 @@
         }
     }
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 81;
+}
 - (IBAction)addEventWrapper:(id)sender
 {
     [self showPopover:sender];

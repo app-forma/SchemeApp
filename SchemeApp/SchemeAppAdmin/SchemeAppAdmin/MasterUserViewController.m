@@ -77,6 +77,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     [AwesomeUI setStateUnselectedfor:[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]]];
     [AwesomeUI setStateSelectedfor:[tableView cellForRowAtIndexPath:indexPath]];
     [self.delegate masterUserDidSelectUser:users[indexPath.row-1]];
@@ -118,12 +119,13 @@
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSString *url = [NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, [users[indexPath.row]docID]];
+        NSString *url = [NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, [users[indexPath.row - 1]docID]];
         [[Store dbSessionConnection] deletePath:url withCompletion:^(id jsonObject, id response, NSError *error) {
             [self.usersTableView reloadData];
         }];
-        [users removeObject:users[indexPath.row]];
+        [users removeObject:users[indexPath.row - 1]];
         [self.usersTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
