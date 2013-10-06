@@ -8,7 +8,8 @@
 
 #import "YearCollectionViewController.h"
 #import "YearCollectionReusableView.h"
-#import "MonthCollectionViewCell.h"
+#import "YearCollectionViewCell.h"
+#import "MonthCellCreator.h"
 #import "MonthCollectionViewController.h"
 
 
@@ -41,9 +42,10 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Month";
-    MonthCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier
+    YearCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier
                                                                               forIndexPath:indexPath];
     cell.label.text = [self monthNameForIndexPath:indexPath];
+    cell.backgroundColor = MonthCellCreator.workdayColor;
     
     return cell;
 }

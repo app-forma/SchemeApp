@@ -11,7 +11,7 @@
 
 @interface MonthCollectionViewController : UICollectionViewController
 
-@property int year;
-@property int month;
+@property NSInteger year;
+@property NSInteger month;
 
 @end

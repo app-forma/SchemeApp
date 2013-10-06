@@ -13,4 +13,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
+@property BOOL isWeekCell;
+
+@property (strong, nonatomic) NSDate *startDate;
+@property (strong, nonatomic) NSDate *endDate;
+
 @end

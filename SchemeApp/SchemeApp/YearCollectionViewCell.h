@@ -1,5 +1,5 @@
 //
-//  DayCollectionViewCell.h
+//  YearCollectionViewCell.h
 //  SchemeApp
 //
 //  Created by Henrik on 2013-10-01.
@@ -9,9 +9,8 @@
 @import UIKit;
 
 
-@interface DayCollectionViewCell : UICollectionViewCell
+@interface YearCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
-@property (strong, nonatomic) NSDate *date;
 
 @end
