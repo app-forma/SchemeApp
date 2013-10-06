@@ -1,5 +1,5 @@
 //
-//  StudentWhatToReadTableViewController.h
+//  StudentWhatToReadMainViewController.h
 //  SchemeApp
 //
 //  Created by Rikard Karlsson on 9/24/13.
@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface StudentWhatToReadTableViewController : UITableViewController
-@property (nonatomic, copy) NSMutableArray *whatToReadWithEventWrapper;
 
 @end

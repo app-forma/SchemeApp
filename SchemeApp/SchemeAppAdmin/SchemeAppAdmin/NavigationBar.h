@@ -33,5 +33,5 @@
  * @warning this method is not available in the actual implementation, and is only here for demonstration purposes.
  */
 - (void)displayColorLayer:(BOOL)display;
-
+-(void)setBarTintColor:(UIColor *)barTintColor;
 @end

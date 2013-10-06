@@ -54,8 +54,8 @@
 }
 
 - (IBAction)populateStudentCredentials:(id)sender {
-    self.emailField.text = @"tobie@tobie.se";
-    self.passwordField.text = @"tobie";
+    self.emailField.text = @"ost@hotmail.com";
+    self.passwordField.text = @"ost";
 }
 
 @end

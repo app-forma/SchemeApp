@@ -1,5 +1,5 @@
 //
-//  StudentWhatToReadTableViewController.m
+//  StudentWhatToReadMainViewController.m
 //  SchemeApp
 //
 //  Created by Rikard Karlsson on 9/24/13.
@@ -7,50 +7,85 @@
 //
 
 #import "StudentWhatToReadTableViewController.h"
-#import "WhatToReadCell.h"
+#import "User.h"
 #import "EventWrapper.h"
 #import "Event.h"
+#import "WhatToReadCell.h"
+#import "AwesomeUI.h"
 
 @interface StudentWhatToReadTableViewController ()
-
 @end
 
 @implementation StudentWhatToReadTableViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithStyle:style];
-    if (self) {
-    }
-    return self;
+    NSArray *todaysLessons;
+    NSArray *thisWeeksLessons;
+    
+    BOOL weekMode;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"glasses_selected.png"]];
+    
+    [AwesomeUI setGGstyleTo:self.tableView];
+    self.tableView.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
     self.navigationItem.title = @"Guidance";
+    
+    todaysLessons = [self getLessonsForToday];
+    thisWeeksLessons = [self getLessonsForTheWeek];
 }
+
+- (NSArray*)getLessonsForToday
+{
+    NSDictionary *today = [Helpers startAndEndTimeForDate:[NSDate date]];
+    return [self filteredDatesForWhatToRead:@{@"startDate": [Helpers dateFromString:today[@"startTime"]], @"endDate": [Helpers dateFromString:today[@"endTime"]]}];
+}
+
+- (NSArray*)getLessonsForTheWeek
+{
+    NSDictionary *week = [Helpers startAndEndDateOfWeekForDate:[NSDate date]];
+    return [self filteredDatesForWhatToRead:@{@"startDate": [Helpers dateFromString:week[@"startDate"]], @"endDate": [Helpers dateFromString:week[@"endDate"]]}];
+}
+
+-(NSArray *)filteredDatesForWhatToRead:(NSDictionary *)dateDic
+{
+    NSMutableArray *filteredArray = [NSMutableArray new];
+    for (EventWrapper *eventWrapper in Store.mainStore.currentUser.eventWrappers){
+        for (Event *event in eventWrapper.events){
+            if ([[dateDic[@"startDate"] laterDate:event.startDate] isEqual:event.startDate] && [[dateDic[@"endDate"] earlierDate:event.startDate] isEqual:event.startDate]) {
+                NSDictionary *eDic = @{@"eventWrapper": eventWrapper, @"event": event};
+                [filteredArray addObject:eDic];
+            }
+        }
+    }
+    return filteredArray;
+}
+
+- (IBAction)didChangeControl:(UISegmentedControl *)sender {
+    weekMode = sender.selectedSegmentIndex == 1 ? YES : NO;
+    [self.tableView reloadData];
+}
+
+
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.whatToReadWithEventWrapper count];
+    return weekMode ? thisWeeksLessons.count : todaysLessons.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"WhatToReadCell";
     WhatToReadCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    [AwesomeUI addColorAndDefaultStyleTo:cell forIndexPath:indexPath];
     
-    EventWrapper *eventWrapper = self.whatToReadWithEventWrapper[indexPath.row][@"eventWrapper"];
-    Event *event = self.whatToReadWithEventWrapper[indexPath.row][@"event"];
+    NSArray *dataSource = weekMode ? thisWeeksLessons : todaysLessons;
+    
+    EventWrapper *eventWrapper = dataSource[indexPath.row][@"eventWrapper"];
+    Event *event = dataSource[indexPath.row][@"event"];
     
     cell.courseLabel.text = eventWrapper.name;
     cell.dateLabel.text = [Helpers stringFromNSDate:event.startDate];
@@ -61,58 +96,9 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 160.0;
+    return 92;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

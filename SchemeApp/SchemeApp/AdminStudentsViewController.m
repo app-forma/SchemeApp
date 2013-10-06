@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-
+@property (strong) UIActivityIndicatorView *activityView;
 @end
 
 @implementation AdminStudentsViewController
@@ -32,6 +32,13 @@
     [super viewDidLoad];
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"users_selected"]];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.activityView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityView.frame = CGRectMake(150, 150, 20, 20);
+    
+    [self.view addSubview:self.activityView];
+    if (!users) {
+        [self.activityView startAnimating];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -43,7 +50,7 @@
          [NSOperationQueue.mainQueue addOperationWithBlock:^
          {
              [self.tableview reloadData];
-             [self.activityIndicator stopAnimating];
+             [self.activityView stopAnimating];
          }];
      }];
 }

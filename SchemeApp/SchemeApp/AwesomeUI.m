@@ -7,7 +7,7 @@
 //
 
 #import "AwesomeUI.h"
-
+#import "NavigationBar.h"
 static NSArray *colors;
 static UIColor *tintColor;
 static UIColor *barColor;
@@ -30,8 +30,8 @@ static UIColor *fontColorForCoverViews;
     /**
      *  Theme colors
      */
-    tintColor = [UIColor lightGrayColor];
-    barColor = [UIColor colorWithRed:0.111 green:0.072 blue:0.15 alpha:1];
+    tintColor = [UIColor whiteColor];
+    barColor = [UIColor colorWithRed:0.07 green:0.18 blue:0.36 alpha:1.0];
     tableViewBackgroundColor = [UIColor colorWithRed:220/255.0f green:46/255.0f blue:77/255.0f alpha:1.0f];
     coverViewBackgroundColor = [UIColor darkGrayColor];
     fontColorForCoverViews = [UIColor whiteColor];
@@ -40,27 +40,32 @@ static UIColor *fontColorForCoverViews;
      *  CoverView font
      */
     coverViewFont = [UIFont fontWithName:@"Avenir-Heavy" size:22];
+         
 }
 
 #pragma mark - GLOBAL THEME
 +(void)setGlobalStylingTo:(UIWindow *)window
 {
-    window.tintColor = tintColor;
+//    window.tintColor = tintColor;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 +(void)setStyleToBar:(id)bar {
-    if ([bar isKindOfClass:[UINavigationBar class]]) {
-        UINavigationBar *navBar = (UINavigationBar*)bar;
+    if ([bar isKindOfClass:[NavigationBar class]]) {
+        NavigationBar *navBar = (NavigationBar*)bar;
         navBar.barStyle = UIBarStyleBlack;
     } else if ([bar isKindOfClass:[UIToolbar class]]) {
         UIToolbar *toolBar = (UIToolbar*)bar;
         toolBar.barStyle = UIBarStyleBlack;
     } else if (![bar isKindOfClass:[UITabBar class]]) {
+        
         return;
     }
-    [bar performSelector:@selector(setTranslucent:) withObject:nil];
+    
+//    [bar performSelector:@selector(setTranslucent:) withObject:nil];
+    
     [bar performSelector:@selector(setBarTintColor:) withObject:barColor];
+    
     [bar performSelector:@selector(setTintColor:) withObject:tintColor];
 }
 
@@ -79,7 +84,10 @@ static UIColor *fontColorForCoverViews;
 {
     return fontColorForCoverViews;
 }
-
++ (UIColor *)barColor
+{
+    return barColor;
+}
 #pragma mark - THEME FONTS
 + (UIFont *)fontForCoverViews
 {
@@ -154,5 +162,6 @@ static UIColor *fontColorForCoverViews;
     cell.layer.borderColor = [UIColor clearColor].CGColor;
     cell.layer.borderWidth = 0;
 }
+
 
 @end
