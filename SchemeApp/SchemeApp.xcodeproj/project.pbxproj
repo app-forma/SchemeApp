@@ -72,7 +72,6 @@
 		8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */; };
 		8F2407DB17E1C43600BB9B8B /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F2407D917E1C43600BB9B8B /* DatePickerViewController.xib */; };
 		8F5D541517F1BACE0096C7EA /* StudentWhatToReadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D541417F1BACE0096C7EA /* StudentWhatToReadTableViewController.m */; };
-		8F5D541817F1BCE70096C7EA /* StudentWhatToReadMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D541717F1BCE70096C7EA /* StudentWhatToReadMainViewController.m */; };
 		8F5D541B17F2029C0096C7EA /* WhatToReadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5D541A17F2029C0096C7EA /* WhatToReadCell.m */; };
 		AF05FD3C17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
 		AF05FD3D17E71638004A5B01 /* AdminEditStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */; };
@@ -85,6 +84,7 @@
 		AF22F05617FF07A500E227CF /* YearCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F04E17FF07A500E227CF /* YearCollectionViewController.m */; };
 		AF22F05A17FFD7E000E227CF /* MonthCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F05917FFD7E000E227CF /* MonthCollectionReusableView.m */; };
 		AF22F05D18000F0600E227CF /* MonthCellCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F05C18000F0600E227CF /* MonthCellCreator.m */; };
+		AF22F0621802081100E227CF /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AF22F0611802081100E227CF /* NavigationBar.m */; };
 		AF2551F017E04628006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F117E04629006EDD02 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7A17DF0FE900DC2DEC /* Store.m */; };
 		AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF301B7817DF0FE900DC2DEC /* AdminStore.m */; };
@@ -226,8 +226,6 @@
 		8F2407D917E1C43600BB9B8B /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
 		8F5D541317F1BACE0096C7EA /* StudentWhatToReadTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentWhatToReadTableViewController.h; sourceTree = "<group>"; };
 		8F5D541417F1BACE0096C7EA /* StudentWhatToReadTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentWhatToReadTableViewController.m; sourceTree = "<group>"; };
-		8F5D541617F1BCE70096C7EA /* StudentWhatToReadMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentWhatToReadMainViewController.h; sourceTree = "<group>"; };
-		8F5D541717F1BCE70096C7EA /* StudentWhatToReadMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentWhatToReadMainViewController.m; sourceTree = "<group>"; };
 		8F5D541917F2029C0096C7EA /* WhatToReadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhatToReadCell.h; sourceTree = "<group>"; };
 		8F5D541A17F2029C0096C7EA /* WhatToReadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhatToReadCell.m; sourceTree = "<group>"; };
 		AF05FD3A17E71638004A5B01 /* AdminEditStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEditStudentViewController.h; sourceTree = "<group>"; };
@@ -250,6 +248,8 @@
 		AF22F05917FFD7E000E227CF /* MonthCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCollectionReusableView.m; sourceTree = "<group>"; };
 		AF22F05B18000F0600E227CF /* MonthCellCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthCellCreator.h; sourceTree = "<group>"; };
 		AF22F05C18000F0600E227CF /* MonthCellCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCellCreator.m; sourceTree = "<group>"; };
+		AF22F0601802081100E227CF /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBar.h; sourceTree = "<group>"; };
+		AF22F0611802081100E227CF /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBar.m; sourceTree = "<group>"; };
 		AF2551F617E04883006EDD02 /* SuperAdminStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperAdminStore.h; sourceTree = "<group>"; };
 		AF2551F717E04883006EDD02 /* SuperAdminStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperAdminStore.m; sourceTree = "<group>"; };
 		AF301B7717DF0FE900DC2DEC /* AdminStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdminStore.h; sourceTree = "<group>"; };
@@ -559,6 +559,8 @@
 				4DAC5DD817E1EFAD0032C92F /* MessageCell.m */,
 				27BCC21817E24304009977BB /* EventWrapperCell.h */,
 				27BCC21917E24304009977BB /* EventWrapperCell.m */,
+				AF22F0601802081100E227CF /* NavigationBar.h */,
+				AF22F0611802081100E227CF /* NavigationBar.m */,
 				AFE3E54517F212FD00586321 /* SelectedEventWrapperEventCell.h */,
 				AFE3E54617F212FD00586321 /* SelectedEventWrapperEventCell.m */,
 				8F5D541917F2029C0096C7EA /* WhatToReadCell.h */,
@@ -587,8 +589,6 @@
 				AFE538EE17E0972C00C0B776 /* StudentMessageDetailsViewController.m */,
 				8F2407D717E1C43600BB9B8B /* DatePickerViewController.h */,
 				8F2407D817E1C43600BB9B8B /* DatePickerViewController.m */,
-				8F5D541617F1BCE70096C7EA /* StudentWhatToReadMainViewController.h */,
-				8F5D541717F1BCE70096C7EA /* StudentWhatToReadMainViewController.m */,
 				8F5D541317F1BACE0096C7EA /* StudentWhatToReadTableViewController.h */,
 				8F5D541417F1BACE0096C7EA /* StudentWhatToReadTableViewController.m */,
 			);
@@ -791,7 +791,6 @@
 				27BCC21A17E24304009977BB /* EventWrapperCell.m in Sources */,
 				8F5D541B17F2029C0096C7EA /* WhatToReadCell.m in Sources */,
 				AFE538F417E0972C00C0B776 /* StudentEventMainViewController.m in Sources */,
-				8F5D541817F1BCE70096C7EA /* StudentWhatToReadMainViewController.m in Sources */,
 				AF2551F217E0462C006EDD02 /* AdminStore.m in Sources */,
 				0493B53A17DDF80C003B3D23 /* AppDelegate.m in Sources */,
 				8F2407DA17E1C43600BB9B8B /* DatePickerViewController.m in Sources */,
@@ -804,6 +803,7 @@
 				AFE538F617E0972C00C0B776 /* StudentMessageDetailsViewController.m in Sources */,
 				2761852D17FEB047005FF2C3 /* PicturePickerIPhoneViewController.m in Sources */,
 				04E09F5B17E7249D00B946CB /* EventCell.m in Sources */,
+				AF22F0621802081100E227CF /* NavigationBar.m in Sources */,
 				4DF963E917FD9FD90092F44D /* MasterMessageCell.m in Sources */,
 				0493B53617DDF80C003B3D23 /* main.m in Sources */,
 				0437DDAA17E2240400DB9F5A /* Validation.m in Sources */,
