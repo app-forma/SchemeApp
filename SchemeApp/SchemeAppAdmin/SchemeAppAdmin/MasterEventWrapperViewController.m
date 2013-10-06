@@ -21,7 +21,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *eventWrappersTableView;
-
+@property (strong, nonatomic) UIActivityIndicatorView *activityView;
 @end
 
 @implementation MasterEventWrapperViewController
@@ -34,6 +34,7 @@
          [NSOperationQueue.mainQueue addOperationWithBlock:^
           {
               [self.eventWrappersTableView reloadData];
+              [self.activityView stopAnimating];
               NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
               if ([allEventWrappers count]) {
                   [self.eventWrappersTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
@@ -62,6 +63,10 @@
      */
     [AwesomeUI setGGstyleTo:self.tableView];
     self.tableView.backgroundColor = [UIColor whiteColor];
+    self.activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityView.center=self.view.center;
+    [self.view addSubview:self.activityView];
+    [self.activityView startAnimating];
 }
 
 #pragma mark - Table view data source

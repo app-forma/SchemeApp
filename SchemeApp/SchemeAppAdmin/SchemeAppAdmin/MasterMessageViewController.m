@@ -16,7 +16,7 @@
 @interface MasterMessageViewController () <UITableViewDataSource, UITableViewDelegate, CreateMessageViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) UIActivityIndicatorView *activityView;
 @end
 
 @implementation MasterMessageViewController
@@ -37,10 +37,15 @@
         messages = [messagesForUser mutableCopy];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            [self.activityView stopAnimating];
         });
     }];
     
     [AwesomeUI setGGstyleTo:self.tableView];
+    self.activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityView.center=self.view.center;
+    [self.view addSubview:self.activityView];
+    [self.activityView startAnimating];
 }
 
 #pragma mark - Table view data source
