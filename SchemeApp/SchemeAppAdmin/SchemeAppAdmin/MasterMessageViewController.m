@@ -63,6 +63,7 @@
 {
     MasterMessageCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MasterMessageCell"];
     if (indexPath.row == 0 || indexPath.row == [messages count] + 1) {
+                [cell.userImage removeFromSuperview];
         cell.backgroundColor = [UIColor whiteColor];
         cell.nameLabel.text = @"";
         cell.messageLabel.text = @"";

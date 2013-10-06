@@ -65,6 +65,7 @@
         eventWrapperSplitView.viewControllers = @[mevc, devc];
         eventWrapperSplitView.delegate = devc;
         UITabBarItem *eventWrapperItem = [[UITabBarItem alloc] initWithTitle:@"Courses" image:[UIImage imageNamed:@"courses_unselected"] selectedImage:[UIImage imageNamed:@"courses_selected"]];
+        
         eventWrapperSplitView.tabBarItem = eventWrapperItem;
 
 
@@ -94,7 +95,7 @@
         locationViewController.tabBarItem = locationItem;
         
         self.viewControllers = @[eventWrapperSplitView, messagesSplitView, usersSplitView, locationViewController];
-        
+
     }
     return self;
 }

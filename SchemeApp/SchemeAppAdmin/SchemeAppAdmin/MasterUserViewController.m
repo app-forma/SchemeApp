@@ -92,6 +92,7 @@
 //        cell = [[MasterUserCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 //    }
     if (indexPath.row == 0 || indexPath.row == [users count] + 1) {
+        [cell.userImage removeFromSuperview];
         cell.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
         cell.nameLabel.text = @"";
         cell.roleLabel.text = @"";

@@ -85,7 +85,7 @@
     [super viewDidLoad];
     
     self.toolbarTitle.enabled = FALSE;
-    
+    [self.toolbarTitle setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateNormal];
 
     arrayOfUnsortedEvents = [[NSMutableArray alloc] init];
     

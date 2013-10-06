@@ -45,6 +45,8 @@
     self.fromLabel.text = [message.from fullName];
     self.dateLabel.text = [message.date asDateString];
     self.textView.text = message.text;
+    self.textView.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
+    [self.textView setTextColor:self.dateLabel.textColor];
 }
 
 

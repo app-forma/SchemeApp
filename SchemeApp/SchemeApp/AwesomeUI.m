@@ -30,7 +30,7 @@ static UIColor *fontColorForCoverViews;
     /**
      *  Theme colors
      */
-    tintColor = [UIColor lightGrayColor];
+    tintColor = [UIColor whiteColor];
     barColor = [UIColor colorWithRed:0.07 green:0.18 blue:0.36 alpha:1.0];
     tableViewBackgroundColor = [UIColor colorWithRed:220/255.0f green:46/255.0f blue:77/255.0f alpha:1.0f];
     coverViewBackgroundColor = [UIColor darkGrayColor];
@@ -40,12 +40,13 @@ static UIColor *fontColorForCoverViews;
      *  CoverView font
      */
     coverViewFont = [UIFont fontWithName:@"Avenir-Heavy" size:22];
+         
 }
 
 #pragma mark - GLOBAL THEME
 +(void)setGlobalStylingTo:(UIWindow *)window
 {
-    window.tintColor = tintColor;
+//    window.tintColor = tintColor;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
@@ -57,6 +58,7 @@ static UIColor *fontColorForCoverViews;
         UIToolbar *toolBar = (UIToolbar*)bar;
         toolBar.barStyle = UIBarStyleBlack;
     } else if (![bar isKindOfClass:[UITabBar class]]) {
+        
         return;
     }
     
