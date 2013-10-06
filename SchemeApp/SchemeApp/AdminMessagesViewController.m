@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIActivityIndicatorView *activityView;
 
 @end
 
@@ -42,6 +43,7 @@
         messages = [messagesForUser mutableCopy];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            [self.activityView stopAnimating];
         });
     }];
 }
@@ -52,6 +54,14 @@
     if(indexPath) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
+    self.activityView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    self.activityView.center = self.view.center;
+
+    [self.view addSubview:self.activityView];
+    if (!messages) {
+         [self.activityView startAnimating];
+    }
+   
 }
 
 #pragma mark table view

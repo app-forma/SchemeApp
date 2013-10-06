@@ -19,7 +19,7 @@
 
 @interface StudentMessageViewController ()<UITableViewDelegate, UITableViewDataSource, StudentMessageDetailDelegate, UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong) UIActivityIndicatorView *activityView;
 @end
 
 @implementation StudentMessageViewController
@@ -43,11 +43,19 @@
         messages = [messagesForUser mutableCopy];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            [self.activityView stopAnimating];
         });
     }];
     
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"messages_selected.png"]];
     self.navigationItem.title = @"Messages";
+    self.activityView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    self.activityView.frame = CGRectMake(150, 150, 20, 20);
+    
+    [self.view addSubview:self.activityView];
+    if (!messages) {
+        [self.activityView startAnimating];
+    }
 }
 
 #pragma mark - Table view data source

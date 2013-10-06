@@ -11,7 +11,10 @@
 #import "AdminEventWrapperTableViewController.h"
 #import "EventWrapper.h"
 
+@interface AdminEventWrappersViewController ()
+@property (strong) UIActivityIndicatorView *activityView;
 
+@end
 @implementation AdminEventWrappersViewController
 {
     NSMutableArray *eventWrappers;
@@ -24,6 +27,14 @@
     
     self.navigationItem.title = @"Courses";
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"courses_selected"]];
+    self.activityView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityView.frame = CGRectMake(150, 150, 20, 20);
+    
+    [self.view addSubview:self.activityView];
+    if (!eventWrappers) {
+        [self.activityView startAnimating];
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -33,6 +44,7 @@
          eventWrappers = [NSMutableArray arrayWithArray:allEventWrappers];
          [NSOperationQueue.mainQueue addOperationWithBlock:^
          {
+                     [self.activityView stopAnimating];
              [self.tableView reloadData];
          }];
      }];
