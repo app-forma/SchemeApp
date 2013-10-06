@@ -67,6 +67,7 @@
     EventWrapper *eventWrapper = eventWrappers[indexPath.row];
     
     EventWrapperCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventWrapperCellIdentifier"];
+    
     cell.eventWrapperName.text = eventWrapper.name;
     cell.eventWrapperStartDate.text = [Helpers dateStringFromNSDate:eventWrapper.startDate];
     cell.eventWrapperEndDate.text = [Helpers dateStringFromNSDate:eventWrapper.endDate];
