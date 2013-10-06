@@ -19,7 +19,11 @@
 -(id)initForRoleType:(RoleType)role;
 {
     self = [super init];
-    if (self) {        
+    if (self) {
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tabBar.frame.size.width + 260, self.tabBar.frame.size.height)];
+        view.backgroundColor = [AwesomeUI barColor];
+        [view setAlpha:0.5];
+        [self.tabBar addSubview:view];
          signOutPopup = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Sign out" otherButtonTitles:nil, nil];
         
         if (role == StudentRole) {

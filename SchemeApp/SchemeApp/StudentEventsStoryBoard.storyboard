@@ -9,7 +9,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="yNA-7q-XWV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Classes" image="courses_unselected.png" id="t7E-w0-2h4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kNX-EP-VJt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kNX-EP-VJt" customClass="NavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
