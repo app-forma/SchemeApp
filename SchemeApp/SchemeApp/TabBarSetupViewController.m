@@ -35,6 +35,7 @@
         }
     }
     [AwesomeUI setStyleToBar:self.tabBar];
+    
     return self;
 }
 

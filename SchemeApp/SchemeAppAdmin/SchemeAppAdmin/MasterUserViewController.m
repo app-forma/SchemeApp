@@ -19,6 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *usersTableView;
 @property (weak, nonatomic) IBOutlet NavigationBar *navBar;
+@property (strong, nonatomic) UIActivityIndicatorView *activityView;
 
 @end
 
@@ -43,6 +44,7 @@
               NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
               [self.usersTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
               [self tableView:self.usersTableView didSelectRowAtIndexPath:indexPath];
+              [self.activityView stopAnimating];
              
           }];
      }];
@@ -54,7 +56,10 @@
     puvc.delegate = self;
     [AwesomeUI setGGstyleTo:self.usersTableView];
     self.usersTableView.backgroundColor = [UIColor whiteColor];
-    
+    self.activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityView.center=self.view.center;
+    [self.view addSubview:self.activityView];
+    [self.activityView startAnimating];
 }
 
 - (void)didReceiveMemoryWarning
