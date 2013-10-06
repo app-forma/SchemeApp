@@ -56,8 +56,9 @@
     puvc.delegate = self;
     [AwesomeUI setGGstyleTo:self.usersTableView];
     self.usersTableView.backgroundColor = [UIColor whiteColor];
-    self.activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.activityView.center=self.view.center;
+    self.activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.activityView.frame = CGRectMake(140, 200, 40, 40);
+    self.activityView.color = [UIColor grayColor];
     [self.view addSubview:self.activityView];
     [self.activityView startAnimating];
 }
