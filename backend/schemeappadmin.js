@@ -38,7 +38,7 @@ app.get("/restart", function (req, res) {
 
 /* -------------- Drop database -------------- */
 app.get("/drop", function (req, res) {
-	mongoose.connection.db.dropDatabase(function (err) {
+	/*mongoose.connection.db.dropDatabase(function (err) {
 		if (err) {
 			res.json({
 				output: 'Something went wrong!\n'
@@ -48,7 +48,7 @@ app.get("/drop", function (req, res) {
 				output: 'Database dropped.\n'
 			});
 		}
-	});
+	});*/
 });
 
 /* -------------- Populate -------------- */
