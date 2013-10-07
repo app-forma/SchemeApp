@@ -60,7 +60,7 @@
     if (indexPath.row == 0) {
         return 64;
     }else if (indexPath.row == [messages count] + 1){
-        return 140;
+        return 76;
     }
     return 81;
 }
