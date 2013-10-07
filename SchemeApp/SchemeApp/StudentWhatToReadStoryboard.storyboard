@@ -80,7 +80,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BhQ-hm-quU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10" y="1625"/>
+            <point key="canvasLocation" x="-110" y="898"/>
         </scene>
         <!--Navigation Controller - Guidance-->
         <scene sceneID="H1h-MW-jhQ">
@@ -88,7 +88,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uMf-Zv-wiN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Guidance" image="glasses_unselected.png" id="5WG-KN-NNf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Sm-eg-Ggp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Sm-eg-Ggp" customClass="NavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -99,7 +99,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uXh-tb-fxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-536" y="1625"/>
+            <point key="canvasLocation" x="-541" y="891"/>
         </scene>
     </scenes>
     <resources>
