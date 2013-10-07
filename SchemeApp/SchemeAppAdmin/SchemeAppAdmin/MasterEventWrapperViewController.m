@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "AwesomeUI.h"
 
+
 @interface MasterEventWrapperViewController () <UITableViewDelegate, PopoverEventWrapperDelegate>
 {
     NSMutableArray *eventWrappers;
@@ -62,7 +63,6 @@
      *    DESIGN UTKAST!
      */
     [AwesomeUI setGGstyleTo:self.tableView];
-    self.tableView.backgroundColor = [UIColor whiteColor];
     self.activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     self.activityView.frame = CGRectMake(140, 200, 40, 40);
     self.activityView.color = [UIColor grayColor];

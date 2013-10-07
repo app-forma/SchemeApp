@@ -91,7 +91,7 @@
     return studentStore;
 }
 
-#warning DEPRECATED(SINCE MARCUS ADDED AWESOME CODE 26/9 22:29)
+
 /**
  *  LoginController sets currentUser if successful login
  *  sendAuthenticationRequestForEmail: password: completion:

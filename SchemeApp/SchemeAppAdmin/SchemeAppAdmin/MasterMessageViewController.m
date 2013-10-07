@@ -13,6 +13,7 @@
 #import "UIImage+Base64.h"
 #import "MasterMessageCell.h"
 
+
 @interface MasterMessageViewController () <UITableViewDataSource, UITableViewDelegate, CreateMessageViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -31,8 +32,6 @@
     [super viewDidLoad];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"MasterMessageCell" bundle:nil] forCellReuseIdentifier:@"MasterMessageCell"];
-    self.tableView.backgroundColor = [UIColor whiteColor];
-    
     [[Store adminStore]messagesForUser:[Store mainStore].currentUser completion:^(NSArray *messagesForUser) {
         messages = [messagesForUser mutableCopy];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -52,31 +51,18 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return messages.count + 2;
+    return [messages count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        return 64;
-    }else if (indexPath.row == [messages count] + 1){
-        return 76;
-    }
     return 81;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MasterMessageCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MasterMessageCell"];
-    if (indexPath.row == 0 || indexPath.row == [messages count] + 1) {
-                [cell.userImage removeFromSuperview];
-        cell.backgroundColor = [UIColor whiteColor];
-        cell.nameLabel.text = @"";
-        cell.messageLabel.text = @"";
-        cell.dateLabel.text = @"";
-        return cell;
-    }
-    Message *message = messages[indexPath.row - 1];
+    Message *message = messages[indexPath.row];
     
     [AwesomeUI addColorAndDefaultStyleTo:cell forIndexPath:indexPath];
     cell.nameLabel.text = [message.from fullName];
@@ -97,14 +83,14 @@
 {
     [AwesomeUI setStateUnselectedfor:[self.tableView cellForRowAtIndexPath:selectedIndexPath]];
     [AwesomeUI setStateSelectedfor:[self.tableView cellForRowAtIndexPath:indexPath]];
-    [self.delegate didSelectMessage:messages[indexPath.row-1]];
+    [self.delegate didSelectMessage:messages[indexPath.row]];
     selectedIndexPath = indexPath;
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Message *message = messages[indexPath.row-1];
+        Message *message = messages[indexPath.row];
         [messages removeObject:message];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         [[Store adminStore]deleteMessage:message forUser:[Store mainStore].currentUser completion:^(BOOL success) {
