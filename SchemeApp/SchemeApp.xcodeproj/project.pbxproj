@@ -230,8 +230,8 @@
 		8F5D541A17F2029C0096C7EA /* WhatToReadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhatToReadCell.m; sourceTree = "<group>"; };
 		AF05FD3A17E71638004A5B01 /* AdminEditStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminEditStudentViewController.h; sourceTree = "<group>"; };
 		AF05FD3B17E71638004A5B01 /* AdminEditStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminEditStudentViewController.m; sourceTree = "<group>"; };
-		AF1FE92F17F47CB1005D54E5 /* StudentAutomaticPresence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudentAutomaticPresence.h; path = SchemeApp/StudentAutomaticPresence.h; sourceTree = "<group>"; };
-		AF1FE93017F47CB1005D54E5 /* StudentAutomaticPresence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StudentAutomaticPresence.m; path = SchemeApp/StudentAutomaticPresence.m; sourceTree = "<group>"; };
+		AF1FE92F17F47CB1005D54E5 /* StudentAutomaticPresence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentAutomaticPresence.h; sourceTree = "<group>"; };
+		AF1FE93017F47CB1005D54E5 /* StudentAutomaticPresence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentAutomaticPresence.m; sourceTree = "<group>"; };
 		AF22F04117FF07A500E227CF /* MonthCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthCollectionViewCell.h; sourceTree = "<group>"; };
 		AF22F04217FF07A500E227CF /* MonthCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCollectionViewCell.m; sourceTree = "<group>"; };
 		AF22F04317FF07A500E227CF /* YearCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearCollectionViewCell.h; sourceTree = "<group>"; };
@@ -328,8 +328,6 @@
 		0493B51D17DDF80C003B3D23 = {
 			isa = PBXGroup;
 			children = (
-				AF1FE92F17F47CB1005D54E5 /* StudentAutomaticPresence.h */,
-				AF1FE93017F47CB1005D54E5 /* StudentAutomaticPresence.m */,
 				0493B52F17DDF80C003B3D23 /* SchemeApp */,
 				0493B52817DDF80C003B3D23 /* Frameworks */,
 				0493B52717DDF80C003B3D23 /* Products */,
@@ -572,6 +570,8 @@
 		8F686FA017DFCBE7001C5C56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AF1FE92F17F47CB1005D54E5 /* StudentAutomaticPresence.h */,
+				AF1FE93017F47CB1005D54E5 /* StudentAutomaticPresence.m */,
 				2791F55E17FD59DB00D8795F /* Picture picker */,
 				27BCC1EB17E1F335009977BB /* Admin */,
 				AF22F05717FF07EC00E227CF /* Calendar */,

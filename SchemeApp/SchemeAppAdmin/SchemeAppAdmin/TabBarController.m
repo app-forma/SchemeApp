@@ -47,11 +47,9 @@
     self = [super init];
     if (self)
     {
-
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tabBar.frame.size.width + 260, self.tabBar.frame.size.height)];
-        view.backgroundColor = [AwesomeUI barColor];
-        [view setAlpha:0.5];
-        [self.tabBar addSubview:view];
+        
+        [AwesomeUI setTabBarTintColor];
+        [self.tabBar addSubview:[AwesomeUI viewForTabBarTranslucent:self.tabBar]];
 
         self.delegate = self;
         
@@ -60,11 +58,10 @@
         devc = [DetailEventWrapperViewController new];
         mevc.delegate = devc;
         mevc.detailEventWrapperViewController = devc;
-        eventWrapperSplitView = [SplitViewController new];
-        eventWrapperSplitView.viewControllers = @[mevc, devc];
+        eventWrapperSplitView = [[SplitViewController alloc]initWithLeftVC:mevc rightVC:devc];
         eventWrapperSplitView.delegate = devc;
         UITabBarItem *eventWrapperItem = [[UITabBarItem alloc] initWithTitle:@"Courses" image:[UIImage imageNamed:@"courses_unselected"] selectedImage:[UIImage imageNamed:@"courses_selected"]];
-        [eventWrapperItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
+        
         eventWrapperSplitView.tabBarItem = eventWrapperItem;
 
 
@@ -74,7 +71,6 @@
         mmvc.delegate = dmvc;
         messagesSplitView = [[SplitViewController alloc]initWithLeftVC:mmvc rightVC:dmvc];
         UITabBarItem *messageItem = [[UITabBarItem alloc] initWithTitle:@"Messages" image:[UIImage imageNamed:@"messages_unselected"] selectedImage:[UIImage imageNamed:@"messages_selected"]];
-        [messageItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
         messagesSplitView.delegate = dmvc;
         messagesSplitView.tabBarItem = messageItem;
         
@@ -82,20 +78,18 @@
         muvc = [MasterUserViewController new];
         duvc = [DetailUserViewController new];
         muvc.delegate = duvc;
-        usersSplitView = [SplitViewController new];
-        usersSplitView.viewControllers = @[muvc, duvc];
+        usersSplitView = [[SplitViewController alloc]initWithLeftVC:muvc rightVC:duvc];
         usersSplitView.delegate = duvc;
         UITabBarItem *userItem = [[UITabBarItem alloc]initWithTitle:@"Users" image:[UIImage imageNamed:@"users_unselected"] selectedImage:[UIImage imageNamed:@"users_selected"]];
         usersSplitView.tabBarItem = userItem;
-        [userItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
         
         SchoolInfoViewController *locationViewController = [SchoolInfoViewController new];
         
         UITabBarItem *locationItem = [[UITabBarItem alloc] initWithTitle:@"Location" image:[UIImage imageNamed:@"location_unselected"] selectedImage:[UIImage imageNamed:@"location_selected"]];
         locationViewController.tabBarItem = locationItem;
-        [locationItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
         self.viewControllers = @[eventWrapperSplitView, messagesSplitView, usersSplitView, locationViewController];
-
+        
+        [AwesomeUI setGGStyleToTabBarItems:self.viewControllers];
     }
     return self;
 }

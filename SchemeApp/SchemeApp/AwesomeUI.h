@@ -19,6 +19,8 @@
 + (UIColor *)backgroundColorForCoverViews;
 + (UIColor *)fontColorForCoverViews;
 + (UIColor *)barColor;
++ (void)setTabBarTintColor;
++ (UIView *)viewForTabBarTranslucent:(UITabBar*)tabBar;
 #pragma mark - THEME FONTS
 + (UIFont *)fontForCoverViews;
 #pragma mark - TABLE VIEWS
@@ -26,7 +28,8 @@
 + (void)setGGstyleTo:(UITableView *)tableView;
 + (NSInteger)tableViewCellHeight;
 + (NSUInteger)tableViewHeaderHeight;
-
+#pragma mark - TAB BAR ITEM
++ (void)setGGStyleToTabBarItems:(NSArray*)viewControllers;
 #pragma mark - TABLE VIEW CELLS
 + (void)addDefaultStyleTo:(UITableViewCell*)cell;
 +(void)addColorAndDefaultStyleTo:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath;

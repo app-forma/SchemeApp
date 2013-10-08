@@ -19,7 +19,7 @@
 {
     self = [super init];
     if (self) {
-        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(schoolLocation.longitude.doubleValue, schoolLocation.latitude.doubleValue);        
+        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(schoolLocation.latitude.doubleValue, schoolLocation.longitude.doubleValue);
         locationManager = [[CLLocationManager alloc] init];
         schoolRegion = [[CLCircularRegion alloc] initWithCenter:center radius:300 identifier:@"School"];
         schoolRegion.notifyOnEntry = YES;

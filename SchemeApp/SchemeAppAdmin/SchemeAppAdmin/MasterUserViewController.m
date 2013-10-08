@@ -55,7 +55,6 @@
     puvc = [[PopoverUserViewController alloc] init];
     puvc.delegate = self;
     [AwesomeUI setGGstyleTo:self.usersTableView];
-    self.usersTableView.backgroundColor = [UIColor whiteColor];
     self.activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     self.activityView.frame = CGRectMake(140, 200, 40, 40);
     self.activityView.color = [UIColor grayColor];
@@ -79,14 +78,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return [users count] + 2;
+    return [users count];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     [AwesomeUI setStateUnselectedfor:[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]]];
     [AwesomeUI setStateSelectedfor:[tableView cellForRowAtIndexPath:indexPath]];
-    [self.delegate masterUserDidSelectUser:users[indexPath.row-1]];
+    [self.delegate masterUserDidSelectUser:users[indexPath.row]];
     selectedIndex = indexPath.row;
 }
 
@@ -97,14 +96,9 @@
 //    if (!cell) {
 //        cell = [[MasterUserCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 //    }
-    if (indexPath.row == 0 || indexPath.row == [users count] + 1) {
-        [cell.userImage removeFromSuperview];
-        cell.backgroundColor = [AwesomeUI backgroundColorForEmptyTableView];
-        cell.nameLabel.text = @"";
-        cell.roleLabel.text = @"";
-        return cell;
-    }
-    User *user = users[indexPath.row-1];
+    [cell.userImage removeFromSuperview];
+    
+    User *user = users[indexPath.row];
 
     
     cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstname, user.lastname];
@@ -132,18 +126,14 @@
         [[Store dbSessionConnection] deletePath:url withCompletion:^(id jsonObject, id response, NSError *error) {
             [self.usersTableView reloadData];
         }];
-        [users removeObject:users[indexPath.row - 1]];
+        [users removeObject:users[indexPath.row]];
         [self.usersTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        return 64;
-    }else if (indexPath.row == [users count] + 1){
-        return 140;
-    }
+   
     return 81;
 }
 
@@ -151,9 +141,6 @@
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = [AwesomeUI colorForIndexPath:indexPath];
-    if (indexPath.row == 0 || indexPath.row == [users count] + 1) {
-        cell.backgroundColor = [UIColor whiteColor];
-    }
     [AwesomeUI addDefaultStyleTo:cell];
 }
 - (IBAction)addUser:(id)sender
@@ -203,4 +190,5 @@
     }];
     
 }
+
 @end

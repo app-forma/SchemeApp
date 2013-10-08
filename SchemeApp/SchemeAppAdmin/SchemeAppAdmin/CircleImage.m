@@ -26,7 +26,6 @@ typedef enum Image{
     self = [super init];
     if (self) {
         self.frame = rect;
-
         self.imageView = [[UIImageView alloc] init];
         self.imageView.frame = CGRectMake(0, 0, rect.size.width, rect.size.height);
         self.imageDef = imageDef;
@@ -78,7 +77,6 @@ typedef enum Image{
     roundedRect.lineWidth = 3;
     [roundedRect stroke];
     
-    
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(13, 13, rect.size.width-20, rect.size.height-20) cornerRadius:self.imageView.frame.size.height/2];
     CGFloat imageRatio = self.imageView.image.size.width / self.imageView.image.size.height;
@@ -91,30 +89,7 @@ typedef enum Image{
     self.imageView.image = image;
     
     [self addSubview:self.imageView];
-
     
 }
--(UIImage *)resizeImage:(UIImage*)image scaledToSize:(CGSize)newSize
-{
 
-    CGRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
-    CGImageRef imageRef = image.CGImage;
-    
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-
-    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
-    CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, newSize.height);
-    
-    CGContextConcatCTM(context, flipVertical);
-    CGContextDrawImage(context, newRect, imageRef);
-    CGImageRef newImageRef = CGBitmapContextCreateImage(context);
-    UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
-    CGImageRelease(newImageRef);
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-    
-}
 @end

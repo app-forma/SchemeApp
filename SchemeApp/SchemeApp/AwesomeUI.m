@@ -88,6 +88,17 @@ static UIColor *fontColorForCoverViews;
 {
     return barColor;
 }
++ (void)setTabBarTintColor
+{
+    [[UITabBar appearance] setTintColor:tintColor];
+};
++ (UIView*)viewForTabBarTranslucent:(UITabBar *)tabBar
+{
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, tabBar.frame.size.width + 260, tabBar.frame.size.height)];
+    view.backgroundColor = [AwesomeUI barColor];
+    [view setAlpha:0.5];
+    return view;
+}
 #pragma mark - THEME FONTS
 + (UIFont *)fontForCoverViews
 {
@@ -110,6 +121,8 @@ static UIColor *fontColorForCoverViews;
 {
     tableView.separatorColor = [UIColor clearColor];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.backgroundColor = [UIColor whiteColor];
+    tableView.contentInset = UIEdgeInsetsMake(60, 0, 140, 0);
 }
 
 /**
@@ -161,6 +174,14 @@ static UIColor *fontColorForCoverViews;
 {
     cell.layer.borderColor = [UIColor clearColor].CGColor;
     cell.layer.borderWidth = 0;
+}
+
+#pragma mark - TAB BAR ITEMS
++(void)setGGStyleToTabBarItems:(NSArray*)viewControllers
+{
+    for (UIViewController *viewController in viewControllers){
+        [viewController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
+    }
 }
 
 

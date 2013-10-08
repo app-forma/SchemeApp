@@ -152,6 +152,7 @@
 {
     if (currentLocation) {
         self.nameTextField.text = currentLocation.name;
+        NSLog(@"%f", currentLocation.latitude.doubleValue);
         [self.mapView setRegion:[self regionForCoordinate:CLLocationCoordinate2DMake(currentLocation.latitude.doubleValue,
                                                                                      currentLocation.longitude.doubleValue)]
                        animated:YES];
