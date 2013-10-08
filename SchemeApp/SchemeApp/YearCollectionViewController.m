@@ -18,11 +18,6 @@
     NSIndexPath *selectedIndexPath;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     MonthCollectionViewController *vc = segue.destinationViewController;
