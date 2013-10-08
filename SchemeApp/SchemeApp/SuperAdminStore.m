@@ -16,7 +16,7 @@
     
 - (void)createUser:(User *)user completion:(completion)handler
 {
-    [Store.dbSessionConnection postContent:user.asDictionary
+    [Store.dbConnection postContent:user.asDictionary
                                     toPath:DB_TYPE_USER
                             withCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -25,7 +25,7 @@
 }
 - (void)updateUser:(User *)user completion:(completion)handler
 {
-    [Store.dbSessionConnection putContent:user.asDictionary
+    [Store.dbConnection putContent:user.asDictionary
                                    toPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, user.docID]
                            withCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -34,7 +34,7 @@
 }
 - (void)deleteUser:(User *)user completion:(completion)handler
 {
-    [Store.dbSessionConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, user.docID]
+    [Store.dbConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, user.docID]
                            withCompletion:^(id responseBody, id response, NSError *error)
      {
          handler(responseBody, response, error);

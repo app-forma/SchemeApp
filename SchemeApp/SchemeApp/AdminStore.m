@@ -18,7 +18,7 @@
 
 - (void)eventWrappersCompletion:(void (^)(NSArray *allEventWrappers))handler
 {
-    [Store.dbSessionConnection getPath:DB_TYPE_EVENTWRAPPER
+    [Store.dbConnection getPath:DB_TYPE_EVENTWRAPPER
                             withParams:nil
                          andCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -52,7 +52,7 @@
 }
 - (void)eventWithDocID:(NSString *)docID completion:(void (^)(Event *event))handler
 {
-    [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, docID]
+    [Store.dbConnection getPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, docID]
                             withParams:nil
                          andCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -71,7 +71,7 @@
 #pragma mark - Event and EventWrappers CRUD
 - (void)createEvent:(Event *)event completion:(completion)handler
 {
-    [Store.dbSessionConnection postContent:event.asDictionary
+    [Store.dbConnection postContent:event.asDictionary
                                     toPath:DB_TYPE_EVENT
                             withCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -81,7 +81,7 @@
 }
 - (void)updateEvent:(Event *)event completion:(completion)handler
 {
-    [Store.dbSessionConnection putContent:event.asDictionary
+    [Store.dbConnection putContent:event.asDictionary
                                    toPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, event.docID]
                            withCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -91,7 +91,7 @@
 }
 - (void)deleteEvent:(Event *)event completion:(completion)handler
 {
-    [Store.dbSessionConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, event.docID]
+    [Store.dbConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENT, event.docID]
                            withCompletion:^(id responseBody, id response, NSError *error)
      {
 #warning Should return model not responseBody
@@ -100,7 +100,7 @@
 }
 - (void)createEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler
 {
-    [Store.dbSessionConnection postContent:eventWrapper.asDictionary
+    [Store.dbConnection postContent:eventWrapper.asDictionary
                                     toPath:DB_TYPE_EVENTWRAPPER
                             withCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -110,7 +110,7 @@
 }
 - (void)updateEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler
 {
-    [Store.dbSessionConnection putContent:eventWrapper.asDictionary
+    [Store.dbConnection putContent:eventWrapper.asDictionary
                                    toPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENTWRAPPER, eventWrapper.docID]
                            withCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -120,7 +120,7 @@
 }
 - (void)deleteEventWrapper:(EventWrapper *)eventWrapper completion:(completion)handler
 {
-    [Store.dbSessionConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENTWRAPPER, eventWrapper.docID]
+    [Store.dbConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENTWRAPPER, eventWrapper.docID]
                            withCompletion:^(id responseBody, id response, NSError *error)
      {
 #warning Should return model not responseBody
@@ -131,7 +131,7 @@
 #pragma mark - Users
 - (void)usersCompletion:(void (^)(NSArray *allUsers))handler
 {
-    [Store.dbSessionConnection getPath:DB_TYPE_USER
+    [Store.dbConnection getPath:DB_TYPE_USER
                             withParams:nil
                          andCompletion:^(id responseBody, id response, NSError *error)
     {
@@ -154,7 +154,7 @@
 }
 - (void)userWithDocID:(NSString *)docID completion:(void (^)(User *user))handler
 {
-    [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, docID]
+    [Store.dbConnection getPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_USER, docID]
                             withParams:nil
                          andCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -171,7 +171,7 @@
 }
 - (void)userWithType:(RoleType)type completion:(void (^)(NSArray *users))handler
 {
-    [Store.dbSessionConnection getPath:DB_TYPE_USER
+    [Store.dbConnection getPath:DB_TYPE_USER
                             withParams:nil
                          andCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -199,7 +199,7 @@
 
 - (void)removeAttendance:(NSString *)attendanceDateString forUser:(User *)user completion:(void (^)(BOOL success))handler
 {
-    [[Store dbSessionConnection]deletePath:[NSString stringWithFormat:@"%@/%@/%@/%@", DB_TYPE_USER, user.docID, @"attendance",attendanceDateString] withCompletion:
+    [[Store dbConnection]deletePath:[NSString stringWithFormat:@"%@/%@/%@/%@", DB_TYPE_USER, user.docID, @"attendance",attendanceDateString] withCompletion:
     ^(id responseBody, id response, NSError *error) {
         if (error) {
             NSLog(@"removeAttendance got response: %@ and error: %@", response, error.userInfo);
@@ -212,7 +212,7 @@
 
 -(void)addEventWrapper:(EventWrapper *)eventWrapper toUser:(User *)user completion:(void (^)(BOOL success))handler
 {
-    [[Store dbSessionConnection]postContent:nil toPath:[NSString stringWithFormat:@"%@/%@/%@/%@", DB_TYPE_USER, user.docID, @"eventwrapper", eventWrapper.docID] withCompletion:^(id responseBody, id response, NSError *error) {
+    [[Store dbConnection]postContent:nil toPath:[NSString stringWithFormat:@"%@/%@/%@/%@", DB_TYPE_USER, user.docID, @"eventwrapper", eventWrapper.docID] withCompletion:^(id responseBody, id response, NSError *error) {
         if (error) {
             NSLog(@"addEventWrapper: toUser: Got error: %@", error.userInfo);
             handler(NO);
@@ -224,7 +224,7 @@
 
 -(void)removeEventWrapper:(EventWrapper *)eventWrapper fromUser:(User *)user completion:(void (^)(BOOL success))handler
 {
-    [[Store dbSessionConnection]deletePath:[NSString stringWithFormat:@"%@/%@/%@/%@", DB_TYPE_USER, user.docID, @"eventwrapper", eventWrapper.docID] withCompletion:^(id responseBody, id response, NSError *error) {
+    [[Store dbConnection]deletePath:[NSString stringWithFormat:@"%@/%@/%@/%@", DB_TYPE_USER, user.docID, @"eventwrapper", eventWrapper.docID] withCompletion:^(id responseBody, id response, NSError *error) {
         if (error) {
             NSLog(@"removeEventWrapper: forUser: got error: %@", error.userInfo);
             handler(NO);
@@ -237,7 +237,7 @@
 #pragma mark - Messages
 - (void)broadcastMessage:(Message *)message completion:(void (^)(Message *message))handler
 {
-    [Store.dbSessionConnection postContent:message.asDictionary
+    [Store.dbConnection postContent:message.asDictionary
                                     toPath:[NSString stringWithFormat:@"%@/broadcast", DB_TYPE_MESSAGE]
                             withCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -256,7 +256,7 @@
 {
     NSMutableDictionary *jsonMessage = [NSMutableDictionary dictionaryWithDictionary:message.asDictionary];
 
-    [Store.dbSessionConnection postContent:jsonMessage
+    [Store.dbConnection postContent:jsonMessage
                                     toPath:DB_TYPE_MESSAGE
                             withCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -276,7 +276,7 @@
 #pragma mark - Location
 - (void)createLocation:(Location *)location completion:(void (^)(Location *location))handler
 {
-    [Store.dbSessionConnection postContent:location.asDictionary
+    [Store.dbConnection postContent:location.asDictionary
                                     toPath:DB_TYPE_LOCATION
                             withCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -293,7 +293,7 @@
 }
 - (void)updateLocation:(Location *)location completion:(void (^)(Location *location))handler
 {
-    [Store.dbSessionConnection putContent:location.asDictionary
+    [Store.dbConnection putContent:location.asDictionary
                                    toPath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_LOCATION, location.docID]
                            withCompletion:^(id responseBody, id response, NSError *error)
     {
@@ -310,7 +310,7 @@
 }
 - (void)deleteLocation:(Location *)location completion:(void (^)(BOOL success))handler
 {
-    [Store.dbSessionConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_LOCATION, location.docID]
+    [Store.dbConnection deletePath:[NSString stringWithFormat:@"%@/%@", DB_TYPE_LOCATION, location.docID]
                            withCompletion:^(id responseBody, id response, NSError *error)
      {
          if (error)

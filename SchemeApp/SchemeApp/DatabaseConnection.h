@@ -11,7 +11,7 @@
 typedef void (^completion)(id responseBody, id response, NSError *error);
 
 
-@interface DatabaseConnection : NSObject
+@interface DatabaseConnection : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate>
 
 #pragma mark - Basic CRUD operations
 - (void)postContent:(id)content toPath:(NSString *)path withCompletion:(completion)handler;
