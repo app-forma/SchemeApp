@@ -294,9 +294,9 @@
                      blue:(CGFloat)b
                     alpha:(CGFloat)a
 {
-    return [UIColor colorWithRed:r/255.0000
-                           green:g/255.0000
-                            blue:b/255.0000
+    return [UIColor colorWithRed:r/255.0f
+                           green:g/255.0f
+                            blue:b/255.0f
                            alpha:a];
 }
 
