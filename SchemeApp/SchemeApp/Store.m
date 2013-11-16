@@ -18,19 +18,7 @@
 {
     return self.mainStore;
 }
-+ (AFNetworking *)dbConnection
-{
-    static AFNetworking *dbConnection = nil;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^
-                  {
-                      dbConnection = [[AFNetworking alloc] init];
-                  });
-    
-    return dbConnection;
-}
-+ (DatabaseConnection *)dbSessionConnection
++ (DatabaseConnection *)dbConnection
 {
     static DatabaseConnection *dbConnection = nil;
     
@@ -98,7 +86,7 @@
  */
 + (void)setCurrentUserToUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(BOOL success))completion
 {
-    [Store.dbSessionConnection getPath:[NSString stringWithFormat:@"%@/email/%@", DB_TYPE_USER, email]
+    [Store.dbConnection getPath:[NSString stringWithFormat:@"%@/email/%@", DB_TYPE_USER, email]
                             withParams:nil
                          andCompletion:^(id responseBody, id response, NSError *error)
      {
@@ -117,7 +105,7 @@
 
 + (void)sendAuthenticationRequestForEmail:(NSString *)email password:(NSString *)password completion:(authentication)completion
 {
-    [Store.dbSessionConnection postContent:@{@"email":email, @"password":password} toPath:@"users/login" withCompletion:^(id responseBody, id response, NSError *error) {
+    [Store.dbConnection postContent:@{@"email":email, @"password":password} toPath:@"users/login" withCompletion:^(id responseBody, id response, NSError *error) {
         
         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
         NSInteger statusCode = [httpResponse statusCode];
@@ -133,7 +121,7 @@
 
 + (void)fetchLocationCompletion:(void (^)(Location *location))completion
 {
-    [Store.dbSessionConnection getPath:DB_TYPE_LOCATION
+    [Store.dbConnection getPath:DB_TYPE_LOCATION
                             withParams:nil
                          andCompletion:^(id responseBody, id response, NSError *error)
      {

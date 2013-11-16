@@ -95,7 +95,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSString *url = [NSString stringWithFormat:@"%@/%@", DB_TYPE_EVENTWRAPPER, [eventWrappers[indexPath.row]docID]];
-        [[Store dbSessionConnection] deletePath:url withCompletion:^(id jsonObject, id response, NSError *error) {
+        [[Store dbConnection] deletePath:url withCompletion:^(id jsonObject, id response, NSError *error) {
             [self.tableView reloadData];
         }];
         [eventWrappers removeObject:eventWrappers[indexPath.row]];

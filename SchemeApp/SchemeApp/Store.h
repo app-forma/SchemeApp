@@ -6,23 +6,22 @@
 //
 //
 
-#import <Foundation/Foundation.h>
 #import "DatabaseConnection.h"
 #import "Message.h"
 #import "AdminStore.h"
 #import "SuperAdminStore.h"
 #import "StudentStore.h"
-#import "AFNetworking.h"
+
+@import Foundation;
+
+@class User, SuperAdminStore, StudentStore, AdminStore, Message, Location;
 
 typedef void (^authentication)(BOOL success, id user);
-
-@class User, AFNetworking, SuperAdminStore, StudentStore, AdminStore, Message, Location;
 
 
 @interface Store : NSObject
 
-+ (AFNetworking *)dbConnection;
-+ (DatabaseConnection *)dbSessionConnection;
++ (DatabaseConnection *)dbConnection;
 + (Store *)mainStore;
 + (StudentStore *)studentStore;
 + (AdminStore *)adminStore;

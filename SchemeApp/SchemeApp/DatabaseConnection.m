@@ -8,10 +8,6 @@
 
 #import "DatabaseConnection.h"
 
-@interface DatabaseConnection ()<NSURLSessionDelegate, NSURLSessionTaskDelegate>
-
-@end
-
 @implementation DatabaseConnection
 {
     NSOperationQueue *queue;
@@ -93,7 +89,7 @@
                                                            options:NSJSONWritingPrettyPrinted error:&error];
         if (error)
         {
-            NSLog(@"%@ tried to parse incomming responseBody but got error: %@", self.class, error);
+            NSLog(@"[%@] Tried to parse incomming responseBody but got error: %@", self.class, error);
             return nil;
         }
     }

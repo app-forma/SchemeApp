@@ -18,7 +18,7 @@
                           andEndDate:(NSDate *)endDate
                           completion:(void (^)(NSArray *eventWrappers))handler
 {
-    [Store.dbSessionConnection getPath:DB_TYPE_EVENTWRAPPER
+    [Store.dbConnection getPath:DB_TYPE_EVENTWRAPPER
                             withParams:@{@"startDate": [Helpers stringFromNSDate:startDate],
                                          @"endDate": [Helpers stringFromNSDate:endDate]}
                          andCompletion:^(id responseBody, id response, NSError *error)
@@ -43,7 +43,7 @@
 
 - (void)messagesForUser:(User*)user completion:(void (^)(NSArray *messagesForUser))handler
 {
-    [[Store dbSessionConnection]getPath:[NSString stringWithFormat:@"%@/%@/%@", DB_TYPE_MESSAGE, @"foruser", [Store mainStore].currentUser.docID] withParams:nil andCompletion:^(id responseBody, id response, NSError *error) {
+    [[Store dbConnection]getPath:[NSString stringWithFormat:@"%@/%@/%@", DB_TYPE_MESSAGE, @"foruser", [Store mainStore].currentUser.docID] withParams:nil andCompletion:^(id responseBody, id response, NSError *error) {
         if (error)
         {
             NSLog(@"messagesForUser:completion: got response: %@ and error: %@", response, error.userInfo);
@@ -63,7 +63,7 @@
 
 -(void)deleteMessage:(Message *)message forUser:(User *)user completion:(void (^)(BOOL))handler
 {
-    [[Store dbSessionConnection]deletePath:[NSString stringWithFormat:@"%@/%@/%@/%@", DB_TYPE_MESSAGE, message.docID, @"receivers", user.docID] withCompletion:^(id responseBody, id response, NSError *error) {
+    [[Store dbConnection]deletePath:[NSString stringWithFormat:@"%@/%@/%@/%@", DB_TYPE_MESSAGE, message.docID, @"receivers", user.docID] withCompletion:^(id responseBody, id response, NSError *error) {
         if (error)
         {
             NSLog(@"deleteMessage forUser completion: got response: %@ and error: %@", response, error.userInfo);
@@ -79,7 +79,7 @@
     {
             NSString *path = [NSString stringWithFormat:@"%@/%@/attendance/%@", DB_TYPE_USER, Store.mainStore.currentUser.docID, NSDate.date.asDateString];
             
-            [Store.dbSessionConnection postContent:nil
+            [Store.dbConnection postContent:nil
                                             toPath:path
                                     withCompletion:^(id responseBody, id response, NSError *error)
              {
